@@ -1,12 +1,37 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
+import { Header } from "@/components/zential/Header";
+import { HeroSection } from "@/components/zential/HeroSection";
+import { SocialProof } from "@/components/zential/SocialProof";
+import { DevicesSection } from "@/components/zential/DevicesSection";
+import { ResultsSection } from "@/components/zential/ResultsSection";
+import { ScienceSection } from "@/components/zential/ScienceSection";
+import { RitualSection } from "@/components/zential/RitualSection";
+import { ComparisonSection } from "@/components/zential/ComparisonSection";
+import { StatsBar } from "@/components/zential/StatsBar";
+import { BundleSection } from "@/components/zential/BundleSection";
+import { FAQSection } from "@/components/zential/FAQSection";
+import { NewsletterSection } from "@/components/zential/NewsletterSection";
+import { ZentialFooter } from "@/components/zential/ZentialFooter";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <AnnouncementBar />
+      <Header />
+      <main>
+        <HeroSection />
+        <SocialProof />
+        <DevicesSection />
+        <ResultsSection />
+        <ScienceSection />
+        <RitualSection />
+        <ComparisonSection />
+        <StatsBar />
+        <BundleSection />
+        <FAQSection />
+        <NewsletterSection />
+      </main>
+      <ZentialFooter />
     </div>
   );
 };
