@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useCartSync } from "@/hooks/useCartSync";
+import { useHashScroll } from "@/hooks/useHashScroll";
 import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
 import Journal from "./pages/Journal";
@@ -14,16 +15,15 @@ const queryClient = new QueryClient();
 
 function AppContent() {
   useCartSync();
+  useHashScroll();
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/product/:handle" element={<ProductDetail />} />
-        <Route path="/journal" element={<Journal />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Index />} />
+      <Route path="/product/:handle" element={<ProductDetail />} />
+      <Route path="/journal" element={<Journal />} />
+      <Route path="/support" element={<Support />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
@@ -32,7 +32,9 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <AppContent />
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
