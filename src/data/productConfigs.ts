@@ -1,4 +1,4 @@
-import { Sparkles, Flame, Heart, Brain, Sun, Zap, Waves, ThermometerSun, Eye, Gauge, Focus, CircleDot, ShieldCheck, Droplets, ScanFace, Vibrate, Radio, Gem, Aperture, Activity } from "lucide-react";
+import { Sparkles, Flame, Heart, Brain, Sun, Zap, Waves, ThermometerSun, Eye, Gauge, Focus, CircleDot, ShieldCheck, Droplets, ScanFace, Vibrate, Radio, Gem, Aperture, Activity, Beaker, FlaskConical } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 import beforeImg from "@/assets/before.jpg";
@@ -12,6 +12,7 @@ export interface ProductConfig {
   handle: string;
   name: string;
   subheadline: string;
+  isAccessory?: boolean;
   benefits: { icon: LucideIcon; label: string }[];
   testimonials: { name: string; text: string }[];
   problemReframe: {
@@ -35,7 +36,7 @@ const defaultComparison = [
   { feature: "Daily ritual integration", zential: true, clinic: false, creams: true, generic: true },
 ];
 
-const defaultFaqs = [
+const defaultDeviceFaqs = [
   { q: "How long until I see results?", a: "Most users notice improved skin texture within 2 weeks of consistent daily use. Structural changes typically become visible after 3 to 4 weeks of daily ritual practice." },
   { q: "Can I use it daily?", a: "Yes. This device is designed for daily use in 5-minute sessions. Start at the lowest intensity and gradually increase as your skin adapts." },
   { q: "Is it safe for all skin types?", a: "Yes, it's designed for all skin types. If you have sensitive skin, start at the lowest setting. If irritation persists, reduce frequency and consult your dermatologist." },
@@ -44,7 +45,18 @@ const defaultFaqs = [
   { q: "What is your guarantee?", a: "We offer a 30-Day Ritual Guarantee. If you don't feel visible improvement within 30 days of consistent daily use, contact us for a full refund. No friction, no pressure." },
 ];
 
+const accessoryComparison = [
+  { feature: "Formulated for devices", zential: true, clinic: false, creams: false, generic: false },
+  { feature: "Clinical-grade ingredients", zential: true, clinic: true, creams: false, generic: false },
+  { feature: "Daily ritual integration", zential: true, clinic: false, creams: true, generic: true },
+  { feature: "Cost per month", zential: "Under €10", clinic: "€80+", creams: "€30–€60", generic: "€10–€20" },
+  { feature: "Enhances device results", zential: true, clinic: false, creams: false, generic: false },
+  { feature: "Dermatologist reviewed", zential: true, clinic: true, creams: false, generic: false },
+];
+
+// Maps Shopify handle → config
 export const productConfigs: Record<string, ProductConfig> = {
+  // ─── BODY LIFT ───
   "body-lift": {
     handle: "body-lift",
     name: "Body Lift",
@@ -82,12 +94,13 @@ export const productConfigs: Record<string, ProductConfig> = {
     ],
     beforeAfter: { before: before2Img, after: after2Img },
     comparisonRows: defaultComparison,
-    faqs: defaultFaqs,
+    faqs: defaultDeviceFaqs,
   },
 
+  // ─── LIFTING & TIGHTENING FACE INTRODUCER ───
   "lifting-and-tightening-face-introducer": {
     handle: "lifting-and-tightening-face-introducer",
-    name: "Lifting & Tightening Face Introducer",
+    name: "Face Introducer",
     subheadline: "Multi-Frequency Facial Sculptor for Visible Definition",
     benefits: [
       { icon: ScanFace, label: "Deep Facial Sculpting" },
@@ -122,11 +135,12 @@ export const productConfigs: Record<string, ProductConfig> = {
     ],
     beforeAfter: { before: beforeImg, after: afterImg },
     comparisonRows: defaultComparison,
-    faqs: defaultFaqs,
+    faqs: defaultDeviceFaqs,
   },
 
-  "eye-activator": {
-    handle: "eye-activator",
+  // ─── EYE ACTIVATOR ───
+  "eye-massage": {
+    handle: "eye-massage",
     name: "Eye Activator",
     subheadline: "Targeted Microcurrent for the Periorbital Zone",
     benefits: [
@@ -172,8 +186,9 @@ export const productConfigs: Record<string, ProductConfig> = {
     ],
   },
 
-  "frequency-wand": {
-    handle: "frequency-wand",
+  // ─── FREQUENCY WAND ───
+  "color-light-import-micro-current-vibration-massager": {
+    handle: "color-light-import-micro-current-vibration-massager",
     name: "Frequency Wand",
     subheadline: "High-Frequency Skin Purifier and Collagen Activator",
     benefits: [
@@ -200,20 +215,21 @@ export const productConfigs: Record<string, ProductConfig> = {
       { icon: Radio, title: "High Frequency", desc: "Oscillating current generates oxygen molecules that purify and stimulate cellular renewal." },
       { icon: ShieldCheck, title: "Antibacterial", desc: "Destroys acne-causing bacteria on contact through gentle electrical sterilization." },
       { icon: Flame, title: "Collagen Boost", desc: "Thermal energy from high-frequency current stimulates fibroblast activity for firmer skin." },
-      { icon: Aperture, title: "Neon & Argon", desc: "Interchangeable gas electrodes target different skin concerns from acne to aging." },
+      { icon: Aperture, title: "Multi-Mode", desc: "Multiple treatment modes target different skin concerns from congestion to aging." },
     ],
     ritualSteps: [
-      { step: "01", title: "Prepare", desc: "Cleanse skin thoroughly. Select your electrode attachment based on treatment area." },
+      { step: "01", title: "Prepare", desc: "Cleanse skin thoroughly. Select your treatment mode based on your skin concern." },
       { step: "02", title: "Activate", desc: "Glide the wand across your skin in circular motions. Start at low intensity. 5 minutes." },
       { step: "03", title: "Repeat", desc: "Follow with your serum immediately after treatment. Use 3 to 5 times per week for optimal results." },
     ],
     beforeAfter: { before: beforeImg, after: afterImg },
     comparisonRows: defaultComparison,
-    faqs: defaultFaqs,
+    faqs: defaultDeviceFaqs,
   },
 
-  "gua-sha-frequency": {
-    handle: "gua-sha-frequency",
+  // ─── GUA SHA FREQUENCY ───
+  "electric-guasha-massager": {
+    handle: "electric-guasha-massager",
     name: "Gua Sha Frequency",
     subheadline: "Ancient Ritual Meets Microcurrent Precision",
     benefits: [
@@ -249,11 +265,12 @@ export const productConfigs: Record<string, ProductConfig> = {
     ],
     beforeAfter: { before: before2Img, after: after2Img },
     comparisonRows: defaultComparison,
-    faqs: defaultFaqs,
+    faqs: defaultDeviceFaqs,
   },
 
-  "skin-pulse": {
-    handle: "skin-pulse",
+  // ─── SKIN PULSE ───
+  "electric-micro-current": {
+    handle: "electric-micro-current",
     name: "Skin Pulse",
     subheadline: "Multi-Modal Skin Rejuvenation System",
     benefits: [
@@ -289,16 +306,17 @@ export const productConfigs: Record<string, ProductConfig> = {
     ],
     beforeAfter: { before: before3Img, after: after3Img },
     comparisonRows: defaultComparison,
-    faqs: defaultFaqs,
+    faqs: defaultDeviceFaqs,
   },
 
-  "sculpt-wand": {
-    handle: "sculpt-wand",
+  // ─── SCULPT WAND ───
+  "facial-beauty-tools-and-ems-beauty-equipment": {
+    handle: "facial-beauty-tools-and-ems-beauty-equipment",
     name: "Sculpt Wand",
-    subheadline: "Precision Facial Contouring with Microcurrent Technology",
+    subheadline: "Precision Facial Contouring with EMS Technology",
     benefits: [
       { icon: ScanFace, label: "Precision Contouring" },
-      { icon: Zap, label: "Targeted Microcurrent" },
+      { icon: Zap, label: "Targeted EMS" },
       { icon: Waves, label: "Lymphatic Support" },
       { icon: Gauge, label: "Variable Intensity" },
     ],
@@ -312,12 +330,12 @@ export const productConfigs: Record<string, ProductConfig> = {
       paragraphs: [
         "The sharp angles of your cheekbones, the definition of your jawline, the lift of your brow. These aren't cosmetic effects. They're the result of toned facial muscles and firm connective tissue.",
         "Contouring makeup creates an illusion. But true facial definition comes from within: muscles that hold their shape, fascia that supports structure, and skin that sits taut over bone.",
-        "Sculpt Wand delivers precision microcurrent exactly where definition matters most, training facial muscles to hold their natural contour through consistent daily activation.",
+        "Sculpt Wand delivers precision EMS exactly where definition matters most, training facial muscles to hold their natural contour through consistent daily activation.",
       ],
       closing: "Real contour doesn't wash off.",
     },
     techCards: [
-      { icon: Zap, title: "Microcurrent", desc: "Calibrated electrical stimulation targets specific facial muscles for precise toning and lift." },
+      { icon: Zap, title: "EMS Current", desc: "Calibrated electrical muscle stimulation targets specific facial muscles for precise toning and lift." },
       { icon: CircleDot, title: "Precision Tip", desc: "Narrow applicator reaches detailed areas like nasolabial folds, lip lines, and brow arches." },
       { icon: Waves, title: "Pulse Mode", desc: "Rhythmic pulsation encourages lymphatic movement and reduces facial fluid retention." },
       { icon: ThermometerSun, title: "Gentle Heat", desc: "Mild thermal energy relaxes muscle tension and prepares tissue for deeper current penetration." },
@@ -329,51 +347,12 @@ export const productConfigs: Record<string, ProductConfig> = {
     ],
     beforeAfter: { before: beforeImg, after: afterImg },
     comparisonRows: defaultComparison,
-    faqs: defaultFaqs,
+    faqs: defaultDeviceFaqs,
   },
 
-  "microcurrent-sculpt-wand": {
-    handle: "microcurrent-sculpt-wand",
-    name: "Microcurrent Sculpt Wand",
-    subheadline: "Advanced Sculpting Wand with Dual-Wave Microcurrent",
-    benefits: [
-      { icon: Zap, label: "Dual-Wave Microcurrent" },
-      { icon: ScanFace, label: "Full-Face Sculpting" },
-      { icon: Sun, label: "LED Integration" },
-      { icon: Heart, label: "Muscle Re-Education" },
-    ],
-    testimonials: [
-      { name: "Hana, 33", text: "The dual-wave mode feels different from anything I've tried. My jawline responds within days." },
-      { name: "Rebecca, 46", text: "Professional-grade results from my bathroom. I cancelled my monthly facial appointments." },
-      { name: "Zara, 29", text: "Lightweight, precise, effective. This is the only device I've used consistently for months." },
-    ],
-    problemReframe: {
-      headline: "Your Muscles Remember. Train Them.",
-      paragraphs: [
-        "Facial muscles, like all muscles, respond to training. When stimulated consistently, they develop tone, hold their position, and create the visible structure we associate with a youthful face.",
-        "Without stimulation, facial muscles gradually atrophy. This isn't damage. It's simply disuse. The architecture is still there, waiting to be reactivated.",
-        "The Microcurrent Sculpt Wand uses dual-wave technology to deliver two complementary current patterns, one for deep muscle activation and one for surface toning. Together, they retrain your facial musculature.",
-      ],
-      closing: "Your face has muscle memory. Reactivate it.",
-    },
-    techCards: [
-      { icon: Zap, title: "Dual-Wave Current", desc: "Two complementary microcurrent frequencies work together for deep activation and surface toning." },
-      { icon: ScanFace, title: "Full-Face Mode", desc: "Ergonomic head design covers larger treatment areas for efficient full-face sculpting sessions." },
-      { icon: Sun, title: "LED Boost", desc: "Integrated LED light enhances collagen stimulation during microcurrent treatment." },
-      { icon: Waves, title: "Smart Pulse", desc: "Adaptive pulse patterns respond to tissue resistance for optimal current delivery in every zone." },
-    ],
-    ritualSteps: [
-      { step: "01", title: "Prepare", desc: "Cleanse thoroughly and apply conductive medium. Select dual-wave mode for comprehensive treatment." },
-      { step: "02", title: "Activate", desc: "Work systematically from neck upward: jawline, cheeks, forehead. Hold 5 seconds per zone. 5 minutes total." },
-      { step: "03", title: "Repeat", desc: "Commit to your daily ritual. Muscle re-education is progressive. Week 3 is where the shift begins." },
-    ],
-    beforeAfter: { before: before2Img, after: after2Img },
-    comparisonRows: defaultComparison,
-    faqs: defaultFaqs,
-  },
-
-  "frame-pulse-activator": {
-    handle: "frame-pulse-activator",
+  // ─── FRAME PULSE ACTIVATOR ───
+  "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": {
+    handle: "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
     name: "Frame Pulse Activator",
     subheadline: "Hands-Free EMS and LED Beauty Device",
     benefits: [
@@ -409,7 +388,146 @@ export const productConfigs: Record<string, ProductConfig> = {
     ],
     beforeAfter: { before: before3Img, after: after3Img },
     comparisonRows: defaultComparison,
-    faqs: defaultFaqs,
+    faqs: defaultDeviceFaqs,
+  },
+
+  // ─── MICROCURRENT SCULPT WAND (unlisted) ───
+  "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening": {
+    handle: "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening",
+    name: "Microcurrent Sculpt Wand",
+    subheadline: "Advanced Sculpting Wand with Dual-Wave Microcurrent",
+    benefits: [
+      { icon: Zap, label: "Dual-Wave Microcurrent" },
+      { icon: ScanFace, label: "Full-Face Sculpting" },
+      { icon: Sun, label: "LED Integration" },
+      { icon: Heart, label: "Muscle Re-Education" },
+    ],
+    testimonials: [
+      { name: "Hana, 33", text: "The dual-wave mode feels different from anything I've tried. My jawline responds within days." },
+      { name: "Rebecca, 46", text: "Professional-grade results from my bathroom. I cancelled my monthly facial appointments." },
+      { name: "Zara, 29", text: "Lightweight, precise, effective. This is the only device I've used consistently for months." },
+    ],
+    problemReframe: {
+      headline: "Your Muscles Remember. Train Them.",
+      paragraphs: [
+        "Facial muscles, like all muscles, respond to training. When stimulated consistently, they develop tone, hold their position, and create the visible structure we associate with a youthful face.",
+        "Without stimulation, facial muscles gradually atrophy. This isn't damage. It's simply disuse. The architecture is still there, waiting to be reactivated.",
+        "The Microcurrent Sculpt Wand uses dual-wave technology to deliver two complementary current patterns, one for deep muscle activation and one for surface toning.",
+      ],
+      closing: "Your face has muscle memory. Reactivate it.",
+    },
+    techCards: [
+      { icon: Zap, title: "Dual-Wave Current", desc: "Two complementary microcurrent frequencies work together for deep activation and surface toning." },
+      { icon: ScanFace, title: "Full-Face Mode", desc: "Ergonomic head design covers larger treatment areas for efficient full-face sculpting sessions." },
+      { icon: Sun, title: "LED Boost", desc: "Integrated LED light enhances collagen stimulation during microcurrent treatment." },
+      { icon: Waves, title: "Smart Pulse", desc: "Adaptive pulse patterns respond to tissue resistance for optimal current delivery in every zone." },
+    ],
+    ritualSteps: [
+      { step: "01", title: "Prepare", desc: "Cleanse thoroughly and apply conductive medium. Select dual-wave mode for comprehensive treatment." },
+      { step: "02", title: "Activate", desc: "Work systematically from neck upward: jawline, cheeks, forehead. Hold 5 seconds per zone. 5 minutes total." },
+      { step: "03", title: "Repeat", desc: "Commit to your daily ritual. Muscle re-education is progressive. Week 3 is where the shift begins." },
+    ],
+    beforeAfter: { before: before2Img, after: after2Img },
+    comparisonRows: defaultComparison,
+    faqs: defaultDeviceFaqs,
+  },
+
+  // ─── COLLAGEN FACE GEL ───
+  "medicube-collagen-elastic-jelly-moisturizing-cream": {
+    handle: "medicube-collagen-elastic-jelly-moisturizing-cream",
+    name: "Collagen Face Gel",
+    subheadline: "Device-Optimized Conductive Gel with Collagen Complex",
+    isAccessory: true,
+    benefits: [
+      { icon: Droplets, label: "Deep Hydration" },
+      { icon: Sparkles, label: "Collagen Elasticity" },
+      { icon: Zap, label: "Device Conductivity" },
+      { icon: ShieldCheck, label: "Dermatologist Reviewed" },
+    ],
+    testimonials: [
+      { name: "Emma, 30", text: "This gel made my device sessions twice as effective. My skin drinks it up." },
+      { name: "Kate, 37", text: "Finally a conductive gel that also works as skincare. No sticky residue, just glow." },
+      { name: "Ava, 42", text: "I tried other gels before. This one glides perfectly and my skin feels plump all day." },
+    ],
+    problemReframe: {
+      headline: "Your Device Needs a Partner. Not Just Any Product.",
+      paragraphs: [
+        "Microcurrent devices require a conductive medium to work properly. Without it, current can't travel effectively through the skin, reducing treatment efficacy by up to 60%.",
+        "Most conductive gels are pure function, no skincare benefit. And most serums don't conduct. You end up choosing between conductivity and nourishment.",
+        "Collagen Face Gel bridges both. Formulated with hydrolyzed collagen, hyaluronic acid, and optimal ionic conductivity, it ensures every pulse reaches your muscles while feeding your skin.",
+      ],
+      closing: "The right medium amplifies everything.",
+    },
+    techCards: [
+      { icon: Droplets, title: "Collagen Complex", desc: "Hydrolyzed collagen peptides support skin elasticity and firmness with every application." },
+      { icon: Zap, title: "Ionic Conductivity", desc: "Specifically formulated to conduct microcurrent and EMS signals for maximum device efficacy." },
+      { icon: Sparkles, title: "Hyaluronic Acid", desc: "Multi-weight hyaluronic acid provides layered hydration from surface to deeper skin layers." },
+      { icon: ShieldCheck, title: "Clean Formula", desc: "Free from parabens, sulfates, and artificial fragrance. Suitable for all skin types including sensitive." },
+    ],
+    ritualSteps: [
+      { step: "01", title: "Prepare", desc: "Cleanse your face. Apply a generous layer of Collagen Face Gel to the treatment area." },
+      { step: "02", title: "Activate", desc: "Use with your ZENTIAL device. The gel ensures optimal current delivery during your ritual." },
+      { step: "03", title: "Repeat", desc: "After your ritual, massage any remaining gel into the skin. No need to rinse. Use daily." },
+    ],
+    beforeAfter: { before: before3Img, after: after3Img },
+    comparisonRows: accessoryComparison,
+    faqs: [
+      { q: "Can I use this without a device?", a: "Yes. Collagen Face Gel works as a standalone moisturizer and collagen treatment. However, it's specially formulated to enhance device results when used together." },
+      { q: "How long does one jar last?", a: "With daily use during device sessions, one jar typically lasts 4 to 6 weeks depending on application amount." },
+      { q: "Is it suitable for sensitive skin?", a: "Yes. The formula is free from parabens, sulfates, and artificial fragrance. It's been reviewed by dermatologists for sensitive skin compatibility." },
+      { q: "Can I use it around my eyes?", a: "Yes. The gentle formula is safe for the periorbital area. Use a thin layer when pairing with the Eye Activator." },
+      { q: "Does it work with all ZENTIAL devices?", a: "Yes. Collagen Face Gel is compatible with all ZENTIAL PURE devices including Body Lift, Eye Activator, Sculpt Wand, and Gua Sha Frequency." },
+      { q: "What is your guarantee?", a: "We offer a 30-Day Ritual Guarantee on all products. If you're not satisfied, contact us for a full refund." },
+    ],
+  },
+
+  // ─── COLLAGEN PDRN PADS ───
+  "collagen-eye-mask": {
+    handle: "collagen-eye-mask",
+    name: "Collagen PDRN Pads",
+    subheadline: "Concentrated Collagen Eye Patches with PDRN Technology",
+    isAccessory: true,
+    benefits: [
+      { icon: Eye, label: "Under-Eye Revival" },
+      { icon: Beaker, label: "PDRN Technology" },
+      { icon: Sparkles, label: "Collagen Infusion" },
+      { icon: Heart, label: "Instant Plumping" },
+    ],
+    testimonials: [
+      { name: "Julia, 35", text: "I wear these before my Eye Activator session. The combination is unmatched." },
+      { name: "Mina, 29", text: "Morning puffiness gone in 15 minutes. These are my new non-negotiable." },
+      { name: "Sophie, 44", text: "The PDRN formula is real. My under-eyes look brighter and the fine lines are fading." },
+    ],
+    problemReframe: {
+      headline: "Your Under-Eyes Need Repair. Not Concealer.",
+      paragraphs: [
+        "The periorbital area ages faster than any other part of your face. Thin skin, constant movement, and poor lymphatic drainage create dark circles, puffiness, and fine lines that worsen over time.",
+        "Concealer hides the symptoms. But the tissue underneath continues to thin, lose collagen, and accumulate damage. Surface coverage doesn't equal structural repair.",
+        "Collagen PDRN Pads deliver polydeoxyribonucleotide directly to the under-eye area, stimulating cellular regeneration and collagen synthesis where it matters most.",
+      ],
+      closing: "Repair the tissue. The brightness follows.",
+    },
+    techCards: [
+      { icon: Beaker, title: "PDRN Complex", desc: "Polydeoxyribonucleotide promotes cellular repair and regeneration in the delicate under-eye tissue." },
+      { icon: Sparkles, title: "Collagen Matrix", desc: "High-concentration collagen peptides rebuild skin density and reduce the appearance of fine lines." },
+      { icon: Droplets, title: "Hydrogel Delivery", desc: "Advanced hydrogel technology ensures sustained ingredient release over the entire wearing period." },
+      { icon: Eye, title: "Contour Fit", desc: "Ergonomic pad shape conforms perfectly to the orbital area for maximum contact and absorption." },
+    ],
+    ritualSteps: [
+      { step: "01", title: "Prepare", desc: "Cleanse the under-eye area. Remove pads from packaging and apply to clean, dry skin." },
+      { step: "02", title: "Activate", desc: "Leave on for 15 to 20 minutes. For enhanced results, use before your Eye Activator session." },
+      { step: "03", title: "Repeat", desc: "Use 3 to 4 times per week. Pat remaining essence into the skin after removal. Do not rinse." },
+    ],
+    beforeAfter: { before: before3Img, after: after3Img },
+    comparisonRows: accessoryComparison,
+    faqs: [
+      { q: "How often should I use these?", a: "We recommend 3 to 4 times per week for optimal results. They can be used daily if desired, especially when targeting stubborn dark circles or puffiness." },
+      { q: "Can I use them with the Eye Activator?", a: "Yes. For best results, apply the pads first for 15 minutes, then follow with your Eye Activator session. The PDRN primes the tissue for enhanced device efficacy." },
+      { q: "How many pads are in each pack?", a: "Each pack contains multiple pairs of pads designed for a full month of regular use (3 to 4 times per week)." },
+      { q: "Are they suitable for sensitive skin?", a: "Yes. The hydrogel formula is fragrance-free and dermatologist reviewed. If you experience irritation, reduce frequency of use." },
+      { q: "Do I rinse after use?", a: "No. After removing the pads, gently pat the remaining essence into the skin. This allows continued absorption of active ingredients." },
+      { q: "What is your guarantee?", a: "We offer a 30-Day Ritual Guarantee on all products. If you're not satisfied, contact us for a full refund." },
+    ],
   },
 };
 
