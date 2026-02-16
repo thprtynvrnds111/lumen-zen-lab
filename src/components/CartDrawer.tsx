@@ -1,20 +1,22 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { ShoppingBag, Minus, Plus, Trash2, ExternalLink, Loader2 } from "lucide-react";
+import { ShoppingBag, Minus, Plus, Trash2, ArrowRight, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 
 export function CartDrawer() {
   const [isOpen, setIsOpen] = useState(false);
-  const { items, isLoading, isSyncing, updateQuantity, removeItem, getCheckoutUrl, syncCart } = useCartStore();
+  const navigate = useNavigate();
+  const { items, isLoading, isSyncing, updateQuantity, removeItem, syncCart } = useCartStore();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + parseFloat(item.price.amount) * item.quantity, 0);
 
   useEffect(() => { if (isOpen) syncCart(); }, [isOpen, syncCart]);
 
   const handleCheckout = () => {
-    const url = getCheckoutUrl();
-    if (url) { window.open(url, '_blank'); setIsOpen(false); }
+    setIsOpen(false);
+    navigate("/checkout");
   };
 
   return (
@@ -75,7 +77,7 @@ export function CartDrawer() {
                   <span className="text-lg font-bold">{items[0]?.price.currencyCode} {totalPrice.toFixed(2)}</span>
                 </div>
                 <Button variant="ritual" className="w-full" size="lg" onClick={handleCheckout} disabled={isLoading || isSyncing}>
-                  {isLoading || isSyncing ? <Loader2 className="animate-spin" size={16} /> : <><ExternalLink size={14} className="mr-2" />Checkout</>}
+                  {isLoading || isSyncing ? <Loader2 className="animate-spin" size={16} /> : <><ArrowRight size={14} className="mr-2" />Checkout</>}
                 </Button>
               </div>
             </>

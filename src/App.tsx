@@ -17,6 +17,7 @@ import JournalEMS from "./pages/JournalEMS";
 import JournalRitualLasts from "./pages/JournalRitualLasts";
 import Support from "./pages/Support";
 import BodyLift from "./pages/BodyLift";
+import Checkout from "./pages/Checkout";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ function AppContent() {
       <Route path="/journal/ems-vs-microcurrent" element={<JournalEMS />} />
       <Route path="/journal/ritual-that-lasts" element={<JournalRitualLasts />} />
       <Route path="/support" element={<Support />} />
+      <Route path="/checkout" element={<Checkout />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
