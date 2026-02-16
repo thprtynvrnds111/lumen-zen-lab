@@ -257,18 +257,29 @@ export default function Checkout() {
                   <span className="text-xl font-semibold text-foreground tracking-tight">{sym}{totalPrice.toFixed(2)}</span>
                 </div>
 
-                {/* CTA Button */}
-                <button
-                  onClick={handleComplete}
-                  disabled={redirecting || isSyncing || !cartId}
-                  className="w-full py-4 rounded-2xl text-sm tracking-[0.15em] uppercase transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed bg-secondary hover:bg-secondary/80 text-foreground font-medium shadow-[0_2px_12px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_20px_-6px_rgba(0,0,0,0.12)] hover:-translate-y-px active:translate-y-0"
-                >
-                  {redirecting || isSyncing ? (
-                    <Loader2 className="animate-spin mx-auto" size={16} />
-                  ) : (
-                    "Complete Your Ritual"
-                  )}
-                </button>
+                {/* CTA Button — native anchor so it always navigates externally */}
+                {checkoutUrl && !redirecting && !isSyncing ? (
+                  <a
+                    href={buildCheckoutHref(checkoutUrl)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full py-4 rounded-2xl text-sm tracking-[0.15em] uppercase transition-all duration-300 bg-secondary hover:bg-secondary/80 text-foreground font-medium shadow-[0_2px_12px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_20px_-6px_rgba(0,0,0,0.12)] hover:-translate-y-px active:translate-y-0 text-center"
+                  >
+                    Complete Your Ritual
+                  </a>
+                ) : (
+                  <button
+                    onClick={handleComplete}
+                    disabled={redirecting || isSyncing || !cartId}
+                    className="w-full py-4 rounded-2xl text-sm tracking-[0.15em] uppercase transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed bg-secondary hover:bg-secondary/80 text-foreground font-medium shadow-[0_2px_12px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_20px_-6px_rgba(0,0,0,0.12)] hover:-translate-y-px active:translate-y-0"
+                  >
+                    {redirecting || isSyncing ? (
+                      <Loader2 className="animate-spin mx-auto" size={16} />
+                    ) : (
+                      "Complete Your Ritual"
+                    )}
+                  </button>
+                )}
 
                 <p className="text-center text-[10px] tracking-[0.15em] uppercase text-muted-foreground/40 mt-4">
                   30-Day Guarantee Included.
