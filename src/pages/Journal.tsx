@@ -36,6 +36,7 @@ const articles = [
     excerpt: "A transparent review of peer-reviewed studies on red light therapy for skin rejuvenation, wound healing, and inflammation reduction.",
     date: "January 28, 2026",
     readTime: "10 min read",
+    slug: "/journal/red-light-clinical",
   },
   {
     category: "Wellness",
@@ -43,6 +44,7 @@ const articles = [
     excerpt: "Why gentle electrical stimulation supports the body's natural detoxification pathways, and what that means for facial contour.",
     date: "January 20, 2026",
     readTime: "6 min read",
+    slug: "/journal/lymphatic-drainage",
   },
   {
     category: "Science",
@@ -50,6 +52,7 @@ const articles = [
     excerpt: "Not all electrical stimulation is equal. A clinical breakdown of frequency ranges, muscle response types, and ideal use cases.",
     date: "January 14, 2026",
     readTime: "7 min read",
+    slug: "/journal/ems-vs-microcurrent",
   },
   {
     category: "Ritual",
@@ -57,6 +60,7 @@ const articles = [
     excerpt: "Consistency over intensity. How to design a personal protocol that adapts to your life, without burnout or guilt.",
     date: "January 7, 2026",
     readTime: "4 min read",
+    slug: "/journal/ritual-that-lasts",
   },
 ];
 
