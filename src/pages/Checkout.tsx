@@ -22,15 +22,20 @@ export default function Checkout() {
   }, [items.length, isLoading, isSyncing, navigate]);
 
   const handleComplete = async () => {
-    // Try stored checkout URL first
     let url = getCheckoutUrl();
     if (!url) {
-      // Cart may have been created before checkoutUrl was persisted — re-sync
       await syncCart();
       url = getCheckoutUrl();
     }
     if (url) {
-      window.open(url, "_blank");
+      // Ensure channel=online_store param is present
+      try {
+        const parsed = new URL(url);
+        parsed.searchParams.set('channel', 'online_store');
+        url = parsed.toString();
+      } catch {}
+      // Use location.href to avoid popup blockers in iframes
+      window.location.href = url;
     }
   };
 
