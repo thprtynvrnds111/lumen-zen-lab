@@ -88,7 +88,7 @@ const Journal = () => {
               Science. Ritual. Clarity.
             </h1>
             <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-              Evidence-based insights on skin science, device technology, and the art of daily transformation.
+              Evidence based insights on skin science, device technology, and the art of daily transformation.
             </p>
           </div>
         </section>
