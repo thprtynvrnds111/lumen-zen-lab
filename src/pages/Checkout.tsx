@@ -21,9 +21,17 @@ export default function Checkout() {
     }
   }, [items.length, isLoading, isSyncing, navigate]);
 
-  const handleComplete = () => {
-    const url = getCheckoutUrl();
-    if (url) window.open(url, "_blank");
+  const handleComplete = async () => {
+    // Try stored checkout URL first
+    let url = getCheckoutUrl();
+    if (!url) {
+      // Cart may have been created before checkoutUrl was persisted — re-sync
+      await syncCart();
+      url = getCheckoutUrl();
+    }
+    if (url) {
+      window.open(url, "_blank");
+    }
   };
 
   if (items.length === 0) return null;

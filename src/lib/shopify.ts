@@ -175,7 +175,7 @@ const CART_LINES_REMOVE = `
   }
 `;
 
-export const CART_QUERY = `query cart($id: ID!) { cart(id: $id) { id totalQuantity } }`;
+export const CART_QUERY = `query cart($id: ID!) { cart(id: $id) { id checkoutUrl totalQuantity } }`;
 
 function formatCheckoutUrl(checkoutUrl: string): string {
   try {

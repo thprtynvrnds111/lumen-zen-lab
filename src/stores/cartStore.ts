@@ -110,7 +110,13 @@ export const useCartStore = create<CartStore>()(
           const data = await storefrontApiRequest(CART_QUERY, { id: cartId });
           if (!data) return;
           const cart = data?.data?.cart;
-          if (!cart || cart.totalQuantity === 0) clearCart();
+          if (!cart || cart.totalQuantity === 0) { clearCart(); return; }
+          // Refresh checkoutUrl if available from query
+          if (cart.checkoutUrl) {
+            const url = new URL(cart.checkoutUrl);
+            url.searchParams.set('channel', 'online_store');
+            set({ checkoutUrl: url.toString() });
+          }
         } catch (e) { console.error(e); }
         finally { set({ isSyncing: false }); }
       },
