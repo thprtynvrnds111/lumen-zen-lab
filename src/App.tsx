@@ -11,6 +11,10 @@ import Journal from "./pages/Journal";
 import JournalArticle from "./pages/JournalArticle";
 import JournalScience from "./pages/JournalScience";
 import JournalRitual from "./pages/JournalRitual";
+import JournalRedLight from "./pages/JournalRedLight";
+import JournalLymphatic from "./pages/JournalLymphatic";
+import JournalEMS from "./pages/JournalEMS";
+import JournalRitualLasts from "./pages/JournalRitualLasts";
 import Support from "./pages/Support";
 import NotFound from "./pages/NotFound";
 
@@ -27,6 +31,10 @@ function AppContent() {
       <Route path="/journal/frequency-shift" element={<JournalArticle />} />
       <Route path="/journal/microcurrent-collagen" element={<JournalScience />} />
       <Route path="/journal/evening-protocol" element={<JournalRitual />} />
+      <Route path="/journal/red-light-clinical" element={<JournalRedLight />} />
+      <Route path="/journal/lymphatic-drainage" element={<JournalLymphatic />} />
+      <Route path="/journal/ems-vs-microcurrent" element={<JournalEMS />} />
+      <Route path="/journal/ritual-that-lasts" element={<JournalRitualLasts />} />
       <Route path="/support" element={<Support />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
