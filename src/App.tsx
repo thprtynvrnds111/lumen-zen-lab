@@ -8,6 +8,7 @@ import { useHashScroll } from "@/hooks/useHashScroll";
 import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
 import Journal from "./pages/Journal";
+import JournalArticle from "./pages/JournalArticle";
 import Support from "./pages/Support";
 import NotFound from "./pages/NotFound";
 
@@ -21,6 +22,7 @@ function AppContent() {
       <Route path="/" element={<Index />} />
       <Route path="/product/:handle" element={<ProductDetail />} />
       <Route path="/journal" element={<Journal />} />
+      <Route path="/journal/frequency-shift" element={<JournalArticle />} />
       <Route path="/support" element={<Support />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
