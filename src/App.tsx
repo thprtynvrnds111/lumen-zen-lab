@@ -16,6 +16,7 @@ import JournalLymphatic from "./pages/JournalLymphatic";
 import JournalEMS from "./pages/JournalEMS";
 import JournalRitualLasts from "./pages/JournalRitualLasts";
 import Support from "./pages/Support";
+import BodyLift from "./pages/BodyLift";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ function AppContent() {
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/product/:handle" element={<ProductDetail />} />
+      <Route path="/body-lift" element={<BodyLift />} />
       <Route path="/journal" element={<Journal />} />
       <Route path="/journal/frequency-shift" element={<JournalArticle />} />
       <Route path="/journal/microcurrent-collagen" element={<JournalScience />} />
