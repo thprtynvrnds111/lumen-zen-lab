@@ -7,7 +7,7 @@ import paypalLogo from "@/assets/pay-paypal.png";
 
 const icons = [
   { src: visaLogo, alt: "Visa", h: "h-6" },
-  { src: mastercardLogo, alt: "Mastercard", h: "h-5" },
+  { src: mastercardLogo, alt: "Mastercard", h: "h-4" },
   { src: maestroLogo, alt: "Maestro", h: "h-10" },
   { src: applePayLogo, alt: "Apple Pay", h: "h-4" },
   { src: googlePayLogo, alt: "Google Pay", h: "h-4" },
