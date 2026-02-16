@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 const articles = [
   {
     category: "Ritual",
-    title: "The Night My Frequency Shifted — And I Finally Trusted the Stillness",
-    excerpt: "A sacred reflection on what happens when microcurrent becomes more than skincare — when it becomes a conversation with the nervous system, a vote for slowness, and a return to self-trust.",
+    title: "The Night My Frequency Shifted, and I Finally Trusted the Stillness",
+    excerpt: "A sacred reflection on what happens when microcurrent becomes more than skincare, when it becomes a conversation with the nervous system, a vote for slowness, and a return to self-trust.",
     date: "February 16, 2026",
     readTime: "12 min read",
     featured: true,
@@ -20,13 +20,15 @@ const articles = [
     excerpt: "Understanding the biophysics behind electrical stimulation and its proven effects on fibroblast activity, ATP production, and dermal remodeling.",
     date: "February 12, 2026",
     readTime: "8 min read",
+    slug: "/journal/microcurrent-collagen",
   },
   {
     category: "Ritual",
     title: "The 5-Minute Evening Protocol",
-    excerpt: "A structured guide to integrating microcurrent therapy into your nightly wind-down — designed for consistency, not perfection.",
+    excerpt: "A structured guide to integrating microcurrent therapy into your nightly wind-down, designed for consistency, not perfection.",
     date: "February 5, 2026",
     readTime: "5 min read",
+    slug: "/journal/evening-protocol",
   },
   {
     category: "Research",
@@ -38,7 +40,7 @@ const articles = [
   {
     category: "Wellness",
     title: "Lymphatic Drainage and Facial Sculpting: The Connection",
-    excerpt: "Why gentle electrical stimulation supports the body's natural detoxification pathways — and what that means for facial contour.",
+    excerpt: "Why gentle electrical stimulation supports the body's natural detoxification pathways, and what that means for facial contour.",
     date: "January 20, 2026",
     readTime: "6 min read",
   },
@@ -52,7 +54,7 @@ const articles = [
   {
     category: "Ritual",
     title: "Building a Skin Ritual That Lasts",
-    excerpt: "Consistency over intensity. How to design a personal protocol that adapts to your life — without burnout or guilt.",
+    excerpt: "Consistency over intensity. How to design a personal protocol that adapts to your life, without burnout or guilt.",
     date: "January 7, 2026",
     readTime: "4 min read",
   },
@@ -92,7 +94,7 @@ const Journal = () => {
           <div className="max-w-6xl mx-auto">
             <Link to={featured.slug || "#"} className="block bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl p-8 md:p-12 hover:shadow-lg transition-shadow duration-500 cursor-pointer group">
               <span className={`text-xs tracking-[0.2em] uppercase ${categoryColors[featured.category] || "text-muted-foreground"}`}>
-                {featured.category} — Featured
+                {featured.category} · Featured
               </span>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mt-4 mb-4 group-hover:text-primary transition-colors duration-300">
                 {featured.title}
@@ -113,27 +115,32 @@ const Journal = () => {
         <section className="px-6 md:px-12 lg:px-20 pb-24">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {rest.map((article, i) => (
-                <article
-                  key={i}
-                  className="bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl p-6 hover:shadow-lg transition-all duration-500 cursor-pointer group flex flex-col"
-                >
-                  <span className={`text-xs tracking-[0.2em] uppercase ${categoryColors[article.category] || "text-muted-foreground"}`}>
-                    {article.category}
-                  </span>
-                  <h3 className="text-lg font-semibold text-foreground mt-3 mb-3 group-hover:text-primary transition-colors duration-300 leading-snug">
-                    {article.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed flex-1">
-                    {article.excerpt}
-                  </p>
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground mt-5 pt-4 border-t border-border/20">
-                    <span>{article.date}</span>
-                    <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
-                    <span>{article.readTime}</span>
-                  </div>
-                </article>
-              ))}
+              {rest.map((article, i) => {
+                const CardTag = article.slug ? Link : "article";
+                const cardProps = article.slug ? { to: article.slug } : {};
+                return (
+                  <CardTag
+                    key={i}
+                    {...(cardProps as any)}
+                    className="bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl p-6 hover:shadow-lg transition-all duration-500 cursor-pointer group flex flex-col"
+                  >
+                    <span className={`text-xs tracking-[0.2em] uppercase ${categoryColors[article.category] || "text-muted-foreground"}`}>
+                      {article.category}
+                    </span>
+                    <h3 className="text-lg font-semibold text-foreground mt-3 mb-3 group-hover:text-primary transition-colors duration-300 leading-snug">
+                      {article.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed flex-1">
+                      {article.excerpt}
+                    </p>
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground mt-5 pt-4 border-t border-border/20">
+                      <span>{article.date}</span>
+                      <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
+                      <span>{article.readTime}</span>
+                    </div>
+                  </CardTag>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -145,7 +152,7 @@ const Journal = () => {
               "The skin remembers what the mind forgets. Consistency is the only protocol that works."
             </p>
             <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mt-6">
-              — The Zential Philosophy
+              The Zential Philosophy
             </p>
           </div>
         </section>

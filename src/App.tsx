@@ -9,6 +9,8 @@ import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
 import Journal from "./pages/Journal";
 import JournalArticle from "./pages/JournalArticle";
+import JournalScience from "./pages/JournalScience";
+import JournalRitual from "./pages/JournalRitual";
 import Support from "./pages/Support";
 import NotFound from "./pages/NotFound";
 
@@ -23,6 +25,8 @@ function AppContent() {
       <Route path="/product/:handle" element={<ProductDetail />} />
       <Route path="/journal" element={<Journal />} />
       <Route path="/journal/frequency-shift" element={<JournalArticle />} />
+      <Route path="/journal/microcurrent-collagen" element={<JournalScience />} />
+      <Route path="/journal/evening-protocol" element={<JournalRitual />} />
       <Route path="/support" element={<Support />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
