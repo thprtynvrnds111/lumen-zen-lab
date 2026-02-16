@@ -1,12 +1,14 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCartStore } from "@/stores/cartStore";
 import { PaymentBadges } from "@/components/zential/PaymentBadges";
 import { Loader2, Shield, Lock, ArrowLeft } from "lucide-react";
+import { storefrontApiRequest, CART_QUERY } from "@/lib/shopify";
 
 export default function Checkout() {
   const navigate = useNavigate();
-  const { items, isLoading, isSyncing, getCheckoutUrl, syncCart, updateQuantity, removeItem } = useCartStore();
+  const { items, isLoading, isSyncing, checkoutUrl, cartId, syncCart, updateQuantity, removeItem } = useCartStore();
+  const [redirecting, setRedirecting] = useState(false);
   const totalPrice = items.reduce((sum, item) => sum + parseFloat(item.price.amount) * item.quantity, 0);
   const currency = items[0]?.price.currencyCode || "EUR";
   const sym = currency === "EUR" ? "€" : currency;
@@ -21,16 +23,51 @@ export default function Checkout() {
     }
   }, [items.length, isLoading, isSyncing, navigate]);
 
-  // Build the final checkout URL with channel param
-  const checkoutHref = useMemo(() => {
-    const raw = getCheckoutUrl();
-    if (!raw) return null;
+  // Build checkout href with channel param
+  const buildCheckoutHref = (url: string) => {
     try {
-      const parsed = new URL(raw);
+      const parsed = new URL(url);
       parsed.searchParams.set('channel', 'online_store');
       return parsed.toString();
-    } catch { return raw; }
-  }, [getCheckoutUrl, items]); // re-derive when items/store change
+    } catch { return url; }
+  };
+
+  // Reliably open external URL — works in iframes, published sites, everywhere
+  const openExternal = (url: string) => {
+    const href = buildCheckoutHref(url);
+    // Try window.open first (works on published site)
+    const win = window.open(href, '_blank');
+    if (!win) {
+      // Popup blocked (likely inside iframe) — navigate top frame
+      try { window.top!.location.href = href; } catch {
+        // Cross-origin top frame — fall back to same-window redirect
+        window.location.href = href;
+      }
+    }
+  };
+
+  const handleComplete = async () => {
+    // 1. Try stored checkoutUrl
+    if (checkoutUrl) {
+      openExternal(checkoutUrl);
+      return;
+    }
+    // 2. Fetch fresh from Shopify if we have a cartId
+    if (!cartId) return;
+    setRedirecting(true);
+    try {
+      const data = await storefrontApiRequest(CART_QUERY, { id: cartId });
+      const url = data?.data?.cart?.checkoutUrl;
+      if (url) {
+        useCartStore.setState({ checkoutUrl: url });
+        openExternal(url);
+      }
+    } catch (e) {
+      console.error('Failed to fetch checkout URL:', e);
+    } finally {
+      setRedirecting(false);
+    }
+  };
 
   if (items.length === 0) return null;
 
@@ -220,28 +257,18 @@ export default function Checkout() {
                   <span className="text-xl font-semibold text-foreground tracking-tight">{sym}{totalPrice.toFixed(2)}</span>
                 </div>
 
-                {/* CTA Button — real <a> tag to external Shopify checkout */}
-                {checkoutHref ? (
-                  <a
-                    href={checkoutHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full py-4 rounded-2xl text-sm tracking-[0.15em] uppercase text-center transition-all duration-300 bg-secondary hover:bg-secondary/80 text-foreground font-medium shadow-[0_2px_12px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_20px_-6px_rgba(0,0,0,0.12)] hover:-translate-y-px active:translate-y-0"
-                  >
-                    Complete Your Ritual
-                  </a>
-                ) : (
-                  <button
-                    disabled
-                    className="w-full py-4 rounded-2xl text-sm tracking-[0.15em] uppercase transition-all duration-300 opacity-50 cursor-not-allowed bg-secondary text-foreground font-medium"
-                  >
-                    {isLoading || isSyncing ? (
-                      <Loader2 className="animate-spin mx-auto" size={16} />
-                    ) : (
-                      "Complete Your Ritual"
-                    )}
-                  </button>
-                )}
+                {/* CTA Button */}
+                <button
+                  onClick={handleComplete}
+                  disabled={redirecting || isSyncing || !cartId}
+                  className="w-full py-4 rounded-2xl text-sm tracking-[0.15em] uppercase transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed bg-secondary hover:bg-secondary/80 text-foreground font-medium shadow-[0_2px_12px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_20px_-6px_rgba(0,0,0,0.12)] hover:-translate-y-px active:translate-y-0"
+                >
+                  {redirecting || isSyncing ? (
+                    <Loader2 className="animate-spin mx-auto" size={16} />
+                  ) : (
+                    "Complete Your Ritual"
+                  )}
+                </button>
 
                 <p className="text-center text-[10px] tracking-[0.15em] uppercase text-muted-foreground/40 mt-4">
                   30-Day Guarantee Included.
