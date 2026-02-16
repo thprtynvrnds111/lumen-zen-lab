@@ -27,8 +27,8 @@ export function HeroSection() {
           <Button variant="ritual" size="xl" asChild>
             <a href="#devices">Start Your Ritual</a>
           </Button>
-          <Button variant="outline-ritual" size="xl" className="border-background/30 text-background hover:bg-background/10">
-            Discover The Science
+          <Button variant="outline-ritual" size="xl" className="border-background/30 text-background hover:bg-background/10" asChild>
+            <a href="#science">Discover The Science</a>
           </Button>
         </div>
       </div>

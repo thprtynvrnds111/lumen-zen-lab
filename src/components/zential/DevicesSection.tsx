@@ -46,9 +46,10 @@ export function DevicesSection() {
           {products.map(product => {
             const img = product.node.images.edges[0]?.node;
             const price = product.node.priceRange.minVariantPrice;
+            const productUrl = product.node.handle === "body-lift" ? "/body-lift" : `/product/${product.node.handle}`;
             return (
               <div key={product.node.id} className="group glass-card overflow-hidden">
-                <Link to={`/product/${product.node.handle}`} className="block aspect-square relative overflow-hidden bg-secondary/30">
+                <Link to={productUrl} className="block aspect-square relative overflow-hidden bg-secondary/30">
                   {img && (
                     <img src={img.url} alt={img.altText || product.node.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -56,7 +57,7 @@ export function DevicesSection() {
                   <div className="absolute inset-0 gradient-glow opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </Link>
                 <div className="p-5">
-                  <Link to={`/product/${product.node.handle}`}>
+                  <Link to={productUrl}>
                     <h3 className="font-semibold text-base mb-1 group-hover:text-primary transition-colors">{product.node.title}</h3>
                   </Link>
                   <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{product.node.description}</p>
