@@ -183,9 +183,9 @@ export function ProductLanding({ config }: Props) {
               ))}
             </div>
 
-            <div className="flex items-center justify-center gap-3 mt-4 opacity-40">
-              {["Visa", "MC", "Amex", "Apple Pay"].map(p => (
-                <span key={p} className="text-[10px] font-semibold tracking-wider uppercase border border-border rounded px-2 py-0.5">{p}</span>
+            <div className="flex items-center justify-center gap-2 mt-4 opacity-50 flex-wrap">
+              {["Visa", "Mastercard", "Maestro", "PayPal", "Apple Pay", "Google Pay", "Shop Pay", "UnionPay"].map(p => (
+                <span key={p} className="text-[9px] font-semibold tracking-wider uppercase border border-border/60 rounded px-1.5 py-0.5">{p}</span>
               ))}
             </div>
           </div>
