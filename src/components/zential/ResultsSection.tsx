@@ -1,3 +1,6 @@
+import beforeImg from "@/assets/before.jpg";
+import afterImg from "@/assets/after.jpg";
+
 export function ResultsSection() {
   return (
     <section className="section-padding bg-secondary/30">
@@ -9,14 +12,12 @@ export function ResultsSection() {
       <div className="max-w-4xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="glass-card p-8 text-center">
-            <div className="w-full aspect-[4/5] rounded-xl bg-secondary/50 mb-4 flex items-center justify-center">
-              <span className="text-xs tracking-[0.2em] uppercase text-muted-foreground">Before</span>
-            </div>
+            <img src={beforeImg} alt="Before treatment" className="w-full aspect-[4/5] rounded-xl object-cover mb-4" />
+            <span className="text-xs tracking-[0.2em] uppercase text-muted-foreground">Before</span>
           </div>
           <div className="glass-card p-8 text-center">
-            <div className="w-full aspect-[4/5] rounded-xl bg-secondary/50 mb-4 flex items-center justify-center">
-              <span className="text-xs tracking-[0.2em] uppercase text-muted-foreground">After 21 Days</span>
-            </div>
+            <img src={afterImg} alt="After 21 days of treatment" className="w-full aspect-[4/5] rounded-xl object-cover mb-4" />
+            <span className="text-xs tracking-[0.2em] uppercase text-muted-foreground">After 21 Days</span>
           </div>
         </div>
 
