@@ -138,7 +138,7 @@ const Support = () => {
         <section className="px-6 md:px-12 lg:px-20 pb-20">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Feel The Shift — Or It's On Us.
+              Feel The Shift, Or It's On Us.
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed">
               If you don't feel visible improvement within 30 days of consistent use, contact us. No friction. No pressure.
