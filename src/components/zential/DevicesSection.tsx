@@ -46,7 +46,7 @@ export function DevicesSection() {
           {products.map(product => {
             const img = product.node.images.edges[0]?.node;
             const price = product.node.priceRange.minVariantPrice;
-            const productUrl = product.node.handle === "body-lift" ? "/body-lift" : `/product/${product.node.handle}`;
+            const productUrl = `/product/${product.node.handle}`;
             return (
               <div key={product.node.id} className="group glass-card overflow-hidden">
                 <Link to={productUrl} className="block aspect-square relative overflow-hidden bg-secondary/30">
