@@ -11,6 +11,7 @@ import {
   Loader2, Shield, Truck, RotateCcw, Star, Check, X,
   Lock, CreditCard, ArrowRight,
 } from "lucide-react";
+import { PaymentBadges } from "@/components/zential/PaymentBadges";
 import type { ProductConfig } from "@/data/productConfigs";
 
 type BundleKey = "single" | "ritual-set" | "pro-set";
@@ -183,11 +184,7 @@ export function ProductLanding({ config }: Props) {
               ))}
             </div>
 
-            <div className="flex items-center justify-center gap-2 mt-4 opacity-50 flex-wrap">
-              {["Visa", "Mastercard", "Maestro", "PayPal", "Apple Pay", "Google Pay", "Shop Pay", "UnionPay"].map(p => (
-                <span key={p} className="text-[9px] font-semibold tracking-wider uppercase border border-border/60 rounded px-1.5 py-0.5">{p}</span>
-              ))}
-            </div>
+            <PaymentBadges className="mt-4" />
           </div>
         </div>
       </section>
@@ -382,6 +379,7 @@ export function ProductLanding({ config }: Props) {
               </div>
             ))}
           </div>
+          <PaymentBadges className="mt-4" />
         </div>
       </section>
 
