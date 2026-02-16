@@ -2,15 +2,24 @@ import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { NewsletterSection } from "@/components/zential/NewsletterSection";
+import { Link } from "react-router-dom";
 
 const articles = [
+  {
+    category: "Ritual",
+    title: "The Night My Frequency Shifted — And I Finally Trusted the Stillness",
+    excerpt: "A sacred reflection on what happens when microcurrent becomes more than skincare — when it becomes a conversation with the nervous system, a vote for slowness, and a return to self-trust.",
+    date: "February 16, 2026",
+    readTime: "12 min read",
+    featured: true,
+    slug: "/journal/frequency-shift",
+  },
   {
     category: "Science",
     title: "How Microcurrent Therapy Rebuilds Collagen at the Cellular Level",
     excerpt: "Understanding the biophysics behind electrical stimulation and its proven effects on fibroblast activity, ATP production, and dermal remodeling.",
     date: "February 12, 2026",
     readTime: "8 min read",
-    featured: true,
   },
   {
     category: "Ritual",
@@ -81,7 +90,7 @@ const Journal = () => {
         {/* Featured Article */}
         <section className="px-6 md:px-12 lg:px-20 pb-16">
           <div className="max-w-6xl mx-auto">
-            <div className="bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl p-8 md:p-12 hover:shadow-lg transition-shadow duration-500 cursor-pointer group">
+            <Link to={featured.slug || "#"} className="block bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl p-8 md:p-12 hover:shadow-lg transition-shadow duration-500 cursor-pointer group">
               <span className={`text-xs tracking-[0.2em] uppercase ${categoryColors[featured.category] || "text-muted-foreground"}`}>
                 {featured.category} — Featured
               </span>
@@ -96,7 +105,7 @@ const Journal = () => {
                 <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
                 <span>{featured.readTime}</span>
               </div>
-            </div>
+            </Link>
           </div>
         </section>
 
