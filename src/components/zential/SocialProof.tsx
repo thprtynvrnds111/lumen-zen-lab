@@ -45,7 +45,7 @@ export function SocialProof() {
                     className="w-full h-full object-cover"
                     style={
                       t.name === "Elena R." ? { objectPosition: "center", transform: "scale(1.4)" } :
-                      t.name === "Anna B." ? { objectPosition: "75% 20%", transform: "scale(1.4)" } :
+                      t.name === "Anna B." ? { objectPosition: "80% 20%", transform: "scale(1.6)" } :
                       undefined
                     }
                   />
