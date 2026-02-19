@@ -31,6 +31,7 @@ export function ProductLanding({ config }: Props) {
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedBundle, setSelectedBundle] = useState<BundleKey>("ritual-set");
+  const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
   const ctaRef = useRef<HTMLDivElement>(null);
   const addItem = useCartStore(s => s.addItem);
@@ -59,10 +60,27 @@ export function ProductLanding({ config }: Props) {
   );
 
   const images = product?.images?.edges || [];
-  const variant = product?.variants?.edges?.[0]?.node;
+  const variants = product?.variants?.edges || [];
+  const hasMultipleVariants = variants.length > 1;
+  const variant = variants[selectedVariantIdx]?.node || variants[0]?.node;
   const basePrice = parseFloat(variant?.price?.amount || "84");
   const currency = variant?.price?.currencyCode || "EUR";
   const sym = currency === "EUR" ? "€" : currency;
+
+  // Color label mapping (Shopify uses "Pink" but we display "Rose")
+  const colorLabelMap: Record<string, string> = { Pink: "Rose", Silver: "Silver" };
+  const colorSwatchMap: Record<string, string> = { Pink: "bg-pink-300", Silver: "bg-gray-300" };
+
+  const handleVariantChange = (idx: number) => {
+    setSelectedVariantIdx(idx);
+    // Switch to the variant's associated image if available
+    const variantOptions = variants[idx]?.node?.selectedOptions || [];
+    const variantColor = variantOptions.find((o: any) => o.name === "Color Classification")?.value;
+    if (variantColor && images.length > 1) {
+      // Images are ordered by variant position in Shopify
+      setSelectedImage(idx < images.length ? idx : 0);
+    }
+  };
 
   const bundle = bundles.find(b => b.key === selectedBundle)!;
   const totalPrice = basePrice * bundle.multiplier;
@@ -156,8 +174,32 @@ export function ProductLanding({ config }: Props) {
                 </div>
               ))}
             </div>
+            {/* Color / Variant Selector */}
+            {hasMultipleVariants && (
+              <div className="mb-8">
+                <p className="text-xs tracking-[0.15em] uppercase text-muted-foreground mb-3">
+                  Color: <span className="text-foreground font-semibold">{colorLabelMap[variant?.selectedOptions?.find((o: any) => o.name === "Color Classification")?.value] || variant?.title}</span>
+                </p>
+                <div className="flex gap-3">
+                  {variants.map((v: any, idx: number) => {
+                    const colorVal = v.node.selectedOptions?.find((o: any) => o.name === "Color Classification")?.value || v.node.title;
+                    const isSelected = idx === selectedVariantIdx;
+                    return (
+                      <button
+                        key={v.node.id}
+                        onClick={() => handleVariantChange(idx)}
+                        className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl border-2 transition-all text-sm ${isSelected ? "border-primary bg-primary/5 shadow-sm" : "border-border/40 hover:border-border"}`}
+                      >
+                        <span className={`w-5 h-5 rounded-full ${colorSwatchMap[colorVal] || "bg-muted"} ${isSelected ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""}`} />
+                        <span className={isSelected ? "font-semibold text-foreground" : "text-muted-foreground"}>{colorLabelMap[colorVal] || colorVal}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
-            {/* Price */}
+
             <div className="flex items-baseline gap-3 mb-1">
               <span className="text-3xl font-bold text-foreground">{sym}{discountedPrice.toFixed(2)}</span>
               {bundle.discount > 0 && (
