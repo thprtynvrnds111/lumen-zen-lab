@@ -38,11 +38,18 @@ export function SocialProof() {
           {[...testimonials, ...testimonials].map((t, i) => (
             <div key={i} className="glass-card p-8 w-[340px] flex-shrink-0">
               <div className="flex items-center gap-3 mb-4">
-                <img
-                  src={t.img}
-                  alt={t.name}
-                  className="w-10 h-10 rounded-full object-cover"
-                />
+                <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                  <img
+                    src={t.img}
+                    alt={t.name}
+                    className="w-full h-full object-cover"
+                    style={
+                      t.name === "Elena R." ? { objectPosition: "center", transform: "scale(1.4)" } :
+                      t.name === "Anna B." ? { objectPosition: "60% center", transform: "scale(1.4)" } :
+                      undefined
+                    }
+                  />
+                </div>
                 <div>
                   <p className="text-sm font-medium">{t.name}</p>
                   <p className="text-xs text-accent">{t.timeline}</p>
