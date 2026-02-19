@@ -6,6 +6,59 @@ import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
+/* ── Per-product metadata for card display ── */
+const cardMeta: Record<string, { tagline: string; benefits: string[] }> = {
+  "body-lift": {
+    tagline: "Microcurrent Lift for Daily Structure",
+    benefits: ["Microcurrent Lift", "Red Light Therapy", "Lymphatic Activation"],
+  },
+  "lifting-and-tightening-face-introducer": {
+    tagline: "Multi-Frequency Facial Sculptor",
+    benefits: ["EMS Sculpting", "LED Therapy", "Ion Infusion"],
+  },
+  "eye-massage": {
+    tagline: "Targeted Periorbital Microcurrent",
+    benefits: ["Under-Eye Depuffing", "Red Light Repair", "Serum Penetration"],
+  },
+  "color-light-import-micro-current-vibration-massager": {
+    tagline: "High-Frequency Skin Purifier",
+    benefits: ["High Frequency", "Antibacterial", "Collagen Boost"],
+  },
+  "electric-guasha-massager": {
+    tagline: "Microcurrent Gua Sha Sculpting",
+    benefits: ["Sculpting Contour", "Microcurrent", "Lymphatic Drainage"],
+  },
+  "sculpt-wand": {
+    tagline: "Precision Sculpting Wand",
+    benefits: ["Facial Sculpting", "Microcurrent", "Sonic Vibration"],
+  },
+  "microcurrent-sculpt-wand": {
+    tagline: "Advanced Microcurrent Roller",
+    benefits: ["Deep Stimulation", "Facial Toning", "Serum Boost"],
+  },
+  "frame-pulse-activator": {
+    tagline: "3D Orbital Light Therapy",
+    benefits: ["Red Light", "Eye Contour", "Hands-Free Design"],
+  },
+  "skin-pulse": {
+    tagline: "Deep Pulse Skin Renewal",
+    benefits: ["Pulse Technology", "Collagen Support", "Skin Density"],
+  },
+  "medicube-collagen-elastic-jelly-moisturizing-cream": {
+    tagline: "Device-Optimised Conductive Gel",
+    benefits: ["Collagen Peptides", "Deep Hydration", "Conductivity"],
+  },
+  "medicube-pdrn-collagen-eye-zone-mask": {
+    tagline: "PDRN-Infused Eye Recovery Pads",
+    benefits: ["PDRN Complex", "Eye Zone Care", "Collagen Boost"],
+  },
+};
+
+const defaultMeta = {
+  tagline: "Professional-Grade Skincare",
+  benefits: ["Clinical Results", "Daily Ritual", "Premium Build"],
+};
+
 export function DevicesSection() {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
@@ -47,22 +100,54 @@ export function DevicesSection() {
             const img = product.node.images.edges[0]?.node;
             const price = product.node.priceRange.minVariantPrice;
             const productUrl = `/product/${product.node.handle}`;
+            const meta = cardMeta[product.node.handle] || defaultMeta;
+
             return (
-              <div key={product.node.id} className="group glass-card overflow-hidden">
+              <div key={product.node.id} className="group glass-card overflow-hidden flex flex-col">
+                {/* Image */}
                 <Link to={productUrl} className="block aspect-square relative overflow-hidden bg-secondary/30">
                   {img && (
-                    <img src={img.url} alt={img.altText || product.node.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img
+                      src={img.url}
+                      alt={img.altText || product.node.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                   )}
                   <div className="absolute inset-0 gradient-glow opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </Link>
-                <div className="p-5">
+
+                {/* Content */}
+                <div className="p-5 flex flex-col flex-1">
                   <Link to={productUrl}>
-                    <h3 className="font-semibold text-base mb-1 group-hover:text-primary transition-colors">{product.node.title}</h3>
+                    <h3 className="font-semibold text-base mb-1 group-hover:text-primary transition-colors">
+                      {product.node.title}
+                    </h3>
                   </Link>
-                  <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{product.node.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="font-semibold">{price.currencyCode} {parseFloat(price.amount).toFixed(2)}</span>
+
+                  <p className="text-sm text-muted-foreground italic mb-4 line-clamp-1">
+                    {meta.tagline}
+                  </p>
+
+                  {/* Benefit Pills */}
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {meta.benefits.map(b => (
+                      <span
+                        key={b}
+                        className="text-[10px] tracking-[0.08em] uppercase font-medium text-muted-foreground bg-secondary/60 px-2.5 py-1 rounded-full"
+                      >
+                        {b}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Price + CTA — pushed to bottom */}
+                  <div className="mt-auto flex items-center justify-between">
+                    <span className="text-lg font-bold text-foreground">
+                      <span className="text-sm font-semibold mr-0.5">
+                        {price.currencyCode === "EUR" ? "€" : price.currencyCode}
+                      </span>
+                      {parseFloat(price.amount).toFixed(2)}
+                    </span>
                     <Button variant="ritual" size="sm" onClick={() => handleAdd(product)} disabled={isCartLoading}>
                       Add to Ritual
                     </Button>
