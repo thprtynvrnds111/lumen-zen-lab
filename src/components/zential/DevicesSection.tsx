@@ -1,63 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchProducts, type ShopifyProduct } from "@/lib/shopify";
-import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
-import { Loader2 } from "lucide-react";
-
-/* ── Per-product metadata for card display ── */
-const cardMeta: Record<string, { tagline: string; benefits: string[] }> = {
-  "body-lift": {
-    tagline: "Microcurrent Lift for Daily Structure",
-    benefits: ["Microcurrent Lift", "Red Light Therapy", "Lymphatic Activation"],
-  },
-  "lifting-and-tightening-face-introducer": {
-    tagline: "Multi-Frequency Facial Sculptor",
-    benefits: ["EMS Sculpting", "LED Therapy", "Ion Infusion"],
-  },
-  "eye-massage": {
-    tagline: "Targeted Periorbital Microcurrent",
-    benefits: ["Under-Eye Depuffing", "Red Light Repair", "Serum Penetration"],
-  },
-  "color-light-import-micro-current-vibration-massager": {
-    tagline: "High-Frequency Skin Purifier",
-    benefits: ["High Frequency", "Antibacterial", "Collagen Boost"],
-  },
-  "electric-guasha-massager": {
-    tagline: "Microcurrent Gua Sha Sculpting",
-    benefits: ["Sculpting Contour", "Microcurrent", "Lymphatic Drainage"],
-  },
-  "sculpt-wand": {
-    tagline: "Precision Sculpting Wand",
-    benefits: ["Facial Sculpting", "Microcurrent", "Sonic Vibration"],
-  },
-  "microcurrent-sculpt-wand": {
-    tagline: "Advanced Microcurrent Roller",
-    benefits: ["Deep Stimulation", "Facial Toning", "Serum Boost"],
-  },
-  "frame-pulse-activator": {
-    tagline: "3D Orbital Light Therapy",
-    benefits: ["Red Light", "Eye Contour", "Hands-Free Design"],
-  },
-  "skin-pulse": {
-    tagline: "Deep Pulse Skin Renewal",
-    benefits: ["Pulse Technology", "Collagen Support", "Skin Density"],
-  },
-  "medicube-collagen-elastic-jelly-moisturizing-cream": {
-    tagline: "Device-Optimised Conductive Gel",
-    benefits: ["Collagen Peptides", "Deep Hydration", "Conductivity"],
-  },
-  "medicube-pdrn-collagen-eye-zone-mask": {
-    tagline: "PDRN-Infused Eye Recovery Pads",
-    benefits: ["PDRN Complex", "Eye Zone Care", "Collagen Boost"],
-  },
-};
-
-const defaultMeta = {
-  tagline: "Professional-Grade Skincare",
-  benefits: ["Clinical Results", "Daily Ritual", "Premium Build"],
-};
+import { Loader2, Star } from "lucide-react";
 
 export function DevicesSection() {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
@@ -69,7 +15,9 @@ export function DevicesSection() {
     fetchProducts(12).then(p => { setProducts(p); setLoading(false); }).catch(() => setLoading(false));
   }, []);
 
-  const handleAdd = async (product: ShopifyProduct) => {
+  const handleAdd = async (e: React.MouseEvent, product: ShopifyProduct) => {
+    e.preventDefault();
+    e.stopPropagation();
     const variant = product.node.variants.edges[0]?.node;
     if (!variant) return;
     await addItem({
@@ -84,10 +32,10 @@ export function DevicesSection() {
   };
 
   return (
-    <section id="devices" className="section-padding">
+    <section id="devices" className="section-padding bg-background">
       <div className="text-center mb-16">
-        <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Signature Collection</p>
-        <h2 className="text-3xl md:text-5xl font-semibold text-balance">Your Devices</h2>
+        <p className="text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-4">The Collection</p>
+        <h2 className="text-2xl md:text-4xl font-light tracking-wide text-foreground">Our Devices</h2>
       </div>
 
       {loading ? (
@@ -95,65 +43,61 @@ export function DevicesSection() {
       ) : products.length === 0 ? (
         <p className="text-center text-muted-foreground">No products found</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {products.map(product => {
             const img = product.node.images.edges[0]?.node;
             const price = product.node.priceRange.minVariantPrice;
             const productUrl = `/product/${product.node.handle}`;
-            const meta = cardMeta[product.node.handle] || defaultMeta;
 
             return (
-              <div key={product.node.id} className="group glass-card overflow-hidden flex flex-col">
-                {/* Image */}
-                <Link to={productUrl} className="block aspect-square relative overflow-hidden bg-secondary/30">
+              <Link
+                key={product.node.id}
+                to={productUrl}
+                className="group flex flex-col bg-card rounded-xl overflow-hidden border-0 shadow-none hover:shadow-md transition-shadow duration-500"
+                style={{ minHeight: 480 }}
+              >
+                {/* Image — 75% of card */}
+                <div className="relative flex-[3] overflow-hidden bg-secondary/20">
                   {img && (
                     <img
                       src={img.url}
                       alt={img.altText || product.node.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     />
                   )}
-                  <div className="absolute inset-0 gradient-glow opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </Link>
+                </div>
 
-                {/* Content */}
-                <div className="p-5 flex flex-col flex-1">
-                  <Link to={productUrl}>
-                    <h3 className="font-semibold text-base mb-1 group-hover:text-primary transition-colors">
-                      {product.node.title}
-                    </h3>
-                  </Link>
-
-                  <p className="text-sm text-muted-foreground italic mb-4 line-clamp-1">
-                    {meta.tagline}
-                  </p>
-
-                  {/* Benefit Pills */}
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {meta.benefits.map(b => (
-                      <span
-                        key={b}
-                        className="text-[10px] tracking-[0.08em] uppercase font-medium text-muted-foreground bg-secondary/60 px-2.5 py-1 rounded-full"
-                      >
-                        {b}
-                      </span>
+                {/* Content — 25% */}
+                <div className="flex-1 flex flex-col justify-between p-6 md:p-8">
+                  {/* Stars */}
+                  <div className="flex gap-0.5 mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={12} fill="#9A9794" stroke="none" />
                     ))}
                   </div>
 
-                  {/* Price + CTA — pushed to bottom */}
-                  <div className="mt-auto flex items-center justify-between">
-                    <span className="text-lg font-bold text-foreground">
-                      <span className="text-sm font-semibold mr-0.5">
-                        {price.currencyCode === "EUR" ? "€" : price.currencyCode}
-                      </span>
-                      {parseFloat(price.amount).toFixed(2)}
+                  <h3 className="text-[13px] tracking-[0.15em] uppercase font-medium text-foreground leading-snug mb-1">
+                    {product.node.title}
+                  </h3>
+
+                  <p className="text-xs text-muted-foreground leading-relaxed line-clamp-1 mb-4">
+                    Professional-grade skincare technology
+                  </p>
+
+                  <div className="flex items-center justify-between mt-auto">
+                    <span className="text-sm font-normal text-foreground tracking-wide">
+                      {price.currencyCode === "EUR" ? "€" : price.currencyCode}{parseFloat(price.amount).toFixed(2)}
                     </span>
-                    <Button variant="ritual" size="sm" onClick={() => handleAdd(product)} disabled={isCartLoading}>
-                      Add to Ritual
-                    </Button>
+                    <button
+                      onClick={(e) => handleAdd(e, product)}
+                      disabled={isCartLoading}
+                      className="text-[10px] tracking-[0.2em] uppercase font-medium px-5 py-2 rounded-full bg-secondary text-foreground hover:bg-muted transition-colors duration-300 disabled:opacity-50"
+                    >
+                      Add
+                    </button>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
