@@ -23,10 +23,14 @@ export default function Checkout() {
     }
   }, [items.length, isLoading, isSyncing, navigate]);
 
-  // Build checkout href with channel param
+  // Build checkout href — rewrite custom domain to .myshopify.com so it hits Shopify checkout
   const buildCheckoutHref = (url: string) => {
     try {
       const parsed = new URL(url);
+      // Ensure domain points to Shopify, not the custom domain mapped to Lovable
+      if (!parsed.hostname.endsWith('.myshopify.com')) {
+        parsed.hostname = '0d1m9a-w7.myshopify.com';
+      }
       parsed.searchParams.set('channel', 'online_store');
       return parsed.toString();
     } catch { return url; }
