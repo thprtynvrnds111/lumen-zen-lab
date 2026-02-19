@@ -79,7 +79,35 @@ export function ProductLanding({ config }: Props) {
       quantity: bundle.multiplier,
       selectedOptions: variant.selectedOptions || [],
     });
-    toast.success("Added to your ritual", { position: "top-center" });
+
+    // Auto-add Collagen Face Gel when "Ritual Set" is selected
+    if (selectedBundle === "ritual-set") {
+      try {
+        const gelProduct = await fetchProductByHandle("medicube-collagen-elastic-jelly-moisturizing-cream");
+        if (gelProduct) {
+          const gelVariant = gelProduct.variants?.edges?.[0]?.node;
+          if (gelVariant) {
+            await addItem({
+              product: { node: gelProduct },
+              variantId: gelVariant.id,
+              variantTitle: gelVariant.title,
+              price: gelVariant.price,
+              quantity: 1,
+              selectedOptions: gelVariant.selectedOptions || [],
+            });
+          }
+        }
+      } catch (e) {
+        console.error("Failed to auto-add Collagen Face Gel:", e);
+      }
+    }
+
+    toast.success(
+      selectedBundle === "ritual-set"
+        ? "Device + Collagen Face Gel added to your ritual"
+        : "Added to your ritual",
+      { position: "top-center" }
+    );
   };
 
   return (
