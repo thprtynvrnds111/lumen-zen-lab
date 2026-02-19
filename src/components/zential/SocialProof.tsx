@@ -1,11 +1,16 @@
 import { useEffect, useRef, useState } from "react";
+import testimonialSarah from "@/assets/testimonial-sarah.jpg";
+import testimonialMarie from "@/assets/testimonial-marie.jpg";
+import testimonialElena from "@/assets/testimonial-elena.jpg";
+import testimonialJulia from "@/assets/testimonial-julia.jpg";
+import testimonialAnna from "@/assets/testimonial-anna.jpg";
 
 const testimonials = [
-  { name: "Sarah M.", timeline: "After 14 Days", quote: "My jawline looks sculpted. I can't believe this is from a home device.", avatar: "S" },
-  { name: "Elena R.", timeline: "After 21 Days", quote: "I stopped booking facials. This became my ritual.", avatar: "E" },
-  { name: "Marie L.", timeline: "After 30 Days", quote: "The glow is real. People keep asking what I changed.", avatar: "M" },
-  { name: "Julia K.", timeline: "After 14 Days", quote: "Clinical precision at home. I'm never going back.", avatar: "J" },
-  { name: "Anna B.", timeline: "After 21 Days", quote: "My skin texture transformed. It feels like silk.", avatar: "A" },
+  { name: "Sarah M.", timeline: "After 14 Days", quote: "My jawline looks sculpted. I can't believe this is from a home device.", img: testimonialSarah },
+  { name: "Marie L.", timeline: "After 30 Days", quote: "The glow is real. People keep asking what I changed.", img: testimonialMarie },
+  { name: "Elena R.", timeline: "After 21 Days", quote: "I stopped booking facials. This became my ritual.", img: testimonialElena },
+  { name: "Julia K.", timeline: "After 14 Days", quote: "Clinical precision at home. I'm never going back.", img: testimonialJulia },
+  { name: "Anna B.", timeline: "After 21 Days", quote: "My skin texture transformed. It feels like silk.", img: testimonialAnna },
 ];
 
 export function SocialProof() {
@@ -33,9 +38,11 @@ export function SocialProof() {
           {[...testimonials, ...testimonials].map((t, i) => (
             <div key={i} className="glass-card p-8 w-[340px] flex-shrink-0">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-semibold">
-                  {t.avatar}
-                </div>
+                <img
+                  src={t.img}
+                  alt={t.name}
+                  className="w-10 h-10 rounded-full object-cover"
+                />
                 <div>
                   <p className="text-sm font-medium">{t.name}</p>
                   <p className="text-xs text-accent">{t.timeline}</p>
