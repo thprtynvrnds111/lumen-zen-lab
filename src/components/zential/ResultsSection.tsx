@@ -7,7 +7,7 @@ import afterImg3 from "@/assets/after3.jpg";
 
 export function ResultsSection() {
   return (
-    <section className="section-padding bg-secondary/30">
+    <section id="results" className="section-padding bg-secondary/30">
       <div className="text-center mb-16">
         <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Real Transformations</p>
         <h2 className="text-3xl md:text-5xl font-semibold">See The Shift.</h2>

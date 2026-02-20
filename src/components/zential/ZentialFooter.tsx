@@ -1,11 +1,32 @@
 import { Link } from "react-router-dom";
 
 const footerLinks = {
-  Shop: ["All Devices", "Bundles", "Accessories"],
-  Ritual: ["The 5-Step Method", "Daily Guide", "Before & After"],
-  Science: ["Microcurrent", "Red Light", "EMS"],
-  Support: ["Contact", "Shipping", "Returns", "FAQ"],
-  Legal: ["Privacy Policy", "Terms of Service", "Imprint"],
+  Shop: [
+    { label: "All Devices", to: "/#devices" },
+    { label: "Bundles", to: "/#bundles" },
+    { label: "Accessories", to: "/product/medicube-collagen-elastic-jelly-moisturizing-cream" },
+  ],
+  Ritual: [
+    { label: "The 5-Step Method", to: "/#ritual" },
+    { label: "Daily Guide", to: "/journal/evening-protocol" },
+    { label: "Before & After", to: "/#results" },
+  ],
+  Science: [
+    { label: "Microcurrent", to: "/journal/microcurrent-collagen" },
+    { label: "Red Light", to: "/journal/red-light-clinical" },
+    { label: "EMS", to: "/journal/ems-vs-microcurrent" },
+  ],
+  Support: [
+    { label: "Contact", to: "/support" },
+    { label: "Shipping", to: "/support#shipping" },
+    { label: "Returns", to: "/support#returns" },
+    { label: "FAQ", to: "/#faq" },
+  ],
+  Legal: [
+    { label: "Privacy Policy", to: "/support#privacy" },
+    { label: "Terms of Service", to: "/support#terms" },
+    { label: "Imprint", to: "/support#imprint" },
+  ],
 };
 
 export function ZentialFooter() {
@@ -18,8 +39,10 @@ export function ZentialFooter() {
               <h4 className="text-xs tracking-[0.2em] uppercase text-background/40 mb-4">{category}</h4>
               <ul className="space-y-2">
                 {links.map(link => (
-                  <li key={link}>
-                    <a href="#" className="text-sm hover:text-background transition-colors">{link}</a>
+                  <li key={link.label}>
+                    <Link to={link.to} className="text-sm hover:text-background transition-colors">
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
