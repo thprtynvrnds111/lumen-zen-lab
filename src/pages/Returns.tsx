@@ -5,10 +5,10 @@ import { RotateCcw, ShieldCheck, Clock, CheckCircle2, ArrowRight, Package, Alert
 import { Link } from "react-router-dom";
 
 const steps = [
-  { icon: Package, title: "Request a Return", desc: "Email us at support@zentialpure.com within 30 days of delivery with your order number.", color: "bg-accent/15 text-accent", accent: "border-accent/30" },
-  { icon: CheckCircle2, title: "Get Approved", desc: "We'll review and approve your request within 24 hours — no lengthy questionnaires.", color: "bg-primary/15 text-primary", accent: "border-primary/30" },
-  { icon: RotateCcw, title: "Ship It Back", desc: "We'll provide a prepaid return label. Pack the device in its original packaging.", color: "bg-teal/15 text-teal", accent: "border-teal/30" },
-  { icon: ShieldCheck, title: "Get Refunded", desc: "Once received and inspected, your refund is processed within 5–7 business days.", color: "bg-emerald/15 text-emerald", accent: "border-emerald/30" },
+  { icon: Package, title: "Request a Return", desc: "Email us at support@zentialpure.com within 30 days of delivery with your order number.", color: "bg-primary/15 text-primary", accent: "border-primary/30" },
+  { icon: CheckCircle2, title: "Get Approved", desc: "We'll review and approve your request within 24 hours, no lengthy questionnaires.", color: "bg-primary/15 text-primary", accent: "border-primary/30" },
+  { icon: RotateCcw, title: "Ship It Back", desc: "We'll provide a prepaid return label. Pack the device in its original packaging.", color: "bg-primary/15 text-primary", accent: "border-primary/30" },
+  { icon: ShieldCheck, title: "Get Refunded", desc: "Once received and inspected, your refund is processed within 5–7 business days.", color: "bg-primary/15 text-primary", accent: "border-primary/30" },
 ];
 
 const policies = [
