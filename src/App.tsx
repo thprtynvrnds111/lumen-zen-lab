@@ -17,6 +17,10 @@ import JournalEMS from "./pages/JournalEMS";
 import JournalRitualLasts from "./pages/JournalRitualLasts";
 import Support from "./pages/Support";
 import Shipping from "./pages/Shipping";
+import Returns from "./pages/Returns";
+import FAQ from "./pages/FAQ";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 import BodyLift from "./pages/BodyLift";
 import Checkout from "./pages/Checkout";
 import NotFound from "./pages/NotFound";
@@ -41,6 +45,10 @@ function AppContent() {
       <Route path="/journal/ritual-that-lasts" element={<JournalRitualLasts />} />
       <Route path="/support" element={<Support />} />
       <Route path="/shipping" element={<Shipping />} />
+      <Route path="/returns" element={<Returns />} />
+      <Route path="/faq" element={<FAQ />} />
+      <Route path="/privacy" element={<PrivacyPolicy />} />
+      <Route path="/terms" element={<TermsOfService />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

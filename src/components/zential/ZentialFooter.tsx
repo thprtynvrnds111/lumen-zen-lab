@@ -19,13 +19,12 @@ const footerLinks = {
   Support: [
     { label: "Contact", to: "/support" },
     { label: "Shipping", to: "/shipping" },
-    { label: "Returns", to: "/support#returns" },
-    { label: "FAQ", to: "/#faq" },
+    { label: "Returns", to: "/returns" },
+    { label: "FAQ", to: "/faq" },
   ],
   Legal: [
-    { label: "Privacy Policy", to: "/support#privacy" },
-    { label: "Terms of Service", to: "/support#terms" },
-    { label: "Imprint", to: "/support#imprint" },
+    { label: "Privacy Policy", to: "/privacy" },
+    { label: "Terms of Service", to: "/terms" },
   ],
 };
 
