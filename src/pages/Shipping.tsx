@@ -114,9 +114,9 @@ const Shipping = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[140px] pointer-events-none" />
 
           <div className={`relative z-10 transition-all duration-1000 ${heroRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-6">
+            <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent rounded-full px-4 py-1.5 text-[10px] tracking-[0.2em] uppercase mb-6">
               Shipping & Delivery
-            </p>
+            </div>
             <h1 className="text-3xl md:text-5xl font-semibold text-foreground mb-5 tracking-[-0.02em] leading-[1.15]">
               From Our Hands,<br />
               To Your Ritual.
