@@ -4,7 +4,7 @@ import { HeroSection } from "@/components/zential/HeroSection";
 import { SocialProof } from "@/components/zential/SocialProof";
 import { DevicesSection } from "@/components/zential/DevicesSection";
 import { ResultsSection } from "@/components/zential/ResultsSection";
-import { ScienceSection } from "@/components/zential/ScienceSection";
+import { TechnologyPanels } from "@/components/zential/TechnologyPanels";
 import { RitualSection } from "@/components/zential/RitualSection";
 import { ComparisonSection } from "@/components/zential/ComparisonSection";
 import { StatsBar } from "@/components/zential/StatsBar";
@@ -23,7 +23,7 @@ const Index = () => {
         <SocialProof />
         <DevicesSection />
         <ResultsSection />
-        <ScienceSection />
+        <TechnologyPanels />
         <RitualSection />
         <ComparisonSection />
         <StatsBar />
