@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 const messages = [
-  "Free Shipping Over €50",
   "30-Day Ritual Guarantee",
   "Clinically Inspired. Designed for Daily Use.",
 ];
