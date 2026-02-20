@@ -82,10 +82,13 @@ const Support = () => {
       <Header />
       <main>
         {/* Hero */}
-        <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Support & Care</h1>
-          <p className="text-muted-foreground text-lg max-w-lg mx-auto">
-            We're here to make your ritual seamless.
+        <section className="py-24 md:py-36 px-6 md:px-12 lg:px-20 text-center">
+          <p className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-6">Support & Care</p>
+          <h1 className="text-3xl md:text-5xl font-semibold text-foreground mb-5 tracking-[-0.02em] leading-[1.15]">
+            We're Here<br />For Your Ritual.
+          </h1>
+          <p className="text-muted-foreground text-[15px] max-w-md mx-auto leading-relaxed">
+            Questions, returns, or guidance, our team responds within 24 hours.
           </p>
         </section>
 
@@ -95,13 +98,14 @@ const Support = () => {
             {quickCards.map((card) => (
               <div
                 key={card.title}
-                className="bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group text-center"
+                className="rounded-2xl p-7 text-center transition-all duration-300"
+                style={{ background: '#F8F6F4', border: '1px solid #E8E6E3' }}
               >
-                <div className="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mx-auto mb-4">
-                  <card.icon size={22} className="text-teal" />
+                <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
+                  <card.icon size={20} className="text-primary" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">{card.title}</h3>
-                <p className="text-sm text-muted-foreground">{card.desc}</p>
+                <h3 className="font-medium text-foreground text-[15px] mb-2">{card.title}</h3>
+                <p className="text-[13px] text-muted-foreground leading-relaxed">{card.desc}</p>
               </div>
             ))}
           </div>
@@ -110,12 +114,12 @@ const Support = () => {
         {/* FAQ Accordion */}
         <section className="px-6 md:px-12 lg:px-20 pb-20">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-10">Frequently Asked Questions</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground text-center mb-12 tracking-[-0.02em]">Frequently Asked Questions</h2>
             {faqCategories.map((cat) => (
               <div key={cat.label} className="mb-8">
                 <div className="flex items-center gap-2 mb-3">
-                  <cat.icon size={16} className="text-teal" />
-                  <span className="text-xs tracking-[0.2em] uppercase text-muted-foreground">{cat.label}</span>
+                  <cat.icon size={16} className="text-primary" />
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground">{cat.label}</span>
                 </div>
                 <Accordion type="single" collapsible className="border border-border/30 rounded-xl overflow-hidden">
                   {cat.items.map((item, i) => (
@@ -137,7 +141,8 @@ const Support = () => {
         {/* 30-Day Guarantee */}
         <section className="px-6 md:px-12 lg:px-20 pb-20">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+            <p className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-3">Our Promise</p>
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4 tracking-[-0.02em]">
               Feel The Shift, Or It's On Us.
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed">
@@ -151,8 +156,8 @@ const Support = () => {
                 { icon: CreditCard, label: "Secure Checkout" },
               ].map((t) => (
                 <div key={t.label} className="flex flex-col items-center gap-2">
-                  <div className="w-10 h-10 rounded-full bg-teal/10 flex items-center justify-center">
-                    <t.icon size={18} className="text-teal" />
+                  <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+                    <t.icon size={18} className="text-primary" strokeWidth={1.5} />
                   </div>
                   <span className="text-xs text-muted-foreground">{t.label}</span>
                 </div>
@@ -164,8 +169,8 @@ const Support = () => {
         {/* Contact Form */}
         <section className="px-6 md:px-12 lg:px-20 pb-20">
           <div className="max-w-xl mx-auto">
-            <h2 className="text-2xl font-bold text-foreground text-center mb-8">Contact Us</h2>
-            <form onSubmit={handleSubmit} className="space-y-5 bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl p-8">
+            <h2 className="text-2xl font-semibold text-foreground text-center mb-8 tracking-[-0.02em]">Contact Us</h2>
+            <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl p-8" style={{ background: '#F8F6F4', border: '1px solid #E8E6E3' }}>
               <div>
                 <Label htmlFor="name">Name *</Label>
                 <Input id="name" value={formState.name} onChange={(e) => setFormState(s => ({ ...s, name: e.target.value }))} className="mt-1.5 rounded-xl" />
@@ -198,10 +203,10 @@ const Support = () => {
 
         {/* Safety Notice */}
         <section className="px-6 md:px-12 lg:px-20 pb-20">
-          <div className="max-w-3xl mx-auto bg-teal/5 border border-teal/20 rounded-2xl p-8">
+          <div className="max-w-3xl mx-auto rounded-2xl p-8" style={{ background: '#F8F6F4', border: '1px solid #E8E6E3' }}>
             <div className="flex items-center gap-2 mb-4">
-              <AlertTriangle size={18} className="text-teal" />
-              <h3 className="font-semibold text-foreground">Important Safety Guidelines</h3>
+              <AlertTriangle size={18} className="text-primary" />
+              <h3 className="font-medium text-foreground text-[15px]">Important Safety Guidelines</h3>
             </div>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>• Do not use with pacemakers or implanted electrical devices</li>
