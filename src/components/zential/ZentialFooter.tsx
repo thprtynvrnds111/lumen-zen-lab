@@ -18,7 +18,7 @@ const footerLinks = {
   ],
   Support: [
     { label: "Contact", to: "/support" },
-    { label: "Shipping", to: "/support#shipping" },
+    { label: "Shipping", to: "/shipping" },
     { label: "Returns", to: "/support#returns" },
     { label: "FAQ", to: "/#faq" },
   ],
