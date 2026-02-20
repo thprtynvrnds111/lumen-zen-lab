@@ -11,7 +11,7 @@ const faqs = [
 
 export function FAQSection() {
   return (
-    <section className="section-padding">
+    <section id="faq" className="section-padding">
       <div className="text-center mb-16">
         <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Questions</p>
         <h2 className="text-3xl md:text-5xl font-semibold">Frequently Asked</h2>
