@@ -1,9 +1,57 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { fetchProducts } from "@/lib/shopify";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 import panelRedlight from "@/assets/panel-redlight.jpg";
 import panelMicrocurrent from "@/assets/panel-microcurrent.jpg";
 import panelEms from "@/assets/panel-ems.jpg";
 import panelBluelight from "@/assets/panel-bluelight.jpg";
+
+/* ── Device handle → display name mapping ── */
+const DEVICE_NAMES: Record<string, string> = {
+  "body-lift": "Body Lift",
+  "eye-massage": "Eye Activator",
+  "electric-micro-current": "Skin Pulse",
+  "lifting-and-tightening-face-introducer": "Face Introducer",
+  "color-light-import-micro-current-vibration-massager": "Frequency Wand",
+  "electric-guasha-massager": "Gua Sha Frequency",
+  "facial-beauty-tools-and-ems-beauty-equipment": "Sculpt Wand",
+  "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": "Frame Pulse",
+};
+
+/* ── Technology → compatible device handles ── */
+const TECH_DEVICES: Record<string, string[]> = {
+  redlight: [
+    "body-lift",
+    "lifting-and-tightening-face-introducer",
+    "eye-massage",
+    "electric-micro-current",
+    "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
+  ],
+  microcurrent: [
+    "body-lift",
+    "lifting-and-tightening-face-introducer",
+    "eye-massage",
+    "electric-guasha-massager",
+    "electric-micro-current",
+    "facial-beauty-tools-and-ems-beauty-equipment",
+  ],
+  ems: [
+    "lifting-and-tightening-face-introducer",
+    "body-lift",
+    "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
+  ],
+  bluelight: [
+    "color-light-import-micro-current-vibration-massager",
+    "electric-micro-current",
+    "lifting-and-tightening-face-introducer",
+  ],
+};
 
 interface PanelData {
   id: string;
@@ -20,11 +68,7 @@ const panels: PanelData[] = [
     id: "redlight",
     eyebrow: "Red Light Therapy",
     headline: "Stimulate Collagen at the Source.",
-    bullets: [
-      "Boosts natural collagen",
-      "Reduces fine lines",
-      "Enhances skin density",
-    ],
+    bullets: ["Boosts natural collagen", "Reduces fine lines", "Enhances skin density"],
     cta: "Explore Red Light →",
     image: panelRedlight,
     glowColor: "rgba(200, 60, 60, 0.3)",
@@ -33,11 +77,7 @@ const panels: PanelData[] = [
     id: "microcurrent",
     eyebrow: "Microcurrent Technology",
     headline: "Lift. Tone. Re-educate Muscle Memory.",
-    bullets: [
-      "Visible lifting effect",
-      "Facial muscle toning",
-      "Contour refinement",
-    ],
+    bullets: ["Visible lifting effect", "Facial muscle toning", "Contour refinement"],
     cta: "Discover Microcurrent →",
     image: panelMicrocurrent,
     glowColor: "rgba(100, 180, 255, 0.25)",
@@ -46,11 +86,7 @@ const panels: PanelData[] = [
     id: "ems",
     eyebrow: "EMS Activation",
     headline: "Sculpt Through Intelligent Stimulation.",
-    bullets: [
-      "Activates deep muscle fibers",
-      "Improves tone",
-      "Enhances circulation",
-    ],
+    bullets: ["Activates deep muscle fibers", "Improves tone", "Enhances circulation"],
     cta: "See Body Activation →",
     image: panelEms,
     glowColor: "rgba(210, 190, 160, 0.3)",
@@ -59,16 +95,109 @@ const panels: PanelData[] = [
     id: "bluelight",
     eyebrow: "Blue Light Precision",
     headline: "Refine. Clarify. Balance.",
-    bullets: [
-      "Targets acne bacteria",
-      "Reduces redness",
-      "Improves texture",
-    ],
+    bullets: ["Targets acne bacteria", "Reduces redness", "Improves texture"],
     cta: "Reveal Clear Skin →",
     image: panelBluelight,
     glowColor: "rgba(40, 100, 220, 0.3)",
   },
 ];
+
+interface DeviceThumb {
+  handle: string;
+  name: string;
+  imageUrl: string;
+}
+
+/* ── Hook: fetch device thumbnails ── */
+function useDeviceThumbnails() {
+  const [thumbs, setThumbs] = useState<Record<string, DeviceThumb>>({});
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchProducts(50).then((products) => {
+      if (cancelled) return;
+      const map: Record<string, DeviceThumb> = {};
+      for (const p of products) {
+        const handle = p.node.handle;
+        if (DEVICE_NAMES[handle]) {
+          const img = p.node.images.edges[0]?.node.url;
+          if (img) {
+            map[handle] = { handle, name: DEVICE_NAMES[handle], imageUrl: img };
+          }
+        }
+      }
+      setThumbs(map);
+    });
+    return () => { cancelled = true; };
+  }, []);
+
+  return thumbs;
+}
+
+/* ── Device icon row ── */
+function AvailableInRow({
+  techId,
+  thumbs,
+  isVisible,
+}: {
+  techId: string;
+  thumbs: Record<string, DeviceThumb>;
+  isVisible: boolean;
+}) {
+  const navigate = useNavigate();
+  const handles = TECH_DEVICES[techId] || [];
+  const devices = handles.map((h) => thumbs[h]).filter(Boolean);
+
+  if (devices.length === 0) return null;
+
+  return (
+    <div
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? "translateY(0)" : "translateY(6px)",
+        transition: "opacity 0.4s ease 0.35s, transform 0.4s ease 0.35s",
+      }}
+    >
+      <p className="text-[9px] tracking-[0.2em] uppercase text-white/50 font-medium mb-2">
+        Available In
+      </p>
+      <div className="flex gap-2 flex-wrap">
+        {devices.map((d) => (
+          <Tooltip key={d.handle}>
+            <TooltipTrigger asChild>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate(`/product/${d.handle}`);
+                }}
+                className="group/thumb relative w-11 h-11 rounded-full overflow-hidden border border-white/20 bg-white/10 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-white/40"
+                style={{
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
+                }}
+              >
+                <img
+                  src={d.imageUrl}
+                  alt={d.name}
+                  className="w-full h-full object-cover transition-all duration-300 group-hover/thumb:brightness-110"
+                />
+                {/* Hover glow */}
+                <div className="absolute inset-0 rounded-full opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  style={{ boxShadow: "inset 0 0 12px rgba(255,255,255,0.25)" }}
+                />
+              </button>
+            </TooltipTrigger>
+            <TooltipContent
+              side="top"
+              className="bg-foreground text-background text-[11px] font-medium px-3 py-1.5 border-0"
+            >
+              {d.name}
+            </TooltipContent>
+          </Tooltip>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 /* ── Floating dust particles ── */
 function DustParticles() {
@@ -98,11 +227,13 @@ function DesktopPanel({
   isActive,
   onHover,
   onLeave,
+  thumbs,
 }: {
   panel: PanelData;
   isActive: boolean;
   onHover: () => void;
   onLeave: () => void;
+  thumbs: Record<string, DeviceThumb>;
 }) {
   return (
     <div
@@ -118,7 +249,6 @@ function DesktopPanel({
           : "0 4px 20px -5px rgba(0,0,0,0.1)",
       }}
     >
-      {/* Background image */}
       <img
         src={panel.image}
         alt={panel.eyebrow}
@@ -130,7 +260,6 @@ function DesktopPanel({
         }}
       />
 
-      {/* Gradient overlay */}
       <div
         className="absolute inset-0"
         style={{
@@ -141,7 +270,6 @@ function DesktopPanel({
         }}
       />
 
-      {/* Subtle glow pulse */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -151,13 +279,10 @@ function DesktopPanel({
         }}
       />
 
-      {/* Always-visible eyebrow at bottom */}
+      {/* Always-visible eyebrow */}
       <div
         className="absolute bottom-0 left-0 right-0 p-6 z-10"
-        style={{
-          opacity: isActive ? 0 : 1,
-          transition: "opacity 0.4s ease",
-        }}
+        style={{ opacity: isActive ? 0 : 1, transition: "opacity 0.4s ease" }}
       >
         <p className="text-[10px] tracking-[0.25em] uppercase text-white/80 font-medium">
           {panel.eyebrow}
@@ -179,7 +304,7 @@ function DesktopPanel({
         <h3 className="text-xl font-semibold text-white leading-tight mb-4">
           {panel.headline}
         </h3>
-        <ul className="space-y-1.5 mb-6">
+        <ul className="space-y-1.5 mb-4">
           {panel.bullets.map((b) => (
             <li key={b} className="text-[13px] text-white/75 flex items-start gap-2">
               <span className="text-white/40 mt-0.5">•</span>
@@ -187,12 +312,12 @@ function DesktopPanel({
             </li>
           ))}
         </ul>
+
+        <AvailableInRow techId={panel.id} thumbs={thumbs} isVisible={isActive} />
+
         <button
-          className="self-start text-[11px] tracking-[0.15em] uppercase font-medium px-5 py-2.5 rounded-full border border-white/25 text-white/90 hover:bg-white/10 transition-colors duration-300"
-          style={{
-            opacity: isActive ? 1 : 0,
-            transition: "opacity 0.4s ease 0.3s",
-          }}
+          className="self-start text-[11px] tracking-[0.15em] uppercase font-medium px-5 py-2.5 rounded-full border border-white/25 text-white/90 hover:bg-white/10 transition-colors duration-300 mt-4"
+          style={{ opacity: isActive ? 1 : 0, transition: "opacity 0.4s ease 0.3s" }}
         >
           {panel.cta}
         </button>
@@ -206,17 +331,19 @@ function MobilePanel({
   panel,
   isActive,
   onToggle,
+  thumbs,
 }: {
   panel: PanelData;
   isActive: boolean;
   onToggle: () => void;
+  thumbs: Record<string, DeviceThumb>;
 }) {
   return (
     <div
       onClick={onToggle}
       className="relative overflow-hidden rounded-3xl cursor-pointer"
       style={{
-        height: isActive ? 420 : 120,
+        height: isActive ? 480 : 120,
         transition: "height 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
         boxShadow: isActive
           ? `0 12px 40px -10px ${panel.glowColor}`
@@ -244,13 +371,10 @@ function MobilePanel({
         }}
       />
 
-      {/* Collapsed state label */}
+      {/* Collapsed label */}
       <div
         className="absolute inset-0 flex items-center px-6 z-10"
-        style={{
-          opacity: isActive ? 0 : 1,
-          transition: "opacity 0.3s ease",
-        }}
+        style={{ opacity: isActive ? 0 : 1, transition: "opacity 0.3s ease" }}
       >
         <p className="text-[11px] tracking-[0.25em] uppercase text-white font-medium">
           {panel.eyebrow}
@@ -273,7 +397,7 @@ function MobilePanel({
         <h3 className="text-lg font-semibold text-white leading-tight mb-3">
           {panel.headline}
         </h3>
-        <ul className="space-y-1 mb-5">
+        <ul className="space-y-1 mb-4">
           {panel.bullets.map((b) => (
             <li key={b} className="text-[13px] text-white/75 flex items-start gap-2">
               <span className="text-white/40 mt-0.5">•</span>
@@ -281,7 +405,10 @@ function MobilePanel({
             </li>
           ))}
         </ul>
-        <button className="text-[11px] tracking-[0.15em] uppercase font-medium px-5 py-2.5 rounded-full border border-white/25 text-white/90 active:bg-white/10 transition-colors duration-300">
+
+        <AvailableInRow techId={panel.id} thumbs={thumbs} isVisible={isActive} />
+
+        <button className="text-[11px] tracking-[0.15em] uppercase font-medium px-5 py-2.5 rounded-full border border-white/25 text-white/90 active:bg-white/10 transition-colors duration-300 mt-4">
           {panel.cta}
         </button>
       </div>
@@ -293,11 +420,10 @@ function MobilePanel({
 export function TechnologyPanels() {
   const isMobile = useIsMobile();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const thumbs = useDeviceThumbnails();
 
   return (
     <section
-      ref={sectionRef}
       className="relative section-padding overflow-hidden"
       style={{ background: "hsl(30 27% 95%)" }}
     >
@@ -320,6 +446,7 @@ export function TechnologyPanels() {
               panel={panel}
               isActive={activeIndex === i}
               onToggle={() => setActiveIndex(activeIndex === i ? null : i)}
+              thumbs={thumbs}
             />
           ))}
         </div>
@@ -332,6 +459,7 @@ export function TechnologyPanels() {
               isActive={activeIndex === i}
               onHover={() => setActiveIndex(i)}
               onLeave={() => setActiveIndex(null)}
+              thumbs={thumbs}
             />
           ))}
         </div>
