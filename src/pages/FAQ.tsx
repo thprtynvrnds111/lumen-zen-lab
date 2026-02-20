@@ -77,7 +77,7 @@ const FAQ = () => (
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-5 tracking-tight">
             Frequently Asked<br />
-            <span className="text-accent">Questions.</span>
+            <span className="text-foreground">Questions.</span>
           </h1>
           <p className="text-muted-foreground text-lg max-w-lg mx-auto leading-relaxed">
             Everything you need to know about your devices, shipping, returns, and more.
