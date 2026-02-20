@@ -17,9 +17,9 @@ import type { ProductConfig } from "@/data/productConfigs";
 type BundleKey = "single" | "ritual-set" | "pro-set";
 
 const bundles: { key: BundleKey; label: string; desc: string; multiplier: number; discount: number; badge?: string }[] = [
-  { key: "single", label: "One-Time Purchase", desc: "Single device", multiplier: 1, discount: 0 },
-  { key: "ritual-set", label: "Ritual Set", desc: "Device + Conductive Serum", multiplier: 1, discount: 15, badge: "Most Popular" },
-  { key: "pro-set", label: "2-Device Professional Set", desc: "Two devices for home & travel", multiplier: 2, discount: 25, badge: "Best Deal" },
+  { key: "single", label: "One-Time Purchase", desc: "Device only", multiplier: 1, discount: 0 },
+  { key: "ritual-set", label: "Ritual Set", desc: "Device + Collagen Gel", multiplier: 1, discount: 10, badge: "Most Popular" },
+  { key: "pro-set", label: "Pro Set", desc: "Device + Collagen Gel + PDRN Mask", multiplier: 1, discount: 15, badge: "Best Value" },
 ];
 
 interface Props {
@@ -94,12 +94,12 @@ export function ProductLanding({ config }: Props) {
       variantId: variant.id,
       variantTitle: variant.title,
       price: { amount: discountedPrice.toFixed(2), currencyCode: currency },
-      quantity: bundle.multiplier,
+      quantity: 1,
       selectedOptions: variant.selectedOptions || [],
     });
 
-    // Auto-add Collagen Face Gel when "Ritual Set" is selected
-    if (selectedBundle === "ritual-set") {
+    // Auto-add Collagen Face Gel for Ritual Set and Pro Set
+    if (selectedBundle === "ritual-set" || selectedBundle === "pro-set") {
       try {
         const gelProduct = await fetchProductByHandle("medicube-collagen-elastic-jelly-moisturizing-cream");
         if (gelProduct) {
@@ -120,12 +120,34 @@ export function ProductLanding({ config }: Props) {
       }
     }
 
-    toast.success(
-      selectedBundle === "ritual-set"
-        ? "Device + Collagen Face Gel added to your ritual"
-        : "Added to your ritual",
-      { position: "top-center" }
-    );
+    // Auto-add PDRN Mask for Pro Set
+    if (selectedBundle === "pro-set") {
+      try {
+        const maskProduct = await fetchProductByHandle("collagen-eye-mask");
+        if (maskProduct) {
+          const maskVariant = maskProduct.variants?.edges?.[0]?.node;
+          if (maskVariant) {
+            await addItem({
+              product: { node: maskProduct },
+              variantId: maskVariant.id,
+              variantTitle: maskVariant.title,
+              price: maskVariant.price,
+              quantity: 1,
+              selectedOptions: maskVariant.selectedOptions || [],
+            });
+          }
+        }
+      } catch (e) {
+        console.error("Failed to auto-add PDRN Mask:", e);
+      }
+    }
+
+    const messages: Record<BundleKey, string> = {
+      single: "Added to your ritual",
+      "ritual-set": "Device + Collagen Gel added to your ritual",
+      "pro-set": "Device + Gel + Mask added to your ritual",
+    };
+    toast.success(messages[selectedBundle], { position: "top-center" });
   };
 
   return (

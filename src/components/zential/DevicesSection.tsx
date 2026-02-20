@@ -11,8 +11,13 @@ export function DevicesSection() {
   const addItem = useCartStore(s => s.addItem);
   const isCartLoading = useCartStore(s => s.isLoading);
 
+  const HIDDEN_HANDLES = ["medicube-collagen-elastic-jelly-moisturizing-cream", "collagen-eye-mask"];
+
   useEffect(() => {
-    fetchProducts(12).then(p => { setProducts(p); setLoading(false); }).catch(() => setLoading(false));
+    fetchProducts(12).then(p => {
+      setProducts(p.filter(pr => !HIDDEN_HANDLES.includes(pr.node.handle)));
+      setLoading(false);
+    }).catch(() => setLoading(false));
   }, []);
 
   const handleAdd = async (e: React.MouseEvent, product: ShopifyProduct) => {

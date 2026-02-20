@@ -12,6 +12,7 @@ interface BundleProduct {
 
 interface Bundle {
   title: string;
+  subtitle: string;
   items: BundleProduct[];
   price: string;
   originalPrice: string;
@@ -21,39 +22,39 @@ interface Bundle {
 
 const bundles: Bundle[] = [
   {
-    title: "Starter Ritual",
+    title: "Sculpt Wand",
+    subtitle: "One-Time Purchase",
     items: [
       { handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" },
-      { handle: "medicube-collagen-elastic-jelly-moisturizing-cream", name: "Collagen Gel" },
     ],
-    price: "€93",
-    originalPrice: "€129",
-    save: "28%",
+    price: "€69",
+    originalPrice: "€69",
+    save: "",
     highlight: false,
   },
   {
-    title: "Complete Ritual Set",
+    title: "Sculpt Wand Ritual Set",
+    subtitle: "Device + Collagen Gel",
     items: [
-      { handle: "lifting-and-tightening-face-introducer", name: "Body Lift" },
       { handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" },
-      { handle: "color-light-import-micro-current-vibration-massager", name: "Frequency Wand" },
       { handle: "medicube-collagen-elastic-jelly-moisturizing-cream", name: "Collagen Gel" },
     ],
-    price: "€299",
-    originalPrice: "€389",
-    save: "23%",
+    price: "€79",
+    originalPrice: "€94",
+    save: "16%",
     highlight: true,
   },
   {
-    title: "Glow Essentials",
+    title: "Sculpt Wand Pro Set",
+    subtitle: "Device + Collagen Gel + PDRN Mask",
     items: [
-      { handle: "electric-micro-current", name: "Skin Pulse" },
-      { handle: "collagen-eye-mask", name: "Collagen PDRN Pads" },
+      { handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" },
       { handle: "medicube-collagen-elastic-jelly-moisturizing-cream", name: "Collagen Gel" },
+      { handle: "collagen-eye-mask", name: "PDRN Mask" },
     ],
-    price: "€106",
-    originalPrice: "€137",
-    save: "23%",
+    price: "€93",
+    originalPrice: "€117",
+    save: "20%",
     highlight: false,
   },
 ];
@@ -113,7 +114,8 @@ export function BundleSection() {
                   Best Value
                 </span>
               )}
-              <h3 className="font-semibold text-lg mb-4">{b.title}</h3>
+              <h3 className="font-semibold text-lg mb-1">{b.title}</h3>
+              <p className="text-xs text-muted-foreground mb-4">{b.subtitle}</p>
               <ul className="space-y-2 mb-6">
                 {b.items.map(item => (
                   <li key={item.handle} className="text-sm text-muted-foreground flex items-center gap-2">
@@ -123,10 +125,14 @@ export function BundleSection() {
               </ul>
               <div className="flex items-baseline gap-3 mb-6">
                 <span className="text-2xl font-bold">{b.price}</span>
-                <span className="text-sm text-muted-foreground line-through">{b.originalPrice}</span>
-                <span className="text-xs bg-emerald text-emerald-foreground px-2 py-0.5 rounded-full font-semibold">
-                  Save {b.save}
-                </span>
+                {b.save && (
+                  <>
+                    <span className="text-sm text-muted-foreground line-through">{b.originalPrice}</span>
+                    <span className="text-xs bg-emerald text-emerald-foreground px-2 py-0.5 rounded-full font-semibold">
+                      Save {b.save}
+                    </span>
+                  </>
+                )}
               </div>
               <Button
                 variant={b.highlight ? "ritual" : "outline-ritual"}

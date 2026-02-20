@@ -24,12 +24,14 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
     }
   }, [open]);
 
+  const HIDDEN_HANDLES = ["medicube-collagen-elastic-jelly-moisturizing-cream", "collagen-eye-mask"];
+
   const searchProducts = useCallback(async (q: string) => {
     if (q.length < 2) { setResults([]); return; }
     setLoading(true);
     try {
       const products = await fetchProducts(8, q);
-      setResults(products);
+      setResults(products.filter(p => !HIDDEN_HANDLES.includes(p.node.handle)));
     } catch {
       setResults([]);
     } finally {
