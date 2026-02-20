@@ -12,9 +12,9 @@ const steps = [
 ];
 
 const policies = [
-  { title: "30-Day Ritual Guarantee", desc: "If you don't feel visible improvement within 30 days of consistent daily use, contact us for a full refund. We believe in the technology — and we believe in your experience." },
+  { title: "30-Day Ritual Guarantee", desc: "If you don't feel visible improvement within 30 days of consistent daily use, contact us for a full refund. We believe in the technology, and we believe in your experience." },
   { title: "Condition Requirements", desc: "Devices must be returned in their original packaging and in working condition. Accessories (gels, pads) are non-returnable once opened for hygiene reasons." },
-  { title: "Damaged or Defective Items", desc: "If your product arrives damaged or defective, contact us immediately. We'll send a replacement at no cost — no return needed." },
+  { title: "Damaged or Defective Items", desc: "If your product arrives damaged or defective, contact us immediately. We'll send a replacement at no cost, no return needed." },
   { title: "Exchanges", desc: "Want a different color or variant? Contact us within 14 days and we'll arrange an exchange, subject to availability." },
 ];
 
@@ -33,7 +33,7 @@ const Returns = () => (
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-5 tracking-tight">
             No Friction.<br />
-            <span className="text-accent">No Pressure.</span>
+            <span className="text-foreground">No Pressure.</span>
           </h1>
           <p className="text-muted-foreground text-lg max-w-lg mx-auto leading-relaxed">
             We stand behind every device with our 30-Day Ritual Guarantee. If it doesn't work for you, it's on us.
