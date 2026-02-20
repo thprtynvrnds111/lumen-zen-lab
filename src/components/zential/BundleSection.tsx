@@ -15,8 +15,8 @@ interface Bundle {
   subtitle: string;
   items: BundleProduct[];
   price: string;
-  originalPrice: string;
-  save: string;
+  savePercent: string;
+  saveAmount: string;
   highlight: boolean;
 }
 
@@ -28,8 +28,8 @@ const bundles: Bundle[] = [
       { handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" },
     ],
     price: "€69",
-    originalPrice: "€69",
-    save: "",
+    savePercent: "",
+    saveAmount: "",
     highlight: false,
   },
   {
@@ -39,9 +39,9 @@ const bundles: Bundle[] = [
       { handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" },
       { handle: "medicube-collagen-elastic-jelly-moisturizing-cream", name: "Collagen Gel" },
     ],
-    price: "€79",
-    originalPrice: "€94",
-    save: "16%",
+    price: "€89",
+    savePercent: "16%",
+    saveAmount: "€16",
     highlight: true,
   },
   {
@@ -52,9 +52,9 @@ const bundles: Bundle[] = [
       { handle: "medicube-collagen-elastic-jelly-moisturizing-cream", name: "Collagen Gel" },
       { handle: "collagen-eye-mask", name: "PDRN Mask" },
     ],
-    price: "€93",
-    originalPrice: "€117",
-    save: "20%",
+    price: "€109",
+    savePercent: "20%",
+    saveAmount: "€24",
     highlight: false,
   },
 ];
@@ -123,17 +123,18 @@ export function BundleSection() {
                   </li>
                 ))}
               </ul>
-              <div className="flex items-baseline gap-3 mb-6">
+              <div className="flex items-baseline gap-3 mb-2">
                 <span className="text-2xl font-bold">{b.price}</span>
-                {b.save && (
-                  <>
-                    <span className="text-sm text-muted-foreground line-through">{b.originalPrice}</span>
-                    <span className="text-xs bg-emerald text-emerald-foreground px-2 py-0.5 rounded-full font-semibold">
-                      Save {b.save}
-                    </span>
-                  </>
+                {b.savePercent && (
+                  <span className="text-xs bg-emerald/10 text-emerald px-2 py-0.5 rounded-full font-semibold">
+                    Save {b.savePercent}
+                  </span>
                 )}
               </div>
+              {b.saveAmount && (
+                <p className="text-sm text-emerald font-medium mb-6">You save {b.saveAmount}</p>
+              )}
+              {!b.saveAmount && <div className="mb-6" />}
               <Button
                 variant={b.highlight ? "ritual" : "outline-ritual"}
                 className="w-full"

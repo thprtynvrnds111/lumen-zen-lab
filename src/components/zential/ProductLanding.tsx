@@ -16,10 +16,10 @@ import type { ProductConfig } from "@/data/productConfigs";
 
 type BundleKey = "single" | "ritual-set" | "pro-set";
 
-const bundles: { key: BundleKey; label: string; desc: string; multiplier: number; discount: number; badge?: string }[] = [
-  { key: "single", label: "One-Time Purchase", desc: "Device only", multiplier: 1, discount: 0 },
-  { key: "ritual-set", label: "Ritual Set", desc: "Device + Collagen Gel", multiplier: 1, discount: 10, badge: "Most Popular" },
-  { key: "pro-set", label: "Pro Set", desc: "Device + Collagen Gel + PDRN Mask", multiplier: 1, discount: 15, badge: "Best Value" },
+const bundles: { key: BundleKey; label: string; desc: string; addon: number; savePercent: number; saveAmount: number; badge?: string }[] = [
+  { key: "single", label: "One-Time Purchase", desc: "Device only", addon: 0, savePercent: 0, saveAmount: 0 },
+  { key: "ritual-set", label: "Ritual Set", desc: "Device + Collagen Gel", addon: 25, savePercent: 16, saveAmount: 10, badge: "Most Popular" },
+  { key: "pro-set", label: "Pro Set", desc: "Device + Collagen Gel + PDRN Mask", addon: 49, savePercent: 20, saveAmount: 24, badge: "Best Value" },
 ];
 
 interface Props {
@@ -83,9 +83,8 @@ export function ProductLanding({ config }: Props) {
   };
 
   const bundle = bundles.find(b => b.key === selectedBundle)!;
-  const totalPrice = basePrice * bundle.multiplier;
-  const discountedPrice = totalPrice * (1 - bundle.discount / 100);
-  const savings = totalPrice - discountedPrice;
+  const bundlePrice = basePrice + bundle.addon;
+  const savings = bundle.saveAmount;
 
   const handleAdd = async () => {
     if (!variant) return;
@@ -93,7 +92,7 @@ export function ProductLanding({ config }: Props) {
       product: { node: product },
       variantId: variant.id,
       variantTitle: variant.title,
-      price: { amount: discountedPrice.toFixed(2), currencyCode: currency },
+      price: { amount: bundlePrice.toFixed(2), currencyCode: currency },
       quantity: 1,
       selectedOptions: variant.selectedOptions || [],
     });
@@ -223,12 +222,9 @@ export function ProductLanding({ config }: Props) {
 
 
             <div className="flex items-baseline gap-3 mb-1">
-              <span className="text-3xl font-bold text-foreground">{sym}{discountedPrice.toFixed(2)}</span>
-              {bundle.discount > 0 && (
-                <>
-                  <span className="text-lg text-muted-foreground line-through">{sym}{totalPrice.toFixed(2)}</span>
-                  <span className="text-xs font-semibold tracking-wider uppercase text-emerald bg-emerald/10 px-2.5 py-1 rounded-full">Save {bundle.discount}%</span>
-                </>
+              <span className="text-3xl font-bold text-foreground">{sym}{bundlePrice.toFixed(2)}</span>
+              {bundle.savePercent > 0 && (
+                <span className="text-xs font-semibold tracking-wider uppercase text-emerald bg-emerald/10 px-2.5 py-1 rounded-full">Save {bundle.savePercent}%</span>
               )}
             </div>
             {savings > 0 && <p className="text-sm text-emerald mb-6">You save {sym}{savings.toFixed(2)}</p>}
@@ -250,8 +246,8 @@ export function ProductLanding({ config }: Props) {
                       <p className="text-xs text-muted-foreground mt-0.5">{opt.desc}</p>
                     </div>
                     <div className="text-right">
-                      <p className="font-bold text-foreground">{sym}{(basePrice * opt.multiplier * (1 - opt.discount / 100)).toFixed(2)}</p>
-                      {opt.discount > 0 && <p className="text-xs text-muted-foreground line-through">{sym}{(basePrice * opt.multiplier).toFixed(2)}</p>}
+                      <p className="font-bold text-foreground">{sym}{(basePrice + opt.addon).toFixed(2)}</p>
+                      {opt.savePercent > 0 && <p className="text-xs text-emerald font-semibold">Save {opt.savePercent}%</p>}
                     </div>
                   </div>
                 </button>
@@ -484,8 +480,8 @@ export function ProductLanding({ config }: Props) {
               <div className="min-w-0">
                 <p className="font-semibold text-foreground text-sm truncate">{config.name}</p>
                 <p className="text-xs text-muted-foreground">
-                  {sym}{discountedPrice.toFixed(2)}
-                  {bundle.discount > 0 && <span className="ml-1.5 text-emerald">Save {bundle.discount}%</span>}
+                  {sym}{bundlePrice.toFixed(2)}
+                  {bundle.savePercent > 0 && <span className="ml-1.5 text-emerald">Save {bundle.savePercent}%</span>}
                 </p>
               </div>
             </div>
