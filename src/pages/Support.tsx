@@ -83,7 +83,9 @@ const Support = () => {
       <main>
         {/* Hero */}
         <section className="py-24 md:py-36 px-6 md:px-12 lg:px-20 text-center">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-6">Support & Care</p>
+          <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent rounded-full px-4 py-1.5 text-[10px] tracking-[0.2em] uppercase mb-6">
+            Support & Care
+          </div>
           <h1 className="text-3xl md:text-5xl font-semibold text-foreground mb-5 tracking-[-0.02em] leading-[1.15]">
             We're Here<br />For Your Ritual.
           </h1>

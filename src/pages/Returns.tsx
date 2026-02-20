@@ -8,7 +8,7 @@ const steps = [
   { icon: Package, title: "Request a Return", desc: "Email us at support@zentialpure.com within 30 days of delivery with your order number.", color: "bg-primary/15 text-primary", accent: "border-primary/30" },
   { icon: CheckCircle2, title: "Get Approved", desc: "We'll review and approve your request within 24 hours, no lengthy questionnaires.", color: "bg-primary/15 text-primary", accent: "border-primary/30" },
   { icon: RotateCcw, title: "Ship It Back", desc: "We'll provide a prepaid return label. Pack the device in its original packaging.", color: "bg-primary/15 text-primary", accent: "border-primary/30" },
-  { icon: ShieldCheck, title: "Get Refunded", desc: "Once received and inspected, your refund is processed within 5–7 business days.", color: "bg-primary/15 text-primary", accent: "border-primary/30" },
+  { icon: ShieldCheck, title: "Get Refunded", desc: "Once received and inspected, your refund is processed within 5 to 7 business days.", color: "bg-primary/15 text-primary", accent: "border-primary/30" },
 ];
 
 const policies = [
@@ -33,7 +33,7 @@ const Returns = () => (
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-5 tracking-tight">
             No Friction.<br />
-            <span className="text-primary">No Pressure.</span>
+            <span className="text-accent">No Pressure.</span>
           </h1>
           <p className="text-muted-foreground text-lg max-w-lg mx-auto leading-relaxed">
             We stand behind every device with our 30-Day Ritual Guarantee. If it doesn't work for you, it's on us.
