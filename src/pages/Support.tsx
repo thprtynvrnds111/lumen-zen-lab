@@ -11,9 +11,9 @@ import { toast } from "sonner";
 
 const quickCards = [
   { icon: Package, title: "Track Your Order", desc: "Check your shipment status and delivery timeline." },
-  { icon: RotateCcw, title: "Returns & Guarantee", desc: "30-Day Ritual Guarantee — no friction, no pressure." },
+  { icon: RotateCcw, title: "Returns & Guarantee", desc: "30-Day Ritual Guarantee, no friction, no pressure." },
   { icon: ShieldCheck, title: "Product Safety", desc: "Usage guidelines and important safety information." },
-  { icon: MessageCircle, title: "Contact Support", desc: "Reach us directly — response within 24–48 hours." },
+  { icon: MessageCircle, title: "Contact Support", desc: "Reach us directly, response within 24 to 48 hours." },
 ];
 
 const faqCategories = [
@@ -21,22 +21,22 @@ const faqCategories = [
     label: "Shipping",
     icon: Truck,
     items: [
-      { q: "How long does shipping take in NL / EU?", a: "Orders within the Netherlands typically arrive in 2–3 business days. EU-wide delivery takes 3–7 business days depending on destination. You'll receive tracking information via email once your order ships." },
-      { q: "Do you ship internationally?", a: "Yes. We ship to most countries worldwide. International orders typically take 7–14 business days. Customs duties and import taxes may apply depending on your country's regulations." },
+      { q: "How long does shipping take in NL / EU?", a: "Orders within the Netherlands typically arrive in 2 to 3 business days. EU wide delivery takes 3 to 7 business days depending on destination. You'll receive tracking information via email once your order ships." },
+      { q: "Do you ship internationally?", a: "Yes. We ship to most countries worldwide. International orders typically take 7 to 14 business days. Customs duties and import taxes may apply depending on your country's regulations." },
     ],
   },
   {
     label: "Returns",
     icon: RotateCcw,
     items: [
-      { q: "What is the 30-Day Ritual Guarantee?", a: "If you don't feel visible improvement within 30 days of consistent daily use, contact us for a full refund. No lengthy process, no pressure. We believe in the technology — and we believe in your experience." },
+      { q: "What is the 30-Day Ritual Guarantee?", a: "If you don't feel visible improvement within 30 days of consistent daily use, contact us for a full refund. No lengthy process, no pressure. We believe in the technology, and we believe in your experience." },
     ],
   },
   {
     label: "Product Usage",
     icon: Heart,
     items: [
-      { q: "Can I use the device daily?", a: "Yes. Our devices are designed for daily use. We recommend starting with 5-minute sessions and gradually increasing as your skin adjusts. Consistency is the key to visible results." },
+      { q: "Can I use the device daily?", a: "Yes. Our devices are designed for daily use. We recommend starting with 5 minute sessions and gradually increasing as your skin adjusts. Consistency is the key to visible results." },
       { q: "Do I need conductive gel?", a: "For microcurrent devices, a conductive gel or serum is recommended to ensure optimal current delivery and comfortable gliding. Water-based serums work well as an alternative." },
     ],
   },
@@ -46,7 +46,7 @@ const faqCategories = [
     items: [
       { q: "Is it safe with sensitive skin?", a: "Yes. Start at the lowest intensity setting and gradually increase. If you experience persistent irritation beyond mild initial redness, discontinue use and consult a dermatologist." },
       { q: "Who should not use microcurrent devices?", a: "Do not use if you have a pacemaker, are pregnant, have active skin infections, epilepsy, or metal implants in the treatment area. Always consult your physician if you have a medical condition." },
-      { q: "What if I experience mild redness?", a: "Mild, temporary redness after use is normal — it indicates increased circulation. It should subside within 15–30 minutes. If redness persists, reduce intensity or frequency of use." },
+      { q: "What if I experience mild redness?", a: "Mild, temporary redness after use is normal, it indicates increased circulation. It should subside within 15 to 30 minutes. If redness persists, reduce intensity or frequency of use." },
     ],
   },
   {
@@ -70,7 +70,7 @@ const Support = () => {
     }
     setSubmitting(true);
     setTimeout(() => {
-      toast.success("Request submitted. We'll respond within 24–48 hours.");
+      toast.success("Request submitted. We'll respond within 24 to 48 hours.");
       setFormState({ name: "", email: "", orderNumber: "", message: "" });
       setSubmitting(false);
     }, 1000);
@@ -196,7 +196,7 @@ const Support = () => {
               <Button type="submit" variant="ritual" size="lg" className="w-full" disabled={submitting}>
                 {submitting ? "Submitting..." : "Submit Request"}
               </Button>
-              <p className="text-xs text-muted-foreground text-center">Response within 24–48 hours.</p>
+              <p className="text-xs text-muted-foreground text-center">Response within 24 to 48 hours.</p>
             </form>
           </div>
         </section>
