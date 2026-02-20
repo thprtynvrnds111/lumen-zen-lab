@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ShoppingBag, Minus, Plus, X, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
@@ -8,7 +7,7 @@ const FREE_SHIPPING_THRESHOLD = 75;
 
 export function CartDrawer() {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
+  
   const { items, isLoading, isSyncing, updateQuantity, removeItem, syncCart } = useCartStore();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + parseFloat(item.price.amount) * item.quantity, 0);
@@ -18,9 +17,14 @@ export function CartDrawer() {
 
   useEffect(() => { if (isOpen) syncCart(); }, [isOpen, syncCart]);
 
+  const [redirecting, setRedirecting] = useState(false);
+
   const handleCheckout = () => {
-    setIsOpen(false);
-    navigate("/checkout");
+    const url = useCartStore.getState().checkoutUrl;
+    if (!url) return;
+    setRedirecting(true);
+    // Redirect to Shopify-hosted checkout
+    window.location.href = url;
   };
 
   return (
@@ -149,11 +153,14 @@ export function CartDrawer() {
             </p>
             <button
               onClick={handleCheckout}
-              disabled={isLoading || isSyncing}
+              disabled={isLoading || isSyncing || redirecting}
               className="w-full bg-foreground text-background py-3.5 rounded-full text-sm font-semibold tracking-[0.15em] uppercase hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
             >
-              {isLoading || isSyncing ? (
-                <Loader2 className="animate-spin" size={16} />
+              {isLoading || isSyncing || redirecting ? (
+                <>
+                  <Loader2 className="animate-spin" size={16} />
+                  {redirecting && <span>Redirecting to secure checkout…</span>}
+                </>
               ) : (
                 "CHECKOUT"
               )}

@@ -22,7 +22,7 @@ import FAQ from "./pages/FAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import BodyLift from "./pages/BodyLift";
-import Checkout from "./pages/Checkout";
+
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -49,7 +49,7 @@ function AppContent() {
       <Route path="/faq" element={<FAQ />} />
       <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<TermsOfService />} />
-      <Route path="/checkout" element={<Checkout />} />
+      
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
