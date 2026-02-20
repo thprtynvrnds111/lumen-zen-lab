@@ -51,11 +51,10 @@ const journeySteps = [
 ];
 
 const shippingZones = [
-  { region: "Netherlands", time: "2–3 business days", cost: "Free over €50", flag: "🇳🇱" },
-  { region: "Germany & Belgium", time: "3–5 business days", cost: "Free over €50", flag: "🇩🇪 🇧🇪" },
-  { region: "EU Countries", time: "3–7 business days", cost: "Free over €75", flag: "🇪🇺" },
-  { region: "United Kingdom", time: "5–8 business days", cost: "€4.95", flag: "🇬🇧" },
-  { region: "Rest of World", time: "7–14 business days", cost: "Calculated at checkout", flag: "🌍" },
+  { region: "Netherlands", time: "7–12 business days", cost: "Free over €75", flag: "🇳🇱" },
+  { region: "Germany & Belgium", time: "7–13 business days", cost: "Free over €75", flag: "🇩🇪 🇧🇪" },
+  { region: "United Kingdom", time: "7–12 business days", cost: "Free over €90", flag: "🇬🇧" },
+  { region: "United States", time: "6–10 business days", cost: "Free over €95", flag: "🇺🇸" },
 ];
 
 const trustPoints = [
@@ -73,13 +72,13 @@ function AnimatedStep({ step, index, total }: { step: typeof journeySteps[0]; in
     <div ref={ref} className="flex gap-6 md:gap-10 relative">
       <div className="flex flex-col items-center flex-shrink-0">
         <div
-          className={`w-11 h-11 rounded-full border border-border bg-card flex items-center justify-center transition-all duration-700 ${inView ? 'scale-100 opacity-100' : 'scale-75 opacity-0'}`}
+          className={`w-11 h-11 rounded-full border border-accent/30 bg-accent/5 flex items-center justify-center transition-all duration-700 ${inView ? 'scale-100 opacity-100' : 'scale-75 opacity-0'}`}
           style={{ transitionDelay: `${index * 120}ms` }}
         >
-          <step.icon size={18} className="text-muted-foreground" strokeWidth={1.5} />
+          <step.icon size={18} className="text-accent" strokeWidth={1.5} />
         </div>
         {!isLast && (
-          <div className="w-px flex-1 min-h-[48px] bg-border/60 my-2" />
+          <div className="w-px flex-1 min-h-[48px] bg-accent/20 my-2" />
         )}
       </div>
 
@@ -89,7 +88,7 @@ function AnimatedStep({ step, index, total }: { step: typeof journeySteps[0]; in
       >
         <div className="flex items-center gap-3 mb-1.5">
           <h3 className="font-medium text-foreground text-[15px] tracking-[-0.01em]">{step.title}</h3>
-          <span className="text-[10px] tracking-[0.15em] uppercase text-muted-foreground/70 bg-secondary/40 px-2.5 py-0.5 rounded-full">{step.time}</span>
+          <span className="text-[10px] tracking-[0.15em] uppercase text-accent/70 bg-accent/8 px-2.5 py-0.5 rounded-full">{step.time}</span>
         </div>
         <p className="text-[13px] text-muted-foreground leading-relaxed max-w-md">{step.desc}</p>
       </div>
@@ -112,7 +111,7 @@ const Shipping = () => {
           ref={heroRef.ref}
           className="relative py-28 md:py-40 px-6 md:px-12 lg:px-20 text-center overflow-hidden"
         >
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-secondary/30 blur-[140px] pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[140px] pointer-events-none" />
 
           <div className={`relative z-10 transition-all duration-1000 ${heroRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <p className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-6">
@@ -194,8 +193,8 @@ const Shipping = () => {
                     border: '1px solid #E8E6E3',
                   }}
                 >
-                  <div className="w-10 h-10 rounded-full border border-border bg-background flex items-center justify-center mb-5">
-                    <point.icon size={17} className="text-muted-foreground" strokeWidth={1.5} />
+                  <div className="w-10 h-10 rounded-full border border-accent/25 bg-accent/5 flex items-center justify-center mb-5">
+                    <point.icon size={17} className="text-accent" strokeWidth={1.5} />
                   </div>
                   <h3 className="font-medium text-foreground text-[15px] mb-2">{point.title}</h3>
                   <p className="text-[13px] text-muted-foreground leading-relaxed">{point.desc}</p>
