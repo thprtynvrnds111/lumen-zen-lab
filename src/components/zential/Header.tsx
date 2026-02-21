@@ -30,7 +30,7 @@ export function Header() {
                 className={cn(
                   "text-xs tracking-[0.15em] uppercase transition-colors",
                   item.label === "Journal" && isJournal
-                    ? "text-foreground border border-teal rounded-full px-3 py-1"
+                    ? "text-accent bg-accent/10 border border-accent/20 rounded-full px-3 py-1"
                     : "text-muted-foreground hover:text-foreground"
                 )}>
                 {item.label}
@@ -56,7 +56,7 @@ export function Header() {
                   className={cn(
                     "text-xs tracking-[0.15em] uppercase transition-colors",
                     item.label === "Journal" && isJournal
-                      ? "text-foreground border border-teal rounded-full px-3 py-1"
+                      ? "text-accent bg-accent/10 border border-accent/20 rounded-full px-3 py-1"
                       : "text-muted-foreground hover:text-foreground"
                   )}>
                   {item.label}
