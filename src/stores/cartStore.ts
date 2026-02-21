@@ -8,6 +8,7 @@ import {
   removeLineFromShopifyCart,
   storefrontApiRequest,
   CART_QUERY,
+  formatCheckoutUrl,
 } from '@/lib/shopify';
 
 export interface CartItem {
@@ -111,11 +112,8 @@ export const useCartStore = create<CartStore>()(
           if (!data) return;
           const cart = data?.data?.cart;
           if (!cart || cart.totalQuantity === 0) { clearCart(); return; }
-          // Refresh checkoutUrl if available from query
           if (cart.checkoutUrl) {
-            const url = new URL(cart.checkoutUrl);
-            url.searchParams.set('channel', 'online_store');
-            set({ checkoutUrl: url.toString() });
+            set({ checkoutUrl: formatCheckoutUrl(cart.checkoutUrl) });
           }
         } catch (e) { console.error(e); }
         finally { set({ isSyncing: false }); }
