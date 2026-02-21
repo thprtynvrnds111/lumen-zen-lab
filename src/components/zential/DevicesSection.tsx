@@ -13,6 +13,17 @@ export function DevicesSection() {
 
   const HIDDEN_HANDLES = ["medicube-collagen-elastic-jelly-moisturizing-cream", "collagen-eye-mask"];
 
+  const SUBTITLES: Record<string, string> = {
+    "body-lift": "Lift, firm and smooth skin",
+    "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": "Light therapy for brighter, rested eyes",
+    "electric-guasha-massager": "Microcurrent sculpting Gua Sha facial",
+    "electric-micro-current": "Daily microcurrent toning for lifted contours",
+    "eye-massage": "Targeted microcurrent and light for tired eyes",
+    "color-light-import-micro-current-vibration-massager": "Full-face frequency facial for glow and clarity",
+    "facial-beauty-tools-and-ems-beauty-equipment": "Precision contour wand for cheek and jaw lift",
+    "lifting-and-tightening-face-introducer": "Deep infusion for plump, hydrated skin",
+  };
+
   useEffect(() => {
     fetchProducts(12).then(p => {
       setProducts(p.filter(pr => !HIDDEN_HANDLES.includes(pr.node.handle)));
@@ -86,7 +97,7 @@ export function DevicesSection() {
                   </h3>
 
                   <p className="text-xs text-muted-foreground leading-relaxed line-clamp-1 mb-4">
-                    Professional-grade skincare technology
+                    {SUBTITLES[product.node.handle] || "Professional-grade skincare technology"}
                   </p>
 
                   <div className="flex items-center justify-between mt-auto">
