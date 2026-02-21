@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Search, User, Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { CartDrawer } from "@/components/CartDrawer";
 import { SearchOverlay } from "@/components/zential/SearchOverlay";
 
@@ -15,6 +16,8 @@ const navItems = [
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const location = useLocation();
+  const isJournal = location.pathname.startsWith("/journal");
 
   return (
     <>
@@ -24,7 +27,12 @@ export function Header() {
           <nav className="hidden lg:flex items-center gap-6">
             {navItems.slice(0, 3).map(item => (
               <Link key={item.label} to={item.href}
-                className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
+                className={cn(
+                  "text-xs tracking-[0.15em] uppercase transition-colors",
+                  item.label === "Journal" && isJournal
+                    ? "text-foreground border border-teal rounded-full px-3 py-1"
+                    : "text-muted-foreground hover:text-foreground"
+                )}>
                 {item.label}
               </Link>
             ))}
@@ -45,7 +53,12 @@ export function Header() {
             <nav className="hidden lg:flex items-center gap-6">
               {navItems.slice(3).map(item => (
                 <Link key={item.label} to={item.href}
-                  className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
+                  className={cn(
+                    "text-xs tracking-[0.15em] uppercase transition-colors",
+                    item.label === "Journal" && isJournal
+                      ? "text-foreground border border-teal rounded-full px-3 py-1"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}>
                   {item.label}
                 </Link>
               ))}
