@@ -83,7 +83,7 @@ const Journal = () => {
         {/* Hero */}
         <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-xs tracking-[0.25em] uppercase text-teal mb-4">The Journal</p>
+            <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent rounded-full px-4 py-1.5 text-[10px] tracking-[0.2em] uppercase mb-6">The Journal</div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
               Science. Ritual. Clarity.
             </h1>
