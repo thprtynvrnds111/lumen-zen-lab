@@ -28,10 +28,7 @@ export function Header() {
             {navItems.slice(0, 3).map(item => (
               <Link key={item.label} to={item.href}
                 className={cn(
-                  "text-xs tracking-[0.15em] uppercase transition-colors",
-                  item.label === "Journal" && isJournal
-                    ? "text-accent bg-accent/10 border border-accent/20 rounded-full px-3 py-1"
-                    : "text-muted-foreground hover:text-foreground"
+                  "text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors"
                 )}>
                 {item.label}
               </Link>
@@ -54,10 +51,7 @@ export function Header() {
               {navItems.slice(3).map(item => (
                 <Link key={item.label} to={item.href}
                   className={cn(
-                    "text-xs tracking-[0.15em] uppercase transition-colors",
-                    item.label === "Journal" && isJournal
-                      ? "text-accent bg-accent/10 border border-accent/20 rounded-full px-3 py-1"
-                      : "text-muted-foreground hover:text-foreground"
+                    "text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors"
                   )}>
                   {item.label}
                 </Link>
