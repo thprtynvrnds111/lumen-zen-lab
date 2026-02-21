@@ -177,7 +177,7 @@ const CART_LINES_REMOVE = `
 
 export const CART_QUERY = `query cart($id: ID!) { cart(id: $id) { id checkoutUrl totalQuantity } }`;
 
-function formatCheckoutUrl(checkoutUrl: string): string {
+export function formatCheckoutUrl(checkoutUrl: string): string {
   try {
     const url = new URL(checkoutUrl);
     // The Storefront API may return a custom domain (e.g. zentialpure.com) that
