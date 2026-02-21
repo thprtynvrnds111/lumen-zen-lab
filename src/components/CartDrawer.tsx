@@ -20,11 +20,15 @@ export function CartDrawer() {
   const [redirecting, setRedirecting] = useState(false);
 
   const handleCheckout = () => {
-    const url = useCartStore.getState().checkoutUrl;
-    if (!url) return;
+    if (items.length === 0) return;
     setRedirecting(true);
-    // Redirect to Shopify-hosted checkout
-    window.location.href = url;
+    // Build permalink-style checkout URL using numeric variant IDs
+    const lines = items.map(item => {
+      // Extract numeric ID from GID format: gid://shopify/ProductVariant/123
+      const numericId = item.variantId.split('/').pop();
+      return `${numericId}:${item.quantity}`;
+    }).join(',');
+    window.location.href = `https://0d1m9a-w7.myshopify.com/cart/${lines}?channel=online_store`;
   };
 
   return (
