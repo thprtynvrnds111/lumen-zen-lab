@@ -424,6 +424,7 @@ export function TechnologyPanels() {
 
   return (
     <section
+      id="science"
       className="relative section-padding overflow-hidden"
       style={{ background: "hsl(30 27% 95%)" }}
     >
