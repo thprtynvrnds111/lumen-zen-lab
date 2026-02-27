@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useCallback } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Search, User, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CartDrawer } from "@/components/CartDrawer";
@@ -17,7 +17,18 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const isJournal = location.pathname.startsWith("/journal");
+
+  const handleNavClick = useCallback((e: React.MouseEvent, href: string) => {
+    if (href.startsWith("/#")) {
+      const id = href.slice(2);
+      if (location.pathname === "/") {
+        e.preventDefault();
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location.pathname]);
 
   return (
     <>
@@ -27,6 +38,7 @@ export function Header() {
           <nav className="hidden lg:flex items-center gap-6">
             {navItems.slice(0, 3).map(item => (
               <Link key={item.label} to={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className={cn(
                   "text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors"
                 )}>
@@ -71,7 +83,7 @@ export function Header() {
         {mobileOpen && (
           <nav className="lg:hidden border-t border-border/30 bg-background px-6 py-4 space-y-3">
             {navItems.map(item => (
-              <Link key={item.label} to={item.href} onClick={() => setMobileOpen(false)}
+              <Link key={item.label} to={item.href} onClick={(e) => { handleNavClick(e, item.href); setMobileOpen(false); }}
                 className="block text-sm tracking-[0.1em] uppercase text-muted-foreground hover:text-foreground">
                 {item.label}
               </Link>
