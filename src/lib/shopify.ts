@@ -180,12 +180,12 @@ export const CART_QUERY = `query cart($id: ID!) { cart(id: $id) { id checkoutUrl
 export function formatCheckoutUrl(checkoutUrl: string): string {
   try {
     const url = new URL(checkoutUrl);
-    // The Storefront API may return a custom domain (e.g. zentialpure.com) that
-    // points to the Lovable app instead of Shopify. Rewrite to the real
-    // .myshopify.com domain so the browser lands on Shopify-hosted checkout.
+    // Rewrite custom domain to the real .myshopify.com domain for checkout
     if (url.hostname !== SHOPIFY_STORE_PERMANENT_DOMAIN) {
       url.hostname = SHOPIFY_STORE_PERMANENT_DOMAIN;
     }
+    // Ensure HTTPS
+    url.protocol = 'https:';
     url.searchParams.set('channel', 'online_store');
     return url.toString();
   } catch { return checkoutUrl; }
