@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ShoppingBag, Minus, Plus, X, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
+import { formatCheckoutUrl } from "@/lib/shopify";
 
 const FREE_SHIPPING_THRESHOLD = 75;
 
@@ -18,10 +19,11 @@ export function CartDrawer() {
   useEffect(() => { if (isOpen) syncCart(); }, [isOpen, syncCart]);
 
   const handleCheckout = () => {
-    const checkoutUrl = useCartStore.getState().getCheckoutUrl();
-    if (!checkoutUrl || items.length === 0) return;
-    // Use location.href to avoid popup blockers in iframes
-    window.location.href = checkoutUrl;
+    const rawUrl = useCartStore.getState().getCheckoutUrl();
+    if (!rawUrl || items.length === 0) return;
+    // Always re-format at checkout time to ensure .myshopify.com domain + https
+    const checkoutUrl = formatCheckoutUrl(rawUrl);
+    window.open(checkoutUrl, '_blank');
   };
 
   return (
