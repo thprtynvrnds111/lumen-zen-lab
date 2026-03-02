@@ -17,11 +17,18 @@ export function CartDrawer() {
 
   useEffect(() => { if (isOpen) syncCart(); }, [isOpen, syncCart]);
 
+  const [redirecting, setRedirecting] = useState(false);
+
   const handleCheckout = () => {
-    const checkoutUrl = useCartStore.getState().getCheckoutUrl();
-    if (!checkoutUrl || items.length === 0) return;
-    // Use location.href to avoid popup blockers in iframes
-    window.location.href = checkoutUrl;
+    if (items.length === 0) return;
+    setRedirecting(true);
+    // Build permalink-style checkout URL using numeric variant IDs
+    const lines = items.map(item => {
+      // Extract numeric ID from GID format: gid://shopify/ProductVariant/123
+      const numericId = item.variantId.split('/').pop();
+      return `${numericId}:${item.quantity}`;
+    }).join(',');
+    window.location.href = `https://0d1m9a-w7.myshopify.com/cart/${lines}?channel=online_store`;
   };
 
   return (
@@ -150,11 +157,14 @@ export function CartDrawer() {
             </p>
             <button
               onClick={handleCheckout}
-              disabled={isLoading || isSyncing}
+              disabled={isLoading || isSyncing || redirecting}
               className="w-full bg-foreground text-background py-3.5 rounded-full text-sm font-semibold tracking-[0.15em] uppercase hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
             >
-              {isLoading || isSyncing ? (
-                <Loader2 className="animate-spin" size={16} />
+              {isLoading || isSyncing || redirecting ? (
+                <>
+                  <Loader2 className="animate-spin" size={16} />
+                  {redirecting && <span>Redirecting to secure checkout…</span>}
+                </>
               ) : (
                 "CHECKOUT"
               )}
