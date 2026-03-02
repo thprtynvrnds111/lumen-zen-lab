@@ -180,11 +180,7 @@ export const CART_QUERY = `query cart($id: ID!) { cart(id: $id) { id checkoutUrl
 export function formatCheckoutUrl(checkoutUrl: string): string {
   try {
     const url = new URL(checkoutUrl);
-    // Rewrite custom domain to the real .myshopify.com domain for checkout
-    if (url.hostname !== SHOPIFY_STORE_PERMANENT_DOMAIN) {
-      url.hostname = SHOPIFY_STORE_PERMANENT_DOMAIN;
-    }
-    // Ensure HTTPS
+    // Use Shopify-returned checkout URL/domain directly; only enforce HTTPS
     url.protocol = 'https:';
     url.searchParams.set('channel', 'online_store');
     return url.toString();
