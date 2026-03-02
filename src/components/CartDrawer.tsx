@@ -20,8 +20,8 @@ export function CartDrawer() {
   const handleCheckout = () => {
     const checkoutUrl = useCartStore.getState().getCheckoutUrl();
     if (!checkoutUrl || items.length === 0) return;
-    window.open(checkoutUrl, '_blank');
-    setIsOpen(false);
+    // Use location.href to avoid popup blockers in iframes
+    window.location.href = checkoutUrl;
   };
 
   return (
