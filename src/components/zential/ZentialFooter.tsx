@@ -53,7 +53,7 @@ export function ZentialFooter() {
           <Link to="/" className="text-sm tracking-[0.3em] uppercase font-semibold text-background">
             Zential Pure
           </Link>
-          <p className="text-xs text-background/40">© 2025 Zential Pure. All rights reserved.</p>
+          <p className="text-xs text-background/40">© 2026 Zential Pure. All rights reserved.</p>
         </div>
       </div>
     </footer>
