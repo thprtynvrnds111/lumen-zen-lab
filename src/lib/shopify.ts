@@ -180,9 +180,7 @@ export const CART_QUERY = `query cart($id: ID!) { cart(id: $id) { id checkoutUrl
 export function formatCheckoutUrl(checkoutUrl: string): string {
   try {
     const url = new URL(checkoutUrl);
-    // Custom domain (zentialpure.com) points to Lovable, not Shopify.
-    // Rewrite to the permanent .myshopify.com domain so /cart/c/ resolves on Shopify's servers.
-    url.hostname = SHOPIFY_STORE_PERMANENT_DOMAIN;
+    // Use Shopify-returned checkout URL/domain directly; only enforce HTTPS
     url.protocol = 'https:';
     url.searchParams.set('channel', 'online_store');
     return url.toString();
