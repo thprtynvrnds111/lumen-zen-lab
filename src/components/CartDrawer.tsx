@@ -19,11 +19,17 @@ export function CartDrawer() {
   useEffect(() => { if (isOpen) syncCart(); }, [isOpen, syncCart]);
 
   const handleCheckout = () => {
+    if (items.length === 0) return;
+
     const rawUrl = useCartStore.getState().getCheckoutUrl();
-    if (!rawUrl || items.length === 0) return;
-    // Always re-format at checkout time to ensure .myshopify.com domain + https
-    const checkoutUrl = formatCheckoutUrl(rawUrl);
-    window.open(checkoutUrl, '_blank');
+    const checkoutUrl = rawUrl
+      ? formatCheckoutUrl(rawUrl)
+      : 'https://0d1m9a-w7.myshopify.com/cart/checkout?channel=online_store';
+
+    const opened = window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
+    if (!opened) {
+      window.location.href = checkoutUrl;
+    }
   };
 
   return (
