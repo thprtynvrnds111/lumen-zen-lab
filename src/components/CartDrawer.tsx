@@ -28,7 +28,7 @@ export function CartDrawer() {
       const numericId = item.variantId.split('/').pop();
       return `${numericId}:${item.quantity}`;
     }).join(',');
-    window.location.href = `https://0d1m9a-w7.myshopify.com/cart/${lines}?channel=online_store`;
+    window.location.href = `https://0d1m9a-w7.myshopify.com/cart/${lines}`;
   };
 
   return (
