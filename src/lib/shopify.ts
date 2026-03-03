@@ -177,19 +177,16 @@ const CART_LINES_REMOVE = `
 
 export const CART_QUERY = `query cart($id: ID!) { cart(id: $id) { id checkoutUrl totalQuantity } }`;
 
-export function formatCheckoutUrl(checkoutUrl: string): string {
+export const formatCheckoutUrl = (url: string): string => {
   try {
-    const url = new URL(checkoutUrl);
-    // The Storefront API may return a custom domain (e.g. zentialpure.com) that
-    // points to the Lovable app instead of Shopify. Rewrite to the real
-    // .myshopify.com domain so the browser lands on Shopify-hosted checkout.
-    if (url.hostname !== SHOPIFY_STORE_PERMANENT_DOMAIN) {
-      url.hostname = SHOPIFY_STORE_PERMANENT_DOMAIN;
-    }
-    url.searchParams.set('channel', 'online_store');
-    return url.toString();
-  } catch { return checkoutUrl; }
-}
+    const parsed = new URL(url);
+    parsed.hostname = '0d1m9a-w7.myshopify.com';
+    parsed.searchParams.delete('channel');
+    return parsed.toString();
+  } catch {
+    return url;
+  }
+};
 
 function isCartNotFoundError(userErrors: Array<{ message: string }>): boolean {
   return userErrors.some(e => e.message.toLowerCase().includes('cart not found') || e.message.toLowerCase().includes('does not exist'));
