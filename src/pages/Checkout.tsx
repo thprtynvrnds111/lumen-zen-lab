@@ -27,11 +27,8 @@ export default function Checkout() {
   const buildCheckoutHref = (url: string) => {
     try {
       const parsed = new URL(url);
-      // Ensure domain points to Shopify, not the custom domain mapped to Lovable
-      if (!parsed.hostname.endsWith('.myshopify.com')) {
-        parsed.hostname = '0d1m9a-w7.myshopify.com';
-      }
-      parsed.searchParams.set('channel', 'online_store');
+      parsed.hostname = '0d1m9a-w7.myshopify.com';
+      parsed.searchParams.delete('channel');
       return parsed.toString();
     } catch { return url; }
   };
