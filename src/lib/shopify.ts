@@ -180,7 +180,7 @@ export const CART_QUERY = `query cart($id: ID!) { cart(id: $id) { id checkoutUrl
 export const formatCheckoutUrl = (url: string): string => {
   try {
     const parsed = new URL(url);
-    parsed.hostname = '0d1m9a-w7.myshopify.com';
+    parsed.hostname = 'checkout.zentialpure.com';
     parsed.searchParams.delete('channel');
     return parsed.toString();
   } catch {

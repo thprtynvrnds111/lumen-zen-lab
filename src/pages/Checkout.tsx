@@ -27,7 +27,7 @@ export default function Checkout() {
   const buildCheckoutHref = (url: string) => {
     try {
       const parsed = new URL(url);
-      parsed.hostname = '0d1m9a-w7.myshopify.com';
+      parsed.hostname = 'checkout.zentialpure.com';
       parsed.searchParams.delete('channel');
       return parsed.toString();
     } catch { return url; }
