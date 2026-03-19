@@ -34,13 +34,13 @@ const journeySteps = [
     icon: Plane,
     title: "In Transit",
     desc: "Your parcel is handed to our trusted logistics partner. Real time tracking is sent to your inbox.",
-    time: "1–2 days",
+    time: "5–8 days",
   },
   {
     icon: Truck,
     title: "Out for Delivery",
     desc: "Your package is on its way to your door. Our carriers deliver 6 days a week across Europe.",
-    time: "2–5 days",
+    time: "1–2 days",
   },
   {
     icon: MapPin,

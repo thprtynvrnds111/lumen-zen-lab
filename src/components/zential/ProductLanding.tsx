@@ -275,7 +275,7 @@ export function ProductLanding({ config }: Props) {
               {[
                 { icon: RotateCcw, label: "30-Day Guarantee" },
                 { icon: Lock, label: "Secure Checkout" },
-                { icon: Truck, label: "Fast Shipping" },
+                { icon: Truck, label: "7–10 Day Delivery" },
               ].map(b => (
                 <div key={b.label} className="flex items-center gap-1.5 text-[11px] tracking-wide uppercase">
                   <b.icon size={13} /> {b.label}
@@ -470,7 +470,7 @@ export function ProductLanding({ config }: Props) {
           <div className="flex items-center justify-center gap-6 mt-6 text-muted-foreground">
             {[
               { icon: Shield, label: "30-Day Guarantee" },
-              { icon: Truck, label: "Free Shipping" },
+              { icon: Truck, label: "Free Shipping · 7–10 Days" },
               { icon: CreditCard, label: "Secure Payment" },
             ].map(b => (
               <div key={b.label} className="flex items-center gap-1.5 text-[11px] tracking-wide uppercase">
