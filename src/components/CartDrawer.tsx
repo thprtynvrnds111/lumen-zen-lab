@@ -22,6 +22,15 @@ export function CartDrawer() {
   const handleCheckout = () => {
     if (items.length === 0) return;
     setRedirecting(true);
+
+    // Meta Pixel: InitiateCheckout
+    if (typeof window !== "undefined" && (window as any).fbq) {
+      (window as any).fbq('track', 'InitiateCheckout', {
+        num_items: totalItems,
+        value: totalPrice,
+        currency: 'EUR',
+      });
+    }
     // Build permalink-style checkout URL using numeric variant IDs
     const lines = items.map(item => {
       // Extract numeric ID from GID format: gid://shopify/ProductVariant/123

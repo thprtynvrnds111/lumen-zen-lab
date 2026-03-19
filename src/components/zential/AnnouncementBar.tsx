@@ -4,6 +4,7 @@ const messages = [
   "30-Day Ritual Guarantee",
   "Clinically Inspired. Designed for Daily Use.",
   "Free Shipping on Orders Over €75",
+  "Delivered in 7–10 Business Days · EU Shipping",
 ];
 
 export function AnnouncementBar() {

@@ -97,6 +97,17 @@ export function ProductLanding({ config }: Props) {
       selectedOptions: variant.selectedOptions || [],
     });
 
+    // Meta Pixel: AddToCart
+    if (typeof window !== "undefined" && (window as any).fbq) {
+      (window as any).fbq('track', 'AddToCart', {
+        content_name: config.name,
+        content_ids: [variant.id],
+        content_type: 'product',
+        value: bundlePrice,
+        currency: currency,
+      });
+    }
+
     // Auto-add Collagen Face Gel for Ritual Set and Pro Set
     if (selectedBundle === "ritual-set" || selectedBundle === "pro-set") {
       try {
