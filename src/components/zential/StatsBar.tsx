@@ -43,6 +43,9 @@ export function StatsBar() {
           </div>
         ))}
       </div>
+      <p className="text-center text-xs text-background/30 mt-10 max-w-md mx-auto">
+        Based on user survey conducted by manufacturer. Individual results may vary.
+      </p>
     </section>
   );
 }

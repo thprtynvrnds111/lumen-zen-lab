@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useCartStore } from "@/stores/cartStore";
 import { PaymentBadges } from "@/components/zential/PaymentBadges";
 import { Loader2, Shield, Lock, ArrowLeft } from "lucide-react";
+// Note: PaymentBadges kept for order summary trust section
 import { storefrontApiRequest, CART_QUERY } from "@/lib/shopify";
 
 export default function Checkout() {
@@ -111,83 +112,13 @@ export default function Checkout() {
             <div className="w-12 h-px bg-border mx-auto" />
           </div>
 
-          {/* Two-column layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-12 lg:gap-16 items-start">
+          {/* Single column: order summary only */}
+          <div className="flex justify-center">
 
-            {/* LEFT: Form area */}
-            <div className="space-y-10 animate-fade-in" style={{ animationDelay: "100ms" }}>
-              {/* Contact */}
-              <section>
-                <h2 className="text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6">Contact</h2>
-                <div className="space-y-4">
-                  <input
-                    type="email"
-                    placeholder="Email address"
-                    className="w-full px-5 py-4 bg-card/60 backdrop-blur-sm border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-all duration-300 focus:border-primary/30 focus:shadow-[0_0_0_3px_hsl(343_44%_60%/0.06)]"
-                  />
-                </div>
-              </section>
-
-              {/* Shipping */}
-              <section>
-                <h2 className="text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6">Shipping</h2>
-                <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <input
-                      type="text"
-                      placeholder="First name"
-                      className="w-full px-5 py-4 bg-card/60 backdrop-blur-sm border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-all duration-300 focus:border-primary/30 focus:shadow-[0_0_0_3px_hsl(343_44%_60%/0.06)]"
-                    />
-                    <input
-                      type="text"
-                      placeholder="Last name"
-                      className="w-full px-5 py-4 bg-card/60 backdrop-blur-sm border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-all duration-300 focus:border-primary/30 focus:shadow-[0_0_0_3px_hsl(343_44%_60%/0.06)]"
-                    />
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="Address"
-                    className="w-full px-5 py-4 bg-card/60 backdrop-blur-sm border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-all duration-300 focus:border-primary/30 focus:shadow-[0_0_0_3px_hsl(343_44%_60%/0.06)]"
-                  />
-                  <div className="grid grid-cols-3 gap-4">
-                    <input
-                      type="text"
-                      placeholder="City"
-                      className="w-full px-5 py-4 bg-card/60 backdrop-blur-sm border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-all duration-300 focus:border-primary/30 focus:shadow-[0_0_0_3px_hsl(343_44%_60%/0.06)]"
-                    />
-                    <input
-                      type="text"
-                      placeholder="Postal code"
-                      className="w-full px-5 py-4 bg-card/60 backdrop-blur-sm border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-all duration-300 focus:border-primary/30 focus:shadow-[0_0_0_3px_hsl(343_44%_60%/0.06)]"
-                    />
-                    <input
-                      type="text"
-                      placeholder="Country"
-                      className="w-full px-5 py-4 bg-card/60 backdrop-blur-sm border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-all duration-300 focus:border-primary/30 focus:shadow-[0_0_0_3px_hsl(343_44%_60%/0.06)]"
-                    />
-                  </div>
-                </div>
-              </section>
-
-              {/* Payment info note */}
-              <section>
-                <h2 className="text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6">Payment</h2>
-                <div className="px-5 py-5 bg-card/40 backdrop-blur-sm border border-border/30 rounded-2xl">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Payment is handled securely through our encrypted checkout. You will be redirected to complete your payment after reviewing your order.
-                  </p>
-                  <PaymentBadges className="mt-5 justify-start" />
-                  <p className="text-[10px] tracking-[0.1em] uppercase text-muted-foreground/40 mt-4">
-                    Encrypted. Protected. Zero risk.
-                  </p>
-                </div>
-              </section>
-            </div>
-
-            {/* RIGHT: Order summary glass card */}
+            {/* Order summary glass card */}
             <div
-              className="lg:sticky lg:top-8 animate-fade-in"
-              style={{ animationDelay: "200ms" }}
+              className="w-full max-w-[480px] animate-fade-in"
+              style={{ animationDelay: "100ms" }}
             >
               <div className="bg-card/50 backdrop-blur-2xl border border-border/30 rounded-3xl p-8 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.06)]">
                 <h2 className="text-xs tracking-[0.25em] uppercase text-muted-foreground mb-8">Your Ritual</h2>

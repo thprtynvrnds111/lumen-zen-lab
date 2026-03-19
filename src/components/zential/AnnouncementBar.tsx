@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 const messages = [
   "30-Day Ritual Guarantee",
   "Clinically Inspired. Designed for Daily Use.",
+  "Free Shipping on Orders Over €75",
 ];
 
 export function AnnouncementBar() {

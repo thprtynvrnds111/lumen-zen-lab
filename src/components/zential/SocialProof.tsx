@@ -30,8 +30,8 @@ export function SocialProof() {
   return (
     <section className="section-padding bg-secondary/30">
       <div className="text-center mb-12">
-        <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Verified Experiences</p>
-        <h2 className="text-3xl md:text-4xl font-semibold">Trusted by Thousands</h2>
+        <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Early Experiences</p>
+        <h2 className="text-3xl md:text-4xl font-semibold">First to Start the Ritual</h2>
       </div>
       <div ref={scrollRef} className="overflow-hidden" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
         <div className="flex gap-6" style={{ width: 'max-content' }}>

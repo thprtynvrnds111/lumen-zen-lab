@@ -283,7 +283,7 @@ export function ProductLanding({ config }: Props) {
           <div className="flex items-center justify-center gap-1 mb-2">
             {[...Array(5)].map((_, i) => <Star key={i} size={18} className="fill-primary text-primary" />)}
           </div>
-          <p className="text-sm text-muted-foreground mb-10">1,000+ Ritual Users</p>
+          <p className="text-sm text-muted-foreground mb-10">Be among the first to start your ritual</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {config.testimonials.map((t, i) => (
               <div key={i} className="glass-card p-6 text-center">
