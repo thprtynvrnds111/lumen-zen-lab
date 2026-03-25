@@ -1,3 +1,4 @@
+import { SEO } from "@/components/SEO";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { HeroSection } from "@/components/zential/HeroSection";
@@ -13,9 +14,30 @@ import { FAQSection } from "@/components/zential/FAQSection";
 import { NewsletterSection } from "@/components/zential/NewsletterSection";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 
+const homepageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Zential Pure",
+  url: "https://zentialpure.com",
+  logo: "https://zentialpure.com/og-image.jpg",
+  description: "Clinical-luxury beauty devices for daily home use. Red light therapy, microcurrent, EMS and blue light in one device.",
+  sameAs: [],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    url: "https://zentialpure.com/support",
+  },
+};
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Zential Pure — Clinic Precision. Daily Ritual."
+        description="Clinical-luxury beauty devices for daily home use. Red light therapy, microcurrent, EMS and blue light in one device."
+        canonicalUrl="/"
+        jsonLd={homepageJsonLd}
+      />
       <AnnouncementBar />
       <Header />
       <main>
