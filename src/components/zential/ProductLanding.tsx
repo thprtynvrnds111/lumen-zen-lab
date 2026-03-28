@@ -310,7 +310,7 @@ export function ProductLanding({ config }: Props) {
       <section className="section-padding">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-secondary/20">
-            <img src={config.beforeAfter.before} alt="Lifestyle" className="w-full h-full object-cover" />
+            <img src={config.problemImage || config.beforeAfter.before} alt="Lifestyle" className="w-full h-full object-cover" />
           </div>
           <div>
             <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">The Real Issue</p>

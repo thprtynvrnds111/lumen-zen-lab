@@ -8,6 +8,13 @@ import after2Img from "@/assets/after2.jpg";
 import before3Img from "@/assets/before3.jpg";
 import after3Img from "@/assets/after3.jpg";
 
+import problemFaceIntroducer from "@/assets/problem-face-introducer.png";
+import problemFramePulse from "@/assets/problem-frame-pulse.png";
+import problemGuasha from "@/assets/problem-guasha.png";
+import problemSkinpulse from "@/assets/problem-skinpulse.png";
+import problemEyeActivator from "@/assets/problem-eye-activator.png";
+import problemFrequencyWand from "@/assets/problem-frequency-wand.png";
+
 export interface ProductConfig {
   handle: string;
   name: string;
@@ -22,6 +29,7 @@ export interface ProductConfig {
   };
   techCards: { icon: LucideIcon; title: string; desc: string }[];
   ritualSteps: { step: string; title: string; desc: string }[];
+  problemImage?: string;
   beforeAfter: { before: string; after: string };
   comparisonRows: { feature: string; zential: string | boolean; clinic: string | boolean; creams: string | boolean; generic: string | boolean }[];
   faqs: { q: string; a: string }[];
@@ -134,6 +142,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { step: "03", title: "Repeat", desc: "Complete your ritual daily. Consistency builds the definition that one session cannot." },
     ],
     beforeAfter: { before: beforeImg, after: afterImg },
+    problemImage: problemFaceIntroducer,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
   },
@@ -175,6 +184,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { step: "03", title: "Repeat", desc: "Use every morning for depuffing, or every evening for repair. Consistency reveals clarity." },
     ],
     beforeAfter: { before: before3Img, after: after3Img },
+    problemImage: problemEyeActivator,
     comparisonRows: defaultComparison,
     faqs: [
       { q: "How long until I see results?", a: "Many users notice reduced puffiness after the first session. Consistent improvement in dark circles and fine lines typically becomes visible after 2 to 3 weeks of daily use." },
@@ -223,6 +233,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { step: "03", title: "Repeat", desc: "Follow with your serum immediately after treatment. Use 3 to 5 times per week for optimal results." },
     ],
     beforeAfter: { before: beforeImg, after: afterImg },
+    problemImage: problemFrequencyWand,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
   },
@@ -264,6 +275,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { step: "03", title: "Repeat", desc: "Practice daily. Sculpting is cumulative. Each session builds on the last." },
     ],
     beforeAfter: { before: before2Img, after: after2Img },
+    problemImage: problemGuasha,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
   },
@@ -305,6 +317,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { step: "03", title: "Repeat", desc: "Use daily, morning or evening. Your skin's response compounds with consistency." },
     ],
     beforeAfter: { before: before3Img, after: after3Img },
+    problemImage: problemSkinpulse,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
   },
@@ -387,6 +400,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { step: "03", title: "Repeat", desc: "Use daily or every other day. The hands-free design makes consistency effortless." },
     ],
     beforeAfter: { before: before3Img, after: after3Img },
+    problemImage: problemFramePulse,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
   },
