@@ -142,6 +142,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { step: "03", title: "Repeat", desc: "Complete your ritual daily. Consistency builds the definition that one session cannot." },
     ],
     beforeAfter: { before: beforeImg, after: afterImg },
+    problemImage: problemFaceIntroducer,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
   },
