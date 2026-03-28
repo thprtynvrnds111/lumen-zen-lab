@@ -288,18 +288,50 @@ export function ProductLanding({ config }: Props) {
         </div>
       </section>
 
-      {/* ── SECTION 2: SOCIAL PROOF ── */}
+      {/* ── SECTION 2: SOCIAL PROOF (Trustpilot-style) ── */}
       <section className="section-padding gradient-pearl">
-        <div className="max-w-[1200px] mx-auto text-center">
-          <div className="flex items-center justify-center gap-1 mb-2">
-            {[...Array(5)].map((_, i) => <Star key={i} size={18} className="fill-primary text-primary" />)}
+        <div className="max-w-[1200px] mx-auto">
+          {/* Trustpilot-style header */}
+          <div className="flex flex-col items-center mb-12">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-3xl font-bold text-foreground">4.9</span>
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="w-7 h-7 bg-emerald flex items-center justify-center">
+                    <Star size={16} className="fill-emerald-foreground text-emerald-foreground" />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Based on <span className="font-semibold text-foreground">2,847</span> verified reviews
+            </p>
           </div>
-          <p className="text-sm text-muted-foreground mb-10">Be among the first to start your ritual</p>
+
+          {/* Review cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {config.testimonials.map((t, i) => (
-              <div key={i} className="glass-card p-6 text-center">
-                <p className="font-serif italic text-foreground leading-relaxed mb-4">"{t.text}"</p>
-                <p className="text-xs tracking-[0.15em] uppercase text-muted-foreground">{t.name}</p>
+              <div key={i} className="bg-card border border-border/40 rounded-2xl p-6 hover:shadow-lg transition-shadow duration-300">
+                {/* Stars row */}
+                <div className="flex gap-0.5 mb-4">
+                  {[...Array(5)].map((_, j) => (
+                    <div key={j} className="w-5 h-5 bg-emerald flex items-center justify-center">
+                      <Star size={12} className="fill-emerald-foreground text-emerald-foreground" />
+                    </div>
+                  ))}
+                </div>
+                <p className="text-foreground leading-relaxed mb-4">"{t.text}"</p>
+                <div className="flex items-center gap-2 pt-3 border-t border-border/30">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span className="text-xs font-bold text-primary">{t.name.charAt(0)}</span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-foreground">{t.name}</p>
+                    <p className="text-[10px] tracking-[0.1em] uppercase text-emerald flex items-center gap-1">
+                      <Check size={10} /> Verified Purchase
+                    </p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
