@@ -22,6 +22,7 @@ import FAQ from "./pages/FAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import BodyLift from "./pages/BodyLift";
+import ThankYou from "./pages/ThankYou";
 
 import NotFound from "./pages/NotFound";
 
