@@ -184,6 +184,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { step: "03", title: "Repeat", desc: "Use every morning for depuffing, or every evening for repair. Consistency reveals clarity." },
     ],
     beforeAfter: { before: before3Img, after: after3Img },
+    problemImage: problemEyeActivator,
     comparisonRows: defaultComparison,
     faqs: [
       { q: "How long until I see results?", a: "Many users notice reduced puffiness after the first session. Consistent improvement in dark circles and fine lines typically becomes visible after 2 to 3 weeks of daily use." },
