@@ -22,6 +22,7 @@ import FAQ from "./pages/FAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import BodyLift from "./pages/BodyLift";
+import ThankYou from "./pages/ThankYou";
 
 import NotFound from "./pages/NotFound";
 
@@ -49,6 +50,7 @@ function AppContent() {
       <Route path="/faq" element={<FAQ />} />
       <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<TermsOfService />} />
+      <Route path="/thank-you" element={<ThankYou />} />
       
       <Route path="*" element={<NotFound />} />
     </Routes>
