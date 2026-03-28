@@ -8,6 +8,13 @@ import after2Img from "@/assets/after2.jpg";
 import before3Img from "@/assets/before3.jpg";
 import after3Img from "@/assets/after3.jpg";
 
+import problemFaceIntroducer from "@/assets/problem-face-introducer.png";
+import problemFramePulse from "@/assets/problem-frame-pulse.png";
+import problemGuasha from "@/assets/problem-guasha.png";
+import problemSkinpulse from "@/assets/problem-skinpulse.png";
+import problemEyeActivator from "@/assets/problem-eye-activator.png";
+import problemFrequencyWand from "@/assets/problem-frequency-wand.png";
+
 export interface ProductConfig {
   handle: string;
   name: string;
