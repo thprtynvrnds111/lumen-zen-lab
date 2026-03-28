@@ -317,6 +317,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { step: "03", title: "Repeat", desc: "Use daily, morning or evening. Your skin's response compounds with consistency." },
     ],
     beforeAfter: { before: before3Img, after: after3Img },
+    problemImage: problemSkinpulse,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
   },
