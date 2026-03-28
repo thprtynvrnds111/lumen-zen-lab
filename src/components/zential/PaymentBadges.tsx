@@ -18,7 +18,7 @@ export function PaymentBadges({ className = "" }: { className?: string }) {
   return (
     <div className={`flex items-center justify-center gap-3 flex-wrap ${className}`}>
       {icons.map(({ src, alt, h }) => (
-        <img key={alt} src={src} alt={alt} className={`${h} w-auto object-contain opacity-60`} />
+        <img key={alt} src={src} alt={alt} className={`${h} w-auto object-contain opacity-80`} />
       ))}
     </div>
   );
