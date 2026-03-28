@@ -14,6 +14,7 @@ import problemGuasha from "@/assets/problem-guasha.png";
 import problemSkinpulse from "@/assets/problem-skinpulse.png";
 import problemEyeActivator from "@/assets/problem-eye-activator.png";
 import problemFrequencyWand from "@/assets/problem-frequency-wand.png";
+import problemSculptWand from "@/assets/problem-sculpt-wand.png";
 
 export interface ProductConfig {
   handle: string;
@@ -359,6 +360,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { step: "03", title: "Repeat", desc: "Daily use builds cumulative tone. Each session reinforces the structure of the last." },
     ],
     beforeAfter: { before: beforeImg, after: afterImg },
+    problemImage: problemSculptWand,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
   },
