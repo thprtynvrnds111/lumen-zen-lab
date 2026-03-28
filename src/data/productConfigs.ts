@@ -37,7 +37,7 @@ export interface ProductConfig {
 }
 
 const defaultComparison = [
-  { feature: "Cost over 6 months", zential: "One-time investment", clinic: "€1,200+", creams: "€300+", generic: "€40–€60" },
+  { feature: "Cost over 6 months", zential: "One-time investment", clinic: "€1,200+", creams: "€300+", { feature: "Cost over 6 months", zential: "One-time investment", clinic: "€1,200+", creams: "€300+", generic: "€40–€80 (repeated)" }, },
   { feature: "Appointments needed", zential: "None", clinic: "12+ visits", creams: "None", generic: "None" },
   { feature: "Long-term structural support", zential: true, clinic: true, creams: false, generic: false },
   { feature: "Pain or downtime", zential: false, clinic: true, creams: false, generic: false },
