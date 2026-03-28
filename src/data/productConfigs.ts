@@ -29,6 +29,7 @@ export interface ProductConfig {
   };
   techCards: { icon: LucideIcon; title: string; desc: string }[];
   ritualSteps: { step: string; title: string; desc: string }[];
+  problemImage?: string;
   beforeAfter: { before: string; after: string };
   comparisonRows: { feature: string; zential: string | boolean; clinic: string | boolean; creams: string | boolean; generic: string | boolean }[];
   faqs: { q: string; a: string }[];
