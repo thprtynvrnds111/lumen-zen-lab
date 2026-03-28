@@ -275,6 +275,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { step: "03", title: "Repeat", desc: "Practice daily. Sculpting is cumulative. Each session builds on the last." },
     ],
     beforeAfter: { before: before2Img, after: after2Img },
+    problemImage: problemGuasha,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
   },
