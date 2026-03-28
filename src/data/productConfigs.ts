@@ -400,6 +400,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { step: "03", title: "Repeat", desc: "Use daily or every other day. The hands-free design makes consistency effortless." },
     ],
     beforeAfter: { before: before3Img, after: after3Img },
+    problemImage: problemFramePulse,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
   },
