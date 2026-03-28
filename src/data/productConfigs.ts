@@ -233,6 +233,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { step: "03", title: "Repeat", desc: "Follow with your serum immediately after treatment. Use 3 to 5 times per week for optimal results." },
     ],
     beforeAfter: { before: beforeImg, after: afterImg },
+    problemImage: problemFrequencyWand,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
   },
