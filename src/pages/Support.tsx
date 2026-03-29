@@ -82,16 +82,48 @@ const Support = () => {
       <Header />
       <main>
         {/* Hero */}
-        <section className="py-24 md:py-36 px-6 md:px-12 lg:px-20 text-center">
-          <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent rounded-full px-4 py-1.5 text-[10px] tracking-[0.2em] uppercase mb-6">
-            Support & Care
+        <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20 text-center overflow-hidden">
+          {/* Ambient background */}
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(135deg, hsl(30 27% 95%) 0%, hsl(30 20% 92%) 40%, hsl(340 15% 93%) 70%, hsl(30 27% 95%) 100%)' }} />
+          
+          {/* Soft radial glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[900px] md:h-[900px] rounded-full pointer-events-none"
+            style={{ background: 'radial-gradient(circle, hsl(var(--accent) / 0.06) 0%, transparent 70%)' }}
+          />
+
+          {/* Floating rings */}
+          <div className="absolute top-12 left-[10%] w-32 h-32 md:w-48 md:h-48 rounded-full border border-accent/10 pointer-events-none animate-[spin_40s_linear_infinite]" />
+          <div className="absolute bottom-16 right-[8%] w-24 h-24 md:w-36 md:h-36 rounded-full border border-primary/8 pointer-events-none animate-[spin_55s_linear_infinite_reverse]" />
+          <div className="absolute top-1/3 right-[15%] w-16 h-16 md:w-24 md:h-24 rounded-full border border-muted-foreground/5 pointer-events-none animate-[spin_30s_linear_infinite]" />
+
+          {/* Soft dots */}
+          {Array.from({ length: 12 }).map((_, i) => (
+            <span
+              key={i}
+              className="absolute rounded-full bg-accent/[0.07]"
+              style={{
+                width: 3 + Math.random() * 4,
+                height: 3 + Math.random() * 4,
+                left: `${10 + Math.random() * 80}%`,
+                top: `${10 + Math.random() * 80}%`,
+                animation: `pulse ${3 + Math.random() * 4}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 5}s`,
+              }}
+            />
+          ))}
+
+          {/* Content */}
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent rounded-full px-4 py-1.5 text-[10px] tracking-[0.2em] uppercase mb-6">
+              Support & Care
+            </div>
+            <h1 className="text-3xl md:text-5xl font-semibold text-foreground mb-5 tracking-[-0.02em] leading-[1.15]">
+              We're Here<br />For Your Ritual.
+            </h1>
+            <p className="text-muted-foreground text-[15px] max-w-md mx-auto leading-relaxed">
+              Questions, returns, or guidance, our team responds within 24 hours.
+            </p>
           </div>
-          <h1 className="text-3xl md:text-5xl font-semibold text-foreground mb-5 tracking-[-0.02em] leading-[1.15]">
-            We're Here<br />For Your Ritual.
-          </h1>
-          <p className="text-muted-foreground text-[15px] max-w-md mx-auto leading-relaxed">
-            Questions, returns, or guidance, our team responds within 24 hours.
-          </p>
         </section>
 
         {/* Quick Help Cards */}
