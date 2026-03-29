@@ -48,7 +48,6 @@ const TECH_DEVICES: Record<string, string[]> = {
   ],
   bluelight: [
     "color-light-import-micro-current-vibration-massager",
-    "electric-micro-current",
     "lifting-and-tightening-face-introducer",
   ],
 };
