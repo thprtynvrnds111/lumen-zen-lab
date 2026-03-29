@@ -43,6 +43,7 @@ const TECH_DEVICES: Record<string, string[]> = {
   ems: [
     "lifting-and-tightening-face-introducer",
     "body-lift",
+    "color-light-import-micro-current-vibration-massager",
     "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
   ],
   bluelight: [
