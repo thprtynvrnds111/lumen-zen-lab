@@ -29,7 +29,7 @@ const TECH_DEVICES: Record<string, string[]> = {
   redlight: [
     "body-lift",
     "lifting-and-tightening-face-introducer",
-    "eye-massage",
+    "color-light-import-micro-current-vibration-massager",
     "electric-micro-current",
     "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
   ],
