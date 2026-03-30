@@ -1,5 +1,12 @@
-{                                                                                                                                                                                                                                                                           
-    "rewrites": [                                                                                                                                                                                                                                                           
-      { "source": "/(.*)", "destination": "/index.html" }                                                                                                                                                                                                                     
-    ]                                                                                                                                                                                                                                                                       
-  }
+{
+  "rewrites": [
+    {
+      "source": "/at-home-face-lifting-device",
+      "destination": "/at-home-face-lifting-device.html"
+    },
+    {
+      "source": "/((?!at-home-face-lifting-device).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
