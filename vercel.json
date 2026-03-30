@@ -5,7 +5,23 @@
       "destination": "/at-home-face-lifting-device.html"
     },
     {
-      "source": "/((?!at-home-face-lifting-device).*)",
+      "source": "/microcurrent-face-device",
+      "destination": "/microcurrent-face-device.html"
+    },
+    {
+      "source": "/ems-face-toning-device",
+      "destination": "/ems-face-toning-device.html"
+    },
+    {
+      "source": "/face-tightening-device-at-home",
+      "destination": "/face-tightening-device-at-home.html"
+    },
+    {
+      "source": "/best-beauty-device-for-jawline",
+      "destination": "/best-beauty-device-for-jawline.html"
+    },
+    {
+      "source": "/((?!at-home-face-lifting-device|microcurrent-face-device|ems-face-toning-device|face-tightening-device-at-home|best-beauty-device-for-jawline).*)",
       "destination": "/index.html"
     }
   ]
