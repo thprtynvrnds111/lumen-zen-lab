@@ -27,8 +27,8 @@
     --emerald: 163 65% 34%;
     --emerald-foreground: 0 0% 100%;
 
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-    --font-serif: 'Cormorant Garamond', 'Georgia', serif;
+    --font-sans: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Lora', 'Cormorant Garamond', 'Georgia', serif;
 
     --sidebar-background: 30 27% 95%;
     --sidebar-foreground: 0 0% 12%;
