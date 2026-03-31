@@ -23,6 +23,10 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import BodyLift from "./pages/BodyLift";
 import ThankYou from "./pages/ThankYou";
+import TechRedLight from "./pages/TechRedLight";
+import TechMicrocurrent from "./pages/TechMicrocurrent";
+import TechEMS from "./pages/TechEMS";
+import TechThermal from "./pages/TechThermal";
 
 import NotFound from "./pages/NotFound";
 
