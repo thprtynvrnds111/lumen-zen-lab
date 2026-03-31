@@ -30,7 +30,7 @@ export function CommunitySection() {
               className="text-sm font-medium hover:underline"
               style={{ color: '#9B5A2E' }}
             >
-              hello@zentialpure.com
+              info@zentialpure.com
             </a>
           </div>
 

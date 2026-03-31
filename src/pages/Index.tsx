@@ -3,21 +3,15 @@ import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { HeroSection } from "@/components/zential/HeroSection";
 import { TechCardsSection } from "@/components/zential/TechCardsSection";
+import { DevicesSection } from "@/components/zential/DevicesSection";
+import { RitualSection } from "@/components/zential/RitualSection";
 import { SkinFitSection } from "@/components/zential/SkinFitSection";
 import { SafetyUsageSection } from "@/components/zential/SafetyUsageSection";
 import { TransparencySection } from "@/components/zential/TransparencySection";
 import { PriceGuaranteeSection } from "@/components/zential/PriceGuaranteeSection";
-import { CommunitySection } from "@/components/zential/CommunitySection";
-import { SocialProof } from "@/components/zential/SocialProof";
-import { DevicesSection } from "@/components/zential/DevicesSection";
-import { ResultsSection } from "@/components/zential/ResultsSection";
-import { TechnologyPanels } from "@/components/zential/TechnologyPanels";
-import { RitualSection } from "@/components/zential/RitualSection";
-import { ComparisonSection } from "@/components/zential/ComparisonSection";
-import { StatsBar } from "@/components/zential/StatsBar";
 import { BundleSection } from "@/components/zential/BundleSection";
 import { FAQSection } from "@/components/zential/FAQSection";
-import { NewsletterSection } from "@/components/zential/NewsletterSection";
+import { CommunitySection } from "@/components/zential/CommunitySection";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 
 const homepageJsonLd = {
@@ -49,21 +43,15 @@ const Index = () => {
       <main>
         <HeroSection />
         <TechCardsSection />
+        <DevicesSection />
+        <RitualSection />
         <SkinFitSection />
         <SafetyUsageSection />
         <TransparencySection />
         <PriceGuaranteeSection />
-        <CommunitySection />
-        <SocialProof />
-        <DevicesSection />
-        <ResultsSection />
-        <TechnologyPanels />
-        <RitualSection />
-        <ComparisonSection />
-        <StatsBar />
         <BundleSection />
         <FAQSection />
-        <NewsletterSection />
+        <CommunitySection />
       </main>
       <ZentialFooter />
     </div>
