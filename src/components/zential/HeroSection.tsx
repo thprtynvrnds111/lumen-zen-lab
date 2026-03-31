@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/hero-ritual-v2.jpg";
 import { Sun, Zap, Activity, Flame } from "lucide-react";
 
 const modalities = [
