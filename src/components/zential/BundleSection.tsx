@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { Loader2, Check } from "lucide-react";
@@ -24,9 +23,7 @@ const bundles: Bundle[] = [
   {
     title: "Sculpt Wand",
     subtitle: "One-Time Purchase",
-    items: [
-      { handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" },
-    ],
+    items: [{ handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" }],
     price: "€69",
     savePercent: "",
     saveAmount: "",
@@ -69,13 +66,9 @@ export function BundleSection() {
     try {
       for (const bundleProduct of bundle.items) {
         const product = await fetchProductByHandle(bundleProduct.handle);
-        if (!product) {
-          toast.error(`Could not find ${bundleProduct.name}`);
-          continue;
-        }
+        if (!product) { toast.error(`Could not find ${bundleProduct.name}`); continue; }
         const variant = product.variants.edges[0]?.node;
         if (!variant) continue;
-
         await addItem({
           product: { node: product },
           variantId: variant.id,
@@ -97,58 +90,72 @@ export function BundleSection() {
   };
 
   return (
-    <section id="bundles" className="section-padding gradient-pearl">
-      <div className="text-center mb-16">
-        <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Smart Bundles</p>
-        <h2 className="text-3xl md:text-5xl font-semibold">Elevate Your Ritual.</h2>
+    <section id="bundles" className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
+      <div className="text-center mb-14">
+        <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#9B5A2E' }}>Smart Bundles</p>
+        <h2 className="font-serif italic text-3xl md:text-4xl text-foreground">Elevate Your Ritual</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
         {bundles.map(b => {
           const isLoading = loadingBundle === b.title;
           const isAdded = addedBundle === b.title;
           return (
-            <div key={b.title} className={`glass-card p-8 relative ${b.highlight ? 'ring-2 ring-primary/30' : ''}`}>
+            <div
+              key={b.title}
+              className="rounded-lg p-7 relative"
+              style={{
+                backgroundColor: b.highlight ? '#FAF7F3' : '#EFEBE5',
+                border: b.highlight ? '2px solid #C6A07C' : '1px solid #E4DFD8',
+              }}
+            >
               {b.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-4 py-1 rounded-full">
+                <span
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.15em] uppercase text-white px-4 py-1 rounded-full"
+                  style={{ backgroundColor: '#C6A07C' }}
+                >
                   Best Value
                 </span>
               )}
-              <h3 className="font-semibold text-lg mb-1">{b.title}</h3>
-              <p className="text-xs text-muted-foreground mb-4">{b.subtitle}</p>
+              <h3 className="font-serif text-lg font-bold text-foreground mb-1">{b.title}</h3>
+              <p className="text-xs text-foreground/50 mb-5">{b.subtitle}</p>
               <ul className="space-y-2 mb-6">
                 {b.items.map(item => (
-                  <li key={item.handle} className="text-sm text-muted-foreground flex items-center gap-2">
-                    <span className="w-1 h-1 rounded-full bg-accent" /> {item.name}
+                  <li key={item.handle} className="text-sm text-foreground/70 flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full" style={{ backgroundColor: '#C6A07C' }} /> {item.name}
                   </li>
                 ))}
               </ul>
-              <div className="flex items-baseline gap-3 mb-2">
-                <span className="text-2xl font-bold">{b.price}</span>
+              <div className="flex items-baseline gap-3 mb-1">
+                <span className="text-2xl font-bold text-foreground">{b.price}</span>
                 {b.savePercent && (
-                  <span className="text-xs bg-emerald/10 text-emerald px-2 py-0.5 rounded-full font-semibold">
+                  <span className="text-[10px] font-medium px-2 py-0.5 rounded-full" style={{ backgroundColor: '#C6A07C20', color: '#9B5A2E' }}>
                     Save {b.savePercent}
                   </span>
                 )}
               </div>
-              {b.saveAmount && (
-                <p className="text-sm text-emerald font-medium mb-6">You save {b.saveAmount}</p>
-              )}
+              {b.saveAmount && <p className="text-xs font-medium mb-6" style={{ color: '#9B5A2E' }}>You save {b.saveAmount}</p>}
               {!b.saveAmount && <div className="mb-6" />}
-              <Button
-                variant={b.highlight ? "ritual" : "outline-ritual"}
-                className="w-full"
+              <button
                 onClick={() => handleAddBundle(b)}
                 disabled={isLoading}
+                className={`w-full py-3 text-sm font-medium rounded-md transition-opacity hover:opacity-90 disabled:opacity-50 ${
+                  b.highlight ? 'text-white' : ''
+                }`}
+                style={{
+                  backgroundColor: b.highlight ? '#C6A07C' : 'transparent',
+                  border: b.highlight ? 'none' : '1px solid #C6A07C',
+                  color: b.highlight ? '#fff' : '#9B5A2E',
+                }}
               >
                 {isLoading ? (
-                  <><Loader2 className="animate-spin mr-2" size={14} />Adding...</>
+                  <span className="flex items-center justify-center gap-2"><Loader2 className="animate-spin" size={14} />Adding...</span>
                 ) : isAdded ? (
-                  <><Check size={14} className="mr-2" />Added!</>
+                  <span className="flex items-center justify-center gap-2"><Check size={14} />Added!</span>
                 ) : (
                   "Add Bundle"
                 )}
-              </Button>
+              </button>
             </div>
           );
         })}

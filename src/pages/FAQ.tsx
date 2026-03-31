@@ -20,7 +20,7 @@ const faqCategories = [
     icon: RotateCcw,
     items: [
       { q: "What is the 30-Day Ritual Guarantee?", a: "If you don't see visible improvement within 30 days of consistent daily use, contact us for a full refund. No lengthy process, no pressure." },
-      { q: "How do I return a product?", a: "Email support@zentialpure.com with your order number. We'll approve your request within 24 hours and provide a prepaid return label." },
+      { q: "How do I return a product?", a: "Email info@zentialpure.com with your order number. We'll approve your request within 24 hours and provide a prepaid return label." },
       { q: "Can I return opened accessories?", a: "For hygiene reasons, opened consumables (gels, pads) cannot be returned. Devices can be returned in original packaging within 30 days." },
     ],
   },

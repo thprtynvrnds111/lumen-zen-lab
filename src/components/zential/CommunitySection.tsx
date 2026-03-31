@@ -26,11 +26,11 @@ export function CommunitySection() {
           <div className="rounded-lg p-7" style={{ backgroundColor: '#EFEBE5', border: '1px solid #E4DFD8' }}>
             <p className="font-serif text-lg font-bold text-foreground mb-2">Response within 24 hours</p>
             <a
-              href="mailto:hello@zentialpure.com"
+              href="mailto:info@zentialpure.com"
               className="text-sm font-medium hover:underline"
               style={{ color: '#9B5A2E' }}
             >
-              hello@zentialpure.com
+              info@zentialpure.com
             </a>
           </div>
 

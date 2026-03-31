@@ -11,19 +11,19 @@ const faqs = [
 
 export function FAQSection() {
   return (
-    <section id="faq" className="section-padding">
-      <div className="text-center mb-16">
-        <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Questions</p>
-        <h2 className="text-3xl md:text-5xl font-semibold">Frequently Asked</h2>
-      </div>
+    <section id="faq" className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
       <div className="max-w-2xl mx-auto">
+        <div className="text-center mb-14">
+          <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#9B5A2E' }}>Questions</p>
+          <h2 className="font-serif italic text-3xl md:text-4xl text-foreground">Frequently Asked</h2>
+        </div>
         <Accordion type="single" collapsible>
           {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`faq-${i}`} className="border-border/30">
-              <AccordionTrigger className="text-left text-base font-medium hover:no-underline py-5">
+            <AccordionItem key={i} value={`faq-${i}`} style={{ borderColor: '#E4DFD8' }}>
+              <AccordionTrigger className="text-left text-sm font-medium hover:no-underline py-5 text-foreground">
                 {faq.q}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground leading-relaxed pb-5">
+              <AccordionContent className="text-sm text-foreground/60 leading-relaxed pb-5">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
