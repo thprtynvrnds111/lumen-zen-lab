@@ -2,6 +2,12 @@ import { SEO } from "@/components/SEO";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { HeroSection } from "@/components/zential/HeroSection";
+import { TechCardsSection } from "@/components/zential/TechCardsSection";
+import { SkinFitSection } from "@/components/zential/SkinFitSection";
+import { SafetyUsageSection } from "@/components/zential/SafetyUsageSection";
+import { TransparencySection } from "@/components/zential/TransparencySection";
+import { PriceGuaranteeSection } from "@/components/zential/PriceGuaranteeSection";
+import { CommunitySection } from "@/components/zential/CommunitySection";
 import { SocialProof } from "@/components/zential/SocialProof";
 import { DevicesSection } from "@/components/zential/DevicesSection";
 import { ResultsSection } from "@/components/zential/ResultsSection";
@@ -42,6 +48,12 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
+        <TechCardsSection />
+        <SkinFitSection />
+        <SafetyUsageSection />
+        <TransparencySection />
+        <PriceGuaranteeSection />
+        <CommunitySection />
         <SocialProof />
         <DevicesSection />
         <ResultsSection />
