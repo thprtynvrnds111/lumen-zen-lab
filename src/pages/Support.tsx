@@ -92,10 +92,6 @@ const Support = () => {
             style={{ background: 'radial-gradient(circle, hsl(var(--accent) / 0.06) 0%, transparent 70%)' }}
           />
 
-          {/* Floating rings */}
-          <div className="absolute top-12 left-[10%] w-32 h-32 md:w-48 md:h-48 rounded-full border border-accent/10 pointer-events-none animate-[spin_40s_linear_infinite]" />
-          <div className="absolute bottom-16 right-[8%] w-24 h-24 md:w-36 md:h-36 rounded-full border border-primary/8 pointer-events-none animate-[spin_55s_linear_infinite_reverse]" />
-          <div className="absolute top-1/3 right-[15%] w-16 h-16 md:w-24 md:h-24 rounded-full border border-muted-foreground/5 pointer-events-none animate-[spin_30s_linear_infinite]" />
 
           {/* Soft dots */}
           {Array.from({ length: 12 }).map((_, i) => (
