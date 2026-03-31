@@ -57,7 +57,7 @@ export function CartDrawer() {
             {totalItems === 0 ? "Your bag is empty" : `${totalItems} item${totalItems !== 1 ? "s" : ""}`}
           </p>
           <button
-            onClick={() => setIsOpen(false)}
+            onClick={() => closeCart()}
             className="absolute right-5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
           >
             <X size={20} />
