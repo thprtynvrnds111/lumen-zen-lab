@@ -14,17 +14,11 @@ const footerLinks = {
     { label: "Red Light", to: "/journal/red-light-clinical" },
     { label: "EMS", to: "/journal/ems-vs-microcurrent" },
   ],
-  FAQ: [
-    { label: "Efficacy & Authenticity", to: "/support#faq" },
-    { label: "Skin Type Suitability", to: "/support#faq" },
-    { label: "Safety", to: "/support#faq" },
-    { label: "Price & Value", to: "/support#faq" },
-    { label: "After-Sales", to: "/support#faq" },
-  ],
   Support: [
     { label: "Contact", to: "/support" },
     { label: "Shipping", to: "/shipping" },
     { label: "Returns", to: "/returns" },
+    { label: "FAQ", to: "/faq" },
   ],
   Legal: [
     { label: "Privacy Policy", to: "/privacy" },
@@ -36,7 +30,7 @@ export function ZentialFooter() {
   return (
     <footer className="bg-foreground text-background/70">
       <div className="section-padding">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-16">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
               <h4 className="text-xs tracking-[0.2em] uppercase text-background/40 mb-4">{category}</h4>
