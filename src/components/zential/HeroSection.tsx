@@ -50,7 +50,7 @@ export function HeroSection() {
           <button
             className="flex-1 py-3 px-6 text-sm font-medium rounded-md border transition-colors hover:bg-black/[0.03]"
             style={{ borderColor: '#C6A07C', color: '#9B5A2E' }}
-            onClick={() => document.getElementById('science')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById('technology')?.scrollIntoView({ behavior: 'smooth' })}
           >
             How It Works →
           </button>
