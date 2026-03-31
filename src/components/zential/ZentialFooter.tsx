@@ -4,23 +4,27 @@ const footerLinks = {
   Shop: [
     { label: "All Devices", to: "/#devices" },
     { label: "Bundles", to: "/#bundles" },
-    { label: "Accessories", to: "/product/medicube-collagen-elastic-jelly-moisturizing-cream" },
   ],
   Ritual: [
     { label: "The 5-Step Method", to: "/#ritual" },
     { label: "Daily Guide", to: "/journal/evening-protocol" },
-    { label: "Before & After", to: "/#results" },
   ],
   Science: [
     { label: "Microcurrent", to: "/journal/microcurrent-collagen" },
     { label: "Red Light", to: "/journal/red-light-clinical" },
     { label: "EMS", to: "/journal/ems-vs-microcurrent" },
   ],
+  FAQ: [
+    { label: "Efficacy & Authenticity", to: "/support#faq" },
+    { label: "Skin Type Suitability", to: "/support#faq" },
+    { label: "Safety", to: "/support#faq" },
+    { label: "Price & Value", to: "/support#faq" },
+    { label: "After-Sales", to: "/support#faq" },
+  ],
   Support: [
     { label: "Contact", to: "/support" },
     { label: "Shipping", to: "/shipping" },
     { label: "Returns", to: "/returns" },
-    { label: "FAQ", to: "/faq" },
   ],
   Legal: [
     { label: "Privacy Policy", to: "/privacy" },
