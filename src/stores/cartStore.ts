@@ -74,7 +74,10 @@ export const useCartStore = create<CartStore>()(
             } else if (result.cartNotFound) clearCart();
           }
         } catch (e) { console.error('Failed to add item:', e); }
-        finally { set({ isLoading: false }); }
+        finally {
+          set({ isLoading: false });
+          if (get().items.length > 0) set({ isOpen: true });
+        }
       },
 
       updateQuantity: async (variantId, quantity) => {
