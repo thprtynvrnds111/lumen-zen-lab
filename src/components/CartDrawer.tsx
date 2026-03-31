@@ -159,8 +159,8 @@ export function CartDrawer() {
               <span className="text-sm text-muted-foreground">Subtotal</span>
               <span className="text-lg font-semibold">€{totalPrice.toFixed(2)}</span>
             </div>
-            <p className="text-[11px] text-muted-foreground">
-              *Shipping, taxes, and discounts calculated at checkout.
+            <p className="text-[11px] text-muted-foreground/60 text-center">
+              Shipping, taxes & discounts calculated at checkout
             </p>
             <button
               onClick={handleCheckout}
