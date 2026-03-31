@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { fetchProducts, type ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
-import { Loader2, Star } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 export function DevicesSection() {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
@@ -48,18 +48,18 @@ export function DevicesSection() {
   };
 
   return (
-    <section id="devices" className="section-padding bg-background">
-      <div className="text-center mb-16">
-        <p className="text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-4">The Collection</p>
-        <h2 className="text-2xl md:text-4xl font-light tracking-wide text-foreground">Our Devices</h2>
+    <section id="devices" className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
+      <div className="text-center mb-14">
+        <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#9B5A2E' }}>The Collection</p>
+        <h2 className="font-serif italic text-3xl md:text-4xl text-foreground">Our Devices</h2>
       </div>
 
       {loading ? (
-        <div className="flex justify-center py-20"><Loader2 className="animate-spin text-muted-foreground" size={32} /></div>
+        <div className="flex justify-center py-20"><Loader2 className="animate-spin text-foreground/30" size={28} /></div>
       ) : products.length === 0 ? (
-        <p className="text-center text-muted-foreground">No products found</p>
+        <p className="text-center text-foreground/50 text-sm">No products found</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {products.map(product => {
             const img = product.node.images.edges[0]?.node;
             const price = product.node.priceRange.minVariantPrice;
@@ -69,11 +69,10 @@ export function DevicesSection() {
               <Link
                 key={product.node.id}
                 to={productUrl}
-                className="group flex flex-col bg-card rounded-xl overflow-hidden border-0 shadow-none hover:shadow-md transition-shadow duration-500"
-                style={{ minHeight: 480 }}
+                className="group flex flex-col rounded-lg overflow-hidden transition-shadow duration-500 hover:shadow-md"
+                style={{ backgroundColor: '#EFEBE5', border: '1px solid #E4DFD8', minHeight: 460 }}
               >
-                {/* Image — 75% of card */}
-                <div className="relative flex-[3] overflow-hidden bg-secondary/20">
+                <div className="relative flex-[3] overflow-hidden">
                   {img && (
                     <img
                       src={img.url}
@@ -83,31 +82,22 @@ export function DevicesSection() {
                   )}
                 </div>
 
-                {/* Content — 25% */}
-                <div className="flex-1 flex flex-col justify-between p-6 md:p-8">
-                  {/* Stars */}
-                  <div className="flex gap-0.5 mb-2">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={12} fill="#9A9794" stroke="none" />
-                    ))}
-                  </div>
-
-                  <h3 className="text-[13px] tracking-[0.15em] uppercase font-medium text-foreground leading-snug mb-1">
+                <div className="flex-1 flex flex-col justify-between p-6">
+                  <h3 className="text-xs tracking-[0.15em] uppercase font-medium text-foreground leading-snug mb-1">
                     {product.node.title}
                   </h3>
-
-                  <p className="text-xs text-muted-foreground leading-relaxed line-clamp-1 mb-4">
+                  <p className="text-[11px] text-foreground/50 leading-relaxed line-clamp-1 mb-4">
                     {SUBTITLES[product.node.handle] || "Professional-grade skincare technology"}
                   </p>
-
                   <div className="flex items-center justify-between mt-auto">
-                    <span className="text-sm font-normal text-foreground tracking-wide">
+                    <span className="text-sm font-medium text-foreground">
                       {price.currencyCode === "EUR" ? "€" : price.currencyCode}{parseFloat(price.amount).toFixed(2)}
                     </span>
                     <button
                       onClick={(e) => handleAdd(e, product)}
                       disabled={isCartLoading}
-                      className="text-[10px] tracking-[0.2em] uppercase font-medium px-5 py-2 rounded-full bg-secondary text-foreground hover:bg-muted transition-colors duration-300 disabled:opacity-50"
+                      className="text-[10px] tracking-[0.15em] uppercase font-medium px-4 py-2 rounded-md text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+                      style={{ backgroundColor: '#C6A07C' }}
                     >
                       Add
                     </button>
