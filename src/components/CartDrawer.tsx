@@ -6,9 +6,7 @@ import { useCartStore } from "@/stores/cartStore";
 const FREE_SHIPPING_THRESHOLD = 75;
 
 export function CartDrawer() {
-  const [isOpen, setIsOpen] = useState(false);
-  
-  const { items, isLoading, isSyncing, updateQuantity, removeItem, syncCart } = useCartStore();
+  const { items, isLoading, isSyncing, isOpen, openCart, closeCart, updateQuantity, removeItem, syncCart } = useCartStore();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + parseFloat(item.price.amount) * item.quantity, 0);
   const shippingProgress = Math.min((totalPrice / FREE_SHIPPING_THRESHOLD) * 100, 100);
@@ -41,7 +39,7 @@ export function CartDrawer() {
   };
 
   return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+    <Sheet open={isOpen} onOpenChange={(open) => open ? openCart() : closeCart()}>
       <SheetTrigger asChild>
         <button className="relative text-muted-foreground hover:text-foreground transition-colors">
           <ShoppingBag size={18} />
@@ -59,7 +57,7 @@ export function CartDrawer() {
             {totalItems === 0 ? "Your bag is empty" : `${totalItems} item${totalItems !== 1 ? "s" : ""}`}
           </p>
           <button
-            onClick={() => setIsOpen(false)}
+            onClick={() => closeCart()}
             className="absolute right-5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
           >
             <X size={20} />
