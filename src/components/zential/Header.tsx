@@ -59,7 +59,7 @@ export function Header() {
           {/* Right icons */}
           <div className="flex items-center gap-5">
             <nav className="hidden lg:flex items-center gap-6">
-              {navItems.slice(3).map(item => (
+              {navItems.slice(2).map(item => (
                 <Link key={item.label} to={item.href}
                   className={cn(
                     "text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors"
