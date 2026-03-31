@@ -6,9 +6,7 @@ import { useCartStore } from "@/stores/cartStore";
 const FREE_SHIPPING_THRESHOLD = 75;
 
 export function CartDrawer() {
-  const [isOpen, setIsOpen] = useState(false);
-  
-  const { items, isLoading, isSyncing, updateQuantity, removeItem, syncCart } = useCartStore();
+  const { items, isLoading, isSyncing, isOpen, openCart, closeCart, updateQuantity, removeItem, syncCart } = useCartStore();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + parseFloat(item.price.amount) * item.quantity, 0);
   const shippingProgress = Math.min((totalPrice / FREE_SHIPPING_THRESHOLD) * 100, 100);
