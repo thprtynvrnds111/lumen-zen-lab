@@ -14,17 +14,11 @@ const footerLinks = {
     { label: "Red Light", to: "/journal/red-light-clinical" },
     { label: "EMS", to: "/journal/ems-vs-microcurrent" },
   ],
-  FAQ: [
-    { label: "Efficacy & Authenticity", to: "/support#faq" },
-    { label: "Skin Type Suitability", to: "/support#faq" },
-    { label: "Safety", to: "/support#faq" },
-    { label: "Price & Value", to: "/support#faq" },
-    { label: "After-Sales", to: "/support#faq" },
-  ],
   Support: [
     { label: "Contact", to: "/support" },
     { label: "Shipping", to: "/shipping" },
     { label: "Returns", to: "/returns" },
+    { label: "FAQ", to: "/faq" },
   ],
   Legal: [
     { label: "Privacy Policy", to: "/privacy" },
