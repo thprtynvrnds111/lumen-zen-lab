@@ -17,19 +17,32 @@ export function RitualSection() {
 
         <div className="space-y-0">
           {steps.map((step, i) => (
-            <div key={step.num} className="flex gap-6 items-start group">
+            <div key={step.num} className="flex gap-6 items-start group cursor-default">
               <div className="flex flex-col items-center">
                 <div
-                  className="w-11 h-11 rounded-full border flex items-center justify-center text-xs font-medium transition-all duration-300"
-                  style={{ borderColor: '#C6A07C', color: '#9B5A2E' }}
+                  className="w-11 h-11 rounded-full border flex items-center justify-center text-xs font-medium transition-all duration-300 group-hover:scale-110 group-hover:shadow-md"
+                  style={{
+                    borderColor: '#C6A07C',
+                    color: '#9B5A2E',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#C6A07C';
+                    e.currentTarget.style.color = '#fff';
+                    e.currentTarget.style.borderColor = '#C6A07C';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.color = '#9B5A2E';
+                    e.currentTarget.style.borderColor = '#C6A07C';
+                  }}
                 >
                   {step.num}
                 </div>
                 {i < steps.length - 1 && <div className="w-px h-10" style={{ backgroundColor: '#D8D3CC' }} />}
               </div>
-              <div className="pb-6 pt-2.5">
-                <h3 className="font-serif text-base font-bold text-foreground mb-0.5">{step.title}</h3>
-                <p className="text-sm text-foreground/60">{step.desc}</p>
+              <div className="pb-6 pt-2.5 transition-transform duration-300 group-hover:translate-x-1">
+                <h3 className="font-serif text-base font-bold text-foreground mb-0.5 transition-colors duration-300 group-hover:text-[#9B5A2E]">{step.title}</h3>
+                <p className="text-sm text-foreground/60 transition-opacity duration-300 group-hover:opacity-100">{step.desc}</p>
               </div>
             </div>
           ))}
