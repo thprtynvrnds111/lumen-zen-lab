@@ -8,7 +8,6 @@ import { SearchOverlay } from "@/components/zential/SearchOverlay";
 const navItems = [
   { label: "Shop", href: "/#devices" },
   { label: "Ritual", href: "/#ritual" },
-  { label: "Science", href: "/#science" },
   { label: "Journal", href: "/journal" },
   { label: "Support", href: "/support" },
 ];
