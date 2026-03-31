@@ -13,8 +13,8 @@ export function HeroSection() {
   return (
     <section className="min-h-[100dvh] flex flex-col md:flex-row" style={{ backgroundColor: '#F7F4F0' }}>
       {/* Left — Image */}
-      <div className="w-full md:w-1/2 flex items-center justify-center p-8 md:p-12">
-        <div className="w-full max-w-md aspect-[3/4] rounded-md" style={{ backgroundColor: '#EDE8E2' }} />
+      <div className="w-full md:w-1/2 flex items-center justify-center overflow-hidden">
+        <img src={heroImage} alt="Zential beauty device" className="w-full h-full object-cover" />
       </div>
 
       {/* Right — Content */}
