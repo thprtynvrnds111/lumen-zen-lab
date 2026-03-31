@@ -36,8 +36,7 @@ export function HeroSection() {
           ))}
         </div>
 
-        {/* Price */}
-        <p className="text-2xl font-medium text-foreground mb-10">€84</p>
+
 
         {/* CTAs */}
         <div className="flex flex-col min-[480px]:flex-row gap-3 w-full max-w-sm">
