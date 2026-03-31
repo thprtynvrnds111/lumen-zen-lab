@@ -39,7 +39,7 @@ export function CartDrawer() {
   };
 
   return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+    <Sheet open={isOpen} onOpenChange={(open) => open ? openCart() : closeCart()}>
       <SheetTrigger asChild>
         <button className="relative text-muted-foreground hover:text-foreground transition-colors">
           <ShoppingBag size={18} />
