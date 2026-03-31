@@ -1,12 +1,12 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const faqs = [
-  { q: "How does shipping work?", a: "We offer free shipping on orders over €50. Standard delivery takes 3–5 business days within Europe." },
-  { q: "What is the return policy?", a: "We offer a 30-Day Ritual Guarantee. If you're not satisfied, return the device in its original condition for a full refund." },
-  { q: "How do the devices work?", a: "Our devices use clinically-studied technologies including microcurrent, EMS, and red light therapy to stimulate facial muscles and boost collagen production." },
-  { q: "Are the devices safe?", a: "Yes. All devices are designed with multiple safety features and use technology that has been clinically studied. Always follow the included ritual guide." },
-  { q: "Who should not use these devices?", a: "Consult your healthcare provider if you have a pacemaker, are pregnant, have epilepsy, or have active skin conditions in the treatment area." },
-  { q: "Do I need conductive gel?", a: "Yes, conductive gel is essential for optimal results and comfort. It ensures proper conductivity and protects your skin during use." },
+  { q: "Does this actually work?", a: "Yes. Our devices use clinically-studied microcurrent, EMS, and red light therapy — the same technologies used in professional clinics. Most users notice improved skin texture within 2 weeks and visible lift after 3–4 weeks of daily use." },
+  { q: "How do I know this is an authentic device?", a: "Every Zential device ships with a unique serial number and authenticity seal. We sell exclusively through our official store — no third-party resellers — so you always receive a genuine product with full warranty." },
+  { q: "Will this work on my skin type?", a: "Our devices are effective on all skin types and tones. Start at the lowest intensity and increase gradually. If you have sensitive skin, mild initial redness is normal and subsides within minutes." },
+  { q: "Is it safe to use every day?", a: "Yes. All devices include multiple safety features and auto-shutoff protection. Start with 5-minute sessions daily and follow the included ritual guide. Consult your physician if you have a pacemaker, are pregnant, or have epilepsy." },
+  { q: "Is it worth the investment?", a: "One device replaces hundreds of euros in monthly clinic visits. With daily 5-minute rituals, you get professional-grade results at home — backed by our 30-Day Ritual Guarantee." },
+  { q: "What if I need help after my purchase?", a: "Our support team responds within 24 hours. You're covered by a 30-Day Ritual Guarantee, easy returns, and lifetime access to ritual guides and tips." },
 ];
 
 export function FAQSection() {
