@@ -89,17 +89,14 @@ export function TechnologyPage({
             <h2 className="font-serif italic text-2xl md:text-3xl text-foreground mb-8">Referenced Studies</h2>
             <div className="space-y-5">
               {studies.map((s, i) => (
-                <a
+                <div
                   key={i}
-                  href={s.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block rounded-lg p-5 transition-shadow duration-300 hover:shadow-md"
+                  className="block rounded-lg p-5 transition-shadow duration-300 hover:shadow-md cursor-default"
                   style={{ backgroundColor: '#EFEBE5', border: '1px solid #E4DFD8' }}
                 >
                   <p className="text-sm font-medium text-foreground mb-1">{s.title}</p>
                   <p className="text-xs text-foreground/50">{s.source} · {s.year}</p>
-                </a>
+                </div>
               ))}
             </div>
           </div>
