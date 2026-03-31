@@ -35,7 +35,7 @@ export function Header() {
         <div className="flex items-center justify-between px-6 md:px-12 lg:px-20 h-16">
           {/* Left nav */}
           <nav className="hidden lg:flex items-center gap-6">
-            {navItems.slice(0, 3).map(item => (
+            {navItems.slice(0, 2).map(item => (
               <Link key={item.label} to={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
                 className={cn(
