@@ -1,4 +1,4 @@
-export function TransparencySection() {
+import { Link } from "react-router-dom";
   return (
     <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#EDE9E3' }}>
       <div className="max-w-2xl mx-auto">
