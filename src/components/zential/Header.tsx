@@ -9,7 +9,6 @@ const navItems = [
   { label: "Shop", href: "/#devices" },
   { label: "Ritual", href: "/#ritual" },
   { label: "Journal", href: "/journal" },
-  { label: "Support", href: "/support" },
 ];
 
 export function Header() {
