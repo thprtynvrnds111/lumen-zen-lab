@@ -18,42 +18,43 @@ const quickCards = [
 
 const faqCategories = [
   {
-    label: "Shipping",
-    icon: Truck,
+    label: "Efficacy & Authenticity",
+    icon: ShieldCheck,
     items: [
-      { q: "How long does shipping take in NL / EU?", a: "Orders within the Netherlands typically arrive in 2 to 3 business days. EU wide delivery takes 3 to 7 business days depending on destination. You'll receive tracking information via email once your order ships." },
-      { q: "Do you ship internationally?", a: "Yes. We ship to most countries worldwide. International orders typically take 7 to 14 business days. Customs duties and import taxes may apply depending on your country's regulations." },
+      { q: "Does this actually work?", a: "Yes. Our devices use clinically-studied microcurrent, EMS, and red light therapy — the same technologies found in professional clinics. Most users notice improved skin texture within 2 weeks and visible lift after 3–4 weeks of daily use." },
+      { q: "How do I know this is an authentic device?", a: "Every Zential device ships with a unique serial number and authenticity seal. We sell exclusively through our official store — no third-party resellers — so you always receive a genuine product with full warranty." },
     ],
   },
   {
-    label: "Returns",
-    icon: RotateCcw,
-    items: [
-      { q: "What is the 30-Day Ritual Guarantee?", a: "If you don't feel visible improvement within 30 days of consistent daily use, contact us for a full refund. No lengthy process, no pressure. We believe in the technology, and we believe in your experience." },
-    ],
-  },
-  {
-    label: "Product Usage",
+    label: "Skin Type Suitability",
     icon: Heart,
     items: [
-      { q: "Can I use the device daily?", a: "Yes. Our devices are designed for daily use. We recommend starting with 5 minute sessions and gradually increasing as your skin adjusts. Consistency is the key to visible results." },
-      { q: "Do I need conductive gel?", a: "For microcurrent devices, a conductive gel or serum is recommended to ensure optimal current delivery and comfortable gliding. Water-based serums work well as an alternative." },
+      { q: "Will this work on my skin type?", a: "Our devices are effective on all skin types and tones. Start at the lowest intensity and increase gradually. If you have sensitive skin, mild initial redness is normal and subsides within minutes." },
+      { q: "Do I need conductive gel?", a: "For microcurrent devices, a conductive gel or water-based serum is essential for optimal current delivery and skin protection. Our Collagen Face Gel is formulated specifically for this." },
     ],
   },
   {
     label: "Safety",
-    icon: ShieldCheck,
+    icon: AlertTriangle,
     items: [
+      { q: "Is it safe to use every day?", a: "Yes. All devices include multiple safety features and auto-shutoff protection. Start with 5-minute sessions daily and follow the included ritual guide. Consult your physician if you have a pacemaker, are pregnant, or have epilepsy." },
       { q: "Is it safe with sensitive skin?", a: "Yes. Start at the lowest intensity setting and gradually increase. If you experience persistent irritation beyond mild initial redness, discontinue use and consult a dermatologist." },
-      { q: "Who should not use microcurrent devices?", a: "Do not use if you have a pacemaker, are pregnant, have active skin infections, epilepsy, or metal implants in the treatment area. Always consult your physician if you have a medical condition." },
-      { q: "What if I experience mild redness?", a: "Mild, temporary redness after use is normal, it indicates increased circulation. It should subside within 15 to 30 minutes. If redness persists, reduce intensity or frequency of use." },
     ],
   },
   {
-    label: "Payment",
+    label: "Price & Value",
     icon: CreditCard,
     items: [
-      { q: "What payment methods do you accept?", a: "We accept Visa, Mastercard, American Express, iDEAL, Bancontact, Klarna, Shop Pay, Apple Pay, and Google Pay. All transactions are securely processed." },
+      { q: "Is it worth the investment?", a: "One device replaces hundreds of euros in monthly clinic visits. With daily 5-minute rituals, you get professional-grade results at home — backed by our 30-Day Ritual Guarantee." },
+      { q: "Do you offer payment plans?", a: "Yes — Klarna is available at checkout, allowing you to split your purchase into interest-free installments." },
+    ],
+  },
+  {
+    label: "After-Sales",
+    icon: MessageCircle,
+    items: [
+      { q: "What if I need help after my purchase?", a: "Our support team responds within 24 hours. You're covered by a 30-Day Ritual Guarantee, easy returns, and lifetime access to ritual guides and tips." },
+      { q: "What is the 30-Day Ritual Guarantee?", a: "If you don't feel visible improvement within 30 days of consistent daily use, contact us for a full refund. No lengthy process, no pressure." },
     ],
   },
 ];
