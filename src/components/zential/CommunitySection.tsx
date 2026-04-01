@@ -40,7 +40,7 @@ export function CommunitySection() {
             <p className="text-sm text-foreground/70 leading-relaxed mb-5">
               We're giving 15 devices to real people for 30 days. No script. No requirement to say it works. Apply below.
             </p>
-            <form onSubmit={handleApply} className="flex gap-3">
+            <form onSubmit={handleApply} className="flex flex-col min-[400px]:flex-row gap-3">
               <input
                 type="email"
                 placeholder="your@email.com"
