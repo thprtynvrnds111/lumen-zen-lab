@@ -2,9 +2,12 @@ import { SEO } from "@/components/SEO";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { HeroSection } from "@/components/zential/HeroSection";
+import { AsSeenInStrip } from "@/components/zential/AsSeenInStrip";
 import { TechCardsSection } from "@/components/zential/TechCardsSection";
 import { DevicesSection } from "@/components/zential/DevicesSection";
+import { EditorialBreak } from "@/components/zential/EditorialBreak";
 import { RitualSection } from "@/components/zential/RitualSection";
+import { ImageDivider } from "@/components/zential/ImageDivider";
 import { SkinFitSection } from "@/components/zential/SkinFitSection";
 import { SafetyUsageSection } from "@/components/zential/SafetyUsageSection";
 import { TransparencySection } from "@/components/zential/TransparencySection";
@@ -13,6 +16,7 @@ import { BundleSection } from "@/components/zential/BundleSection";
 import { FAQSection } from "@/components/zential/FAQSection";
 import { CommunitySection } from "@/components/zential/CommunitySection";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
+import lifestyleBody from "@/assets/lifestyle-body.jpg";
 
 const homepageJsonLd = {
   "@context": "https://schema.org",
@@ -42,9 +46,16 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
+        <AsSeenInStrip />
         <TechCardsSection />
         <DevicesSection />
+        <EditorialBreak />
         <RitualSection />
+        <ImageDivider
+          src={lifestyleBody}
+          alt="Woman with Zential device in urban setting"
+          quote="Clinic results. Your schedule."
+        />
         <SkinFitSection />
         <SafetyUsageSection />
         <TransparencySection />
