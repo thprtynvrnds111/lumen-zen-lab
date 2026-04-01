@@ -4,12 +4,14 @@ import { fetchProducts, type ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export function DevicesSection() {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const addItem = useCartStore(s => s.addItem);
   const isCartLoading = useCartStore(s => s.isLoading);
+  const ref = useScrollReveal<HTMLElement>();
 
   const HIDDEN_HANDLES = ["medicube-collagen-elastic-jelly-moisturizing-cream", "collagen-eye-mask"];
 
@@ -48,7 +50,7 @@ export function DevicesSection() {
   };
 
   return (
-    <section id="devices" className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
+    <section ref={ref} id="devices" className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
       <div className="text-center mb-14">
         <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#9B5A2E' }}>The Collection</p>
         <h2 className="font-serif italic text-3xl md:text-4xl text-foreground">Our Devices</h2>
@@ -69,7 +71,7 @@ export function DevicesSection() {
               <Link
                 key={product.node.id}
                 to={productUrl}
-                className="group flex flex-col rounded-lg overflow-hidden transition-shadow duration-500 hover:shadow-md"
+                className="group flex flex-col rounded-xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                 style={{ backgroundColor: '#EFEBE5', border: '1px solid #E4DFD8', minHeight: 460 }}
               >
                 <div className="relative flex-[3] overflow-hidden">
@@ -77,9 +79,11 @@ export function DevicesSection() {
                     <img
                       src={img.url}
                       alt={img.altText || product.node.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   )}
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
                 </div>
 
                 <div className="flex-1 flex flex-col justify-between p-6">
@@ -96,7 +100,7 @@ export function DevicesSection() {
                     <button
                       onClick={(e) => handleAdd(e, product)}
                       disabled={isCartLoading}
-                      className="text-[10px] tracking-[0.15em] uppercase font-medium px-4 py-2 rounded-md text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+                      className="text-[10px] tracking-[0.15em] uppercase font-medium px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:shadow-md hover:scale-105 disabled:opacity-50"
                       style={{ backgroundColor: '#C6A07C' }}
                     >
                       Add
