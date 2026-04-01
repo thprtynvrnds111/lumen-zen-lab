@@ -29,9 +29,9 @@ const cards = [
 
 export function TechCardsSection() {
   return (
-    <section id="technology" className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
+    <section id="technology" className="px-6 md:px-12 lg:px-20 py-12 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
       <div className="max-w-5xl mx-auto">
-        <h2 className="font-serif italic text-3xl md:text-4xl text-foreground mb-14 text-center">
+        <h2 className="font-serif italic text-3xl md:text-4xl text-foreground mb-8 md:mb-14 text-center">
           The science behind it
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

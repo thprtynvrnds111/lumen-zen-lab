@@ -11,7 +11,7 @@ const modalities = [
 
 export function HeroSection() {
   return (
-    <section className="min-h-[100dvh] flex flex-col md:flex-row" style={{ backgroundColor: '#F7F4F0' }}>
+    <section className="flex flex-col md:min-h-[100dvh] md:flex-row" style={{ backgroundColor: '#F7F4F0' }}>
       {/* Left — Image */}
       <div className="w-full md:w-1/2 flex items-center justify-center overflow-hidden">
         <img src={heroImage} alt="Zential beauty device" className="w-full h-full object-cover" />
