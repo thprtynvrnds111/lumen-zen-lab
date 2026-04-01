@@ -3,31 +3,17 @@ import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { Loader2, Check } from "lucide-react";
 import { toast } from "sonner";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-interface BundleProduct {
-  handle: string;
-  name: string;
-}
-
-interface Bundle {
-  title: string;
-  subtitle: string;
-  items: BundleProduct[];
-  price: string;
-  savePercent: string;
-  saveAmount: string;
-  highlight: boolean;
-}
+interface BundleProduct { handle: string; name: string; }
+interface Bundle { title: string; subtitle: string; items: BundleProduct[]; price: string; savePercent: string; saveAmount: string; highlight: boolean; }
 
 const bundles: Bundle[] = [
   {
     title: "Sculpt Wand",
     subtitle: "One-Time Purchase",
     items: [{ handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" }],
-    price: "€69",
-    savePercent: "",
-    saveAmount: "",
-    highlight: false,
+    price: "€69", savePercent: "", saveAmount: "", highlight: false,
   },
   {
     title: "Sculpt Wand Ritual Set",
@@ -36,10 +22,7 @@ const bundles: Bundle[] = [
       { handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" },
       { handle: "medicube-collagen-elastic-jelly-moisturizing-cream", name: "Collagen Gel" },
     ],
-    price: "€89",
-    savePercent: "16%",
-    saveAmount: "€16",
-    highlight: true,
+    price: "€89", savePercent: "16%", saveAmount: "€16", highlight: true,
   },
   {
     title: "Sculpt Wand Pro Set",
@@ -49,10 +32,7 @@ const bundles: Bundle[] = [
       { handle: "medicube-collagen-elastic-jelly-moisturizing-cream", name: "Collagen Gel" },
       { handle: "collagen-eye-mask", name: "PDRN Mask" },
     ],
-    price: "€109",
-    savePercent: "20%",
-    saveAmount: "€24",
-    highlight: false,
+    price: "€109", savePercent: "20%", saveAmount: "€24", highlight: false,
   },
 ];
 
@@ -60,6 +40,7 @@ export function BundleSection() {
   const [loadingBundle, setLoadingBundle] = useState<string | null>(null);
   const [addedBundle, setAddedBundle] = useState<string | null>(null);
   const addItem = useCartStore(state => state.addItem);
+  const ref = useScrollReveal<HTMLElement>();
 
   const handleAddBundle = async (bundle: Bundle) => {
     setLoadingBundle(bundle.title);
@@ -71,10 +52,7 @@ export function BundleSection() {
         if (!variant) continue;
         await addItem({
           product: { node: product },
-          variantId: variant.id,
-          variantTitle: variant.title,
-          price: variant.price,
-          quantity: 1,
+          variantId: variant.id, variantTitle: variant.title, price: variant.price, quantity: 1,
           selectedOptions: variant.selectedOptions || [],
         });
       }
@@ -84,18 +62,15 @@ export function BundleSection() {
     } catch (e) {
       console.error("Failed to add bundle:", e);
       toast.error("Something went wrong. Please try again.");
-    } finally {
-      setLoadingBundle(null);
-    }
+    } finally { setLoadingBundle(null); }
   };
 
   return (
-    <section id="bundles" className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
+    <section ref={ref} id="bundles" className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
       <div className="text-center mb-14">
         <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#9B5A2E' }}>Smart Bundles</p>
         <h2 className="font-serif italic text-3xl md:text-4xl text-foreground">Elevate Your Ritual</h2>
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
         {bundles.map(b => {
           const isLoading = loadingBundle === b.title;
@@ -103,17 +78,14 @@ export function BundleSection() {
           return (
             <div
               key={b.title}
-              className="rounded-lg p-7 relative"
+              className="rounded-xl p-7 relative transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
               style={{
                 backgroundColor: b.highlight ? '#FAF7F3' : '#EFEBE5',
                 border: b.highlight ? '2px solid #C6A07C' : '1px solid #E4DFD8',
               }}
             >
               {b.highlight && (
-                <span
-                  className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.15em] uppercase text-white px-4 py-1 rounded-full"
-                  style={{ backgroundColor: '#C6A07C' }}
-                >
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.15em] uppercase text-white px-4 py-1 rounded-full" style={{ backgroundColor: '#C6A07C' }}>
                   Best Value
                 </span>
               )}
@@ -139,9 +111,7 @@ export function BundleSection() {
               <button
                 onClick={() => handleAddBundle(b)}
                 disabled={isLoading}
-                className={`w-full py-3 text-sm font-medium rounded-md transition-opacity hover:opacity-90 disabled:opacity-50 ${
-                  b.highlight ? 'text-white' : ''
-                }`}
+                className={`w-full py-3 text-sm font-medium rounded-full transition-all duration-300 hover:shadow-md hover:scale-[1.02] disabled:opacity-50 ${b.highlight ? 'text-white' : ''}`}
                 style={{
                   backgroundColor: b.highlight ? '#C6A07C' : 'transparent',
                   border: b.highlight ? 'none' : '1px solid #C6A07C',
@@ -152,9 +122,7 @@ export function BundleSection() {
                   <span className="flex items-center justify-center gap-2"><Loader2 className="animate-spin" size={14} />Adding...</span>
                 ) : isAdded ? (
                   <span className="flex items-center justify-center gap-2"><Check size={14} />Added!</span>
-                ) : (
-                  "Add Bundle"
-                )}
+                ) : "Add Bundle"}
               </button>
             </div>
           );

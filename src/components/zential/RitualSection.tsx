@@ -1,3 +1,5 @@
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+
 const steps = [
   { num: "01", title: "Cleanse", desc: "Start with a clean canvas" },
   { num: "02", title: "Apply Gel", desc: "Enhance conductivity for optimal results" },
@@ -7,8 +9,10 @@ const steps = [
 ];
 
 export function RitualSection() {
+  const ref = useScrollReveal<HTMLElement>();
+
   return (
-    <section id="ritual" className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#EDE9E3' }}>
+    <section ref={ref} id="ritual" className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#EDE9E3' }}>
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-14">
           <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#9B5A2E' }}>The Ritual</p>
@@ -21,19 +25,14 @@ export function RitualSection() {
               <div className="flex flex-col items-center">
                 <div
                   className="w-11 h-11 rounded-full border flex items-center justify-center text-xs font-medium transition-all duration-300 group-hover:scale-110 group-hover:shadow-md"
-                  style={{
-                    borderColor: '#C6A07C',
-                    color: '#9B5A2E',
-                  }}
+                  style={{ borderColor: '#C6A07C', color: '#9B5A2E' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = '#C6A07C';
                     e.currentTarget.style.color = '#fff';
-                    e.currentTarget.style.borderColor = '#C6A07C';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = 'transparent';
                     e.currentTarget.style.color = '#9B5A2E';
-                    e.currentTarget.style.borderColor = '#C6A07C';
                   }}
                 >
                   {step.num}
