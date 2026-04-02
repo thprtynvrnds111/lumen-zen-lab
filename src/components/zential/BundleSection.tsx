@@ -73,7 +73,7 @@ export function BundleSection() {
         <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#9B5A2E' }}>Smart Bundles</p>
         <h2 className="font-serif italic text-3xl md:text-4xl text-foreground">Elevate Your Ritual</h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto relative z-10">
         {bundles.map(b => {
           const isLoading = loadingBundle === b.title;
           const isAdded = addedBundle === b.title;
