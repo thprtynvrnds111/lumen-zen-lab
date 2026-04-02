@@ -17,7 +17,7 @@ export function FAQSection() {
   return (
     <section ref={ref} id="faq" className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#F7F4F0' }}>
       <BubbleBackground />
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-2xl mx-auto relative z-10">
         <div className="text-center mb-14">
           <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#9B5A2E' }}>Questions</p>
           <h2 className="font-serif italic text-3xl md:text-4xl text-foreground">Frequently Asked</h2>
