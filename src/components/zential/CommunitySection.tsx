@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 export function CommunitySection() {
   const [email, setEmail] = useState("");
