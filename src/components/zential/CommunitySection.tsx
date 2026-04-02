@@ -59,10 +59,11 @@ export function CommunitySection() {
               />
               <button
                 type="submit"
-                className="px-5 py-2.5 text-sm font-medium text-white rounded-full transition-all duration-300 hover:shadow-md hover:scale-105 whitespace-nowrap"
+                disabled={submitting}
+                className="px-5 py-2.5 text-sm font-medium text-white rounded-full transition-all duration-300 hover:shadow-md hover:scale-105 whitespace-nowrap disabled:opacity-60"
                 style={{ backgroundColor: '#C6A07C' }}
               >
-                Apply
+                {submitting ? 'Submitting…' : 'Apply'}
               </button>
             </form>
           </div>
