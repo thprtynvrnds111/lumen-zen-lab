@@ -2,6 +2,7 @@ import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { NewsletterSection } from "@/components/zential/NewsletterSection";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 import { Link } from "react-router-dom";
 
 const articles = [
