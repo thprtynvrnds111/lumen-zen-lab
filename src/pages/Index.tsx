@@ -6,6 +6,7 @@ import { AsSeenInStrip } from "@/components/zential/AsSeenInStrip";
 import { TechCardsSection } from "@/components/zential/TechCardsSection";
 import { DevicesSection } from "@/components/zential/DevicesSection";
 import { EditorialBreak } from "@/components/zential/EditorialBreak";
+import { UGCStrip } from "@/components/zential/UGCStrip";
 import { RitualSection } from "@/components/zential/RitualSection";
 import { ImageDivider } from "@/components/zential/ImageDivider";
 import { SkinFitSection } from "@/components/zential/SkinFitSection";
@@ -49,6 +50,7 @@ const Index = () => {
         <AsSeenInStrip />
         <TechCardsSection />
         <DevicesSection />
+        <UGCStrip />
         <EditorialBreak />
         <RitualSection />
         <ImageDivider
