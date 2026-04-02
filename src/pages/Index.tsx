@@ -50,6 +50,7 @@ const Index = () => {
         <AsSeenInStrip />
         <TechCardsSection />
         <DevicesSection />
+        <UGCStrip />
         <EditorialBreak />
         <RitualSection />
         <ImageDivider
