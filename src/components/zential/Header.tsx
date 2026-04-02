@@ -74,9 +74,6 @@ export function Header() {
             <button onClick={() => setSearchOpen(true)} className="text-muted-foreground hover:text-foreground transition-colors">
               <Search size={18} />
             </button>
-            <button className="hidden md:block text-muted-foreground hover:text-foreground transition-colors">
-              <User size={18} />
-            </button>
             <CartDrawer />
           </div>
         </div>
