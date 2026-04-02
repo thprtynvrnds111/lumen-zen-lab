@@ -1,4 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 export function SafetyUsageSection() {
   const ref = useScrollReveal<HTMLElement>();
