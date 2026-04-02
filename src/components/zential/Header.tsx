@@ -33,7 +33,7 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/30">
-        <div className="flex items-center justify-between px-6 md:px-12 lg:px-20 h-16">
+        <div className="flex items-center justify-between px-4 md:px-12 lg:px-20 h-16">
           {/* Left nav */}
           <nav className="hidden lg:flex items-center gap-6">
             {navItems.slice(0, 2).map(item => (
@@ -54,8 +54,8 @@ export function Header() {
 
           {/* Center logo */}
           <Link to="/" className="absolute left-1/2 -translate-x-1/2">
-            <span className="text-lg tracking-[0.3em] uppercase font-semibold inline-flex items-center">
-              Zential Pure<img src={zentialFlower} alt="" className="inline-block h-[2em] w-auto ml-1.5 opacity-80 animate-flower-breathe" />
+            <span className="text-sm md:text-lg tracking-[0.2em] md:tracking-[0.3em] uppercase font-semibold inline-flex items-center whitespace-nowrap">
+              Zential Pure<img src={zentialFlower} alt="" className="inline-block h-[1.6em] md:h-[2em] w-auto ml-1 md:ml-1.5 opacity-80 animate-flower-breathe" />
             </span>
           </Link>
 
