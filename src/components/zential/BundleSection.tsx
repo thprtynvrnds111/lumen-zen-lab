@@ -4,6 +4,7 @@ import { fetchProductByHandle } from "@/lib/shopify";
 import { Loader2, Check } from "lucide-react";
 import { toast } from "sonner";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 interface BundleProduct { handle: string; name: string; }
 interface Bundle { title: string; subtitle: string; items: BundleProduct[]; price: string; savePercent: string; saveAmount: string; highlight: boolean; }
