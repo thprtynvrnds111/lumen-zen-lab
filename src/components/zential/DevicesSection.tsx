@@ -80,7 +80,7 @@ export function DevicesSection() {
       ) : products.length === 0 ? (
         <p className="text-center text-foreground/50 text-sm">No products found</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 relative z-10">
           {products.map(product => {
             const img = product.node.images.edges[0]?.node;
             const price = product.node.priceRange.minVariantPrice;
