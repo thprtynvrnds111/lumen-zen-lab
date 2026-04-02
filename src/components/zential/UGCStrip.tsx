@@ -6,7 +6,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 const photos = [
   { src: ugc1, alt: "Customer unboxing Zential Pure device at home", caption: "Just arrived — can't wait to start my ritual ✨" },
   { src: unboxingFounder, alt: "Founder packing Zential Pure orders", caption: "Every order packed with care by our team" },
-  { src: ugc2, alt: "Zential Pure device unboxing close-up", caption: "The packaging is as premium as the device 🤍" },
+  { src: ugc2, alt: "Woman using Zential Pure red light device in bathroom mirror selfie", caption: "My evening ritual — red light never felt so luxurious 🤍" },
 ];
 
 export function UGCStrip() {
