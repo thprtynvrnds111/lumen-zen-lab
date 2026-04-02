@@ -25,7 +25,7 @@ export function UGCStrip() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
         {photos.map((p, i) => (
           <div key={i} className="group relative rounded-xl overflow-hidden" style={{ border: '1px solid #E4DFD8' }}>
             <div className="aspect-[4/5] overflow-hidden">
