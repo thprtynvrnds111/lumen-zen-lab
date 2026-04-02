@@ -1,4 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 const steps = [
   { num: "01", title: "Cleanse", desc: "Start with a clean canvas" },
