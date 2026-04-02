@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
