@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import zentialFlower from "@/assets/zential-flower.png";
-import { Search, User, Menu, X } from "lucide-react";
+import { Search, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CartDrawer } from "@/components/CartDrawer";
 import { SearchOverlay } from "@/components/zential/SearchOverlay";
