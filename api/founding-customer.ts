@@ -25,7 +25,7 @@ export default async function handler(req: any, res: any) {
     }
 
     const shopifyRes = await fetch(
-      'https://zentialpure.myshopify.com/admin/api/2024-01/customers.json',
+      'https://0d1m9a-w7.myshopify.com/admin/api/2024-01/customers.json',
       {
         method: 'POST',
         headers: {
