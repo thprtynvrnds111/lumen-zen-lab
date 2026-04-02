@@ -27,6 +27,7 @@ export function DevicesSection() {
   };
 
   const SORT_ORDER = [
+    "lifting-and-tightening-face-introducer",
     "body-lift",
     "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
     "electric-micro-current",
@@ -34,7 +35,6 @@ export function DevicesSection() {
     "eye-massage",
     "facial-beauty-tools-and-ems-beauty-equipment",
     "color-light-import-micro-current-vibration-massager",
-    "lifting-and-tightening-face-introducer",
   ];
 
   useEffect(() => {
