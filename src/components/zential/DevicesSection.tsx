@@ -5,6 +5,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 export function DevicesSection() {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
