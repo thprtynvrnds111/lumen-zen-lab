@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 export function CommunitySection() {
   const [email, setEmail] = useState("");
@@ -32,8 +33,9 @@ export function CommunitySection() {
   };
 
   return (
-    <section ref={ref} className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
-      <div className="max-w-5xl mx-auto">
+    <section ref={ref} className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#F7F4F0' }}>
+      <BubbleBackground />
+      <div className="max-w-5xl mx-auto relative z-10">
         <h2 className="font-serif italic text-3xl md:text-4xl text-foreground mb-14 text-center">
           Built with our first customers
         </h2>

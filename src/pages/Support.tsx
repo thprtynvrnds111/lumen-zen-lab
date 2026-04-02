@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
@@ -93,21 +94,7 @@ const Support = () => {
           />
 
 
-          {/* Soft dots */}
-          {Array.from({ length: 12 }).map((_, i) => (
-            <span
-              key={i}
-              className="absolute rounded-full bg-accent/[0.07]"
-              style={{
-                width: 3 + Math.random() * 4,
-                height: 3 + Math.random() * 4,
-                left: `${10 + Math.random() * 80}%`,
-                top: `${10 + Math.random() * 80}%`,
-                animation: `pulse ${3 + Math.random() * 4}s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 5}s`,
-              }}
-            />
-          ))}
+          <BubbleBackground />
 
           {/* Content */}
           <div className="relative z-10">

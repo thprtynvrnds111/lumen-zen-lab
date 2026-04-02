@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import zentialFlower from "@/assets/zential-flower.png";
-import { Search, User, Menu, X } from "lucide-react";
+import { Search, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CartDrawer } from "@/components/CartDrawer";
 import { SearchOverlay } from "@/components/zential/SearchOverlay";
@@ -73,9 +73,6 @@ export function Header() {
             </nav>
             <button onClick={() => setSearchOpen(true)} className="text-muted-foreground hover:text-foreground transition-colors">
               <Search size={18} />
-            </button>
-            <button className="hidden md:block text-muted-foreground hover:text-foreground transition-colors">
-              <User size={18} />
             </button>
             <CartDrawer />
           </div>

@@ -1,5 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 const faqs = [
   { q: "Does this actually work?", a: "Yes. Our devices use clinically-studied microcurrent, EMS, and red light therapy — the same technologies found in professional clinics. Most users notice improved skin texture within 2 weeks and visible lift after 3–4 weeks of daily use." },
@@ -14,8 +15,9 @@ export function FAQSection() {
   const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <section ref={ref} id="faq" className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
-      <div className="max-w-2xl mx-auto">
+    <section ref={ref} id="faq" className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#F7F4F0' }}>
+      <BubbleBackground />
+      <div className="max-w-2xl mx-auto relative z-10">
         <div className="text-center mb-14">
           <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#9B5A2E' }}>Questions</p>
           <h2 className="font-serif italic text-3xl md:text-4xl text-foreground">Frequently Asked</h2>
