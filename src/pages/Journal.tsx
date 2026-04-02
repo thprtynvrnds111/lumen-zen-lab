@@ -91,8 +91,6 @@ const Journal = () => {
             style={{ background: 'radial-gradient(circle, hsl(var(--accent) / 0.06) 0%, transparent 70%)' }}
           />
 
-          {/* Organic bubbles / cells */}
-          {[
           <BubbleBackground />
 
           <div className="max-w-4xl mx-auto text-center relative z-10">
