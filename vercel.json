@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
       "source": "/at-home-face-lifting-device",
       "destination": "/at-home-face-lifting-device.html"
     },
