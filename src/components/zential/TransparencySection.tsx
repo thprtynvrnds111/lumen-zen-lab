@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 export function TransparencySection() {
   const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <section ref={ref} className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#EDE9E3' }}>
-      <div className="max-w-2xl mx-auto">
+    <section ref={ref} className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#EDE9E3' }}>
+      <BubbleBackground />
+      <div className="max-w-2xl mx-auto relative z-10">
         <h2 className="font-serif italic text-3xl md:text-4xl text-foreground mb-8">
           We show our work
         </h2>

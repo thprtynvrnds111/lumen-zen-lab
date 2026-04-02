@@ -4,6 +4,7 @@ import { fetchProductByHandle } from "@/lib/shopify";
 import { Loader2, Check } from "lucide-react";
 import { toast } from "sonner";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 interface BundleProduct { handle: string; name: string; }
 interface Bundle { title: string; subtitle: string; items: BundleProduct[]; price: string; savePercent: string; saveAmount: string; highlight: boolean; }
@@ -66,12 +67,13 @@ export function BundleSection() {
   };
 
   return (
-    <section ref={ref} id="bundles" className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
-      <div className="text-center mb-14">
+    <section ref={ref} id="bundles" className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#F7F4F0' }}>
+      <BubbleBackground />
+      <div className="text-center mb-14 relative z-10">
         <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#9B5A2E' }}>Smart Bundles</p>
         <h2 className="font-serif italic text-3xl md:text-4xl text-foreground">Elevate Your Ritual</h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto relative z-10">
         {bundles.map(b => {
           const isLoading = loadingBundle === b.title;
           const isAdded = addedBundle === b.title;

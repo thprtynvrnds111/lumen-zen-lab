@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 const steps = [
   { label: "Skin type", options: ["Normal", "Dry", "Oily", "Combination", "Sensitive"] },
@@ -23,8 +24,9 @@ export function SkinFitSection() {
   const reset = () => setAnswers([null, null, null]);
 
   return (
-    <section ref={ref} className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
-      <div className="max-w-2xl mx-auto text-center">
+    <section ref={ref} className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#F7F4F0' }}>
+      <BubbleBackground />
+      <div className="max-w-2xl mx-auto text-center relative z-10">
         <h2 className="font-serif italic text-3xl md:text-4xl text-foreground mb-2">
           Is this right for your skin?
         </h2>

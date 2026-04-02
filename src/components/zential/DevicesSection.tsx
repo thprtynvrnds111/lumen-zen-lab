@@ -5,6 +5,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 export function DevicesSection() {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
@@ -67,8 +68,9 @@ export function DevicesSection() {
   };
 
   return (
-    <section ref={ref} id="devices" className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
-      <div className="text-center mb-14">
+    <section ref={ref} id="devices" className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#F7F4F0' }}>
+      <BubbleBackground />
+      <div className="text-center mb-14 relative z-10">
         <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#9B5A2E' }}>The Collection</p>
         <h2 className="font-serif italic text-3xl md:text-4xl text-foreground">Our Devices</h2>
       </div>
@@ -78,7 +80,7 @@ export function DevicesSection() {
       ) : products.length === 0 ? (
         <p className="text-center text-foreground/50 text-sm">No products found</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 relative z-10">
           {products.map(product => {
             const img = product.node.images.edges[0]?.node;
             const price = product.node.priceRange.minVariantPrice;
