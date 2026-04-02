@@ -1,9 +1,11 @@
+import ugcLifestyle from "@/assets/ugc-lifestyle-desk.png";
 import ugc1 from "@/assets/ugc-unboxing-1.png";
 import ugc2 from "@/assets/ugc-unboxing-2.png";
 import unboxingFounder from "@/assets/unboxing-founder.jpg";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const photos = [
+  { src: ugcLifestyle, alt: "Woman at desk with Zential Pure device in warm evening light", caption: "Part of the routine" },
   { src: ugc1, alt: "Customer unboxing Zential Pure device at home", caption: "Just arrived, ready to glow" },
   { src: unboxingFounder, alt: "Founder packing Zential Pure orders", caption: "Packed with care by our team" },
   { src: ugc2, alt: "Woman using Zential Pure red light device in bathroom mirror selfie", caption: "My evening ritual" },
