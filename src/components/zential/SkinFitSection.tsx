@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 const steps = [
   { label: "Skin type", options: ["Normal", "Dry", "Oily", "Combination", "Sensitive"] },
