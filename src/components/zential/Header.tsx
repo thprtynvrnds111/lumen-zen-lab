@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import zentialFlower from "@/assets/zential-flower.png";
 import { Search, User, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CartDrawer } from "@/components/CartDrawer";
@@ -53,7 +54,9 @@ export function Header() {
 
           {/* Center logo */}
           <Link to="/" className="absolute left-1/2 -translate-x-1/2">
-            <span className="text-lg tracking-[0.3em] uppercase font-semibold">Zential Pure</span>
+            <span className="text-lg tracking-[0.3em] uppercase font-semibold inline-flex items-center gap-0">
+              Zential&nbsp;<img src={zentialFlower} alt="" className="inline-block h-[1em] w-auto opacity-80" />Pure
+            </span>
           </Link>
 
           {/* Right icons */}
