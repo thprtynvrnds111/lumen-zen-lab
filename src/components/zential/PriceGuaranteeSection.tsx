@@ -1,4 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 const comparisons = [
   { name: "Clinic session", price: "€150 each", label: "per visit", highlight: false },
