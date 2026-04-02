@@ -231,3 +231,35 @@ export async function removeLineFromShopifyCart(cartId: string, lineId: string) 
   if (userErrors.length > 0) return { success: false };
   return { success: true };
 }
+
+// Founding Customer Program – create a lightweight customer record
+const CUSTOMER_CREATE = `
+  mutation customerCreate($input: CustomerCreateInput!) {
+    customerCreate(input: $input) {
+      customer { id email }
+      customerUserErrors { field message }
+    }
+  }
+`;
+
+export async function createFoundingCustomer(email: string): Promise<{ success: boolean; error?: string }> {
+  const password = crypto.randomUUID();
+  const data = await storefrontApiRequest(CUSTOMER_CREATE, {
+    input: {
+      email,
+      password,
+      firstName: "Founding",
+      lastName: "Customer Program",
+      acceptsMarketing: true,
+    },
+  });
+  const errors = data?.data?.customerCreate?.customerUserErrors || [];
+  if (errors.length > 0) {
+    const alreadyExists = errors.some((e: { message: string }) =>
+      e.message.toLowerCase().includes('has already been taken')
+    );
+    if (alreadyExists) return { success: false, error: 'already_exists' };
+    return { success: false, error: errors[0].message };
+  }
+  return { success: true };
+}

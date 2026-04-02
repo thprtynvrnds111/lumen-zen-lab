@@ -1,16 +1,33 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { createFoundingCustomer } from "@/lib/shopify";
 
 export function CommunitySection() {
   const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const ref = useScrollReveal<HTMLElement>();
 
-  const handleApply = (e: React.FormEvent) => {
+  const handleApply = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) { toast.error("Please enter your email."); return; }
-    toast.success("Application received. We'll be in touch.");
-    setEmail("");
+    setSubmitting(true);
+    try {
+      const result = await createFoundingCustomer(email.trim());
+      if (result.success) {
+        toast.success("Application received. We'll be in touch.");
+        setEmail("");
+      } else if (result.error === 'already_exists') {
+        toast.info("You've already applied. We'll be in touch soon.");
+        setEmail("");
+      } else {
+        toast.error(result.error || "Something went wrong. Please try again.");
+      }
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
