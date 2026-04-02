@@ -1,4 +1,7 @@
 {
+  "functions": {
+    "api/*.ts": { "runtime": "@vercel/node@3" }
+  },
   "rewrites": [
     {
       "source": "/at-home-face-lifting-device",
