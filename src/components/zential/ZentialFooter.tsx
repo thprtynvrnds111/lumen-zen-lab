@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import zentialFlower from "@/assets/zential-flower.png";
 
 const footerLinks = {
   Shop: [
@@ -48,8 +49,8 @@ export function ZentialFooter() {
         </div>
 
         <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <Link to="/" className="text-sm tracking-[0.3em] uppercase font-semibold text-background">
-            Zential Pure
+          <Link to="/" className="text-sm tracking-[0.3em] uppercase font-semibold text-background inline-flex items-center">
+            Zential Pure<img src={zentialFlower} alt="" className="inline-block h-[1.6em] w-auto ml-1.5 opacity-80 brightness-[10]" />
           </Link>
           <p className="text-xs text-background/40">© 2025 Zential Pure. All rights reserved.</p>
         </div>
