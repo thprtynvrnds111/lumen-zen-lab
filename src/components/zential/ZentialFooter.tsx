@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import zentialFlower from "@/assets/zential-flower.png";
 
 const footerLinks = {
   Shop: [
