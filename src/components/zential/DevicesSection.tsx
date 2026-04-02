@@ -26,9 +26,26 @@ export function DevicesSection() {
     "lifting-and-tightening-face-introducer": "Deep infusion for plump, hydrated skin",
   };
 
+  const SORT_ORDER = [
+    "body-lift",
+    "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
+    "electric-micro-current",
+    "electric-guasha-massager",
+    "eye-massage",
+    "facial-beauty-tools-and-ems-beauty-equipment",
+    "color-light-import-micro-current-vibration-massager",
+    "lifting-and-tightening-face-introducer",
+  ];
+
   useEffect(() => {
     fetchProducts(12).then(p => {
-      setProducts(p.filter(pr => !HIDDEN_HANDLES.includes(pr.node.handle)));
+      const filtered = p.filter(pr => !HIDDEN_HANDLES.includes(pr.node.handle));
+      filtered.sort((a, b) => {
+        const idxA = SORT_ORDER.indexOf(a.node.handle);
+        const idxB = SORT_ORDER.indexOf(b.node.handle);
+        return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
+      });
+      setProducts(filtered);
       setLoading(false);
     }).catch(() => setLoading(false));
   }, []);
