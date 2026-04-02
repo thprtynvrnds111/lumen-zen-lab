@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 export function TransparencySection() {
   const ref = useScrollReveal<HTMLElement>();
