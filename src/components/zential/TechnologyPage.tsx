@@ -3,6 +3,7 @@ import { SEO } from "@/components/SEO";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
+import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 interface Study {
   title: string;
