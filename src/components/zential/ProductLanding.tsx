@@ -73,12 +73,11 @@ export function ProductLanding({ config }: Props) {
 
   const handleVariantChange = (idx: number) => {
     setSelectedVariantIdx(idx);
-    // Switch to the variant's associated image if available
-    const variantOptions = variants[idx]?.node?.selectedOptions || [];
-    const variantColor = variantOptions.find((o: any) => o.name === "Color Classification")?.value;
-    if (variantColor && images.length > 1) {
-      // Images are ordered by variant position in Shopify
-      setSelectedImage(idx < images.length ? idx : 0);
+    // Switch to the variant's associated image by matching the variant image URL
+    const variantImage = variants[idx]?.node?.image;
+    if (variantImage?.url && images.length > 1) {
+      const matchIdx = images.findIndex((img: any) => img.node.url === variantImage.url);
+      setSelectedImage(matchIdx >= 0 ? matchIdx : 0);
     }
   };
 
