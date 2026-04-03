@@ -1,16 +1,33 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { toast } from "sonner";
 
 export function NewsletterSection() {
   const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      toast.success("Welcome to the frequency.", { position: "top-center" });
-      setEmail("");
+    if (!email.trim()) return;
+    setSubmitting(true);
+    setMessage(null);
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      if (res.ok) {
+        setMessage({ type: "success", text: "Welcome to the frequency." });
+        setEmail("");
+      } else {
+        setMessage({ type: "error", text: "Something went wrong. Please try again." });
+      }
+    } catch {
+      setMessage({ type: "error", text: "Something went wrong. Please try again." });
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -30,8 +47,15 @@ export function NewsletterSection() {
             className="bg-card border-border/50 rounded-full h-12 px-5"
             required
           />
-          <Button variant="ritual" size="lg" type="submit">Subscribe</Button>
+          <Button variant="ritual" size="lg" type="submit" disabled={submitting}>
+            {submitting ? "Sending…" : "Subscribe"}
+          </Button>
         </form>
+        {message && (
+          <p className={`mt-3 text-sm ${message.type === "success" ? "text-green-700" : "text-red-600"}`}>
+            {message.text}
+          </p>
+        )}
       </div>
     </section>
   );
