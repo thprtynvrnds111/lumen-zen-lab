@@ -44,7 +44,8 @@ export function TechnologyPage({
       <Header />
       <main>
         {/* Hero */}
-        <section className="px-6 md:px-12 lg:px-20 py-24 md:py-36 text-center" style={{ backgroundColor: '#F7F4F0' }}>
+        <section className="relative px-6 md:px-12 lg:px-20 py-24 md:py-36 text-center overflow-hidden" style={{ backgroundColor: '#F7F4F0' }}>
+          <BubbleBackground />
           <p className="text-[10px] tracking-[0.25em] uppercase mb-4" style={{ color: '#9B5A2E' }}>{tagline}</p>
           <h1 className="font-serif italic text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 tracking-tight leading-[1.1]">
             {headline}
