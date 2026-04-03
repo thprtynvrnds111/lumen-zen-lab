@@ -92,15 +92,19 @@ export function CartDrawer() {
             <div className="divide-y divide-border/20">
               {items.map((item) => (
                 <div key={item.variantId} className="flex gap-4 px-6 py-5">
-                  {/* Product Image */}
+                  {/* Product Image — prefer 2nd image (device-only) over 1st (model shot) */}
                   <div className="w-[72px] h-[72px] bg-secondary/40 rounded-lg overflow-hidden flex-shrink-0">
-                    {item.product.node.images?.edges?.[0]?.node && (
-                      <img
-                        src={item.product.node.images.edges[0].node.url}
-                        alt={item.product.node.title}
-                        className="w-full h-full object-cover"
-                      />
-                    )}
+                    {(() => {
+                      const edges = item.product.node.images?.edges;
+                      const img = edges?.[1]?.node || edges?.[0]?.node;
+                      return img ? (
+                        <img
+                          src={img.url}
+                          alt={item.product.node.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : null;
+                    })()}
                   </div>
 
                   {/* Info */}
