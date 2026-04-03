@@ -31,10 +31,10 @@ export function DevicesSection() {
     "lifting-and-tightening-face-introducer",
     "body-lift",
     "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
-    "electric-micro-current",
+    "facial-beauty-tools-and-ems-beauty-equipment",
     "electric-guasha-massager",
     "eye-massage",
-    "facial-beauty-tools-and-ems-beauty-equipment",
+    "electric-micro-current",
     "color-light-import-micro-current-vibration-massager",
   ];
 
