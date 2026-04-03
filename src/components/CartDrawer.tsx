@@ -92,11 +92,14 @@ export function CartDrawer() {
             <div className="divide-y divide-border/20">
               {items.map((item) => (
                 <div key={item.variantId} className="flex gap-4 px-6 py-5">
-                  {/* Product Image — prefer 2nd image (device-only) over 1st (model shot) */}
+                  {/* Product Image — prefer variant image, then 2nd product image, then 1st */}
                   <div className="w-[72px] h-[72px] bg-secondary/40 rounded-lg overflow-hidden flex-shrink-0">
                     {(() => {
+                      // Find the selected variant's image
+                      const variant = item.product.node.variants.edges.find(v => v.node.id === item.variantId);
+                      const variantImg = variant?.node?.image;
                       const edges = item.product.node.images?.edges;
-                      const img = edges?.[1]?.node || edges?.[0]?.node;
+                      const img = variantImg || edges?.[1]?.node || edges?.[0]?.node;
                       return img ? (
                         <img
                           src={img.url}
