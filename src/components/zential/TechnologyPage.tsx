@@ -46,12 +46,14 @@ export function TechnologyPage({
         {/* Hero */}
         <section className="relative px-6 md:px-12 lg:px-20 py-24 md:py-36 text-center overflow-hidden" style={{ backgroundColor: '#F7F4F0' }}>
           <BubbleBackground />
-          <p className="text-[10px] tracking-[0.25em] uppercase mb-4" style={{ color: '#9B5A2E' }}>{tagline}</p>
-          <h1 className="font-serif italic text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 tracking-tight leading-[1.1]">
-            {headline}
-          </h1>
-          <p className="text-sm font-medium mb-2" style={{ color: '#C6A07C' }}>{paramLabel}: {paramValue}</p>
-          <p className="text-sm text-foreground/60 max-w-xl mx-auto leading-relaxed mt-6">{intro}</p>
+          <div className="relative z-10">
+            <p className="text-[10px] tracking-[0.25em] uppercase mb-4" style={{ color: '#9B5A2E' }}>{tagline}</p>
+            <h1 className="font-serif italic text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 tracking-tight leading-[1.1]">
+              {headline}
+            </h1>
+            <p className="text-sm font-medium mb-2" style={{ color: '#C6A07C' }}>{paramLabel}: {paramValue}</p>
+            <p className="text-sm text-foreground/60 max-w-xl mx-auto leading-relaxed mt-6">{intro}</p>
+          </div>
         </section>
 
         {/* Mechanism */}
