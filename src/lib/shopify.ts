@@ -33,6 +33,7 @@ export interface ShopifyProduct {
           price: { amount: string; currencyCode: string };
           availableForSale: boolean;
           selectedOptions: Array<{ name: string; value: string }>;
+          image?: { url: string; altText: string | null };
         };
       }>;
     };
