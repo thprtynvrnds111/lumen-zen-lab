@@ -584,7 +584,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { step: "03", title: "Infuse", desc: "Apply serum. Use nutrient infusion mode to drive actives deep into skin. Follow with LED. 3 minutes." },
     ],
     beforeAfter: { before: beforeImg, after: afterImg },
-    problemImage: problemFrequencyWand,
+    problemImage: problemWandPro,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
   },
