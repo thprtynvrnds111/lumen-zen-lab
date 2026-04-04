@@ -15,6 +15,7 @@ import problemSkinpulse from "@/assets/problem-skinpulse.png";
 import problemEyeActivator from "@/assets/problem-eye-activator.png";
 import problemFrequencyWand from "@/assets/problem-frequency-wand.png";
 import problemSculptWand from "@/assets/problem-sculpt-wand.png";
+import problemWandPro from "@/assets/problem-wand-pro.png";
 
 export interface ProductConfig {
   handle: string;
@@ -583,7 +584,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { step: "03", title: "Infuse", desc: "Apply serum. Use nutrient infusion mode to drive actives deep into skin. Follow with LED. 3 minutes." },
     ],
     beforeAfter: { before: beforeImg, after: afterImg },
-    problemImage: problemFrequencyWand,
+    problemImage: problemWandPro,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
   },
