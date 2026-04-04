@@ -32,6 +32,7 @@ export function DevicesSection() {
     "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
     "body-lift",
     "lifting-and-tightening-face-introducer",
+    "portable-ems-microcurrent-facial-beauty-device",
     "facial-beauty-tools-and-ems-beauty-equipment",
     "electric-guasha-massager",
     "eye-massage",

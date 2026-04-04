@@ -545,7 +545,6 @@ export const productConfigs: Record<string, ProductConfig> = {
       { q: "What is your guarantee?", a: "We offer a 30-Day Ritual Guarantee on all products. If you're not satisfied, contact us for a full refund." },
     ],
   },
-  },
 
   // ─── FREQUENCY WAND PRO ───
   "portable-ems-microcurrent-facial-beauty-device": {
