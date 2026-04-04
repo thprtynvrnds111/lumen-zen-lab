@@ -25,7 +25,11 @@
       "destination": "/best-beauty-device-for-jawline.html"
     },
     {
-      "source": "/((?!at-home-face-lifting-device|microcurrent-face-device|ems-face-toning-device|face-tightening-device-at-home|best-beauty-device-for-jawline).*)",
+      "source": "/frequency-wand",
+      "destination": "/frequency-wand.html"
+    },
+    {
+      "source": "/((?!at-home-face-lifting-device|microcurrent-face-device|ems-face-toning-device|face-tightening-device-at-home|best-beauty-device-for-jawline|frequency-wand).*)",
       "destination": "/index.html"
     }
   ]
