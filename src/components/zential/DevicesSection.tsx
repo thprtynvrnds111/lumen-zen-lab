@@ -25,6 +25,7 @@ export function DevicesSection() {
     "color-light-import-micro-current-vibration-massager": "Full-face frequency facial for glow and clarity",
     "facial-beauty-tools-and-ems-beauty-equipment": "Precision contour wand for cheek and jaw lift",
     "lifting-and-tightening-face-introducer": "Deep infusion for plump, hydrated skin",
+    "portable-ems-microcurrent-facial-beauty-device": "Advanced EMS & microcurrent facial purification",
   };
 
   const SORT_ORDER = [
