@@ -545,6 +545,49 @@ export const productConfigs: Record<string, ProductConfig> = {
       { q: "What is your guarantee?", a: "We offer a 30-Day Ritual Guarantee on all products. If you're not satisfied, contact us for a full refund." },
     ],
   },
+  },
+
+  // ─── FREQUENCY WAND PRO ───
+  "portable-ems-microcurrent-facial-beauty-device": {
+    handle: "portable-ems-microcurrent-facial-beauty-device",
+    name: "Frequency Wand Pro",
+    subheadline: "Advanced EMS & Microcurrent Facial Purification System",
+    benefits: [
+      { icon: Zap, label: "EMS + Microcurrent Dual Mode" },
+      { icon: ShieldCheck, label: "Ion Cleansing Technology" },
+      { icon: Sun, label: "Multi-Color LED Therapy" },
+      { icon: Droplets, label: "Deep Nutrient Infusion" },
+    ],
+    testimonials: [
+      { name: "Leah, 30", text: "The ion cleansing mode pulls out impurities I didn't know were there. My pores look invisible." },
+      { name: "Andrea, 38", text: "Five modes in one device. My entire evening routine is now this wand and a serum. That's it." },
+      { name: "Nadia, 34", text: "Upgraded from my old wand to the Pro. The EMS toning is on another level. Jawline definition in two weeks." },
+    ],
+    problemReframe: {
+      headline: "Your Skin Needs Activation. Not More Layers.",
+      paragraphs: [
+        "Modern skincare adds layer after layer — cleansers, toners, serums, moisturizers. But your skin's deepest issues live below the surface: stagnant circulation, weakened muscle tone, and impurity buildup that no cleanser can reach.",
+        "Ion cleansing uses negative ion technology to draw out deep-seated impurities. EMS and microcurrent retrain facial muscles that have lost tone. LED light triggers cellular repair at the wavelength level.",
+        "The Frequency Wand Pro combines all five modalities in a single device — cleansing, toning, lifting, infusing, and repairing — so your ritual targets every layer of skin health in one session.",
+      ],
+      closing: "One device. Five frequencies. Every layer addressed.",
+    },
+    techCards: [
+      { icon: ShieldCheck, title: "Ion Cleansing", desc: "Negative ion technology draws out deep impurities and pollutants that surface cleansers cannot reach." },
+      { icon: Zap, title: "EMS + Microcurrent", desc: "Dual electrical stimulation tones facial muscles and restores definition along the jawline and cheeks." },
+      { icon: Sun, title: "LED Spectrum", desc: "Multi-color light therapy targets acne, redness, and collagen loss with clinically studied wavelengths." },
+      { icon: Droplets, title: "Nutrient Infusion", desc: "Positive ion mode drives active serum ingredients deeper into skin for enhanced absorption and efficacy." },
+    ],
+    ritualSteps: [
+      { step: "01", title: "Cleanse", desc: "Apply conductive gel. Use ion cleansing mode to draw out impurities. 2 minutes." },
+      { step: "02", title: "Activate", desc: "Switch to EMS/microcurrent mode. Glide upward along jawline, cheeks, and forehead. 5 minutes." },
+      { step: "03", title: "Infuse", desc: "Apply serum. Use nutrient infusion mode to drive actives deep into skin. Follow with LED. 3 minutes." },
+    ],
+    beforeAfter: { before: beforeImg, after: afterImg },
+    problemImage: problemFrequencyWand,
+    comparisonRows: defaultComparison,
+    faqs: defaultDeviceFaqs,
+  },
 };
 
 export function getProductConfig(handle: string): ProductConfig | null {
