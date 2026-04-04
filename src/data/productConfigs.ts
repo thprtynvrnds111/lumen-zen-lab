@@ -15,6 +15,7 @@ import problemSkinpulse from "@/assets/problem-skinpulse.png";
 import problemEyeActivator from "@/assets/problem-eye-activator.png";
 import problemFrequencyWand from "@/assets/problem-frequency-wand.png";
 import problemSculptWand from "@/assets/problem-sculpt-wand.png";
+import problemWandPro from "@/assets/problem-wand-pro.png";
 
 export interface ProductConfig {
   handle: string;
