@@ -30,6 +30,17 @@ export function HeroSection() {
       {/* Right — Content */}
       <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center px-8 md:px-16 pb-12 md:pb-0">
         {/* Tagline */}
+        <p
+          className="text-[10px] md:text-xs tracking-[0.3em] uppercase mb-3 text-center md:text-left"
+          style={{
+            color: '#9B5A2E',
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'translateY(0)' : 'translateY(12px)',
+            transition: 'opacity 0.7s ease-out 0.2s, transform 0.7s ease-out 0.2s',
+          }}
+        >
+          Know your skin. Work with it.
+        </p>
         <h1
           className="font-serif italic text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground mb-6 text-center md:text-left"
           style={{
