@@ -66,9 +66,7 @@ export function HeroSection() {
               <Star key={i} size={13} fill="#C6A07C" strokeWidth={0} style={{ color: '#C6A07C' }} />
             ))}
           </div>
-          <span className="text-xs text-foreground/50 ml-1">
-            4.9 / 5 · Trusted by 2,400+ customers
-          </span>
+           <span className="text-xs text-foreground/50 ml-1">4.9 / 5</span>
         </div>
 
         {/* Modality icons */}
