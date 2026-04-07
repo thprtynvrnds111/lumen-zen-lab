@@ -52,7 +52,10 @@ export function ZentialFooter() {
           <Link to="/" className="text-sm tracking-[0.3em] uppercase font-semibold text-background inline-flex items-center">
             Zential Pure<img src={zentialFlower} alt="" className="inline-block h-[1.6em] w-auto ml-1.5 opacity-80 brightness-[10]" />
           </Link>
-          <p className="text-xs text-background/40">© 2025 Zential Pure. All rights reserved.</p>
+          <div className="text-right md:text-right">
+            <p className="text-[10px] tracking-[0.2em] uppercase text-background/30 mb-1">Know your skin. Work with it.</p>
+            <p className="text-xs text-background/40">© 2025 Zential Pure. All rights reserved.</p>
+          </div>
         </div>
       </div>
     </footer>
