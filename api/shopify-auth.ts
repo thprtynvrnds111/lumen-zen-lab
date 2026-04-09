@@ -1,11 +1,51 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
+
+const SHOPIFY_STORE_DOMAIN = process.env.SHOPIFY_STORE_DOMAIN;
+const SHOPIFY_API_KEY = process.env.SHOPIFY_API_KEY;
+const SHOPIFY_API_SECRET = process.env.SHOPIFY_API_SECRET;
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const { code } = req.query;
-  if (!code) return res.status(400).send('Missing code');
-  const r = await fetch('https://0d1m9a-w7.myshopify.com/admin/oauth/access_token', {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ client_id: '706b010d671589ea1a53c4f38786c98d', client_secret: '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', code }),
-  });
-  const d = await r.json() as any;
-  return res.status(200).send(`<html><body style="font:18px monospace;padding:32px;background:#000;color:#fff"><h2 style="color:#4ade80">Your Token:</h2><div id="t" style="background:#111;padding:16px;border-radius:8px;word-break:break-all">${d.access_token||JSON.stringify(d)}</div></body></html>`);
+  if (req.method !== 'GET') {
+    res.setHeader('Allow', 'GET');
+    return res.status(405).send('Method not allowed');
+  }
+
+  const code = Array.isArray(req.query.code) ? req.query.code[0] : req.query.code;
+
+  if (!code) {
+    return res.status(400).send('Missing code');
+  }
+
+  if (!SHOPIFY_STORE_DOMAIN || !SHOPIFY_API_KEY || !SHOPIFY_API_SECRET) {
+    return res.status(500).send('Shopify environment variables are not configured');
+  }
+
+  try {
+    const r = await fetch(`https://${SHOPIFY_STORE_DOMAIN}/admin/oauth/access_token`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        client_id: SHOPIFY_API_KEY,
+        client_secret: SHOPIFY_API_SECRET,
+        code,
+      }),
+    });
+
+    if (!r.ok) {
+      const errorText = await r.text();
+      console.error('Shopify token exchange failed:', errorText);
+      return res.status(502).send('OAuth exchange failed');
+    }
+
+    const d = (await r.json()) as { access_token?: string };
+
+    if (!d.access_token) {
+      return res.status(502).send('OAuth exchange failed');
+    }
+
+    return res.status(200).send('App authorized successfully');
+  } catch (error) {
+    console.error('Unexpected Shopify auth error:', error);
+    return res.status(500).send('Internal server error');
+  }
 }
