@@ -21,11 +21,12 @@ export default async function handler(req: any, res: any) {
 
     const token = process.env.SHOPIFY_ADMIN_TOKEN;
     if (!token) {
+      console.error('SHOPIFY_ADMIN_TOKEN is missing');
       return res.status(500).json({ error: 'Missing Shopify token' });
     }
 
     const shopifyRes = await fetch(
-      'https://0d1m9a-w7.myshopify.com/admin/api/2024-01/customers.json',
+      'https://0d1m9a-w7.myshopify.com/admin/api/2024-10/customers.json',
       {
         method: 'POST',
         headers: {
@@ -47,12 +48,19 @@ export default async function handler(req: any, res: any) {
 
     const data = await shopifyRes.json();
 
+    // Customer already exists - that's fine, they're already subscribed
+    if (shopifyRes.status === 422 && data?.errors?.email) {
+      return res.status(200).json({ success: true, note: 'already_exists' });
+    }
+
     if (!shopifyRes.ok) {
+      console.error('Shopify error:', JSON.stringify(data));
       return res.status(500).json({ error: 'Shopify error', details: data });
     }
 
     return res.status(200).json({ success: true });
   } catch (err: any) {
+    console.error('Server error:', err.message);
     return res.status(500).json({ error: 'Server error', message: err.message });
   }
 }
