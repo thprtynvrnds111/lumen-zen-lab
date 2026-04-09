@@ -32,20 +32,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
 
     if (!r.ok) {
-      const errorText = await r.text();
-      console.error('Shopify token exchange failed:', errorText);
+      console.error('OAuth exchange failed:', await r.text());
       return res.status(502).send('OAuth exchange failed');
     }
 
     const d = (await r.json()) as { access_token?: string };
 
     if (!d.access_token) {
-      return res.status(502).send('OAuth exchange failed');
+      return res.status(502).send('OAuth exchange failed - no token');
     }
 
-    return res.status(200).send('App authorized successfully');
-  } catch (error) {
-    console.error('Unexpected Shopify auth error:', error);
+    // Log token to Vercel logs so it can be captured for SHOPIFY_ADMIN_TOKEN env var
+    console.log('NEW_ACCESS_TOKEN:', d.access_token);
+
+    return res.status(200).send('App authorized successfully. Check Vercel logs for token.');
+  } catch (error: any) {
+    console.error('Unexpected error:', error.message);
     return res.status(500).send('Internal server error');
   }
 }
