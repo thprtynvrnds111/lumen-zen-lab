@@ -34,18 +34,16 @@ export function HeroSection() {
   }, [cycleImage]);
 
   return (
-    <section className="flex flex-col md:flex-row" style={{ backgroundColor: '#F7F4F0' }}>
+    <section className="flex flex-col md:flex-row md:min-h-[calc(100vh-88px)]" style={{ backgroundColor: '#F7F4F0' }}>
       {/* Left — Image */}
       <div
-        className="w-full md:w-[55%] relative overflow-hidden md:self-stretch"
+        className="w-full md:w-[55%] relative overflow-hidden h-[60vh] md:h-auto"
         style={{
           opacity: visible ? 1 : 0,
           transform: visible ? 'scale(1)' : 'scale(1.03)',
           transition: 'opacity 1s ease-out, transform 1.2s ease-out',
-          minHeight: '420px',
         }}
       >
-        <div className="hidden md:block" style={{ minHeight: '560px' }} />
         {heroImages.map((src, i) => (
           <img
             key={i}
