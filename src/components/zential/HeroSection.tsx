@@ -60,7 +60,7 @@ export function HeroSection() {
       </div>
 
       {/* Right — Content */}
-      <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center px-8 md:px-16 pb-12 md:pb-0">
+      <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center px-8 md:px-16 py-12 md:py-16">
         <p
           className="text-[10px] md:text-xs tracking-[0.3em] uppercase mb-3 text-center md:text-left"
           style={{
