@@ -45,8 +45,7 @@ export function HeroSection() {
           minHeight: '420px',
         }}
       >
-        <div className="hidden md:block absolute inset-0" style={{ minHeight: '560px' }} />
-      >
+        <div className="hidden md:block" style={{ minHeight: '560px' }} />
         {heroImages.map((src, i) => (
           <img
             key={i}
