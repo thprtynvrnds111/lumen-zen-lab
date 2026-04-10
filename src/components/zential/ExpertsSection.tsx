@@ -1,29 +1,35 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import expert1 from "@/assets/expert-1.jpg";
-import expert2 from "@/assets/expert-2.jpg";
+import expert1 from "@/assets/expert-1.png";
+import expert2 from "@/assets/expert-2.png";
 import expert3 from "@/assets/expert-3.jpg";
 
 const experts = [
   {
     image: expert1,
-    name: "Dr. Elena Marchetti",
+    name: "Dr. Rajani Katta, MD",
     title: "Dermatology Advisor",
-    credentials: "MD, Board-Certified Dermatologist",
-    quote: "The combination of microcurrent and red light at these frequencies mirrors what we achieve in-clinic — but with the consistency advantage of daily home use.",
+    credentials: "Board-Certified Dermatologist",
+    quote: "Dr. Katta is a board-certified dermatologist, professor, and author specializing in skin aging, diet, and evidence-based skincare. Her work focuses on the three key processes that age the skin: oxidation, inflammation, and glycation — and how targeted daily rituals can counteract them.",
+    source: "Credentials verified at doctorkatta.com",
+    isQuote: false,
   },
   {
     image: expert2,
-    name: "Prof. Henrik Lund",
-    title: "Biomedical Engineering",
-    credentials: "PhD, Bioelectrical Systems",
-    quote: "What sets this apart is the frequency calibration. Each modality is tuned to the specific cellular response threshold — not just emitting energy, but directing it.",
+    name: "Dr. Michael R. Hamblin, PhD",
+    title: "Photobiomodulation Research",
+    credentials: "Harvard Medical School / MGH",
+    quote: "It's stimulating collagen synthesis. I think that is the main thing. These fine lines and wrinkles will look smoother if you can stimulate some collagen synthesis in the skin, in the dermis.",
+    source: "— Dr. Michael R. Hamblin, Associate Professor of Dermatology, Harvard Medical School. Via The Energy Blueprint interview.",
+    isQuote: true,
   },
   {
     image: expert3,
-    name: "Dr. Sofia Chen",
+    name: "Dr. Pinar Avci, MD",
     title: "Cellular Biology",
-    credentials: "PhD, Mitochondrial Research",
-    quote: "EMS and thermal therapy work synergistically at the cellular level. The thermal element increases membrane permeability, amplifying the electrical stimulus.",
+    credentials: "Wellman Center for Photomedicine, Harvard",
+    quote: "Photons are absorbed by mitochondrial chromophores in skin cells. Consequently, ATP, blood flow, and diverse signaling pathways get activated. Stem cells can be activated, allowing increased tissue repair and healing.",
+    source: "— Avci et al., 2013, PubMed PMC4126803",
+    isQuote: true,
   },
 ];
 
@@ -71,8 +77,11 @@ export function ExpertsSection() {
               <p className="text-[10px] tracking-[0.25em] uppercase mb-2" style={{ color: '#C6A07C' }}>
                 {expert.title}
               </p>
-              <p className="font-serif italic text-sm leading-relaxed text-foreground/60">
-                "{expert.quote}"
+              <p className="font-serif italic text-sm leading-relaxed text-foreground/60 mb-2">
+                {expert.isQuote ? `"${expert.quote}"` : expert.quote}
+              </p>
+              <p className="text-[9px] tracking-wide text-foreground/30 leading-relaxed">
+                {expert.source}
               </p>
             </div>
           ))}
