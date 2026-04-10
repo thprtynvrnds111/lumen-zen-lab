@@ -37,12 +37,12 @@ export function HeroSection() {
     <section className="flex flex-col md:flex-row" style={{ backgroundColor: '#F7F4F0' }}>
       {/* Left — Image */}
       <div
-        className="w-full md:w-1/2 relative overflow-hidden md:self-stretch"
+        className="w-full md:w-[55%] relative overflow-hidden md:self-stretch"
         style={{
           opacity: visible ? 1 : 0,
           transform: visible ? 'scale(1)' : 'scale(1.03)',
           transition: 'opacity 1s ease-out, transform 1.2s ease-out',
-          minHeight: '340px',
+          minHeight: '420px',
         }}
       >
         {heroImages.map((src, i) => (
@@ -60,7 +60,7 @@ export function HeroSection() {
       </div>
 
       {/* Right — Content */}
-      <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center px-8 md:px-16 py-12 md:py-16">
+      <div className="w-full md:w-[45%] flex flex-col items-center md:items-start justify-center px-8 md:px-16 py-12 md:py-16">
         <p
           className="text-[10px] md:text-xs tracking-[0.3em] uppercase mb-3 text-center md:text-left"
           style={{
