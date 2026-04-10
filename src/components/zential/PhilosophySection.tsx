@@ -1,5 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import philosophyImg from "@/assets/philosophy-portrait.jpg";
+import philosophyImg from "@/assets/philosophy-portrait-new.png";
 
 export function PhilosophySection() {
   const ref = useScrollReveal<HTMLElement>();
