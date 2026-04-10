@@ -42,8 +42,8 @@ export function HeroSection() {
           opacity: visible ? 1 : 0,
           transform: visible ? 'scale(1)' : 'scale(1.03)',
           transition: 'opacity 1s ease-out, transform 1.2s ease-out',
-          height: '55vh',
-          minHeight: '340px',
+          height: '70vh',
+          minHeight: '400px',
         }}
       >
         {heroImages.map((src, i) => (
