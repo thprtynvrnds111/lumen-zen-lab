@@ -1,6 +1,8 @@
-import heroImage from "@/assets/hero-ritual-v2.jpg";
+import heroImage1 from "@/assets/hero-ritual-v2.jpg";
+import heroImage2 from "@/assets/hero-lifestyle-2.png";
+import heroImage3 from "@/assets/hero-lifestyle-3.png";
 import { Sun, Zap, Activity, Flame, Star } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const modalities = [
   { icon: Sun, label: "Red Light" },
@@ -9,27 +11,57 @@ const modalities = [
   { icon: Flame, label: "Thermal" },
 ];
 
+const heroImages = [heroImage1, heroImage2, heroImage3];
+
 export function HeroSection() {
   const [visible, setVisible] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
   useEffect(() => { setVisible(true); }, []);
 
+  const cycleImage = useCallback(() => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+      setIsTransitioning(false);
+    }, 600);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(cycleImage, 5000);
+    return () => clearInterval(interval);
+  }, [cycleImage]);
+
   return (
-    <section className="flex flex-col md:min-h-[100dvh] md:flex-row" style={{ backgroundColor: '#F7F4F0' }}>
+    <section className="flex flex-col md:flex-row" style={{ backgroundColor: '#F7F4F0', height: 'calc(100dvh - 88px)' }}>
       {/* Left — Image */}
       <div
-        className="w-full md:w-1/2 flex items-center justify-center overflow-hidden"
+        className="w-full md:w-1/2 relative overflow-hidden"
         style={{
           opacity: visible ? 1 : 0,
           transform: visible ? 'scale(1)' : 'scale(1.03)',
           transition: 'opacity 1s ease-out, transform 1.2s ease-out',
+          height: '50vh',
+          minHeight: '300px',
         }}
       >
-        <img src={heroImage} alt="Zential beauty device" className="w-full h-full object-cover" />
+        {heroImages.map((src, i) => (
+          <img
+            key={i}
+            src={src}
+            alt="Zential beauty device"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{
+              opacity: currentImage === i ? (isTransitioning ? 0 : 1) : 0,
+              transition: 'opacity 0.6s ease-in-out',
+            }}
+          />
+        ))}
       </div>
 
       {/* Right — Content */}
       <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center px-8 md:px-16 pb-12 md:pb-0">
-        {/* Tagline */}
         <p
           className="text-[10px] md:text-xs tracking-[0.3em] uppercase mb-3 text-center md:text-left"
           style={{
