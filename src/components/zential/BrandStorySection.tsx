@@ -1,5 +1,6 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import brandStoryImg from "@/assets/brand-story.webp";
+import brandStoryImgMobile from "@/assets/brand-story-540w.webp";
 
 export function BrandStorySection() {
   const ref = useScrollReveal<HTMLElement>();
@@ -52,11 +53,13 @@ export function BrandStorySection() {
         <div className="w-full md:w-1/2 relative order-1 md:order-2">
           <img
             src={brandStoryImg}
+            srcSet={`${brandStoryImgMobile} 540w, ${brandStoryImg} 1080w`}
+            sizes="(max-width: 768px) 100vw, 50vw"
             alt="Zential Pure device in lifestyle setting"
             className="w-full h-full object-cover"
             loading="lazy"
             width={1080}
-            height={720}
+            height={1440}
             style={{ minHeight: '50vh' }}
           />
         </div>

@@ -34,11 +34,11 @@ export function ZentialFooter() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-16">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h3 className="text-xs tracking-[0.2em] uppercase text-background/40 mb-4">{category}</h3>
+              <h3 className="text-xs tracking-[0.2em] uppercase text-background/60 mb-4">{category}</h3>
               <ul className="space-y-2">
                 {links.map(link => (
                   <li key={link.label}>
-                    <Link to={link.to} className="text-sm hover:text-background transition-colors">
+                    <Link to={link.to} className="text-sm text-background/70 hover:text-background transition-colors">
                       {link.label}
                     </Link>
                   </li>
@@ -54,8 +54,8 @@ export function ZentialFooter() {
             <span className="relative z-10">Zential</span>
           </Link>
           <div className="text-right md:text-right">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-background/30 mb-1">Know your skin. Work with it.</p>
-            <p className="text-xs text-background/40">© 2025 Zential Pure. All rights reserved.</p>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-background/50 mb-1">Know your skin. Work with it.</p>
+            <p className="text-xs text-background/60">© 2025 Zential Pure. All rights reserved.</p>
           </div>
         </div>
       </div>

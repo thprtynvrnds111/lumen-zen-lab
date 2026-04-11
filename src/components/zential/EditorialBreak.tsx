@@ -1,4 +1,5 @@
 import lifestyleImg from "@/assets/lifestyle-redlight.webp";
+import lifestyleImgMobile from "@/assets/lifestyle-redlight-540w.webp";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export function EditorialBreak() {
@@ -15,14 +16,15 @@ export function EditorialBreak() {
         <div className="w-full md:w-1/2 relative">
           <img
             src={lifestyleImg}
+            srcSet={`${lifestyleImgMobile} 540w, ${lifestyleImg} 1080w`}
+            sizes="(max-width: 768px) 100vw, 50vw"
             alt="Woman using Zential red light therapy device"
             className="w-full h-full object-cover"
             loading="lazy"
             width={1080}
-            height={1340}
+            height={1339}
             style={{ minHeight: '50vh' }}
           />
-          {/* Gradient overlay for blending */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#1A1714]/40 hidden md:block" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#1A1714]/60 md:hidden" />
         </div>
