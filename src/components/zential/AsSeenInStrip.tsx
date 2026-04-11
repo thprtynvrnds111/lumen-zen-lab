@@ -13,7 +13,7 @@ export function AsSeenInStrip() {
 
   return (
     <section ref={ref} className="py-10 md:py-14 border-y" style={{ backgroundColor: '#F7F4F0', borderColor: '#E4DFD8' }}>
-      <p className="text-[10px] tracking-[0.3em] uppercase text-center mb-6 text-muted-foreground">
+      <p className="text-[10px] tracking-[0.3em] uppercase text-center mb-6" style={{ color: '#6B5A4A' }}>
         As Featured In
       </p>
       <div className="flex items-center justify-center gap-8 md:gap-16 flex-wrap px-6">

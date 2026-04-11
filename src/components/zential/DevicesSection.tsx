@@ -98,8 +98,13 @@ export function DevicesSection() {
                 <div className="relative flex-[3] overflow-hidden">
                   {img && (
                     <img
-                      src={img.url}
+                      src={`${img.url}&width=800`}
+                      srcSet={`${img.url}&width=400 400w, ${img.url}&width=800 800w`}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       alt={img.altText || product.node.title}
+                      width={800}
+                      height={800}
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   )}
@@ -121,6 +126,7 @@ export function DevicesSection() {
                     <button
                       onClick={(e) => handleAdd(e, product)}
                       disabled={isCartLoading}
+                      aria-label={`Add ${product.node.title} to bag`}
                       className="text-[10px] tracking-[0.15em] uppercase font-medium px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:shadow-md hover:scale-105 disabled:opacity-50"
                       style={{ backgroundColor: '#C6A07C' }}
                     >

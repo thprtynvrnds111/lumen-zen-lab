@@ -48,7 +48,7 @@ export function Header() {
           </nav>
 
           {/* Mobile menu button */}
-          <button className="lg:hidden" onClick={() => setMobileOpen(!mobileOpen)}>
+          <button className="lg:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label={mobileOpen ? "Close menu" : "Open menu"}>
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
 
@@ -71,7 +71,7 @@ export function Header() {
                 </Link>
               ))}
             </nav>
-            <button onClick={() => setSearchOpen(true)} className="text-muted-foreground hover:text-foreground transition-colors">
+            <button onClick={() => setSearchOpen(true)} aria-label="Search" className="text-muted-foreground hover:text-foreground transition-colors">
               <Search size={18} />
             </button>
             <CartDrawer />

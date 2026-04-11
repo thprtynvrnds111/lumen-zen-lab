@@ -34,7 +34,7 @@ export function ZentialFooter() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-16">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-xs tracking-[0.2em] uppercase text-background/40 mb-4">{category}</h4>
+              <h3 className="text-xs tracking-[0.2em] uppercase text-background/40 mb-4">{category}</h3>
               <ul className="space-y-2">
                 {links.map(link => (
                   <li key={link.label}>
