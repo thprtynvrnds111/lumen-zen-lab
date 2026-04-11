@@ -49,8 +49,9 @@ export function ZentialFooter() {
         </div>
 
         <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <Link to="/" className="text-sm tracking-[0.3em] uppercase font-semibold text-background inline-flex items-center">
-            Zential Pure<img src={zentialFlower} alt="" className="inline-block h-[1.6em] w-auto ml-1.5 opacity-80 brightness-[10]" />
+          <Link to="/" className="text-sm tracking-[0.3em] uppercase font-semibold text-background inline-flex items-center justify-center relative">
+            <img src={zentialFlower} alt="" className="absolute h-[2.4em] w-auto opacity-[0.15] brightness-[10]" />
+            <span className="relative z-10">Zential</span>
           </Link>
           <div className="text-right md:text-right">
             <p className="text-[10px] tracking-[0.2em] uppercase text-background/30 mb-1">Know your skin. Work with it.</p>
