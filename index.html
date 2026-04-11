@@ -164,6 +164,16 @@
       body { margin: 0; font-family: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif; background-color: hsl(30 27% 95%); color: hsl(0 0% 12%); -webkit-font-smoothing: antialiased; }
       .min-h-screen { min-height: 100vh; }
       img { display: block; max-width: 100%; height: auto; }
+      /* Critical header */
+      header { position: sticky; top: 0; z-index: 50; height: 64px; display: flex; align-items: center; }
+      /* Critical hero layout */
+      .hero-split { display: flex; flex-direction: column; }
+      @media (min-width: 768px) { .hero-split { flex-direction: row; min-height: calc(100vh - 88px); } }
+      /* Font-display override for all loaded fonts */
+      @font-face { font-family: 'Poppins'; font-display: swap; }
+      @font-face { font-family: 'Inter'; font-display: swap; }
+      @font-face { font-family: 'Lora'; font-display: swap; }
+      @font-face { font-family: 'Cormorant Garamond'; font-display: swap; }
     </style>
 
     <!-- Favicon -->
