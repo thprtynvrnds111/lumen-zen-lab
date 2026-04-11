@@ -3,7 +3,7 @@ import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { HeroSection } from "@/components/zential/HeroSection";
 import { AsSeenInStrip } from "@/components/zential/AsSeenInStrip";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 
 // Lazy-load below-fold sections to reduce initial JS bundle
 const PhilosophySection = lazy(() => import("@/components/zential/PhilosophySection").then(m => ({ default: m.PhilosophySection })));
@@ -25,8 +25,6 @@ const FAQSection = lazy(() => import("@/components/zential/FAQSection").then(m =
 const CommunitySection = lazy(() => import("@/components/zential/CommunitySection").then(m => ({ default: m.CommunitySection })));
 const ZentialFooter = lazy(() => import("@/components/zential/ZentialFooter").then(m => ({ default: m.ZentialFooter })));
 
-const lifestyleBodyImport = () => import("@/assets/lifestyle-body.webp").then(m => m.default);
-
 const homepageJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -42,11 +40,11 @@ const homepageJsonLd = {
   },
 };
 
-// Wrapper for ImageDivider that lazy-loads its image
 function LazyImageDivider() {
-  const { useState, useEffect } = require("react");
   const [src, setSrc] = useState<string | null>(null);
-  useEffect(() => { lifestyleBodyImport().then(setSrc); }, []);
+  useEffect(() => {
+    import("@/assets/lifestyle-body.webp").then(m => setSrc(m.default));
+  }, []);
   if (!src) return <div style={{ height: 'clamp(250px, 40vh, 450px)' }} />;
   return <ImageDivider src={src} alt="Woman with Zential device in urban setting" quote="Clinic results. Your schedule." />;
 }
