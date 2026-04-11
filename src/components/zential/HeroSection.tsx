@@ -1,6 +1,9 @@
 import heroImage1 from "@/assets/hero-ritual-v2.webp";
+import heroImage1Mobile from "@/assets/hero-ritual-v2-540w.webp";
 import heroImage2 from "@/assets/hero-lifestyle-2.webp";
+import heroImage2Mobile from "@/assets/hero-lifestyle-2-540w.webp";
 import heroImage3 from "@/assets/hero-lifestyle-3.webp";
+import heroImage3Mobile from "@/assets/hero-lifestyle-3-540w.webp";
 import { Sun, Zap, Activity, Flame, Star } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
 
@@ -11,7 +14,11 @@ const modalities = [
   { icon: Flame, label: "Thermal" },
 ];
 
-const heroImages = [heroImage1, heroImage2, heroImage3];
+const heroImages = [
+  { full: heroImage1, mobile: heroImage1Mobile },
+  { full: heroImage2, mobile: heroImage2Mobile },
+  { full: heroImage3, mobile: heroImage3Mobile },
+];
 
 export function HeroSection() {
   const [visible, setVisible] = useState(false);
@@ -44,13 +51,15 @@ export function HeroSection() {
           transition: 'opacity 1s ease-out, transform 1.2s ease-out',
         }}
       >
-        {heroImages.map((src, i) => (
+        {heroImages.map((img, i) => (
           <img
             key={i}
-            src={src}
+            src={img.full}
+            srcSet={`${img.mobile} 540w, ${img.full} 1080w`}
+            sizes="(max-width: 768px) 100vw, 55vw"
             alt="Zential beauty device"
             width={1080}
-            height={1296}
+            height={1447}
             className="absolute inset-0 w-full h-full object-cover"
             {...(i === 0 ? { fetchPriority: "high" as const } : { loading: "lazy" as const })}
             style={{

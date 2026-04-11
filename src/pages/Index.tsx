@@ -41,12 +41,15 @@ const homepageJsonLd = {
 };
 
 function LazyImageDivider() {
-  const [src, setSrc] = useState<string | null>(null);
+  const [srcs, setSrcs] = useState<{ full: string; mobile: string } | null>(null);
   useEffect(() => {
-    import("@/assets/lifestyle-body.webp").then(m => setSrc(m.default));
+    Promise.all([
+      import("@/assets/lifestyle-body.webp"),
+      import("@/assets/lifestyle-body-540w.webp"),
+    ]).then(([full, mobile]) => setSrcs({ full: full.default, mobile: mobile.default }));
   }, []);
-  if (!src) return <div style={{ height: 'clamp(250px, 40vh, 450px)' }} />;
-  return <ImageDivider src={src} alt="Woman with Zential device in urban setting" quote="Clinic results. Your schedule." />;
+  if (!srcs) return <div style={{ height: 'clamp(250px, 40vh, 450px)' }} />;
+  return <ImageDivider src={srcs.full} srcMobile={srcs.mobile} alt="Woman with Zential device in urban setting" quote="Clinic results. Your schedule." />;
 }
 
 const Index = () => {
