@@ -1,7 +1,7 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import expert1 from "@/assets/expert-1.webp";
 import expert2 from "@/assets/expert-2.webp";
-import expert3 from "@/assets/expert-3.jpg";
+import expert3 from "@/assets/expert-3.webp";
 
 const experts = [
   {

@@ -41,7 +41,7 @@ export function CartDrawer() {
   return (
     <Sheet open={isOpen} onOpenChange={(open) => open ? openCart() : closeCart()}>
       <SheetTrigger asChild>
-        <button className="relative text-muted-foreground hover:text-foreground transition-colors">
+        <button aria-label="Shopping bag" className="relative text-muted-foreground hover:text-foreground transition-colors">
           <ShoppingBag size={18} />
           {totalItems > 0 && (
             <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-primary text-primary-foreground text-[10px] flex items-center justify-center font-semibold">
@@ -58,6 +58,7 @@ export function CartDrawer() {
           </p>
           <button
             onClick={() => closeCart()}
+            aria-label="Close cart"
             className="absolute right-5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
           >
             <X size={20} />
@@ -104,6 +105,8 @@ export function CartDrawer() {
                         <img
                           src={img.url}
                           alt={item.product.node.title}
+                          width={72}
+                          height={72}
                           className="w-full h-full object-cover"
                         />
                       ) : null;
@@ -133,6 +136,7 @@ export function CartDrawer() {
                       <div className="flex items-center border border-border/50 rounded-full">
                         <button
                           onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
+                          aria-label="Decrease quantity"
                           className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
                         >
                           <Minus size={13} />
@@ -140,6 +144,7 @@ export function CartDrawer() {
                         <span className="w-8 text-center text-sm font-medium">{item.quantity}</span>
                         <button
                           onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
+                          aria-label="Increase quantity"
                           className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
                         >
                           <Plus size={13} />
