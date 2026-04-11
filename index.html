@@ -150,40 +150,61 @@
     }
     </script>
 
-    <!-- Fonts -->
+    <!-- Preconnects (fonts + Shopify) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://0d1m9a-w7.myshopify.com" crossorigin />
+
+    <!-- Fonts with display=swap -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Critical above-the-fold CSS (inlined) -->
+    <style>
+      *, *::before, *::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: hsl(28 16% 88%); }
+      body { margin: 0; font-family: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif; background-color: hsl(30 27% 95%); color: hsl(0 0% 12%); -webkit-font-smoothing: antialiased; }
+      .min-h-screen { min-height: 100vh; }
+      img { display: block; max-width: 100%; height: auto; }
+    </style>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V905PFS82W"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-V905PFS82W');
-    </script>
-
-    <!-- Meta Pixel -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '915864761310220');
-      fbq('track', 'PageView');
-    </script>
-
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Deferred analytics: load after main content -->
+    <script>
+      // Defer GA and Meta Pixel to after page load to avoid blocking LCP
+      window.addEventListener('load', function() {
+        // Google Analytics
+        setTimeout(function() {
+          var gs = document.createElement('script');
+          gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-V905PFS82W';
+          gs.async = true;
+          document.head.appendChild(gs);
+          gs.onload = function() {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-V905PFS82W');
+          };
+        }, 100);
+
+        // Meta Pixel
+        setTimeout(function() {
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '915864761310220');
+          fbq('track', 'PageView');
+        }, 200);
+      });
+    </script>
   </body>
 </html>

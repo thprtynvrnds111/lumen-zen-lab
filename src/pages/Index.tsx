@@ -21,7 +21,7 @@ import { BundleSection } from "@/components/zential/BundleSection";
 import { FAQSection } from "@/components/zential/FAQSection";
 import { CommunitySection } from "@/components/zential/CommunitySection";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
-import lifestyleBody from "@/assets/lifestyle-body.jpg";
+import lifestyleBody from "@/assets/lifestyle-body.webp";
 
 const homepageJsonLd = {
   "@context": "https://schema.org",
