@@ -1,6 +1,6 @@
-import heroImage1 from "@/assets/hero-ritual-v2.jpg";
-import heroImage2 from "@/assets/hero-lifestyle-2.png";
-import heroImage3 from "@/assets/hero-lifestyle-3.png";
+import heroImage1 from "@/assets/hero-ritual-v2.webp";
+import heroImage2 from "@/assets/hero-lifestyle-2.webp";
+import heroImage3 from "@/assets/hero-lifestyle-3.webp";
 import { Sun, Zap, Activity, Flame, Star } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
 
@@ -49,7 +49,10 @@ export function HeroSection() {
             key={i}
             src={src}
             alt="Zential beauty device"
+            width={1080}
+            height={1296}
             className="absolute inset-0 w-full h-full object-cover"
+            {...(i === 0 ? { fetchPriority: "high" as const } : { loading: "lazy" as const })}
             style={{
               opacity: currentImage === i ? (isTransitioning ? 0 : 1) : 0,
               transition: 'opacity 0.6s ease-in-out',

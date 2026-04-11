@@ -15,6 +15,9 @@ export function ImageDivider({ src, alt, quote }: ImageDividerProps) {
         src={src}
         alt={alt}
         className="w-full h-full object-cover"
+        loading="lazy"
+        width={1080}
+        height={450}
       />
       {quote && (
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center px-6">

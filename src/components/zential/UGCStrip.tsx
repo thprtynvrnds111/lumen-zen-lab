@@ -1,7 +1,7 @@
-import ugcLifestyle from "@/assets/ugc-lifestyle-desk.png";
-import ugc1 from "@/assets/ugc-unboxing-1.png";
-import ugc2 from "@/assets/ugc-unboxing-2.png";
-import unboxingFounder from "@/assets/unboxing-founder.jpg";
+import ugcLifestyle from "@/assets/ugc-lifestyle-desk.webp";
+import ugc1 from "@/assets/ugc-unboxing-1.webp";
+import ugc2 from "@/assets/ugc-unboxing-2.webp";
+import unboxingFounder from "@/assets/unboxing-founder.webp";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const photos = [
@@ -33,6 +33,9 @@ export function UGCStrip() {
                 src={p.src}
                 alt={p.alt}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                width={800}
+                height={1000}
               />
             </div>
             <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-5 pt-12">

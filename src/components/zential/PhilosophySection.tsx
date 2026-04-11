@@ -1,5 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import philosophyImg from "@/assets/philosophy-portrait-new.png";
+import philosophyImg from "@/assets/philosophy-portrait-new.webp";
 
 export function PhilosophySection() {
   const ref = useScrollReveal<HTMLElement>();
@@ -14,6 +14,8 @@ export function PhilosophySection() {
             alt="Woman with clear skin, contemplative"
             className="w-full h-full object-cover"
             loading="lazy"
+            width={900}
+            height={1200}
             style={{ minHeight: '50vh' }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#1A1714]/60 hidden md:block" />
