@@ -53,7 +53,11 @@
       "destination": "/skin-pulse.html"
     },
     {
-      "source": "/((?!at-home-face-lifting-device|microcurrent-face-device|ems-face-toning-device|face-tightening-device-at-home|best-beauty-device-for-jawline|frequency-wand|gua-sha-frequency|eye-activator|frame-pulse|frequency-wand-pro|sculpt-wand|skin-pulse).*)",
+      "source": "/seo-snapshot.html",
+      "destination": "/seo-snapshot.html"
+    },
+    {
+      "source": "/((?!at-home-face-lifting-device|microcurrent-face-device|ems-face-toning-device|face-tightening-device-at-home|best-beauty-device-for-jawline|frequency-wand|gua-sha-frequency|eye-activator|frame-pulse|frequency-wand-pro|sculpt-wand|skin-pulse|seo-snapshot.html).*)",
       "destination": "/index.html"
     }
   ]
