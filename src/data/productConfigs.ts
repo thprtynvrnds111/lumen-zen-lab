@@ -1,21 +1,21 @@
 import { Sparkles, Flame, Heart, Brain, Sun, Zap, Waves, ThermometerSun, Eye, Gauge, Focus, CircleDot, ShieldCheck, Droplets, ScanFace, Vibrate, Radio, Gem, Aperture, Activity, Beaker, FlaskConical } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import beforeImg from "@/assets/before.jpg";
-import afterImg from "@/assets/after.jpg";
-import before2Img from "@/assets/before2.jpg";
-import after2Img from "@/assets/after2.jpg";
-import before3Img from "@/assets/before3.jpg";
-import after3Img from "@/assets/after3.jpg";
+import beforeImg from "@/assets/before.webp";
+import afterImg from "@/assets/after.webp";
+import before2Img from "@/assets/before2.webp";
+import after2Img from "@/assets/after2.webp";
+import before3Img from "@/assets/before3.webp";
+import after3Img from "@/assets/after3.webp";
 
-import problemFaceIntroducer from "@/assets/problem-face-introducer.png";
-import problemFramePulse from "@/assets/problem-frame-pulse.png";
-import problemGuasha from "@/assets/problem-guasha.png";
-import problemSkinpulse from "@/assets/problem-skinpulse.png";
-import problemEyeActivator from "@/assets/problem-eye-activator.png";
-import problemFrequencyWand from "@/assets/problem-frequency-wand.png";
-import problemSculptWand from "@/assets/problem-sculpt-wand.png";
-import problemWandPro from "@/assets/problem-wand-pro.png";
+import problemFaceIntroducer from "@/assets/problem-face-introducer.webp";
+import problemFramePulse from "@/assets/problem-frame-pulse.webp";
+import problemGuasha from "@/assets/problem-guasha.webp";
+import problemSkinpulse from "@/assets/problem-skinpulse.webp";
+import problemEyeActivator from "@/assets/problem-eye-activator.webp";
+import problemFrequencyWand from "@/assets/problem-frequency-wand.webp";
+import problemSculptWand from "@/assets/problem-sculpt-wand.webp";
+import problemWandPro from "@/assets/problem-wand-pro.webp";
 
 export interface ProductConfig {
   handle: string;

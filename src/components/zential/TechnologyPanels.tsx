@@ -7,10 +7,10 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
-import panelRedlight from "@/assets/panel-redlight.jpg";
-import panelMicrocurrent from "@/assets/panel-microcurrent.jpg";
-import panelEms from "@/assets/panel-ems.jpg";
-import panelBluelight from "@/assets/panel-bluelight.jpg";
+import panelRedlight from "@/assets/panel-redlight.webp";
+import panelMicrocurrent from "@/assets/panel-microcurrent.webp";
+import panelEms from "@/assets/panel-ems.webp";
+import panelBluelight from "@/assets/panel-bluelight.webp";
 
 /* ── Device handle → display name mapping ── */
 const DEVICE_NAMES: Record<string, string> = {
@@ -178,6 +178,9 @@ function AvailableInRow({
                   src={d.imageUrl}
                   alt={d.name}
                   className="w-full h-full object-cover transition-all duration-300 group-hover/thumb:brightness-110"
+                  loading="lazy"
+                  width={44}
+                  height={44}
                 />
                 {/* Hover glow */}
                 <div className="absolute inset-0 rounded-full opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 pointer-events-none"
@@ -252,6 +255,9 @@ function DesktopPanel({
         src={panel.image}
         alt={panel.eyebrow}
         className="absolute inset-0 w-full h-full object-cover"
+        loading="lazy"
+        width={800}
+        height={1067}
         style={{
           transform: isActive ? "scale(1.05)" : "scale(1)",
           filter: isActive ? "brightness(1)" : "brightness(0.85) saturate(0.8)",
@@ -353,6 +359,9 @@ function MobilePanel({
         src={panel.image}
         alt={panel.eyebrow}
         className="absolute inset-0 w-full h-full object-cover"
+        loading="lazy"
+        width={800}
+        height={1067}
         style={{
           transform: isActive ? "scale(1.05)" : "scale(1)",
           filter: isActive ? "brightness(1)" : "brightness(0.8) saturate(0.7)",

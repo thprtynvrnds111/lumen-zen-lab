@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import testimonialSarah from "@/assets/testimonial-sarah.jpg";
-import testimonialMarie from "@/assets/testimonial-marie.jpg";
-import testimonialElena from "@/assets/testimonial-elena.jpg";
-import testimonialJulia from "@/assets/testimonial-julia.jpg";
-import testimonialAnna from "@/assets/testimonial-anna.jpg";
+import testimonialSarah from "@/assets/testimonial-sarah.webp";
+import testimonialMarie from "@/assets/testimonial-marie.webp";
+import testimonialElena from "@/assets/testimonial-elena.webp";
+import testimonialJulia from "@/assets/testimonial-julia.webp";
+import testimonialAnna from "@/assets/testimonial-anna.webp";
 
 const testimonials = [
   { name: "Sarah M.", timeline: "After 14 Days", quote: "My jawline looks sculpted. I can't believe this is from a home device.", img: testimonialSarah },
@@ -43,6 +43,9 @@ export function SocialProof() {
                     src={t.img}
                     alt={t.name}
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    width={400}
+                    height={400}
                     style={
                       t.name === "Elena R." ? { objectPosition: "center", transform: "scale(1.4)" } :
                       t.name === "Anna B." ? { objectPosition: "center 25%", transform: "scale(1.3)" } :

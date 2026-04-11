@@ -1,6 +1,6 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import expert1 from "@/assets/expert-1.png";
-import expert2 from "@/assets/expert-2.png";
+import expert1 from "@/assets/expert-1.webp";
+import expert2 from "@/assets/expert-2.webp";
 import expert3 from "@/assets/expert-3.jpg";
 
 const experts = [
@@ -63,8 +63,8 @@ export function ExpertsSection() {
                   alt={expert.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
-                  width={640}
-                  height={640}
+                  width={600}
+                  height={600}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">

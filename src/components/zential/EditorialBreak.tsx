@@ -1,4 +1,4 @@
-import lifestyleImg from "@/assets/lifestyle-redlight.png";
+import lifestyleImg from "@/assets/lifestyle-redlight.webp";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export function EditorialBreak() {
@@ -17,6 +17,9 @@ export function EditorialBreak() {
             src={lifestyleImg}
             alt="Woman using Zential red light therapy device"
             className="w-full h-full object-cover"
+            loading="lazy"
+            width={1080}
+            height={1340}
             style={{ minHeight: '50vh' }}
           />
           {/* Gradient overlay for blending */}
