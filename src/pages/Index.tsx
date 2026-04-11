@@ -3,25 +3,29 @@ import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { HeroSection } from "@/components/zential/HeroSection";
 import { AsSeenInStrip } from "@/components/zential/AsSeenInStrip";
-import { PhilosophySection } from "@/components/zential/PhilosophySection";
-import { TechCardsSection } from "@/components/zential/TechCardsSection";
-import { ExpertsSection } from "@/components/zential/ExpertsSection";
-import { DevicesSection } from "@/components/zential/DevicesSection";
-import { PressQuotesSection } from "@/components/zential/PressQuotesSection";
-import { EditorialBreak } from "@/components/zential/EditorialBreak";
-import { UGCStrip } from "@/components/zential/UGCStrip";
-import { RitualSection } from "@/components/zential/RitualSection";
-import { ImageDivider } from "@/components/zential/ImageDivider";
-import { BrandStorySection } from "@/components/zential/BrandStorySection";
-import { SkinFitSection } from "@/components/zential/SkinFitSection";
-import { SafetyUsageSection } from "@/components/zential/SafetyUsageSection";
-import { TransparencySection } from "@/components/zential/TransparencySection";
-import { PriceGuaranteeSection } from "@/components/zential/PriceGuaranteeSection";
-import { BundleSection } from "@/components/zential/BundleSection";
-import { FAQSection } from "@/components/zential/FAQSection";
-import { CommunitySection } from "@/components/zential/CommunitySection";
-import { ZentialFooter } from "@/components/zential/ZentialFooter";
-import lifestyleBody from "@/assets/lifestyle-body.webp";
+import { lazy, Suspense } from "react";
+
+// Lazy-load below-fold sections to reduce initial JS bundle
+const PhilosophySection = lazy(() => import("@/components/zential/PhilosophySection").then(m => ({ default: m.PhilosophySection })));
+const TechCardsSection = lazy(() => import("@/components/zential/TechCardsSection").then(m => ({ default: m.TechCardsSection })));
+const ExpertsSection = lazy(() => import("@/components/zential/ExpertsSection").then(m => ({ default: m.ExpertsSection })));
+const DevicesSection = lazy(() => import("@/components/zential/DevicesSection").then(m => ({ default: m.DevicesSection })));
+const PressQuotesSection = lazy(() => import("@/components/zential/PressQuotesSection").then(m => ({ default: m.PressQuotesSection })));
+const EditorialBreak = lazy(() => import("@/components/zential/EditorialBreak").then(m => ({ default: m.EditorialBreak })));
+const UGCStrip = lazy(() => import("@/components/zential/UGCStrip").then(m => ({ default: m.UGCStrip })));
+const RitualSection = lazy(() => import("@/components/zential/RitualSection").then(m => ({ default: m.RitualSection })));
+const ImageDivider = lazy(() => import("@/components/zential/ImageDivider").then(m => ({ default: m.ImageDivider })));
+const BrandStorySection = lazy(() => import("@/components/zential/BrandStorySection").then(m => ({ default: m.BrandStorySection })));
+const SkinFitSection = lazy(() => import("@/components/zential/SkinFitSection").then(m => ({ default: m.SkinFitSection })));
+const SafetyUsageSection = lazy(() => import("@/components/zential/SafetyUsageSection").then(m => ({ default: m.SafetyUsageSection })));
+const TransparencySection = lazy(() => import("@/components/zential/TransparencySection").then(m => ({ default: m.TransparencySection })));
+const PriceGuaranteeSection = lazy(() => import("@/components/zential/PriceGuaranteeSection").then(m => ({ default: m.PriceGuaranteeSection })));
+const BundleSection = lazy(() => import("@/components/zential/BundleSection").then(m => ({ default: m.BundleSection })));
+const FAQSection = lazy(() => import("@/components/zential/FAQSection").then(m => ({ default: m.FAQSection })));
+const CommunitySection = lazy(() => import("@/components/zential/CommunitySection").then(m => ({ default: m.CommunitySection })));
+const ZentialFooter = lazy(() => import("@/components/zential/ZentialFooter").then(m => ({ default: m.ZentialFooter })));
+
+const lifestyleBodyImport = () => import("@/assets/lifestyle-body.webp").then(m => m.default);
 
 const homepageJsonLd = {
   "@context": "https://schema.org",
@@ -38,6 +42,15 @@ const homepageJsonLd = {
   },
 };
 
+// Wrapper for ImageDivider that lazy-loads its image
+function LazyImageDivider() {
+  const { useState, useEffect } = require("react");
+  const [src, setSrc] = useState<string | null>(null);
+  useEffect(() => { lifestyleBodyImport().then(setSrc); }, []);
+  if (!src) return <div style={{ height: 'clamp(250px, 40vh, 450px)' }} />;
+  return <ImageDivider src={src} alt="Woman with Zential device in urban setting" quote="Clinic results. Your schedule." />;
+}
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
@@ -50,64 +63,32 @@ const Index = () => {
       <AnnouncementBar />
       <Header />
       <main>
-        {/* 1. Hero — immediate visual confirmation */}
         <HeroSection />
-
-        {/* 2. Trust strip — editorial authority */}
         <AsSeenInStrip />
 
-        {/* 3. Philosophy — "This is not a beauty brand" manifesto */}
-        <PhilosophySection />
-
-        {/* 4. Technology — the clinical backbone */}
-        <TechCardsSection />
-
-        {/* 5. Experts — the minds behind the system */}
-        <ExpertsSection />
-
-        {/* 6. Devices — product selection */}
-        <DevicesSection />
-
-        {/* 7. Press quotes — rotating editorial endorsements */}
-        <PressQuotesSection />
-
-        {/* 8. UGC — real people, real practice */}
-        <UGCStrip />
-
-        {/* 9. Editorial break — self-optimization reframe */}
-        <EditorialBreak />
-
-        {/* 10. The Ritual — the daily practice */}
-        <RitualSection />
-
-        {/* 11. Image divider — lifestyle aspiration */}
-        <ImageDivider
-          src={lifestyleBody}
-          alt="Woman with Zential device in urban setting"
-          quote="Clinic results. Your schedule."
-        />
-
-        {/* 12. Brand story — origin & values */}
-        <BrandStorySection />
-
-        {/* 13. SkinFit — personalization */}
-        <SkinFitSection />
-
-        {/* 14. Safety — trust & transparency */}
-        <SafetyUsageSection />
-        <TransparencySection />
-
-        {/* 15. Value proposition */}
-        <PriceGuaranteeSection />
-        <BundleSection />
-
-        {/* 16. FAQ — objection handling */}
-        <FAQSection />
-
-        {/* 17. Community — belonging */}
-        <CommunitySection />
+        <Suspense fallback={<div className="min-h-[50vh]" />}>
+          <PhilosophySection />
+          <TechCardsSection />
+          <ExpertsSection />
+          <DevicesSection />
+          <PressQuotesSection />
+          <UGCStrip />
+          <EditorialBreak />
+          <RitualSection />
+          <LazyImageDivider />
+          <BrandStorySection />
+          <SkinFitSection />
+          <SafetyUsageSection />
+          <TransparencySection />
+          <PriceGuaranteeSection />
+          <BundleSection />
+          <FAQSection />
+          <CommunitySection />
+        </Suspense>
       </main>
-      <ZentialFooter />
+      <Suspense fallback={<div className="h-40 bg-foreground" />}>
+        <ZentialFooter />
+      </Suspense>
     </div>
   );
 };

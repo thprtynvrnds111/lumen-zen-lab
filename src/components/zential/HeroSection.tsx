@@ -99,7 +99,7 @@ export function HeroSection() {
               <Star key={i} size={13} fill="#C6A07C" strokeWidth={0} style={{ color: '#C6A07C' }} />
             ))}
           </div>
-           <span className="text-xs text-foreground/50 ml-1">4.9 / 5</span>
+           <span className="text-xs ml-1" style={{ color: '#6B5A4A' }}>4.9 / 5</span>
         </div>
 
         {/* Modality icons */}
