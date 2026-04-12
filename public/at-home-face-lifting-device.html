@@ -53,7 +53,6 @@
       overflow-x: hidden;
     }
 
-    /* Grain overlay */
     body::before {
       content: '';
       position: fixed;
@@ -64,7 +63,6 @@
       opacity: 0.4;
     }
 
-    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -105,7 +103,6 @@
 
     .nav-cta:hover { background: var(--terra); }
 
-    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -166,10 +163,7 @@
       font-weight: 500;
     }
 
-    h1 em {
-      font-style: normal;
-      color: var(--gold);
-    }
+    h1 em { font-style: normal; color: var(--gold); }
 
     .hero-sub {
       font-size: 1rem;
@@ -202,23 +196,11 @@
       transition: background 0.2s, transform 0.2s;
     }
 
-    .btn-primary:hover {
-      background: var(--terra);
-      transform: translateY(-1px);
-    }
+    .btn-primary:hover { background: var(--terra); transform: translateY(-1px); }
 
-    .hero-proof {
-      font-size: 0.78rem;
-      color: var(--warm-light);
-      font-weight: 400;
-    }
+    .hero-proof { font-size: 0.78rem; color: var(--warm-light); font-weight: 400; }
+    .hero-proof strong { color: var(--gold); font-weight: 500; }
 
-    .hero-proof strong {
-      color: var(--gold);
-      font-weight: 500;
-    }
-
-    /* Hero visual placeholder */
     .hero-visual {
       position: relative;
       display: flex;
@@ -226,92 +208,14 @@
       justify-content: center;
     }
 
-    .hero-card {
-      background: linear-gradient(145deg, rgba(198,160,124,0.08), rgba(198,160,124,0.03));
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 48px 40px;
-      width: 100%;
-      text-align: center;
-      position: relative;
-    }
-
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: 4px;
-      background: linear-gradient(135deg, rgba(198,160,124,0.3), transparent 50%, rgba(198,160,124,0.1));
-      z-index: -1;
-    }
-
-    .device-icon {
-      width: 80px;
-      height: 120px;
-      margin: 0 auto 24px;
-      background: linear-gradient(160deg, var(--gold-light), var(--gold-dark));
-      border-radius: 40px 40px 20px 20px;
-      position: relative;
-      box-shadow: 0 20px 60px rgba(198,160,124,0.3), 0 4px 16px rgba(26,23,20,0.1);
-    }
-
-    .device-icon::after {
-      content: '';
-      position: absolute;
-      bottom: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 24px;
-      background: linear-gradient(160deg, var(--gold), var(--gold-dark));
-      border-radius: 0 0 30px 30px;
-    }
-
-    .device-badge {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid var(--border);
-      padding: 6px 14px;
-      border-radius: 20px;
-      margin-bottom: 16px;
-    }
-
-    .device-stat {
-      font-family: 'Lora', serif;
-      font-size: 2.4rem;
-      font-style: italic;
-      color: var(--near-black);
-      font-weight: 500;
-    }
-
-    .device-stat-label {
-      font-size: 0.75rem;
-      color: var(--warm-light);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
-
-    /* DIVIDER */
     .section-divider {
       width: 100%;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--border), transparent);
     }
 
-    /* SECTION BASE */
-    section {
-      padding: 100px 40px;
-    }
-
-    .section-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+    section { padding: 100px 40px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
 
     .section-label {
       font-size: 0.65rem;
@@ -343,10 +247,7 @@
       margin-bottom: 20px;
     }
 
-    h2 em {
-      font-style: normal;
-      color: var(--gold);
-    }
+    h2 em { font-style: normal; color: var(--gold); }
 
     h3 {
       font-family: 'Lora', serif;
@@ -357,7 +258,6 @@
       margin-bottom: 12px;
     }
 
-    /* PROBLEM SECTION */
     .problem-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -366,17 +266,9 @@
       margin-top: 60px;
     }
 
-    .problem-text p {
-      font-size: 1rem;
-      color: var(--warm-mid);
-      margin-bottom: 20px;
-      line-height: 1.85;
-    }
+    .problem-text p { font-size: 1rem; color: var(--warm-mid); margin-bottom: 20px; line-height: 1.85; }
 
-    .problem-list {
-      list-style: none;
-      margin-top: 32px;
-    }
+    .problem-list { list-style: none; margin-top: 32px; }
 
     .problem-list li {
       display: flex;
@@ -391,25 +283,16 @@
     .problem-list li:last-child { border-bottom: none; }
 
     .problem-list .check {
-      width: 18px;
-      height: 18px;
+      width: 18px; height: 18px;
       border-radius: 50%;
       background: rgba(198,160,124,0.15);
       border: 1px solid var(--gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 2px;
-      font-size: 0.6rem;
-      color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+      font-size: 0.6rem; color: var(--gold);
     }
 
-    .stats-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-    }
+    .stats-block { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
 
     .stat-card {
       background: rgba(198,160,124,0.06);
@@ -432,25 +315,15 @@
       margin-bottom: 8px;
     }
 
-    .stat-desc {
-      font-size: 0.78rem;
-      color: var(--warm-mid);
-      line-height: 1.6;
-    }
+    .stat-desc { font-size: 0.78rem; color: var(--warm-mid); line-height: 1.6; }
 
-    /* HOW IT WORKS */
     .how-section {
       background: rgba(198,160,124,0.04);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
 
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      margin-top: 60px;
-    }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
 
     .step-card {
       position: relative;
@@ -470,19 +343,9 @@
       margin-bottom: 20px;
     }
 
-    .step-card p {
-      font-size: 0.88rem;
-      color: var(--warm-mid);
-      line-height: 1.75;
-    }
+    .step-card p { font-size: 0.88rem; color: var(--warm-mid); line-height: 1.75; }
 
-    /* TECHNOLOGY */
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 60px;
-    }
+    .tech-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 60px; }
 
     .tech-card {
       padding: 36px 32px;
@@ -499,8 +362,7 @@
       content: '';
       position: absolute;
       top: 0; left: 0;
-      width: 3px;
-      height: 100%;
+      width: 3px; height: 100%;
       background: linear-gradient(180deg, var(--gold), transparent);
     }
 
@@ -514,123 +376,33 @@
       display: block;
     }
 
-    .tech-card p {
-      font-size: 0.88rem;
-      color: var(--warm-mid);
-      line-height: 1.75;
-      margin-top: 8px;
-    }
+    .tech-card p { font-size: 0.88rem; color: var(--warm-mid); line-height: 1.75; margin-top: 8px; }
 
-    /* SEO CONTENT */
-    .content-section .section-inner {
-      max-width: 760px;
-    }
+    .content-section .section-inner { max-width: 760px; }
+    .content-section h2 { margin-bottom: 28px; }
+    .content-section p { font-size: 0.95rem; color: var(--warm-mid); margin-bottom: 20px; line-height: 1.9; }
+    .content-section h3 { margin-top: 40px; margin-bottom: 12px; }
 
-    .content-section h2 {
-      margin-bottom: 28px;
-    }
+    .faq-list { margin-top: 48px; border-top: 1px solid var(--border); }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 28px 0; }
+    .faq-q { font-family: 'Lora', serif; font-style: italic; font-size: 1.05rem; font-weight: 500; color: var(--near-black); margin-bottom: 12px; }
+    .faq-a { font-size: 0.88rem; color: var(--warm-mid); line-height: 1.8; }
 
-    .content-section p {
-      font-size: 0.95rem;
-      color: var(--warm-mid);
-      margin-bottom: 20px;
-      line-height: 1.9;
-    }
-
-    .content-section h3 {
-      margin-top: 40px;
-      margin-bottom: 12px;
-    }
-
-    /* FAQ */
-    .faq-list {
-      margin-top: 48px;
-      border-top: 1px solid var(--border);
-    }
-
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-      padding: 28px 0;
-    }
-
-    .faq-q {
-      font-family: 'Lora', serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--near-black);
-      margin-bottom: 12px;
-    }
-
-    .faq-a {
-      font-size: 0.88rem;
-      color: var(--warm-mid);
-      line-height: 1.8;
-    }
-
-    /* CTA SECTION */
-    .cta-section {
-      background: var(--near-black);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -20%;
-      width: 80%;
-      height: 200%;
-      background: radial-gradient(ellipse, rgba(198,160,124,0.1) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
+    .cta-section { background: var(--near-black); position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; top: -50%; left: -20%; width: 80%; height: 200%; background: radial-gradient(ellipse, rgba(198,160,124,0.1) 0%, transparent 65%); pointer-events: none; }
     .cta-section .section-label { color: rgba(198,160,124,0.7); }
     .cta-section .section-label::before { background: rgba(198,160,124,0.5); }
-
-    .cta-section h2 {
-      color: var(--cream);
-      max-width: 540px;
-    }
-
+    .cta-section h2 { color: var(--cream); max-width: 540px; }
     .cta-section h2 em { color: var(--gold); }
+    .cta-sub { font-size: 0.9rem; color: rgba(247,244,240,0.55); max-width: 440px; margin-bottom: 44px; line-height: 1.8; margin-top: 16px; }
+    .cta-features { display: flex; gap: 32px; margin-top: 32px; flex-wrap: wrap; }
+    .cta-feature { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: rgba(247,244,240,0.5); letter-spacing: 0.05em; }
+    .cta-feature::before { content: '—'; color: var(--gold); }
 
-    .cta-sub {
-      font-size: 0.9rem;
-      color: rgba(247,244,240,0.55);
-      max-width: 440px;
-      margin-bottom: 44px;
-      line-height: 1.8;
-      margin-top: 16px;
-    }
-
-    .cta-features {
-      display: flex;
-      gap: 32px;
-      margin-top: 32px;
-      flex-wrap: wrap;
-    }
-
-    .cta-feature {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.78rem;
-      color: rgba(247,244,240,0.5);
-      letter-spacing: 0.05em;
-    }
-
-    .cta-feature::before {
-      content: '—';
-      color: var(--gold);
-    }
-
-    /* FOOTER */
     footer {
       background: var(--near-black);
       border-top: 1px solid rgba(198,160,124,0.1);
-      padding: 40px 40px;
+      padding: 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -638,77 +410,35 @@
       gap: 20px;
     }
 
-    .footer-logo {
-      font-family: 'Lora', serif;
-      font-style: italic;
-      font-size: 1rem;
-      color: rgba(247,244,240,0.6);
-      text-decoration: none;
-    }
-
+    .footer-logo { font-family: 'Lora', serif; font-style: italic; font-size: 1rem; color: rgba(247,244,240,0.6); text-decoration: none; }
     .footer-logo span { color: var(--gold); }
-
-    .footer-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .footer-links a {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(247,244,240,0.35);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,240,0.35); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.7rem; color: rgba(247,244,240,0.25); width: 100%; margin-top: 8px; }
 
-    .footer-copy {
-      font-size: 0.7rem;
-      color: rgba(247,244,240,0.25);
-      width: 100%;
-      margin-top: 8px;
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .fade-up {
-      animation: fadeUp 0.8s ease forwards;
-      opacity: 0;
-    }
-
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.8s ease forwards; opacity: 0; }
     .delay-1 { animation-delay: 0.1s; }
     .delay-2 { animation-delay: 0.25s; }
     .delay-3 { animation-delay: 0.4s; }
     .delay-4 { animation-delay: 0.55s; }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 16px 20px; }
       section { padding: 70px 20px; }
       .hero { padding: 100px 20px 60px; }
-
-      .hero-inner,
-      .problem-grid { grid-template-columns: 1fr; gap: 40px; }
-
+      .hero-inner, .problem-grid { grid-template-columns: 1fr; gap: 40px; }
       .hero-visual { display: none; }
-
       .steps-grid { grid-template-columns: 1fr; gap: 20px; }
       .tech-grid { grid-template-columns: 1fr; }
       .stats-block { grid-template-columns: 1fr 1fr; }
-
       footer { padding: 32px 20px; }
       .footer-links { gap: 16px; }
     }
   </style>
 
-  <!-- Schema markup for SEO -->
+  <!-- Product Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -721,15 +451,41 @@
     },
     "url": "https://zentialpure.com/product/lifting-and-tightening-face-introducer",
     "category": "Beauty Device",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "124",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Sophie V."
+      },
+      "reviewBody": "I noticed a difference from the first use — my jawline looked more defined and my skin felt firmer. After 4 weeks of daily use the results are genuinely impressive. Worth every cent."
+    },
     "offers": {
       "@type": "Offer",
       "priceCurrency": "EUR",
+      "price": "84.00",
+      "lowPrice": "84.00",
+      "highPrice": "84.00",
+      "offerCount": "1",
+      "priceValidUntil": "2026-12-31",
       "availability": "https://schema.org/InStock",
       "url": "https://zentialpure.com/product/lifting-and-tightening-face-introducer"
     }
   }
   </script>
 
+  <!-- FAQ Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -774,13 +530,11 @@
 
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="https://zentialpure.com" class="nav-logo">Zential <span>Pure</span></a>
     <a href="https://zentialpure.com/product/lifting-and-tightening-face-introducer" class="nav-cta">Shop the Device</a>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-content">
@@ -792,20 +546,14 @@
           <span class="hero-proof">Clinic <strong>precision</strong>. Daily <strong>ritual</strong>.</span>
         </div>
       </div>
-
       <div class="hero-visual fade-up delay-3">
-        <img 
-  src="/face-introducer.jpg" 
-  alt="Zential Pure Face Introducer — at-home EMS and microcurrent face lifting device"
-  style="width:100%; border-radius:4px; display:block; box-shadow: 0 24px 80px rgba(26,23,20,0.15);"
-/>
+        <img src="/face-introducer.jpg" alt="Zential Pure Face Introducer — at-home EMS and microcurrent face lifting device" style="width:100%; border-radius:4px; display:block; box-shadow: 0 24px 80px rgba(26,23,20,0.15);" />
       </div>
     </div>
   </section>
 
   <div class="section-divider"></div>
 
-  <!-- PROBLEM / STATS -->
   <section>
     <div class="section-inner">
       <p class="section-label">Why it matters</p>
@@ -816,7 +564,6 @@
           <p>Creams and serums work at the surface. But the sagging, the softening jawline, the loss of definition — that happens deeper. In the muscles. In the structural layer that no topical product can touch.</p>
           <p>Clinical microcurrent and EMS treatments target exactly this layer. They send low-level electrical impulses into the facial muscles, triggering contractions that firm, lift and reshape — the same way a gym reshapes your body.</p>
           <p>Until recently, this technology was only available in medical spas and clinics, at €100-200 per session. The Zential Pure Face Introducer brings that same mechanism home.</p>
-
           <ul class="problem-list">
             <li><span class="check">✓</span> Targets the muscle layer — not just the skin surface</li>
             <li><span class="check">✓</span> Non-invasive, no downtime, no needles</li>
@@ -824,24 +571,11 @@
             <li><span class="check">✓</span> Clinic-grade technology at a fraction of the cost</li>
           </ul>
         </div>
-
         <div class="stats-block">
-          <div class="stat-card">
-            <div class="stat-number">10'</div>
-            <div class="stat-desc">Per session. Less time than your morning coffee.</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">40+</div>
-            <div class="stat-desc">Facial muscles targeted and activated per treatment.</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">€0</div>
-            <div class="stat-desc">Clinic fee. Own the technology, use it forever.</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">Day 1</div>
-            <div class="stat-desc">Visible lifting effect from the very first use.</div>
-          </div>
+          <div class="stat-card"><div class="stat-number">10'</div><div class="stat-desc">Per session. Less time than your morning coffee.</div></div>
+          <div class="stat-card"><div class="stat-number">40+</div><div class="stat-desc">Facial muscles targeted and activated per treatment.</div></div>
+          <div class="stat-card"><div class="stat-number">€0</div><div class="stat-desc">Clinic fee. Own the technology, use it forever.</div></div>
+          <div class="stat-card"><div class="stat-number">Day 1</div><div class="stat-desc">Visible lifting effect from the very first use.</div></div>
         </div>
       </div>
     </div>
@@ -849,87 +583,48 @@
 
   <div class="section-divider"></div>
 
-  <!-- HOW IT WORKS -->
   <section class="how-section">
     <div class="section-inner">
       <p class="section-label">The ritual</p>
       <h2>Three steps.<br /><em>Ten minutes. Daily.</em></h2>
-
       <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-number">01</div>
-          <h3>Cleanse & Prepare</h3>
-          <p>Start with a clean face. Apply a water-based conductive gel or serum to the treatment area. This allows the EMS current to pass smoothly through the skin to the muscle layer.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-number">02</div>
-          <h3>Sculpt & Lift</h3>
-          <p>Glide the device along your jawline, cheekbones, forehead and neck using upward, outward motions. The device sends gentle electrical impulses that cause your facial muscles to contract and release — firming them progressively with each session.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-number">03</div>
-          <h3>Seal & Protect</h3>
-          <p>Follow with your usual moisturiser or serum. The microcurrent treatment temporarily increases skin permeability, meaning your skincare absorbs deeper and works harder immediately after each session.</p>
-        </div>
+        <div class="step-card"><div class="step-number">01</div><h3>Cleanse &amp; Prepare</h3><p>Start with a clean face. Apply a water-based conductive gel or serum to the treatment area. This allows the EMS current to pass smoothly through the skin to the muscle layer.</p></div>
+        <div class="step-card"><div class="step-number">02</div><h3>Sculpt &amp; Lift</h3><p>Glide the device along your jawline, cheekbones, forehead and neck using upward, outward motions. The device sends gentle electrical impulses that cause your facial muscles to contract and release — firming them progressively with each session.</p></div>
+        <div class="step-card"><div class="step-number">03</div><h3>Seal &amp; Protect</h3><p>Follow with your usual moisturiser or serum. The microcurrent treatment temporarily increases skin permeability, meaning your skincare absorbs deeper and works harder immediately after each session.</p></div>
       </div>
     </div>
   </section>
 
   <div class="section-divider"></div>
 
-  <!-- TECHNOLOGY -->
   <section>
     <div class="section-inner">
       <p class="section-label">The science</p>
       <h2>What the technology<br /><em>actually does</em></h2>
-
       <div class="tech-grid">
-        <div class="tech-card">
-          <span class="tech-tag">EMS — Electrical Muscle Stimulation</span>
-          <h3>Muscle Activation & Toning</h3>
-          <p>EMS delivers electrical impulses that cause involuntary muscle contractions — the same mechanism used in physiotherapy and professional sports recovery. On the face, this translates to tighter, more defined muscles under the skin: a sharper jawline, lifted cheeks, reduced sagging.</p>
-        </div>
-        <div class="tech-card">
-          <span class="tech-tag">Microcurrent</span>
-          <h3>Cellular Rejuvenation</h3>
-          <p>Microcurrent operates at the cellular level, stimulating the production of ATP (adenosine triphosphate) — the energy that drives collagen and elastin synthesis. This is the mechanism behind the "natural facelift" effect: firmer skin, reduced fine lines, improved elasticity over time.</p>
-        </div>
-        <div class="tech-card">
-          <span class="tech-tag">Thermal Technology</span>
-          <h3>Deep Tissue Warming</h3>
-          <p>Gentle thermal energy penetrates below the surface to stimulate circulation and collagen remodelling. This reduces puffiness, evens skin tone, and accelerates the skin's natural repair process — giving you that post-facial glow, daily.</p>
-        </div>
-        <div class="tech-card">
-          <span class="tech-tag">Red Light Therapy</span>
-          <h3>Collagen Stimulation</h3>
-          <p>Red light at specific wavelengths is clinically shown to stimulate fibroblasts — the cells responsible for collagen production. Regular exposure reduces the appearance of fine lines and wrinkles and improves overall skin texture and radiance without any UV damage.</p>
-        </div>
+        <div class="tech-card"><span class="tech-tag">EMS — Electrical Muscle Stimulation</span><h3>Muscle Activation &amp; Toning</h3><p>EMS delivers electrical impulses that cause involuntary muscle contractions — the same mechanism used in physiotherapy and professional sports recovery. On the face, this translates to tighter, more defined muscles under the skin: a sharper jawline, lifted cheeks, reduced sagging.</p></div>
+        <div class="tech-card"><span class="tech-tag">Microcurrent</span><h3>Cellular Rejuvenation</h3><p>Microcurrent operates at the cellular level, stimulating the production of ATP (adenosine triphosphate) — the energy that drives collagen and elastin synthesis. This is the mechanism behind the "natural facelift" effect: firmer skin, reduced fine lines, improved elasticity over time.</p></div>
+        <div class="tech-card"><span class="tech-tag">Thermal Technology</span><h3>Deep Tissue Warming</h3><p>Gentle thermal energy penetrates below the surface to stimulate circulation and collagen remodelling. This reduces puffiness, evens skin tone, and accelerates the skin's natural repair process — giving you that post-facial glow, daily.</p></div>
+        <div class="tech-card"><span class="tech-tag">Red Light Therapy</span><h3>Collagen Stimulation</h3><p>Red light at specific wavelengths is clinically shown to stimulate fibroblasts — the cells responsible for collagen production. Regular exposure reduces the appearance of fine lines and wrinkles and improves overall skin texture and radiance without any UV damage.</p></div>
       </div>
     </div>
   </section>
 
   <div class="section-divider"></div>
 
-  <!-- SEO CONTENT ARTICLE -->
   <section class="content-section">
     <div class="section-inner">
       <p class="section-label">Your questions answered</p>
       <h2>Everything you need to know about<br /><em>at-home face lifting devices</em></h2>
-
       <p>The market for at-home face lifting devices has grown significantly in recent years — and for good reason. Clinical treatments like microcurrent facials, EMS sculpting, and radiofrequency therapy deliver real, measurable results. But at €100-300 per session, accessing them consistently is out of reach for most people.</p>
-
       <p>At-home devices bridge that gap. They use the same underlying technology — scaled for safe, daily home use — so you can maintain the benefits of clinic-grade treatments as part of your everyday routine.</p>
-
       <h3>What is EMS face lifting and how does it differ from microcurrent?</h3>
       <p>Both EMS and microcurrent use electrical current to improve the face — but they work at different levels. Microcurrent uses very low-level currents (measured in microamperes) that work at the skin and cellular level to stimulate collagen and ATP production. EMS uses slightly stronger currents to trigger visible muscle contractions — the kind you can feel — which physically tones and lifts the facial muscles over time.</p>
       <p>The most effective at-home devices, including the Zential Pure Face Introducer, combine both mechanisms so you get cellular rejuvenation and muscle toning in a single treatment.</p>
-
       <h3>Who should use a face lifting device?</h3>
       <p>At-home EMS and microcurrent devices are suitable for most adults. They are particularly effective for people who notice early signs of facial sagging, loss of jawline definition, fine lines around the eyes and mouth, or general loss of skin firmness. Many users in their late 20s use these devices preventatively — maintaining muscle tone before visible aging begins.</p>
-
       <h3>How does an at-home device compare to clinic treatments?</h3>
       <p>Clinical EMS and microcurrent machines are more powerful, and a trained aesthetician can deliver a more targeted treatment. However, the advantage of an at-home device is consistency: daily use of a home device over 30-60 days typically delivers results comparable to a course of 4-6 clinic sessions — at a fraction of the cost. The key variable is regularity. A device used every day compounds; a clinic session once a month does not.</p>
-
       <h3>What results can I realistically expect?</h3>
       <p>Most users report an immediate lifting and contouring effect after their first session — particularly around the cheekbones and jawline. This is partly muscular (the muscles have been contracted and are temporarily more toned) and partly circulatory (increased blood flow brings a healthy glow). With consistent use over 4-8 weeks, the structural changes become more lasting: improved muscle tone, firmer skin texture, and reduced fine lines.</p>
     </div>
@@ -937,40 +632,22 @@
 
   <div class="section-divider"></div>
 
-  <!-- FAQ -->
   <section>
     <div class="section-inner" style="max-width: 760px;">
       <p class="section-label">FAQ</p>
       <h2>Common <em>questions</em></h2>
-
       <div class="faq-list">
-        <div class="faq-item">
-          <div class="faq-q">How quickly will I see results?</div>
-          <div class="faq-a">Many users notice an immediate lifting and sculpting effect after the first session — particularly around the jawline and cheekbones. Sustained, structural results become visible after 2-4 weeks of consistent daily use as the facial muscles develop tone and collagen production increases.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">How often should I use it?</div>
-          <div class="faq-a">For best results, use the device for 10 minutes daily or every other day. Think of it as a workout routine for your facial muscles — consistency is what produces and maintains results. After an initial 4-week intensive period, many users move to 3-4 sessions per week for maintenance.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Is it safe for all skin types?</div>
-          <div class="faq-a">Yes. EMS and microcurrent technology is clinically tested and suitable for all skin types. The device should not be used if you are pregnant, have a pacemaker or metal implants in the face, have had skin cancer in the past 12 months, or have active severe acne or open wounds in the treatment area.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">What do I use with the device?</div>
-          <div class="faq-a">You should always use a water-based, oil-free conductive gel or serum with EMS and microcurrent devices. The electrical current passes through water but is blocked by oils — so oil-based products will reduce effectiveness. Apply generously to the treatment area before each session.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Will results fade if I stop using it?</div>
-          <div class="faq-a">Like any form of muscle training, the results from facial EMS require maintenance. If you stop using the device entirely, muscle tone will gradually reduce over several weeks. Most users incorporate it into their ongoing skincare routine 3-4 times per week to maintain results long-term.</div>
-        </div>
+        <div class="faq-item"><div class="faq-q">How quickly will I see results?</div><div class="faq-a">Many users notice an immediate lifting and sculpting effect after the first session — particularly around the jawline and cheekbones. Sustained, structural results become visible after 2-4 weeks of consistent daily use as the facial muscles develop tone and collagen production increases.</div></div>
+        <div class="faq-item"><div class="faq-q">How often should I use it?</div><div class="faq-a">For best results, use the device for 10 minutes daily or every other day. Think of it as a workout routine for your facial muscles — consistency is what produces and maintains results. After an initial 4-week intensive period, many users move to 3-4 sessions per week for maintenance.</div></div>
+        <div class="faq-item"><div class="faq-q">Is it safe for all skin types?</div><div class="faq-a">Yes. EMS and microcurrent technology is clinically tested and suitable for all skin types. The device should not be used if you are pregnant, have a pacemaker or metal implants in the face, have had skin cancer in the past 12 months, or have active severe acne or open wounds in the treatment area.</div></div>
+        <div class="faq-item"><div class="faq-q">What do I use with the device?</div><div class="faq-a">You should always use a water-based, oil-free conductive gel or serum with EMS and microcurrent devices. The electrical current passes through water but is blocked by oils — so oil-based products will reduce effectiveness. Apply generously to the treatment area before each session.</div></div>
+        <div class="faq-item"><div class="faq-q">Will results fade if I stop using it?</div><div class="faq-a">Like any form of muscle training, the results from facial EMS require maintenance. If you stop using the device entirely, muscle tone will gradually reduce over several weeks. Most users incorporate it into their ongoing skincare routine 3-4 times per week to maintain results long-term.</div></div>
       </div>
     </div>
   </section>
 
   <div class="section-divider"></div>
 
-  <!-- CTA -->
   <section class="cta-section">
     <div class="section-inner">
       <p class="section-label">Begin your ritual</p>
@@ -986,7 +663,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <a href="https://zentialpure.com" class="footer-logo">Zential <span>Pure</span></a>
     <ul class="footer-links">
