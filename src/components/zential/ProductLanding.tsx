@@ -205,30 +205,7 @@ export function ProductLanding({ config }: Props) {
                 </div>
               ))}
             </div>
-            {/* Color / Variant Selector */}
-            {hasMultipleVariants && (
-              <div className="mb-8">
-                <p className="text-xs tracking-[0.15em] uppercase text-muted-foreground mb-3">
-                  Color: <span className="text-foreground font-semibold">{colorLabelMap[variant?.selectedOptions?.find((o: any) => o.name === "Color Classification")?.value] || variant?.title}</span>
-                </p>
-                <div className="flex gap-3">
-                  {variants.map((v: any, idx: number) => {
-                    const colorVal = v.node.selectedOptions?.find((o: any) => o.name === "Color Classification")?.value || v.node.title;
-                    const isSelected = idx === selectedVariantIdx;
-                    return (
-                      <button
-                        key={v.node.id}
-                        onClick={() => handleVariantChange(idx)}
-                        className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl border-2 transition-all text-sm ${isSelected ? "border-primary bg-primary/5 shadow-sm" : "border-border/40 hover:border-border"}`}
-                      >
-                        <span className={`w-5 h-5 rounded-full ${colorSwatchMap[colorVal] || "bg-muted"} ${isSelected ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""}`} />
-                        <span className={isSelected ? "font-semibold text-foreground" : "text-muted-foreground"}>{colorLabelMap[colorVal] || colorVal}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
+
 
 
             {/* Bundle Selector – top buttons, single source of truth */}
