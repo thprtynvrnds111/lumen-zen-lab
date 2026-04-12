@@ -17,9 +17,9 @@ import type { ProductConfig } from "@/data/productConfigs";
 type BundleKey = "single" | "ritual-set" | "pro-set";
 
 const bundles: { key: BundleKey; label: string; desc: string; addon: number; savePercent: number; saveAmount: number; badge?: string }[] = [
-  { key: "single", label: "One-Time Purchase", desc: "Device only", addon: 0, savePercent: 0, saveAmount: 0 },
+  { key: "single", label: "Device Only", desc: "One-time purchase", addon: 0, savePercent: 0, saveAmount: 0 },
   { key: "ritual-set", label: "Ritual Set", desc: "Device + Collagen Gel", addon: 25, savePercent: 16, saveAmount: 10, badge: "Most Popular" },
-  { key: "pro-set", label: "Pro Set", desc: "Device + Collagen Gel + PDRN Mask", addon: 49, savePercent: 20, saveAmount: 24, badge: "Best Value" },
+  { key: "pro-set", label: "Pro Set", desc: "Device + Gel & PDRN Mask", addon: 49, savePercent: 20, saveAmount: 24, badge: "Best Value" },
 ];
 
 interface Props {
