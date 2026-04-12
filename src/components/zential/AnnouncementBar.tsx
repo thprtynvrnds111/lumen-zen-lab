@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 
 const messages = [
-  "30-Day Ritual Guarantee",
-  "Clinically Inspired. Designed for Daily Use.",
+  "30-Day Ritual Guarantee — No Friction. No Questions.",
   "Free Shipping on Orders Over €75",
-  "Delivered in 7–10 Business Days · EU Shipping",
+  "Science-backed. Built for your daily ritual.",
+  "Delivered in 7–10 Days Across the EU",
+  "Clinic precision. Home convenience. Daily results.",
 ];
 
 export function AnnouncementBar() {

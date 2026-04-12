@@ -1,17 +1,47 @@
 import { useState, useEffect } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { ShoppingBag, Minus, Plus, X, Loader2 } from "lucide-react";
+import { ShoppingBag, Minus, Plus, X, Loader2, Sparkles } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
+import { fetchProductByHandle } from "@/lib/shopify";
 
 const FREE_SHIPPING_THRESHOLD = 75;
+const GEL_HANDLE = "medicube-collagen-elastic-jelly-moisturizing-cream";
+const ACCESSORY_HANDLES = [GEL_HANDLE, "collagen-eye-mask"];
 
 export function CartDrawer() {
-  const { items, isLoading, isSyncing, isOpen, openCart, closeCart, updateQuantity, removeItem, syncCart } = useCartStore();
+  const { items, isLoading, isSyncing, isOpen, openCart, closeCart, updateQuantity, removeItem, syncCart, addItem } = useCartStore();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + parseFloat(item.price.amount) * item.quantity, 0);
   const shippingProgress = Math.min((totalPrice / FREE_SHIPPING_THRESHOLD) * 100, 100);
   const freeShippingUnlocked = totalPrice >= FREE_SHIPPING_THRESHOLD;
   const amountToFreeShipping = (FREE_SHIPPING_THRESHOLD - totalPrice).toFixed(2);
+
+  const [gelProduct, setGelProduct] = useState<any>(null);
+  const [addingGel, setAddingGel] = useState(false);
+
+  const hasDevice = items.some(i => !ACCESSORY_HANDLES.includes(i.product.node.handle));
+  const hasGel = items.some(i => i.product.node.handle === GEL_HANDLE);
+  const showUpsell = hasDevice && !hasGel && gelProduct;
+
+  useEffect(() => {
+    fetchProductByHandle(GEL_HANDLE).then(p => { if (p) setGelProduct(p); }).catch(() => {});
+  }, []);
+
+  const handleAddGel = async () => {
+    if (!gelProduct) return;
+    const variant = gelProduct.variants?.edges?.[0]?.node;
+    if (!variant) return;
+    setAddingGel(true);
+    await addItem({
+      product: { node: gelProduct },
+      variantId: variant.id,
+      variantTitle: variant.title,
+      price: variant.price,
+      quantity: 1,
+      selectedOptions: variant.selectedOptions || [],
+    });
+    setAddingGel(false);
+  };
 
   useEffect(() => { if (isOpen) syncCart(); }, [isOpen, syncCart]);
 
@@ -163,6 +193,24 @@ export function CartDrawer() {
             </div>
           )}
         </div>
+
+        {/* Upsell — Collagen Gel */}
+        {showUpsell && (
+          <div className="flex-shrink-0 mx-4 mb-3 rounded-xl border border-accent/30 bg-accent/5 px-4 py-3 flex items-center gap-3">
+            <Sparkles size={15} className="text-accent flex-shrink-0" />
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-semibold text-foreground leading-snug">Complete your ritual</p>
+              <p className="text-[10px] text-muted-foreground">Add Collagen Face Gel — formulated for device use</p>
+            </div>
+            <button
+              onClick={handleAddGel}
+              disabled={addingGel}
+              className="text-[10px] tracking-[0.12em] uppercase font-semibold px-3 py-1.5 rounded-full bg-accent text-white hover:bg-accent/90 transition-colors flex-shrink-0 disabled:opacity-50"
+            >
+              {addingGel ? <Loader2 size={12} className="animate-spin" /> : `+€${gelProduct?.variants?.edges?.[0]?.node?.price?.amount ? parseFloat(gelProduct.variants.edges[0].node.price.amount).toFixed(0) : "25"}`}
+            </button>
+          </div>
+        )}
 
         {/* Footer */}
         {items.length > 0 && (

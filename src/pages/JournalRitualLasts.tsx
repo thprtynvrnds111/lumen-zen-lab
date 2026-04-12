@@ -3,10 +3,16 @@ import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { NewsletterSection } from "@/components/zential/NewsletterSection";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 
 const JournalRitualLasts = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Building a Skin Ritual That Lasts — Zential Pure Journal"
+        description="Consistency over intensity. How to design a personal protocol that adapts to your life, without burnout or guilt."
+        canonicalUrl="/journal/ritual-that-lasts"
+      />
       <AnnouncementBar />
       <Header />
       <main>

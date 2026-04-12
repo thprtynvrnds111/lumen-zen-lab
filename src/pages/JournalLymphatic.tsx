@@ -3,10 +3,16 @@ import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { NewsletterSection } from "@/components/zential/NewsletterSection";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 
 const JournalLymphatic = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Lymphatic Drainage and Facial Sculpting — Zential Pure Journal"
+        description="Why gentle electrical stimulation supports the body's natural detoxification pathways, and what that means for facial contour definition."
+        canonicalUrl="/journal/lymphatic-drainage"
+      />
       <AnnouncementBar />
       <Header />
       <main>

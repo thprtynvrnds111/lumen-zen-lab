@@ -3,10 +3,16 @@ import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { NewsletterSection } from "@/components/zential/NewsletterSection";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 
 const JournalScience = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="How Microcurrent Rebuilds Collagen at the Cellular Level — Zential Pure Journal"
+        description="Understanding the biophysics behind electrical stimulation and its proven effects on fibroblast activity, ATP production, and dermal remodeling."
+        canonicalUrl="/journal/microcurrent-collagen"
+      />
       <AnnouncementBar />
       <Header />
       <main>

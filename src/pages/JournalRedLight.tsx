@@ -3,10 +3,16 @@ import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { NewsletterSection } from "@/components/zential/NewsletterSection";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 
 const JournalRedLight = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="660nm Red Light: What the Clinical Data Shows — Zential Pure Journal"
+        description="A transparent review of peer-reviewed studies on red light therapy for skin rejuvenation, collagen synthesis, and photobiomodulation at the cellular level."
+        canonicalUrl="/journal/red-light-clinical"
+      />
       <AnnouncementBar />
       <Header />
       <main>

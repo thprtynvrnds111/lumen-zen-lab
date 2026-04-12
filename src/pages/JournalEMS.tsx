@@ -3,10 +3,16 @@ import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { NewsletterSection } from "@/components/zential/NewsletterSection";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 
 const JournalEMS = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="EMS vs. Microcurrent: Understanding the Spectrum — Zential Pure Journal"
+        description="Not all electrical stimulation is equal. A clinical breakdown of frequency ranges, muscle response types, and ideal use cases for facial beauty devices."
+        canonicalUrl="/journal/ems-vs-microcurrent"
+      />
       <AnnouncementBar />
       <Header />
       <main>

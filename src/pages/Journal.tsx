@@ -4,6 +4,7 @@ import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { NewsletterSection } from "@/components/zential/NewsletterSection";
 import { BubbleBackground } from "@/components/zential/BubbleBackground";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 
 const articles = [
   {
@@ -78,6 +79,11 @@ const Journal = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="The Journal — Zential Pure"
+        description="Science, ritual, and clarity. Evidence-based insights on skin science, device technology, and the art of daily transformation."
+        canonicalUrl="/journal"
+      />
       <AnnouncementBar />
       <Header />
       <main>

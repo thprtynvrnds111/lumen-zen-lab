@@ -3,10 +3,16 @@ import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { NewsletterSection } from "@/components/zential/NewsletterSection";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 
 const JournalRitual = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="The 5-Minute Evening Protocol — Zential Pure Journal"
+        description="A structured guide to integrating microcurrent therapy into your nightly wind-down. Designed for consistency, not perfection."
+        canonicalUrl="/journal/evening-protocol"
+      />
       <AnnouncementBar />
       <Header />
       <main>
