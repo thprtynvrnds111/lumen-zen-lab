@@ -231,6 +231,32 @@ export function ProductLanding({ config }: Props) {
             )}
 
 
+            {/* Bundle Selector – top buttons, single source of truth */}
+            {!config.isAccessory && (
+              <div className="mb-6">
+                <div className="flex gap-3">
+                  {bundles.map(opt => {
+                    const isSelected = selectedBundle === opt.key;
+                    return (
+                      <button
+                        key={opt.key}
+                        onClick={() => setSelectedBundle(opt.key)}
+                        className={`relative flex-1 text-center px-3 py-3 rounded-xl border-2 transition-all text-sm ${isSelected ? "border-primary bg-primary/5 shadow-sm" : "border-border/40 hover:border-border"}`}
+                      >
+                        {opt.badge && (
+                          <span className={`absolute -top-2.5 left-1/2 -translate-x-1/2 text-[9px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full whitespace-nowrap ${opt.badge === "Best Value" ? "bg-emerald text-emerald-foreground" : "bg-primary text-primary-foreground"}`}>
+                            {opt.badge}
+                          </span>
+                        )}
+                        <span className={`block text-xs font-semibold ${isSelected ? "text-foreground" : "text-muted-foreground"}`}>{opt.label}</span>
+                        <span className={`block text-[10px] mt-0.5 ${isSelected ? "text-foreground/70" : "text-muted-foreground/60"}`}>{opt.desc}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
             <div className="flex items-baseline gap-3 mb-1">
               <span className="text-3xl font-bold text-foreground">{sym}{bundlePrice.toFixed(2)}</span>
               {bundle.savePercent > 0 && (
@@ -239,30 +265,6 @@ export function ProductLanding({ config }: Props) {
             </div>
             {savings > 0 && <p className="text-sm text-emerald mb-6">You save {sym}{savings.toFixed(2)}</p>}
             {savings === 0 && <div className="mb-6" />}
-
-            {/* Bundle Selector */}
-            <div className="space-y-3 mb-8">
-              {bundles.map(opt => (
-                <button key={opt.key} onClick={() => setSelectedBundle(opt.key)}
-                  className={`w-full text-left p-4 rounded-2xl border-2 transition-all relative ${selectedBundle === opt.key ? "border-primary bg-primary/5 shadow-sm" : "border-border/40 hover:border-border"}`}>
-                  {opt.badge && (
-                    <span className={`absolute -top-2.5 right-4 text-[10px] font-semibold tracking-wider uppercase px-3 py-0.5 rounded-full ${opt.badge === "Best Deal" ? "bg-emerald text-emerald-foreground" : "bg-primary text-primary-foreground"}`}>
-                      {opt.badge}
-                    </span>
-                  )}
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-semibold text-foreground text-sm">{opt.label}</p>
-                      <p className="text-xs text-muted-foreground mt-0.5">{opt.desc}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="font-bold text-foreground">{sym}{(basePrice + opt.addon).toFixed(2)}</p>
-                      {opt.savePercent > 0 && <p className="text-xs text-emerald font-semibold">Save {opt.savePercent}%</p>}
-                    </div>
-                  </div>
-                </button>
-              ))}
-            </div>
 
             <div ref={ctaRef}>
               <Button variant="ritual" size="xl" className="w-full text-sm" onClick={handleAdd} disabled={isCartLoading || !variant?.availableForSale}>
