@@ -123,6 +123,16 @@ const PRODUCT_BY_HANDLE_QUERY = `
         }
       }
       options { name values }
+      metafields(identifiers: [
+        { namespace: "zential", key: "mechanism_primary" },
+        { namespace: "zential", key: "mechanism_benefit" },
+        { namespace: "zential", key: "guarantee_block" },
+        { namespace: "zential", key: "trust_statement" },
+        { namespace: "zential", key: "ritual_instructions" }
+      ]) {
+        key
+        value
+      }
     }
   }
 `;

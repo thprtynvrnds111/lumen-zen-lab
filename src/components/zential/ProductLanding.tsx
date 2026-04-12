@@ -61,6 +61,10 @@ export function ProductLanding({ config }: Props) {
 
   const images = product?.images?.edges || [];
   const variants = product?.variants?.edges || [];
+  const meta = (product?.metafields || []).filter(Boolean).reduce((acc: Record<string, string>, mf: any) => {
+    if (mf?.key) acc[mf.key] = mf.value;
+    return acc;
+  }, {});
   const hasMultipleVariants = variants.length > 1;
   const variant = variants[selectedVariantIdx]?.node || variants[0]?.node;
   const basePrice = parseFloat(variant?.price?.amount || "84");
@@ -265,6 +269,23 @@ export function ProductLanding({ config }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ── SCIENCE STRIP (metafields) ── */}
+      {(meta.mechanism_primary || meta.mechanism_benefit) && (
+        <section className="py-14 bg-foreground text-background">
+          <div className="max-w-3xl mx-auto px-6 text-center space-y-4">
+            {meta.mechanism_primary && (
+              <p className="text-base md:text-lg leading-relaxed opacity-90">{meta.mechanism_primary}</p>
+            )}
+            {meta.mechanism_benefit && (
+              <p className="text-sm md:text-base leading-relaxed opacity-60">{meta.mechanism_benefit}</p>
+            )}
+            {meta.guarantee_block && (
+              <p className="text-xs tracking-[0.2em] uppercase opacity-40 pt-2">{meta.guarantee_block}</p>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* ── SECTION 2: SOCIAL PROOF (Trustpilot-style) ── */}
       <section className="section-padding gradient-pearl">
