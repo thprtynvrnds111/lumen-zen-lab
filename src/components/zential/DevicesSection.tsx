@@ -26,12 +26,14 @@ export function DevicesSection() {
     "facial-beauty-tools-and-ems-beauty-equipment": "Precision contour wand for cheek and jaw lift",
     "lifting-and-tightening-face-introducer": "Deep infusion for plump, hydrated skin",
     "portable-ems-microcurrent-facial-beauty-device": "Advanced EMS & microcurrent facial purification",
+    "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening": "EMS sculpting with dual-wavelength LED",
   };
 
   const SORT_ORDER = [
     "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
     "body-lift",
     "lifting-and-tightening-face-introducer",
+    "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening",
     "portable-ems-microcurrent-facial-beauty-device",
     "facial-beauty-tools-and-ems-beauty-equipment",
     "electric-guasha-massager",

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core pages -->
+  <url><loc>https://zentialpure.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://zentialpure.com/journal</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zentialpure.com/support</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://zentialpure.com/faq</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://zentialpure.com/shipping</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://zentialpure.com/returns</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://zentialpure.com/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://zentialpure.com/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+  <!-- Product pages -->
+  <url><loc>https://zentialpure.com/product/lifting-and-tightening-face-introducer</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/product/body-lift</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/product/eye-massage</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/product/facial-beauty-tools-and-ems-beauty-equipment</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/product/electric-guasha-massager</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/product/electric-micro-current</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/product/color-light-import-micro-current-vibration-massager</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/product/red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/product/3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/product/portable-ems-microcurrent-facial-beauty-device</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/product/medicube-collagen-elastic-jelly-moisturizing-cream</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/product/collagen-eye-mask</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/body-lift</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Journal articles -->
+  <url><loc>https://zentialpure.com/journal/frequency-shift</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/journal/microcurrent-collagen</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/journal/evening-protocol</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/journal/red-light-clinical</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/journal/lymphatic-drainage</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/journal/ems-vs-microcurrent</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/journal/ritual-that-lasts</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+
+  <!-- Technology explainers -->
+  <url><loc>https://zentialpure.com/technology/red-light</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://zentialpure.com/technology/microcurrent</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://zentialpure.com/technology/ems</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://zentialpure.com/technology/thermal</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+
+</urlset>

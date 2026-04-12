@@ -126,10 +126,15 @@ export function ProductLanding({ config }: Props) {
               quantity: 1,
               selectedOptions: gelVariant.selectedOptions || [],
             });
+          } else {
+            toast.error("Collagen Gel couldn't be added — please add it manually.", { position: "top-center" });
           }
+        } else {
+          toast.error("Collagen Gel couldn't be added — please add it manually.", { position: "top-center" });
         }
       } catch (e) {
         console.error("Failed to auto-add Collagen Face Gel:", e);
+        toast.error("Collagen Gel couldn't be added — please add it manually.", { position: "top-center" });
       }
     }
 
@@ -148,10 +153,15 @@ export function ProductLanding({ config }: Props) {
               quantity: 1,
               selectedOptions: maskVariant.selectedOptions || [],
             });
+          } else {
+            toast.error("PDRN Mask couldn't be added — please add it manually.", { position: "top-center" });
           }
+        } else {
+          toast.error("PDRN Mask couldn't be added — please add it manually.", { position: "top-center" });
         }
       } catch (e) {
         console.error("Failed to auto-add PDRN Mask:", e);
+        toast.error("PDRN Mask couldn't be added — please add it manually.", { position: "top-center" });
       }
     }
 
