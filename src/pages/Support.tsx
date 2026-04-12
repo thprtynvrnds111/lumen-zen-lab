@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { SEO } from "@/components/SEO";
 import { BubbleBackground } from "@/components/zential/BubbleBackground";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
@@ -80,6 +81,7 @@ const Support = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO title="Support — Zential Pure" description="Track orders, start a return, or get help with your device. Zential Pure support responds within 24–48 hours." canonicalUrl="/support" />
       <AnnouncementBar />
       <Header />
       <main>

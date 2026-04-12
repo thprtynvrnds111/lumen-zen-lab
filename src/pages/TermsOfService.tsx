@@ -2,6 +2,7 @@ import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { FileText } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const sections = [
   {
@@ -44,6 +45,7 @@ const sections = [
 
 const TermsOfService = () => (
   <div className="min-h-screen bg-background">
+    <SEO title="Terms of Service — Zential Pure" description="Zential Pure terms and conditions covering purchases, use of our devices, intellectual property, and customer rights." canonicalUrl="/terms" />
     <AnnouncementBar />
     <Header />
     <main>

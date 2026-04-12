@@ -3,6 +3,7 @@ import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { HelpCircle, Truck, RotateCcw, Heart, ShieldCheck, CreditCard, Zap } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const faqCategories = [
   {
@@ -64,6 +65,7 @@ const faqCategories = [
 
 const FAQ = () => (
   <div className="min-h-screen bg-background">
+    <SEO title="FAQ — Zential Pure" description="Answers to common questions about Zential Pure devices, shipping, returns, safety, and how to get the most from your daily ritual." canonicalUrl="/faq" />
     <AnnouncementBar />
     <Header />
     <main>

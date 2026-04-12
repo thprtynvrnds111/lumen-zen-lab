@@ -2,6 +2,7 @@ import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { ShieldCheck } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const sections = [
   {
@@ -40,6 +41,7 @@ const sections = [
 
 const PrivacyPolicy = () => (
   <div className="min-h-screen bg-background">
+    <SEO title="Privacy Policy — Zential Pure" description="How Zential Pure collects, uses, and protects your personal data. We take your privacy as seriously as your ritual." canonicalUrl="/privacy" />
     <AnnouncementBar />
     <Header />
     <main>

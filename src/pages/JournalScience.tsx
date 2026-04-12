@@ -12,6 +12,7 @@ const JournalScience = () => {
         title="How Microcurrent Rebuilds Collagen at the Cellular Level — Zential Pure Journal"
         description="Understanding the biophysics behind electrical stimulation and its proven effects on fibroblast activity, ATP production, and dermal remodeling."
         canonicalUrl="/journal/microcurrent-collagen"
+        jsonLd={{ "@context": "https://schema.org", "@type": "Article", "headline": "How Microcurrent Therapy Rebuilds Collagen at the Cellular Level", "description": "Understanding the biophysics behind electrical stimulation and its proven effects on fibroblast activity, ATP production, and dermal remodeling.", "datePublished": "2026-02-12T00:00:00Z", "author": { "@type": "Organization", "name": "Zential Pure" }, "publisher": { "@type": "Organization", "name": "Zential Pure", "url": "https://zentialpure.com" }, "url": "https://zentialpure.com/journal/microcurrent-collagen" }}
       />
       <AnnouncementBar />
       <Header />

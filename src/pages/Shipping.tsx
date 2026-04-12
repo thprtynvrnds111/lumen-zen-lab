@@ -3,6 +3,7 @@ import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { Package, Truck, Globe, ShieldCheck, Clock, MapPin, Plane, CheckCircle2, ArrowRight } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -103,6 +104,7 @@ const Shipping = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO title="Shipping & Delivery — Zential Pure" description="Free EU shipping on orders over €75. Netherlands 2–3 days, EU 3–7 days. Track your Zential Pure device from dispatch to door." canonicalUrl="/shipping" />
       <AnnouncementBar />
       <Header />
       <main>

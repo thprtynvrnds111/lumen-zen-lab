@@ -3,6 +3,7 @@ import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { RotateCcw, ShieldCheck, Clock, CheckCircle2, ArrowRight, Package, AlertTriangle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 
 const steps = [
   { icon: Package, title: "Request a Return", desc: "Email us at info@zentialpure.com within 30 days of delivery with your order number.", color: "bg-primary/15 text-primary", accent: "border-primary/30" },
@@ -20,6 +21,7 @@ const policies = [
 
 const Returns = () => (
   <div className="min-h-screen bg-background">
+    <SEO title="Returns & 30-Day Guarantee — Zential Pure" description="Not feeling the results? Our 30-Day Ritual Guarantee means a full refund, no friction, no pressure. Return any device within 30 days." canonicalUrl="/returns" />
     <AnnouncementBar />
     <Header />
     <main>

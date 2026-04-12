@@ -12,6 +12,7 @@ const JournalRitual = () => {
         title="The 5-Minute Evening Protocol — Zential Pure Journal"
         description="A structured guide to integrating microcurrent therapy into your nightly wind-down. Designed for consistency, not perfection."
         canonicalUrl="/journal/evening-protocol"
+        jsonLd={{ "@context": "https://schema.org", "@type": "Article", "headline": "The 5-Minute Evening Protocol", "description": "A structured guide to integrating microcurrent therapy into your nightly wind-down. Designed for consistency, not perfection.", "datePublished": "2026-02-05T00:00:00Z", "author": { "@type": "Organization", "name": "Zential Pure" }, "publisher": { "@type": "Organization", "name": "Zential Pure", "url": "https://zentialpure.com" }, "url": "https://zentialpure.com/journal/evening-protocol" }}
       />
       <AnnouncementBar />
       <Header />

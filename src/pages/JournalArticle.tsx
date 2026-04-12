@@ -12,6 +12,7 @@ const JournalArticle = () => {
         title="The Night My Frequency Shifted — Zential Pure Journal"
         description="A reflection on what happens when microcurrent becomes more than skincare — a conversation with the nervous system, and a return to self-trust."
         canonicalUrl="/journal/frequency-shift"
+        jsonLd={{ "@context": "https://schema.org", "@type": "Article", "headline": "The Night My Frequency Shifted, and I Finally Trusted the Stillness", "description": "A reflection on what happens when microcurrent becomes more than skincare — a conversation with the nervous system, and a return to self-trust.", "datePublished": "2026-02-16T00:00:00Z", "author": { "@type": "Organization", "name": "Zential Pure" }, "publisher": { "@type": "Organization", "name": "Zential Pure", "url": "https://zentialpure.com" }, "url": "https://zentialpure.com/journal/frequency-shift" }}
       />
       <AnnouncementBar />
       <Header />

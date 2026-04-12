@@ -12,6 +12,7 @@ const JournalRedLight = () => {
         title="660nm Red Light: What the Clinical Data Shows — Zential Pure Journal"
         description="A transparent review of peer-reviewed studies on red light therapy for skin rejuvenation, collagen synthesis, and photobiomodulation at the cellular level."
         canonicalUrl="/journal/red-light-clinical"
+        jsonLd={{ "@context": "https://schema.org", "@type": "Article", "headline": "660nm Red Light: What the Clinical Data Actually Shows", "description": "A transparent review of peer-reviewed studies on red light therapy for skin rejuvenation, collagen synthesis, and photobiomodulation.", "datePublished": "2026-01-28T00:00:00Z", "author": { "@type": "Organization", "name": "Zential Pure" }, "publisher": { "@type": "Organization", "name": "Zential Pure", "url": "https://zentialpure.com" }, "url": "https://zentialpure.com/journal/red-light-clinical" }}
       />
       <AnnouncementBar />
       <Header />

@@ -12,6 +12,7 @@ const JournalRitualLasts = () => {
         title="Building a Skin Ritual That Lasts — Zential Pure Journal"
         description="Consistency over intensity. How to design a personal protocol that adapts to your life, without burnout or guilt."
         canonicalUrl="/journal/ritual-that-lasts"
+        jsonLd={{ "@context": "https://schema.org", "@type": "Article", "headline": "Building a Skin Ritual That Lasts", "description": "Consistency over intensity. How to design a personal protocol that adapts to your life, without burnout or guilt.", "datePublished": "2026-01-07T00:00:00Z", "author": { "@type": "Organization", "name": "Zential Pure" }, "publisher": { "@type": "Organization", "name": "Zential Pure", "url": "https://zentialpure.com" }, "url": "https://zentialpure.com/journal/ritual-that-lasts" }}
       />
       <AnnouncementBar />
       <Header />

@@ -12,6 +12,7 @@ import {
   Lock, CreditCard, ArrowRight,
 } from "lucide-react";
 import { PaymentBadges } from "@/components/zential/PaymentBadges";
+import { RelatedProducts } from "@/components/zential/RelatedProducts";
 import type { ProductConfig } from "@/data/productConfigs";
 
 type BundleKey = "single" | "ritual-set" | "pro-set";
@@ -499,6 +500,9 @@ export function ProductLanding({ config }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ── RELATED PRODUCTS ── */}
+      <RelatedProducts currentHandle={config.handle} />
 
       {/* ── SECTION 9: FINAL CTA ── */}
       <section className="section-padding">

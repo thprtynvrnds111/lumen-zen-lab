@@ -12,6 +12,7 @@ const JournalLymphatic = () => {
         title="Lymphatic Drainage and Facial Sculpting — Zential Pure Journal"
         description="Why gentle electrical stimulation supports the body's natural detoxification pathways, and what that means for facial contour definition."
         canonicalUrl="/journal/lymphatic-drainage"
+        jsonLd={{ "@context": "https://schema.org", "@type": "Article", "headline": "Lymphatic Drainage and Facial Sculpting: The Connection", "description": "Why gentle electrical stimulation supports the body's natural detoxification pathways and what that means for facial contour.", "datePublished": "2026-01-20T00:00:00Z", "author": { "@type": "Organization", "name": "Zential Pure" }, "publisher": { "@type": "Organization", "name": "Zential Pure", "url": "https://zentialpure.com" }, "url": "https://zentialpure.com/journal/lymphatic-drainage" }}
       />
       <AnnouncementBar />
       <Header />
