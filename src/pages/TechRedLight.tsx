@@ -4,6 +4,7 @@ const TechRedLight = () => (
   <TechnologyPage
     title="Red Light Therapy — How It Works | Zential Pure"
     metaDescription="How red light therapy stimulates collagen synthesis in dermal fibroblasts. 630–660nm wavelength, clinical studies, and daily usage guidance."
+    canonicalUrl="/technology/red-light"
     tagline="Technology"
     headline="Red Light Therapy"
     paramLabel="Wavelength"

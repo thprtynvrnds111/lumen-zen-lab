@@ -35,7 +35,7 @@ const journeySteps = [
     icon: Plane,
     title: "In Transit",
     desc: "Your parcel is handed to our trusted logistics partner. Real time tracking is sent to your inbox.",
-    time: "5–8 days",
+    time: "2–7 days",
   },
   {
     icon: Truck,
@@ -52,10 +52,11 @@ const journeySteps = [
 ];
 
 const shippingZones = [
-  { region: "Netherlands", time: "7–12 business days", cost: "Free over €75", flag: "🇳🇱" },
-  { region: "Germany & Belgium", time: "7–13 business days", cost: "Free over €75", flag: "🇩🇪 🇧🇪" },
-  { region: "United Kingdom", time: "7–12 business days", cost: "Free over €90", flag: "🇬🇧" },
-  { region: "United States", time: "6–10 business days", cost: "Free over €95", flag: "🇺🇸" },
+  { region: "Netherlands", time: "2–3 business days", cost: "Free over €50", flag: "🇳🇱" },
+  { region: "Germany & Belgium", time: "3–5 business days", cost: "Free over €75", flag: "🇩🇪 🇧🇪" },
+  { region: "Rest of EU", time: "3–7 business days", cost: "Free over €75", flag: "🇪🇺" },
+  { region: "United Kingdom", time: "5–8 business days", cost: "Free over €90", flag: "🇬🇧" },
+  { region: "United States & Canada", time: "7–14 business days", cost: "Free over €95", flag: "🇺🇸 🇨🇦" },
 ];
 
 const trustPoints = [

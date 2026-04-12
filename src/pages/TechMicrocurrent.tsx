@@ -4,6 +4,7 @@ const TechMicrocurrent = () => (
   <TechnologyPage
     title="Microcurrent Technology — How It Works | Zential Pure"
     metaDescription="How microcurrent at 200–400μA increases ATP production to firm facial muscles. Clinical evidence, mechanism of action, and usage guide."
+    canonicalUrl="/technology/microcurrent"
     tagline="Technology"
     headline="Microcurrent"
     paramLabel="Frequency"

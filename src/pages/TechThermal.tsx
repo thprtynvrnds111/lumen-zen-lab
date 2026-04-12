@@ -4,6 +4,7 @@ const TechThermal = () => (
   <TechnologyPage
     title="Thermal Therapy — How It Works | Zential Pure"
     metaDescription="How controlled thermal therapy at 40–42°C enhances product absorption and microcirculation. Clinical studies and daily usage guidance."
+    canonicalUrl="/technology/thermal"
     tagline="Technology"
     headline="Thermal Therapy"
     paramLabel="Temperature"

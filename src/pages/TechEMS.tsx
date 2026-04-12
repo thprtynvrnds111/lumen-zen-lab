@@ -4,6 +4,7 @@ const TechEMS = () => (
   <TechnologyPage
     title="EMS Facial Toning — How It Works | Zential Pure"
     metaDescription="How Electrical Muscle Stimulation re-educates facial muscle memory for visible lift. 250μs pulse width, clinical studies, and daily usage."
+    canonicalUrl="/technology/ems"
     tagline="Technology"
     headline="EMS"
     paramLabel="Pulse width"

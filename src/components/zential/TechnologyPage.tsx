@@ -20,6 +20,7 @@ interface TechSection {
 interface TechnologyPageProps {
   title: string;
   metaDescription: string;
+  canonicalUrl?: string;
   tagline: string;
   headline: string;
   paramLabel: string;
@@ -34,12 +35,12 @@ interface TechnologyPageProps {
 }
 
 export function TechnologyPage({
-  title, metaDescription, tagline, headline, paramLabel, paramValue,
+  title, metaDescription, canonicalUrl, tagline, headline, paramLabel, paramValue,
   intro, mechanism, biology, usage, studies, deviceHandle, deviceName,
 }: TechnologyPageProps) {
   return (
     <div className="min-h-screen bg-background">
-      <SEO title={title} description={metaDescription} />
+      <SEO title={title} description={metaDescription} canonicalUrl={canonicalUrl} />
       <AnnouncementBar />
       <Header />
       <main>

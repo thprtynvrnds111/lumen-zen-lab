@@ -2,6 +2,12 @@ import { useSearchParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { SEO } from "@/components/SEO";
 
+const postPurchaseLinks = [
+  { label: "Evening Protocol", desc: "Your 5-minute daily ritual", href: "/journal/evening-protocol" },
+  { label: "The Science", desc: "Why the technology works", href: "/journal/microcurrent-collagen" },
+  { label: "Journal", desc: "Tips, studies, and more", href: "/journal" },
+];
+
 export default function ThankYou() {
   const [searchParams] = useSearchParams();
   const orderName = searchParams.get("order_name");
@@ -216,6 +222,51 @@ export default function ThankYou() {
 
           {/* Bottom gold divider */}
           <GoldDivider />
+
+          {/* Post-purchase: prepare your ritual */}
+          <div style={{ marginTop: "28px" }}>
+            <p
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                fontWeight: 300,
+                fontSize: "10px",
+                letterSpacing: "0.2em",
+                color: "#C6A07C",
+                textAlign: "center",
+                textTransform: "uppercase",
+                marginBottom: "14px",
+              }}
+            >
+              While you wait
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+              {postPurchaseLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    padding: "12px 16px",
+                    backgroundColor: "#F7F4F0",
+                    borderRadius: "2px",
+                    textDecoration: "none",
+                    transition: "background-color 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#EDE9E3")}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#F7F4F0")}
+                >
+                  <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 400, fontSize: "12px", color: "#1A1714" }}>
+                    {link.label}
+                  </span>
+                  <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300, fontSize: "11px", color: "#8C8680" }}>
+                    {link.desc} →
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Brand below card */}

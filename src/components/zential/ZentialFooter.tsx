@@ -5,15 +5,18 @@ const footerLinks = {
   Shop: [
     { label: "All Devices", to: "/#devices" },
     { label: "Bundles", to: "/#bundles" },
+    { label: "Journal", to: "/journal" },
   ],
   Ritual: [
     { label: "The 5-Step Method", to: "/#ritual" },
-    { label: "Daily Guide", to: "/journal/evening-protocol" },
+    { label: "Evening Protocol", to: "/journal/evening-protocol" },
+    { label: "How It Works", to: "/journal/microcurrent-collagen" },
   ],
-  Science: [
-    { label: "Microcurrent", to: "/journal/microcurrent-collagen" },
-    { label: "Red Light", to: "/journal/red-light-clinical" },
-    { label: "EMS", to: "/journal/ems-vs-microcurrent" },
+  Technology: [
+    { label: "Microcurrent", to: "/technology/microcurrent" },
+    { label: "Red Light Therapy", to: "/technology/red-light" },
+    { label: "EMS", to: "/technology/ems" },
+    { label: "Thermal Therapy", to: "/technology/thermal" },
   ],
   Support: [
     { label: "Contact", to: "/support" },
@@ -55,7 +58,7 @@ export function ZentialFooter() {
           </Link>
           <div className="text-right md:text-right">
             <p className="text-[10px] tracking-[0.2em] uppercase text-background/30 mb-1">Know your skin. Work with it.</p>
-            <p className="text-xs text-background/40">© 2025 Zential Pure. All rights reserved.</p>
+            <p className="text-xs text-background/40">© 2026 Zential Pure. All rights reserved.</p>
           </div>
         </div>
       </div>
