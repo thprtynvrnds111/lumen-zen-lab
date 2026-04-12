@@ -286,10 +286,10 @@ export const productConfigs: Record<string, ProductConfig> = {
   "electric-micro-current": {
     handle: "electric-micro-current",
     name: "Skin Pulse",
-    subheadline: "Multi-Modal Skin Rejuvenation System",
+    subheadline: "EMS-Powered Skin Toning & Rejuvenation System",
     benefits: [
-      { icon: Activity, label: "Pulsed Micro-Stimulation" },
-      { icon: Sun, label: "LED Color Therapy" },
+      { icon: Activity, label: "EMS Muscle Activation" },
+      { icon: Zap, label: "Microcurrent Toning" },
       { icon: Droplets, label: "Deep Product Infusion" },
       { icon: Focus, label: "Targeted Treatment Zones" },
     ],
@@ -301,20 +301,20 @@ export const productConfigs: Record<string, ProductConfig> = {
     problemReframe: {
       headline: "Your Skin Is Responsive. Not Passive.",
       paragraphs: [
-        "Your skin doesn't just absorb what you put on it. It responds to signals: light, current, vibration, and temperature. These signals trigger cellular processes that products alone cannot.",
-        "When skin cells receive the right frequency of stimulation, they accelerate collagen production, improve barrier function, and increase turnover. Without stimulation, they plateau.",
-        "Skin Pulse delivers calibrated multi-modal stimulation that wakes up dormant cellular pathways, turning your daily skincare into an active treatment session.",
+        "Your skin doesn't just absorb what you put on it. It responds to signals: current, vibration, and temperature. These signals trigger cellular processes that products alone cannot.",
+        "When facial muscles receive the right frequency of electrical stimulation, they tighten, lift, and improve skin elasticity from within. Without stimulation, they plateau.",
+        "Skin Pulse delivers calibrated EMS and microcurrent stimulation that wakes up dormant muscular pathways, turning your daily skincare into an active toning session.",
       ],
       closing: "Stop applying. Start activating.",
     },
     techCards: [
-      { icon: Activity, title: "Pulse Mode", desc: "Rhythmic micro-stimulation activates cellular renewal cycles and improves skin elasticity over time." },
-      { icon: Sun, title: "LED Spectrum", desc: "Multiple light wavelengths target different skin concerns from redness to fine lines to texture." },
+      { icon: Activity, title: "EMS Activation", desc: "Electrical muscle stimulation contracts and tones facial muscles, improving firmness and definition over time." },
+      { icon: Zap, title: "Microcurrent", desc: "Low-level current re-educates facial muscles and boosts ATP production for cellular energy renewal." },
       { icon: Droplets, title: "Ion Drive", desc: "Ionic infusion technology pushes active ingredients past the skin barrier for deeper efficacy." },
       { icon: Vibrate, title: "Micro-Vibration", desc: "High-frequency vibration stimulates blood flow and enhances the natural desquamation process." },
     ],
     ritualSteps: [
-      { step: "01", title: "Prepare", desc: "Cleanse and apply your treatment serum. Select the appropriate LED mode for your concern." },
+      { step: "01", title: "Prepare", desc: "Cleanse and apply your treatment serum. Select your preferred EMS intensity level." },
       { step: "02", title: "Activate", desc: "Press the device gently against the skin. Glide across each zone for 60 seconds. Total: 5 minutes." },
       { step: "03", title: "Repeat", desc: "Use daily, morning or evening. Your skin's response compounds with consistency." },
     ],
