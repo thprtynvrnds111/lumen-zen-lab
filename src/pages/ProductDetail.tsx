@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductConfig } from "@/data/productConfigs";
+import { fetchProductByHandle } from "@/lib/shopify";
 import { ProductLanding } from "@/components/zential/ProductLanding";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
@@ -57,7 +59,7 @@ const PRODUCT_SEO: Record<string, { title: string; description: string }> = {
   },
 };
 
-function getProductJsonLd(handle: string, seo: { title: string; description: string }) {
+function getProductJsonLd(handle: string, seo: { title: string; description: string }, price?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -65,11 +67,11 @@ function getProductJsonLd(handle: string, seo: { title: string; description: str
     description: seo.description,
     brand: { "@type": "Brand", name: "Zential Pure" },
     url: `https://zentialpure.com/product/${handle}`,
-    image: "https://zentialpure.com/og-image.jpg",
     offers: {
       "@type": "Offer",
       availability: "https://schema.org/InStock",
       priceCurrency: "EUR",
+      ...(price && { price }),
     },
   };
 }
@@ -81,6 +83,19 @@ export default function ProductDetail() {
     ? PRODUCT_SEO[handle]
     : { title: `${config?.name || "Product"} — Zential Pure`, description: config?.subheadline || "Clinical-luxury beauty device by Zential Pure." };
 
+  const [ogImage, setOgImage] = useState<string | undefined>(undefined);
+  const [productPrice, setProductPrice] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    if (!handle) return;
+    fetchProductByHandle(handle).then(p => {
+      const img = p?.images?.edges?.[0]?.node?.url;
+      if (img) setOgImage(img);
+      const price = p?.variants?.edges?.[0]?.node?.price?.amount;
+      if (price) setProductPrice(price);
+    }).catch(() => {});
+  }, [handle]);
+
   if (config) {
     return (
       <>
@@ -89,7 +104,8 @@ export default function ProductDetail() {
           description={seo.description}
           canonicalUrl={`/product/${handle}`}
           ogType="product"
-          jsonLd={handle ? getProductJsonLd(handle, seo) : undefined}
+          ogImage={ogImage}
+          jsonLd={handle ? getProductJsonLd(handle, seo, productPrice) : undefined}
         />
         <ProductLanding config={config} />
       </>
