@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { createFoundingCustomer } from "@/lib/shopify";
 
 export function NewsletterSection() {
   const [email, setEmail] = useState("");
@@ -13,12 +14,8 @@ export function NewsletterSection() {
     setSubmitting(true);
     setMessage(null);
     try {
-      const res = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim() }),
-      });
-      if (res.ok) {
+      const result = await createFoundingCustomer(email.trim());
+      if (result.success || result.error === "already_exists") {
         setMessage({ type: "success", text: "Welcome to the frequency." });
         setEmail("");
       } else {

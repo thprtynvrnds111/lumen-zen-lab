@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { BubbleBackground } from "@/components/zential/BubbleBackground";
+import { createFoundingCustomer } from "@/lib/shopify";
 
 export function CommunitySection() {
   const [email, setEmail] = useState("");
@@ -14,13 +15,12 @@ export function CommunitySection() {
     setSubmitting(true);
     setMessage(null);
     try {
-      const res = await fetch("/api/founding-customer", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim() }),
-      });
-      if (res.ok) {
+      const result = await createFoundingCustomer(email.trim());
+      if (result.success) {
         setMessage({ type: "success", text: "You're on the list. We'll be in touch." });
+        setEmail("");
+      } else if (result.error === "already_exists") {
+        setMessage({ type: "success", text: "You're already on our list. We'll be in touch soon." });
         setEmail("");
       } else {
         setMessage({ type: "error", text: "Something went wrong. Try again or email info@zentialpure.com" });
