@@ -6,25 +6,25 @@ const cards = [
   {
     name: "Red Light",
     param: "630–660nm wavelength",
-    mechanism: "Stimulates collagen synthesis in dermal fibroblasts.",
+    mechanism: "Stimulates collagen synthesis in dermal fibroblasts, delivering a youthful glow after running when your skin needs repair.",
     href: "/technology/red-light",
   },
   {
     name: "Microcurrent",
     param: "Frequency: 200–400μA",
-    mechanism: "Increases ATP production to firm facial muscles.",
+    mechanism: "Increases ATP production to firm facial muscles, perfect for toning after a long day behind the screen.",
     href: "/technology/microcurrent",
   },
   {
     name: "EMS",
     param: "Pulse width: 250μs",
-    mechanism: "Re-educates muscle memory for visible lift.",
+    mechanism: "Re-educates muscle memory for a visible lift, ideal post-workout to sculpt and define your contours.",
     href: "/technology/ems",
   },
   {
     name: "Thermal",
     param: "40–42°C thermal",
-    mechanism: "Enhances product absorption and microcirculation.",
+    mechanism: "Enhances product absorption and microcirculation, maximizing serum efficacy right after cleansing for deeper nourishment.",
     href: "/technology/thermal",
   },
 ];
