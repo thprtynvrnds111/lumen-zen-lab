@@ -5,6 +5,7 @@ import { PaymentBadges } from "@/components/zential/PaymentBadges";
 import { Loader2, Shield, Lock, ArrowLeft } from "lucide-react";
 // Note: PaymentBadges kept for order summary trust section
 import { storefrontApiRequest, CART_QUERY } from "@/lib/shopify";
+import { Helmet } from "react-helmet-async";
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -75,6 +76,10 @@ export default function Checkout() {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
+      <Helmet>
+        <title>Checkout — Zential Pure</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       {/* Subtle texture overlay */}
       <div
         className="fixed inset-0 pointer-events-none opacity-[0.03]"

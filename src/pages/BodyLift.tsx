@@ -1,14 +1,20 @@
-import { useParams } from "react-router-dom";
 import { getProductConfig } from "@/data/productConfigs";
 import { ProductLanding } from "@/components/zential/ProductLanding";
-import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
-import { Header } from "@/components/zential/Header";
-import { ZentialFooter } from "@/components/zential/ZentialFooter";
+import { SEO } from "@/components/SEO";
 
 export default function BodyLift() {
   const config = getProductConfig("body-lift");
 
   if (!config) return null;
 
-  return <ProductLanding config={config} />;
+  return (
+    <>
+      <SEO
+        title="Body Lift — Zential Pure"
+        description="Microcurrent, red light and sonic pulse in one daily body ritual. Visibly firms, lifts and sculpts with consistent use."
+        canonicalUrl="/body-lift"
+      />
+      <ProductLanding config={config} />
+    </>
+  );
 }
