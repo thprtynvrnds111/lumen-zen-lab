@@ -123,7 +123,7 @@ export function ProductLanding({ config }: Props) {
               product: { node: gelProduct },
               variantId: gelVariant.id,
               variantTitle: gelVariant.title,
-              price: gelVariant.price,
+              price: { amount: "0.00", currencyCode: currency },
               quantity: 1,
               selectedOptions: gelVariant.selectedOptions || [],
             });
@@ -150,7 +150,7 @@ export function ProductLanding({ config }: Props) {
               product: { node: maskProduct },
               variantId: maskVariant.id,
               variantTitle: maskVariant.title,
-              price: maskVariant.price,
+              price: { amount: "0.00", currencyCode: currency },
               quantity: 1,
               selectedOptions: maskVariant.selectedOptions || [],
             });

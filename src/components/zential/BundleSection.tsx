@@ -46,14 +46,19 @@ export function BundleSection() {
   const handleAddBundle = async (bundle: Bundle) => {
     setLoadingBundle(bundle.title);
     try {
-      for (const bundleProduct of bundle.items) {
+      for (let i = 0; i < bundle.items.length; i++) {
+        const bundleProduct = bundle.items[i];
         const product = await fetchProductByHandle(bundleProduct.handle);
         if (!product) { toast.error(`Could not find ${bundleProduct.name}`); continue; }
         const variant = product.variants.edges[0]?.node;
         if (!variant) continue;
+        // First item (device) gets the full bundle price; accessories are €0 (included in bundle)
+        const itemPrice = i === 0
+          ? { amount: bundle.price.replace("€", ""), currencyCode: "EUR" }
+          : { amount: "0.00", currencyCode: "EUR" };
         await addItem({
           product: { node: product },
-          variantId: variant.id, variantTitle: variant.title, price: variant.price, quantity: 1,
+          variantId: variant.id, variantTitle: variant.title, price: itemPrice, quantity: 1,
           selectedOptions: variant.selectedOptions || [],
         });
       }
