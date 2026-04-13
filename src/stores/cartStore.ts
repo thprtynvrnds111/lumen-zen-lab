@@ -130,7 +130,18 @@ export const useCartStore = create<CartStore>()(
     }),
     {
       name: 'zential-cart',
-      storage: createJSONStorage(() => localStorage),
+      storage: createJSONStorage(() => {
+        // During SSR (Node.js), localStorage does not exist.
+        // Return a no-op storage so the persist middleware initialises safely.
+        if (typeof window === 'undefined') {
+          return {
+            getItem: (_: string) => null,
+            setItem: (_: string, __: string) => {},
+            removeItem: (_: string) => {},
+          } as Storage;
+        }
+        return localStorage;
+      }),
       partialize: (state) => ({ items: state.items, cartId: state.cartId, checkoutUrl: state.checkoutUrl }),
     }
   )

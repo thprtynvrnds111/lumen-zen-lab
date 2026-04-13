@@ -18,4 +18,10 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  ssr: {
+    // Bundle these into the SSR output so Vite handles CJS→ESM transformation.
+    // react-dom/server is CJS; without noExternal Node.js cannot do named imports.
+    // react-helmet-async must share one instance across all components during render.
+    noExternal: ["react-dom", "react-helmet-async"],
+  },
 }));

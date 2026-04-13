@@ -1,64 +1,20 @@
 {
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    },
-    {
-      "source": "/at-home-face-lifting-device",
-      "destination": "/at-home-face-lifting-device.html"
-    },
-    {
-      "source": "/microcurrent-face-device",
-      "destination": "/microcurrent-face-device.html"
-    },
-    {
-      "source": "/ems-face-toning-device",
-      "destination": "/ems-face-toning-device.html"
-    },
-    {
-      "source": "/face-tightening-device-at-home",
-      "destination": "/face-tightening-device-at-home.html"
-    },
-    {
-      "source": "/best-beauty-device-for-jawline",
-      "destination": "/best-beauty-device-for-jawline.html"
-    },
-    {
-      "source": "/frequency-wand",
-      "destination": "/frequency-wand.html"
-    },
-    {
-      "source": "/gua-sha-frequency",
-      "destination": "/gua-sha-frequency.html"
-    },
-    {
-      "source": "/eye-activator",
-      "destination": "/eye-activator.html"
-    },
-    {
-      "source": "/frame-pulse",
-      "destination": "/frame-pulse.html"
-    },
-    {
-      "source": "/frequency-wand-pro",
-      "destination": "/frequency-wand-pro.html"
-    },
-    {
-      "source": "/sculpt-wand",
-      "destination": "/sculpt-wand.html"
-    },
-    {
-      "source": "/skin-pulse",
-      "destination": "/skin-pulse.html"
-    },
-    {
-      "source": "/seo-snapshot.html",
-      "destination": "/seo-snapshot.html"
-    },
-    {
-      "source": "/((?!at-home-face-lifting-device|microcurrent-face-device|ems-face-toning-device|face-tightening-device-at-home|best-beauty-device-for-jawline|frequency-wand|gua-sha-frequency|eye-activator|frame-pulse|frequency-wand-pro|sculpt-wand|skin-pulse|seo-snapshot.html).*)",
-      "destination": "/index.html"
-    }
+  "routes": [
+    { "src": "/api/(.*)",                           "dest": "/api/$1" },
+    { "src": "/at-home-face-lifting-device",         "dest": "/at-home-face-lifting-device.html" },
+    { "src": "/microcurrent-face-device",            "dest": "/microcurrent-face-device.html" },
+    { "src": "/ems-face-toning-device",              "dest": "/ems-face-toning-device.html" },
+    { "src": "/face-tightening-device-at-home",      "dest": "/face-tightening-device-at-home.html" },
+    { "src": "/best-beauty-device-for-jawline",      "dest": "/best-beauty-device-for-jawline.html" },
+    { "src": "/frequency-wand",                      "dest": "/frequency-wand.html" },
+    { "src": "/gua-sha-frequency",                   "dest": "/gua-sha-frequency.html" },
+    { "src": "/eye-activator",                       "dest": "/eye-activator.html" },
+    { "src": "/frame-pulse",                         "dest": "/frame-pulse.html" },
+    { "src": "/frequency-wand-pro",                  "dest": "/frequency-wand-pro.html" },
+    { "src": "/sculpt-wand",                         "dest": "/sculpt-wand.html" },
+    { "src": "/skin-pulse",                          "dest": "/skin-pulse.html" },
+    { "src": "/seo-snapshot.html",                   "dest": "/seo-snapshot.html" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)",                                "dest": "/index.html" }
   ]
 }
