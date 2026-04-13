@@ -2,6 +2,7 @@ import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { NewsletterSection } from "@/components/zential/NewsletterSection";
+import { JournalRelatedArticles } from "@/components/zential/JournalRelatedArticles";
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 
@@ -157,6 +158,7 @@ const JournalEMS = () => {
           </div>
         </section>
 
+        <JournalRelatedArticles currentSlug="/journal/ems-vs-microcurrent" />
         <NewsletterSection />
       </main>
       <ZentialFooter />
