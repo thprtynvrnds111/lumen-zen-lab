@@ -258,6 +258,12 @@ export function ProductLanding({ config }: Props) {
             {savings > 0 && <p className="text-sm text-emerald mb-6">You save {sym}{savings.toFixed(2)}</p>}
             {savings === 0 && <div className="mb-6" />}
 
+            {meta.trust_statement && (
+              <p className="text-xs text-muted-foreground/70 italic text-center mb-4 leading-relaxed">
+                "{meta.trust_statement}"
+              </p>
+            )}
+
             <div ref={ctaRef}>
               <Button variant="ritual" size="xl" className="w-full text-sm" onClick={handleAdd} disabled={isCartLoading || !variant?.availableForSale}>
                 {isCartLoading ? <Loader2 className="animate-spin" size={16} /> : "Add To Ritual"}
@@ -294,6 +300,18 @@ export function ProductLanding({ config }: Props) {
             {meta.guarantee_block && (
               <p className="text-xs tracking-[0.2em] uppercase opacity-40 pt-2">{meta.guarantee_block}</p>
             )}
+          </div>
+        </section>
+      )}
+
+      {/* ── RITUAL INSTRUCTIONS (metafield) ── */}
+      {meta.ritual_instructions && (
+        <section className="py-12 px-6 bg-secondary/20">
+          <div className="max-w-2xl mx-auto">
+            <p className="text-xs tracking-[0.2em] uppercase text-accent mb-4 text-center">Your Protocol</p>
+            <div className="glass-card p-6 md:p-8">
+              <p className="text-sm text-muted-foreground leading-[1.9] whitespace-pre-line">{meta.ritual_instructions}</p>
+            </div>
           </div>
         </section>
       )}
