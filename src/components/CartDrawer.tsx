@@ -157,7 +157,9 @@ export function CartDrawer() {
                         )}
                       </div>
                       <span className="text-sm font-semibold whitespace-nowrap">
-                        €{(parseFloat(item.price.amount) * item.quantity).toFixed(2)}
+                        {parseFloat(item.price.amount) * item.quantity === 0
+                          ? <span className="text-xs text-accent font-medium">Included</span>
+                          : `€${(parseFloat(item.price.amount) * item.quantity).toFixed(2)}`}
                       </span>
                     </div>
 
