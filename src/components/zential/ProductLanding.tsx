@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { PaymentBadges } from "@/components/zential/PaymentBadges";
 import { RelatedProducts } from "@/components/zential/RelatedProducts";
+import { ScarcityBanner } from "@/components/zential/ScarcityBanner";
 import type { ProductConfig } from "@/data/productConfigs";
 
 type BundleKey = "single" | "ritual-set" | "pro-set";
@@ -263,6 +264,8 @@ export function ProductLanding({ config }: Props) {
                 "{meta.trust_statement}"
               </p>
             )}
+
+            <ScarcityBanner signal={meta.inventory_signal} />
 
             <div ref={ctaRef}>
               <Button variant="ritual" size="xl" className="w-full text-sm" onClick={handleAdd} disabled={isCartLoading || !variant?.availableForSale}>
