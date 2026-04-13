@@ -10,6 +10,7 @@ const PhilosophySection = lazy(() => import("@/components/zential/PhilosophySect
 const TechCardsSection = lazy(() => import("@/components/zential/TechCardsSection").then(m => ({ default: m.TechCardsSection })));
 const ExpertsSection = lazy(() => import("@/components/zential/ExpertsSection").then(m => ({ default: m.ExpertsSection })));
 const DevicesSection = lazy(() => import("@/components/zential/DevicesSection").then(m => ({ default: m.DevicesSection })));
+const StatsBar = lazy(() => import("@/components/zential/StatsBar").then(m => ({ default: m.StatsBar })));
 const PressQuotesSection = lazy(() => import("@/components/zential/PressQuotesSection").then(m => ({ default: m.PressQuotesSection })));
 const EditorialBreak = lazy(() => import("@/components/zential/EditorialBreak").then(m => ({ default: m.EditorialBreak })));
 const UGCStrip = lazy(() => import("@/components/zential/UGCStrip").then(m => ({ default: m.UGCStrip })));
@@ -69,6 +70,7 @@ const Index = () => {
           <TechCardsSection />
           <ExpertsSection />
           <DevicesSection />
+          <StatsBar />
           <PressQuotesSection />
           <UGCStrip />
           <EditorialBreak />

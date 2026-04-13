@@ -14,7 +14,7 @@ const bundles: Bundle[] = [
     title: "Sculpt Wand",
     subtitle: "One-Time Purchase",
     items: [{ handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" }],
-    price: "€69", savePercent: "", saveAmount: "", highlight: false,
+    price: "€112", savePercent: "", saveAmount: "", highlight: false,
   },
   {
     title: "Sculpt Wand Ritual Set",
@@ -23,7 +23,7 @@ const bundles: Bundle[] = [
       { handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" },
       { handle: "medicube-collagen-elastic-jelly-moisturizing-cream", name: "Collagen Gel" },
     ],
-    price: "€89", savePercent: "16%", saveAmount: "€16", highlight: true,
+    price: "€137", savePercent: "16%", saveAmount: "€10", highlight: true,
   },
   {
     title: "Sculpt Wand Pro Set",
@@ -33,7 +33,7 @@ const bundles: Bundle[] = [
       { handle: "medicube-collagen-elastic-jelly-moisturizing-cream", name: "Collagen Gel" },
       { handle: "collagen-eye-mask", name: "PDRN Mask" },
     ],
-    price: "€109", savePercent: "20%", saveAmount: "€24", highlight: false,
+    price: "€161", savePercent: "20%", saveAmount: "€24", highlight: false,
   },
 ];
 
