@@ -274,7 +274,7 @@ export function ProductLanding({ config }: Props) {
               {[
                 { icon: RotateCcw, label: "30-Day Guarantee" },
                 { icon: Lock, label: "Secure Checkout" },
-                { icon: Truck, label: "7–10 Day Delivery" },
+                { icon: Truck, label: "3–7 Day EU Delivery" },
               ].map(b => (
                 <div key={b.label} className="flex items-center gap-1.5 text-[11px] tracking-wide uppercase">
                   <b.icon size={13} /> {b.label}
