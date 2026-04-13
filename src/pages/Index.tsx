@@ -21,6 +21,9 @@ const SkinFitSection = lazy(() => import("@/components/zential/SkinFitSection").
 const SafetyUsageSection = lazy(() => import("@/components/zential/SafetyUsageSection").then(m => ({ default: m.SafetyUsageSection })));
 const TransparencySection = lazy(() => import("@/components/zential/TransparencySection").then(m => ({ default: m.TransparencySection })));
 const PriceGuaranteeSection = lazy(() => import("@/components/zential/PriceGuaranteeSection").then(m => ({ default: m.PriceGuaranteeSection })));
+const ComparisonSection = lazy(() => import("@/components/zential/ComparisonSection").then(m => ({ default: m.ComparisonSection })));
+const ResultsSection = lazy(() => import("@/components/zential/ResultsSection").then(m => ({ default: m.ResultsSection })));
+const SocialProof = lazy(() => import("@/components/zential/SocialProof").then(m => ({ default: m.SocialProof })));
 const BundleSection = lazy(() => import("@/components/zential/BundleSection").then(m => ({ default: m.BundleSection })));
 const FAQSection = lazy(() => import("@/components/zential/FAQSection").then(m => ({ default: m.FAQSection })));
 const CommunitySection = lazy(() => import("@/components/zential/CommunitySection").then(m => ({ default: m.CommunitySection })));
@@ -69,10 +72,13 @@ const Index = () => {
           <PhilosophySection />
           <TechCardsSection />
           <ExpertsSection />
+          <ComparisonSection />
           <DevicesSection />
           <StatsBar />
           <PressQuotesSection />
+          <SocialProof />
           <UGCStrip />
+          <ResultsSection />
           <EditorialBreak />
           <RitualSection />
           <LazyImageDivider />

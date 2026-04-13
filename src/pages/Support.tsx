@@ -72,11 +72,17 @@ const Support = () => {
       return;
     }
     setSubmitting(true);
-    setTimeout(() => {
-      toast.success("Request submitted. We'll respond within 24 to 48 hours.");
-      setFormState({ name: "", email: "", orderNumber: "", message: "" });
-      setSubmitting(false);
-    }, 1000);
+    const subject = encodeURIComponent(
+      formState.orderNumber.trim()
+        ? `Support Request – Order ${formState.orderNumber.trim()}`
+        : "Support Request"
+    );
+    const body = encodeURIComponent(
+      `Name: ${formState.name.trim()}\nEmail: ${formState.email.trim()}${formState.orderNumber.trim() ? `\nOrder Number: ${formState.orderNumber.trim()}` : ""}\n\n${formState.message.trim()}`
+    );
+    window.location.href = `mailto:info@zentialpure.com?subject=${subject}&body=${body}`;
+    setFormState({ name: "", email: "", orderNumber: "", message: "" });
+    setSubmitting(false);
   };
 
   return (
@@ -214,9 +220,9 @@ const Support = () => {
                 />
               </div>
               <Button type="submit" variant="ritual" size="lg" className="w-full" disabled={submitting}>
-                {submitting ? "Submitting..." : "Submit Request"}
+                {submitting ? "Opening…" : "Send via Email"}
               </Button>
-              <p className="text-xs text-muted-foreground text-center">Response within 24 to 48 hours.</p>
+              <p className="text-xs text-muted-foreground text-center">Opens your email client · Response within 24–48 hours.</p>
             </form>
           </div>
         </section>
