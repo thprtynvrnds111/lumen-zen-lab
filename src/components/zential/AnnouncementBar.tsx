@@ -4,7 +4,7 @@ const messages = [
   "30-Day Ritual Guarantee — No Friction. No Questions.",
   "Free Shipping on Orders Over €75",
   "Science-backed. Built for your daily ritual.",
-  "Delivered in 7–10 Days Across the EU",
+  "Delivered in 3–7 Business Days Across the EU",
   "Clinic precision. Home convenience. Daily results.",
 ];
 
