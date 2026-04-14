@@ -52,7 +52,7 @@ export function HeroSection() {
             width={1080}
             height={1296}
             className="absolute inset-0 w-full h-full object-cover"
-            {...(i === 0 ? { fetchpriority: "high" as any } : { loading: "lazy" as const })}
+            {...(i === 0 ? { fetchpriority: "high" as any, loading: "eager" as const } : { loading: "lazy" as const })}
             style={{
               opacity: currentImage === i ? (isTransitioning ? 0 : 1) : 0,
               transition: 'opacity 0.6s ease-in-out',

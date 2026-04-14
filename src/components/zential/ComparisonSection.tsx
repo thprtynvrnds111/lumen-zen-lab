@@ -10,8 +10,8 @@ const rows = [
 
 export function ComparisonSection() {
   return (
-    <section className="section-padding">
-      <div className="text-center mb-16">
+    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-20">
+      <div className="text-center mb-12">
         <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Compare</p>
         <h2 className="text-3xl md:text-5xl font-semibold">Freedom, Not Appointments.</h2>
       </div>
