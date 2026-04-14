@@ -13,7 +13,7 @@ export function PhilosophySection() {
             src={philosophyImg}
             alt="Woman with clear skin, contemplative"
             className="w-full h-full object-cover"
-            loading="lazy"
+            loading="eager"
             width={900}
             height={1200}
             style={{ minHeight: '50vh' }}
