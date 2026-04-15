@@ -1,6 +1,7 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { SEO } from "@/components/SEO";
 import { ArrowLeft } from "lucide-react";
+import ritualHeroImg from "@/assets/ritual-guide-hero.png";
 
 const accent = "#c4714a";
 const bg = "#1a1714";
