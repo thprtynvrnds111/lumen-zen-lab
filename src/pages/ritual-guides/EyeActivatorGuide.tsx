@@ -1,4 +1,5 @@
 import RitualGuideLayout, { type RitualGuideConfig } from "@/components/zential/RitualGuideLayout";
+import heroImg from "@/assets/ritual-eye-activator.png";
 
 const config: RitualGuideConfig = {
   seoTitle: "Ritual Guide — Eye Activator | Zential Pure",
@@ -6,6 +7,8 @@ const config: RitualGuideConfig = {
   canonicalUrl: "/ritual-guide/eye-activator",
   heroHeading: <>Your Eye Activator.<br className="hidden md:block" /> How to use it.</>,
   heroSubline: "Red light 630–660nm. Three minutes per eye.",
+  heroImage: heroImg,
+  heroCaption: "Eye Activator — used morning and evening",
   prepItems: [
     { title: "Cleanse", desc: "Cleanse around the eye area. Remove all makeup completely." },
     { title: "Eye Serum", desc: "Apply eye serum to the orbital area before treatment." },

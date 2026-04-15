@@ -1,4 +1,5 @@
 import RitualGuideLayout, { type RitualGuideConfig } from "@/components/zential/RitualGuideLayout";
+import heroImg from "@/assets/ritual-frame-pulse.png";
 
 const config: RitualGuideConfig = {
   seoTitle: "Ritual Guide — Frame Pulse Activator | Zential Pure",
@@ -6,6 +7,8 @@ const config: RitualGuideConfig = {
   canonicalUrl: "/ritual-guide/frame-pulse-activator",
   heroHeading: <>Your Frame Pulse Activator.<br className="hidden md:block" /> How to use it.</>,
   heroSubline: "Hands-free. Eyes closed. Ten minutes.",
+  heroImage: heroImg,
+  heroCaption: "Frame Pulse Activator — used daily or every other day",
   prepItems: [
     { title: "Cleanse + Serum", desc: "Start on clean skin. Apply your preferred serum to the treatment area." },
     { title: "Position", desc: "Place the device along the orbital bone. Adjust straps for a snug, comfortable fit." },
