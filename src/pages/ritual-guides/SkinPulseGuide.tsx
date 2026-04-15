@@ -1,4 +1,5 @@
 import RitualGuideLayout, { type RitualGuideConfig } from "@/components/zential/RitualGuideLayout";
+import heroImg from "@/assets/ritual-skin-pulse.jpg";
 
 const config: RitualGuideConfig = {
   seoTitle: "Ritual Guide — Skin Pulse | Zential Pure",
@@ -6,6 +7,8 @@ const config: RitualGuideConfig = {
   canonicalUrl: "/ritual-guide/skin-pulse",
   heroHeading: <>Your Skin Pulse.<br className="hidden md:block" /> How to use it.</>,
   heroSubline: "Sub-sensory current. Every session builds.",
+  heroImage: heroImg,
+  heroCaption: "Skin Pulse — used daily, 5–10 minutes",
   prepItems: [
     { title: "Cleanse", desc: "Start on clean, dry skin." },
     { title: "Serum First", desc: "Apply your treatment serum before the device." },

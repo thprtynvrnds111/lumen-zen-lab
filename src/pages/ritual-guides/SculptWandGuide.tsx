@@ -1,4 +1,5 @@
 import RitualGuideLayout, { type RitualGuideConfig } from "@/components/zential/RitualGuideLayout";
+import heroImg from "@/assets/ritual-sculpt-wand.png";
 
 const config: RitualGuideConfig = {
   seoTitle: "Ritual Guide — Sculpt Wand | Zential Pure",
@@ -6,6 +7,8 @@ const config: RitualGuideConfig = {
   canonicalUrl: "/ritual-guide/sculpt-wand",
   heroHeading: <>Your Sculpt Wand.<br className="hidden md:block" /> How to use it.</>,
   heroSubline: "Precision EMS. Five minutes. Real contour.",
+  heroImage: heroImg,
+  heroCaption: "Sculpt Wand — used daily",
   prepItems: [
     { title: "Cleanse", desc: "Start on clean, dry skin." },
     { title: "Gel", desc: "Apply conductive gel on jaw, cheeks, and brow area." },

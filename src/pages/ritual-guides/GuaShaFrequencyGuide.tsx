@@ -1,4 +1,5 @@
 import RitualGuideLayout, { type RitualGuideConfig } from "@/components/zential/RitualGuideLayout";
+import heroImg from "@/assets/ritual-gua-sha.png";
 
 const config: RitualGuideConfig = {
   seoTitle: "Ritual Guide — Gua Sha Frequency | Zential Pure",
@@ -6,6 +7,8 @@ const config: RitualGuideConfig = {
   canonicalUrl: "/ritual-guide/gua-sha-frequency",
   heroHeading: <>Your Gua Sha Frequency.<br className="hidden md:block" /> How to use it.</>,
   heroSubline: "Ancient ritual. Electrical precision. Every morning.",
+  heroImage: heroImg,
+  heroCaption: "Gua Sha Frequency — used daily, every morning",
   prepItems: [
     { title: "Cleanse", desc: "Start on clean skin." },
     { title: "Oil or Serum", desc: "Apply oil or serum generously. Never use on dry skin." },

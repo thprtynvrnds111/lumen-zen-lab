@@ -1,4 +1,5 @@
 import RitualGuideLayout, { type RitualGuideConfig } from "@/components/zential/RitualGuideLayout";
+import heroImg from "@/assets/ritual-frequency-wand.png";
 
 const config: RitualGuideConfig = {
   seoTitle: "Ritual Guide — Frequency Wand | Zential Pure",
@@ -6,6 +7,8 @@ const config: RitualGuideConfig = {
   canonicalUrl: "/ritual-guide/frequency-wand",
   heroHeading: <>Your Frequency Wand.<br className="hidden md:block" /> How to use it.</>,
   heroSubline: "High-frequency therapy. Oxygenated skin.",
+  heroImage: heroImg,
+  heroCaption: "Frequency Wand — used 3–5× per week",
   prepItems: [
     { title: "Cleanse", desc: "Cleanse thoroughly. No oils, serums, or moisturiser before use." },
     { title: "Dry", desc: "Pat skin completely dry. High-frequency works best on dry skin." },
