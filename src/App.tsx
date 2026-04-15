@@ -30,6 +30,7 @@ const TechRedLight = lazy(() => import("./pages/TechRedLight"));
 const TechMicrocurrent = lazy(() => import("./pages/TechMicrocurrent"));
 const TechEMS = lazy(() => import("./pages/TechEMS"));
 const TechThermal = lazy(() => import("./pages/TechThermal"));
+const RitualGuide = lazy(() => import("./pages/RitualGuide"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -62,6 +63,7 @@ function AppContent() {
         <Route path="/technology/microcurrent" element={<TechMicrocurrent />} />
         <Route path="/technology/ems" element={<TechEMS />} />
         <Route path="/technology/thermal" element={<TechThermal />} />
+        <Route path="/ritual-guide" element={<RitualGuide />} />
         
         <Route path="*" element={<NotFound />} />
       </Routes>
