@@ -124,6 +124,7 @@ export default function RitualGuide() {
             Face Introducer — used 5× per week
           </p>
         </div>
+      </Section>
 
       {/* 2 — BEFORE YOU BEGIN */}
       <Section className="py-16 md:py-24">
