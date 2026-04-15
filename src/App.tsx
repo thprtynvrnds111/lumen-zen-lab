@@ -31,6 +31,13 @@ const TechMicrocurrent = lazy(() => import("./pages/TechMicrocurrent"));
 const TechEMS = lazy(() => import("./pages/TechEMS"));
 const TechThermal = lazy(() => import("./pages/TechThermal"));
 const RitualGuide = lazy(() => import("./pages/RitualGuide"));
+const FramePulseActivatorGuide = lazy(() => import("./pages/ritual-guides/FramePulseActivatorGuide"));
+const FrequencyWandProGuide = lazy(() => import("./pages/ritual-guides/FrequencyWandProGuide"));
+const SculptWandGuide = lazy(() => import("./pages/ritual-guides/SculptWandGuide"));
+const GuaShaFrequencyGuide = lazy(() => import("./pages/ritual-guides/GuaShaFrequencyGuide"));
+const EyeActivatorGuide = lazy(() => import("./pages/ritual-guides/EyeActivatorGuide"));
+const SkinPulseGuide = lazy(() => import("./pages/ritual-guides/SkinPulseGuide"));
+const FrequencyWandGuide = lazy(() => import("./pages/ritual-guides/FrequencyWandGuide"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
