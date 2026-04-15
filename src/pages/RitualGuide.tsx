@@ -105,7 +105,25 @@ export default function RitualGuide() {
           Four technologies. One sequence. Five minutes.
         </p>
         <div className="mt-10 mx-auto max-w-xs h-px" style={{ backgroundColor: divider }} />
-      </Section>
+
+        {/* Hero image */}
+        <div className="mt-12 mx-auto w-full max-w-[900px]">
+          <div className="relative rounded-[4px] overflow-hidden">
+            <img
+              src={ritualHeroImg}
+              alt="Model using the Zential Pure Face Introducer"
+              className="w-full aspect-[3/2] object-cover"
+              loading="eager"
+            />
+            <div
+              className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
+              style={{ background: `linear-gradient(to top, ${bg}, transparent)` }}
+            />
+          </div>
+          <p className="text-xs mt-3 text-center tracking-wide" style={{ color: textMuted }}>
+            Face Introducer — used 5× per week
+          </p>
+        </div>
 
       {/* 2 — BEFORE YOU BEGIN */}
       <Section className="py-16 md:py-24">
