@@ -71,6 +71,13 @@ function AppContent() {
         <Route path="/technology/ems" element={<TechEMS />} />
         <Route path="/technology/thermal" element={<TechThermal />} />
         <Route path="/ritual-guide" element={<RitualGuide />} />
+        <Route path="/ritual-guide/frame-pulse-activator" element={<FramePulseActivatorGuide />} />
+        <Route path="/ritual-guide/frequency-wand-pro" element={<FrequencyWandProGuide />} />
+        <Route path="/ritual-guide/sculpt-wand" element={<SculptWandGuide />} />
+        <Route path="/ritual-guide/gua-sha-frequency" element={<GuaShaFrequencyGuide />} />
+        <Route path="/ritual-guide/eye-activator" element={<EyeActivatorGuide />} />
+        <Route path="/ritual-guide/skin-pulse" element={<SkinPulseGuide />} />
+        <Route path="/ritual-guide/frequency-wand" element={<FrequencyWandGuide />} />
         
         <Route path="*" element={<NotFound />} />
       </Routes>
