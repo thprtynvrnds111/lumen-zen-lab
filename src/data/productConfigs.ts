@@ -116,6 +116,25 @@ export const productConfigs: Record<string, ProductConfig> = {
     beforeAfter: { before: before2Img, after: after2Img },
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
+    studyCards: [
+      { technology: "Red Light", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
+      { technology: "Microcurrent", studyTitle: "Electrical Stimulation and ATP Production in Skin Cells", journal: "Journal of Investigative Dermatology, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Thermal", studyTitle: "Effects of Heat on Dermal Collagen Remodeling", journal: "Lasers in Surgery and Medicine, 2016", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Sonic Pulse", studyTitle: "Lymphatic Drainage Effects of Mechanical Vibration on Facial Tissue", journal: "Journal of Clinical and Aesthetic Dermatology, 2020", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+    ],
+    contraindications: [
+      "You have a pacemaker or implanted electronic device",
+      "You are pregnant",
+      "You have epilepsy or photosensitive conditions",
+      "You have active skin infections or open wounds in the treatment area",
+      "You have metal implants in the face",
+    ],
+    normalSensations: [
+      "A mild tingling or warmth during use \u2014 expected",
+      "Slight redness that fades within 30 minutes \u2014 normal",
+      "No sensation at all on microcurrent mode \u2014 correct, it\u2019s sub-sensory",
+    ],
+    sessionInfo: "Session time: 5\u201310 minutes \u00b7 Frequency: 5\u00d7 per week \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── LIFTING & TIGHTENING FACE INTRODUCER ───
