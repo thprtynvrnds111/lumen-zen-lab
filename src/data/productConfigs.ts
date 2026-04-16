@@ -179,7 +179,7 @@ export const productConfigs: Record<string, ProductConfig> = {
     faqs: defaultDeviceFaqs,
     studyCards: [
       { technology: "EMS", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/?term=electrical+muscle+stimulation+facial" },
-      { technology: "Red Light 630\u2013660nm", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
+      { technology: "Red Light 630\u2013660nm", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/?term=photobiomodulation+630nm+collagen+skin" },
       { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://pubmed.ncbi.nlm.nih.gov/?term=microcurrent+ATP+skin+cells" },
       { technology: "Ion Infusion", studyTitle: "Iontophoresis-Driven Porous Microneedle Array Patch for Active Transdermal Drug Delivery", journal: "Acta Biomaterialia, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/?term=iontophoresis+transdermal+skin" },
     ],
@@ -246,7 +246,7 @@ export const productConfigs: Record<string, ProductConfig> = {
       { q: "What is your guarantee?", a: "We offer a 30-Day Ritual Guarantee. If you don't see visible improvement within 30 days of consistent daily use, contact us for a full refund." },
     ],
     studyCards: [
-      { technology: "Red Light 630\u2013660nm", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
+      { technology: "Red Light 630\u2013660nm", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/?term=photobiomodulation+630nm+collagen+skin" },
       { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://pubmed.ncbi.nlm.nih.gov/?term=microcurrent+ATP+skin+cells" },
       { technology: "Sonic Pulse", studyTitle: "Low-Frequency Vibrotherapy Improves the Effectiveness of Manual Lymphatic Drainage", journal: "Journal of Clinical Medicine, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/?term=sonic+vibration+skin+absorption" },
       { technology: "Thermal", studyTitle: "Collagen Remodeling After 585-nm Pulsed Dye Laser Irradiation", journal: "Dermatologic Surgery, 2003", url: "https://pubmed.ncbi.nlm.nih.gov/?term=thermal+therapy+skin+collagen" },
