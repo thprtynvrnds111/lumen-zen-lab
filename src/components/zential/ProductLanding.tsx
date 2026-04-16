@@ -335,7 +335,7 @@ export function ProductLanding({ config }: Props) {
               </div>
             </div>
             <p className="text-sm text-muted-foreground">
-              Based on <span className="font-semibold text-foreground">2,847</span> verified reviews
+              From our early ritual community
             </p>
           </div>
 
