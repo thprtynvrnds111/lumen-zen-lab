@@ -9,7 +9,7 @@ import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { toast } from "sonner";
 import {
   Loader2, Shield, Truck, RotateCcw, Star, Check, X,
-  Lock, CreditCard, ArrowRight,
+  Lock, CreditCard, ArrowRight, ExternalLink, AlertTriangle, Heart,
 } from "lucide-react";
 import { PaymentBadges } from "@/components/zential/PaymentBadges";
 import { RelatedProducts } from "@/components/zential/RelatedProducts";
