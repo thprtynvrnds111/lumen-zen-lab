@@ -31,6 +31,7 @@ const TechMicrocurrent = lazy(() => import("./pages/TechMicrocurrent"));
 const TechEMS = lazy(() => import("./pages/TechEMS"));
 const TechThermal = lazy(() => import("./pages/TechThermal"));
 const RitualGuide = lazy(() => import("./pages/RitualGuide"));
+const Science = lazy(() => import("./pages/Science"));
 const FramePulseActivatorGuide = lazy(() => import("./pages/ritual-guides/FramePulseActivatorGuide"));
 const FrequencyWandProGuide = lazy(() => import("./pages/ritual-guides/FrequencyWandProGuide"));
 const SculptWandGuide = lazy(() => import("./pages/ritual-guides/SculptWandGuide"));
@@ -71,6 +72,7 @@ function AppContent() {
         <Route path="/technology/ems" element={<TechEMS />} />
         <Route path="/technology/thermal" element={<TechThermal />} />
         <Route path="/ritual-guide" element={<RitualGuide />} />
+        <Route path="/science" element={<Science />} />
         <Route path="/ritual-guide/frame-pulse-activator" element={<FramePulseActivatorGuide />} />
         <Route path="/ritual-guide/frequency-wand-pro" element={<FrequencyWandProGuide />} />
         <Route path="/ritual-guide/sculpt-wand" element={<SculptWandGuide />} />
