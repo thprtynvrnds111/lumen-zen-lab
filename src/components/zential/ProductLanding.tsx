@@ -617,8 +617,8 @@ export function ProductLanding({ config }: Props) {
       {/* ── SECTION 9: FINAL CTA ── */}
       <section className="section-padding">
         <div className="max-w-[1200px] mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">Structure Is a Practice.</h2>
-          <p className="text-muted-foreground text-lg mb-10 max-w-md mx-auto">Start your daily ritual. Build the tone your skin was designed for.</p>
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">30 Days. Full Refund. No Questions.</h2>
+          <p className="text-muted-foreground text-lg mb-10 max-w-lg mx-auto">Email us at info@zentialpure.com. We refund. No forms, no photos, no return required. You have 30 days from delivery.</p>
           <Button variant="ritual" size="xl" onClick={handleAdd} disabled={isCartLoading}>
             {isCartLoading ? <Loader2 className="animate-spin" size={16} /> : "Begin My Ritual"}
           </Button>
