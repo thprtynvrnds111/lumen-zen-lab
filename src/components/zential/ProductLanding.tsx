@@ -407,7 +407,96 @@ export function ProductLanding({ config }: Props) {
         </div>
       </section>
 
-      {/* ── SECTION 5: THE RITUAL ── */}
+      {/* ── SECTION 4b: WE SHOW OUR WORK ── */}
+      {config.studyCards && config.studyCards.length > 0 && (
+        <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#1a1714' }}>
+          <div className="max-w-[1200px] mx-auto">
+            <div className="text-center mb-14">
+              <p className="text-xs tracking-[0.25em] uppercase mb-3" style={{ color: '#C6A07C' }}>Transparency</p>
+              <h2 className="font-serif italic text-2xl md:text-3xl lg:text-4xl text-white/90 max-w-2xl mx-auto leading-snug mb-4">
+                Every brand in this category will tell you they're science-backed. Here's ours.
+              </h2>
+              <p className="text-sm text-white/50 max-w-lg mx-auto">
+                We link the actual studies. Read them, or don't — but they're there.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto mb-14">
+              {config.studyCards.map((study, i) => (
+                <a
+                  key={i}
+                  href={study.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-xl p-6 border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group"
+                  style={{ backgroundColor: '#231f1b', borderColor: '#3a3530' }}
+                >
+                  <p className="text-[10px] tracking-[0.2em] uppercase font-semibold mb-3" style={{ color: '#C6A07C' }}>{study.technology}</p>
+                  <h3 className="text-sm font-semibold text-white/90 mb-2 leading-relaxed">{study.studyTitle}</h3>
+                  <p className="text-xs text-white/40 mb-4">{study.journal}</p>
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium group-hover:underline" style={{ color: '#C6A07C' }}>
+                    Read study <ExternalLink size={11} />
+                  </span>
+                </a>
+              ))}
+            </div>
+            <p className="font-serif italic text-lg md:text-xl text-white/70 text-center max-w-xl mx-auto leading-relaxed">
+              "The device works or you get your money back. That's the whole offer."
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* ── SECTION 4c: SAFETY & USAGE ── */}
+      {config.contraindications && config.contraindications.length > 0 && (
+        <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#f9f7f4' }}>
+          <div className="max-w-[1200px] mx-auto">
+            <div className="text-center mb-14">
+              <p className="text-xs tracking-[0.25em] uppercase mb-3" style={{ color: '#C6A07C' }}>Before You Begin</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground">Who should not use this device</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 max-w-4xl mx-auto mb-12">
+              {/* Contraindications */}
+              <div>
+                <div className="flex items-center gap-2 mb-5">
+                  <AlertTriangle size={16} style={{ color: '#C6A07C' }} />
+                  <h3 className="font-semibold text-foreground text-sm tracking-wide uppercase">Contraindications</h3>
+                </div>
+                <ul className="space-y-3">
+                  {config.contraindications.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-sm text-foreground/80 leading-relaxed">
+                      <X size={14} className="text-destructive/60 mt-0.5 flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {/* Normal Sensations */}
+              {config.normalSensations && (
+                <div>
+                  <div className="flex items-center gap-2 mb-5">
+                    <Heart size={16} className="text-accent" />
+                    <h3 className="font-semibold text-foreground text-sm tracking-wide uppercase">Normal Sensations</h3>
+                  </div>
+                  <ul className="space-y-3">
+                    {config.normalSensations.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-foreground/80 leading-relaxed">
+                        <Check size={14} className="text-accent mt-0.5 flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+            {config.sessionInfo && (
+              <p className="text-center text-xs text-muted-foreground/70 max-w-xl mx-auto leading-relaxed">
+                {config.sessionInfo}
+              </p>
+            )}
+          </div>
+        </section>
+      )}
+
       <section className="section-padding">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-14">
