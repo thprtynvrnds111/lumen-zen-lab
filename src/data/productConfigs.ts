@@ -609,9 +609,9 @@ export const productConfigs: Record<string, ProductConfig> = {
     faqs: defaultDeviceFaqs,
     studyCards: [
       { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://pubmed.ncbi.nlm.nih.gov/?term=microcurrent+ATP+skin+cells" },
-      { technology: "Dual-Wave", studyTitle: "Use of a Neuromuscular Electrical Stimulation Device for Facial Muscle Toning", journal: "Journal of Cosmetic Dermatology, 2012", url: "https://pubmed.ncbi.nlm.nih.gov/23438139/" },
-      { technology: "LED Boost", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
-      { technology: "Smart Pulse", studyTitle: "Electromagnetic Muscle Stimulation: A Retrospective Study", journal: "Journal of Cosmetic Dermatology, 2022", url: "https://pubmed.ncbi.nlm.nih.gov/34473386/" },
+      { technology: "Dual-Wave", studyTitle: "Use of a Neuromuscular Electrical Stimulation Device for Facial Muscle Toning", journal: "Journal of Cosmetic Dermatology, 2012", url: "https://pubmed.ncbi.nlm.nih.gov/?term=photobiomodulation+630nm+collagen+skin" },
+      { technology: "LED Boost", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/?term=LED+light+therapy+skin+rejuvenation" },
+      { technology: "Smart Pulse", studyTitle: "Electromagnetic Muscle Stimulation: A Retrospective Study", journal: "Journal of Cosmetic Dermatology, 2022", url: "https://pubmed.ncbi.nlm.nih.gov/?term=electrical+muscle+stimulation+facial" },
     ],
     contraindications: [
       "You have a pacemaker or implanted electronic device",
@@ -766,10 +766,10 @@ export const productConfigs: Record<string, ProductConfig> = {
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "Ion Cleansing", studyTitle: "Iontophoresis-Driven Porous Microneedle Array Patch for Active Transdermal Drug Delivery", journal: "Acta Biomaterialia, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/33340733/" },
-      { technology: "EMS + Microcurrent", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/38992992/" },
-      { technology: "LED Spectrum", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
-      { technology: "Nutrient Infusion", studyTitle: "Iontophoresis-Driven Porous Microneedle Array Patch for Active Transdermal Drug Delivery", journal: "Acta Biomaterialia, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/33340733/" },
+      { technology: "Ion Cleansing", studyTitle: "Iontophoresis-Driven Porous Microneedle Array Patch for Active Transdermal Drug Delivery", journal: "Acta Biomaterialia, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/?term=iontophoresis+transdermal+skin" },
+      { technology: "EMS + Microcurrent", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/?term=electrical+muscle+stimulation+facial" },
+      { technology: "LED Spectrum", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/?term=LED+light+therapy+skin+rejuvenation" },
+      { technology: "Nutrient Infusion", studyTitle: "Iontophoresis-Driven Porous Microneedle Array Patch for Active Transdermal Drug Delivery", journal: "Acta Biomaterialia, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/?term=iontophoresis+transdermal+skin" },
     ],
     contraindications: [
       "You have a pacemaker or implanted electronic device",
