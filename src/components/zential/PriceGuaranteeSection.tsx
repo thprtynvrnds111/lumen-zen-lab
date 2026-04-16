@@ -34,8 +34,8 @@ export function PriceGuaranteeSection() {
           ))}
         </div>
         <p className="font-serif italic text-lg text-foreground/70 max-w-md mx-auto leading-relaxed">
-          30-day return. Email us. We refund.<br />
-          No forms. No photos. No questions.
+          30-day return. Email us at info@zentialpure.com. We refund.<br />
+          No forms. No photos. No return required.
         </p>
       </div>
     </section>
