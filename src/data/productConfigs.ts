@@ -766,7 +766,7 @@ export const productConfigs: Record<string, ProductConfig> = {
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "Ion Cleansing", studyTitle: "Negative Ion Technology for Deep Skin Purification", journal: "International Journal of Dermatology, 2019", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { technology: "Ion Cleansing", studyTitle: "Iontophoresis-Driven Porous Microneedle Array Patch for Active Transdermal Drug Delivery", journal: "Acta Biomaterialia, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/33340733/" },
       { technology: "EMS + Microcurrent", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/38992992/" },
       { technology: "LED Spectrum", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
       { technology: "Nutrient Infusion", studyTitle: "Iontophoresis-Driven Porous Microneedle Array Patch for Active Transdermal Drug Delivery", journal: "Acta Biomaterialia, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/33340733/" },
