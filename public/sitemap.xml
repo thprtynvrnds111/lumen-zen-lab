@@ -13,16 +13,26 @@
 
   <!-- Product pages -->
   <url><loc>https://zentialpure.com/product/lifting-and-tightening-face-introducer</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://zentialpure.com/product/body-lift</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://zentialpure.com/product/eye-massage</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://zentialpure.com/product/facial-beauty-tools-and-ems-beauty-equipment</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://zentialpure.com/product/electric-guasha-massager</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://zentialpure.com/product/electric-micro-current</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://zentialpure.com/product/color-light-import-micro-current-vibration-massager</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://zentialpure.com/product/red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://zentialpure.com/product/3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://zentialpure.com/product/portable-ems-microcurrent-facial-beauty-device</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-<url><loc>https://zentialpure.com/body-lift</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zentialpure.com/product/facial-beauty-tools-and-ems-beauty-equipment</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/product/electric-guasha-massager</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/product/eye-massage</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/product/electric-micro-current</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/product/color-light-import-micro-current-vibration-massager</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/product/body-lift</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/body-lift</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Ritual guides -->
+  <url><loc>https://zentialpure.com/ritual-guide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/ritual-guide/frame-pulse-activator</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/ritual-guide/frequency-wand-pro</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/ritual-guide/sculpt-wand</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/ritual-guide/gua-sha-frequency</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/ritual-guide/eye-activator</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/ritual-guide/skin-pulse</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/ritual-guide/frequency-wand</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Journal articles -->
   <url><loc>https://zentialpure.com/journal/frequency-shift</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>

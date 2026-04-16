@@ -35,7 +35,7 @@ const homepageJsonLd = {
   name: "Zential Pure",
   url: "https://zentialpure.com",
   logo: "https://zentialpure.com/og-image.jpg",
-  description: "Self-optimization devices for daily home use. Red light therapy, microcurrent, EMS and thermal in one system. Know your skin. Work with it.",
+  description: "At-home facial devices combining Red Light, Microcurrent, EMS and Thermal technology. Free EU shipping. 30-day guarantee.",
   sameAs: [],
   contactPoint: {
     "@type": "ContactPoint",
@@ -58,7 +58,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Zential Pure — Clinic Precision. Daily Ritual."
-        description="Self-optimization devices for daily home use. Red light therapy, microcurrent, EMS and thermal in one system. Know your skin. Work with it."
+        description="At-home facial devices combining Red Light, Microcurrent, EMS and Thermal technology. Free EU shipping. 30-day guarantee."
         canonicalUrl="/"
         jsonLd={homepageJsonLd}
       />
