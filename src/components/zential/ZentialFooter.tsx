@@ -17,6 +17,7 @@ const footerLinks = {
     { label: "Red Light Therapy", to: "/technology/red-light" },
     { label: "EMS", to: "/technology/ems" },
     { label: "Thermal Therapy", to: "/technology/thermal" },
+    { label: "The Science", to: "/science" },
   ],
   Support: [
     { label: "Contact", to: "/support" },
