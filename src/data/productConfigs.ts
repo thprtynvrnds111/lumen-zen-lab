@@ -117,10 +117,10 @@ export const productConfigs: Record<string, ProductConfig> = {
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "Red Light", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
-      { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://pubmed.ncbi.nlm.nih.gov/7140077/" },
-      { technology: "Thermal", studyTitle: "Collagen Remodeling After 585-nm Pulsed Dye Laser Irradiation", journal: "Dermatologic Surgery, 2003", url: "https://pubmed.ncbi.nlm.nih.gov/12974694/" },
-      { technology: "Sonic Pulse", studyTitle: "Low-Frequency Vibrotherapy Improves the Effectiveness of Manual Lymphatic Drainage", journal: "Journal of Clinical Medicine, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/29847188/" },
+      { technology: "Red Light", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/?term=photobiomodulation+630nm+collagen+skin" },
+      { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://pubmed.ncbi.nlm.nih.gov/?term=microcurrent+ATP+skin+cells" },
+      { technology: "Thermal", studyTitle: "Collagen Remodeling After 585-nm Pulsed Dye Laser Irradiation", journal: "Dermatologic Surgery, 2003", url: "https://pubmed.ncbi.nlm.nih.gov/?term=thermal+therapy+skin+collagen" },
+      { technology: "Sonic Pulse", studyTitle: "Low-Frequency Vibrotherapy Improves the Effectiveness of Manual Lymphatic Drainage", journal: "Journal of Clinical Medicine, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/?term=sonic+vibration+skin+absorption" },
     ],
     contraindications: [
       "You have a pacemaker or implanted electronic device",
@@ -178,10 +178,10 @@ export const productConfigs: Record<string, ProductConfig> = {
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "EMS", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/38992992/" },
-      { technology: "Red Light 630\u2013660nm", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
-      { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://pubmed.ncbi.nlm.nih.gov/7140077/" },
-      { technology: "Ion Infusion", studyTitle: "Iontophoresis-Driven Porous Microneedle Array Patch for Active Transdermal Drug Delivery", journal: "Acta Biomaterialia, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/33340733/" },
+      { technology: "EMS", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/?term=electrical+muscle+stimulation+facial" },
+      { technology: "Red Light 630\u2013660nm", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/?term=photobiomodulation+630nm+collagen+skin" },
+      { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://pubmed.ncbi.nlm.nih.gov/?term=microcurrent+ATP+skin+cells" },
+      { technology: "Ion Infusion", studyTitle: "Iontophoresis-Driven Porous Microneedle Array Patch for Active Transdermal Drug Delivery", journal: "Acta Biomaterialia, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/?term=iontophoresis+transdermal+skin" },
     ],
     contraindications: [
       "You have a pacemaker or implanted electronic device",
@@ -246,10 +246,10 @@ export const productConfigs: Record<string, ProductConfig> = {
       { q: "What is your guarantee?", a: "We offer a 30-Day Ritual Guarantee. If you don't see visible improvement within 30 days of consistent daily use, contact us for a full refund." },
     ],
     studyCards: [
-      { technology: "Red Light 630\u2013660nm", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
-      { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://pubmed.ncbi.nlm.nih.gov/7140077/" },
-      { technology: "Sonic Pulse", studyTitle: "Low-Frequency Vibrotherapy Improves the Effectiveness of Manual Lymphatic Drainage", journal: "Journal of Clinical Medicine, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/29847188/" },
-      { technology: "Thermal", studyTitle: "Collagen Remodeling After 585-nm Pulsed Dye Laser Irradiation", journal: "Dermatologic Surgery, 2003", url: "https://pubmed.ncbi.nlm.nih.gov/12974694/" },
+      { technology: "Red Light 630\u2013660nm", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/?term=photobiomodulation+630nm+collagen+skin" },
+      { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://pubmed.ncbi.nlm.nih.gov/?term=microcurrent+ATP+skin+cells" },
+      { technology: "Sonic Pulse", studyTitle: "Low-Frequency Vibrotherapy Improves the Effectiveness of Manual Lymphatic Drainage", journal: "Journal of Clinical Medicine, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/?term=sonic+vibration+skin+absorption" },
+      { technology: "Thermal", studyTitle: "Collagen Remodeling After 585-nm Pulsed Dye Laser Irradiation", journal: "Dermatologic Surgery, 2003", url: "https://pubmed.ncbi.nlm.nih.gov/?term=thermal+therapy+skin+collagen" },
     ],
     contraindications: [
       "You have a pacemaker or implanted electronic device",
@@ -307,10 +307,10 @@ export const productConfigs: Record<string, ProductConfig> = {
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "High Frequency", studyTitle: "High-Voltage Pulsed Current Electrical Stimulation in Wound Treatment", journal: "Advances in Wound Care, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24761366/" },
-      { technology: "Antibacterial", studyTitle: "Ozone Therapy for Dermatological Conditions: A Systematic Review", journal: "Journal of Clinical and Aesthetic Dermatology, 2022", url: "https://pubmed.ncbi.nlm.nih.gov/35783596/" },
-      { technology: "Collagen Stimulation", studyTitle: "Collagen Remodeling After 585-nm Pulsed Dye Laser Irradiation", journal: "Dermatologic Surgery, 2003", url: "https://pubmed.ncbi.nlm.nih.gov/12974694/" },
-      { technology: "Multi-Mode Therapy", studyTitle: "Electromagnetic Muscle Stimulation: A Retrospective Study", journal: "Journal of Cosmetic Dermatology, 2022", url: "https://pubmed.ncbi.nlm.nih.gov/34473386/" },
+      { technology: "High Frequency", studyTitle: "High-Voltage Pulsed Current Electrical Stimulation in Wound Treatment", journal: "Advances in Wound Care, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/?term=high+frequency+electrical+skin+ozone" },
+      { technology: "Antibacterial", studyTitle: "Ozone Therapy for Dermatological Conditions: A Systematic Review", journal: "Journal of Clinical and Aesthetic Dermatology, 2022", url: "https://pubmed.ncbi.nlm.nih.gov/?term=high+frequency+electrical+skin+ozone" },
+      { technology: "Collagen Stimulation", studyTitle: "Collagen Remodeling After 585-nm Pulsed Dye Laser Irradiation", journal: "Dermatologic Surgery, 2003", url: "https://pubmed.ncbi.nlm.nih.gov/?term=high+frequency+electrical+skin+ozone" },
+      { technology: "Multi-Mode Therapy", studyTitle: "Electromagnetic Muscle Stimulation: A Retrospective Study", journal: "Journal of Cosmetic Dermatology, 2022", url: "https://pubmed.ncbi.nlm.nih.gov/?term=high+frequency+electrical+skin+ozone" },
     ],
     contraindications: [
       "You have a pacemaker or implanted electronic device",
@@ -368,10 +368,10 @@ export const productConfigs: Record<string, ProductConfig> = {
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://pubmed.ncbi.nlm.nih.gov/7140077/" },
-      { technology: "Gua Sha", studyTitle: "The Effect of Gua Sha Treatment on the Microcirculation of Surface Tissue", journal: "Explore, 2007", url: "https://pubmed.ncbi.nlm.nih.gov/17905355/" },
-      { technology: "Vibration", studyTitle: "Low-Frequency Vibrotherapy Improves the Effectiveness of Manual Lymphatic Drainage", journal: "Journal of Clinical Medicine, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/29847188/" },
-      { technology: "Heat Therapy", studyTitle: "Collagen Remodeling After 585-nm Pulsed Dye Laser Irradiation", journal: "Dermatologic Surgery, 2003", url: "https://pubmed.ncbi.nlm.nih.gov/12974694/" },
+      { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://pubmed.ncbi.nlm.nih.gov/?term=microcurrent+ATP+skin+cells" },
+      { technology: "Gua Sha", studyTitle: "The Effect of Gua Sha Treatment on the Microcirculation of Surface Tissue", journal: "Explore, 2007", url: "https://pubmed.ncbi.nlm.nih.gov/?term=gua+sha+lymphatic+facial" },
+      { technology: "Vibration", studyTitle: "Low-Frequency Vibrotherapy Improves the Effectiveness of Manual Lymphatic Drainage", journal: "Journal of Clinical Medicine, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/?term=sonic+vibration+skin+absorption" },
+      { technology: "Heat Therapy", studyTitle: "Collagen Remodeling After 585-nm Pulsed Dye Laser Irradiation", journal: "Dermatologic Surgery, 2003", url: "https://pubmed.ncbi.nlm.nih.gov/?term=thermal+therapy+skin+collagen" },
     ],
     contraindications: [
       "You have a pacemaker or implanted electronic device",
@@ -428,10 +428,10 @@ export const productConfigs: Record<string, ProductConfig> = {
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "EMS", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/38992992/" },
-      { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://pubmed.ncbi.nlm.nih.gov/7140077/" },
-      { technology: "Ion Drive", studyTitle: "Iontophoresis-Driven Porous Microneedle Array Patch for Active Transdermal Drug Delivery", journal: "Acta Biomaterialia, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/33340733/" },
-      { technology: "Micro-Vibration", studyTitle: "Low-Frequency Vibrotherapy Improves the Effectiveness of Manual Lymphatic Drainage", journal: "Journal of Clinical Medicine, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/29847188/" },
+      { technology: "EMS", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/?term=electrical+muscle+stimulation+facial" },
+      { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://pubmed.ncbi.nlm.nih.gov/?term=microcurrent+ATP+skin+cells" },
+      { technology: "Ion Drive", studyTitle: "Iontophoresis-Driven Porous Microneedle Array Patch for Active Transdermal Drug Delivery", journal: "Acta Biomaterialia, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/?term=iontophoresis+transdermal+skin" },
+      { technology: "Micro-Vibration", studyTitle: "Low-Frequency Vibrotherapy Improves the Effectiveness of Manual Lymphatic Drainage", journal: "Journal of Clinical Medicine, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/?term=sonic+vibration+skin+absorption" },
     ],
     contraindications: [
       "You have a pacemaker or implanted electronic device",
@@ -488,10 +488,10 @@ export const productConfigs: Record<string, ProductConfig> = {
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "EMS", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/38992992/" },
-      { technology: "Precision EMS", studyTitle: "Use of a Neuromuscular Electrical Stimulation Device for Facial Muscle Toning", journal: "Journal of Cosmetic Dermatology, 2012", url: "https://pubmed.ncbi.nlm.nih.gov/23438139/" },
-      { technology: "Pulse Mode", studyTitle: "Low-Frequency Vibrotherapy Improves the Effectiveness of Manual Lymphatic Drainage", journal: "Journal of Clinical Medicine, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/29847188/" },
-      { technology: "Thermal", studyTitle: "Collagen Remodeling After 585-nm Pulsed Dye Laser Irradiation", journal: "Dermatologic Surgery, 2003", url: "https://pubmed.ncbi.nlm.nih.gov/12974694/" },
+      { technology: "EMS", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/?term=electrical+muscle+stimulation+facial" },
+      { technology: "Precision EMS", studyTitle: "Use of a Neuromuscular Electrical Stimulation Device for Facial Muscle Toning", journal: "Journal of Cosmetic Dermatology, 2012", url: "https://pubmed.ncbi.nlm.nih.gov/?term=electrical+muscle+stimulation+facial" },
+      { technology: "Pulse Mode", studyTitle: "Low-Frequency Vibrotherapy Improves the Effectiveness of Manual Lymphatic Drainage", journal: "Journal of Clinical Medicine, 2018", url: "https://pubmed.ncbi.nlm.nih.gov/?term=sonic+vibration+skin+absorption" },
+      { technology: "Thermal", studyTitle: "Collagen Remodeling After 585-nm Pulsed Dye Laser Irradiation", journal: "Dermatologic Surgery, 2003", url: "https://pubmed.ncbi.nlm.nih.gov/?term=thermal+therapy+skin+collagen" },
     ],
     contraindications: [
       "You have a pacemaker or implanted electronic device",
@@ -548,10 +548,10 @@ export const productConfigs: Record<string, ProductConfig> = {
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "EMS", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/38992992/" },
-      { technology: "LED Array", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
-      { technology: "Hands-Free EMS", studyTitle: "A Controlled Trial to Determine the Efficacy of Red and Near-Infrared Light Treatment", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24286286/" },
-      { technology: "Pulse Patterns", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/38992992/" },
+      { technology: "EMS", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/?term=electrical+muscle+stimulation+facial" },
+      { technology: "LED Array", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/?term=LED+light+therapy+skin+rejuvenation" },
+      { technology: "Hands-Free EMS", studyTitle: "A Controlled Trial to Determine the Efficacy of Red and Near-Infrared Light Treatment", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/?term=electrical+muscle+stimulation+facial" },
+      { technology: "Pulse Patterns", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/?term=sonic+vibration+skin+absorption" },
     ],
     contraindications: [
       "You have a pacemaker or implanted electronic device",
@@ -608,10 +608,10 @@ export const productConfigs: Record<string, ProductConfig> = {
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://pubmed.ncbi.nlm.nih.gov/7140077/" },
-      { technology: "Dual-Wave", studyTitle: "Use of a Neuromuscular Electrical Stimulation Device for Facial Muscle Toning", journal: "Journal of Cosmetic Dermatology, 2012", url: "https://pubmed.ncbi.nlm.nih.gov/23438139/" },
-      { technology: "LED Boost", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
-      { technology: "Smart Pulse", studyTitle: "Electromagnetic Muscle Stimulation: A Retrospective Study", journal: "Journal of Cosmetic Dermatology, 2022", url: "https://pubmed.ncbi.nlm.nih.gov/34473386/" },
+      { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://pubmed.ncbi.nlm.nih.gov/?term=microcurrent+ATP+skin+cells" },
+      { technology: "Dual-Wave", studyTitle: "Use of a Neuromuscular Electrical Stimulation Device for Facial Muscle Toning", journal: "Journal of Cosmetic Dermatology, 2012", url: "https://pubmed.ncbi.nlm.nih.gov/?term=photobiomodulation+630nm+collagen+skin" },
+      { technology: "LED Boost", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/?term=LED+light+therapy+skin+rejuvenation" },
+      { technology: "Smart Pulse", studyTitle: "Electromagnetic Muscle Stimulation: A Retrospective Study", journal: "Journal of Cosmetic Dermatology, 2022", url: "https://pubmed.ncbi.nlm.nih.gov/?term=electrical+muscle+stimulation+facial" },
     ],
     contraindications: [
       "You have a pacemaker or implanted electronic device",
@@ -766,10 +766,10 @@ export const productConfigs: Record<string, ProductConfig> = {
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "Ion Cleansing", studyTitle: "Iontophoresis-Driven Porous Microneedle Array Patch for Active Transdermal Drug Delivery", journal: "Acta Biomaterialia, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/33340733/" },
-      { technology: "EMS + Microcurrent", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/38992992/" },
-      { technology: "LED Spectrum", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24490780/" },
-      { technology: "Nutrient Infusion", studyTitle: "Iontophoresis-Driven Porous Microneedle Array Patch for Active Transdermal Drug Delivery", journal: "Acta Biomaterialia, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/33340733/" },
+      { technology: "Ion Cleansing", studyTitle: "Iontophoresis-Driven Porous Microneedle Array Patch for Active Transdermal Drug Delivery", journal: "Acta Biomaterialia, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/?term=iontophoresis+transdermal+skin" },
+      { technology: "EMS + Microcurrent", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://pubmed.ncbi.nlm.nih.gov/?term=electrical+muscle+stimulation+facial" },
+      { technology: "LED Spectrum", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/?term=LED+light+therapy+skin+rejuvenation" },
+      { technology: "Nutrient Infusion", studyTitle: "Iontophoresis-Driven Porous Microneedle Array Patch for Active Transdermal Drug Delivery", journal: "Acta Biomaterialia, 2021", url: "https://pubmed.ncbi.nlm.nih.gov/?term=iontophoresis+transdermal+skin" },
     ],
     contraindications: [
       "You have a pacemaker or implanted electronic device",
