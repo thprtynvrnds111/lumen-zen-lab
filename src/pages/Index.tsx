@@ -2,7 +2,6 @@ import { SEO } from "@/components/SEO";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { HeroSection } from "@/components/zential/HeroSection";
-import { AsSeenInStrip } from "@/components/zential/AsSeenInStrip";
 import { lazy, Suspense, useState, useEffect } from "react";
 
 // Lazy-load below-fold sections to reduce initial JS bundle
@@ -11,7 +10,6 @@ const TechCardsSection = lazy(() => import("@/components/zential/TechCardsSectio
 const ExpertsSection = lazy(() => import("@/components/zential/ExpertsSection").then(m => ({ default: m.ExpertsSection })));
 const DevicesSection = lazy(() => import("@/components/zential/DevicesSection").then(m => ({ default: m.DevicesSection })));
 const StatsBar = lazy(() => import("@/components/zential/StatsBar").then(m => ({ default: m.StatsBar })));
-const PressQuotesSection = lazy(() => import("@/components/zential/PressQuotesSection").then(m => ({ default: m.PressQuotesSection })));
 const EditorialBreak = lazy(() => import("@/components/zential/EditorialBreak").then(m => ({ default: m.EditorialBreak })));
 const UGCStrip = lazy(() => import("@/components/zential/UGCStrip").then(m => ({ default: m.UGCStrip })));
 const RitualSection = lazy(() => import("@/components/zential/RitualSection").then(m => ({ default: m.RitualSection })));
@@ -66,7 +64,7 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <AsSeenInStrip />
+        
 
         <Suspense fallback={<div className="min-h-[50vh]" />}>
           <PhilosophySection />
@@ -75,7 +73,7 @@ const Index = () => {
           <ComparisonSection />
           <DevicesSection />
           <StatsBar />
-          <PressQuotesSection />
+          
           <SocialProof />
           <UGCStrip />
           <ResultsSection />
