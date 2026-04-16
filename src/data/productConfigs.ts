@@ -17,6 +17,13 @@ import problemFrequencyWand from "@/assets/problem-frequency-wand.webp";
 import problemSculptWand from "@/assets/problem-sculpt-wand.webp";
 import problemWandPro from "@/assets/problem-wand-pro.webp";
 
+export interface StudyCard {
+  technology: string;
+  studyTitle: string;
+  journal: string;
+  url: string;
+}
+
 export interface ProductConfig {
   handle: string;
   name: string;
@@ -35,6 +42,10 @@ export interface ProductConfig {
   beforeAfter: { before: string; after: string };
   comparisonRows: { feature: string; zential: string | boolean; clinic: string | boolean; creams: string | boolean; generic: string | boolean }[];
   faqs: { q: string; a: string }[];
+  studyCards?: StudyCard[];
+  contraindications?: string[];
+  normalSensations?: string[];
+  sessionInfo?: string;
 }
 
 const defaultComparison = [
