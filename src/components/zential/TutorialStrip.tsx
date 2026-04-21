@@ -90,7 +90,7 @@ export function TutorialStrip() {
                   {t.title}
                 </h3>
               </div>
-            </button>
+            </div>
           ))}
         </div>
       </div>
