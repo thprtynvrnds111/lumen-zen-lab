@@ -15,7 +15,7 @@ export function PriceGuaranteeSection() {
       <BubbleBackground />
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <h2 className="font-serif italic text-3xl md:text-4xl text-foreground mb-14">
-          What €84 actually means
+          What €88 actually means
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-16">
           {comparisons.map((c) => (
