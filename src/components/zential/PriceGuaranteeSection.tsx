@@ -4,7 +4,7 @@ import { BubbleBackground } from "@/components/zential/BubbleBackground";
 const comparisons = [
   { name: "Clinic session", price: "€150 each", label: "per visit", highlight: false },
   { name: "NuFACE Trinity", price: "€349", label: "one modality", highlight: false },
-  { name: "Zential Pure", price: "€84", label: "four technologies", highlight: true },
+  { name: "Zential Pure", price: "€88", label: "four technologies", highlight: true },
 ];
 
 export function PriceGuaranteeSection() {
