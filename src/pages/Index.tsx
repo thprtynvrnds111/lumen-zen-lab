@@ -13,6 +13,7 @@ const StatsBar = lazy(() => import("@/components/zential/StatsBar").then(m => ({
 const EditorialBreak = lazy(() => import("@/components/zential/EditorialBreak").then(m => ({ default: m.EditorialBreak })));
 const UGCStrip = lazy(() => import("@/components/zential/UGCStrip").then(m => ({ default: m.UGCStrip })));
 const RitualSection = lazy(() => import("@/components/zential/RitualSection").then(m => ({ default: m.RitualSection })));
+const TutorialStrip = lazy(() => import("@/components/zential/TutorialStrip").then(m => ({ default: m.TutorialStrip })));
 const ImageDivider = lazy(() => import("@/components/zential/ImageDivider").then(m => ({ default: m.ImageDivider })));
 const BrandStorySection = lazy(() => import("@/components/zential/BrandStorySection").then(m => ({ default: m.BrandStorySection })));
 const SkinFitSection = lazy(() => import("@/components/zential/SkinFitSection").then(m => ({ default: m.SkinFitSection })));
@@ -72,6 +73,7 @@ const Index = () => {
           <ExpertsSection />
           <ComparisonSection />
           <DevicesSection />
+          <TutorialStrip />
           <StatsBar />
           
           <SocialProof />
