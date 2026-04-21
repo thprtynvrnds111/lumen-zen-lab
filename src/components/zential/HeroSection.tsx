@@ -1,3 +1,4 @@
+import heroImage0 from "@/assets/hero-neck-device.png";
 import heroImage1 from "@/assets/hero-ritual-v2.webp";
 import heroImage2 from "@/assets/hero-lifestyle-2.webp";
 import heroImage3 from "@/assets/hero-lifestyle-3.webp";
@@ -11,7 +12,7 @@ const modalities = [
   { icon: Flame, label: "Thermal" },
 ];
 
-const heroImages = [heroImage1, heroImage2, heroImage3];
+const heroImages = [heroImage0, heroImage1, heroImage2, heroImage3];
 
 export function HeroSection() {
   const [visible, setVisible] = useState(false);
