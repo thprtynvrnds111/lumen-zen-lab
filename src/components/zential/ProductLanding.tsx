@@ -319,53 +319,17 @@ export function ProductLanding({ config }: Props) {
         </section>
       )}
 
-      {/* ── SECTION 2: SOCIAL PROOF (Trustpilot-style) ── */}
+      {/* ── SECTION 2: HONEST — NO REVIEWS YET ── */}
       <section className="section-padding gradient-pearl">
-        <div className="max-w-[1200px] mx-auto">
-          {/* Trustpilot-style header */}
-          <div className="flex flex-col items-center mb-12">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-3xl font-bold text-foreground">4.9</span>
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} className="w-7 h-7 bg-emerald flex items-center justify-center">
-                    <Star size={16} className="fill-emerald-foreground text-emerald-foreground" />
-                  </div>
-                ))}
-              </div>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              From our early ritual community
-            </p>
-          </div>
-
-          {/* Review cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {config.testimonials.map((t, i) => (
-              <div key={i} className="bg-card border border-border/40 rounded-2xl p-6 hover:shadow-lg transition-shadow duration-300">
-                {/* Stars row */}
-                <div className="flex gap-0.5 mb-4">
-                  {[...Array(5)].map((_, j) => (
-                    <div key={j} className="w-5 h-5 bg-emerald flex items-center justify-center">
-                      <Star size={12} className="fill-emerald-foreground text-emerald-foreground" />
-                    </div>
-                  ))}
-                </div>
-                <p className="text-foreground leading-relaxed mb-4">"{t.text}"</p>
-                <div className="flex items-center gap-2 pt-3 border-t border-border/30">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                    <span className="text-xs font-bold text-primary">{t.name.charAt(0)}</span>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-foreground">{t.name}</p>
-                    <p className="text-[10px] tracking-[0.1em] uppercase text-emerald flex items-center gap-1">
-                      <Check size={10} /> Verified Purchase
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-xs tracking-[0.2em] uppercase text-accent mb-6">Reviews</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-5">We don't have reviews yet.</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            We launched in 2026. We're not going to fabricate them.
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            What we have instead: the clinical evidence behind every modality, and a 30-day refund guarantee with no conditions. Both are below.
+          </p>
         </div>
       </section>
 
@@ -455,7 +419,6 @@ export function ProductLanding({ config }: Props) {
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">Who should not use this device</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 max-w-4xl mx-auto mb-12">
-              {/* Contraindications */}
               <div>
                 <div className="flex items-center gap-2 mb-5">
                   <AlertTriangle size={16} style={{ color: '#C6A07C' }} />
@@ -470,7 +433,6 @@ export function ProductLanding({ config }: Props) {
                   ))}
                 </ul>
               </div>
-              {/* Normal Sensations */}
               {config.normalSensations && (
                 <div>
                   <div className="flex items-center gap-2 mb-5">
@@ -497,6 +459,7 @@ export function ProductLanding({ config }: Props) {
         </section>
       )}
 
+      {/* ── SECTION 5: THE RITUAL ── */}
       <section className="section-padding">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-14">
@@ -522,29 +485,43 @@ export function ProductLanding({ config }: Props) {
         </div>
       </section>
 
-      {/* ── SECTION 6: BEFORE / AFTER ── */}
+      {/* ── SECTION 6: MECHANISM TIMELINE ── */}
       <section className="section-padding gradient-pearl">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-14">
-            <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Results</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Consistent Use. Visible Structure.</h2>
+            <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Consistent Use</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">What the Mechanism Produces</h2>
+            <p className="text-muted-foreground mt-4 max-w-sm mx-auto text-sm">
+              Results are individual. These are the biological processes at work with daily use.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            <div>
-              <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-3">
-                <img src={config.beforeAfter.before} alt="Before" className="w-full h-full object-cover" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {[
+              {
+                week: "Week 1–2",
+                heading: "Cellular activation",
+                body: "Red light at 630–660nm begins stimulating ATP production. Microcurrent re-establishes neuromuscular pathways. Skin texture and morning puffiness typically respond first.",
+              },
+              {
+                week: "Week 3–4",
+                heading: "Structural engagement",
+                body: "EMS stimulation reaches deeper muscle fibres. Collagen synthesis is measurably underway. Facial contours may begin to feel firmer along the jawline and cheekbones.",
+              },
+              {
+                week: "Week 5+",
+                heading: "Sustained frequency",
+                body: "The skin's own systems are now working with the protocol. Thermal delivery enhances absorption each session. Results compound with continued consistency.",
+              },
+            ].map((t, i) => (
+              <div key={i} className="glass-card p-8 text-center">
+                <p className="text-[10px] tracking-[0.2em] uppercase text-accent mb-3">{t.week}</p>
+                <h3 className="text-lg font-semibold text-foreground mb-3">{t.heading}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{t.body}</p>
               </div>
-              <p className="text-center text-xs tracking-[0.15em] uppercase text-muted-foreground">Before</p>
-            </div>
-            <div>
-              <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-3">
-                <img src={config.beforeAfter.after} alt="After 4 Weeks" className="w-full h-full object-cover" />
-              </div>
-              <p className="text-center text-xs tracking-[0.15em] uppercase text-muted-foreground">After 4 Weeks</p>
-            </div>
+            ))}
           </div>
-          <p className="text-center text-[10px] text-muted-foreground/60 mt-6 max-w-md mx-auto">
-            Results after consistent 4-week daily use. Individual results may vary. Images are unretouched.
+          <p className="text-center text-[10px] text-muted-foreground/50 mt-8 max-w-md mx-auto">
+            Descriptions reflect mechanisms supported by clinical literature, not guaranteed outcomes. Individual results vary.
           </p>
         </div>
       </section>
