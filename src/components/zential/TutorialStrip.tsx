@@ -1,6 +1,5 @@
-import { Play } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import poster1 from "@/assets/lifestyle-facial.webp";
+import poster1 from "@/assets/tutorial-step-1.png";
 import poster2 from "@/assets/lifestyle-redlight.webp";
 import poster3 from "@/assets/hero-ritual-v2.webp";
 
@@ -54,10 +53,8 @@ export function TutorialStrip() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
           {tutorials.map((t, i) => (
-            <button
+            <div
               key={i}
-              type="button"
-              aria-label={`Play tutorial: ${t.title}`}
               className="group relative overflow-hidden rounded-2xl aspect-[4/5] text-left transition-all duration-500 hover:-translate-y-1"
               style={{
                 boxShadow: "0 8px 30px rgba(74,55,40,0.08)",
@@ -78,35 +75,6 @@ export function TutorialStrip() {
                 }}
               />
 
-              {/* Play button */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span
-                  className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full backdrop-blur-md transition-transform duration-500 group-hover:scale-110"
-                  style={{
-                    backgroundColor: "rgba(255,255,255,0.85)",
-                    boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
-                  }}
-                >
-                  <Play
-                    size={22}
-                    strokeWidth={1.5}
-                    fill="#9B5A2E"
-                    style={{ color: "#9B5A2E", marginLeft: 2 }}
-                  />
-                </span>
-              </div>
-
-              {/* Duration chip */}
-              <span
-                className="absolute top-4 right-4 text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-full backdrop-blur-md"
-                style={{
-                  color: "#FFFFFF",
-                  backgroundColor: "rgba(42,33,26,0.45)",
-                }}
-              >
-                {t.duration}
-              </span>
-
               {/* Caption */}
               <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
                 <p
@@ -122,7 +90,7 @@ export function TutorialStrip() {
                   {t.title}
                 </h3>
               </div>
-            </button>
+            </div>
           ))}
         </div>
       </div>
