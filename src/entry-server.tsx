@@ -39,6 +39,7 @@ const GuaShaFrequencyGuide      = lazy(() => import("./pages/ritual-guides/GuaSh
 const EyeActivatorGuide         = lazy(() => import("./pages/ritual-guides/EyeActivatorGuide"));
 const SkinPulseGuide            = lazy(() => import("./pages/ritual-guides/SkinPulseGuide"));
 const FrequencyWandGuide        = lazy(() => import("./pages/ritual-guides/FrequencyWandGuide"));
+const CompareNuFACE    = lazy(() => import("./pages/CompareNuFACE"));
 const ThankYou         = lazy(() => import("./pages/ThankYou"));
 const NotFound         = lazy(() => import("./pages/NotFound"));
 
@@ -76,6 +77,7 @@ function ServerApp() {
         <Route path="/ritual-guide/eye-activator"               element={<EyeActivatorGuide />} />
         <Route path="/ritual-guide/skin-pulse"                  element={<SkinPulseGuide />} />
         <Route path="/ritual-guide/frequency-wand"              element={<FrequencyWandGuide />} />
+        <Route path="/compare/nuface-vs-zential-pure"           element={<CompareNuFACE />} />
         <Route path="/thank-you"                                element={<ThankYou />} />
         <Route path="*"                                         element={<NotFound />} />
       </Routes>
