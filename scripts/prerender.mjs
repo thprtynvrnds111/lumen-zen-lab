@@ -53,6 +53,17 @@ const ROUTES = [
   '/product/red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening',
   '/product/3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool',
   '/product/portable-ems-microcurrent-facial-beauty-device',
+  // Comparison pages
+  '/compare/nuface-vs-zential-pure',
+  // Ritual guides
+  '/ritual-guide',
+  '/ritual-guide/frame-pulse-activator',
+  '/ritual-guide/frequency-wand-pro',
+  '/ritual-guide/sculpt-wand',
+  '/ritual-guide/gua-sha-frequency',
+  '/ritual-guide/eye-activator',
+  '/ritual-guide/skin-pulse',
+  '/ritual-guide/frequency-wand',
 ];
 
 // ─── Inject helmet head tags into the HTML template ───────────────────────────

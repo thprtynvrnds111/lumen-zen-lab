@@ -13,6 +13,9 @@
     { "src": "/frequency-wand-pro",                  "dest": "/frequency-wand-pro.html" },
     { "src": "/sculpt-wand",                         "dest": "/sculpt-wand.html" },
     { "src": "/skin-pulse",                          "dest": "/skin-pulse.html" },
+    { "src": "/nufacealternative",                   "headers": { "Location": "/nuface-alternative" }, "status": 301 },
+    { "src": "/nuface-alternative",                  "dest": "/nuface-alternative.html" },
+    { "src": "/clinic-grade-facial-device-at-home",  "dest": "/clinic-grade-facial-device-at-home.html" },
     { "src": "/seo-snapshot.html",                   "dest": "/seo-snapshot.html" },
     { "handle": "filesystem" },
     { "src": "/(.*)",                                "dest": "/index.html" }

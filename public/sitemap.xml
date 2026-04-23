@@ -50,4 +50,23 @@
   <url><loc>https://zentialpure.com/technology/thermal</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://zentialpure.com/science</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
+  <!-- Comparison + use-case pages -->
+  <url><loc>https://zentialpure.com/compare/nuface-vs-zential-pure</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/nufacealternative</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/clinic-grade-facial-device-at-home</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zentialpure.com/face-tightening-device-at-home</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- SEO landing pages (static HTML) -->
+  <url><loc>https://zentialpure.com/microcurrent-face-device</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zentialpure.com/at-home-face-lifting-device</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zentialpure.com/ems-face-toning-device</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zentialpure.com/eye-activator</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zentialpure.com/frame-pulse</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zentialpure.com/frequency-wand-pro</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zentialpure.com/frequency-wand</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zentialpure.com/gua-sha-frequency</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zentialpure.com/best-beauty-device-for-jawline</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zentialpure.com/sculpt-wand</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zentialpure.com/skin-pulse</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
 </urlset>

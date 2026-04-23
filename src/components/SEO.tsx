@@ -20,7 +20,8 @@ export function SEO({
   canonicalUrl,
   jsonLd,
 }: SEOProps) {
-  const fullUrl = canonicalUrl ? `${SITE_URL}${canonicalUrl}` : SITE_URL;
+  const canonicalHref = canonicalUrl ? `${SITE_URL}${canonicalUrl}` : null;
+  const ogUrl = canonicalHref ?? SITE_URL;
 
   return (
     <Helmet>
@@ -32,7 +33,7 @@ export function SEO({
       <meta property="og:description" content={description} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={fullUrl} />
+      <meta property="og:url" content={ogUrl} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -40,8 +41,8 @@ export function SEO({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
 
-      {/* Canonical */}
-      <link rel="canonical" href={fullUrl} />
+      {/* Canonical — only rendered when the page's URL is explicitly provided */}
+      {canonicalHref && <link rel="canonical" href={canonicalHref} />}
 
       {/* JSON-LD */}
       {jsonLd && (
