@@ -79,7 +79,7 @@ const accessoryComparison = [
 export const productConfigs: Record<string, ProductConfig> = {
   // ─── BODY LIFT ───
   "body-lift": {
-    handle: "color-light-import-micro-current-vibration-massager",
+    handle: "body-lift",
     name: "Body Lift",
     subheadline: "Microcurrent Facial Lift, Built for Daily Structure",
     benefits: [
