@@ -31,6 +31,23 @@ const byTech = [
 ];
 
 export function MegaMenu({ onNavigate }: MegaMenuProps) {
+  const [featuredImg, setFeaturedImg] = useState<string | null>(null);
+  const [featuredPrice, setFeaturedPrice] = useState<string>("88");
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchProductByHandle("lifting-and-tightening-face-introducer")
+      .then((p) => {
+        if (cancelled || !p) return;
+        const img = p.images?.edges?.[0]?.node?.url;
+        const price = p.priceRange?.minVariantPrice?.amount;
+        if (img) setFeaturedImg(img);
+        if (price) setFeaturedPrice(Math.round(Number(price)).toString());
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
+
   return (
     <div className="bg-background border-t border-border/30 shadow-2xl">
       <div className="max-w-[1400px] mx-auto px-12 lg:px-20 py-12 grid grid-cols-12 gap-12">
