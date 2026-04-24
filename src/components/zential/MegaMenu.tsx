@@ -102,12 +102,21 @@ export function MegaMenu({ onNavigate }: MegaMenuProps) {
           <Link to="/product/lifting-and-tightening-face-introducer" onClick={onNavigate}
             className="block group">
             <div className="aspect-[3/4] rounded-xl bg-gradient-to-br from-[#F7F4F0] to-[#E8DDD0] mb-3 overflow-hidden">
-              <div className="w-full h-full flex items-center justify-center">
-                <span className="font-serif italic text-2xl text-[#2A211A]/60">Bestseller</span>
-              </div>
+              {featuredImg ? (
+                <img
+                  src={featuredImg}
+                  alt="Face Introducer"
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center">
+                  <span className="font-serif italic text-2xl text-[#2A211A]/60">Bestseller</span>
+                </div>
+              )}
             </div>
             <p className="text-sm font-medium text-foreground group-hover:text-foreground/70 transition-colors">Face Introducer</p>
-            <p className="text-xs text-foreground/55 mt-0.5">€88 · Most popular</p>
+            <p className="text-xs text-foreground/55 mt-0.5">€{featuredPrice} · Most popular</p>
           </Link>
         </div>
       </div>
