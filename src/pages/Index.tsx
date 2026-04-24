@@ -2,6 +2,7 @@ import { SEO } from "@/components/SEO";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { HeroSection } from "@/components/zential/HeroSection";
+import { TrustStrip } from "@/components/zential/TrustStrip";
 import { lazy, Suspense, useState, useEffect } from "react";
 
 // Lazy-load below-fold sections to reduce initial JS bundle
@@ -65,7 +66,7 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        
+        <TrustStrip />
 
         <Suspense fallback={<div className="min-h-[50vh]" />}>
           <PhilosophySection />
