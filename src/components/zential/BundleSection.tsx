@@ -119,7 +119,7 @@ export function BundleSection() {
           return (
             <div
               key={b.title}
-              className={`relative rounded-2xl p-8 md:p-9 transition-all duration-500 hover:-translate-y-1 ${
+              className={`relative rounded-2xl p-8 md:p-9 transition-all duration-500 hover:-translate-y-1 flex flex-col ${
                 b.highlight
                   ? 'bg-[#2A211A] text-[#F7F1E8] shadow-2xl md:scale-[1.03]'
                   : 'bg-white border border-[#E8DDD0] hover:shadow-xl'
@@ -142,7 +142,7 @@ export function BundleSection() {
               </h3>
 
               {/* Items list */}
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8 min-h-[108px]">
                 {b.items.map((item, idx) => (
                   <li key={item.handle} className="flex items-start gap-3">
                     {idx > 0 && (
@@ -184,7 +184,7 @@ export function BundleSection() {
               )}
 
               {/* Ritual note */}
-              <p className={`text-[11px] leading-relaxed mb-7 ${b.highlight ? 'text-[#F7F1E8]/55' : 'text-foreground/50'}`}>
+              <p className={`text-[11px] leading-relaxed mb-7 mt-auto ${b.highlight ? 'text-[#F7F1E8]/55' : 'text-foreground/50'}`}>
                 {b.ritualNote}
               </p>
 
