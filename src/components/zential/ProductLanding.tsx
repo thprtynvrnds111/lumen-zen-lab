@@ -207,9 +207,12 @@ export function ProductLanding({ config }: Props) {
 
           {/* Product Info */}
           <div className="lg:sticky lg:top-32">
-            <p className="text-xs tracking-[0.25em] uppercase text-accent mb-3">Zential Pure</p>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2">{config.name}</h1>
-            <p className="text-muted-foreground text-lg mb-8">{config.subheadline}</p>
+            <div className="flex items-center gap-3 mb-5">
+              <span className="block w-8 h-px bg-foreground/40" />
+              <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60">Zential Pure</p>
+            </div>
+            <h1 className="font-serif italic text-[34px] md:text-[44px] lg:text-[52px] leading-[1.05] text-foreground mb-4 tracking-tight">{config.name}</h1>
+            <p className="text-foreground/65 text-[15px] md:text-base leading-relaxed mb-8 max-w-md">{config.subheadline}</p>
 
             <div className="grid grid-cols-2 gap-3 mb-8">
               {config.benefits.map(b => (
