@@ -144,11 +144,11 @@ export function getRecommendation(a: QuizAnswers): Recommendation {
 
   // Ritual companions — scale with time commitment + goal
   const ritualByConcern: Record<ConcernId, string[]> = {
-    lift: ["lifting-and-tightening-face-introducer", "eye-massage"],
-    tone: ["portable-ems-microcurrent-facial-beauty-device", "lifting-and-tightening-face-introducer"],
-    eyes: ["red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening", "portable-ems-microcurrent-facial-beauty-device"],
-    texture: ["red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening", "eye-massage"],
-    body: ["portable-ems-microcurrent-facial-beauty-device"],
+    lift: ["medicube-collagen-elastic-jelly-moisturizing-cream", "eye-massage"],
+    tone: ["medicube-collagen-elastic-jelly-moisturizing-cream", "electric-micro-current"],
+    eyes: ["medicube-collagen-elastic-jelly-moisturizing-cream", "facial-beauty-tools-and-ems-beauty-equipment"],
+    texture: ["medicube-collagen-elastic-jelly-moisturizing-cream", "eye-massage"],
+    body: ["medicube-collagen-elastic-jelly-moisturizing-cream"],
   };
 
   const ritualSize = time === "3min" ? 0 : time === "5min" ? 1 : 2;
