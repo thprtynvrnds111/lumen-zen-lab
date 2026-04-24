@@ -111,7 +111,7 @@ export function Header() {
             </Link>
             <div className="pl-4 space-y-2.5 border-l border-border/30">
               <Link to="/product/portable-ems-microcurrent-facial-beauty-device" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Lift & Contour</Link>
-              <Link to="/product/red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Tone & Glow</Link>
+              <Link to="/product/facial-beauty-tools-and-ems-beauty-equipment" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Tone & Glow</Link>
               <Link to="/product/eye-massage" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Eyes & Fine Lines</Link>
               <Link to="/body-lift" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Body & Tissue</Link>
             </div>
