@@ -57,15 +57,15 @@ export function FinalCTA() {
 
         <div className="flex flex-col min-[480px]:flex-row gap-3 justify-center mb-12">
           <button
-            onClick={() => document.getElementById('devices')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => scrollToId('devices')}
             className="px-8 py-4 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
             style={{ backgroundColor: '#FAF7F3', color: '#1A1714', boxShadow: '0 4px 18px rgba(0,0,0,0.25)' }}
           >
             Shop the Ritual
           </button>
           <button
-            onClick={() => document.getElementById('bundle')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full border transition-all duration-300 hover:-translate-y-0.5"
+            onClick={() => scrollToId('bundles')}
+            className="px-8 py-4 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full border transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/5"
             style={{ borderColor: 'rgba(250,247,243,0.35)', color: '#FAF7F3', backgroundColor: 'transparent' }}
           >
             Build Your Set
