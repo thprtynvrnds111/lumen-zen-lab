@@ -582,8 +582,8 @@ export function ProductLanding({ config }: Props) {
       <section className="section-padding gradient-pearl">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-14">
-            <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Questions</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Frequently Asked</h2>
+            <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Questions —</p>
+            <h2 className="font-serif italic text-[32px] md:text-[44px] leading-[1.05] text-foreground tracking-tight">Frequently asked.</h2>
           </div>
           <div className="max-w-2xl mx-auto">
             <Accordion type="single" collapsible>
