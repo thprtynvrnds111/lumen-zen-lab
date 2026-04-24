@@ -17,6 +17,7 @@ import problemFrequencyWand from "@/assets/problem-frequency-wand.webp";
 import problemSculptWand from "@/assets/problem-sculpt-wand.webp";
 import problemWandPro from "@/assets/problem-wand-pro.webp";
 import productBodyLift from "@/assets/product-body-lift.jpg";
+import productSculptWand from "@/assets/ritual-sculpt-wand.png";
 
 export interface StudyCard {
   technology: string;
@@ -456,6 +457,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   "facial-beauty-tools-and-ems-beauty-equipment": {
     handle: "facial-beauty-tools-and-ems-beauty-equipment",
     name: "Sculpt Wand",
+    fallbackImage: productSculptWand,
     subheadline: "EMS Microcurrent + Lymphatic Vibration. Facial Muscle Training.",
     benefits: [
       { icon: Zap, label: "EMS Microcurrent (0.4–5.5W)" },
