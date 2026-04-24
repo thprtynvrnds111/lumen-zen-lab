@@ -8,6 +8,7 @@ import { SearchOverlay } from "@/components/zential/SearchOverlay";
 import { MegaMenu } from "@/components/zential/MegaMenu";
 
 const rightNavItems = [
+  { label: "Quiz", href: "/quiz" },
   { label: "Journal", href: "/journal" },
   { label: "Support", href: "/support" },
 ];
@@ -116,6 +117,8 @@ export function Header() {
             </div>
             <Link to="/#ritual" onClick={(e) => { handleHashClick(e, "/#ritual"); setMobileOpen(false); }}
               className="block text-sm tracking-[0.1em] uppercase text-foreground">Ritual</Link>
+            <Link to="/quiz" onClick={() => setMobileOpen(false)}
+              className="block text-sm tracking-[0.1em] uppercase text-foreground">Skin Quiz</Link>
             <Link to="/journal" onClick={() => setMobileOpen(false)}
               className="block text-sm tracking-[0.1em] uppercase text-foreground">Journal</Link>
             <Link to="/support" onClick={() => setMobileOpen(false)}

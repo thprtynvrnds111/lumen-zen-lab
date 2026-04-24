@@ -4,6 +4,7 @@ import heroImage2 from "@/assets/hero-lifestyle-2.webp";
 import heroImage3 from "@/assets/hero-lifestyle-3.webp";
 import { Sun, Zap, Activity, Flame, Star } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
+import { Link } from "react-router-dom";
 
 const modalities = [
   { icon: Sun, label: "Red Light" },
@@ -136,13 +137,13 @@ export function HeroSection() {
           >
             Shop the Ritual
           </button>
-          <button
-            className="flex-1 py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full border transition-all duration-300 hover:-translate-y-0.5"
+          <Link
+            to="/quiz"
+            className="flex-1 py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full border transition-all duration-300 hover:-translate-y-0.5 text-center"
             style={{ borderColor: '#2A211A', color: '#2A211A', backgroundColor: 'transparent' }}
-            onClick={() => document.getElementById('technology')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            How It Works
-          </button>
+            Take the 60s Quiz
+          </Link>
         </div>
 
         {/* Modality strip — editorial */}
