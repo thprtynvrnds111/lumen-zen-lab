@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { fetchProductByHandle } from "@/lib/shopify";
 
 interface MegaMenuProps {
   onNavigate?: () => void;
