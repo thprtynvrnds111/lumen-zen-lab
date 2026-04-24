@@ -129,7 +129,7 @@ export function ProductLanding({ config }: Props) {
           const gelVariant = gelProduct.variants?.edges?.[0]?.node;
           if (gelVariant) {
             await addItem({
-              product: { node: gelProduct },
+              product: gelProduct,
               variantId: gelVariant.id,
               variantTitle: gelVariant.title,
               price: { amount: "0.00", currencyCode: currency },
@@ -156,7 +156,7 @@ export function ProductLanding({ config }: Props) {
           const maskVariant = maskProduct.variants?.edges?.[0]?.node;
           if (maskVariant) {
             await addItem({
-              product: { node: maskProduct },
+              product: maskProduct,
               variantId: maskVariant.id,
               variantTitle: maskVariant.title,
               price: { amount: "0.00", currencyCode: currency },
