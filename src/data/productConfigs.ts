@@ -27,6 +27,7 @@ export interface StudyCard {
 
 export interface ProductConfig {
   handle: string;
+  purchaseHandle?: string; // fallback Shopify handle when `handle` has no live product
   name: string;
   subheadline: string;
   isAccessory?: boolean;
