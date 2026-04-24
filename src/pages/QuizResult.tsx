@@ -40,17 +40,21 @@ export default function QuizResult() {
       const products = [primary, ...companions];
       for (let i = 0; i < products.length; i++) {
         const p = products[i];
-        const variantId = p.node.variants.edges[0]?.node.id;
-        if (!variantId) continue;
+        const variant = p.node.variants.edges[0]?.node;
+        if (!variant) continue;
         const original = Number(p.node.priceRange.minVariantPrice.amount);
-        const price = i === 0 ? original : Math.max(0, original * 0.85);
+        const finalAmount = i === 0 ? original : Math.max(0, original * 0.85);
         await addItem({
           product: p,
-          variantId,
-          price,
+          variantId: variant.id,
+          variantTitle: variant.title,
+          price: { amount: finalAmount.toFixed(2), currencyCode: p.node.priceRange.minVariantPrice.currencyCode || "EUR" },
           quantity: 1,
-        } as any);
+          selectedOptions: variant.selectedOptions || [],
+        });
       }
+    } catch (e) {
+      console.error("Failed to add ritual:", e);
     } finally {
       setAdding(false);
     }
@@ -60,14 +64,18 @@ export default function QuizResult() {
     if (!primary) return;
     setAdding(true);
     try {
-      const variantId = primary.node.variants.edges[0]?.node.id;
-      if (!variantId) return;
+      const variant = primary.node.variants.edges[0]?.node;
+      if (!variant) return;
       await addItem({
         product: primary,
-        variantId,
-        price: primaryPrice,
+        variantId: variant.id,
+        variantTitle: variant.title,
+        price: { amount: primaryPrice.toFixed(2), currencyCode: primary.node.priceRange.minVariantPrice.currencyCode || "EUR" },
         quantity: 1,
-      } as any);
+        selectedOptions: variant.selectedOptions || [],
+      });
+    } catch (e) {
+      console.error("Failed to add device:", e);
     } finally {
       setAdding(false);
     }
