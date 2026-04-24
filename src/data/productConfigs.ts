@@ -17,6 +17,7 @@ import problemFrequencyWand from "@/assets/problem-frequency-wand.webp";
 import problemSculptWand from "@/assets/problem-sculpt-wand.webp";
 import problemWandPro from "@/assets/problem-wand-pro.webp";
 import productBodyLift from "@/assets/product-body-lift.jpg";
+import productSculptWand from "@/assets/ritual-sculpt-wand.png";
 
 export interface StudyCard {
   technology: string;
