@@ -18,6 +18,14 @@ import problemSculptWand from "@/assets/problem-sculpt-wand.webp";
 import problemWandPro from "@/assets/problem-wand-pro.webp";
 import productBodyLift from "@/assets/product-body-lift.jpg";
 import productSculptWand from "@/assets/ritual-sculpt-wand.png";
+import productEyeActivator from "@/assets/ritual-eye-activator.png";
+import productFramePulse from "@/assets/ritual-frame-pulse.png";
+import productFrequencyWand from "@/assets/ritual-frequency-wand.png";
+import productFrequencyWandPro from "@/assets/ritual-frequency-wand-pro.png";
+import productGuaSha from "@/assets/ritual-gua-sha.png";
+import productSkinPulse from "@/assets/ritual-skin-pulse.jpg";
+import productFaceIntroducer from "@/assets/problem-face-introducer.webp";
+import productFaceLift from "@/assets/problem-face-introducer.webp";
 
 export interface StudyCard {
   technology: string;
