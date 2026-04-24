@@ -6,7 +6,7 @@ interface MegaMenuProps {
 
 const concerns = [
   { label: "Lift & Contour", href: "/product/portable-ems-microcurrent-facial-beauty-device", desc: "Sculpt & jawline definition" },
-  { label: "Tone & Glow", href: "/product/red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening", desc: "Even skin & radiance" },
+  { label: "Tone & Glow", href: "/product/facial-beauty-tools-and-ems-beauty-equipment", desc: "Even skin & radiance" },
   { label: "Eyes & Fine Lines", href: "/product/eye-massage", desc: "Periorbital renewal" },
   { label: "Body & Tissue", href: "/body-lift", desc: "Firming & circulation" },
 ];
