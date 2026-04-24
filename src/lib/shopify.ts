@@ -149,8 +149,8 @@ export async function fetchProducts(first = 20, query?: string): Promise<Shopify
 export async function fetchProductByHandle(handle: string): Promise<ShopifyProduct | null> {
   const data = await storefrontApiRequest(PRODUCT_BY_HANDLE_QUERY, { handle });
   const product = data?.data?.product;
-  // Wrap in { node } to match the ShopifyProduct shape used everywhere else
-  return product ? { node: product } : null;
+  // Spread node fields onto the wrapper so both flat (product.variants) and nested (product.node.variants) access work
+  return product ? { ...product, node: product } : null;
 }
 
 // Cart mutations
