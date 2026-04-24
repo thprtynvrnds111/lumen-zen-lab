@@ -342,20 +342,6 @@ export function ProductLanding({ config }: Props) {
         </section>
       )}
 
-      {/* ── SECTION 2: HONEST — NO REVIEWS YET ── */}
-      <section className="section-padding gradient-pearl">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-xs tracking-[0.2em] uppercase text-accent mb-6">Reviews</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-5">We don't have reviews yet.</h2>
-          <p className="text-muted-foreground leading-relaxed mb-4">
-            We launched in 2026. We're not going to fabricate them.
-          </p>
-          <p className="text-muted-foreground leading-relaxed">
-            What we have instead: the clinical evidence behind every modality, and a 30-day refund guarantee with no conditions. Both are below.
-          </p>
-        </div>
-      </section>
-
       {/* ── SECTION 2: TRUST INSTEAD OF REVIEWS ── */}
       <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32" style={{ backgroundColor: '#FBF8F4' }}>
         <div className="max-w-[1100px] mx-auto">
