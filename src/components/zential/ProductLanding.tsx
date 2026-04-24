@@ -473,8 +473,8 @@ export function ProductLanding({ config }: Props) {
       <section className="section-padding">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-14">
-            <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Your Ritual</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">The 5-Minute Ritual</h2>
+            <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Your Ritual —</p>
+            <h2 className="font-serif italic text-[32px] md:text-[44px] leading-[1.05] text-foreground tracking-tight">The five-minute ritual.</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {config.ritualSteps.map((s, i) => (
