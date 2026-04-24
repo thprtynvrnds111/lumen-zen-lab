@@ -17,16 +17,30 @@ export default function QuizResult() {
   const [adding, setAdding] = useState(false);
   const addItem = useCartStore((s) => s.addItem);
 
+  const ritualHandlesKey = rec.ritualHandles.join(",");
   useEffect(() => {
     let cancelled = false;
-    (async () => {
-      const p = await fetchProductByHandle(rec.primaryHandle);
+    // Fetch primary + all companions in parallel — show whatever resolves first.
+    const primaryPromise = fetchProductByHandle(rec.primaryHandle).then((p) => {
       if (!cancelled && p) setPrimary(p);
-      const comps = await Promise.all(rec.ritualHandles.map((h) => fetchProductByHandle(h)));
-      if (!cancelled) setCompanions(comps.filter(Boolean) as ShopifyProduct[]);
-    })();
+    });
+    const compPromise = Promise.all(
+      rec.ritualHandles.map((h) =>
+        fetchProductByHandle(h).then((p) => {
+          if (!cancelled && p) setCompanions((prev) => (prev.some((x) => x.node.handle === p.node.handle) ? prev : [...prev, p]));
+        })
+      )
+    );
+    void Promise.all([primaryPromise, compPromise]);
     return () => { cancelled = true; };
-  }, [rec.primaryHandle, rec.ritualHandles.join(",")]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rec.primaryHandle, ritualHandlesKey]);
+
+  // Reset companions when the recommendation changes (so stale entries don't linger).
+  useEffect(() => {
+    setCompanions([]);
+    setPrimary(null);
+  }, [rec.primaryHandle, ritualHandlesKey]);
 
   const primaryPrice = primary ? Number(primary.node.priceRange.minVariantPrice.amount) : 0;
   const compTotal = companions.reduce((sum, c) => sum + Number(c.node.priceRange.minVariantPrice.amount), 0);
