@@ -40,6 +40,11 @@ const EyeActivatorGuide = lazy(() => import("./pages/ritual-guides/EyeActivatorG
 const SkinPulseGuide = lazy(() => import("./pages/ritual-guides/SkinPulseGuide"));
 const FrequencyWandGuide = lazy(() => import("./pages/ritual-guides/FrequencyWandGuide"));
 const CompareNuFACE = lazy(() => import("./pages/CompareNuFACE"));
+const CompareForeo = lazy(() => import("./pages/CompareForeo"));
+const TechElectroporation = lazy(() => import("./pages/TechElectroporation"));
+const ClinicVsHome = lazy(() => import("./pages/ClinicVsHome"));
+const FacialMuscleTraining = lazy(() => import("./pages/FacialMuscleTraining"));
+const TechIontophoresis = lazy(() => import("./pages/TechIontophoresis"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -82,6 +87,11 @@ function AppContent() {
         <Route path="/ritual-guide/skin-pulse" element={<SkinPulseGuide />} />
         <Route path="/ritual-guide/frequency-wand" element={<FrequencyWandGuide />} />
         <Route path="/compare/nuface-vs-zential-pure" element={<CompareNuFACE />} />
+        <Route path="/compare/foreo-bear-vs-zential-pure" element={<CompareForeo />} />
+        <Route path="/technology/electroporation" element={<TechElectroporation />} />
+        <Route path="/clinic-vs-home-facial-device" element={<ClinicVsHome />} />
+        <Route path="/facial-muscle-training" element={<FacialMuscleTraining />} />
+        <Route path="/technology/iontophoresis" element={<TechIontophoresis />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
