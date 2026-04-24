@@ -1,4 +1,5 @@
 import { ShieldCheck, Truck, RotateCcw } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export function FinalCTA() {
