@@ -29,6 +29,7 @@ const concerns = [
     sub: "Firm, sculpt, recover",
     devices: "Body Lift",
     handle: "body-lift",
+    to: "/body-lift",
     tone: "from-[#DECDB6] to-[#C4A685]",
   },
 ];
@@ -67,7 +68,7 @@ export function ShopByConcern() {
           {concerns.map((c) => (
             <Link
               key={c.label}
-              to={`/product/${c.handle}`}
+              to={(c as any).to ?? `/product/${c.handle}`}
               className="group relative overflow-hidden rounded-[20px] aspect-[3/4] flex flex-col justify-between p-6 transition-all duration-500 hover:-translate-y-1"
               style={{ boxShadow: '0 1px 2px rgba(42,33,26,0.04), 0 12px 40px -20px rgba(42,33,26,0.18)' }}
             >

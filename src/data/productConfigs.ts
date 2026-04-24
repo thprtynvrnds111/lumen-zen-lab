@@ -16,6 +16,7 @@ import problemEyeActivator from "@/assets/problem-eye-activator.webp";
 import problemFrequencyWand from "@/assets/problem-frequency-wand.webp";
 import problemSculptWand from "@/assets/problem-sculpt-wand.webp";
 import problemWandPro from "@/assets/problem-wand-pro.webp";
+import productBodyLift from "@/assets/product-body-lift.jpg";
 
 export interface StudyCard {
   technology: string;
@@ -39,6 +40,7 @@ export interface ProductConfig {
   techCards: { icon: LucideIcon; title: string; desc: string }[];
   ritualSteps: { step: string; title: string; desc: string }[];
   problemImage?: string;
+  fallbackImage?: string;
   beforeAfter: { before: string; after: string };
   comparisonRows: { feature: string; zential: string | boolean; clinic: string | boolean; creams: string | boolean; generic: string | boolean }[];
   faqs: { q: string; a: string }[];
@@ -81,6 +83,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   "body-lift": {
     handle: "body-lift",
     name: "Body Lift",
+    fallbackImage: productBodyLift,
     subheadline: "Microcurrent Facial Lift, Built for Daily Structure",
     benefits: [
       { icon: Sparkles, label: "Microcurrent Lift" },

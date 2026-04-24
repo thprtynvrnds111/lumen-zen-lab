@@ -61,7 +61,10 @@ export function ProductLanding({ config }: Props) {
     </div>
   );
 
-  const images = product?.images?.edges || [];
+  const shopifyImages = product?.images?.edges || [];
+  const images = shopifyImages.length > 0
+    ? shopifyImages
+    : (config.fallbackImage ? [{ node: { url: config.fallbackImage, altText: config.name } }] : []);
   const variants = product?.variants?.edges || [];
   const meta = (product?.metafields || []).filter(Boolean).reduce((acc: Record<string, string>, mf: any) => {
     if (mf?.key) acc[mf.key] = mf.value;
