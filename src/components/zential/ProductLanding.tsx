@@ -602,13 +602,18 @@ export function ProductLanding({ config }: Props) {
       <RelatedProducts currentHandle={config.handle} />
 
       {/* ── SECTION 9: FINAL CTA ── */}
-      <section className="section-padding">
+      <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32" style={{ backgroundColor: '#1A1714' }}>
         <div className="max-w-[1200px] mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">30 Days. Full Refund. No Questions.</h2>
-          <p className="text-muted-foreground text-lg mb-10 max-w-lg mx-auto">Email us at info@zentialpure.com. We refund. No forms, no photos, no return required. You have 30 days from delivery.</p>
-          <Button variant="ritual" size="xl" onClick={handleAdd} disabled={isCartLoading}>
+          <p className="text-[10px] tracking-[0.3em] uppercase text-white/50 mb-5">— The Promise —</p>
+          <h2 className="font-serif italic text-[36px] md:text-[56px] leading-[1.05] text-white mb-6 tracking-tight">30 days. Full refund.<br/>No questions.</h2>
+          <p className="text-white/60 text-base md:text-lg mb-10 max-w-lg mx-auto leading-relaxed">Email info@zentialpure.com. We refund. No forms, no photos, no return required.</p>
+          <button
+            onClick={handleAdd}
+            disabled={isCartLoading}
+            className="inline-flex items-center justify-center bg-white hover:bg-white/90 text-[#1A1714] rounded-full uppercase tracking-[0.18em] text-[11px] font-medium px-12 py-5 transition-all duration-300 disabled:opacity-50"
+          >
             {isCartLoading ? <Loader2 className="animate-spin" size={16} /> : "Begin My Ritual"}
-          </Button>
+          </button>
           <div className="flex items-center justify-center gap-6 mt-6 text-muted-foreground">
             {[
               { icon: Shield, label: "30-Day Guarantee" },
