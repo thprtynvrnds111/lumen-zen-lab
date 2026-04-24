@@ -347,11 +347,14 @@ export function ProductLanding({ config }: Props) {
             <img src={config.problemImage || config.beforeAfter.before} alt="Lifestyle" className="w-full h-full object-cover" />
           </div>
           <div>
-            <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">The Real Issue</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">{config.problemReframe.headline}</h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="block w-8 h-px bg-foreground/40" />
+              <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60">The Real Issue</p>
+            </div>
+            <h2 className="font-serif italic text-[30px] md:text-[42px] leading-[1.05] text-foreground mb-6 tracking-tight">{config.problemReframe.headline}</h2>
+            <div className="space-y-4 text-foreground/65 leading-relaxed">
               {config.problemReframe.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
-              <p className="font-semibold text-foreground">{config.problemReframe.closing}</p>
+              <p className="font-medium text-foreground">{config.problemReframe.closing}</p>
             </div>
           </div>
         </div>
