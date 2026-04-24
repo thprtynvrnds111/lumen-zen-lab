@@ -3,6 +3,8 @@ import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { HeroSection } from "@/components/zential/HeroSection";
 import { TrustStrip } from "@/components/zential/TrustStrip";
+import { ShopByConcern } from "@/components/zential/ShopByConcern";
+import { FinalCTA } from "@/components/zential/FinalCTA";
 import { lazy, Suspense, useState, useEffect } from "react";
 
 // Lazy-load below-fold sections to reduce initial JS bundle
@@ -69,27 +71,39 @@ const Index = () => {
         <TrustStrip />
 
         <Suspense fallback={<div className="min-h-[50vh]" />}>
-          <PhilosophySection />
+          {/* 1. Trust + system intro */}
           <TechCardsSection />
-          <ExpertsSection />
           <ComparisonSection />
+
+          {/* 2. Guided discovery */}
+          <ShopByConcern />
           <DevicesSection />
-          <TutorialStrip />
+
+          {/* 3. Proof + ritual */}
           <StatsBar />
-          
           <SocialProof />
-          <UGCStrip />
           <ResultsSection />
+          <UGCStrip />
           <EditorialBreak />
           <RitualSection />
+          <TutorialStrip />
           <LazyImageDivider />
+
+          {/* 4. Authority + brand */}
+          <ExpertsSection />
+          <PhilosophySection />
           <BrandStorySection />
           <SkinFitSection />
+
+          {/* 5. Reassurance + AOV */}
           <SafetyUsageSection />
           <TransparencySection />
           <PriceGuaranteeSection />
           <BundleSection />
           <FAQSection />
+
+          {/* 6. Closer */}
+          <FinalCTA />
           <CommunitySection />
         </Suspense>
       </main>
