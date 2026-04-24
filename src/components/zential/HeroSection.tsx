@@ -63,20 +63,23 @@ export function HeroSection() {
       </div>
 
       {/* Right — Content */}
-      <div className="w-full md:w-[45%] flex flex-col items-center md:items-start justify-center px-8 md:px-16 py-12 md:py-16">
-        <p
-          className="text-[10px] md:text-xs tracking-[0.3em] uppercase mb-3 text-center md:text-left"
+      <div className="w-full md:w-[45%] flex flex-col items-center md:items-start justify-center px-8 md:px-16 lg:px-20 py-14 md:py-16">
+        <div
+          className="flex items-center gap-3 mb-5"
           style={{
-            color: '#9B5A2E',
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(12px)',
             transition: 'opacity 0.7s ease-out 0.2s, transform 0.7s ease-out 0.2s',
           }}
         >
-          Know your skin. Work with it.
-        </p>
+          <span className="h-px w-6" style={{ backgroundColor: '#9B5A2E', opacity: 0.45 }} />
+          <p className="text-[10px] md:text-[11px] tracking-[0.32em] uppercase" style={{ color: '#9B5A2E' }}>
+            At-Home Facial Technology
+          </p>
+        </div>
+
         <h1
-          className="font-serif italic text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground mb-6 text-center md:text-left"
+          className="font-serif italic text-[40px] md:text-[56px] lg:text-[68px] leading-[1.02] tracking-[-0.01em] text-foreground mb-5 text-center md:text-left text-balance"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(20px)',
@@ -86,65 +89,85 @@ export function HeroSection() {
           Clinic Precision.<br />Daily Ritual.
         </h1>
 
+        <p
+          className="text-[15px] md:text-base leading-relaxed max-w-md mb-8 text-center md:text-left"
+          style={{
+            color: '#6B5A4A',
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'translateY(0)' : 'translateY(14px)',
+            transition: 'opacity 0.8s ease-out 0.45s, transform 0.8s ease-out 0.45s',
+          }}
+        >
+          Four clinically inspired technologies in one quiet ritual. Designed for visible firmness, tone and lift — five minutes a day, in your own bathroom.
+        </p>
+
         {/* Social proof */}
         <div
-          className="flex items-center gap-1.5 mb-8"
+          className="flex items-center gap-3 mb-8"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(12px)',
             transition: 'opacity 0.7s ease-out 0.55s, transform 0.7s ease-out 0.55s',
           }}
         >
-          <div className="flex">
+          <div className="flex gap-0.5">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} size={13} fill="#C6A07C" strokeWidth={0} style={{ color: '#C6A07C' }} />
+              <Star key={i} size={14} fill="#C6A07C" strokeWidth={0} style={{ color: '#C6A07C' }} />
             ))}
           </div>
-           <span className="text-xs ml-1" style={{ color: '#6B5A4A' }}>4.9 / 5</span>
+          <span className="text-xs tracking-wide" style={{ color: '#6B5A4A' }}>
+            4.9 / 5 — rated by our community
+          </span>
         </div>
 
-        {/* Modality icons */}
+        {/* CTAs */}
         <div
-          className="flex items-center gap-5 md:gap-7 mb-10"
+          className="flex flex-col min-[480px]:flex-row gap-3 w-full max-w-md mb-9"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(12px)',
             transition: 'opacity 0.7s ease-out 0.7s, transform 0.7s ease-out 0.7s',
           }}
         >
-          {modalities.map((m) => (
-            <div key={m.label} className="flex flex-col items-center gap-2">
-              <m.icon size={22} strokeWidth={1.3} style={{ color: '#C6A07C' }} />
-              <span className="text-[11px] md:text-xs font-medium tracking-wide" style={{ color: '#9B5A2E' }}>
-                {m.label}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        {/* CTAs */}
-        <div
-          className="flex flex-col min-[480px]:flex-row gap-3 w-full max-w-sm"
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0)' : 'translateY(12px)',
-            transition: 'opacity 0.7s ease-out 0.9s, transform 0.7s ease-out 0.9s',
-          }}
-        >
           <button
-            className="flex-1 py-3.5 px-6 text-sm font-medium text-white rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
-            style={{ backgroundColor: '#C6A07C', boxShadow: '0 4px 14px rgba(198,160,124,0.3)' }}
+            className="flex-1 py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium text-white rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+            style={{ backgroundColor: '#2A211A', boxShadow: '0 4px 18px rgba(42,33,26,0.18)' }}
             onClick={() => document.getElementById('devices')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Shop Devices
+            Shop the Ritual
           </button>
           <button
-            className="flex-1 py-3.5 px-6 text-sm font-medium rounded-full border transition-all duration-300 hover:-translate-y-0.5"
-            style={{ borderColor: '#C6A07C', color: '#9B5A2E', backgroundColor: 'transparent' }}
+            className="flex-1 py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full border transition-all duration-300 hover:-translate-y-0.5"
+            style={{ borderColor: '#2A211A', color: '#2A211A', backgroundColor: 'transparent' }}
             onClick={() => document.getElementById('technology')?.scrollIntoView({ behavior: 'smooth' })}
           >
             How It Works
           </button>
+        </div>
+
+        {/* Modality strip — editorial */}
+        <div
+          className="w-full max-w-md pt-6 border-t"
+          style={{
+            borderColor: 'rgba(155,90,46,0.18)',
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'translateY(0)' : 'translateY(12px)',
+            transition: 'opacity 0.8s ease-out 0.85s, transform 0.8s ease-out 0.85s',
+          }}
+        >
+          <p className="text-[10px] tracking-[0.3em] uppercase mb-3 text-center md:text-left" style={{ color: '#6B5A4A' }}>
+            Four technologies. One ritual.
+          </p>
+          <div className="flex items-center justify-between md:justify-start md:gap-7">
+            {modalities.map((m) => (
+              <div key={m.label} className="flex flex-col items-center md:items-start gap-1.5">
+                <m.icon size={18} strokeWidth={1.3} style={{ color: '#9B5A2E' }} />
+                <span className="text-[10px] md:text-[11px] tracking-[0.12em] uppercase" style={{ color: '#2A211A' }}>
+                  {m.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
