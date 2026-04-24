@@ -1,39 +1,62 @@
 import { useState } from "react";
 import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
-import { Loader2, Check } from "lucide-react";
+import { Loader2, Check, Plus } from "lucide-react";
 import { toast } from "sonner";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 interface BundleProduct { handle: string; name: string; }
-interface Bundle { title: string; subtitle: string; items: BundleProduct[]; price: string; savePercent: string; saveAmount: string; highlight: boolean; }
+interface Bundle {
+  title: string;
+  tagline: string;
+  items: BundleProduct[];
+  price: string;
+  originalPrice?: string;
+  savePercent: string;
+  saveAmount: string;
+  highlight: boolean;
+  ritualNote: string;
+}
 
 const bundles: Bundle[] = [
   {
-    title: "Sculpt Wand",
-    subtitle: "One-Time Purchase",
+    title: "The Essential",
+    tagline: "Begin the practice",
     items: [{ handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" }],
-    price: "€112", savePercent: "", saveAmount: "", highlight: false,
+    price: "€112",
+    savePercent: "",
+    saveAmount: "",
+    highlight: false,
+    ritualNote: "Device only · For those who already have their conductive base",
   },
   {
-    title: "Sculpt Wand Ritual Set",
-    subtitle: "Device + Collagen Gel",
+    title: "The Ritual",
+    tagline: "Most chosen",
     items: [
       { handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" },
-      { handle: "medicube-collagen-elastic-jelly-moisturizing-cream", name: "Collagen Gel" },
+      { handle: "medicube-collagen-elastic-jelly-moisturizing-cream", name: "Collagen Conductive Gel" },
     ],
-    price: "€137", savePercent: "16%", saveAmount: "€10", highlight: true,
+    price: "€137",
+    originalPrice: "€147",
+    savePercent: "Save 7%",
+    saveAmount: "€10 off",
+    highlight: true,
+    ritualNote: "Everything you need to begin tonight · Ships ready-to-use",
   },
   {
-    title: "Sculpt Wand Pro Set",
-    subtitle: "Device + Collagen Gel + PDRN Mask",
+    title: "The Pro",
+    tagline: "Full protocol",
     items: [
       { handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" },
-      { handle: "medicube-collagen-elastic-jelly-moisturizing-cream", name: "Collagen Gel" },
-      { handle: "collagen-eye-mask", name: "PDRN Mask" },
+      { handle: "medicube-collagen-elastic-jelly-moisturizing-cream", name: "Collagen Conductive Gel" },
+      { handle: "collagen-eye-mask", name: "PDRN Recovery Mask" },
     ],
-    price: "€161", savePercent: "20%", saveAmount: "€24", highlight: false,
+    price: "€161",
+    originalPrice: "€185",
+    savePercent: "Save 13%",
+    saveAmount: "€24 off",
+    highlight: false,
+    ritualNote: "Layered ritual · Best for visible results in 4 weeks",
   },
 ];
 
@@ -52,7 +75,6 @@ export function BundleSection() {
         if (!product) { toast.error(`Could not find ${bundleProduct.name}`); continue; }
         const variant = product.variants.edges[0]?.node;
         if (!variant) continue;
-        // First item (device) gets the full bundle price; accessories are €0 (included in bundle)
         const itemPrice = i === 0
           ? { amount: bundle.price.replace("€", ""), currencyCode: "EUR" }
           : { amount: "0.00", currencyCode: "EUR" };
@@ -72,68 +94,128 @@ export function BundleSection() {
   };
 
   return (
-    <section ref={ref} id="bundles" className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#F7F4F0' }}>
-      <BubbleBackground />
-      <div className="text-center mb-14 relative z-10">
-        <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#9B5A2E' }}>Smart Bundles</p>
-        <h2 className="font-serif italic text-3xl md:text-4xl text-foreground">Elevate Your Ritual</h2>
+    <section
+      ref={ref}
+      id="bundles"
+      className="relative px-6 md:px-12 lg:px-20 py-24 md:py-32"
+      style={{ backgroundColor: '#FBF8F4' }}
+    >
+      {/* Editorial header */}
+      <div className="text-center mb-16 max-w-2xl mx-auto">
+        <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Build Your Ritual —</p>
+        <h2 className="font-serif italic text-[34px] md:text-[48px] leading-[1.05] text-foreground tracking-tight mb-5">
+          Three ways to begin.
+        </h2>
+        <p className="text-[15px] text-foreground/65 leading-relaxed">
+          Each tier is a complete protocol — not an upsell. Choose the depth of practice that matches your skin's current chapter.
+        </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto relative z-10">
+
+      {/* Bundle grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto">
         {bundles.map(b => {
           const isLoading = loadingBundle === b.title;
           const isAdded = addedBundle === b.title;
           return (
             <div
               key={b.title}
-              className="rounded-xl p-7 relative transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
-              style={{
-                backgroundColor: b.highlight ? '#FAF7F3' : '#EFEBE5',
-                border: b.highlight ? '2px solid #C6A07C' : '1px solid #E4DFD8',
-              }}
+              className={`relative rounded-2xl p-8 md:p-9 transition-all duration-500 hover:-translate-y-1 ${
+                b.highlight
+                  ? 'bg-[#2A211A] text-[#F7F1E8] shadow-2xl md:scale-[1.03]'
+                  : 'bg-white border border-[#E8DDD0] hover:shadow-xl'
+              }`}
             >
               {b.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.15em] uppercase text-white px-4 py-1 rounded-full" style={{ backgroundColor: '#C6A07C' }}>
-                  Best Value
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[9px] tracking-[0.3em] uppercase px-4 py-1.5 rounded-full bg-[#C6A07C] text-white">
+                  Most Chosen
                 </span>
               )}
-              <h3 className="font-serif text-lg font-bold text-foreground mb-1">{b.title}</h3>
-              <p className="text-xs text-foreground/50 mb-5">{b.subtitle}</p>
-              <ul className="space-y-2 mb-6">
-                {b.items.map(item => (
-                  <li key={item.handle} className="text-sm text-foreground/70 flex items-center gap-2">
-                    <span className="w-1 h-1 rounded-full" style={{ backgroundColor: '#C6A07C' }} /> {item.name}
+
+              {/* Tier label */}
+              <p className={`text-[10px] tracking-[0.3em] uppercase mb-3 ${b.highlight ? 'text-[#C6A07C]' : 'text-foreground/50'}`}>
+                — {b.tagline} —
+              </p>
+
+              {/* Title */}
+              <h3 className={`font-serif italic text-[28px] md:text-[32px] leading-[1] mb-6 ${b.highlight ? 'text-[#F7F1E8]' : 'text-foreground'}`}>
+                {b.title}
+              </h3>
+
+              {/* Items list */}
+              <ul className="space-y-3 mb-8">
+                {b.items.map((item, idx) => (
+                  <li key={item.handle} className="flex items-start gap-3">
+                    {idx > 0 && (
+                      <Plus
+                        size={12}
+                        className={`mt-1.5 ${b.highlight ? 'text-[#C6A07C]' : 'text-[#9B5A2E]'}`}
+                      />
+                    )}
+                    {idx === 0 && (
+                      <span className={`mt-2 w-1 h-1 rounded-full ${b.highlight ? 'bg-[#C6A07C]' : 'bg-[#9B5A2E]'}`} />
+                    )}
+                    <span className={`text-sm ${b.highlight ? 'text-[#F7F1E8]/85' : 'text-foreground/80'}`}>
+                      {item.name}
+                    </span>
                   </li>
                 ))}
               </ul>
-              <div className="flex items-baseline gap-3 mb-1">
-                <span className="text-2xl font-bold text-foreground">{b.price}</span>
-                {b.savePercent && (
-                  <span className="text-[10px] font-medium px-2 py-0.5 rounded-full" style={{ backgroundColor: '#C6A07C20', color: '#9B5A2E' }}>
-                    Save {b.savePercent}
+
+              {/* Divider */}
+              <div className={`h-px w-full mb-6 ${b.highlight ? 'bg-[#F7F1E8]/15' : 'bg-foreground/10'}`} />
+
+              {/* Price block */}
+              <div className="mb-2 flex items-baseline gap-3">
+                <span className={`font-serif text-[36px] leading-none ${b.highlight ? 'text-[#F7F1E8]' : 'text-foreground'}`}>
+                  {b.price}
+                </span>
+                {b.originalPrice && (
+                  <span className={`text-sm line-through ${b.highlight ? 'text-[#F7F1E8]/40' : 'text-foreground/40'}`}>
+                    {b.originalPrice}
                   </span>
                 )}
               </div>
-              {b.saveAmount && <p className="text-xs font-medium mb-6" style={{ color: '#9B5A2E' }}>You save {b.saveAmount}</p>}
-              {!b.saveAmount && <div className="mb-6" />}
+              {b.saveAmount ? (
+                <p className={`text-xs tracking-[0.15em] uppercase mb-6 ${b.highlight ? 'text-[#C6A07C]' : 'text-[#9B5A2E]'}`}>
+                  {b.saveAmount}
+                </p>
+              ) : (
+                <p className="text-xs text-foreground/40 mb-6">One-time purchase</p>
+              )}
+
+              {/* Ritual note */}
+              <p className={`text-[11px] leading-relaxed mb-7 ${b.highlight ? 'text-[#F7F1E8]/55' : 'text-foreground/50'}`}>
+                {b.ritualNote}
+              </p>
+
+              {/* CTA */}
               <button
                 onClick={() => handleAddBundle(b)}
                 disabled={isLoading}
-                className={`w-full py-3 text-sm font-medium rounded-full transition-all duration-300 hover:shadow-md hover:scale-[1.02] disabled:opacity-50 ${b.highlight ? 'text-white' : ''}`}
-                style={{
-                  backgroundColor: b.highlight ? '#C6A07C' : 'transparent',
-                  border: b.highlight ? 'none' : '1px solid #C6A07C',
-                  color: b.highlight ? '#fff' : '#9B5A2E',
-                }}
+                className={`w-full py-4 text-[11px] tracking-[0.18em] uppercase rounded-full transition-all duration-300 hover:shadow-lg disabled:opacity-50 ${
+                  b.highlight
+                    ? 'bg-[#F7F1E8] text-[#2A211A] hover:bg-white'
+                    : 'bg-[#2A211A] text-[#F7F1E8] hover:bg-[#1A1714]'
+                }`}
               >
                 {isLoading ? (
-                  <span className="flex items-center justify-center gap-2"><Loader2 className="animate-spin" size={14} />Adding...</span>
+                  <span className="flex items-center justify-center gap-2"><Loader2 className="animate-spin" size={13} />Adding</span>
                 ) : isAdded ? (
-                  <span className="flex items-center justify-center gap-2"><Check size={14} />Added!</span>
-                ) : "Add Bundle"}
+                  <span className="flex items-center justify-center gap-2"><Check size={13} />Added to Ritual</span>
+                ) : "Begin This Ritual"}
               </button>
             </div>
           );
         })}
+      </div>
+
+      {/* Bottom reassurance */}
+      <div className="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-[10px] tracking-[0.25em] uppercase text-foreground/55">
+        <span>Free EU Shipping</span>
+        <span className="hidden md:inline w-1 h-1 rounded-full bg-foreground/20" />
+        <span>30-Day Guarantee</span>
+        <span className="hidden md:inline w-1 h-1 rounded-full bg-foreground/20" />
+        <span>2-Year Warranty</span>
       </div>
     </section>
   );
