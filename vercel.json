@@ -1,6 +1,8 @@
 {
   "routes": [
     { "src": "/api/(.*)",                           "dest": "/api/$1" },
+    { "src": "/quiz",                                "dest": "/index.html" },
+    { "src": "/quiz/result",                         "dest": "/index.html" },
     { "src": "/at-home-face-lifting-device",         "dest": "/at-home-face-lifting-device.html" },
     { "src": "/microcurrent-face-device",            "dest": "/microcurrent-face-device.html" },
     { "src": "/ems-face-toning-device",              "dest": "/ems-face-toning-device.html" },
