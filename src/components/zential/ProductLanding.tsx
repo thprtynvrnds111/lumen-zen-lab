@@ -540,8 +540,8 @@ export function ProductLanding({ config }: Props) {
       <section className="section-padding">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-14">
-            <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Compare</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Why {config.name} Wins</h2>
+            <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Compare —</p>
+            <h2 className="font-serif italic text-[32px] md:text-[44px] leading-[1.05] text-foreground tracking-tight">Why {config.name}.</h2>
           </div>
           <div className="glass-card overflow-hidden max-w-4xl mx-auto overflow-x-auto">
             <table className="w-full text-sm">
