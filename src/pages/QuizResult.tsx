@@ -17,16 +17,30 @@ export default function QuizResult() {
   const [adding, setAdding] = useState(false);
   const addItem = useCartStore((s) => s.addItem);
 
+  const ritualHandlesKey = rec.ritualHandles.join(",");
   useEffect(() => {
     let cancelled = false;
-    (async () => {
-      const p = await fetchProductByHandle(rec.primaryHandle);
+    // Fetch primary + all companions in parallel — show whatever resolves first.
+    const primaryPromise = fetchProductByHandle(rec.primaryHandle).then((p) => {
       if (!cancelled && p) setPrimary(p);
-      const comps = await Promise.all(rec.ritualHandles.map((h) => fetchProductByHandle(h)));
-      if (!cancelled) setCompanions(comps.filter(Boolean) as ShopifyProduct[]);
-    })();
+    });
+    const compPromise = Promise.all(
+      rec.ritualHandles.map((h) =>
+        fetchProductByHandle(h).then((p) => {
+          if (!cancelled && p) setCompanions((prev) => (prev.some((x) => x.node.handle === p.node.handle) ? prev : [...prev, p]));
+        })
+      )
+    );
+    void Promise.all([primaryPromise, compPromise]);
     return () => { cancelled = true; };
-  }, [rec.primaryHandle, rec.ritualHandles.join(",")]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rec.primaryHandle, ritualHandlesKey]);
+
+  // Reset companions when the recommendation changes (so stale entries don't linger).
+  useEffect(() => {
+    setCompanions([]);
+    setPrimary(null);
+  }, [rec.primaryHandle, ritualHandlesKey]);
 
   const primaryPrice = primary ? Number(primary.node.priceRange.minVariantPrice.amount) : 0;
   const compTotal = companions.reduce((sum, c) => sum + Number(c.node.priceRange.minVariantPrice.amount), 0);
@@ -111,15 +125,16 @@ export default function QuizResult() {
         {/* Primary device card */}
         <section className="bg-background rounded-3xl border border-foreground/10 overflow-hidden mb-10 md:mb-14">
           <div className="grid md:grid-cols-2">
-            <div className="aspect-square md:aspect-auto bg-gradient-to-br from-[#F7F4F0] to-[#E8DDD0] flex items-center justify-center overflow-hidden">
+          <div className="aspect-square md:aspect-auto bg-gradient-to-br from-[#F7F4F0] to-[#E8DDD0] flex items-center justify-center overflow-hidden">
               {primary?.node.images.edges[0]?.node.url ? (
                 <img
                   src={primary.node.images.edges[0].node.url}
                   alt={primary.node.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover animate-fade-in"
+                  loading="eager"
                 />
               ) : (
-                <span className="font-serif italic text-3xl text-foreground/30">Loading…</span>
+                <div className="w-full h-full animate-pulse bg-gradient-to-br from-[#EFEBE5] to-[#E4DFD8]" />
               )}
             </div>
             <div className="p-8 md:p-12 flex flex-col justify-center">
@@ -128,9 +143,11 @@ export default function QuizResult() {
               <p className="text-[15px] text-foreground/65 leading-relaxed mb-6">{rec.primaryReason}</p>
 
               <div className="flex items-center gap-3 mb-6">
-                <span className="font-serif italic text-3xl text-foreground">
-                  €{primaryPrice ? primaryPrice.toFixed(0) : "—"}
-                </span>
+                {primaryPrice ? (
+                  <span className="font-serif italic text-3xl text-foreground animate-fade-in">€{primaryPrice.toFixed(0)}</span>
+                ) : (
+                  <span className="inline-block h-8 w-20 rounded-md animate-pulse bg-foreground/10" />
+                )}
                 <span className="text-[11px] tracking-[0.18em] uppercase text-foreground/50">One-time</span>
               </div>
 
