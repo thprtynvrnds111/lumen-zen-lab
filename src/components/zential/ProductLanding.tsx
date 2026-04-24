@@ -293,6 +293,22 @@ export function ProductLanding({ config }: Props) {
             </div>
 
             <PaymentBadges className="mt-4" />
+
+            {/* By the numbers — micro trust strip */}
+            <div className="mt-8 pt-6 border-t border-foreground/10 grid grid-cols-3 gap-2 text-center">
+              <div>
+                <p className="font-serif italic text-2xl text-foreground leading-none">4</p>
+                <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">Clinical<br/>Modalities</p>
+              </div>
+              <div className="border-x border-foreground/10">
+                <p className="font-serif italic text-2xl text-foreground leading-none">30</p>
+                <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">Day<br/>Guarantee</p>
+              </div>
+              <div>
+                <p className="font-serif italic text-2xl text-foreground leading-none">2yr</p>
+                <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">Device<br/>Warranty</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
