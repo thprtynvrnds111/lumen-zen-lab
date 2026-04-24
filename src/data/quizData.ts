@@ -116,12 +116,12 @@ export function getRecommendation(a: QuizAnswers): Recommendation {
   // Primary device by concern
   const primaryByConcern: Record<ConcernId, { handle: string; name: string; reason: string }> = {
     lift: {
-      handle: "portable-ems-microcurrent-facial-beauty-device",
-      name: "Frame Pulse Activator",
-      reason: "Combines EMS + microcurrent — the only at-home stack that addresses both muscle tone and structural firmness, the two pillars of contour.",
+      handle: "facial-beauty-tools-and-ems-beauty-equipment",
+      name: "Sculpt Wand",
+      reason: "EMS + microcurrent stack — the at-home pairing that addresses both muscle tone and structural firmness, the two pillars of contour.",
     },
     tone: {
-      handle: "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening",
+      handle: "portable-ems-microcurrent-facial-beauty-device",
       name: "Frequency Wand Pro",
       reason: "Red light at 630nm + thermal — the clinical pairing for cellular renewal and even tone. The most studied modality combination for radiance.",
     },
@@ -131,24 +131,24 @@ export function getRecommendation(a: QuizAnswers): Recommendation {
       reason: "The periorbital area needs precision frequencies you cannot get from a full-face device. Dedicated 3MHz vibration + warmth designed for the orbital bone.",
     },
     texture: {
-      handle: "lifting-and-tightening-face-introducer",
+      handle: "electric-micro-current",
       name: "Skin Pulse",
       reason: "EMS-led device tuned for elasticity. Stimulates the deeper tissue layer where pore structure and firmness originate.",
     },
     body: {
-      handle: "color-light-import-micro-current-vibration-massager",
-      name: "Body Lift",
-      reason: "Body tissue requires larger surface coverage and deeper penetration. Microcurrent + vibration calibrated for arms, abdomen, and thighs.",
+      handle: "lifting-and-tightening-face-introducer",
+      name: "Face Introducer",
+      reason: "EMS muscle stimulation + dual-wavelength LED. The most versatile device for sculpting and skin quality across larger treatment areas.",
     },
   };
 
   // Ritual companions — scale with time commitment + goal
   const ritualByConcern: Record<ConcernId, string[]> = {
-    lift: ["lifting-and-tightening-face-introducer", "eye-massage"],
-    tone: ["portable-ems-microcurrent-facial-beauty-device", "lifting-and-tightening-face-introducer"],
-    eyes: ["red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening", "portable-ems-microcurrent-facial-beauty-device"],
-    texture: ["red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening", "eye-massage"],
-    body: ["portable-ems-microcurrent-facial-beauty-device"],
+    lift: ["medicube-collagen-elastic-jelly-moisturizing-cream", "eye-massage"],
+    tone: ["medicube-collagen-elastic-jelly-moisturizing-cream", "electric-micro-current"],
+    eyes: ["medicube-collagen-elastic-jelly-moisturizing-cream", "facial-beauty-tools-and-ems-beauty-equipment"],
+    texture: ["medicube-collagen-elastic-jelly-moisturizing-cream", "eye-massage"],
+    body: ["medicube-collagen-elastic-jelly-moisturizing-cream"],
   };
 
   const ritualSize = time === "3min" ? 0 : time === "5min" ? 1 : 2;
