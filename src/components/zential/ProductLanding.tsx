@@ -293,6 +293,22 @@ export function ProductLanding({ config }: Props) {
             </div>
 
             <PaymentBadges className="mt-4" />
+
+            {/* By the numbers — micro trust strip */}
+            <div className="mt-8 pt-6 border-t border-foreground/10 grid grid-cols-3 gap-2 text-center">
+              <div>
+                <p className="font-serif italic text-2xl text-foreground leading-none">4</p>
+                <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">Clinical<br/>Modalities</p>
+              </div>
+              <div className="border-x border-foreground/10">
+                <p className="font-serif italic text-2xl text-foreground leading-none">30</p>
+                <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">Day<br/>Guarantee</p>
+              </div>
+              <div>
+                <p className="font-serif italic text-2xl text-foreground leading-none">2yr</p>
+                <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">Device<br/>Warranty</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -326,16 +342,36 @@ export function ProductLanding({ config }: Props) {
         </section>
       )}
 
-      {/* ── SECTION 2: HONEST — NO REVIEWS YET ── */}
-      <section className="section-padding gradient-pearl">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-xs tracking-[0.2em] uppercase text-accent mb-6">Reviews</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-5">We don't have reviews yet.</h2>
-          <p className="text-muted-foreground leading-relaxed mb-4">
-            We launched in 2026. We're not going to fabricate them.
-          </p>
-          <p className="text-muted-foreground leading-relaxed">
-            What we have instead: the clinical evidence behind every modality, and a 30-day refund guarantee with no conditions. Both are below.
+      {/* ── SECTION 2: TRUST INSTEAD OF REVIEWS ── */}
+      <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32" style={{ backgroundColor: '#FBF8F4' }}>
+        <div className="max-w-[1100px] mx-auto">
+          <div className="text-center mb-14 max-w-2xl mx-auto">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Why You Can Trust This —</p>
+            <h2 className="font-serif italic text-[32px] md:text-[46px] leading-[1.05] text-foreground tracking-tight mb-5">
+              We launched in 2026.<br/>We won't fabricate reviews.
+            </h2>
+            <p className="text-[15px] text-foreground/65 leading-relaxed">
+              Instead, here's what we offer in their place — concrete, verifiable, and refundable.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              { eyebrow: "Evidence", title: "Peer-reviewed studies", body: "Every modality on this device — red light, microcurrent, EMS, thermal — is referenced to published clinical research. We link the actual papers below.", cta: "See studies →" },
+              { eyebrow: "Guarantee", title: "30 days. No conditions.", body: "Use it nightly for 30 days. If your skin doesn't show change, we refund you in full. No restocking fee, no questionnaire, no friction.", cta: "Read policy →" },
+              { eyebrow: "Manufacturing", title: "Medical-grade build", body: "FDA-cleared modalities, CE-marked construction, 2-year hardware warranty. The device itself is the proof — not borrowed credibility.", cta: "Learn more →" },
+            ].map((card, i) => (
+              <div key={i} className="bg-white rounded-2xl p-8 border border-[#E8DDD0] hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-[#9B5A2E] mb-5">— {card.eyebrow} —</p>
+                <h3 className="font-serif italic text-[24px] leading-[1.1] text-foreground mb-4">{card.title}</h3>
+                <p className="text-sm text-foreground/65 leading-relaxed mb-6">{card.body}</p>
+                <p className="text-[11px] tracking-[0.18em] uppercase text-foreground/70 hover:text-foreground transition-colors cursor-default">{card.cta}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="font-serif italic text-lg md:text-xl text-foreground/55 text-center max-w-xl mx-auto leading-relaxed mt-14">
+            "Honest beats inflated. The device works, or your money comes back."
           </p>
         </div>
       </section>
