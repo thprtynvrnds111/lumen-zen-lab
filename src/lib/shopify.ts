@@ -5,40 +5,43 @@ const SHOPIFY_STORE_PERMANENT_DOMAIN = '0d1m9a-w7.myshopify.com';
 const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
 const SHOPIFY_STOREFRONT_TOKEN = 'eb9de988ba24cbce9ab85b9fdc364f62';
 
-export interface ShopifyProduct {
-  node: {
-    id: string;
-    title: string;
-    description: string;
-    handle: string;
-    priceRange: {
-      minVariantPrice: {
-        amount: string;
-        currencyCode: string;
-      };
+export interface ShopifyProductNode {
+  id: string;
+  title: string;
+  description: string;
+  handle: string;
+  priceRange: {
+    minVariantPrice: {
+      amount: string;
+      currencyCode: string;
     };
-    images: {
-      edges: Array<{
-        node: {
-          url: string;
-          altText: string | null;
-        };
-      }>;
-    };
-    variants: {
-      edges: Array<{
-        node: {
-          id: string;
-          title: string;
-          price: { amount: string; currencyCode: string };
-          availableForSale: boolean;
-          selectedOptions: Array<{ name: string; value: string }>;
-          image?: { url: string; altText: string | null };
-        };
-      }>;
-    };
-    options: Array<{ name: string; values: string[] }>;
   };
+  images: {
+    edges: Array<{
+      node: {
+        url: string;
+        altText: string | null;
+      };
+    }>;
+  };
+  variants: {
+    edges: Array<{
+      node: {
+        id: string;
+        title: string;
+        price: { amount: string; currencyCode: string };
+        availableForSale: boolean;
+        selectedOptions: Array<{ name: string; value: string }>;
+        image?: { url: string; altText: string | null };
+      };
+    }>;
+  };
+  options: Array<{ name: string; values: string[] }>;
+  metafields?: Array<{ key: string; value: string } | null>;
+}
+
+export interface ShopifyProduct extends ShopifyProductNode {
+  node: ShopifyProductNode;
 }
 
 export async function storefrontApiRequest(query: string, variables: Record<string, unknown> = {}) {
