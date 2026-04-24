@@ -28,7 +28,8 @@ const concerns = [
     label: "Body & Tissue",
     sub: "Firm, sculpt, recover",
     devices: "Body Lift",
-    handle: "color-light-import-micro-current-vibration-massager",
+    handle: "body-lift",
+    to: "/body-lift",
     tone: "from-[#DECDB6] to-[#C4A685]",
   },
 ];
