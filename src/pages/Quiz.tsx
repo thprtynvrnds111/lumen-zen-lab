@@ -46,17 +46,30 @@ export default function Quiz() {
 
   const submit = async (skipEmail = false) => {
     setSubmitting(true);
+    const params = new URLSearchParams(answers as Record<string, string>);
+    const target = `/quiz/result?${params.toString()}`;
+
+    // Fire-and-forget newsletter signup with a hard timeout so it can never
+    // block navigation (especially on mobile or in preview environments where
+    // the /api endpoint may not be available).
     if (!skipEmail && email && /\S+@\S+\.\S+/.test(email)) {
       try {
-        await fetch("/api/newsletter", {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 2500);
+        fetch("/api/newsletter", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, source: "skin-ritual-quiz" }),
-        });
+          signal: controller.signal,
+          keepalive: true,
+        })
+          .catch(() => {})
+          .finally(() => clearTimeout(timeout));
       } catch {}
     }
-    const params = new URLSearchParams(answers as Record<string, string>);
-    nav(`/quiz/result?${params.toString()}`);
+
+    // Navigate immediately — do not await the network call.
+    nav(target);
   };
 
   const selected = answers[step.id as keyof QuizAnswers];
