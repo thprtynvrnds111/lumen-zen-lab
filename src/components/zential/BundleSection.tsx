@@ -184,7 +184,7 @@ export function BundleSection() {
               )}
 
               {/* Ritual note */}
-              <p className={`text-[11px] leading-relaxed mb-7 ${b.highlight ? 'text-[#F7F1E8]/55' : 'text-foreground/50'}`}>
+              <p className={`text-[11px] leading-relaxed mb-7 mt-auto ${b.highlight ? 'text-[#F7F1E8]/55' : 'text-foreground/50'}`}>
                 {b.ritualNote}
               </p>
 
