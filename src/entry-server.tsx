@@ -46,6 +46,8 @@ const ClinicVsHome         = lazy(() => import("./pages/ClinicVsHome"));
 const FacialMuscleTraining = lazy(() => import("./pages/FacialMuscleTraining"));
 const TechIontophoresis    = lazy(() => import("./pages/TechIontophoresis"));
 const ThankYou         = lazy(() => import("./pages/ThankYou"));
+const Quiz             = lazy(() => import("./pages/Quiz"));
+const QuizResult       = lazy(() => import("./pages/QuizResult"));
 const NotFound         = lazy(() => import("./pages/NotFound"));
 
 function ServerApp() {
