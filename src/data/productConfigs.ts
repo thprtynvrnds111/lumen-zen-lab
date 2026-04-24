@@ -18,6 +18,14 @@ import problemSculptWand from "@/assets/problem-sculpt-wand.webp";
 import problemWandPro from "@/assets/problem-wand-pro.webp";
 import productBodyLift from "@/assets/product-body-lift.jpg";
 import productSculptWand from "@/assets/ritual-sculpt-wand.png";
+import productEyeActivator from "@/assets/ritual-eye-activator.png";
+import productFramePulse from "@/assets/ritual-frame-pulse.png";
+import productFrequencyWand from "@/assets/ritual-frequency-wand.png";
+import productFrequencyWandPro from "@/assets/ritual-frequency-wand-pro.png";
+import productGuaSha from "@/assets/ritual-gua-sha.png";
+import productSkinPulse from "@/assets/ritual-skin-pulse.jpg";
+import productFaceIntroducer from "@/assets/problem-face-introducer.webp";
+import productFaceLift from "@/assets/problem-face-introducer.webp";
 
 export interface StudyCard {
   technology: string;
@@ -146,6 +154,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   // ─── LIFTING & TIGHTENING FACE INTRODUCER ───
   "lifting-and-tightening-face-introducer": {
     handle: "lifting-and-tightening-face-introducer",
+    fallbackImage: productFaceIntroducer,
     name: "Face Introducer",
     subheadline: "Ion-Assisted Delivery + Trichromatic Light Therapy",
     benefits: [
@@ -207,6 +216,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   // ─── EYE ACTIVATOR ───
   "eye-massage": {
     handle: "eye-massage",
+    fallbackImage: productEyeActivator,
     name: "Eye Activator",
     subheadline: "Targeted Microcurrent for the Periorbital Zone",
     benefits: [
@@ -275,6 +285,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   // ─── FREQUENCY WAND ───
   "color-light-import-micro-current-vibration-massager": {
     handle: "color-light-import-micro-current-vibration-massager",
+    fallbackImage: productFrequencyWand,
     name: "Frequency Wand",
     subheadline: "Five-Mode Protocol: EMS · 5-Spectrum LED · Electroporation · Vibration",
     benefits: [
@@ -336,6 +347,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   // ─── GUA SHA FREQUENCY ───
   "electric-guasha-massager": {
     handle: "electric-guasha-massager",
+    fallbackImage: productGuaSha,
     name: "Gua Sha Frequency",
     subheadline: "Ancient Ritual Meets Microcurrent Precision",
     benefits: [
@@ -396,6 +408,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   // ─── SKIN PULSE ───
   "electric-micro-current": {
     handle: "electric-micro-current",
+    fallbackImage: productSkinPulse,
     name: "Skin Pulse",
     subheadline: "Dual-Ball Microcurrent for Daily Facial Stimulation",
     benefits: [
@@ -517,6 +530,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   // ─── FRAME PULSE ACTIVATOR ───
   "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": {
     handle: "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
+    fallbackImage: productFramePulse,
     name: "Frame Pulse Activator",
     subheadline: "Hands-Free EMS and LED Beauty Device",
     benefits: [
@@ -578,6 +592,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   // ─── MICROCURRENT SCULPT WAND (unlisted) ───
   "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening": {
     handle: "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening",
+    fallbackImage: productFaceLift,
     name: "Microcurrent Sculpt Wand",
     subheadline: "Advanced Sculpting Wand with Dual-Wave Microcurrent",
     benefits: [
@@ -735,6 +750,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   // ─── FREQUENCY WAND PRO ───
   "portable-ems-microcurrent-facial-beauty-device": {
     handle: "portable-ems-microcurrent-facial-beauty-device",
+    fallbackImage: productFrequencyWandPro,
     name: "Frequency Wand Pro",
     subheadline: "Ion Purification + EMS Microcurrent. Clear First. Stimulate Second.",
     benefits: [
