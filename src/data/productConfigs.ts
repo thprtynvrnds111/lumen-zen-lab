@@ -83,7 +83,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   // ─── BODY LIFT ───
   "body-lift": {
     handle: "body-lift",
-    purchaseHandle: "color-light-import-micro-current-vibration-massager",
+    purchaseHandle: "lifting-and-tightening-face-introducer",
     name: "Body Lift",
     fallbackImage: productBodyLift,
     subheadline: "Microcurrent Facial Lift, Built for Daily Structure",
