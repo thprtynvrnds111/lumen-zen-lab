@@ -41,10 +41,15 @@ export function ProductLanding({ config }: Props) {
 
   useEffect(() => {
     setLoading(true);
-    fetchProductByHandle(config.handle)
-      .then(p => { setProduct(p); setLoading(false); })
-      .catch(() => setLoading(false));
-  }, [config.handle]);
+    (async () => {
+      let p = await fetchProductByHandle(config.handle).catch(() => null);
+      if (!p && config.purchaseHandle) {
+        p = await fetchProductByHandle(config.purchaseHandle).catch(() => null);
+      }
+      setProduct(p);
+      setLoading(false);
+    })();
+  }, [config.handle, config.purchaseHandle]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
