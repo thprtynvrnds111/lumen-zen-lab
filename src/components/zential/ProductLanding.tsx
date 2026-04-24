@@ -356,6 +356,40 @@ export function ProductLanding({ config }: Props) {
         </div>
       </section>
 
+      {/* ── SECTION 2: TRUST INSTEAD OF REVIEWS ── */}
+      <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32" style={{ backgroundColor: '#FBF8F4' }}>
+        <div className="max-w-[1100px] mx-auto">
+          <div className="text-center mb-14 max-w-2xl mx-auto">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Why You Can Trust This —</p>
+            <h2 className="font-serif italic text-[32px] md:text-[46px] leading-[1.05] text-foreground tracking-tight mb-5">
+              We launched in 2026.<br/>We won't fabricate reviews.
+            </h2>
+            <p className="text-[15px] text-foreground/65 leading-relaxed">
+              Instead, here's what we offer in their place — concrete, verifiable, and refundable.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              { eyebrow: "Evidence", title: "Peer-reviewed studies", body: "Every modality on this device — red light, microcurrent, EMS, thermal — is referenced to published clinical research. We link the actual papers below.", cta: "See studies →" },
+              { eyebrow: "Guarantee", title: "30 days. No conditions.", body: "Use it nightly for 30 days. If your skin doesn't show change, we refund you in full. No restocking fee, no questionnaire, no friction.", cta: "Read policy →" },
+              { eyebrow: "Manufacturing", title: "Medical-grade build", body: "FDA-cleared modalities, CE-marked construction, 2-year hardware warranty. The device itself is the proof — not borrowed credibility.", cta: "Learn more →" },
+            ].map((card, i) => (
+              <div key={i} className="bg-white rounded-2xl p-8 border border-[#E8DDD0] hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-[#9B5A2E] mb-5">— {card.eyebrow} —</p>
+                <h3 className="font-serif italic text-[24px] leading-[1.1] text-foreground mb-4">{card.title}</h3>
+                <p className="text-sm text-foreground/65 leading-relaxed mb-6">{card.body}</p>
+                <p className="text-[11px] tracking-[0.18em] uppercase text-foreground/70 hover:text-foreground transition-colors cursor-default">{card.cta}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="font-serif italic text-lg md:text-xl text-foreground/55 text-center max-w-xl mx-auto leading-relaxed mt-14">
+            "Honest beats inflated. The device works, or your money comes back."
+          </p>
+        </div>
+      </section>
+
       {/* ── SECTION 3: PROBLEM REFRAME ── */}
       <section className="section-padding">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
