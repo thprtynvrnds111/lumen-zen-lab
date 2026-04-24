@@ -79,7 +79,7 @@ export function BundleSection() {
           ? { amount: bundle.price.replace("€", ""), currencyCode: "EUR" }
           : { amount: "0.00", currencyCode: "EUR" };
         await addItem({
-          product: { node: product },
+          product,
           variantId: variant.id, variantTitle: variant.title, price: itemPrice, quantity: 1,
           selectedOptions: variant.selectedOptions || [],
         });
