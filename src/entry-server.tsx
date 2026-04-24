@@ -91,6 +91,8 @@ function ServerApp() {
         <Route path="/facial-muscle-training"                   element={<FacialMuscleTraining />} />
         <Route path="/technology/iontophoresis"                 element={<TechIontophoresis />} />
         <Route path="/thank-you"                                element={<ThankYou />} />
+        <Route path="/quiz"                                     element={<Quiz />} />
+        <Route path="/quiz/result"                              element={<QuizResult />} />
         <Route path="*"                                         element={<NotFound />} />
       </Routes>
     </Suspense>
