@@ -1,14 +1,13 @@
-import { useState, useCallback } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState, useCallback, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import zentialFlower from "@/assets/zential-flower.webp";
-import { Search, Menu, X } from "lucide-react";
+import { Search, Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CartDrawer } from "@/components/CartDrawer";
 import { SearchOverlay } from "@/components/zential/SearchOverlay";
+import { MegaMenu } from "@/components/zential/MegaMenu";
 
-const navItems = [
-  { label: "Shop", href: "/#devices" },
-  { label: "Ritual", href: "/#ritual" },
+const rightNavItems = [
   { label: "Journal", href: "/journal" },
   { label: "Support", href: "/support" },
 ];
@@ -16,11 +15,19 @@ const navItems = [
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [shopOpen, setShopOpen] = useState(false);
+  const closeTimer = useRef<NodeJS.Timeout | null>(null);
   const location = useLocation();
-  const navigate = useNavigate();
-  const isJournal = location.pathname.startsWith("/journal");
 
-  const handleNavClick = useCallback((e: React.MouseEvent, href: string) => {
+  const openMega = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setShopOpen(true);
+  };
+  const closeMega = () => {
+    closeTimer.current = setTimeout(() => setShopOpen(false), 150);
+  };
+
+  const handleHashClick = useCallback((e: React.MouseEvent, href: string) => {
     if (href.startsWith("/#")) {
       const id = href.slice(2);
       if (location.pathname === "/") {
@@ -36,15 +43,22 @@ export function Header() {
         <div className="flex items-center justify-between px-4 md:px-12 lg:px-20 h-16">
           {/* Left nav */}
           <nav className="hidden lg:flex items-center gap-6">
-            {navItems.slice(0, 2).map(item => (
-              <Link key={item.label} to={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className={cn(
-                  "text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors"
-                )}>
-                {item.label}
-              </Link>
-            ))}
+            <button
+              onMouseEnter={openMega}
+              onMouseLeave={closeMega}
+              onClick={() => setShopOpen(v => !v)}
+              className={cn(
+                "flex items-center gap-1 text-xs tracking-[0.15em] uppercase transition-colors",
+                shopOpen ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              Shop <ChevronDown size={12} className={cn("transition-transform", shopOpen && "rotate-180")} />
+            </button>
+            <Link to="/#ritual"
+              onClick={(e) => handleHashClick(e, "/#ritual")}
+              className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
+              Ritual
+            </Link>
           </nav>
 
           {/* Mobile menu button */}
@@ -62,11 +76,9 @@ export function Header() {
           {/* Right icons */}
           <div className="flex items-center gap-5">
             <nav className="hidden lg:flex items-center gap-6">
-              {navItems.slice(2).map(item => (
+              {rightNavItems.map(item => (
                 <Link key={item.label} to={item.href}
-                  className={cn(
-                    "text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors"
-                  )}>
+                  className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
                   {item.label}
                 </Link>
               ))}
@@ -78,15 +90,36 @@ export function Header() {
           </div>
         </div>
 
+        {/* Mega menu (desktop) */}
+        {shopOpen && (
+          <div
+            onMouseEnter={openMega}
+            onMouseLeave={closeMega}
+            className="hidden lg:block absolute left-0 right-0 top-full"
+          >
+            <MegaMenu onNavigate={() => setShopOpen(false)} />
+          </div>
+        )}
+
         {/* Mobile nav */}
         {mobileOpen && (
-          <nav className="lg:hidden border-t border-border/30 bg-background px-6 py-4 space-y-3">
-            {navItems.map(item => (
-              <Link key={item.label} to={item.href} onClick={(e) => { handleNavClick(e, item.href); setMobileOpen(false); }}
-                className="block text-sm tracking-[0.1em] uppercase text-muted-foreground hover:text-foreground">
-                {item.label}
-              </Link>
-            ))}
+          <nav className="lg:hidden border-t border-border/30 bg-background px-6 py-5 space-y-4">
+            <Link to="/#devices" onClick={(e) => { handleHashClick(e, "/#devices"); setMobileOpen(false); }}
+              className="block text-sm tracking-[0.1em] uppercase text-foreground">
+              Shop Devices
+            </Link>
+            <div className="pl-4 space-y-2.5 border-l border-border/30">
+              <Link to="/product/portable-ems-microcurrent-facial-beauty-device" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Lift & Contour</Link>
+              <Link to="/product/red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Tone & Glow</Link>
+              <Link to="/product/eye-massage" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Eyes & Fine Lines</Link>
+              <Link to="/body-lift" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Body & Tissue</Link>
+            </div>
+            <Link to="/#ritual" onClick={(e) => { handleHashClick(e, "/#ritual"); setMobileOpen(false); }}
+              className="block text-sm tracking-[0.1em] uppercase text-foreground">Ritual</Link>
+            <Link to="/journal" onClick={() => setMobileOpen(false)}
+              className="block text-sm tracking-[0.1em] uppercase text-foreground">Journal</Link>
+            <Link to="/support" onClick={() => setMobileOpen(false)}
+              className="block text-sm tracking-[0.1em] uppercase text-foreground">Support</Link>
           </nav>
         )}
       </header>
