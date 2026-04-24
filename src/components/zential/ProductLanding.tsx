@@ -642,9 +642,13 @@ export function ProductLanding({ config }: Props) {
                 </p>
               </div>
             </div>
-            <Button variant="ritual" size="lg" onClick={handleAdd} disabled={isCartLoading} className="flex-shrink-0">
+            <button
+              onClick={handleAdd}
+              disabled={isCartLoading}
+              className="flex-shrink-0 bg-[#2A211A] hover:bg-[#1A1410] text-white rounded-full uppercase tracking-[0.18em] text-[10px] font-medium px-6 py-3.5 transition-all disabled:opacity-50"
+            >
               {isCartLoading ? <Loader2 className="animate-spin" size={14} /> : "Add To Ritual"}
-            </Button>
+            </button>
           </div>
         </div>
       </div>
