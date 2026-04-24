@@ -254,9 +254,9 @@ export function ProductLanding({ config }: Props) {
             )}
 
             <div className="flex items-baseline gap-3 mb-1">
-              <span className="text-3xl font-bold text-foreground">{sym}{bundlePrice.toFixed(2)}</span>
+              <span className="font-serif text-[34px] md:text-[40px] leading-none text-foreground">{sym}{bundlePrice.toFixed(2)}</span>
               {bundle.savePercent > 0 && (
-                <span className="text-xs font-semibold tracking-wider uppercase text-emerald bg-emerald/10 px-2.5 py-1 rounded-full">Save {bundle.savePercent}%</span>
+                <span className="text-[10px] font-semibold tracking-[0.15em] uppercase text-emerald bg-emerald/10 px-2.5 py-1 rounded-full">Save {bundle.savePercent}%</span>
               )}
             </div>
             {savings > 0 && <p className="text-sm text-emerald mb-6">You save {sym}{savings.toFixed(2)}</p>}
@@ -271,9 +271,13 @@ export function ProductLanding({ config }: Props) {
             <ScarcityBanner signal={meta.inventory_signal} />
 
             <div ref={ctaRef}>
-              <Button variant="ritual" size="xl" className="w-full text-sm" onClick={handleAdd} disabled={isCartLoading || !variant?.availableForSale}>
+              <button
+                onClick={handleAdd}
+                disabled={isCartLoading || !variant?.availableForSale}
+                className="w-full bg-[#2A211A] hover:bg-[#1A1410] text-white rounded-full uppercase tracking-[0.18em] text-[11px] font-medium py-5 transition-all duration-300 disabled:opacity-50 flex items-center justify-center"
+              >
                 {isCartLoading ? <Loader2 className="animate-spin" size={16} /> : "Add To Ritual"}
-              </Button>
+              </button>
             </div>
 
             <div className="flex items-center justify-center gap-6 mt-5 text-muted-foreground">
