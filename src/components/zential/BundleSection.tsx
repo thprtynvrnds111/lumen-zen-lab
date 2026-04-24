@@ -142,7 +142,7 @@ export function BundleSection() {
               </h3>
 
               {/* Items list */}
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8 min-h-[108px]">
                 {b.items.map((item, idx) => (
                   <li key={item.handle} className="flex items-start gap-3">
                     {idx > 0 && (
