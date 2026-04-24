@@ -40,9 +40,9 @@ export interface ShopifyProductNode {
   metafields?: Array<{ key: string; value: string } | null>;
 }
 
-export interface ShopifyProduct extends ShopifyProductNode {
+export type ShopifyProduct = Partial<ShopifyProductNode> & {
   node: ShopifyProductNode;
-}
+};
 
 export async function storefrontApiRequest(query: string, variables: Record<string, unknown> = {}) {
   const response = await fetch(SHOPIFY_STOREFRONT_URL, {
