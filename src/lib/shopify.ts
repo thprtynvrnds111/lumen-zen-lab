@@ -143,9 +143,11 @@ export async function fetchProducts(first = 20, query?: string): Promise<Shopify
   return data?.data?.products?.edges || [];
 }
 
-export async function fetchProductByHandle(handle: string) {
+export async function fetchProductByHandle(handle: string): Promise<ShopifyProduct | null> {
   const data = await storefrontApiRequest(PRODUCT_BY_HANDLE_QUERY, { handle });
-  return data?.data?.product || null;
+  const product = data?.data?.product;
+  // Wrap in { node } to match the ShopifyProduct shape used everywhere else
+  return product ? { node: product } : null;
 }
 
 // Cart mutations

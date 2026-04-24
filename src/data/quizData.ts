@@ -142,13 +142,14 @@ export function getRecommendation(a: QuizAnswers): Recommendation {
     },
   };
 
-  // Ritual companions — scale with time commitment + goal
+  // Ritual companions — scale with time commitment + goal.
+  // All handles must be live Shopify products in this store.
   const ritualByConcern: Record<ConcernId, string[]> = {
-    lift: ["medicube-collagen-elastic-jelly-moisturizing-cream", "eye-massage"],
-    tone: ["medicube-collagen-elastic-jelly-moisturizing-cream", "electric-micro-current"],
-    eyes: ["medicube-collagen-elastic-jelly-moisturizing-cream", "facial-beauty-tools-and-ems-beauty-equipment"],
-    texture: ["medicube-collagen-elastic-jelly-moisturizing-cream", "eye-massage"],
-    body: ["medicube-collagen-elastic-jelly-moisturizing-cream"],
+    lift:    ["lifting-and-tightening-face-introducer", "eye-massage"],
+    tone:    ["electric-guasha-massager", "electric-micro-current"],
+    eyes:    ["electric-guasha-massager", "facial-beauty-tools-and-ems-beauty-equipment"],
+    texture: ["portable-ems-microcurrent-facial-beauty-device", "electric-guasha-massager"],
+    body:    ["facial-beauty-tools-and-ems-beauty-equipment"],
   };
 
   const ritualSize = time === "3min" ? 0 : time === "5min" ? 1 : 2;
