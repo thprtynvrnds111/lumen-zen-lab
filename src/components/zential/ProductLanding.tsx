@@ -614,18 +614,17 @@ export function ProductLanding({ config }: Props) {
           >
             {isCartLoading ? <Loader2 className="animate-spin" size={16} /> : "Begin My Ritual"}
           </button>
-          <div className="flex items-center justify-center gap-6 mt-6 text-muted-foreground">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mt-10 text-white/50">
             {[
               { icon: Shield, label: "30-Day Guarantee" },
-              { icon: Truck, label: "Free Shipping · 7–10 Days" },
+              { icon: Truck, label: "Free EU Shipping" },
               { icon: CreditCard, label: "Secure Payment" },
             ].map(b => (
-              <div key={b.label} className="flex items-center gap-1.5 text-[11px] tracking-wide uppercase">
+              <div key={b.label} className="flex items-center gap-1.5 text-[10px] tracking-[0.2em] uppercase">
                 <b.icon size={13} /> {b.label}
               </div>
             ))}
           </div>
-          <PaymentBadges className="mt-4" />
         </div>
       </section>
 
