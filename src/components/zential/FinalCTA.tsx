@@ -4,6 +4,21 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export function FinalCTA() {
   const ref = useScrollReveal<HTMLElement>();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const scrollToId = (id: string) => {
+    if (location.pathname !== "/") {
+      navigate(`/#${id}`);
+      return;
+    }
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      navigate(`/#${id}`);
+    }
+  };
   return (
     <section
       ref={ref}
