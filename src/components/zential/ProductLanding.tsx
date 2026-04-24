@@ -207,9 +207,12 @@ export function ProductLanding({ config }: Props) {
 
           {/* Product Info */}
           <div className="lg:sticky lg:top-32">
-            <p className="text-xs tracking-[0.25em] uppercase text-accent mb-3">Zential Pure</p>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2">{config.name}</h1>
-            <p className="text-muted-foreground text-lg mb-8">{config.subheadline}</p>
+            <div className="flex items-center gap-3 mb-5">
+              <span className="block w-8 h-px bg-foreground/40" />
+              <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60">Zential Pure</p>
+            </div>
+            <h1 className="font-serif italic text-[34px] md:text-[44px] lg:text-[52px] leading-[1.05] text-foreground mb-4 tracking-tight">{config.name}</h1>
+            <p className="text-foreground/65 text-[15px] md:text-base leading-relaxed mb-8 max-w-md">{config.subheadline}</p>
 
             <div className="grid grid-cols-2 gap-3 mb-8">
               {config.benefits.map(b => (
@@ -251,9 +254,9 @@ export function ProductLanding({ config }: Props) {
             )}
 
             <div className="flex items-baseline gap-3 mb-1">
-              <span className="text-3xl font-bold text-foreground">{sym}{bundlePrice.toFixed(2)}</span>
+              <span className="font-serif text-[34px] md:text-[40px] leading-none text-foreground">{sym}{bundlePrice.toFixed(2)}</span>
               {bundle.savePercent > 0 && (
-                <span className="text-xs font-semibold tracking-wider uppercase text-emerald bg-emerald/10 px-2.5 py-1 rounded-full">Save {bundle.savePercent}%</span>
+                <span className="text-[10px] font-semibold tracking-[0.15em] uppercase text-emerald bg-emerald/10 px-2.5 py-1 rounded-full">Save {bundle.savePercent}%</span>
               )}
             </div>
             {savings > 0 && <p className="text-sm text-emerald mb-6">You save {sym}{savings.toFixed(2)}</p>}
@@ -268,9 +271,13 @@ export function ProductLanding({ config }: Props) {
             <ScarcityBanner signal={meta.inventory_signal} />
 
             <div ref={ctaRef}>
-              <Button variant="ritual" size="xl" className="w-full text-sm" onClick={handleAdd} disabled={isCartLoading || !variant?.availableForSale}>
+              <button
+                onClick={handleAdd}
+                disabled={isCartLoading || !variant?.availableForSale}
+                className="w-full bg-[#2A211A] hover:bg-[#1A1410] text-white rounded-full uppercase tracking-[0.18em] text-[11px] font-medium py-5 transition-all duration-300 disabled:opacity-50 flex items-center justify-center"
+              >
                 {isCartLoading ? <Loader2 className="animate-spin" size={16} /> : "Add To Ritual"}
-              </Button>
+              </button>
             </div>
 
             <div className="flex items-center justify-center gap-6 mt-5 text-muted-foreground">
@@ -340,11 +347,14 @@ export function ProductLanding({ config }: Props) {
             <img src={config.problemImage || config.beforeAfter.before} alt="Lifestyle" className="w-full h-full object-cover" />
           </div>
           <div>
-            <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">The Real Issue</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">{config.problemReframe.headline}</h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="block w-8 h-px bg-foreground/40" />
+              <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60">The Real Issue</p>
+            </div>
+            <h2 className="font-serif italic text-[30px] md:text-[42px] leading-[1.05] text-foreground mb-6 tracking-tight">{config.problemReframe.headline}</h2>
+            <div className="space-y-4 text-foreground/65 leading-relaxed">
               {config.problemReframe.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
-              <p className="font-semibold text-foreground">{config.problemReframe.closing}</p>
+              <p className="font-medium text-foreground">{config.problemReframe.closing}</p>
             </div>
           </div>
         </div>
@@ -354,8 +364,8 @@ export function ProductLanding({ config }: Props) {
       <section className="section-padding gradient-pearl">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-14">
-            <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Technology</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Four Technologies. One Device.</h2>
+            <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Technology —</p>
+            <h2 className="font-serif italic text-[32px] md:text-[44px] leading-[1.05] text-foreground tracking-tight">Four technologies. One device.</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {config.techCards.map(card => (
@@ -463,8 +473,8 @@ export function ProductLanding({ config }: Props) {
       <section className="section-padding">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-14">
-            <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Your Ritual</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">The 5-Minute Ritual</h2>
+            <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Your Ritual —</p>
+            <h2 className="font-serif italic text-[32px] md:text-[44px] leading-[1.05] text-foreground tracking-tight">The five-minute ritual.</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {config.ritualSteps.map((s, i) => (
@@ -489,9 +499,9 @@ export function ProductLanding({ config }: Props) {
       <section className="section-padding gradient-pearl">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-14">
-            <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Consistent Use</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">What the Mechanism Produces</h2>
-            <p className="text-muted-foreground mt-4 max-w-sm mx-auto text-sm">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Consistent Use —</p>
+            <h2 className="font-serif italic text-[32px] md:text-[44px] leading-[1.05] text-foreground tracking-tight">What the mechanism produces.</h2>
+            <p className="text-foreground/60 mt-5 max-w-sm mx-auto text-sm leading-relaxed">
               Results are individual. These are the biological processes at work with daily use.
             </p>
           </div>
@@ -530,8 +540,8 @@ export function ProductLanding({ config }: Props) {
       <section className="section-padding">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-14">
-            <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Compare</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Why {config.name} Wins</h2>
+            <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Compare —</p>
+            <h2 className="font-serif italic text-[32px] md:text-[44px] leading-[1.05] text-foreground tracking-tight">Why {config.name}.</h2>
           </div>
           <div className="glass-card overflow-hidden max-w-4xl mx-auto overflow-x-auto">
             <table className="w-full text-sm">
@@ -572,8 +582,8 @@ export function ProductLanding({ config }: Props) {
       <section className="section-padding gradient-pearl">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-14">
-            <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Questions</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Frequently Asked</h2>
+            <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Questions —</p>
+            <h2 className="font-serif italic text-[32px] md:text-[44px] leading-[1.05] text-foreground tracking-tight">Frequently asked.</h2>
           </div>
           <div className="max-w-2xl mx-auto">
             <Accordion type="single" collapsible>
@@ -592,25 +602,29 @@ export function ProductLanding({ config }: Props) {
       <RelatedProducts currentHandle={config.handle} />
 
       {/* ── SECTION 9: FINAL CTA ── */}
-      <section className="section-padding">
+      <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32" style={{ backgroundColor: '#1A1714' }}>
         <div className="max-w-[1200px] mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">30 Days. Full Refund. No Questions.</h2>
-          <p className="text-muted-foreground text-lg mb-10 max-w-lg mx-auto">Email us at info@zentialpure.com. We refund. No forms, no photos, no return required. You have 30 days from delivery.</p>
-          <Button variant="ritual" size="xl" onClick={handleAdd} disabled={isCartLoading}>
+          <p className="text-[10px] tracking-[0.3em] uppercase text-white/50 mb-5">— The Promise —</p>
+          <h2 className="font-serif italic text-[36px] md:text-[56px] leading-[1.05] text-white mb-6 tracking-tight">30 days. Full refund.<br/>No questions.</h2>
+          <p className="text-white/60 text-base md:text-lg mb-10 max-w-lg mx-auto leading-relaxed">Email info@zentialpure.com. We refund. No forms, no photos, no return required.</p>
+          <button
+            onClick={handleAdd}
+            disabled={isCartLoading}
+            className="inline-flex items-center justify-center bg-white hover:bg-white/90 text-[#1A1714] rounded-full uppercase tracking-[0.18em] text-[11px] font-medium px-12 py-5 transition-all duration-300 disabled:opacity-50"
+          >
             {isCartLoading ? <Loader2 className="animate-spin" size={16} /> : "Begin My Ritual"}
-          </Button>
-          <div className="flex items-center justify-center gap-6 mt-6 text-muted-foreground">
+          </button>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mt-10 text-white/50">
             {[
               { icon: Shield, label: "30-Day Guarantee" },
-              { icon: Truck, label: "Free Shipping · 7–10 Days" },
+              { icon: Truck, label: "Free EU Shipping" },
               { icon: CreditCard, label: "Secure Payment" },
             ].map(b => (
-              <div key={b.label} className="flex items-center gap-1.5 text-[11px] tracking-wide uppercase">
+              <div key={b.label} className="flex items-center gap-1.5 text-[10px] tracking-[0.2em] uppercase">
                 <b.icon size={13} /> {b.label}
               </div>
             ))}
           </div>
-          <PaymentBadges className="mt-4" />
         </div>
       </section>
 
@@ -628,9 +642,13 @@ export function ProductLanding({ config }: Props) {
                 </p>
               </div>
             </div>
-            <Button variant="ritual" size="lg" onClick={handleAdd} disabled={isCartLoading} className="flex-shrink-0">
+            <button
+              onClick={handleAdd}
+              disabled={isCartLoading}
+              className="flex-shrink-0 bg-[#2A211A] hover:bg-[#1A1410] text-white rounded-full uppercase tracking-[0.18em] text-[10px] font-medium px-6 py-3.5 transition-all disabled:opacity-50"
+            >
               {isCartLoading ? <Loader2 className="animate-spin" size={14} /> : "Add To Ritual"}
-            </Button>
+            </button>
           </div>
         </div>
       </div>
