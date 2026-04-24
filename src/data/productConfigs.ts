@@ -83,6 +83,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   "body-lift": {
     handle: "body-lift",
     name: "Body Lift",
+    fallbackImage: productBodyLift,
     subheadline: "Microcurrent Facial Lift, Built for Daily Structure",
     benefits: [
       { icon: Sparkles, label: "Microcurrent Lift" },
