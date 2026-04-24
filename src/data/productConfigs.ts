@@ -27,6 +27,7 @@ export interface StudyCard {
 
 export interface ProductConfig {
   handle: string;
+  purchaseHandle?: string; // fallback Shopify handle when `handle` has no live product
   name: string;
   subheadline: string;
   isAccessory?: boolean;
@@ -82,6 +83,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   // ─── BODY LIFT ───
   "body-lift": {
     handle: "body-lift",
+    purchaseHandle: "color-light-import-micro-current-vibration-massager",
     name: "Body Lift",
     fallbackImage: productBodyLift,
     subheadline: "Microcurrent Facial Lift, Built for Daily Structure",
