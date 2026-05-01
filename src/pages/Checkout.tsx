@@ -11,7 +11,7 @@ export default function Checkout() {
   const navigate = useNavigate();
   const { items, isLoading, isSyncing, checkoutUrl, cartId, syncCart, updateQuantity, removeItem } = useCartStore();
   const [redirecting, setRedirecting] = useState(false);
-  const totalPrice = items.reduce((sum, item) => sum + parseFloat(item.price.amount) * item.quantity, 0);
+  const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) || 0) * item.quantity, 0);
   const currency = items[0]?.price.currencyCode || "EUR";
   const sym = currency === "EUR" ? "€" : currency;
 
@@ -25,7 +25,7 @@ export default function Checkout() {
     }
   }, [items.length, isLoading, isSyncing, navigate]);
 
-  // Build checkout href — rewrite custom domain to .myshopify.com so it hits Shopify checkout
+  // Build checkout href — ensure custom domain (checkout.zentialpure.com) is set and channel param stripped
   const buildCheckoutHref = (url: string) => {
     try {
       const parsed = new URL(url);
