@@ -18,11 +18,13 @@ import type { ProductConfig } from "@/data/productConfigs";
 
 type BundleKey = "single" | "ritual-set" | "pro-set";
 
-const bundles: { key: BundleKey; label: string; desc: string; addon: number; savePercent: number; saveAmount: number; badge?: string }[] = [
-  { key: "single", label: "Device Only", desc: "One-time purchase", addon: 0, savePercent: 0, saveAmount: 0 },
-  { key: "ritual-set", label: "Ritual Set", desc: "Device + Collagen Gel", addon: 18, savePercent: 0, saveAmount: 0, badge: "Most Popular" },
-  { key: "pro-set", label: "Pro Set", desc: "Device + Gel & PDRN Mask", addon: 36, savePercent: 0, saveAmount: 0, badge: "Best Value" },
-];
+function buildBundles(gelPrice: number, maskPrice: number) {
+  return [
+    { key: "single"     as BundleKey, label: "Device Only", desc: "One-time purchase",        addon: 0,                    savePercent: 0, saveAmount: 0, badge: undefined },
+    { key: "ritual-set" as BundleKey, label: "Ritual Set",  desc: "Device + Collagen Gel",    addon: gelPrice,             savePercent: 0, saveAmount: 0, badge: "Most Popular" as const },
+    { key: "pro-set"    as BundleKey, label: "Pro Set",     desc: "Device + Gel & PDRN Pads", addon: gelPrice + maskPrice, savePercent: 0, saveAmount: 0, badge: "Best Value"   as const },
+  ];
+}
 
 interface Props {
   config: ProductConfig;
@@ -35,6 +37,8 @@ export function ProductLanding({ config }: Props) {
   const [selectedBundle, setSelectedBundle] = useState<BundleKey>("ritual-set");
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
+  const [gelPrice, setGelPrice] = useState(18);
+  const [maskPrice, setMaskPrice] = useState(18);
   const ctaRef = useRef<HTMLDivElement>(null);
   const addItem = useCartStore(s => s.addItem);
   const isCartLoading = useCartStore(s => s.isLoading);
@@ -50,6 +54,17 @@ export function ProductLanding({ config }: Props) {
       setLoading(false);
     })();
   }, [config.handle, config.purchaseHandle]);
+
+  useEffect(() => {
+    fetchProductByHandle("medicube-collagen-elastic-jelly-moisturizing-cream").then(p => {
+      const price = parseFloat(p?.variants?.edges?.[0]?.node?.price?.amount ?? "");
+      if (!isNaN(price)) setGelPrice(price);
+    }).catch(() => {});
+    fetchProductByHandle("collagen-eye-mask").then(p => {
+      const price = parseFloat(p?.variants?.edges?.[0]?.node?.price?.amount ?? "");
+      if (!isNaN(price)) setMaskPrice(price);
+    }).catch(() => {});
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -95,6 +110,7 @@ export function ProductLanding({ config }: Props) {
     }
   };
 
+  const bundles = buildBundles(gelPrice, maskPrice);
   const bundle = bundles.find(b => b.key === selectedBundle)!;
   const bundlePrice = basePrice + bundle.addon;
   const savings = bundle.saveAmount;
@@ -105,7 +121,7 @@ export function ProductLanding({ config }: Props) {
       product: { node: product },
       variantId: variant.id,
       variantTitle: variant.title,
-      price: { amount: bundlePrice.toFixed(2), currencyCode: currency },
+      price: variant.price,
       quantity: 1,
       selectedOptions: variant.selectedOptions || [],
     });
@@ -124,21 +140,17 @@ export function ProductLanding({ config }: Props) {
     // Auto-add Collagen Face Gel for Ritual Set and Pro Set
     if (selectedBundle === "ritual-set" || selectedBundle === "pro-set") {
       try {
-        const gelProduct = await fetchProductByHandle("medicube-collagen-elastic-jelly-moisturizing-cream");
-        if (gelProduct) {
-          const gelVariant = gelProduct.variants?.edges?.[0]?.node;
-          if (gelVariant) {
-            await addItem({
-              product: gelProduct,
-              variantId: gelVariant.id,
-              variantTitle: gelVariant.title,
-              price: { amount: "0.00", currencyCode: currency },
-              quantity: 1,
-              selectedOptions: gelVariant.selectedOptions || [],
-            });
-          } else {
-            toast.error("Collagen Gel couldn't be added — please add it manually.", { position: "top-center" });
-          }
+        const gelFetched = await fetchProductByHandle("medicube-collagen-elastic-jelly-moisturizing-cream");
+        const gelVariant = gelFetched?.variants?.edges?.[0]?.node;
+        if (gelVariant) {
+          await addItem({
+            product: gelFetched,
+            variantId: gelVariant.id,
+            variantTitle: gelVariant.title,
+            price: gelVariant.price,
+            quantity: 1,
+            selectedOptions: gelVariant.selectedOptions || [],
+          });
         } else {
           toast.error("Collagen Gel couldn't be added — please add it manually.", { position: "top-center" });
         }
@@ -151,21 +163,17 @@ export function ProductLanding({ config }: Props) {
     // Auto-add PDRN Mask for Pro Set
     if (selectedBundle === "pro-set") {
       try {
-        const maskProduct = await fetchProductByHandle("collagen-eye-mask");
-        if (maskProduct) {
-          const maskVariant = maskProduct.variants?.edges?.[0]?.node;
-          if (maskVariant) {
-            await addItem({
-              product: maskProduct,
-              variantId: maskVariant.id,
-              variantTitle: maskVariant.title,
-              price: { amount: "0.00", currencyCode: currency },
-              quantity: 1,
-              selectedOptions: maskVariant.selectedOptions || [],
-            });
-          } else {
-            toast.error("PDRN Mask couldn't be added — please add it manually.", { position: "top-center" });
-          }
+        const maskFetched = await fetchProductByHandle("collagen-eye-mask");
+        const maskVariant = maskFetched?.variants?.edges?.[0]?.node;
+        if (maskVariant) {
+          await addItem({
+            product: maskFetched,
+            variantId: maskVariant.id,
+            variantTitle: maskVariant.title,
+            price: maskVariant.price,
+            quantity: 1,
+            selectedOptions: maskVariant.selectedOptions || [],
+          });
         } else {
           toast.error("PDRN Mask couldn't be added — please add it manually.", { position: "top-center" });
         }
