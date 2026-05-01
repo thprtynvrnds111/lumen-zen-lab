@@ -64,7 +64,6 @@ const ROUTES = [
   '/ritual-guide/eye-activator',
   '/ritual-guide/skin-pulse',
   '/ritual-guide/frequency-wand',
-  '/collection',
 ];
 
 // ─── Inject helmet head tags into the HTML template ───────────────────────────

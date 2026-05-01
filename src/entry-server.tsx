@@ -46,7 +46,6 @@ const ClinicVsHome         = lazy(() => import("./pages/ClinicVsHome"));
 const FacialMuscleTraining = lazy(() => import("./pages/FacialMuscleTraining"));
 const TechIontophoresis    = lazy(() => import("./pages/TechIontophoresis"));
 const ThankYou         = lazy(() => import("./pages/ThankYou"));
-const Collection       = lazy(() => import("./pages/Collection"));
 const Quiz             = lazy(() => import("./pages/Quiz"));
 const QuizResult       = lazy(() => import("./pages/QuizResult"));
 const NotFound         = lazy(() => import("./pages/NotFound"));
@@ -92,7 +91,6 @@ function ServerApp() {
         <Route path="/facial-muscle-training"                   element={<FacialMuscleTraining />} />
         <Route path="/technology/iontophoresis"                 element={<TechIontophoresis />} />
         <Route path="/thank-you"                                element={<ThankYou />} />
-        <Route path="/collection"                               element={<Collection />} />
         <Route path="/quiz"                                     element={<Quiz />} />
         <Route path="/quiz/result"                              element={<QuizResult />} />
         <Route path="*"                                         element={<NotFound />} />

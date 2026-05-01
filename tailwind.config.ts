@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["'DM Sans'", "'Inter'", "system-ui", "-apple-system", "sans-serif"],
-        serif: ["'Lora'", "Georgia", "serif"],
+        sans: ["'Poppins'", "'Inter'", "system-ui", "-apple-system", "sans-serif"],
+        serif: ["'Lora'", "'Cormorant Garamond'", "Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
