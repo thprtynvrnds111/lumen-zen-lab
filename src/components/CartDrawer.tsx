@@ -9,9 +9,9 @@ const GEL_HANDLE = "medicube-collagen-elastic-jelly-moisturizing-cream";
 const ACCESSORY_HANDLES = [GEL_HANDLE, "collagen-eye-mask"];
 
 export function CartDrawer() {
-  const { items, isLoading, isSyncing, isOpen, openCart, closeCart, updateQuantity, removeItem, syncCart, addItem, checkoutUrl } = useCartStore();
+  const { items, isLoading, isSyncing, isOpen, openCart, closeCart, updateQuantity, removeItem, syncCart, addItem } = useCartStore();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) || 0) * item.quantity, 0);
+  const totalPrice = items.reduce((sum, item) => sum + parseFloat(item.price.amount) * item.quantity, 0);
   const shippingProgress = Math.min((totalPrice / FREE_SHIPPING_THRESHOLD) * 100, 100);
   const freeShippingUnlocked = totalPrice >= FREE_SHIPPING_THRESHOLD;
   const amountToFreeShipping = (FREE_SHIPPING_THRESHOLD - totalPrice).toFixed(2);
@@ -48,7 +48,7 @@ export function CartDrawer() {
   const [redirecting, setRedirecting] = useState(false);
 
   const handleCheckout = () => {
-    if (items.length === 0 || !checkoutUrl) return;
+    if (items.length === 0) return;
     setRedirecting(true);
 
     // Meta Pixel: InitiateCheckout
@@ -59,7 +59,13 @@ export function CartDrawer() {
         currency: 'EUR',
       });
     }
-    window.location.href = checkoutUrl;
+    // Build permalink-style checkout URL using numeric variant IDs
+    const lines = items.map(item => {
+      // Extract numeric ID from GID format: gid://shopify/ProductVariant/123
+      const numericId = item.variantId.split('/').pop();
+      return `${numericId}:${item.quantity}`;
+    }).join(',');
+    window.location.href = `https://checkout.zentialpure.com/cart/${lines}`;
   };
 
   return (
@@ -121,7 +127,7 @@ export function CartDrawer() {
                   <div className="w-[72px] h-[72px] bg-secondary/40 rounded-lg overflow-hidden flex-shrink-0">
                     {(() => {
                       // Find the selected variant's image
-                      const variant = item.product.node.variants?.edges?.find(v => v.node.id === item.variantId);
+                      const variant = item.product.node.variants.edges.find(v => v.node.id === item.variantId);
                       const variantImg = variant?.node?.image;
                       const edges = item.product.node.images?.edges;
                       const img = variantImg || edges?.[1]?.node || edges?.[0]?.node;
@@ -220,16 +226,14 @@ export function CartDrawer() {
             </p>
             <button
               onClick={handleCheckout}
-              disabled={isLoading || isSyncing || redirecting || !checkoutUrl}
+              disabled={isLoading || isSyncing || redirecting}
               className="w-full bg-foreground text-background py-3.5 rounded-full text-sm font-semibold tracking-[0.15em] uppercase hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
             >
-              {redirecting ? (
+              {isLoading || isSyncing || redirecting ? (
                 <>
                   <Loader2 className="animate-spin" size={16} />
-                  <span>Redirecting…</span>
+                  {redirecting && <span>Redirecting to secure checkout…</span>}
                 </>
-              ) : isLoading || isSyncing || !checkoutUrl ? (
-                <Loader2 className="animate-spin" size={16} />
               ) : (
                 "CHECKOUT"
               )}

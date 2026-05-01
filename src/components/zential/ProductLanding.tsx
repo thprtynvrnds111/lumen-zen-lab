@@ -18,16 +18,11 @@ import type { ProductConfig } from "@/data/productConfigs";
 
 type BundleKey = "single" | "ritual-set" | "pro-set";
 
-const GEL_HANDLE = "medicube-collagen-elastic-jelly-moisturizing-cream";
-const MASK_HANDLE = "collagen-eye-mask";
-
-function buildBundles(gelPrice: number, maskPrice: number) {
-  return [
-    { key: "single"     as BundleKey, label: "Device Only", desc: "One-time purchase",        addon: 0,                    badge: undefined },
-    { key: "ritual-set" as BundleKey, label: "Ritual Set",  desc: "Device + Collagen Gel",    addon: gelPrice,             badge: "Most Popular" },
-    { key: "pro-set"    as BundleKey, label: "Pro Set",     desc: "Device + Gel & PDRN Pads", addon: gelPrice + maskPrice, badge: "Best Value" },
-  ];
-}
+const bundles: { key: BundleKey; label: string; desc: string; addon: number; savePercent: number; saveAmount: number; badge?: string }[] = [
+  { key: "single", label: "Device Only", desc: "One-time purchase", addon: 0, savePercent: 0, saveAmount: 0 },
+  { key: "ritual-set", label: "Ritual Set", desc: "Device + Collagen Gel", addon: 18, savePercent: 0, saveAmount: 0, badge: "Most Popular" },
+  { key: "pro-set", label: "Pro Set", desc: "Device + Gel & PDRN Mask", addon: 36, savePercent: 0, saveAmount: 0, badge: "Best Value" },
+];
 
 interface Props {
   config: ProductConfig;
@@ -40,8 +35,6 @@ export function ProductLanding({ config }: Props) {
   const [selectedBundle, setSelectedBundle] = useState<BundleKey>("ritual-set");
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
-  const [gelPrice, setGelPrice] = useState(18);
-  const [maskPrice, setMaskPrice] = useState(18);
   const ctaRef = useRef<HTMLDivElement>(null);
   const addItem = useCartStore(s => s.addItem);
   const isCartLoading = useCartStore(s => s.isLoading);
@@ -53,21 +46,10 @@ export function ProductLanding({ config }: Props) {
       if (!p && config.purchaseHandle) {
         p = await fetchProductByHandle(config.purchaseHandle).catch(() => null);
       }
-      setProduct(p?.node ?? null);
+      setProduct(p);
       setLoading(false);
     })();
   }, [config.handle, config.purchaseHandle]);
-
-  useEffect(() => {
-    fetchProductByHandle(GEL_HANDLE).then(p => {
-      const price = parseFloat(p?.node?.variants?.edges?.[0]?.node?.price?.amount ?? "");
-      if (!isNaN(price)) setGelPrice(price);
-    }).catch(() => {});
-    fetchProductByHandle(MASK_HANDLE).then(p => {
-      const price = parseFloat(p?.node?.variants?.edges?.[0]?.node?.price?.amount ?? "");
-      if (!isNaN(price)) setMaskPrice(price);
-    }).catch(() => {});
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -113,17 +95,17 @@ export function ProductLanding({ config }: Props) {
     }
   };
 
-  const bundles = buildBundles(gelPrice, maskPrice);
   const bundle = bundles.find(b => b.key === selectedBundle)!;
   const bundlePrice = basePrice + bundle.addon;
+  const savings = bundle.saveAmount;
 
   const handleAdd = async () => {
-    if (!variant || isCartLoading) return;
+    if (!variant) return;
     await addItem({
       product: { node: product },
       variantId: variant.id,
       variantTitle: variant.title,
-      price: variant.price,
+      price: { amount: bundlePrice.toFixed(2), currencyCode: currency },
       quantity: 1,
       selectedOptions: variant.selectedOptions || [],
     });
@@ -142,18 +124,21 @@ export function ProductLanding({ config }: Props) {
     // Auto-add Collagen Face Gel for Ritual Set and Pro Set
     if (selectedBundle === "ritual-set" || selectedBundle === "pro-set") {
       try {
-        const gelFetched = await fetchProductByHandle("medicube-collagen-elastic-jelly-moisturizing-cream");
-        const gelRaw = gelFetched?.node;
-        const gelVariant = gelRaw?.variants?.edges?.[0]?.node;
-        if (gelVariant) {
-          await addItem({
-            product: { node: gelRaw },
-            variantId: gelVariant.id,
-            variantTitle: gelVariant.title,
-            price: gelVariant.price,
-            quantity: 1,
-            selectedOptions: gelVariant.selectedOptions || [],
-          });
+        const gelProduct = await fetchProductByHandle("medicube-collagen-elastic-jelly-moisturizing-cream");
+        if (gelProduct) {
+          const gelVariant = gelProduct.variants?.edges?.[0]?.node;
+          if (gelVariant) {
+            await addItem({
+              product: gelProduct,
+              variantId: gelVariant.id,
+              variantTitle: gelVariant.title,
+              price: { amount: "0.00", currencyCode: currency },
+              quantity: 1,
+              selectedOptions: gelVariant.selectedOptions || [],
+            });
+          } else {
+            toast.error("Collagen Gel couldn't be added — please add it manually.", { position: "top-center" });
+          }
         } else {
           toast.error("Collagen Gel couldn't be added — please add it manually.", { position: "top-center" });
         }
@@ -163,27 +148,30 @@ export function ProductLanding({ config }: Props) {
       }
     }
 
-    // Auto-add PDRN Pads for Pro Set
+    // Auto-add PDRN Mask for Pro Set
     if (selectedBundle === "pro-set") {
       try {
-        const maskFetched = await fetchProductByHandle("collagen-eye-mask");
-        const maskRaw = maskFetched?.node;
-        const maskVariant = maskRaw?.variants?.edges?.[0]?.node;
-        if (maskVariant) {
-          await addItem({
-            product: { node: maskRaw },
-            variantId: maskVariant.id,
-            variantTitle: maskVariant.title,
-            price: maskVariant.price,
-            quantity: 1,
-            selectedOptions: maskVariant.selectedOptions || [],
-          });
+        const maskProduct = await fetchProductByHandle("collagen-eye-mask");
+        if (maskProduct) {
+          const maskVariant = maskProduct.variants?.edges?.[0]?.node;
+          if (maskVariant) {
+            await addItem({
+              product: maskProduct,
+              variantId: maskVariant.id,
+              variantTitle: maskVariant.title,
+              price: { amount: "0.00", currencyCode: currency },
+              quantity: 1,
+              selectedOptions: maskVariant.selectedOptions || [],
+            });
+          } else {
+            toast.error("PDRN Mask couldn't be added — please add it manually.", { position: "top-center" });
+          }
         } else {
-          toast.error("PDRN Pads couldn't be added — please add it manually.", { position: "top-center" });
+          toast.error("PDRN Mask couldn't be added — please add it manually.", { position: "top-center" });
         }
       } catch (e) {
-        console.error("Failed to auto-add PDRN Pads:", e);
-        toast.error("PDRN Pads couldn't be added — please add it manually.", { position: "top-center" });
+        console.error("Failed to auto-add PDRN Mask:", e);
+        toast.error("PDRN Mask couldn't be added — please add it manually.", { position: "top-center" });
       }
     }
 
@@ -245,35 +233,7 @@ export function ProductLanding({ config }: Props) {
               ))}
             </div>
 
-            {/* Colour variant selector */}
-            {hasMultipleVariants && (
-              <div className="mb-6">
-                <p className="text-[10px] tracking-[0.25em] uppercase text-foreground/55 mb-3">
-                  Colour —{" "}
-                  <span className="text-foreground/80">
-                    {(() => {
-                      const raw = variants[selectedVariantIdx]?.node?.selectedOptions?.find((o: any) => o.name === "Color")?.value || variants[selectedVariantIdx]?.node?.title;
-                      return colorLabelMap[raw] || raw;
-                    })()}
-                  </span>
-                </p>
-                <div className="flex gap-2.5">
-                  {variants.map((v: any, idx: number) => {
-                    const colorVal = v.node.selectedOptions?.find((o: any) => o.name === "Color")?.value || v.node.title;
-                    const swatchClass = colorSwatchMap[colorVal] || "bg-gray-200";
-                    const isSelected = idx === selectedVariantIdx;
-                    return (
-                      <button
-                        key={v.node.id}
-                        onClick={() => handleVariantChange(idx)}
-                        title={colorLabelMap[colorVal] || colorVal}
-                        className={`w-9 h-9 rounded-full border-2 transition-all ${swatchClass} ${isSelected ? "border-foreground shadow-md scale-110" : "border-transparent hover:border-foreground/40"}`}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            )}
+
 
             {/* Bundle Selector – top buttons, single source of truth */}
             {!config.isAccessory && (
@@ -303,11 +263,12 @@ export function ProductLanding({ config }: Props) {
 
             <div className="flex items-baseline gap-3 mb-1">
               <span className="font-serif text-[34px] md:text-[40px] leading-none text-foreground">{sym}{bundlePrice.toFixed(2)}</span>
-              {bundle.addon > 0 && (
-                <span className="text-[10px] font-semibold tracking-[0.15em] uppercase text-emerald bg-emerald/10 px-2.5 py-1 rounded-full">Includes addons</span>
+              {bundle.savePercent > 0 && (
+                <span className="text-[10px] font-semibold tracking-[0.15em] uppercase text-emerald bg-emerald/10 px-2.5 py-1 rounded-full">Save {bundle.savePercent}%</span>
               )}
             </div>
-            <div className="mb-6" />
+            {savings > 0 && <p className="text-sm text-emerald mb-6">You save {sym}{savings.toFixed(2)}</p>}
+            {savings === 0 && <div className="mb-6" />}
 
             {meta.trust_statement && (
               <p className="text-xs text-muted-foreground/70 italic text-center mb-4 leading-relaxed">
@@ -721,7 +682,7 @@ export function ProductLanding({ config }: Props) {
                 <p className="font-semibold text-foreground text-sm truncate">{config.name}</p>
                 <p className="text-xs text-muted-foreground">
                   {sym}{bundlePrice.toFixed(2)}
-                  {bundle.addon > 0 && <span className="ml-1.5 text-emerald">+addons</span>}
+                  {bundle.savePercent > 0 && <span className="ml-1.5 text-emerald">Save {bundle.savePercent}%</span>}
                 </p>
               </div>
             </div>
