@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import zentialFlower from "@/assets/zential-flower.webp";
+import { ZentialLogo } from "@/components/zential/ZentialLogo";
 import { Search, Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CartDrawer } from "@/components/CartDrawer";
@@ -55,6 +55,10 @@ export function Header() {
             >
               Shop <ChevronDown size={12} className={cn("transition-transform", shopOpen && "rotate-180")} />
             </button>
+            <Link to="/collection"
+              className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
+              Collection
+            </Link>
             <Link to="/#ritual"
               onClick={(e) => handleHashClick(e, "/#ritual")}
               className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
@@ -68,10 +72,8 @@ export function Header() {
           </button>
 
           {/* Center logo */}
-          <Link to="/" className="absolute left-1/2 -translate-x-1/2">
-            <span className="text-sm md:text-lg tracking-[0.2em] md:tracking-[0.3em] uppercase font-semibold inline-flex items-center whitespace-nowrap">
-              Zential<img src={zentialFlower} alt="" width={80} height={80} className="inline-block h-[1.6em] md:h-[2em] w-auto ml-1 md:ml-1.5 opacity-80 animate-flower-breathe" />
-            </span>
+          <Link to="/" className="absolute left-1/2 -translate-x-1/2" aria-label="Zential Pure — Home">
+            <ZentialLogo size="md" variant="dark" animateMark />
           </Link>
 
           {/* Right icons */}
@@ -115,6 +117,8 @@ export function Header() {
               <Link to="/product/eye-massage" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Eyes & Fine Lines</Link>
               <Link to="/body-lift" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Body & Tissue</Link>
             </div>
+            <Link to="/collection" onClick={() => setMobileOpen(false)}
+              className="block text-sm tracking-[0.1em] uppercase text-foreground">Collection</Link>
             <Link to="/#ritual" onClick={(e) => { handleHashClick(e, "/#ritual"); setMobileOpen(false); }}
               className="block text-sm tracking-[0.1em] uppercase text-foreground">Ritual</Link>
             <Link to="/quiz" onClick={() => setMobileOpen(false)}
