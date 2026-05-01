@@ -27,19 +27,19 @@ const PRODUCT_SEO: Record<string, { title: string; description: string }> = {
   },
   "electric-guasha-massager": {
     title: "Electric Gua Sha Device — Gua Sha Frequency | Zential Pure",
-    description: "Electric gua sha with built-in microcurrent frequency. Stimulates lymphatic drainage, supports facial sculpting. 5-minute morning ritual. €84.",
+    description: "Electric gua sha with built-in microcurrent frequency. Stimulates lymphatic drainage, supports facial sculpting. 5-minute morning ritual. €88.",
   },
   "electric-micro-current": {
     title: "Skin Pulse — Daily Microcurrent Face Device | Zential Pure",
-    description: "Microcurrent that stimulates ATP production and re-educates facial muscles. The entry point to consistent at-home facial structure. €70.",
+    description: "Microcurrent that stimulates ATP production and re-educates facial muscles. The entry point to consistent at-home facial structure. €88.",
   },
   "facial-beauty-tools-and-ems-beauty-equipment": {
     title: "Sculpt Wand — Jaw Toning EMS Device | Zential Pure",
-    description: "Precision EMS delivers targeted electrical pulses to the jawline and cheekbones. Defined facial contours with consistent daily use. €75.",
+    description: "Precision EMS delivers targeted electrical pulses to the jawline and cheekbones. Defined facial contours with consistent daily use. €88.",
   },
   "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": {
     title: "Frame Pulse — Red Light Eye Device | Zential Pure",
-    description: "Red light at 630–660nm targeting the eye area and upper face. Stimulates circulation, supports a brighter, more rested appearance. €112.",
+    description: "Red light at 630–660nm targeting the eye area and upper face. Stimulates circulation, supports a brighter, more rested appearance. €128.",
   },
   "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening": {
     title: "Face Lift Device — Red Light & EMS | Zential Pure",
@@ -47,7 +47,7 @@ const PRODUCT_SEO: Record<string, { title: string; description: string }> = {
   },
   "portable-ems-microcurrent-facial-beauty-device": {
     title: "Frequency Wand Pro — Clinic-Precision EMS | Zential Pure",
-    description: "Advanced EMS and microcurrent for deep facial muscle toning. Clinic-precision output at home. The replacement for repeated clinic sessions. €179.",
+    description: "Advanced EMS and microcurrent for deep facial muscle toning. Clinic-precision output at home. The replacement for repeated clinic sessions. €147.",
   },
   "medicube-collagen-elastic-jelly-moisturizing-cream": {
     title: "Collagen Face Gel — Conductive Device Gel | Zential Pure",
@@ -65,12 +65,12 @@ const PRODUCT_PRICES: Record<string, string> = {
   "body-lift": "88.00",
   "eye-massage": "88.00",
   "color-light-import-micro-current-vibration-massager": "147.00",
-  "electric-guasha-massager": "84.00",
-  "electric-micro-current": "70.00",
-  "facial-beauty-tools-and-ems-beauty-equipment": "75.00",
-  "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": "112.00",
+  "electric-guasha-massager": "88.00",
+  "electric-micro-current": "88.00",
+  "facial-beauty-tools-and-ems-beauty-equipment": "88.00",
+  "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": "128.00",
   "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening": "88.00",
-  "portable-ems-microcurrent-facial-beauty-device": "179.00",
+  "portable-ems-microcurrent-facial-beauty-device": "147.00",
   "medicube-collagen-elastic-jelly-moisturizing-cream": "34.00",
   "collagen-eye-mask": "29.00",
 };
@@ -107,9 +107,10 @@ export default function ProductDetail() {
   useEffect(() => {
     if (!handle) return;
     fetchProductByHandle(handle).then(p => {
-      const img = p?.images?.edges?.[0]?.node?.url;
+      const raw = p?.node;
+      const img = raw?.images?.edges?.[0]?.node?.url;
       if (img) setOgImage(img);
-      const price = p?.variants?.edges?.[0]?.node?.price?.amount;
+      const price = raw?.variants?.edges?.[0]?.node?.price?.amount;
       if (price) setProductPrice(price);
     }).catch(() => {});
   }, [handle]);
