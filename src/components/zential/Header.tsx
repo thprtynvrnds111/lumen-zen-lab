@@ -6,12 +6,9 @@ import { cn } from "@/lib/utils";
 import { CartDrawer } from "@/components/CartDrawer";
 import { SearchOverlay } from "@/components/zential/SearchOverlay";
 import { MegaMenu } from "@/components/zential/MegaMenu";
-
-const rightNavItems = [
-  { label: "Quiz", href: "/quiz" },
-  { label: "Journal", href: "/journal" },
-  { label: "Support", href: "/support" },
-];
+import { LanguageSwitcher } from "@/components/zential/LanguageSwitcher";
+import { useLanguageStore } from "@/stores/languageStore";
+import { t } from "@/lib/i18n";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -19,6 +16,7 @@ export function Header() {
   const [shopOpen, setShopOpen] = useState(false);
   const closeTimer = useRef<NodeJS.Timeout | null>(null);
   const location = useLocation();
+  const { lang } = useLanguageStore();
 
   const openMega = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -53,16 +51,16 @@ export function Header() {
                 shopOpen ? "text-foreground" : "text-muted-foreground hover:text-foreground"
               )}
             >
-              Shop <ChevronDown size={12} className={cn("transition-transform", shopOpen && "rotate-180")} />
+              {t('nav', 'shop', lang)} <ChevronDown size={12} className={cn("transition-transform", shopOpen && "rotate-180")} />
             </button>
             <Link to="/collection"
               className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
-              Collection
+              {t('nav', 'collection', lang)}
             </Link>
             <Link to="/#ritual"
               onClick={(e) => handleHashClick(e, "/#ritual")}
               className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
-              Ritual
+              {t('nav', 'ritual', lang)}
             </Link>
           </nav>
 
@@ -79,13 +77,20 @@ export function Header() {
           {/* Right icons */}
           <div className="flex items-center gap-5">
             <nav className="hidden lg:flex items-center gap-6">
-              {rightNavItems.map(item => (
-                <Link key={item.label} to={item.href}
-                  className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
-                  {item.label}
-                </Link>
-              ))}
+              <Link to="/quiz"
+                className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
+                {t('nav', 'quiz', lang)}
+              </Link>
+              <Link to="/journal"
+                className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
+                {t('nav', 'journal', lang)}
+              </Link>
+              <Link to="/support"
+                className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
+                {t('nav', 'support', lang)}
+              </Link>
             </nav>
+            <LanguageSwitcher />
             <button onClick={() => setSearchOpen(true)} aria-label="Search" className="text-muted-foreground hover:text-foreground transition-colors">
               <Search size={18} />
             </button>
@@ -109,7 +114,7 @@ export function Header() {
           <nav className="lg:hidden border-t border-border/30 bg-background px-6 py-5 space-y-4">
             <Link to="/#devices" onClick={(e) => { handleHashClick(e, "/#devices"); setMobileOpen(false); }}
               className="block text-sm tracking-[0.1em] uppercase text-foreground">
-              Shop Devices
+              {t('nav', 'shopDevices', lang)}
             </Link>
             <div className="pl-4 space-y-2.5 border-l border-border/30">
               <Link to="/product/portable-ems-microcurrent-facial-beauty-device" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Lift & Contour</Link>
@@ -118,15 +123,28 @@ export function Header() {
               <Link to="/body-lift" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Body & Tissue</Link>
             </div>
             <Link to="/collection" onClick={() => setMobileOpen(false)}
-              className="block text-sm tracking-[0.1em] uppercase text-foreground">Collection</Link>
+              className="block text-sm tracking-[0.1em] uppercase text-foreground">
+              {t('nav', 'collection', lang)}
+            </Link>
             <Link to="/#ritual" onClick={(e) => { handleHashClick(e, "/#ritual"); setMobileOpen(false); }}
-              className="block text-sm tracking-[0.1em] uppercase text-foreground">Ritual</Link>
+              className="block text-sm tracking-[0.1em] uppercase text-foreground">
+              {t('nav', 'ritual', lang)}
+            </Link>
             <Link to="/quiz" onClick={() => setMobileOpen(false)}
-              className="block text-sm tracking-[0.1em] uppercase text-foreground">Skin Quiz</Link>
+              className="block text-sm tracking-[0.1em] uppercase text-foreground">
+              {t('nav', 'quiz', lang)}
+            </Link>
             <Link to="/journal" onClick={() => setMobileOpen(false)}
-              className="block text-sm tracking-[0.1em] uppercase text-foreground">Journal</Link>
+              className="block text-sm tracking-[0.1em] uppercase text-foreground">
+              {t('nav', 'journal', lang)}
+            </Link>
             <Link to="/support" onClick={() => setMobileOpen(false)}
-              className="block text-sm tracking-[0.1em] uppercase text-foreground">Support</Link>
+              className="block text-sm tracking-[0.1em] uppercase text-foreground">
+              {t('nav', 'support', lang)}
+            </Link>
+            <div className="pt-1 border-t border-border/20">
+              <LanguageSwitcher />
+            </div>
           </nav>
         )}
       </header>

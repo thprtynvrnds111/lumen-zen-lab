@@ -1,26 +1,29 @@
 import { useState, useEffect } from "react";
+import { useLanguageStore } from "@/stores/languageStore";
+import { t } from "@/lib/i18n";
 
-const messages = [
-  "30-Day Ritual Guarantee — No Friction. No Questions.",
-  "Free Shipping on Orders Over €75",
-  "Science-backed. Built for your daily ritual.",
-  "Delivered in 3–7 Business Days Across the EU",
-  "Clinic precision. Home convenience. Daily results.",
-];
+const MESSAGE_KEYS = [
+  'guarantee',
+  'shipping',
+  'science',
+  'delivery',
+  'clinic',
+] as const;
 
 export function AnnouncementBar() {
   const [index, setIndex] = useState(0);
+  const { lang } = useLanguageStore();
 
   useEffect(() => {
-    const timer = setInterval(() => setIndex(i => (i + 1) % messages.length), 5000);
+    const timer = setInterval(() => setIndex(i => (i + 1) % MESSAGE_KEYS.length), 5000);
     return () => clearInterval(timer);
   }, []);
 
   return (
     <div className="bg-foreground text-background py-2.5 text-center overflow-hidden">
-      <p className="text-xs tracking-[0.2em] uppercase font-light" key={index}
+      <p className="text-xs tracking-[0.2em] uppercase font-light" key={`${index}-${lang}`}
         style={{ animation: 'slide-announcement 5s ease-in-out' }}>
-        {messages[index]}
+        {t('announcement', MESSAGE_KEYS[index], lang)}
       </p>
     </div>
   );
