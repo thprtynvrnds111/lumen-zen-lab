@@ -36,7 +36,7 @@ export function HeroSection() {
   }, [cycleImage]);
 
   return (
-    <section className="flex flex-col md:flex-row md:min-h-[calc(100vh-88px)]" style={{ backgroundColor: '#F7F4F0' }}>
+    <section className="flex flex-col md:flex-row md:min-h-[calc(100vh-88px)] bg-background">
       {/* Left — Image */}
       <div
         className="w-full md:w-[55%] relative overflow-hidden h-[60vh] md:h-auto"
@@ -73,14 +73,14 @@ export function HeroSection() {
             transition: 'opacity 0.7s ease-out 0.2s, transform 0.7s ease-out 0.2s',
           }}
         >
-          <span className="h-px w-6" style={{ backgroundColor: '#9B5A2E', opacity: 0.45 }} />
-          <p className="text-[10px] md:text-[11px] tracking-[0.32em] uppercase" style={{ color: '#9B5A2E' }}>
+          <span className="h-px w-6" style={{ backgroundColor: '#e8e8ed' }} />
+          <p className="text-muted-foreground text-[10px] md:text-[11px] tracking-[0.32em] uppercase">
             At-Home Facial Technology
           </p>
         </div>
 
         <h1
-          className="font-serif italic text-[40px] md:text-[56px] lg:text-[68px] leading-[1.02] tracking-[-0.01em] text-foreground mb-5 text-center md:text-left text-balance"
+          className="font-sans font-bold text-[40px] md:text-[56px] lg:text-[68px] leading-[1.04] tracking-tight text-foreground mb-5 text-center md:text-left text-balance"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(20px)',
@@ -91,9 +91,8 @@ export function HeroSection() {
         </h1>
 
         <p
-          className="text-[15px] md:text-base leading-relaxed max-w-md mb-8 text-center md:text-left"
+          className="text-muted-foreground text-[15px] md:text-base leading-relaxed max-w-md mb-8 text-center md:text-left"
           style={{
-            color: '#6B5A4A',
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(14px)',
             transition: 'opacity 0.8s ease-out 0.45s, transform 0.8s ease-out 0.45s',
@@ -113,10 +112,10 @@ export function HeroSection() {
         >
           <div className="flex gap-0.5">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} size={14} fill="#C6A07C" strokeWidth={0} style={{ color: '#C6A07C' }} />
+              <Star key={i} size={14} fill="#f69251" style={{ color: '#f69251' }} />
             ))}
           </div>
-          <span className="text-xs tracking-wide" style={{ color: '#6B5A4A' }}>
+          <span className="text-muted-foreground text-xs tracking-wide">
             4.9 / 5 — rated by our community
           </span>
         </div>
@@ -131,8 +130,8 @@ export function HeroSection() {
           }}
         >
           <button
-            className="flex-1 py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium text-white rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
-            style={{ backgroundColor: '#2A211A', boxShadow: '0 4px 18px rgba(42,33,26,0.18)' }}
+            className="flex-1 py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full transition-all duration-300 hover:-translate-y-0.5"
+            style={{ backgroundColor: '#f69251', color: '#000000', boxShadow: 'rgba(0,0,0,0.04) 0px 1px 2px, rgba(0,0,0,0.02) 0px 4px 8px' }}
             onClick={() => document.getElementById('devices')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Shop the Ritual
@@ -140,7 +139,7 @@ export function HeroSection() {
           <Link
             to="/quiz"
             className="flex-1 py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full border transition-all duration-300 hover:-translate-y-0.5 text-center"
-            style={{ borderColor: '#2A211A', color: '#2A211A', backgroundColor: 'transparent' }}
+            style={{ borderColor: '#1d1d1f', color: '#1d1d1f', backgroundColor: 'transparent' }}
           >
             Take the 60s Quiz
           </Link>
@@ -150,20 +149,20 @@ export function HeroSection() {
         <div
           className="w-full max-w-md pt-6 border-t"
           style={{
-            borderColor: 'rgba(155,90,46,0.18)',
+            borderColor: 'hsl(240 9% 92%)',
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(12px)',
             transition: 'opacity 0.8s ease-out 0.85s, transform 0.8s ease-out 0.85s',
           }}
         >
-          <p className="text-[10px] tracking-[0.3em] uppercase mb-3 text-center md:text-left" style={{ color: '#6B5A4A' }}>
+          <p className="text-[10px] tracking-[0.3em] uppercase mb-3 text-center md:text-left" style={{ color: '#636363' }}>
             Four technologies. One ritual.
           </p>
           <div className="flex items-center justify-between md:justify-start md:gap-7">
             {modalities.map((m) => (
               <div key={m.label} className="flex flex-col items-center md:items-start gap-1.5">
-                <m.icon size={18} strokeWidth={1.3} style={{ color: '#9B5A2E' }} />
-                <span className="text-[10px] md:text-[11px] tracking-[0.12em] uppercase" style={{ color: '#2A211A' }}>
+                <m.icon size={18} strokeWidth={1.3} style={{ color: '#1d1d1f' }} />
+                <span className="text-[10px] md:text-[11px] tracking-[0.12em] uppercase" style={{ color: '#1d1d1f' }}>
                   {m.label}
                 </span>
               </div>

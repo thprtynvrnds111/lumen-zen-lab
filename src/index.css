@@ -4,45 +4,70 @@
 
 @layer base {
   :root {
-    --background: 30 27% 95%;
-    --foreground: 0 0% 12%;
-    --card: 30 30% 97%;
-    --card-foreground: 0 0% 12%;
-    --popover: 30 30% 97%;
-    --popover-foreground: 0 0% 12%;
-    --primary: 163 69% 51%;
-    --primary-foreground: 0 0% 8%;
-    --secondary: 28 23% 88%;
-    --secondary-foreground: 0 0% 12%;
-    --muted: 28 16% 85%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 163 69% 51%;
-    --accent-foreground: 0 0% 8%;
+    /* Surface — Apple fog canvas + white cards */
+    --background: 240 5% 96%;
+    --foreground: 240 3% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 3% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 3% 12%;
+
+    /* CTA — Dialog tangerine, sole action color */
+    --primary: 24 90% 64%;
+    --primary-foreground: 0 0% 0%;
+
+    /* Secondary — recessed fog */
+    --secondary: 240 5% 94%;
+    --secondary-foreground: 240 3% 12%;
+
+    /* Muted */
+    --muted: 240 5% 96%;
+    --muted-foreground: 0 0% 39%;
+
+    /* Accent — brand teal for secondary identity touches only */
+    --accent: 160 67% 51%;
+    --accent-foreground: 240 3% 12%;
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
-    --border: 28 16% 88%;
-    --input: 28 16% 88%;
-    --ring: 163 69% 51%;
-    --radius: 1rem;
-    --emerald: 163 55% 38%;
-    --emerald-foreground: 0 0% 100%;
 
+    /* Borders — Apple silver mist */
+    --border: 240 9% 92%;
+    --input: 240 9% 92%;
+    --ring: 24 90% 64%;
+
+    /* Radius — 24px card (Dialog), 28px pill buttons */
+    --radius: 1.5rem;
+    --tracking-display: -2.11px;
+    --tracking-heading-lg: -0.9px;
+    --tracking-heading: -0.6px;
+    --tracking-heading-sm: -0.36px;
+
+    /* Brand tokens — raw hex */
     --brand-teal: #2ED8A8;
     --brand-gold: #C6A07C;
-    --brand-terra: #9B5A2E;
-    --brand-dark: #1A1714;
+    --brand-orange: #f69251;
+    --brand-ink: #1d1d1f;
+    --brand-fog: #f5f5f7;
 
+    /* Typography */
     --font-sans: 'DM Sans', 'Inter', system-ui, -apple-system, sans-serif;
     --font-serif: 'Lora', 'Georgia', serif;
 
-    --sidebar-background: 30 27% 95%;
-    --sidebar-foreground: 0 0% 12%;
-    --sidebar-primary: 163 69% 51%;
-    --sidebar-primary-foreground: 0 0% 8%;
-    --sidebar-accent: 28 23% 88%;
-    --sidebar-accent-foreground: 0 0% 12%;
-    --sidebar-border: 28 16% 88%;
-    --sidebar-ring: 163 69% 51%;
+    /* Type tracking scale — Apple (dupes removed, correct values at lines 41-44) */
+
+    /* Emerald kept for any legacy usage */
+    --emerald: 163 55% 38%;
+    --emerald-foreground: 0 0% 100%;
+
+    --sidebar-background: 240 5% 96%;
+    --sidebar-foreground: 240 3% 12%;
+    --sidebar-primary: 24 90% 64%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 240 5% 94%;
+    --sidebar-accent-foreground: 240 3% 12%;
+    --sidebar-border: 240 9% 92%;
+    --sidebar-ring: 24 90% 64%;
   }
 }
 
@@ -53,39 +78,129 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-sans);
   }
+  h1 {
+    font-weight: 700;
+    letter-spacing: var(--tracking-heading-lg);
+    line-height: 1.07;
+  }
+  h2 {
+    font-weight: 700;
+    letter-spacing: var(--tracking-heading);
+    line-height: 1.17;
+  }
+  h3 {
+    font-weight: 600;
+    letter-spacing: var(--tracking-heading-sm);
+    line-height: 1.29;
+  }
 }
 
 @layer components {
-  .font-serif {
-    font-family: var(--font-serif);
+  /* Display headline — DM Sans 700, tight tracking (Dialog editorial) */
+  .display-headline {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    letter-spacing: var(--tracking-display);
+    line-height: 1.15;
   }
-  .glass-card {
-    @apply bg-card/70 backdrop-blur-xl border border-border/50 rounded-2xl;
+  .heading-editorial {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    letter-spacing: var(--tracking-heading-lg);
+    line-height: 1.20;
   }
+
+  /* Surfaces — Apple color-only elevation, no shadows */
+  .card-surface {
+    background-color: hsl(var(--card));
+    border-radius: var(--radius);
+  }
+  .card-recessed {
+    background-color: hsl(var(--background));
+    border-radius: var(--radius);
+  }
+
+  /* CTA pill — Dialog tangerine orange */
+  .cta-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--brand-orange);
+    color: #000000;
+    border-radius: 1.75rem;
+    padding: 12px 24px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 2px, rgba(0, 0, 0, 0.02) 0px 2px 4px, rgba(0, 0, 0, 0.02) 0px 4px 8px;
+    transition: opacity 0.15s ease;
+  }
+  .cta-pill:hover {
+    opacity: 0.88;
+  }
+
+  /* Ghost pill — white, secondary actions */
+  .ghost-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 1.75rem;
+    padding: 12px 24px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: rgba(24, 24, 37, 0.08) 0px 2px 3px -2px;
+    transition: opacity 0.15s ease;
+  }
+  .ghost-pill:hover {
+    opacity: 0.80;
+  }
+
+  /* Layout */
   .section-padding {
     @apply px-6 py-20 md:px-12 lg:px-20 xl:px-32;
   }
+
+  /* Legacy glass-card — updated: no blur, white card Apple-style */
+  .glass-card {
+    @apply bg-card border border-border/50 rounded-2xl;
+  }
+
+  /* Gradient utilities updated for new palette */
   .gradient-pearl {
     background: linear-gradient(
       135deg,
-      hsl(30 27% 95%) 0%,
-      hsl(28 23% 92%) 50%,
-      hsl(30 30% 96%) 100%
+      #f5f5f7 0%,
+      #f0f0f2 50%,
+      #f5f5f7 100%
     );
   }
   .gradient-glow {
     background: radial-gradient(
       ellipse at center,
-      hsl(343 44% 60% / 0.15) 0%,
+      rgba(246, 146, 81, 0.08) 0%,
       transparent 70%
     );
   }
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Star rating in orange */
+  .star-orange {
+    color: var(--brand-orange);
   }
 }
 

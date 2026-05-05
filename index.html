@@ -36,10 +36,24 @@
     {
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": "https://zentialpure.com/#organization",
       "name": "Zential Pure",
       "url": "https://zentialpure.com",
       "logo": "https://zentialpure.com/og-image.jpg",
-      "sameAs": [],
+      "foundingDate": "2025",
+      "founder": {
+        "@type": "Person",
+        "name": "Miguel Young-On"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Rotterdam",
+        "addressCountry": "NL"
+      },
+      "sameAs": [
+        "https://instagram.com/zentialpure",
+        "https://tiktok.com/@zentialpure"
+      ],
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer support",
@@ -73,13 +87,6 @@
           "@type": "Organization",
           "name": "Zential Pure"
         }
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "2847",
-        "bestRating": "5",
-        "worstRating": "1"
       },
       "category": "Beauty & Personal Care > Skin Care Devices"
     }
@@ -160,11 +167,22 @@
 
     <!-- Critical above-the-fold CSS (inlined) -->
     <style>
-      *, *::before, *::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: hsl(28 16% 88%); }
-      body { margin: 0; font-family: 'DM Sans', 'Inter', system-ui, -apple-system, sans-serif; background-color: #F7F4F0; color: #1A1714; -webkit-font-smoothing: antialiased; }
+      *, *::before, *::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: hsl(240 9% 92%); }
+      body { margin: 0; font-family: 'DM Sans', 'Inter', system-ui, -apple-system, sans-serif; background-color: #f5f5f7; color: #1d1d1f; -webkit-font-smoothing: antialiased; }
       .min-h-screen { min-height: 100vh; }
       img { display: block; max-width: 100%; height: auto; }
     </style>
+
+    <!-- Meta Pixel stub — defined immediately so React component events (ViewContent, AddToCart) queue correctly -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init','915864761310220');
+      fbq('track','PageView');
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -179,11 +197,26 @@
     <div id="root"><!--app-html--></div>
     <script type="module" src="/src/entry-client.tsx"></script>
 
-    <!-- Deferred analytics: load after main content -->
+    <!-- Deferred analytics: GA4 + Clarity after load, Meta Pixel script loaded on DOMContentLoaded -->
     <script>
-      // Defer GA and Meta Pixel to after page load to avoid blocking LCP
+      // Load Meta Pixel fbevents.js on DOMContentLoaded (stub already defined in <head>)
+      // DOMContentLoaded fires ~2-4s earlier than window.load on mobile → fixes LPV gap
+      (function() {
+        function loadFbEvents() {
+          var t = document.createElement('script');
+          t.async = true;
+          t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+          document.head.appendChild(t);
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', loadFbEvents);
+        } else {
+          loadFbEvents();
+        }
+      })();
+
+      // GA4 + Clarity after full page load (non-critical)
       window.addEventListener('load', function() {
-        // Google Analytics
         setTimeout(function() {
           var gs = document.createElement('script');
           gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-V905PFS82W';
@@ -197,19 +230,13 @@
           };
         }, 100);
 
-        // Meta Pixel
         setTimeout(function() {
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '915864761310220');
-          fbq('track', 'PageView');
-        }, 200);
+          (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "wkw3algv26");
+        }, 300);
       });
     </script>
   </body>
