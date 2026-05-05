@@ -21,12 +21,13 @@ interface Bundle {
   ritualNote: string;
 }
 
+// Face Introducer is the hero instrument — highest conversion potential
 const bundles: Bundle[] = [
   {
     key: "essential",
     title: "The Essential",
     tagline: "Begin the practice",
-    items: [{ handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" }],
+    items: [{ handle: "lifting-and-tightening-face-introducer", name: "Face Introducer" }],
     total: DEVICE_PRICE,
     highlight: false,
     ritualNote: "Device only · For those who already have their conductive base",
@@ -36,7 +37,7 @@ const bundles: Bundle[] = [
     title: "The Ritual",
     tagline: "Most chosen",
     items: [
-      { handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" },
+      { handle: "lifting-and-tightening-face-introducer", name: "Face Introducer" },
       { handle: "medicube-collagen-elastic-jelly-moisturizing-cream", name: "Collagen Conductive Gel" },
     ],
     total: DEVICE_PRICE + GEL_PRICE,
@@ -48,7 +49,7 @@ const bundles: Bundle[] = [
     title: "The Pro",
     tagline: "Full protocol",
     items: [
-      { handle: "facial-beauty-tools-and-ems-beauty-equipment", name: "Sculpt Wand" },
+      { handle: "lifting-and-tightening-face-introducer", name: "Face Introducer" },
       { handle: "medicube-collagen-elastic-jelly-moisturizing-cream", name: "Collagen Conductive Gel" },
       { handle: "collagen-eye-mask", name: "PDRN Recovery Pads" },
     ],
@@ -101,7 +102,7 @@ export function BundleSection() {
       style={{ backgroundColor: '#FBF8F4' }}
     >
       <div className="text-center mb-16 max-w-2xl mx-auto">
-        <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Build Your Ritual —</p>
+        <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Begin with the Face Introducer —</p>
         <h2 className="font-serif italic text-[34px] md:text-[48px] leading-[1.05] text-foreground tracking-tight mb-5">
           Three ways to begin.
         </h2>

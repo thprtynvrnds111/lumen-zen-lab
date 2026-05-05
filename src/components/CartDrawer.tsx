@@ -51,12 +51,26 @@ export function CartDrawer() {
     if (items.length === 0) return;
     setRedirecting(true);
 
+    const w = window as any;
     // Meta Pixel: InitiateCheckout
-    if (typeof window !== "undefined" && (window as any).fbq) {
-      (window as any).fbq('track', 'InitiateCheckout', {
+    if (w.fbq) {
+      w.fbq('track', 'InitiateCheckout', {
         num_items: totalItems,
         value: totalPrice,
         currency: 'EUR',
+      });
+    }
+    // GA4: begin_checkout
+    if (w.gtag) {
+      w.gtag('event', 'begin_checkout', {
+        currency: 'EUR',
+        value: totalPrice,
+        items: items.map(item => ({
+          item_id: item.product.node.handle,
+          item_name: item.product.node.title || item.variantTitle,
+          price: parseFloat(item.price.amount),
+          quantity: item.quantity,
+        })),
       });
     }
     // Build permalink-style checkout URL using numeric variant IDs

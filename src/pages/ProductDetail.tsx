@@ -75,7 +75,7 @@ const PRODUCT_PRICES: Record<string, string> = {
   "collagen-eye-mask": "29.00",
 };
 
-function getProductJsonLd(handle: string, seo: { title: string; description: string }, price?: string) {
+function getProductJsonLd(handle: string, seo: { title: string; description: string }, price?: string, image?: string) {
   const resolvedPrice = price ?? PRODUCT_PRICES[handle];
   return {
     "@context": "https://schema.org",
@@ -84,6 +84,7 @@ function getProductJsonLd(handle: string, seo: { title: string; description: str
     description: seo.description,
     brand: { "@type": "Brand", name: "Zential Pure" },
     url: `https://zentialpure.com/product/${handle}`,
+    ...(image && { image }),
     offers: {
       "@type": "Offer",
       availability: "https://schema.org/InStock",
@@ -94,6 +95,8 @@ function getProductJsonLd(handle: string, seo: { title: string; description: str
   };
 }
 
+const SITE = "https://zentialpure.com";
+
 export default function ProductDetail() {
   const { handle } = useParams<{ handle: string }>();
   const config = handle ? getProductConfig(handle) : null;
@@ -101,7 +104,13 @@ export default function ProductDetail() {
     ? PRODUCT_SEO[handle]
     : { title: `${config?.name || "Product"} — Zential Pure`, description: config?.subheadline || "Clinical-luxury beauty device by Zential Pure." };
 
-  const [ogImage, setOgImage] = useState<string | undefined>(undefined);
+  // Seed from bundled fallbackImage so prerendered HTML has a real og:image.
+  // useEffect upgrades to the live Shopify CDN URL once JS runs.
+  const staticOgImage = config?.fallbackImage
+    ? `${SITE}${config.fallbackImage}`
+    : undefined;
+
+  const [ogImage, setOgImage] = useState<string | undefined>(staticOgImage);
   const [productPrice, setProductPrice] = useState<string | undefined>(undefined);
 
   useEffect(() => {
@@ -124,7 +133,7 @@ export default function ProductDetail() {
           canonicalUrl={`/product/${handle}`}
           ogType="product"
           ogImage={ogImage}
-          jsonLd={handle ? getProductJsonLd(handle, seo, productPrice) : undefined}
+          jsonLd={handle ? getProductJsonLd(handle, seo, productPrice, ogImage) : undefined}
         />
         <ProductLanding config={config} />
       </>

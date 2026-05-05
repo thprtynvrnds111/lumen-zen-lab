@@ -1,37 +1,95 @@
 import { useEffect, useState } from "react";
-import { Check, X } from "lucide-react";
+import { Check, X, Minus } from "lucide-react";
 import { fetchProducts, type ShopifyProduct } from "@/lib/shopify";
 
-const rows = [
-  { feature: "Cost per session", clinic: "€80–€200", zential: "One-time investment" },
-  { feature: "Time per session", clinic: "60–90 min + travel", zential: "5 minutes" },
-  { feature: "Scheduling", clinic: "Book weeks ahead", zential: "On your terms" },
-  { feature: "Downtime", clinic: "24–48 hours", zential: "None" },
-  { feature: "Privacy", clinic: "Clinic setting", zential: "Your space" },
+type RowIcon = "good" | "bad" | "neutral";
+
+interface CompRow {
+  feature: string;
+  zential: string;
+  nuface: string;
+  nuface_icon: RowIcon;
+  amiro: string;
+  amiro_icon: RowIcon;
+  clinic: string;
+  clinic_icon: RowIcon;
+}
+
+const rows: CompRow[] = [
+  {
+    feature: "Price",
+    zential: "€88 — once",
+    nuface: "€349 — once",
+    nuface_icon: "bad",
+    amiro: "~€84 — once",
+    amiro_icon: "neutral",
+    clinic: "€80–200 / session",
+    clinic_icon: "bad",
+  },
+  {
+    feature: "Technologies",
+    zential: "4 combined",
+    nuface: "1–2",
+    nuface_icon: "neutral",
+    amiro: "1",
+    amiro_icon: "bad",
+    clinic: "Single treatment",
+    clinic_icon: "neutral",
+  },
+  {
+    feature: "Session time",
+    zential: "5 minutes",
+    nuface: "10–20 min",
+    nuface_icon: "neutral",
+    amiro: "5–10 min",
+    amiro_icon: "neutral",
+    clinic: "60–90 min + travel",
+    clinic_icon: "bad",
+  },
+  {
+    feature: "Scheduling",
+    zential: "Your terms",
+    nuface: "Your terms",
+    nuface_icon: "good",
+    amiro: "Your terms",
+    amiro_icon: "good",
+    clinic: "Book weeks ahead",
+    clinic_icon: "bad",
+  },
+  {
+    feature: "Recurring cost",
+    zential: "None",
+    nuface: "None",
+    nuface_icon: "good",
+    amiro: "None",
+    amiro_icon: "good",
+    clinic: "Every session, every year",
+    clinic_icon: "bad",
+  },
 ];
 
-const clinicTiers = [
+const alternativeTiers = [
   {
-    label: "Low",
-    price: "€80",
-    sub: "per session",
-    annual: "~€960 / year",
+    label: "NuFACE Trinity",
+    price: "€349",
+    sub: "one-time",
+    note: "1–2 technologies",
     bg: "#FDF4EE",
     border: "#F0C9A8",
   },
   {
-    label: "Mid",
-    price: "€120–€150",
-    sub: "per session",
-    annual: "~€1,500 / year",
+    label: "Amiro / Anlan",
+    price: "~€84",
+    sub: "one-time",
+    note: "1 technology",
     bg: "#FAEADE",
     border: "#E8AA7A",
   },
   {
-    label: "High",
-    price: "€200+",
+    label: "Clinic visit",
+    price: "€80–200",
     sub: "per session",
-    annual: "~€2,400+ / year",
+    note: "~€960–2,400 / year",
     bg: "#F5DBC8",
     border: "#D4855A",
   },
@@ -50,6 +108,12 @@ const DEVICE_NAMES: Record<string, string> = {
   "facial-beauty-tools-and-ems-beauty-equipment": "Sculpt Wand",
   "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": "Frame Pulse",
 };
+
+function CellIcon({ type }: { type: RowIcon }) {
+  if (type === "good") return <Check size={13} className="shrink-0" style={{ color: "#7CAE9B" }} />;
+  if (type === "bad") return <X size={13} className="shrink-0" style={{ color: "#C97B5A" }} />;
+  return <Minus size={13} className="shrink-0 opacity-30" />;
+}
 
 export function ComparisonSection() {
   const [devices, setDevices] = useState<ShopifyProduct[]>([]);
@@ -74,11 +138,11 @@ export function ComparisonSection() {
       {/* Hero price cards */}
       <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 mb-10">
 
-        {/* Clinic card */}
+        {/* Alternatives card */}
         <div className="rounded-2xl border border-border/40 bg-white/70 p-7 flex flex-col">
-          <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-5">Clinic Visits</p>
+          <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-5">The Alternatives</p>
           <div className="space-y-2.5 flex-1">
-            {clinicTiers.map(tier => (
+            {alternativeTiers.map(tier => (
               <div
                 key={tier.label}
                 className="flex items-center justify-between rounded-xl px-4 py-3 border"
@@ -91,12 +155,12 @@ export function ComparisonSection() {
                     <span className="text-xs font-normal text-muted-foreground">{tier.sub}</span>
                   </p>
                 </div>
-                <span className="text-xs text-muted-foreground/80 font-medium tabular-nums">{tier.annual}</span>
+                <span className="text-xs text-muted-foreground/80 font-medium tabular-nums">{tier.note}</span>
               </div>
             ))}
           </div>
           <p className="mt-5 pt-4 border-t border-border/30 text-[11px] text-muted-foreground">
-            Recurring cost — every session, every year.
+            More cost, fewer technologies, or an appointment every time.
           </p>
         </div>
 
@@ -138,8 +202,7 @@ export function ComparisonSection() {
                     </div>
                   );
                 })
-              : /* skeleton placeholders while loading */
-                Array.from({ length: 4 }).map((_, i) => (
+              : Array.from({ length: 4 }).map((_, i) => (
                   <div key={i} className="flex flex-col items-center gap-1.5">
                     <div
                       className="w-[68px] h-[68px] rounded-full animate-pulse"
@@ -161,33 +224,62 @@ export function ComparisonSection() {
         </div>
       </div>
 
-      {/* Comparison rows */}
-      <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden border border-border/40 bg-white/60">
-        <div
-          className="grid grid-cols-3 text-center text-[10px] tracking-[0.15em] uppercase font-semibold border-b border-border/50"
-          style={{ backgroundColor: "rgba(255,255,255,0.85)" }}
-        >
-          <div className="p-4" />
-          <div className="p-4 text-muted-foreground">Clinic Visits</div>
-          <div className="p-4" style={{ color: "#9B5A2E" }}>Zential Ritual</div>
-        </div>
-        {rows.map((row, i) => (
+      {/* Comparison table — 5 cols: feature | Zential | NuFACE | Amiro/Anlan | Clinic */}
+      <div className="max-w-4xl mx-auto overflow-x-auto">
+        <div className="min-w-[600px] rounded-2xl overflow-hidden border border-border/40 bg-white/60">
+          {/* Header */}
           <div
-            key={row.feature}
-            className="grid grid-cols-3 text-center border-b border-border/20 last:border-0"
-            style={{ backgroundColor: i % 2 === 0 ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.1)" }}
+            className="grid grid-cols-5 text-center text-[10px] tracking-[0.15em] uppercase font-semibold border-b border-border/50"
+            style={{ backgroundColor: "rgba(255,255,255,0.85)" }}
           >
-            <div className="p-4 md:p-5 text-sm font-medium text-left text-foreground/80">{row.feature}</div>
-            <div className="p-4 md:p-5 text-sm text-muted-foreground flex items-center justify-center gap-1.5">
-              <X size={13} className="shrink-0" style={{ color: "#C97B5A" }} />
-              {row.clinic}
+            <div className="p-4" />
+            <div className="p-4" style={{ color: "#9B5A2E", backgroundColor: "rgba(198,160,124,0.08)" }}>
+              Zential
             </div>
-            <div className="p-4 md:p-5 text-sm flex items-center justify-center gap-1.5 font-medium text-foreground/90">
-              <Check size={13} className="shrink-0" style={{ color: "#7CAE9B" }} />
-              {row.zential}
-            </div>
+            <div className="p-4 text-muted-foreground">NuFACE</div>
+            <div className="p-4 text-muted-foreground">Amiro / Anlan</div>
+            <div className="p-4 text-muted-foreground">Clinic</div>
           </div>
-        ))}
+
+          {/* Rows */}
+          {rows.map((row, i) => (
+            <div
+              key={row.feature}
+              className="grid grid-cols-5 text-center border-b border-border/20 last:border-0"
+              style={{ backgroundColor: i % 2 === 0 ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.1)" }}
+            >
+              {/* Feature label */}
+              <div className="p-4 md:p-5 text-sm font-medium text-left text-foreground/80">{row.feature}</div>
+
+              {/* Zential — always ✓, highlighted */}
+              <div
+                className="p-4 md:p-5 text-sm flex items-center justify-center gap-1.5 font-medium text-foreground/90"
+                style={{ backgroundColor: "rgba(198,160,124,0.06)" }}
+              >
+                <Check size={13} className="shrink-0" style={{ color: "#7CAE9B" }} />
+                {row.zential}
+              </div>
+
+              {/* NuFACE */}
+              <div className="p-4 md:p-5 text-sm text-muted-foreground flex items-center justify-center gap-1.5">
+                <CellIcon type={row.nuface_icon} />
+                {row.nuface}
+              </div>
+
+              {/* Amiro / Anlan */}
+              <div className="p-4 md:p-5 text-sm text-muted-foreground flex items-center justify-center gap-1.5">
+                <CellIcon type={row.amiro_icon} />
+                {row.amiro}
+              </div>
+
+              {/* Clinic */}
+              <div className="p-4 md:p-5 text-sm text-muted-foreground flex items-center justify-center gap-1.5">
+                <CellIcon type={row.clinic_icon} />
+                {row.clinic}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

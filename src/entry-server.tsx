@@ -50,6 +50,7 @@ const Collection       = lazy(() => import("./pages/Collection"));
 const Quiz             = lazy(() => import("./pages/Quiz"));
 const QuizResult       = lazy(() => import("./pages/QuizResult"));
 const NotFound         = lazy(() => import("./pages/NotFound"));
+const Dashboard        = lazy(() => import("./pages/Dashboard"));
 
 function ServerApp() {
   return (
@@ -95,6 +96,7 @@ function ServerApp() {
         <Route path="/collection"                               element={<Collection />} />
         <Route path="/quiz"                                     element={<Quiz />} />
         <Route path="/quiz/result"                              element={<QuizResult />} />
+        <Route path="/dashboard"                                element={<Dashboard />} />
         <Route path="*"                                         element={<NotFound />} />
       </Routes>
     </Suspense>

@@ -11,11 +11,11 @@ import after3Img from "@/assets/after3.webp";
 import problemFaceIntroducer from "@/assets/problem-face-introducer.webp";
 import problemFramePulse from "@/assets/problem-frame-pulse.webp";
 import problemGuasha from "@/assets/problem-guasha.webp";
-import problemSkinpulse from "@/assets/problem-skinpulse.webp";
+import problemSkinpulse from "@/assets/problem-skinpulse.jpg";
 import problemEyeActivator from "@/assets/problem-eye-activator.webp";
 import problemFrequencyWand from "@/assets/problem-frequency-wand.webp";
 import problemSculptWand from "@/assets/problem-sculpt-wand.webp";
-import problemWandPro from "@/assets/problem-wand-pro.webp";
+import problemWandPro from "@/assets/problem-wand-pro.png";
 import productBodyLift from "@/assets/product-body-lift.jpg";
 import productSculptWand from "@/assets/ritual-sculpt-wand.png";
 import productEyeActivator from "@/assets/ritual-eye-activator.png";
@@ -54,6 +54,7 @@ export interface ProductConfig {
   beforeAfter: { before: string; after: string };
   comparisonRows: { feature: string; zential: string | boolean; clinic: string | boolean; creams: string | boolean; generic: string | boolean }[];
   faqs: { q: string; a: string }[];
+  forYouIf?: string[];
   studyCards?: StudyCard[];
   contraindications?: string[];
   normalSensations?: string[];
@@ -61,7 +62,7 @@ export interface ProductConfig {
 }
 
 const defaultComparison = [
-  { feature: "Cost over 6 months", zential: "One-time investment", clinic: "\u20ac1,200+", creams: "\u20ac300+", generic: "\u20ac40\u2013\u20ac80 (repeated)" },
+  { feature: "Cost over 6 months", zential: "One-time investment", clinic: "€1,200+", creams: "€300+", generic: "€40–€80 (repeated)" },
   { feature: "Appointments needed", zential: "None", clinic: "12+ visits", creams: "None", generic: "None" },
   { feature: "Long-term structural support", zential: true, clinic: true, creams: false, generic: false },
   { feature: "Pain or downtime", zential: false, clinic: true, creams: false, generic: false },
@@ -144,11 +145,11 @@ export const productConfigs: Record<string, ProductConfig> = {
       "You have metal implants in the face",
     ],
     normalSensations: [
-      "A mild tingling or warmth during use \u2014 expected",
-      "Slight redness that fades within 30 minutes \u2014 normal",
-      "No sensation at all on microcurrent mode \u2014 correct, it\u2019s sub-sensory",
+      "A mild tingling or warmth during use — expected",
+      "Slight redness that fades within 30 minutes — normal",
+      "No sensation at all on microcurrent mode — correct, it’s sub-sensory",
     ],
-    sessionInfo: "Session time: 5\u201310 minutes \u00b7 Frequency: 5\u00d7 per week \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
+    sessionInfo: "Session time: 5–10 minutes · Frequency: 5× per week · Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── LIFTING & TIGHTENING FACE INTRODUCER ───
@@ -156,61 +157,76 @@ export const productConfigs: Record<string, ProductConfig> = {
     handle: "lifting-and-tightening-face-introducer",
     fallbackImage: productFaceIntroducer,
     name: "Face Introducer",
-    subheadline: "Ion-Assisted Delivery + Trichromatic Light Therapy",
+    subheadline: "4-Mode Protocol: Blue · Red · Purple Light + EMS Microcurrent · Ion Cleansing · 45°C Thermal",
     benefits: [
-      { icon: ScanFace, label: "Negative Ion Cleansing" },
-      { icon: Sun, label: "Trichromatic Light (White · Pink · Purple)" },
-      { icon: Droplets, label: "Iontophoretic Serum Delivery" },
-      { icon: Zap, label: "Galvanic Ionic Current" },
+      { icon: Sun, label: "Blue · Red · Purple LED (3 modes)" },
+      { icon: Zap, label: "EMS Microcurrent — ATP + Muscle" },
+      { icon: ScanFace, label: "Positive & Negative Ion Cleansing" },
+      { icon: ThermometerSun, label: "45°C Constant Thermal + Sonic" },
     ],
     testimonials: [
       { name: "Lina, 29", text: "My skin absorbs everything differently now. The serum actually goes in. I can feel it." },
-      { name: "Diane, 41", text: "Two phases. Two minutes each. My morning ritual is under ten minutes and my skin is clearer than it's been in years." },
+      { name: "Diane, 41", text: "Four modes. Ten minutes. My morning ritual is clear and my skin is firmer than it's been in years." },
       { name: "Priya, 35", text: "I was spending €90 a session on professional facials. This is the same galvanic mechanism. Once." },
     ],
     problemReframe: {
-      headline: "Your Skincare Sits on the Surface. This Changes That.",
+      headline: "Four Modes. One Instrument. One Daily Ritual.",
       paragraphs: [
-        "Most products never reach the tissue they're designed for. They hydrate the surface, protect it — but the active ingredients stop at the barrier. The barrier is doing its job. The problem is getting past it without damaging it.",
-        "The Face Introducer works in two phases. First, negative ions attract and lift positively charged impurities from the follicle — the galvanic cleansing mechanism used in professional facials, without abrasion. The barrier stays intact. Then polarity reverses, and the iontophoretic current drives your serum past it, into the dermis.",
-        "Between those phases: trichromatic light therapy. White for surface clarity. Pink-spectrum photobiomodulation for dermal-level collagen support. Purple for antimicrobial action on congestion-prone skin.",
+        "Most skincare works on the surface. The Face Introducer addresses four distinct biological targets in one sequential protocol — each mode with a specific mechanism, each building on the last.",
+        "Blue light (Mode 1) promotes collagen synthesis, activates skin regeneration, and tightens pores — particularly effective for oily and sensitive skin. Red light (Mode 2) accelerates cell vitality, stimulates fibroblasts, smooths fine lines, and lightens pigmentation. Purple light (Mode 3) improves microcirculation, drains lymphatic edema, and calms congested tissue. EMS (Mode 4) releases intermittent microcurrent pulses that stimulate ATP production and improve muscle fiber elasticity.",
+        "Throughout every mode: 45°C constant thermal softens tissue for deeper penetration, and sonic vibration enhances lymphatic circulation. Positive and negative ions cleanse the follicle and then drive actives past the skin barrier — the same galvanic mechanism used in clinical facials.",
       ],
-      closing: "Cleanse. Stimulate. Deliver. In that order.",
+      closing: "Blue. Red. Purple. EMS. In that order.",
     },
     techCards: [
-      { icon: ScanFace, title: "Negative Ion Cleansing", desc: "Negatively charged ion output attracts positively charged impurities — sebum, particulates, oxidative residue — and lifts them from the follicle. Electrical, not abrasive. The skin barrier stays intact." },
-      { icon: Sun, title: "Trichromatic Light", desc: "White light supports surface clarity. Pink-spectrum output targets cytochrome c oxidase in the mitochondria, supporting ATP synthesis and fibroblast activity. Purple provides antimicrobial surface action for congestion-prone skin." },
-      { icon: Droplets, title: "Positive Ion Infusion", desc: "Polarity reverses after cleansing. Galvanic iontophoretic current drives positively charged actives — vitamin C, hyaluronic acid, peptides — across the skin barrier via electrical gradient. Product reaches the dermis." },
-      { icon: Zap, title: "Galvanic Current", desc: "12,000 RPM · 3 intensity levels · 750mAh · 4W rated output. The same galvanic current technology used in professional spa facials, calibrated for daily home protocol." },
+      { icon: Sun, title: "Blue Light — Mode 1", desc: "Promotes protein and collagen synthesis at the cellular level. Activates skin regeneration, tightens pores, and refines texture. Most effective for oily and sensitive skin types. Pairs with 45°C thermal for enhanced penetration." },
+      { icon: Sun, title: "Red Light — Mode 2", desc: "Enhances cell vitality and accelerates blood circulation. Stimulates fibroblasts and collagen growth. Smooths fine lines, firms skin, lightens pigmentation. The most studied wavelength range in photobiomodulation research (630–660nm)." },
+      { icon: Aperture, title: "Purple Light — Mode 3", desc: "Improves microcirculation and promotes cellular oxygen utilization. Drains lymphatic edema from the surface. Calms and balances congested or inflamed tissue. Combines the effects of blue and red simultaneously." },
+      { icon: Zap, title: "EMS — Mode 4", desc: "Releases intermittent microcurrent pulses that stimulate ATP production in facial muscle tissue. Improves high facial muscle fiber elasticity. Activates collagen activity to firm the skin. Operates without light — current only." },
+      { icon: ScanFace, title: "Positive & Negative Ions", desc: "Negative ion output attracts and lifts positively charged impurities from the follicle — electrical cleansing, no abrasion, barrier intact. Polarity reverses to drive positively charged actives past the barrier via galvanic gradient. Same class of technology used in professional spa facials." },
+      { icon: ThermometerSun, title: "45°C Thermal + Sonic", desc: "Constant temperature hot compress (45°C) softens tissue and enhances ingredient absorption throughout every mode. Sonic vibration supports lymphatic drainage and product penetration. Both are always-on — not mode-dependent." },
     ],
     ritualSteps: [
-      { step: "01", title: "Cleanse", desc: "Dry the skin completely. Negative ion mode — 2 minutes across full face and T-zone. No serum yet." },
-      { step: "02", title: "Stimulate", desc: "Pink light mode — 3 minutes. Hold at cheeks and forehead. Let the wavelength work at the dermal level." },
-      { step: "03", title: "Deliver", desc: "Apply your serum or active. Positive ion mode — 2 minutes. Drive it past the barrier. Total: under 10 minutes." },
+      { step: "01", title: "Cleanse", desc: "Ion cleansing mode — 2 minutes across full face. No serum yet. Let negative ions lift surface buildup first." },
+      { step: "02", title: "Stimulate", desc: "Select your mode: Blue (clarity/pores), Red (anti-aging/lift), Purple (circulation/calming), or EMS (firming). 3–5 minutes. The 45°C thermal is active throughout." },
+      { step: "03", title: "Deliver", desc: "Apply serum. Positive ion mode drives actives through the barrier. Total protocol: under 10 minutes. 3–5× per week." },
     ],
     beforeAfter: { before: beforeImg, after: afterImg },
     problemImage: problemFaceIntroducer,
     comparisonRows: defaultComparison,
-    faqs: defaultDeviceFaqs,
+    forYouIf: [
+      "You book professional facials but want the same galvanic technology at home, on your own schedule.",
+      "You've tried serums and creams that absorb inconsistently — you want to understand the mechanism and fix it.",
+      "You research before you buy. You want to understand what each mode does and why. Mechanism first.",
+    ],
+    faqs: [
+      { q: "Does this actually work?", a: "The four mechanisms in this device — LED photobiomodulation, EMS microcurrent, galvanic ion cleansing, and iontophoretic delivery — are each supported by peer-reviewed research. We link the actual studies on this page. What we cannot promise is the consistency you bring to it. Use it daily for 14 days before forming a conclusion." },
+      { q: "How long until I see results?", a: "Improved skin absorption is measurable from the first session — the galvanic ion delivery changes how actives penetrate. Skin clarity and texture typically respond within 7 to 10 days. Fine line reduction and firming become visible at 3 to 4 weeks of consistent daily use." },
+      { q: "Is it safe for daily use?", a: "Yes. The Face Introducer is designed for daily 7–10 minute protocols. The 45°C thermal stays within safe tissue temperature. Galvanic cleansing is non-abrasive. EMS is calibrated at home-device intensity. Start on the lowest of the four speed settings and increase over the first week." },
+      { q: "What if it doesn't work for me?", a: "30 consecutive days of daily use. If your skin shows no change, contact us. Full refund, no questionnaire, no restocking fee. The 30-Day Ritual Guarantee is unconditional." },
+      { q: "How is this different from a clinic?", a: "A professional galvanic facial costs €90–€180 per session. This device uses the same class of technology — ion cleansing, photobiomodulation, EMS microcurrent, thermal — for a one-time €88 purchase. The mechanism is the same. The appointment is not." },
+      { q: "Which mode should I use first?", a: "Start with ion cleansing (negative ion mode) every session — it clears the follicle so subsequent modes work on clean tissue. Then select one light mode based on your primary concern: Blue for oily/sensitive skin and pores, Red for anti-aging and firming, Purple for puffiness and microcirculation. Use EMS mode to finish on days when you want deeper muscle engagement." },
+    ],
     studyCards: [
-      { technology: "Photobiomodulation", studyTitle: "Low-Level Laser (Light) Therapy (LLLT) in Skin: Stimulating, Healing, Restoring", journal: "Seminars in Cutaneous Medicine and Surgery, 2013", url: "https://pubmed.ncbi.nlm.nih.gov/24049929/" },
-      { technology: "Trichromatic LED", studyTitle: "A Controlled Trial: Efficacy of Red and Near-Infrared Light in Reduction of Fine Lines and Collagen Density Increase", journal: "Photomedicine and Laser Surgery, 2014", url: "https://scholar.google.com/scholar?q=wunsch+matuschka+red+near+infrared+light+fine+lines+collagen+2014" },
-      { technology: "Iontophoresis", studyTitle: "Iontophoresis for Drug Delivery: Principles, Opportunities and Challenges", journal: "Advanced Drug Delivery Reviews, 2011", url: "https://scholar.google.com/scholar?q=iontophoresis+transdermal+drug+delivery+skin+galvanic+principles" },
-      { technology: "Ion Cleansing", studyTitle: "Galvanic Current and Skin Barrier Integrity in Transdermal Electrostimulation", journal: "Journal of Cosmetic Science, 2003", url: "https://scholar.google.com/scholar?q=galvanic+current+facial+cleansing+ion+skin+barrier" },
+      { technology: "Red Light 630–660nm", studyTitle: "Low-Level Laser (Light) Therapy (LLLT) in Skin: Stimulating, Healing, Restoring", journal: "Seminars in Cutaneous Medicine and Surgery, 2013", url: "https://pubmed.ncbi.nlm.nih.gov/24049929/" },
+      { technology: "Blue Light · Collagen", studyTitle: "Phototherapy with Blue (415nm) and Red (660nm) Light in the Treatment of Acne Vulgaris", journal: "British Journal of Dermatology, 2000", url: "https://scholar.google.com/scholar?q=papageorgiou+blue+415nm+red+660nm+acne+vulgaris+phototherapy+2000" },
+      { technology: "EMS · ATP Production", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://scholar.google.com/scholar?q=cheng+1982+electric+currents+ATP+generation+protein+synthesis+skin" },
+      { technology: "Iontophoresis · Ion Cleansing", studyTitle: "Iontophoresis for Drug Delivery: Principles, Opportunities and Challenges", journal: "Advanced Drug Delivery Reviews, 2011", url: "https://scholar.google.com/scholar?q=iontophoresis+transdermal+drug+delivery+skin+galvanic+principles" },
     ],
     contraindications: [
       "You have a pacemaker or implanted electronic device",
       "You are pregnant",
       "You have epilepsy or photosensitive conditions",
       "You have active skin infections or open wounds in the treatment area",
-      "You have metal implants in the face",
+      "You have metal implants in the face or neck",
     ],
     normalSensations: [
-      "A mild surface tingle during ion cleansing \u2014 fully comfortable",
-      "Gentle warmth from pink light mode \u2014 expected",
-      "Faint tingle during positive ion infusion \u2014 confirms current delivery",
+      "Mild surface tingle during ion cleansing — fully comfortable",
+      "Gentle 45°C warmth throughout every mode — expected and therapeutic",
+      "Faint pulse during EMS mode — confirms current delivery",
+      "Subtle tingle during positive ion infusion — confirms galvanic delivery",
     ],
-    sessionInfo: "Session time: 7\u201310 minutes \u00b7 Frequency: 3\u20135\u00d7 per week \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
+    sessionInfo: "Session time: 7–10 minutes · Frequency: 3–5× per week · Four intensity levels · Stop if: burning, unusual pain, or redness persisting over 30 min",
   },
 
   // ─── EYE ACTIVATOR ───
@@ -218,10 +234,10 @@ export const productConfigs: Record<string, ProductConfig> = {
     handle: "eye-massage",
     fallbackImage: productEyeActivator,
     name: "Eye Activator",
-    subheadline: "Targeted Microcurrent for the Periorbital Zone",
+    subheadline: "Sonic Vibration + Red Light for the Periorbital Zone",
     benefits: [
       { icon: Eye, label: "Under-Eye Depuffing" },
-      { icon: Zap, label: "Orbital Microcurrent" },
+      { icon: Waves, label: "Sonic Lymphatic Drainage" },
       { icon: Sun, label: "Red Light Repair" },
       { icon: Droplets, label: "Serum Penetration" },
     ],
@@ -234,16 +250,16 @@ export const productConfigs: Record<string, ProductConfig> = {
       headline: "Your Eye Area Is Circulatory. Not Cosmetic.",
       paragraphs: [
         "The skin around your eyes is the thinnest on your body. Puffiness, dark circles, and fine lines aren't just surface concerns. They signal stagnant lymphatic flow and weakened microcirculation.",
-        "Eye creams can hydrate the surface, but they cannot stimulate the drainage pathways or activate the collagen network beneath. The tissue needs movement, current, and light.",
-        "Eye Activator delivers precise microcurrent and red light to the periorbital zone, encouraging drainage, firming the delicate tissue, and reducing the visible signs of fatigue.",
+        "Eye creams can hydrate the surface, but they cannot stimulate the drainage pathways or activate the collagen network beneath. The tissue needs movement and light.",
+        "Eye Activator combines sonic vibration with red light to address the periorbital zone from two angles: mechanical stimulation to encourage lymphatic drainage, and targeted wavelengths to support collagen renewal in the tissue beneath.",
       ],
       closing: "This is about restoring circulation, not masking exhaustion.",
     },
     techCards: [
-      { icon: Zap, title: "Microcurrent", desc: "Precision-calibrated current stimulates the delicate periorbital muscles without overstimulation." },
+      { icon: Waves, title: "Sonic Vibration", desc: "High-frequency oscillation creates mechanical movement in the periorbital tissue, supporting lymphatic drainage and reducing fluid retention that appears as puffiness." },
       { icon: Sun, title: "Red Light", desc: "Targeted wavelengths support collagen renewal in the thinnest skin on your face." },
-      { icon: Waves, title: "Sonic Pulse", desc: "Gentle vibration encourages lymphatic drainage to reduce puffiness and dark circles." },
       { icon: ThermometerSun, title: "Warm Mode", desc: "Controlled thermal energy enhances serum absorption and promotes blood flow to the eye area." },
+      { icon: Droplets, title: "Serum Activation", desc: "The combination of warmth and vibration drives serums deeper into the periorbital tissue than manual application alone." },
     ],
     ritualSteps: [
       { step: "01", title: "Prepare", desc: "Apply eye serum or conductive gel to the under-eye and orbital area." },
@@ -262,24 +278,23 @@ export const productConfigs: Record<string, ProductConfig> = {
       { q: "What is your guarantee?", a: "We offer a 30-Day Ritual Guarantee. If you don't see visible improvement within 30 days of consistent daily use, contact us for a full refund." },
     ],
     studyCards: [
-      { technology: "Red Light 630\u2013660nm", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://scholar.google.com/scholar?q=photobiomodulation+630nm+collagen+skin" },
-      { technology: "Microcurrent", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://scholar.google.com/scholar?q=microcurrent+ATP+skin+cells" },
-      { technology: "Sonic Pulse", studyTitle: "Low-Frequency Vibrotherapy Improves the Effectiveness of Manual Lymphatic Drainage", journal: "Journal of Clinical Medicine, 2018", url: "https://scholar.google.com/scholar?q=sonic+vibration+skin+absorption" },
+      { technology: "Red Light 630–660nm", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://scholar.google.com/scholar?q=photobiomodulation+630nm+collagen+skin" },
+      { technology: "Sonic Vibration", studyTitle: "Low-Frequency Vibrotherapy Improves the Effectiveness of Manual Lymphatic Drainage", journal: "Journal of Clinical Medicine, 2018", url: "https://scholar.google.com/scholar?q=sonic+vibration+lymphatic+drainage" },
       { technology: "Thermal", studyTitle: "Collagen Remodeling After 585-nm Pulsed Dye Laser Irradiation", journal: "Dermatologic Surgery, 2003", url: "https://scholar.google.com/scholar?q=thermal+therapy+skin+collagen" },
+      { technology: "Vibration + Absorption", studyTitle: "Enhancement of Topical Drug Delivery by Sonophoresis", journal: "Journal of Controlled Release, 2004", url: "https://scholar.google.com/scholar?q=vibration+sonic+skin+absorption+topical" },
     ],
     contraindications: [
-      "You have a pacemaker or implanted electronic device",
       "You are pregnant",
       "You have active eye infections or recent eye surgery",
       "You have epilepsy or photosensitive conditions",
       "You have metal implants near the eye area",
     ],
     normalSensations: [
-      "A mild tingling or warmth during use \u2014 expected",
-      "Slight redness that fades within 30 minutes \u2014 normal",
-      "No sensation at all on microcurrent mode \u2014 correct, it\u2019s sub-sensory",
+      "A gentle buzzing or vibration during use — expected",
+      "A mild warmth in warm mode — normal",
+      "Slight redness that fades within 30 minutes — normal",
     ],
-    sessionInfo: "Session time: 3 minutes per eye \u00b7 Frequency: daily \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
+    sessionInfo: "Session time: 3 minutes per eye · Frequency: daily · Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── FREQUENCY WAND ───
@@ -317,15 +332,15 @@ export const productConfigs: Record<string, ProductConfig> = {
     ritualSteps: [
       { step: "01", title: "Prescribe", desc: "Identify today's concern: radiance, lines, firmness, pores, or acne. Select the corresponding mode. Don't rotate randomly." },
       { step: "02", title: "Activate", desc: "Apply conductive serum. Run your selected mode 3–5 minutes on the target zone. For electroporation modes, serum goes on first." },
-      { step: "03", title: "Layer", desc: "Full protocol: Contour (red + EMS) \u2192 Pore (blue + electroporation). Under 15 minutes. IPX3-rated — bathroom safe." },
+      { step: "03", title: "Layer", desc: "Full protocol: Contour (red + EMS) → Pore (blue + electroporation). Under 15 minutes. IPX3-rated — bathroom safe." },
     ],
     beforeAfter: { before: beforeImg, after: afterImg },
     problemImage: problemFrequencyWand,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "Red Light 630\u2013660nm", studyTitle: "Low-Level Laser (Light) Therapy (LLLT) in Skin: Stimulating, Healing, Restoring", journal: "Seminars in Cutaneous Medicine and Surgery, 2013", url: "https://pubmed.ncbi.nlm.nih.gov/24049929/" },
-      { technology: "Blue Light \u00b7 Antibacterial", studyTitle: "Phototherapy with Blue (415nm) and Red (660nm) Light in the Treatment of Acne Vulgaris", journal: "British Journal of Dermatology, 2000", url: "https://scholar.google.com/scholar?q=papageorgiou+blue+415nm+red+660nm+acne+vulgaris+phototherapy+2000" },
+      { technology: "Red Light 630–660nm", studyTitle: "Low-Level Laser (Light) Therapy (LLLT) in Skin: Stimulating, Healing, Restoring", journal: "Seminars in Cutaneous Medicine and Surgery, 2013", url: "https://pubmed.ncbi.nlm.nih.gov/24049929/" },
+      { technology: "Blue Light · Antibacterial", studyTitle: "Phototherapy with Blue (415nm) and Red (660nm) Light in the Treatment of Acne Vulgaris", journal: "British Journal of Dermatology, 2000", url: "https://scholar.google.com/scholar?q=papageorgiou+blue+415nm+red+660nm+acne+vulgaris+phototherapy+2000" },
       { technology: "Electroporation", studyTitle: "Skin Electroporation: A Review of Molecular Transport Mechanisms and Applications", journal: "Advanced Drug Delivery Reviews, 2002", url: "https://scholar.google.com/scholar?q=skin+electroporation+transdermal+drug+delivery+molecular+transport+review" },
       { technology: "EMS", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://scholar.google.com/scholar?q=electrical+muscle+stimulation+facial+wrinkles+sagging+neuromuscular" },
     ],
@@ -337,11 +352,11 @@ export const productConfigs: Record<string, ProductConfig> = {
       "You have metal implants in the face",
     ],
     normalSensations: [
-      "A comfortable pulse during EMS modes \u2014 expected",
-      "Mild warmth from LED \u2014 keep eyes closed during purple and blue modes",
-      "Brief surface tingle during electroporation \u2014 normal, confirms micro-channel formation",
+      "A comfortable pulse during EMS modes — expected",
+      "Mild warmth from LED — keep eyes closed during purple and blue modes",
+      "Brief surface tingle during electroporation — normal, confirms micro-channel formation",
     ],
-    sessionInfo: "Session time: 3\u20135 min per mode \u00b7 Frequency: 3\u20135\u00d7 per week \u00b7 IPX3 waterproof \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
+    sessionInfo: "Session time: 3–5 min per mode · Frequency: 3–5× per week · IPX3 waterproof · Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── GUA SHA FREQUENCY ───
@@ -398,11 +413,11 @@ export const productConfigs: Record<string, ProductConfig> = {
       "You have rosacea flare-ups",
     ],
     normalSensations: [
-      "Gentle vibration and mild warmth during use \u2014 expected",
-      "Slight redness that fades within 30 minutes \u2014 normal",
-      "Subtle pulse with vibration \u2014 comfortable and expected",
+      "Gentle vibration and mild warmth during use — expected",
+      "Slight redness that fades within 30 minutes — normal",
+      "Subtle pulse with vibration — comfortable and expected",
     ],
-    sessionInfo: "Session time: 5\u20137 minutes \u00b7 Frequency: daily, every morning \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
+    sessionInfo: "Session time: 5–7 minutes · Frequency: daily, every morning · Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── SKIN PULSE ───
@@ -434,7 +449,7 @@ export const productConfigs: Record<string, ProductConfig> = {
     techCards: [
       { icon: Zap, title: "Dual-Ball Microcurrent", desc: "Two conductive spheres — positive and negative — create a continuous low-level electrical circuit through the dermis. Current travels through tissue, not along the surface. Both balls must remain in contact at all times to maintain the circuit." },
       { icon: Activity, title: "Fibroblast Stimulation", desc: "Electrical stimulation at sub-sensory levels has been studied for its effect on fibroblast activity and ATP synthesis — the cellular energy currency that drives collagen and elastin production. No sensation required." },
-      { icon: Focus, title: "Targeted Zone Protocol", desc: "Compact dual-ball format (10.6 \u00d7 6.5cm) allows precise treatment of specific zones: nasolabial folds, under-eye, brow, lip lines. Each zone gets its own 60-second pass." },
+      { icon: Focus, title: "Targeted Zone Protocol", desc: "Compact dual-ball format (10.6 × 6.5cm) allows precise treatment of specific zones: nasolabial folds, under-eye, brow, lip lines. Each zone gets its own 60-second pass." },
       { icon: CircleDot, title: "2.4V Bioelectric Range", desc: "The device operates at 2.4V, 0.15W — within the body's own bioelectric frequency range. This is not TENS, not EMS. Microcurrent is a distinct category: current at or below 1mA, calibrated for cellular-level stimulation." },
     ],
     ritualSteps: [
@@ -447,7 +462,7 @@ export const productConfigs: Record<string, ProductConfig> = {
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "Microcurrent \u00b7 ATP", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://scholar.google.com/scholar?q=cheng+1982+electric+currents+ATP+generation+protein+synthesis+skin" },
+      { technology: "Microcurrent · ATP", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://scholar.google.com/scholar?q=cheng+1982+electric+currents+ATP+generation+protein+synthesis+skin" },
       { technology: "Fibroblast Stimulation", studyTitle: "Effect of Microcurrent Stimulation on Fibroblast Proliferation and Collagen Synthesis", journal: "Journal of Dermatological Science, 2010", url: "https://scholar.google.com/scholar?q=microcurrent+fibroblast+proliferation+collagen+synthesis+skin+stimulation" },
       { technology: "Bioelectric Signalling", studyTitle: "Endogenous Bioelectric Signals as Morphogenetic Controls of Development, Regeneration and Neoplasm", journal: "Journal of Pathology, 2011", url: "https://scholar.google.com/scholar?q=bioelectric+signals+skin+regeneration+collagen+morphogenetic" },
       { technology: "Sub-Sensory Current", studyTitle: "Low-Intensity Electric Stimulation of the Skin: A Review After 20 Years of Research", journal: "Bioelectrochemistry and Bioenergetics, 1999", url: "https://scholar.google.com/scholar?q=low+intensity+electric+stimulation+skin+review+bioelectrochemistry" },
@@ -459,11 +474,11 @@ export const productConfigs: Record<string, ProductConfig> = {
       "You have metal implants in the face",
     ],
     normalSensations: [
-      "No sensation on microcurrent mode \u2014 correct, this is sub-sensory",
-      "Faint tingle if gel layer is thin \u2014 add more medium and continue",
-      "Slight warmth after sustained contact on one zone \u2014 normal",
+      "No sensation on microcurrent mode — correct, this is sub-sensory",
+      "Faint tingle if gel layer is thin — add more medium and continue",
+      "Slight warmth after sustained contact on one zone — normal",
     ],
-    sessionInfo: "Session time: 5\u20138 minutes \u00b7 Frequency: 4\u20135\u00d7 per week \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
+    sessionInfo: "Session time: 5–8 minutes · Frequency: 4–5× per week · Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── SCULPT WAND ───
@@ -496,19 +511,19 @@ export const productConfigs: Record<string, ProductConfig> = {
       { icon: Zap, title: "EMS Microcurrent", desc: "Patterned electrical impulses cause involuntary facial muscle contractions — replicating voluntary muscular exercise at the neuromuscular level. Variable output (0.4–5.5W) allows progressive intensity increase over weeks. Same principle as resistance training." },
       { icon: Vibrate, title: "Lymphatic Vibration", desc: "Motor vibration at the surface stimulates lymphatic circulation. The lymphatic system moves only when the tissue around it moves. Vibration provides that mechanical input — supporting drainage, reducing puffiness and fluid retention." },
       { icon: Gauge, title: "Progressive Intensity", desc: "Four intensity levels from 0.4W to 5.5W. Start minimal. Increase week by week. Muscle adaptation to EMS follows the same progression curve as athletic training — incremental, not immediate." },
-      { icon: Activity, title: "TYPE-C Build", desc: "400mAh battery \u00b7 TYPE-C fast charge \u00b7 1.5\u20132h full charge \u00b7 ABS/zinc alloy construction \u00b7 120 \u00d7 67 \u00d7 39mm. Built for daily use without interruption." },
+      { icon: Activity, title: "TYPE-C Build", desc: "400mAh battery · TYPE-C fast charge · 1.5–2h full charge · ABS/zinc alloy construction · 120 × 67 × 39mm. Built for daily use without interruption." },
     ],
     ritualSteps: [
       { step: "01", title: "Prepare", desc: "Apply conductive gel. Required for EMS — gel ensures current transfers to tissue, not lost at the surface." },
-      { step: "02", title: "Train", desc: "Lowest intensity first. Hold against each zone 30–45 seconds: chin \u2192 jaw \u2192 cheekbones \u2192 forehead." },
-      { step: "03", title: "Circulate", desc: "Vibration mode to finish. Downward from temples \u2192 ear \u2192 neck. Follow lymph direction. Total: 8–12 minutes." },
+      { step: "02", title: "Train", desc: "Lowest intensity first. Hold against each zone 30–45 seconds: chin → jaw → cheekbones → forehead." },
+      { step: "03", title: "Circulate", desc: "Vibration mode to finish. Downward from temples → ear → neck. Follow lymph direction. Total: 8–12 minutes." },
     ],
     beforeAfter: { before: beforeImg, after: afterImg },
     problemImage: problemSculptWand,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "EMS \u00b7 Facial Muscles", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://scholar.google.com/scholar?q=neuromuscular+electrical+stimulation+facial+wrinkles+sagging+cosmetic" },
+      { technology: "EMS · Facial Muscles", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://scholar.google.com/scholar?q=neuromuscular+electrical+stimulation+facial+wrinkles+sagging+cosmetic" },
       { technology: "Progressive EMS", studyTitle: "Use of a Neuromuscular Electrical Stimulation Device for Facial Muscle Toning", journal: "Journal of Cosmetic Dermatology, 2012", url: "https://scholar.google.com/scholar?q=neuromuscular+electrical+stimulation+facial+muscle+toning+cosmetic+2012" },
       { technology: "Lymphatic Vibration", studyTitle: "Low-Frequency Vibrotherapy Improves the Effectiveness of Manual Lymphatic Drainage", journal: "Journal of Clinical Medicine, 2018", url: "https://scholar.google.com/scholar?q=vibrotherapy+lymphatic+drainage+manual+skin+facial+clinical+medicine+2018" },
       { technology: "EMS Mechanism", studyTitle: "A Systematic Review of the Effects of Neuromuscular Electrical Stimulation on Facial Muscles", journal: "Journal of Facial Plastic Surgery, 2021", url: "https://scholar.google.com/scholar?q=systematic+review+neuromuscular+electrical+stimulation+facial+muscles+2021" },
@@ -520,11 +535,11 @@ export const productConfigs: Record<string, ProductConfig> = {
       "You have metal implants in the face",
     ],
     normalSensations: [
-      "A controlled pulse during EMS \u2014 should feel like a gentle involuntary contraction",
-      "No burning \u2014 if burning occurs, reduce intensity immediately and add more gel",
-      "Vibration at the surface \u2014 like a gentle buzz, not discomfort",
+      "A controlled pulse during EMS — should feel like a gentle involuntary contraction",
+      "No burning — if burning occurs, reduce intensity immediately and add more gel",
+      "Vibration at the surface — like a gentle buzz, not discomfort",
     ],
-    sessionInfo: "Session time: 8\u201312 minutes \u00b7 Frequency: 3\u20135\u00d7 per week \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
+    sessionInfo: "Session time: 8–12 minutes · Frequency: 3–5× per week · Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── FRAME PULSE ACTIVATOR ───
@@ -582,11 +597,11 @@ export const productConfigs: Record<string, ProductConfig> = {
       "You have metal implants in the face",
     ],
     normalSensations: [
-      "Light rhythmic pulse during EMS \u2014 comfortable and expected",
-      "Gentle warmth from LED array \u2014 keep eyes closed",
-      "No sensation between pulse cycles \u2014 normal",
+      "Light rhythmic pulse during EMS — comfortable and expected",
+      "Gentle warmth from LED array — keep eyes closed",
+      "No sensation between pulse cycles — normal",
     ],
-    sessionInfo: "Session time: 10 minutes \u00b7 Frequency: daily or every other day \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
+    sessionInfo: "Session time: 10 minutes · Frequency: daily or every other day · Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── MICROCURRENT SCULPT WAND (unlisted) ───
@@ -642,11 +657,11 @@ export const productConfigs: Record<string, ProductConfig> = {
       "You have metal implants in the face",
     ],
     normalSensations: [
-      "A mild tingling or warmth during use \u2014 expected",
-      "Slight redness that fades within 30 minutes \u2014 normal",
-      "No sensation at all on microcurrent mode \u2014 correct, it\u2019s sub-sensory",
+      "A mild tingling or warmth during use — expected",
+      "Slight redness that fades within 30 minutes — normal",
+      "No sensation at all on microcurrent mode — correct, it’s sub-sensory",
     ],
-    sessionInfo: "Session time: 5 minutes \u00b7 Frequency: daily \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
+    sessionInfo: "Session time: 5 minutes · Frequency: daily · Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── COLLAGEN FACE GEL ───
@@ -777,21 +792,21 @@ export const productConfigs: Record<string, ProductConfig> = {
       { icon: ShieldCheck, title: "Negative Ion Cleansing", desc: "Negative ion output attracts and lifts positively charged impurities — sebum oxidation, environmental particulates, residual product buildup — from the follicle via electrostatic force. No friction. No disruption to the skin barrier." },
       { icon: Zap, title: "EMS Microcurrent", desc: "Low-frequency electrical pulses stimulate facial muscle groups and support fibroblast activity in the dermis. High-capacity battery (1200–2000mAh) ensures consistent output across a full protocol without current drop." },
       { icon: Droplets, title: "Conductivity After Cleansing", desc: "Ion-cleansed tissue presents less surface resistance. EMS current travels more efficiently into the dermis. The cleaning phase is not cosmetic — it's functional preparation for the stimulation phase." },
-      { icon: Gauge, title: "Built for Daily Protocol", desc: "1200\u20132000mAh battery \u00b7 USB charging \u00b7 Compact portable format. Designed for a 10-minute daily ritual without battery anxiety." },
+      { icon: Gauge, title: "Built for Daily Protocol", desc: "1200–2000mAh battery · USB charging · Compact portable format. Designed for a 10-minute daily ritual without battery anxiety." },
     ],
     ritualSteps: [
       { step: "01", title: "Cleanse", desc: "Negative ion mode — 2–3 minutes across face and neck. No serum yet. Let the ions draw out surface buildup first." },
       { step: "02", title: "Stimulate", desc: "Apply conductive serum. EMS microcurrent mode — 3–5 minutes, upward strokes jaw to temple." },
-      { step: "03", title: "Repeat", desc: "4–5\u00d7 per week. Total protocol: under 10 minutes. Sequence does not change." },
+      { step: "03", title: "Repeat", desc: "4–5× per week. Total protocol: under 10 minutes. Sequence does not change." },
     ],
     beforeAfter: { before: beforeImg, after: afterImg },
     problemImage: problemWandPro,
     comparisonRows: defaultComparison,
     faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "Ion Cleansing \u00b7 Galvanic", studyTitle: "Galvanic Current and Skin Barrier Integrity in Transdermal Electrostimulation", journal: "Journal of Cosmetic Science, 2003", url: "https://scholar.google.com/scholar?q=galvanic+current+facial+cleansing+ion+skin+barrier+electrostimulation" },
+      { technology: "Ion Cleansing · Galvanic", studyTitle: "Galvanic Current and Skin Barrier Integrity in Transdermal Electrostimulation", journal: "Journal of Cosmetic Science, 2003", url: "https://scholar.google.com/scholar?q=galvanic+current+facial+cleansing+ion+skin+barrier+electrostimulation" },
       { technology: "EMS Microcurrent", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://scholar.google.com/scholar?q=neuromuscular+electrical+stimulation+facial+wrinkles+sagging+cosmetic" },
-      { technology: "ATP \u00b7 Cellular Stimulation", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://scholar.google.com/scholar?q=cheng+1982+electric+currents+ATP+generation+protein+synthesis+skin" },
+      { technology: "ATP · Cellular Stimulation", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://scholar.google.com/scholar?q=cheng+1982+electric+currents+ATP+generation+protein+synthesis+skin" },
       { technology: "Iontophoresis", studyTitle: "Iontophoresis for Drug Delivery: Principles, Opportunities and Challenges", journal: "Advanced Drug Delivery Reviews, 2011", url: "https://scholar.google.com/scholar?q=iontophoresis+transdermal+drug+delivery+principles+opportunities+challenges+2011" },
     ],
     contraindications: [
@@ -801,11 +816,11 @@ export const productConfigs: Record<string, ProductConfig> = {
       "You have metal implants in the face",
     ],
     normalSensations: [
-      "A mild surface tingle during ion cleansing \u2014 comfortable and expected",
-      "No sensation on microcurrent \u2014 sub-sensory is correct",
-      "Slight warmth after sustained contact \u2014 normal",
+      "A mild surface tingle during ion cleansing — comfortable and expected",
+      "No sensation on microcurrent — sub-sensory is correct",
+      "Slight warmth after sustained contact — normal",
     ],
-    sessionInfo: "Session time: 10 minutes \u00b7 Frequency: 4\u20135\u00d7 per week \u00b7 Stop if: burning sensation, unusual pain, or persistent redness",
+    sessionInfo: "Session time: 10 minutes · Frequency: 4–5× per week · Stop if: burning sensation, unusual pain, or persistent redness",
   },
 };
 

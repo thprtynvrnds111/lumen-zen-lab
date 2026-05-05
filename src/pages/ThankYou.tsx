@@ -1,6 +1,7 @@
 import { useSearchParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { SEO } from "@/components/SEO";
+import { useCartStore } from "@/stores/cartStore";
 
 const postPurchaseLinks = [
   { label: "Evening Protocol", desc: "Your 5-minute daily ritual", href: "/journal/evening-protocol" },
@@ -8,16 +9,63 @@ const postPurchaseLinks = [
   { label: "Journal", desc: "Tips, studies, and more", href: "/journal" },
 ];
 
+const ritualTimeline = [
+  { day: "Tonight", instruction: "Cleanse your skin. Apply conductive gel. Run your device for 5 minutes on the lowest setting. Don't rush the first session." },
+  { day: "Day 3", instruction: "You may notice improved absorption after use. This is the conductivity effect. Your skin barrier is responding." },
+  { day: "Day 14", instruction: "Structural changes begin here. Skin texture firms from repeated electrical stimulation. This is where consistency pays." },
+  { day: "Day 30", instruction: "If you don't see visible change after 30 days of consistent daily use, contact us. We will refund you in full." },
+];
+
 export default function ThankYou() {
   const [searchParams] = useSearchParams();
   const orderName = searchParams.get("order_name");
   const email = searchParams.get("email");
   const [mounted, setMounted] = useState(false);
+  const { items, clearCart } = useCartStore();
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 30);
     return () => clearTimeout(t);
   }, []);
+
+  // Fire purchase events once per order — guard with sessionStorage to prevent duplicate on re-render
+  useEffect(() => {
+    if (!orderName) return;
+    const firedKey = `zp_purchase_fired_${orderName}`;
+    if (sessionStorage.getItem(firedKey)) return;
+    sessionStorage.setItem(firedKey, '1');
+
+    const totalValue = items.reduce((sum, item) => sum + parseFloat(item.price.amount) * item.quantity, 0);
+    const w = window as any;
+
+    // Meta Pixel: Purchase
+    if (w.fbq) {
+      w.fbq('track', 'Purchase', {
+        value: totalValue || 88,
+        currency: 'EUR',
+        content_type: 'product',
+        content_ids: items.map(i => i.variantId),
+      });
+    }
+
+    // GA4: purchase
+    if (w.gtag) {
+      w.gtag('event', 'purchase', {
+        transaction_id: orderName,
+        currency: 'EUR',
+        value: totalValue || 88,
+        items: items.map(item => ({
+          item_id: item.product.node.handle,
+          item_name: item.product.node.title || item.variantTitle,
+          price: parseFloat(item.price.amount),
+          quantity: item.quantity,
+        })),
+      });
+    }
+
+    clearCart();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [orderName]);
 
   const displayOrder = orderName
     ? orderName.startsWith("#") ? orderName : `#${orderName}`
@@ -187,7 +235,7 @@ export default function ThankYou() {
               color: "#5C5753",
               lineHeight: 1.75,
               textAlign: "center",
-              margin: "0 0 36px",
+              margin: "0 0 28px",
             }}
           >
             {email
@@ -195,35 +243,93 @@ export default function ThankYou() {
               : "Your device is being prepared with care and will ship within 1–2 business days. A confirmation email is on its way."}
           </p>
 
-          {/* CTA button */}
-          <div style={{ textAlign: "center", marginBottom: "32px" }}>
-            <Link
-              to="/"
+          {/* Ritual timeline */}
+          <div style={{ marginBottom: "28px" }}>
+            <p
               style={{
-                display: "inline-block",
+                fontFamily: "'Poppins', sans-serif",
+                fontWeight: 300,
+                fontSize: "10px",
+                letterSpacing: "0.2em",
+                color: "#C6A07C",
+                textAlign: "center",
+                textTransform: "uppercase",
+                marginBottom: "14px",
+              }}
+            >
+              Your ritual begins when it arrives
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+              {ritualTimeline.map((item) => (
+                <div
+                  key={item.day}
+                  style={{
+                    display: "flex",
+                    gap: "14px",
+                    padding: "12px 16px",
+                    backgroundColor: "#F7F4F0",
+                    borderRadius: "2px",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <span style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontWeight: 500,
+                    fontSize: "10px",
+                    letterSpacing: "0.12em",
+                    color: "#C6A07C",
+                    textTransform: "uppercase",
+                    whiteSpace: "nowrap",
+                    paddingTop: "1px",
+                    minWidth: "44px",
+                  }}>
+                    {item.day}
+                  </span>
+                  <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300, fontSize: "11px", color: "#5C5753", lineHeight: 1.65 }}>
+                    {item.instruction}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Trustpilot invite */}
+          <div
+            style={{
+              backgroundColor: "#F7F4F0",
+              borderRadius: "2px",
+              padding: "14px 20px",
+              marginBottom: "24px",
+              textAlign: "center",
+            }}
+          >
+            <p style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300, fontSize: "11px", color: "#5C5753", margin: "0 0 8px" }}>
+              After 14 days, your review could help someone like you.
+            </p>
+            <a
+              href="https://nl.trustpilot.com/review/zentialpure.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
                 fontFamily: "'Poppins', sans-serif",
                 fontWeight: 400,
-                fontSize: "11px",
-                letterSpacing: "0.18em",
-                color: "#F7F4F0",
-                backgroundColor: "#1A1714",
-                padding: "14px 40px",
-                borderRadius: "2px",
-                textDecoration: "none",
+                fontSize: "10px",
+                letterSpacing: "0.16em",
+                color: "#1A1714",
                 textTransform: "uppercase",
-                transition: "background-color 0.3s ease",
+                textDecoration: "none",
+                borderBottom: "1px solid #C6A07C",
+                paddingBottom: "1px",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#C6A07C")}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#1A1714")}
             >
-              Return Home
-            </Link>
+              Leave a Trustpilot review →
+            </a>
           </div>
 
           {/* Bottom gold divider */}
           <GoldDivider />
 
-          {/* Post-purchase: prepare your ritual */}
+          {/* Post-purchase links */}
           <div style={{ marginTop: "28px" }}>
             <p
               style={{

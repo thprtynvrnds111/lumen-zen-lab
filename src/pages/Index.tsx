@@ -11,6 +11,7 @@ const ComparisonSection  = lazy(() => import("@/components/zential/ComparisonSec
 const DevicesSection     = lazy(() => import("@/components/zential/DevicesSection").then(m => ({ default: m.DevicesSection })));
 const StatsBar           = lazy(() => import("@/components/zential/StatsBar").then(m => ({ default: m.StatsBar })));
 const SocialProof        = lazy(() => import("@/components/zential/SocialProof").then(m => ({ default: m.SocialProof })));
+const TrustpilotStrip    = lazy(() => import("@/components/zential/TrustpilotStrip").then(m => ({ default: m.TrustpilotStrip })));
 const RitualSection      = lazy(() => import("@/components/zential/RitualSection").then(m => ({ default: m.RitualSection })));
 const BundleSection      = lazy(() => import("@/components/zential/BundleSection").then(m => ({ default: m.BundleSection })));
 const FAQSection         = lazy(() => import("@/components/zential/FAQSection").then(m => ({ default: m.FAQSection })));
@@ -57,6 +58,7 @@ const Index = () => {
           {/* 3. Proof */}
           <StatsBar />
           <SocialProof />
+          <TrustpilotStrip />
 
           {/* 4. Ritual */}
           <RitualSection />

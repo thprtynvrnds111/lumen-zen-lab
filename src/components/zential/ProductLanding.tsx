@@ -15,6 +15,8 @@ import { PaymentBadges } from "@/components/zential/PaymentBadges";
 import { RelatedProducts } from "@/components/zential/RelatedProducts";
 import { ScarcityBanner } from "@/components/zential/ScarcityBanner";
 import type { ProductConfig } from "@/data/productConfigs";
+import { TrustpilotStrip } from "@/components/zential/TrustpilotStrip";
+import { SkinFitSection } from "@/components/zential/SkinFitSection";
 
 type BundleKey = "single" | "ritual-set" | "pro-set";
 
@@ -65,6 +67,34 @@ export function ProductLanding({ config }: Props) {
       if (!isNaN(price)) setMaskPrice(price);
     }).catch(() => {});
   }, []);
+
+  // Fire ViewContent (Meta) + view_item (GA4) once product price is known
+  useEffect(() => {
+    if (loading || !variant) return;
+    const w = window as any;
+    if (w.fbq) {
+      w.fbq('track', 'ViewContent', {
+        content_name: config.name,
+        content_ids: [variant.id],
+        content_type: 'product',
+        value: basePrice,
+        currency: currency,
+      });
+    }
+    if (w.gtag) {
+      w.gtag('event', 'view_item', {
+        currency,
+        value: basePrice,
+        items: [{
+          item_id: config.handle,
+          item_name: config.name,
+          price: basePrice,
+          quantity: 1,
+        }],
+      });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -127,13 +157,27 @@ export function ProductLanding({ config }: Props) {
     });
 
     // Meta Pixel: AddToCart
-    if (typeof window !== "undefined" && (window as any).fbq) {
-      (window as any).fbq('track', 'AddToCart', {
+    const w = window as any;
+    if (w.fbq) {
+      w.fbq('track', 'AddToCart', {
         content_name: config.name,
         content_ids: [variant.id],
         content_type: 'product',
         value: bundlePrice,
         currency: currency,
+      });
+    }
+    // GA4: add_to_cart
+    if (w.gtag) {
+      w.gtag('event', 'add_to_cart', {
+        currency,
+        value: bundlePrice,
+        items: [{
+          item_id: config.handle,
+          item_name: config.name,
+          price: bundlePrice,
+          quantity: 1,
+        }],
       });
     }
 
@@ -412,6 +456,33 @@ export function ProductLanding({ config }: Props) {
         </div>
       </section>
 
+      {/* ── FOR YOU IF ── */}
+      {config.forYouIf && config.forYouIf.length > 0 && (
+        <section className="px-6 md:px-12 lg:px-20 py-20 md:py-24" style={{ backgroundColor: '#F3EFE9' }}>
+          <div className="max-w-2xl mx-auto">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-6 text-center">— This instrument is for you if —</p>
+            <ul className="space-y-5">
+              {config.forYouIf.map((item, i) => (
+                <li key={i} className="flex items-start gap-4">
+                  <span style={{ color: '#C6A07C', fontFamily: "'Lora', serif", fontStyle: 'italic', fontSize: '18px', lineHeight: 1, flexShrink: 0, marginTop: '2px' }}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <p className="text-[15px] text-foreground/80 leading-relaxed">{item}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-10 text-center">
+              <a
+                href="/technology"
+                className="text-[11px] tracking-[0.2em] uppercase text-foreground/60 hover:text-foreground transition-colors border-b border-foreground/20 pb-0.5"
+              >
+                The science behind this instrument →
+              </a>
+            </p>
+          </div>
+        </section>
+      )}
+
       {/* ── SECTION 4: TECHNOLOGY BREAKDOWN ── */}
       <section className="section-padding gradient-pearl">
         <div className="max-w-[1200px] mx-auto">
@@ -432,6 +503,9 @@ export function ProductLanding({ config }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ── SECTION 4a: SKIN FIT (blocker 2 — skin type suitability) ── */}
+      <SkinFitSection />
 
       {/* ── SECTION 4b: WE SHOW OUR WORK ── */}
       {config.studyCards && config.studyCards.length > 0 && (
@@ -649,6 +723,9 @@ export function ProductLanding({ config }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ── TRUSTPILOT REVIEWS ── */}
+      <TrustpilotStrip />
 
       {/* ── RELATED PRODUCTS ── */}
       <RelatedProducts currentHandle={config.handle} />
