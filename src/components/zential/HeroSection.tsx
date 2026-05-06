@@ -91,14 +91,26 @@ export function HeroSection() {
         </h1>
 
         <p
+          className="font-serif italic text-[14px] md:text-[15px] mb-5 text-center md:text-left"
+          style={{
+            color: '#C6A07C',
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'translateY(0)' : 'translateY(10px)',
+            transition: 'opacity 0.8s ease-out 0.38s, transform 0.8s ease-out 0.38s',
+          }}
+        >
+          The body already knows the frequency. We publish it.
+        </p>
+
+        <p
           className="text-muted-foreground text-[15px] md:text-base leading-relaxed max-w-md mb-8 text-center md:text-left"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(14px)',
-            transition: 'opacity 0.8s ease-out 0.45s, transform 0.8s ease-out 0.45s',
+            transition: 'opacity 0.8s ease-out 0.52s, transform 0.8s ease-out 0.52s',
           }}
         >
-          Four clinically inspired technologies in one quiet ritual. Designed for visible firmness, tone and lift — five minutes a day, in your own bathroom.
+          Four clinically inspired technologies in one quiet ritual. Designed for visible firmness, tone and lift. Five minutes a day, in your own bathroom.
         </p>
 
         {/* Social proof */}
