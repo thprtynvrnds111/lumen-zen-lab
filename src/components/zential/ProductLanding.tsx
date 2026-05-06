@@ -491,8 +491,15 @@ export function ProductLanding({ config }: Props) {
             <h2 className="font-serif italic text-[32px] md:text-[44px] leading-[1.05] text-foreground tracking-tight">Four technologies. One device.</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {config.techCards.map(card => (
-              <div key={card.title} className="glass-card p-6 text-center group hover:shadow-lg transition-all duration-300">
+            {config.techCards.map((card, i) => (
+              <div
+                key={card.title}
+                className={[
+                  "glass-card p-6 text-center group hover:shadow-lg transition-all duration-300",
+                  config.techCards.length === 6 && i === 4 ? "lg:col-start-2" : "",
+                  config.techCards.length === 6 && i === 5 ? "lg:col-start-3" : "",
+                ].join(" ")}
+              >
                 <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/20 transition-colors">
                   <card.icon size={22} className="text-accent" />
                 </div>
