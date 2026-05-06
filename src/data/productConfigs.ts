@@ -159,7 +159,7 @@ export const productConfigs: Record<string, ProductConfig> = {
     name: "Face Introducer",
     subheadline: "4-Mode Protocol: Blue · Red · Purple Light + EMS Microcurrent · Ion Cleansing · 45°C Thermal",
     benefits: [
-      { icon: Sun, label: "Blue · Red · Purple LED (3 modes)" },
+      { icon: Sun, label: "Blue · Red · Purple · EMS (4 modes)" },
       { icon: Zap, label: "EMS Microcurrent — ATP + Muscle" },
       { icon: ScanFace, label: "Positive & Negative Ion Cleansing" },
       { icon: ThermometerSun, label: "45°C Constant Thermal + Sonic" },
