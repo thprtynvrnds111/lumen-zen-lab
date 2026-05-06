@@ -45,7 +45,7 @@ export function MovementSection() {
           style={{ color: "#1A1714", opacity: 0.6 }}
         >
           The most optimized people on earth don't leave anything to chance.
-          Sleep, nutrition, performance — each one has its category leader.
+          Sleep, nutrition, performance. Each one has its category leader.
           Zential is building the same category for skin.
           Not skincare. Skin Intelligence.
         </p>
@@ -93,7 +93,7 @@ export function MovementSection() {
           className="text-[11px] tracking-[0.25em] uppercase"
           style={{ color: "#C6A07C" }}
         >
-          — The Zential Movement
+The Zential Movement
         </p>
 
       </div>
