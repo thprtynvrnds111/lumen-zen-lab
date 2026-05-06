@@ -8,6 +8,7 @@ import { FinalCTA } from "@/components/zential/FinalCTA";
 import { lazy, Suspense } from "react";
 
 const ComparisonSection  = lazy(() => import("@/components/zential/ComparisonSection").then(m => ({ default: m.ComparisonSection })));
+const MovementSection    = lazy(() => import("@/components/zential/MovementSection").then(m => ({ default: m.MovementSection })));
 const DevicesSection     = lazy(() => import("@/components/zential/DevicesSection").then(m => ({ default: m.DevicesSection })));
 const StatsBar           = lazy(() => import("@/components/zential/StatsBar").then(m => ({ default: m.StatsBar })));
 const SocialProof        = lazy(() => import("@/components/zential/SocialProof").then(m => ({ default: m.SocialProof })));
@@ -66,6 +67,7 @@ const Index = () => {
           {/* 5. AOV + close */}
           <BundleSection />
           <FAQSection />
+          <MovementSection />
           <FinalCTA />
         </Suspense>
       </main>
