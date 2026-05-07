@@ -473,7 +473,7 @@ export function ProductLanding({ config }: Props) {
             </ul>
             <p className="mt-10 text-center">
               <a
-                href="/technology"
+                href="#technology"
                 className="text-[11px] tracking-[0.2em] uppercase text-foreground/60 hover:text-foreground transition-colors border-b border-foreground/20 pb-0.5"
               >
                 The science behind this instrument →
@@ -484,7 +484,7 @@ export function ProductLanding({ config }: Props) {
       )}
 
       {/* ── SECTION 4: TECHNOLOGY BREAKDOWN ── */}
-      <section className="section-padding gradient-pearl">
+      <section id="technology" className="section-padding gradient-pearl">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-14">
             <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Technology —</p>
