@@ -43,7 +43,7 @@ export function DevicesSection() {
   ];
 
   useEffect(() => {
-    fetchProducts(12).then(p => {
+    fetchProducts(50).then(p => {
       const filtered = p.filter(pr => !HIDDEN_HANDLES.includes(pr.node.handle));
       filtered.sort((a, b) => {
         const idxA = SORT_ORDER.indexOf(a.node.handle);
