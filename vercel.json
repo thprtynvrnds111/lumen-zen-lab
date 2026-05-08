@@ -1,6 +1,8 @@
 {
   "routes": [
     { "src": "/api/(.*)",                           "dest": "/api/$1" },
+    { "src": "/products/(.*)",  "headers": { "Location": "/product/$1" }, "status": 301 },
+    { "src": "/collections/(.*)", "headers": { "Location": "/collection" }, "status": 301 },
     { "src": "/quiz",                                "dest": "/index.html" },
     { "src": "/quiz/result",                         "dest": "/index.html" },
     { "src": "/at-home-face-lifting-device",         "dest": "/at-home-face-lifting-device.html" },

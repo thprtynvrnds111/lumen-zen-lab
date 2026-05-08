@@ -157,6 +157,23 @@ export function HeroSection() {
           </Link>
         </div>
 
+        {/* Trust strip */}
+        <div
+          className="flex flex-wrap gap-x-5 gap-y-1.5 mb-8"
+          style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'translateY(0)' : 'translateY(10px)',
+            transition: 'opacity 0.7s ease-out 0.78s, transform 0.7s ease-out 0.78s',
+          }}
+        >
+          {['Free EU Shipping', '30-Day Guarantee', 'Dermatologist Tested'].map(label => (
+            <span key={label} className="flex items-center gap-1.5 text-[11px]" style={{ color: '#636363' }}>
+              <span style={{ color: '#2ED8A8', fontSize: 13 }}>✓</span>
+              {label}
+            </span>
+          ))}
+        </div>
+
         {/* Modality strip — editorial */}
         <div
           className="w-full max-w-md pt-6 border-t"
