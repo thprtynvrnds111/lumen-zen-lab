@@ -27,6 +27,20 @@ export function DevicesSection() {
     "lifting-and-tightening-face-introducer": "Deep infusion for plump, hydrated skin",
     "portable-ems-microcurrent-facial-beauty-device": "Advanced EMS & microcurrent facial purification",
     "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening": "EMS sculpting with dual-wavelength LED",
+    "breath-seal": "Medical-grade nasal breathing tape",
+    "blackout-eye-mask-3d-deep-contoured-sleep-mask-lash-extensions-no-pressure-blindfold-sleeping-eye-mask-women-men-side-sleepers": "3D contoured blackout sleep mask",
+    "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": "80W dual-wavelength full-body red light panel",
+    "household-red-light-charging-vibrating-red-light-therapy-mat": "Infrared heat and red light recovery mat",
+    "pneumatic-air-wave-massager-pneumatic-circulation-leg-massager-pneumatic-massager": "Sequential compression for leg recovery",
+    "electric-foam-roller-muscle-relaxation-fitness-yoga-column": "Percussive vibration for fascia release",
+    "gravity-quilt-cotton-weighted-blanket": "7kg cotton weighted blanket for deep sleep",
+    "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow": "6,210-point acupressure mat and pillow",
+    "led-beauty-lamp-red-light-therapy-lamp-desktop-stand": "Desktop 660nm red light therapy lamp",
+    "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad": "USB thermal pad for joint recovery",
+    "portable-home-use-charging-red-light-therapy-blanket-far-infrared": "Full-body far-infrared sauna blanket",
+    "household-full-body-moisture-removing-infrared-sauna-blanket": "Compact packable infrared sauna blanket",
+    "null-1777641441133": "Wearable 360-node infrared LED belt",
+    "red-light-therapy-belt-infrared-hot-compress-phototherapy": "USB thermal wrap for joint protocol",
   };
 
   const SORT_ORDER = [
