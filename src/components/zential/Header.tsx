@@ -71,7 +71,7 @@ export function Header() {
 
           {/* Center logo */}
           <Link to="/" className="absolute left-1/2 -translate-x-1/2" aria-label="Zential Pure — Home">
-            <ZentialLogo size="md" variant="dark" animateMark />
+            <ZentialLogo size="md" variant="white" animateMark />
           </Link>
 
           {/* Right icons */}

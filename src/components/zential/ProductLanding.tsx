@@ -334,7 +334,7 @@ export function ProductLanding({ config }: Props) {
               <button
                 onClick={handleAdd}
                 disabled={isCartLoading || !variant?.availableForSale}
-                className="w-full bg-[#2A211A] hover:bg-[#1A1410] text-white rounded-full uppercase tracking-[0.18em] text-[11px] font-medium py-5 transition-all duration-300 disabled:opacity-50 flex items-center justify-center"
+                className="w-full bg-[#E87040] hover:bg-[#D4633A] text-white rounded-full uppercase tracking-[0.18em] text-[11px] font-medium py-5 transition-all duration-300 disabled:opacity-50 flex items-center justify-center"
               >
                 {isCartLoading ? <Loader2 className="animate-spin" size={16} /> : "Add To Ritual"}
               </button>
@@ -403,7 +403,7 @@ export function ProductLanding({ config }: Props) {
       )}
 
       {/* ── SECTION 2: TRUST INSTEAD OF REVIEWS ── */}
-      <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32" style={{ backgroundColor: '#FBF8F4' }}>
+      <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32" style={{ backgroundColor: '#0C1118' }}>
         <div className="max-w-[1100px] mx-auto">
           <div className="text-center mb-14 max-w-2xl mx-auto">
             <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Why You Can Trust This —</p>
@@ -421,8 +421,8 @@ export function ProductLanding({ config }: Props) {
               { eyebrow: "Guarantee", title: "30 days. No conditions.", body: "Use it nightly for 30 days. If your skin doesn't show change, we refund you in full. No restocking fee, no questionnaire, no friction.", cta: "Read policy →" },
               { eyebrow: "Manufacturing", title: "Medical-grade build", body: "FDA-cleared modalities, CE-marked construction, 2-year hardware warranty. The device itself is the proof — not borrowed credibility.", cta: "Learn more →" },
             ].map((card, i) => (
-              <div key={i} className="bg-white rounded-2xl p-8 border border-[#E8DDD0] hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-                <p className="text-[10px] tracking-[0.3em] uppercase text-[#9B5A2E] mb-5">— {card.eyebrow} —</p>
+              <div key={i} className="rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-500" style={{ backgroundColor: '#111820', border: '1px solid rgba(255,255,255,0.08)' }}>
+                <p className="text-[10px] tracking-[0.3em] uppercase mb-5" style={{ color: '#E87040' }}>— {card.eyebrow} —</p>
                 <h3 className="font-serif italic text-[24px] leading-[1.1] text-foreground mb-4">{card.title}</h3>
                 <p className="text-sm text-foreground/65 leading-relaxed mb-6">{card.body}</p>
                 <p className="text-[11px] tracking-[0.18em] uppercase text-foreground/70 hover:text-foreground transition-colors cursor-default">{card.cta}</p>
@@ -458,7 +458,7 @@ export function ProductLanding({ config }: Props) {
 
       {/* ── FOR YOU IF ── */}
       {config.forYouIf && config.forYouIf.length > 0 && (
-        <section className="px-6 md:px-12 lg:px-20 py-20 md:py-24" style={{ backgroundColor: '#F3EFE9' }}>
+        <section className="px-6 md:px-12 lg:px-20 py-20 md:py-24" style={{ backgroundColor: '#070A0E' }}>
           <div className="max-w-2xl mx-auto">
             <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-6 text-center">— This instrument is for you if —</p>
             <ul className="space-y-5">
@@ -488,7 +488,7 @@ export function ProductLanding({ config }: Props) {
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-14">
             <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Technology —</p>
-            <h2 className="font-serif italic text-[32px] md:text-[44px] leading-[1.05] text-foreground tracking-tight">Four technologies. One device.</h2>
+            <h2 className="font-serif italic text-[32px] md:text-[44px] leading-[1.05] text-foreground tracking-tight">{config.techSectionTitle || "Four technologies. One device."}</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {config.techCards.map((card, i) => (
@@ -639,7 +639,7 @@ export function ProductLanding({ config }: Props) {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {[
+            {(config.mechanismTimeline ?? [
               {
                 week: "Week 1–2",
                 heading: "Cellular activation",
@@ -655,7 +655,7 @@ export function ProductLanding({ config }: Props) {
                 heading: "Sustained frequency",
                 body: "The skin's own systems are now working with the protocol. Thermal delivery enhances absorption each session. Results compound with continued consistency.",
               },
-            ].map((t, i) => (
+            ]).map((t, i) => (
               <div key={i} className="glass-card p-8 text-center">
                 <p className="text-[10px] tracking-[0.2em] uppercase text-accent mb-3">{t.week}</p>
                 <h3 className="text-lg font-semibold text-foreground mb-3">{t.heading}</h3>
@@ -781,7 +781,7 @@ export function ProductLanding({ config }: Props) {
             <button
               onClick={handleAdd}
               disabled={isCartLoading}
-              className="flex-shrink-0 bg-[#2A211A] hover:bg-[#1A1410] text-white rounded-full uppercase tracking-[0.18em] text-[10px] font-medium px-6 py-3.5 transition-all disabled:opacity-50"
+              className="flex-shrink-0 bg-[#E87040] hover:bg-[#D4633A] text-white rounded-full uppercase tracking-[0.18em] text-[10px] font-medium px-6 py-3.5 transition-all disabled:opacity-50"
             >
               {isCartLoading ? <Loader2 className="animate-spin" size={14} /> : "Add To Ritual"}
             </button>

@@ -95,8 +95,8 @@ const PRODUCT_SEO: Record<string, { title: string; description: string }> = {
     description: "Stationary 660nm red light panel for hands-free daily photobiomodulation. Sits at desk distance. 10–15 minutes while you're stationary. €89.",
   },
   "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad": {
-    title: "Thermal Pad — USB Heated Joint Recovery Pad | Zential Pure",
-    description: "USB thermal pad with 4-motor massage for targeted joint recovery. Knee, shoulder, lower back. 15–20 minutes pre- or post-training. €69.",
+    title: "Thermal Zone Lite — USB Thermal Joint Wrap | Zential Pure",
+    description: "Targeted USB thermal wrap for single-joint protocol. Knee, shoulder, wrist. 15 minutes daily. €59.",
   },
   "portable-home-use-charging-red-light-therapy-blanket-far-infrared": {
     title: "Thermal Shell — Full-Body Infrared Sauna Blanket | Zential Pure",
@@ -111,8 +111,8 @@ const PRODUCT_SEO: Record<string, { title: string; description: string }> = {
     description: "360-node infrared LED belt for wearable body thermal and photobiomodulation protocol. Abdomen, waist, or lower back. €89.",
   },
   "red-light-therapy-belt-infrared-hot-compress-phototherapy": {
-    title: "Thermal Zone Lite — USB Thermal Joint Wrap | Zential Pure",
-    description: "Targeted USB thermal wrap for single-joint protocol. Knee, shoulder, wrist. 15 minutes daily. €59.",
+    title: "Thermal Pad — USB Heated Joint Recovery Pad | Zential Pure",
+    description: "USB thermal pad with 4-motor massage for targeted joint recovery. Knee, shoulder, lower back. 15–20 minutes pre- or post-training. €69.",
   },
 };
 
@@ -139,11 +139,11 @@ const PRODUCT_PRICES: Record<string, string> = {
   "gravity-quilt-cotton-weighted-blanket": "49.00",
   "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow": "34.00",
   "led-beauty-lamp-red-light-therapy-lamp-desktop-stand": "89.00",
-  "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad": "69.00",
+  "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad": "59.00",
   "portable-home-use-charging-red-light-therapy-blanket-far-infrared": "189.00",
   "household-full-body-moisture-removing-infrared-sauna-blanket": "119.00",
   "null-1777641441133": "89.00",
-  "red-light-therapy-belt-infrared-hot-compress-phototherapy": "59.00",
+  "red-light-therapy-belt-infrared-hot-compress-phototherapy": "69.00",
 };
 
 function getProductJsonLd(handle: string, seo: { title: string; description: string }, price?: string, image?: string) {

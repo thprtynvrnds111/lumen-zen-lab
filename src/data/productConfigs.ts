@@ -59,6 +59,8 @@ export interface ProductConfig {
   contraindications?: string[];
   normalSensations?: string[];
   sessionInfo?: string;
+  mechanismTimeline?: { week: string; heading: string; body: string }[];
+  techSectionTitle?: string;
 }
 
 const defaultComparison = [
@@ -551,67 +553,66 @@ export const productConfigs: Record<string, ProductConfig> = {
     sessionInfo: "Session time: 8–12 minutes · Frequency: 3–5× per week · Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
-  // ─── PROTOCOL LENS (was: Frame Pulse; handle reused for blue-light blocking glasses) ───
+  // ─── FRAME PULSE ACTIVATOR ───
   "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": {
     handle: "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
-    name: "Protocol Lens",
-    subheadline: "Blue Light Blocked. Sleep Signal Intact.",
+    fallbackImage: productFramePulse,
+    name: "Frame Pulse Activator",
+    subheadline: "Hands-Free EMS and LED Beauty Device",
     benefits: [
-      { icon: Brain, label: "450–490nm Blue Light Filter" },
-      { icon: Focus, label: "Amber Lens Tint" },
-      { icon: Heart, label: "Melatonin Protection" },
-      { icon: Waves, label: "Circadian Signal Preserved" },
+      { icon: Focus, label: "Hands-Free Treatment" },
+      { icon: Zap, label: "EMS Muscle Training" },
+      { icon: Sun, label: "Full-Spectrum LED" },
+      { icon: Brain, label: "Multi-Zone Coverage" },
     ],
     testimonials: [
-      { name: "Joep, 31", text: "I put these on at 9pm. Sleep onset went from 45 minutes to under 15. Two weeks in and it's consistent." },
-      { name: "Nathalie, 37", text: "I pair these with the Depth Mask. The combination is the whole light protocol. My sleep tracker confirmed it." },
-      { name: "Ben, 44", text: "I was skeptical. Wore them for a week. My HRV trend in the morning shifted. That's not placebo." },
+      { name: "Iris, 38", text: "Hands-free means I actually use it every day. Put it on, relax, and let it work." },
+      { name: "Tessa, 43", text: "The EMS pulsing feels like a professional facial. Except I'm on my couch." },
+      { name: "Monica, 31", text: "My forehead lines are visibly softer after 3 weeks. This device is underrated." },
     ],
     problemReframe: {
-      headline: "Your Screens Are Telling Your Brain It's Still Noon.",
+      headline: "Your Routine Should Work for You. Not Against You.",
       paragraphs: [
-        "Blue light in the 450–490nm range is the primary signal the circadian system uses to calibrate wakefulness. Sunlight contains it. Screens emit it at high intensity. When your retina receives blue light after dark, the suprachiasmatic nucleus in the hypothalamus interprets it as daytime — delaying melatonin release, shortening the sleep pressure window, and compromising the architecture of the sleep you do get.",
-        "The Protocol Lens filters blue light before it reaches the retinal photoreceptors. Amber-tinted lenses absorb the 450–490nm range specifically — the wavelength that triggers the melanopsin-driven circadian response.",
-        "Worn 1–2 hours before sleep, while your evening routine continues normally. You can still see your screen. Your circadian system stops receiving the daylight signal.",
+        "The biggest barrier to results isn't technology. It's consistency. Handheld devices require active effort, and effort creates friction. Friction kills habits.",
+        "Frame Pulse removes the friction entirely. Wear it. Press start. Your hands are free. Your ritual happens while you rest, read, or prepare for the day.",
+        "With EMS and full-spectrum LED working simultaneously across multiple facial zones, you get comprehensive treatment without holding, guiding, or concentrating.",
       ],
-      closing: "Your light environment is a lever. This is how you pull it.",
+      closing: "The best ritual is the one you actually do.",
     },
     techCards: [
-      { icon: Brain, title: "Melanopsin Pathway", desc: "Retinal ganglion cells containing melanopsin are maximally sensitive to 480nm blue light. These cells project directly to the SCN and drive circadian entrainment. The Protocol Lens targets this specific wavelength range with amber filtration." },
-      { icon: Focus, title: "Amber Lens Tint", desc: "Amber/orange lens tint achieves greater blue light attenuation than yellow or clear 'computer glasses.' The depth of tint corresponds to the degree of melanopsin-wavelength filtering — amber blocks 450–490nm more completely than lighter tints." },
-      { icon: Heart, title: "Melatonin Onset", desc: "Blue light suppression studies show consistent melatonin onset advancement of 30–60 minutes with 1–2 hours of blue-blocking lens use before sleep. Earlier onset correlates with longer total sleep time and improved slow-wave sleep proportion." },
-      { icon: Waves, title: "Compatible With Normal Viewing", desc: "Amber filtration does not significantly reduce visual clarity for indoor light environments. You can read, watch content, and work with the lenses in place while the circadian-disruptive wavelength is filtered." },
+      { icon: Zap, title: "EMS Training", desc: "Electrical muscle stimulation contracts and releases facial muscles automatically for toning without effort." },
+      { icon: Sun, title: "LED Array", desc: "Full-spectrum LED covers the entire treatment area simultaneously for uniform collagen stimulation." },
+      { icon: Focus, title: "Hands-Free", desc: "Wearable design means zero effort during treatment. Just put it on and press start." },
+      { icon: Vibrate, title: "Pulse Patterns", desc: "Pre-programmed pulse sequences target different muscle groups in optimized intervals." },
     ],
     ritualSteps: [
-      { step: "01", title: "Time", desc: "Put on Protocol Lens 60–90 minutes before your intended sleep time. The melatonin response requires time to build — earlier use gives the signal more runway." },
-      { step: "02", title: "Continue", desc: "Continue your normal evening routine. The filter works passively. No changes to what you're doing — only to what wavelengths reach your retina." },
-      { step: "03", title: "Stack", desc: "Pair with Depth Mask (full blackout during sleep) and Breath Seal (nasal breathing) for a complete sleep input protocol. The Protocol Lens manages the pre-sleep light environment; the other tools manage the sleep environment itself." },
+      { step: "01", title: "Prepare", desc: "Cleanse your face and apply serum. Position the Frame Pulse comfortably on your face." },
+      { step: "02", title: "Activate", desc: "Select your program and intensity. Relax. The device works automatically for 10 minutes." },
+      { step: "03", title: "Repeat", desc: "Use daily or every other day. The hands-free design makes consistency effortless." },
     ],
     beforeAfter: { before: before3Img, after: after3Img },
-    comparisonRows: recoveryComparison,
-    faqs: [
-      { q: "Do I need them if I dim my screens at night?", a: "Screen dimming reduces overall brightness. It does not selectively remove blue-wavelength photons. The Protocol Lens filters the specific wavelength range regardless of screen brightness." },
-      { q: "Do night modes on phones work the same?", a: "Night mode shifts the screen colour toward orange, which reduces but does not eliminate blue light. Lens filtration is more complete and applies across all light sources in your environment — not only the phone screen." },
-      { q: "How early before bed should I wear them?", a: "60–90 minutes is the research-cited minimum for meaningful melatonin onset advancement. Some studies use 2 hours for more significant effect." },
-      { q: "Will they affect how I see colours on screen?", a: "Yes. Amber lenses warm the colour temperature of what you see. Screens will appear warmer/more orange. Most users habituate within 2–3 evenings." },
-      { q: "Can I use them while driving?", a: "Not recommended for night driving. Amber tinting reduces contrast sensitivity in low-light outdoor environments." },
-      { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. Full refund if you don't notice improvement in sleep onset or quality within 30 days of consistent use." },
-    ],
+    problemImage: problemFramePulse,
+    comparisonRows: defaultComparison,
+    faqs: defaultDeviceFaqs,
     studyCards: [
-      { technology: "Blue Light · Melatonin Suppression", studyTitle: "Blue Light Has a Dark Side", journal: "Harvard Health Letter, 2020 (based on PNAS 2001 data)", url: "https://scholar.google.com/scholar?q=blue+light+melatonin+suppression+circadian+450nm+490nm" },
-      { technology: "Amber Lenses · Sleep", studyTitle: "Blue-Blocking Glasses as a Countermeasure for Alerting Effects of Evening Light-Emitting Diode Screen Exposure in Male Teenagers", journal: "Journal of Adolescent Health, 2015", url: "https://scholar.google.com/scholar?q=blue+blocking+glasses+amber+lens+sleep+melatonin+onset" },
-      { technology: "Melanopsin · Circadian", studyTitle: "Melanopsin-Containing Retinal Ganglion Cells: Architecture, Projections, and Intrinsic Photosensitivity", journal: "Science, 2002", url: "https://scholar.google.com/scholar?q=melanopsin+retinal+ganglion+circadian+blue+light+SCN" },
-      { technology: "Light · Sleep Onset", studyTitle: "Evening Use of Light-Emitting eReaders Negatively Affects Sleep", journal: "PNAS, 2015", url: "https://scholar.google.com/scholar?q=evening+blue+light+screen+sleep+onset+melatonin+circadian" },
+      { technology: "EMS", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://scholar.google.com/scholar?q=electrical+muscle+stimulation+facial" },
+      { technology: "LED Array", studyTitle: "Low-Level Laser (Light) Therapy and Photobiomodulation", journal: "Photomedicine and Laser Surgery, 2014", url: "https://scholar.google.com/scholar?q=LED+light+therapy+skin+rejuvenation" },
+      { technology: "Hands-Free EMS", studyTitle: "A Controlled Trial to Determine the Efficacy of Red and Near-Infrared Light Treatment", journal: "Photomedicine and Laser Surgery, 2014", url: "https://scholar.google.com/scholar?q=electrical+muscle+stimulation+facial" },
+      { technology: "Pulse Patterns", studyTitle: "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging", journal: "Journal of Cosmetic Dermatology, 2024", url: "https://scholar.google.com/scholar?q=sonic+vibration+skin+absorption" },
     ],
     contraindications: [
-      "Not suitable for night driving",
-      "Do not use as a substitute for medical assessment of sleep disorders",
+      "You have a pacemaker or implanted electronic device",
+      "You are pregnant",
+      "You have epilepsy (due to light pulses)",
+      "You have active skin infections or open wounds in the treatment area",
+      "You have metal implants in the face",
     ],
     normalSensations: [
-      "Warmer colour temperature in your visual field — expected and correct",
-      "Habituation within 2–3 evenings of regular use",
+      "Light rhythmic pulse during EMS — comfortable and expected",
+      "Gentle warmth from LED array — keep eyes closed",
+      "No sensation between pulse cycles — normal",
     ],
-    sessionInfo: "Wear 60–90 minutes before sleep · Compatible with normal evening activities · Pair with Depth Mask and Breath Seal for complete protocol",
+    sessionInfo: "Session time: 10 minutes · Frequency: daily or every other day · Stop if: burning sensation, unusual pain, or persistent redness",
   },
 
   // ─── MICROCURRENT SCULPT WAND (unlisted) ───
@@ -901,6 +902,19 @@ const breathSealConfig: ProductConfig = {
     "Gentle pull at removal — apply slowly from one corner",
   ],
   sessionInfo: "One strip per night · Apply to clean, dry lips · Remove slowly in the morning",
+  forYouIf: [
+    "You track HRV or sleep quality and want to understand what's actually driving the data",
+    "You wake up with a dry mouth, morning fatigue, or feel unrested despite 7+ hours",
+    "You want to activate the parasympathetic branch during sleep without supplements",
+    "You're optimising sleep architecture and have already addressed light and temperature",
+    "You snore or breathe audibly during sleep",
+  ],
+  mechanismTimeline: [
+    { week: "Days 1–7", heading: "Pathway recalibration", body: "The body adjusts to nasal breathing during sleep. Most users notice less morning dry mouth within the first three to five nights of consistent use." },
+    { week: "Week 2–3", heading: "HRV shift", body: "With consistent nasal breathing overnight, HRV data shows measurable change for most users. Sleep stages may deepen and overnight cortisol rhythm begins to normalise." },
+    { week: "Week 4+", heading: "Pattern normalisation", body: "Nasal breathing begins extending into waking hours. The respiratory pathway recalibrates beyond sleep — a structural shift in default breathing pattern." },
+  ],
+  techSectionTitle: "The mechanism. One input.",
 };
 
 // ─── DEPTH MASK ───
@@ -964,6 +978,19 @@ const depthMaskConfig: ProductConfig = {
     "No pressure on the eyes — if you feel pressure, reposition the contour shell",
   ],
   sessionInfo: "Nightly use · Adjust strap while lying in sleep position · Machine washable",
+  forYouIf: [
+    "Your bedroom isn't fully dark — streetlights, electronics, or a partner's phone reach your eyes during sleep",
+    "You have eyelash extensions and every other sleep mask presses on them overnight",
+    "You're a side sleeper and most sleep masks shift or lose their seal",
+    "You've read about melatonin suppression from ambient light and want to eliminate the variable",
+    "You travel frequently and need consistent sleep quality regardless of environment",
+  ],
+  mechanismTimeline: [
+    { week: "Days 1–7", heading: "Light elimination", body: "Total blackout from night one. Melatonin onset typically improves within the first few nights of eliminated ambient light — the retinal signal that delays sleep onset is removed." },
+    { week: "Week 2–3", heading: "Architecture deepening", body: "With persistent light elimination, deep sleep stages extend. More consistent sleep onset and reduced overnight waking as the circadian signal strengthens." },
+    { week: "Week 4+", heading: "Circadian anchoring", body: "Consistent light/dark signalling anchors the circadian rhythm. Sleep pressure accumulates on schedule regardless of travel or environmental variation." },
+  ],
+  techSectionTitle: "The mechanism. One input.",
 };
 
 // ─── FLUX PANEL ───
@@ -1030,6 +1057,19 @@ const fluxPanelConfig: ProductConfig = {
     "Brief afterglow perception if eyes are exposed momentarily — do not look at panel",
   ],
   sessionInfo: "Session time: 10–20 minutes · Distance: 30–50cm · Frequency: 4–5× per week · Eyes closed during face-adjacent sessions",
+  forYouIf: [
+    "You want the full photobiomodulation protocol — not a handheld device that covers centimetres",
+    "You train hard and recovery is a measurable bottleneck in your progress",
+    "You're already familiar with red light therapy and want a serious full-body format",
+    "You're looking for a one-time investment to replace ongoing clinic light therapy sessions",
+    "You want to address skin renewal and performance recovery with the same tool",
+  ],
+  mechanismTimeline: [
+    { week: "Week 1–2", heading: "Cellular activation", body: "Red light at 660nm begins increasing ATP production. NIR at 850nm activates deeper tissue. Skin texture and post-training muscle recovery are typically the first observable changes." },
+    { week: "Week 3–4", heading: "Inflammatory reduction", body: "Consistent sessions reduce inflammatory load in treated tissue. Baseline soreness decreases; training sessions feel better supported from the outset." },
+    { week: "Week 5+", heading: "Compounding recovery", body: "Mitochondrial density and efficiency build with continued input. The panel becomes part of the daily stack — producing structural improvement that accumulates across months." },
+  ],
+  techSectionTitle: "Two wavelengths. One panel.",
 };
 
 // ─── FREQUENCY MAT + ───
@@ -1096,6 +1136,19 @@ const frequencyMatPlusConfig: ProductConfig = {
     "Mild sweating with prolonged sessions — reduce to 15 minutes if uncomfortable",
   ],
   sessionInfo: "Session time: 15–20 minutes · Frequency: 4–5× per week · Direct skin contact preferred for 660nm · Stop if: excessive heat or discomfort",
+  forYouIf: [
+    "Your recovery is limited by chronic back tension or poor post-training tissue quality",
+    "You want heat and light in one passive protocol that requires no active maintenance",
+    "You want full-back treatment that integrates with your morning or evening routine without setup",
+    "You've used heating pads and want a meaningful upgrade with added photobiomodulation",
+    "You're willing to lie on something for 15 minutes if it actually moves the needle",
+  ],
+  mechanismTimeline: [
+    { week: "Week 1–2", heading: "Heat response", body: "Tissue warmth improves circulation. Muscle tension in the lower back typically responds within the first few sessions. Morning stiffness decreases." },
+    { week: "Week 3–4", heading: "Photon accumulation", body: "Red light dosing compounds with consistent use. Tissue quality at the surface layer improves. Recovery between training sessions shortens measurably." },
+    { week: "Week 5+", heading: "Baseline shift", body: "Chronic tension patterns that accumulated over months begin to reduce. The combined heat and light input produces structural change that passive rest cannot achieve alone." },
+  ],
+  techSectionTitle: "Two mechanisms. One mat.",
 };
 
 // ─── PRESSURE SHELL ───
@@ -1163,6 +1216,19 @@ const pressureShellConfig: ProductConfig = {
     "Brief skin redness after removal — fades within 20 minutes",
   ],
   sessionInfo: "Session time: 20–30 minutes · Frequency: daily or post-training · Start at lowest pressure setting · Stop if: pain, unusual swelling, or numbness",
+  forYouIf: [
+    "You train seriously and delayed soreness is limiting your next session quality",
+    "You spend long hours seated or standing and your legs feel heavy or swollen by evening",
+    "You travel frequently and accumulate venous stagnation from long flights",
+    "You've used passive compression garments and want active compression therapy",
+    "You want to address lymphatic drainage systematically, not just manage symptoms",
+  ],
+  mechanismTimeline: [
+    { week: "Days 1–7", heading: "Immediate clearance", body: "Post-session legs feel noticeably lighter from the first use. Venous pooling and lymphatic stagnation are mechanically addressed within the 20-minute compression protocol." },
+    { week: "Week 2–3", heading: "Baseline reduction", body: "Chronic end-of-day heaviness and swelling reduce with consistent use. Lower body baseline inflammation decreases — not just post-session relief but a persistent change." },
+    { week: "Week 4+", heading: "Recovery optimisation", body: "Training recovery shortens. Next-session quality improves as accumulated metabolic waste in the lower body is systematically cleared across weeks of consistent protocol." },
+  ],
+  techSectionTitle: "Four chambers. One protocol.",
 };
 
 // ─── PULSE ROLLER ───
@@ -1228,6 +1294,19 @@ const pulseRollerConfig: ProductConfig = {
     "Muscle release or 'unlock' sensation during sustained contact — that's the mechanism",
   ],
   sessionInfo: "Session time: 3 min per muscle group · 10–15 min total · 3 speed settings · Pre-training: low speed · Post-training: medium-high speed",
+  forYouIf: [
+    "You foam roll and feel it's not reaching the right tissue layers",
+    "You have chronic tension in the IT band, calves, or thoracic spine that doesn't resolve with static pressure",
+    "You need a compact recovery tool that fits in a gym bag or carry-on",
+    "You want to reduce pre-training warm-up time through active tissue preparation",
+    "You're addressing fascial restrictions that limit range of motion and compound across training cycles",
+  ],
+  mechanismTimeline: [
+    { week: "Days 1–7", heading: "Immediate mobilisation", body: "Range of motion at treated joints improves within the first session. Muscle tone resets after three minutes per zone — perceptible from first use." },
+    { week: "Week 2–3", heading: "Adhesion reduction", body: "Chronic fascial cross-links in treated zones begin to resolve. Persistent tension patterns that didn't respond to static rolling start to shift." },
+    { week: "Week 4+", heading: "Tissue quality", body: "Baseline fascial tissue quality improves across treated areas. Warm-up time decreases. The tissue responds faster and holds less accumulation between sessions." },
+  ],
+  techSectionTitle: "One tool. Three protocols.",
 };
 
 // ─── REST SHELL ───
@@ -1293,6 +1372,19 @@ const restShellConfig: ProductConfig = {
     "Unfamiliar on night one — this normalises within 3–7 nights of consistent use",
   ],
   sessionInfo: "Nightly use · Full 7kg weight · Machine washable 30°C · No prep required — lay flat and sleep",
+  forYouIf: [
+    "You take more than 20 minutes to fall asleep despite being tired",
+    "You wake during the night without clear reason and struggle to return to sleep",
+    "You carry high baseline stress and it follows you into your sleep environment",
+    "You're building a full sleep input protocol and want to address nervous system tone",
+    "You track sleep quality and want to address a remaining variable in your stack",
+  ],
+  mechanismTimeline: [
+    { week: "Days 1–7", heading: "First signal", body: "Sleep onset typically shortens within the first few nights. The nervous system begins recognising distributed pressure as the resting state signal." },
+    { week: "Week 2–3", heading: "Architecture improvement", body: "Cortisol suppression and serotonin increase compound with consistent nightly input. Deep sleep stages extend; overnight waking reduces." },
+    { week: "Week 4+", heading: "Normalisation", body: "The weighted pressure becomes the expected resting condition. Sleep architecture is measurably different from the pre-blanket baseline — the change is structural, not situational." },
+  ],
+  techSectionTitle: "One weight. One input.",
 };
 
 // ─── RESTORE MAT ───
@@ -1358,6 +1450,19 @@ const restoreMatConfig: ProductConfig = {
     "Local redness after removal — increased blood flow, fades within 15 minutes",
   ],
   sessionInfo: "Session time: 10–20 minutes · Frequency: daily · Direct skin contact preferred · Start with clothing layer if needed during first 3 sessions",
+  forYouIf: [
+    "You carry chronic back tension from desk work, training load, or accumulated stress",
+    "You want passive tissue release — something that works while you simply lie down",
+    "You're familiar with manual therapy and want an accessible daily version at home",
+    "You've tried foam rolling and want something that does the work without active movement",
+    "You want to activate the parasympathetic system as part of an evening wind-down protocol",
+  ],
+  mechanismTimeline: [
+    { week: "Days 1–7", heading: "Fascial contact", body: "Tissue responds to point contact from the first sessions. Initial intensity gives way to deep relaxation within five to seven minutes — this progression is the mechanism working, not tolerance." },
+    { week: "Week 2–3", heading: "Tension reduction", body: "Chronic fascial tightness in treated areas begins to reduce. Baseline back tension decreases with consistent daily use beyond session-level relief." },
+    { week: "Week 4+", heading: "Systemic relaxation", body: "The endorphin response becomes the expected outcome. The nervous system enters parasympathetic state reliably and on schedule — a structural recalibration of baseline tone." },
+  ],
+  techSectionTitle: "6,210 points. One protocol.",
 };
 
 // ─── RITUAL LIGHT PRO ───
@@ -1423,11 +1528,24 @@ const ritualLightProConfig: ProductConfig = {
     "No sensation at recommended distance — expected",
   ],
   sessionInfo: "Session time: 10–15 minutes · Distance: 20–30cm · Frequency: daily · Eyes closed throughout",
+  forYouIf: [
+    "You want the photobiomodulation protocol but don't maintain handheld device habits consistently",
+    "You work at a desk and can integrate a stationary light session into your existing routine",
+    "You've done red light treatments at a clinic and want to own the protocol at home permanently",
+    "You're focused on skin improvement and want a daily mechanism, not an occasional treatment",
+    "You want consistency without friction — a device that works while you're doing something else",
+  ],
+  mechanismTimeline: [
+    { week: "Week 1–2", heading: "Cellular activation", body: "Cytochrome c oxidase activation begins from session one. Skin texture and surface clarity are typically the first observable changes — within the first two weeks of daily sessions." },
+    { week: "Week 3–4", heading: "Collagen signal", body: "Fibroblast stimulation at 660nm is cumulative. Skin tone, fine line depth, and surface firmness begin to shift measurably with consistent daily dosing." },
+    { week: "Week 5+", heading: "Structural renewal", body: "Consistent daily dosing drives collagen synthesis at a rate detectable without close inspection. The compounding effect of daily sessions produces the visible change the clinical evidence supports." },
+  ],
+  techSectionTitle: "One wavelength. Daily dose.",
 };
 
 // ─── THERMAL PAD ───
 const thermalPadConfig: ProductConfig = {
-  handle: "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad",
+  handle: "red-light-therapy-belt-infrared-hot-compress-phototherapy",
   name: "Thermal Pad",
   subheadline: "Targeted Heat. Joint Protocol.",
   benefits: [
@@ -1489,73 +1607,100 @@ const thermalPadConfig: ProductConfig = {
     "Mild redness of the skin after removal — increased blood flow, fades within 20 minutes",
   ],
   sessionInfo: "Session time: 15–20 minutes · Temperature: 35–55°C · Frequency: daily or pre/post-training · Stop if: burning sensation or numbness",
+  forYouIf: [
+    "You have a recurring joint issue — knee, shoulder, or wrist — that stiffens overnight or between sessions",
+    "You train regularly and want to reduce the warm-up time your joints need before loading",
+    "You want targeted heat at the joint specifically, not general body warmth",
+    "You have a desk job and accumulate joint tension through prolonged static posture",
+    "You want a USB-powered protocol that works anywhere — at home, at a desk, or travelling",
+  ],
+  mechanismTimeline: [
+    { week: "Days 1–7", heading: "Circulation response", body: "Targeted heat increases blood flow to the joint from the first sessions. Morning stiffness typically reduces within the first week of consistent pre-loading application." },
+    { week: "Week 2–3", heading: "Connective tissue change", body: "Consistent thermal input to tendon and ligament tissue improves elasticity. The joint responds faster to warm-up and holds less residual tension between sessions." },
+    { week: "Week 4+", heading: "Baseline reduction", body: "Chronic stiffness patterns that built over months begin to reduce. The joint baseline — resting mobility and comfort — measurably improves with continued daily protocol." },
+  ],
+  techSectionTitle: "Heat + vibration. One joint.",
 };
 
 // ─── THERMAL SHELL (full sauna blanket) ───
 const thermalShellConfig: ProductConfig = {
   handle: "portable-home-use-charging-red-light-therapy-blanket-far-infrared",
   name: "Thermal Shell",
-  subheadline: "Infrared Sauna. Portable Format.",
+  subheadline: "Heat Protocol. Wherever You Are.",
   benefits: [
-    { icon: ThermometerSun, label: "Far-Infrared Penetration" },
-    { icon: Brain, label: "Core Temperature Elevation" },
-    { icon: Heart, label: "Parasympathetic Activation" },
-    { icon: Activity, label: "Recovery + Sleep Protocol" },
+    { icon: ThermometerSun, label: "Far-Infrared at 8–14μm" },
+    { icon: Brain, label: "Heat Shock Protein Induction" },
+    { icon: Heart, label: "Parasympathetic Rebound" },
+    { icon: Activity, label: "USB-Powered. One Size." },
   ],
   testimonials: [
-    { name: "Wout, 34", text: "I use it 3 nights a week before bed. Sleep quality went up in the first week. The data confirmed what I felt." },
-    { name: "Vera, 40", text: "I was paying €25 a session for infrared sauna. This replaced it entirely. Same mechanism, same output." },
-    { name: "Omar, 38", text: "Post-training recovery tool I wasn't expecting. Soreness drops 30–40%. I checked before and after HRV and the shift is real." },
+    { name: "Wout, 34", text: "Three nights a week before bed. Sleep score went from 71 to 84 in two weeks. My Oura ring was the first to notice." },
+    { name: "Vera, 40", text: "I was paying €25 a session at the infrared studio. Same mechanism. Same output. I stopped going." },
+    { name: "Omar, 38", text: "HRV went up 11 points in three weeks of post-training sessions. That's not placebo — I tracked it before I even noticed the soreness was gone." },
   ],
   problemReframe: {
-    headline: "Your Body Needs a Temperature Signal. Modern Life Doesn't Provide One.",
+    headline: "Your Body Was Built for Heat Stress. You've Been Keeping It Comfortable.",
     paragraphs: [
-      "For most of human history, the body experienced regular acute heat exposure — sun, fire, physical work. This thermal stress triggers a cascade: heat shock protein production, vasodilation, hormonal shifts, and a parasympathetic rebound when the body cools. Modern indoor environments maintain constant temperature. The thermal stimulus that regulated recovery, sleep, and stress physiology is absent.",
-      "Sauna research is among the most consistent in longevity and recovery science. Far-infrared specifically penetrates beyond the skin's surface, elevating core tissue temperature to 38–39°C — the range associated with heat shock protein induction and the physiological response that follows.",
-      "The Thermal Shell replicates this protocol at home, in a full-body format that requires no facility and no scheduling.",
+      "For most of human history, the body encountered acute thermal stress daily — sun, fire, exertion. That stress triggered a cascade your biology still expects: heat shock protein synthesis, vasodilation, hormonal reset, and a deep parasympathetic rebound during cooling. Modern life removed the trigger. The recovery signal is missing.",
+      "Far-infrared radiation operates at 8–14 micrometres — the precise wavelength range the body emits and absorbs most efficiently. At 0–15W through SBR neoprene, the Thermal Shell delivers radiant thermal energy that penetrates tissue without requiring extreme ambient heat. Core temperature rises. The cascade follows.",
+      "The Thermal Shell is USB-powered. It runs from any wall adapter, power bank, or laptop port. One-size construction fits up to 190cm. The thermal protocol that required a facility now requires a surface to lie on.",
     ],
-    closing: "The signal your biology expects. The format your life allows.",
+    closing: "Thirty minutes. The biology you were supposed to activate every day.",
   },
   techCards: [
-    { icon: ThermometerSun, title: "Far-Infrared Technology", desc: "Far-infrared wavelengths (8–14 micrometres) penetrate 4–5cm beyond the skin surface. Surface temperature may be only moderately warm while core tissue temperature rises meaningfully — the deep thermal load that drives the physiological response." },
-    { icon: Brain, title: "Core Temperature Elevation", desc: "A 30-minute session raises core temperature 0.5–1.0°C. This triggers heat shock protein synthesis, vasodilation, and a neuroendocrine shift. The subsequent cooling phase activates the parasympathetic response — the mechanism behind post-sauna relaxation and improved sleep onset." },
-    { icon: Heart, title: "Heat Shock Proteins", desc: "HSP70 and HSP90 are activated by the thermal stress of far-infrared sauna. Heat shock proteins repair and stabilise other proteins damaged by oxidative stress, exercise, and metabolic activity. Their induction is associated with reduced inflammation, improved metabolic markers, and cellular repair." },
-    { icon: Activity, title: "Waterproof Interior", desc: "Interior lining is waterproof and sweat-proof. Full zipper closure for full-body immersion. Temperature control with multiple settings. Power cord format. One-size design accommodates up to 190cm." },
+    { icon: ThermometerSun, title: "Far-Infrared at 8–14μm", desc: "Far-infrared wavelengths in the 8–14 micrometre range are absorbed directly by water molecules in tissue — the primary heat transfer mechanism inside the body. The Thermal Shell emits within this window, delivering radiant thermal load that penetrates beyond the skin surface without requiring high ambient temperature." },
+    { icon: Brain, title: "Heat Shock Protein Induction", desc: "Thermal stress — even moderate — activates HSP70 and HSP90. These proteins repair and stabilise cellular structures damaged by oxidative stress and training load. Regular heat exposure has been consistently linked to reduced inflammatory markers, improved metabolic function, and faster recovery between sessions." },
+    { icon: Heart, title: "Parasympathetic Rebound", desc: "During a session, heart rate and core temperature rise. When the body exits the heat environment and begins to cool, the nervous system shifts toward parasympathetic dominance — the mechanism behind post-sauna relaxation, faster sleep onset, and the subjective heaviness of well-rested muscles. Scheduling sessions 60–90 minutes before sleep amplifies this effect." },
+    { icon: Activity, title: "SBR Neoprene Construction", desc: "The Thermal Shell is built from SBR neoprene — the same flexible, durable material used in wetsuits. It insulates thermal energy against the body, maximises radiant contact along the full body surface, and is sweat-resistant. USB-powered at 5V/0–15W. Runs from any standard adapter or power bank. One size fits up to 190cm." },
   ],
   ritualSteps: [
-    { step: "01", title: "Prepare", desc: "Set to desired temperature (60–80°C is standard). Allow the blanket to pre-heat for 5 minutes. Lie inside wearing light cotton clothing or directly on the interior lining." },
-    { step: "02", title: "Session", desc: "Standard protocol: 30 minutes. Increase from 20 minutes in week one if new to heat training. Hydrate before and after — you will sweat." },
-    { step: "03", title: "Cool down", desc: "Lie flat for 10–15 minutes after exiting the blanket. The post-sauna cooling phase is where the parasympathetic shift occurs. For sleep benefit: schedule session 60–90 minutes before bed." },
+    { step: "01", title: "Plug in", desc: "Connect to any USB power source — wall adapter, power bank, laptop. Pre-heat for 3–5 minutes on your chosen setting. The neoprene retains warmth efficiently; you will feel heat within minutes of lying in." },
+    { step: "02", title: "Lie in", desc: "Wear light cotton or enter directly. Standard session: 30 minutes. New to heat protocol: begin at 20 minutes, low setting. Hydrate with 400–600ml beforehand — you will perspire." },
+    { step: "03", title: "Cool down", desc: "Exit and lie flat for 10–15 minutes. This is not optional — the cooling phase is where the parasympathetic shift occurs. For sleep: schedule the full sequence 60–90 minutes before bed." },
   ],
   beforeAfter: { before: before2Img, after: after2Img },
   comparisonRows: recoveryComparison,
   faqs: [
-    { q: "How hot should I set it?", a: "Most users operate at 60–70°C for 30 minutes. The interior of the blanket is warmer than felt through the lining — start at lower settings for the first 2–3 sessions to assess your tolerance." },
-    { q: "Should I wear anything inside?", a: "Light cotton is recommended. Protects skin from direct contact with the lining. Provides a moisture layer that makes the session more comfortable as you sweat." },
-    { q: "How much should I drink?", a: "Hydrate with 500ml–1L before a session. A 30-minute session at full temperature produces significant sweating. Electrolyte supplementation is useful for regular sessions." },
-    { q: "When should I use it relative to training?", a: "Post-training: 2–4 hours after intense training for maximal recovery effect. Pre-sleep: 60–90 minutes before bed for sleep architecture benefit. Morning sessions are effective for general metabolic activation." },
-    { q: "Is this similar to a traditional sauna?", a: "Similar physiological output. Far-infrared heats the body through radiation rather than convection (hot air). The tissue temperature response is comparable. For the same session duration, many users find infrared more tolerable than traditional sauna due to lower ambient air temperature." },
-    { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. Full refund if you don't notice measurable recovery or sleep improvement within 30 days of consistent use." },
+    { q: "What powers it?", a: "USB at 5V, 0–15W. Any standard USB wall adapter, power bank, or USB-C hub works. No special power supply needed. It draws less than a laptop charger." },
+    { q: "How warm does it get?", a: "The internal surface reaches 40–55°C depending on setting and ambient temperature. Far-infrared operates at lower surface temperatures than traditional sauna — the mechanism is radiant tissue absorption, not hot-air convection. Many users find it more comfortable to sustain for a full 30-minute session as a result." },
+    { q: "What is SBR neoprene?", a: "The same flexible, durable material used in wetsuits and thermal sportswear. It insulates body heat, maintains full-surface contact, and is sweat-resistant. The neoprene construction is what allows the blanket to be rolled and packed into a compact format (30×16×7cm)." },
+    { q: "Should I wear anything inside?", a: "Light cotton is recommended for comfort and sweat absorption. Direct contact with the neoprene lining is also fine. Avoid synthetic fabrics — they trap heat unevenly and are less comfortable for extended sessions." },
+    { q: "When should I use it relative to training?", a: "Post-training: wait 2 hours after intense sessions before heat exposure. The HSP and recovery benefit is strongest when the body has begun initial repair. Pre-sleep: 60–90 minutes before bed for sleep architecture benefit. Morning sessions work well for metabolic activation without affecting sleep timing." },
+    { q: "How is this different from a traditional sauna?", a: "Traditional sauna heats ambient air to 80–100°C; you heat by convection. Far-infrared heats tissue directly via radiant wavelengths at much lower ambient temperature. The core temperature response is similar. The Thermal Shell runs at a fraction of the power and requires no facility." },
+    { q: "What is your guarantee?", a: "30-Day Protocol Guarantee. If you run consistent sessions and don't notice measurable improvement in recovery or sleep within 30 days, full refund — no process required." },
   ],
   studyCards: [
-    { technology: "Far-Infrared Sauna · Recovery", studyTitle: "Far-Infrared Sauna as a Novel Therapeutic Modality for Cardiovascular Health", journal: "Journal of Human Hypertension, 2004", url: "https://scholar.google.com/scholar?q=far+infrared+sauna+cardiovascular+recovery+heat+shock+protein" },
-    { technology: "Sauna · Sleep", studyTitle: "Passive Body Heating and Sleep in Humans", journal: "Sleep, 1997", url: "https://scholar.google.com/scholar?q=heat+sauna+sleep+onset+latency+deep+sleep+architecture+parasympathetic" },
-    { technology: "Heat Shock Proteins", studyTitle: "Exercise, Heat Stress, and the HSP Response", journal: "Canadian Journal of Physiology and Pharmacology, 2006", url: "https://scholar.google.com/scholar?q=heat+shock+protein+sauna+exercise+stress+HSP70+induction" },
+    { technology: "Far-Infrared · Recovery", studyTitle: "Far-Infrared Sauna as a Novel Therapeutic Modality for Cardiovascular Health", journal: "Journal of Human Hypertension, 2004", url: "https://scholar.google.com/scholar?q=far+infrared+sauna+cardiovascular+recovery+heat+shock+protein" },
+    { technology: "Passive Heat · Sleep", studyTitle: "Passive Body Heating and Sleep in Humans", journal: "Sleep, 1997", url: "https://scholar.google.com/scholar?q=heat+sauna+sleep+onset+latency+deep+sleep+architecture+parasympathetic" },
+    { technology: "HSP Induction · Exercise", studyTitle: "Exercise, Heat Stress, and the HSP Response", journal: "Canadian Journal of Physiology and Pharmacology, 2006", url: "https://scholar.google.com/scholar?q=heat+shock+protein+sauna+exercise+stress+HSP70+induction" },
     { technology: "Sauna · Longevity", studyTitle: "Association Between Sauna Bathing and Fatal Cardiovascular and All-Cause Mortality Events", journal: "JAMA Internal Medicine, 2015", url: "https://scholar.google.com/scholar?q=sauna+mortality+cardiovascular+longevity+heat+exposure+Laukkanen" },
   ],
   contraindications: [
     "You are pregnant",
     "You have severe cardiovascular disease or uncontrolled hypertension",
     "You have a history of heat stroke or heat intolerance",
-    "You are on medication that impairs thermoregulation — consult physician",
-    "Do not use immediately after intense training (wait 2–4 hours)",
+    "You are on medication that impairs thermoregulation — consult your physician first",
+    "Do not use immediately after intense training — wait at least 2 hours",
   ],
   normalSensations: [
-    "Progressive heat build-up during the session — expected",
-    "Significant sweating after 10–15 minutes — normal",
-    "Post-session feeling of deep relaxation — the parasympathetic shift",
+    "Gradual warmth building across the full body — expected; the neoprene retains heat progressively",
+    "Perspiration after 10–15 minutes — normal and desired; hydrate before each session",
+    "Deep relaxation and heaviness post-session — the parasympathetic shift in progress",
   ],
-  sessionInfo: "Session time: 30 minutes · Temperature: 60–80°C · Hydrate before and after · Post-session: cool down 10–15 minutes · Frequency: 2–4× per week",
+  sessionInfo: "Session time: 30 min · Power: USB 5V / 0–15W · Material: SBR neoprene · Surface temp: 40–55°C · Packed size: 30×16×7cm · Frequency: 3–4× per week",
+  forYouIf: [
+    "You want the heat shock protein protocol without a commercial sauna or monthly membership",
+    "You track HRV, sleep quality, or recovery metrics and want to add a proven hormetic input",
+    "You travel and want a recovery tool that folds into a bag and runs from any power bank",
+    "You train seriously and want to accelerate the tissue repair process between sessions",
+    "You understand that discomfort is a signal — and you want to give your body the one it's been missing",
+  ],
+  mechanismTimeline: [
+    { week: "Sessions 1–5", heading: "Thermal activation", body: "Core temperature rises and the parasympathetic rebound begins from the first session. Most users notice sleep onset improving before they notice any change in recovery — the nervous system responds first." },
+    { week: "Week 2–3", heading: "HSP induction", body: "Consistent heat stress triggers measurable heat shock protein production. Residual soreness between training days shortens. Tissue baseline shifts — the body begins arriving at sessions with less accumulated tension." },
+    { week: "Week 4–6", heading: "Systemic adaptation", body: "Hormetic adaptation to regular thermal stress accumulates. HRV trends upward, metabolic markers improve, and sleep architecture deepens. The protocol is now producing structural change — not just session-by-session relief." },
+  ],
+  techSectionTitle: "Far-infrared. Full body. USB-powered.",
 };
 
 // ─── THERMAL SHELL LITE ───
@@ -1621,6 +1766,19 @@ const thermalShellLiteConfig: ProductConfig = {
     "Post-session relaxation — the parasympathetic rebound",
   ],
   sessionInfo: "Session time: 30 minutes · Hydrate before and after · Cool down 10–15 minutes post-session · Frequency: 2–4× per week",
+  forYouIf: [
+    "You want the far-infrared sauna protocol in a lighter, more practical format",
+    "You don't need a full-weight sauna blanket and want something packable and storage-friendly",
+    "You're new to thermal recovery and want to start the protocol with a lower barrier to entry",
+    "You travel regularly and want a thermal recovery protocol that comes with you",
+    "You want the core temperature protocol without the larger format investment",
+  ],
+  mechanismTimeline: [
+    { week: "Week 1–2", heading: "Thermal activation", body: "Core temperature elevation begins the physiological cascade from session one. Sweating, parasympathetic rebound, and improved sleep onset are typically the first responses." },
+    { week: "Week 3–4", heading: "HSP accumulation", body: "Heat shock protein induction compounds across sessions. Recovery efficiency improves. The body adapts to the thermal stress and becomes more efficient at managing it." },
+    { week: "Week 6+", heading: "Consistent protocol", body: "Far-infrared sessions become part of weekly recovery. The cumulative effect — reduced inflammation, better sleep architecture, improved metabolic markers — builds across continued use." },
+  ],
+  techSectionTitle: "One mechanism. Lighter format.",
 };
 
 // ─── THERMAL ZONE (infrared belt, 360 LEDs) ───
@@ -1687,11 +1845,24 @@ const thermalZoneConfig: ProductConfig = {
     "Mild sweating with prolonged use at high temperature — normal",
   ],
   sessionInfo: "Session time: 20–30 minutes · Frequency: 4–5× per week · Pre-training: thermal only · Post-training: thermal + LED",
+  forYouIf: [
+    "You want a wearable red light and thermal protocol for a specific body area",
+    "You're targeting lower back, abdominal, or hip recovery and want wearable daily input",
+    "You want to run the protocol while moving — walking, stretching, or during light activity",
+    "You need both photobiomodulation and thermal input in one wearable format",
+    "You've used stationary red light panels and want to add a targeted wearable format for specific zones",
+  ],
+  mechanismTimeline: [
+    { week: "Days 1–7", heading: "Initial response", body: "The 360-node infrared array delivers immediate thermal and photon input to the contact zone. Circulation improvement and tissue warmth are felt and measurable from session one." },
+    { week: "Week 2–3", heading: "Photon accumulation", body: "Red light dosing compounds with consistent use. Tissue quality at the belt contact zone begins to improve. Recovery metrics in the targeted area shift." },
+    { week: "Week 4+", heading: "Protocol integrated", body: "The belt becomes a standard recovery input. The combination of thermal and photobiomodulation produces structural improvement in the target zone that neither mechanism alone provides." },
+  ],
+  techSectionTitle: "360 LEDs. Two mechanisms.",
 };
 
 // ─── THERMAL ZONE LITE (targeted joint wrap) ───
 const thermalZoneLiteConfig: ProductConfig = {
-  handle: "red-light-therapy-belt-infrared-hot-compress-phototherapy",
+  handle: "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad",
   name: "Thermal Zone Lite",
   subheadline: "Thermal Wrap. Single Joint.",
   benefits: [
@@ -1752,6 +1923,19 @@ const thermalZoneLiteConfig: ProductConfig = {
     "Joint feels 'looser' immediately after — the thermal preparation mechanism",
   ],
   sessionInfo: "Session time: 15–20 minutes · Temperature: 35–55°C · USB 12W · Warm-up: 3 minutes · Daily use for chronic stiffness",
+  forYouIf: [
+    "You have a single joint — knee, shoulder, or wrist — that needs consistent targeted daily thermal input",
+    "You want targeted heat without a full-body format or bulk",
+    "You spend time at a desk and want a USB-powered joint-specific protocol that runs while you work",
+    "Your joint stiffness is predictable: same area, every morning, before it takes load",
+    "You've used heat for joint management and want a more precise, calibrated and consistent version",
+  ],
+  mechanismTimeline: [
+    { week: "Days 1–7", heading: "Circulation activation", body: "Targeted thermal input to the joint area increases local blood flow from the first session. Morning stiffness typically reduces within the first week of daily pre-loading application." },
+    { week: "Week 2–3", heading: "Connective tissue response", body: "Daily heat prepares the joint's connective tissue before loading. Warm-up time decreases. The joint moves differently after consistent daily input — less resistance, less compensatory tension." },
+    { week: "Week 4+", heading: "Baseline improvement", body: "Chronic stiffness that accumulated over months begins to reduce. Resting mobility improves and accumulated tension between sessions decreases measurably." },
+  ],
+  techSectionTitle: "One joint. Daily protocol.",
 };
 
 // Register all new configs
@@ -1765,11 +1949,11 @@ Object.assign(productConfigs, {
   "gravity-quilt-cotton-weighted-blanket": restShellConfig,
   "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow": restoreMatConfig,
   "led-beauty-lamp-red-light-therapy-lamp-desktop-stand": ritualLightProConfig,
-  "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad": thermalPadConfig,
+  "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad": thermalZoneLiteConfig,
   "portable-home-use-charging-red-light-therapy-blanket-far-infrared": thermalShellConfig,
   "household-full-body-moisture-removing-infrared-sauna-blanket": thermalShellLiteConfig,
   "null-1777641441133": thermalZoneConfig,
-  "red-light-therapy-belt-infrared-hot-compress-phototherapy": thermalZoneLiteConfig,
+  "red-light-therapy-belt-infrared-hot-compress-phototherapy": thermalPadConfig,
 });
 
 export function getProductConfig(handle: string): ProductConfig | null {

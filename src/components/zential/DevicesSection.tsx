@@ -36,11 +36,11 @@ export function DevicesSection() {
     "gravity-quilt-cotton-weighted-blanket": "7kg cotton weighted blanket for deep sleep",
     "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow": "6,210-point acupressure mat and pillow",
     "led-beauty-lamp-red-light-therapy-lamp-desktop-stand": "Desktop 660nm red light therapy lamp",
-    "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad": "USB thermal pad for joint recovery",
+    "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad": "USB thermal wrap for joint protocol",
     "portable-home-use-charging-red-light-therapy-blanket-far-infrared": "Full-body far-infrared sauna blanket",
     "household-full-body-moisture-removing-infrared-sauna-blanket": "Compact packable infrared sauna blanket",
     "null-1777641441133": "Wearable 360-node infrared LED belt",
-    "red-light-therapy-belt-infrared-hot-compress-phototherapy": "USB thermal wrap for joint protocol",
+    "red-light-therapy-belt-infrared-hot-compress-phototherapy": "USB thermal pad for joint recovery",
   };
 
   const SORT_ORDER = [
@@ -86,10 +86,10 @@ export function DevicesSection() {
   };
 
   return (
-    <section ref={ref} id="devices" className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#F7F4F0' }}>
+    <section ref={ref} id="devices" className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#070A0E' }}>
       <BubbleBackground />
       <div className="text-center mb-14 relative z-10">
-        <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#9B5A2E' }}>The Collection</p>
+        <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#E87040' }}>The Collection</p>
         <h2 className="font-serif italic text-3xl md:text-4xl text-foreground">Our Devices</h2>
       </div>
 
@@ -109,7 +109,7 @@ export function DevicesSection() {
                 key={product.node.id}
                 to={productUrl}
                 className="group flex flex-col rounded-xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
-                style={{ backgroundColor: '#EFEBE5', border: '1px solid #E4DFD8', minHeight: 460 }}
+                style={{ backgroundColor: '#111820', border: '1px solid #1C2533', minHeight: 460 }}
               >
                 <div className="relative flex-[3] overflow-hidden">
                   {img && (
@@ -144,7 +144,7 @@ export function DevicesSection() {
                       disabled={isCartLoading}
                       aria-label={`Add ${product.node.title} to bag`}
                       className="text-[10px] tracking-[0.15em] uppercase font-medium px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:shadow-md hover:scale-105 disabled:opacity-50"
-                      style={{ backgroundColor: '#C6A07C' }}
+                      style={{ backgroundColor: '#E87040' }}
                     >
                       Add
                     </button>
