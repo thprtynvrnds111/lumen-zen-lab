@@ -70,6 +70,15 @@ const defaultComparison = [
   { feature: "Daily ritual integration", zential: true, clinic: false, creams: true, generic: true },
 ];
 
+const recoveryComparison = [
+  { feature: "Cost over 6 months", zential: "One-time investment", clinic: "€900+", creams: "N/A", generic: "€50–€100 (repeated)" },
+  { feature: "Clinical-grade output", zential: true, clinic: true, creams: false, generic: false },
+  { feature: "Daily home use", zential: true, clinic: false, creams: true, generic: true },
+  { feature: "Session scheduling", zential: true, clinic: false, creams: true, generic: true },
+  { feature: "Mechanism-first design", zential: true, clinic: true, creams: false, generic: false },
+  { feature: "Compounding long-term effect", zential: true, clinic: true, creams: false, generic: false },
+];
+
 const defaultDeviceFaqs = [
   { q: "How long until I see results?", a: "Most users notice improved skin texture within 2 weeks of consistent daily use. Structural changes typically become visible after 3 to 4 weeks of daily ritual practice." },
   { q: "Can I use it daily?", a: "Yes. This device is designed for daily use in 5-minute sessions. Start at the lowest intensity and gradually increase as your skin adapts." },
@@ -827,16 +836,6 @@ export const productConfigs: Record<string, ProductConfig> = {
     sessionInfo: "Session time: 10 minutes · Frequency: 4–5× per week · Stop if: burning sensation, unusual pain, or persistent redness",
   },
 };
-
-// ── Recovery/sleep comparison table (used by all body/sleep/recovery products) ──
-const recoveryComparison = [
-  { feature: "Cost over 6 months", zential: "One-time investment", clinic: "€900+", creams: "N/A", generic: "€50–€100 (repeated)" },
-  { feature: "Clinical-grade output", zential: true, clinic: true, creams: false, generic: false },
-  { feature: "Daily home use", zential: true, clinic: false, creams: true, generic: true },
-  { feature: "Session scheduling", zential: true, clinic: false, creams: true, generic: true },
-  { feature: "Mechanism-first design", zential: true, clinic: true, creams: false, generic: false },
-  { feature: "Compounding long-term effect", zential: true, clinic: true, creams: false, generic: false },
-];
 
 // ── New recovery / sleep / body products ──────────────────────────────────────
 
