@@ -99,14 +99,16 @@ export function BundleSection() {
       ref={ref}
       id="bundles"
       className="relative px-6 md:px-12 lg:px-20 py-24 md:py-32"
-      style={{ backgroundColor: '#FBF8F4' }}
+      style={{ backgroundColor: '#070A0E' }}
     >
       <div className="text-center mb-16 max-w-2xl mx-auto">
-        <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Begin with the Face Introducer —</p>
-        <h2 className="font-serif italic text-[34px] md:text-[48px] leading-[1.05] text-foreground tracking-tight mb-5">
+        <p className="text-[10px] tracking-[0.3em] uppercase mb-4" style={{ color: 'rgba(234,231,224,0.5)' }}>
+          — Begin with the Face Introducer —
+        </p>
+        <h2 className="font-serif italic text-[34px] md:text-[48px] leading-[1.05] tracking-tight mb-5" style={{ color: '#EAE7E0' }}>
           Three ways to begin.
         </h2>
-        <p className="text-[15px] text-foreground/65 leading-relaxed">
+        <p className="text-[15px] leading-relaxed" style={{ color: 'rgba(234,231,224,0.55)' }}>
           Each tier is a complete protocol — not an upsell. Choose the depth of practice that matches your skin's current chapter.
         </p>
       </div>
@@ -118,23 +120,37 @@ export function BundleSection() {
           return (
             <div
               key={b.key}
-              className={`relative rounded-2xl p-8 md:p-9 transition-all duration-500 hover:-translate-y-1 flex flex-col ${
-                b.highlight
-                  ? 'bg-[#2A211A] text-[#F7F1E8] shadow-2xl md:scale-[1.03]'
-                  : 'bg-white border border-[#E8DDD0] hover:shadow-xl'
-              }`}
+              className="relative rounded-2xl p-8 md:p-9 transition-all duration-500 hover:-translate-y-1 flex flex-col"
+              style={b.highlight ? {
+                backgroundColor: '#1C2A3A',
+                border: '1px solid rgba(232,112,64,0.35)',
+                boxShadow: '0 0 40px rgba(232,112,64,0.08)',
+                transform: undefined,
+              } : {
+                backgroundColor: '#111820',
+                border: '1px solid rgba(255,255,255,0.1)',
+              }}
             >
               {b.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[9px] tracking-[0.3em] uppercase px-4 py-1.5 rounded-full bg-[#C6A07C] text-white">
+                <span
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 text-[9px] tracking-[0.3em] uppercase px-4 py-1.5 rounded-full"
+                  style={{ backgroundColor: '#E87040', color: '#fff' }}
+                >
                   Most Chosen
                 </span>
               )}
 
-              <p className={`text-[10px] tracking-[0.3em] uppercase mb-3 ${b.highlight ? 'text-[#C6A07C]' : 'text-foreground/50'}`}>
+              <p
+                className="text-[10px] tracking-[0.3em] uppercase mb-3"
+                style={{ color: 'rgba(232,112,64,0.8)' }}
+              >
                 — {b.tagline} —
               </p>
 
-              <h3 className={`font-serif italic text-[28px] md:text-[32px] leading-[1] mb-6 ${b.highlight ? 'text-[#F7F1E8]' : 'text-foreground'}`}>
+              <h3
+                className="font-serif italic text-[28px] md:text-[32px] leading-[1] mb-6"
+                style={{ color: '#EAE7E0' }}
+              >
                 {b.title}
               </h3>
 
@@ -142,40 +158,45 @@ export function BundleSection() {
                 {b.items.map((item, idx) => (
                   <li key={item.handle} className="flex items-start gap-3">
                     {idx > 0 ? (
-                      <Plus size={12} className={`mt-1.5 flex-shrink-0 ${b.highlight ? 'text-[#C6A07C]' : 'text-[#9B5A2E]'}`} />
+                      <Plus size={12} className="mt-1.5 flex-shrink-0" style={{ color: '#E87040' }} />
                     ) : (
-                      <span className={`mt-2 w-1 h-1 rounded-full flex-shrink-0 ${b.highlight ? 'bg-[#C6A07C]' : 'bg-[#9B5A2E]'}`} />
+                      <span className="mt-2 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: '#E87040' }} />
                     )}
-                    <span className={`text-sm ${b.highlight ? 'text-[#F7F1E8]/85' : 'text-foreground/80'}`}>
+                    <span className="text-sm" style={{ color: 'rgba(234,231,224,0.8)' }}>
                       {item.name}
                     </span>
                   </li>
                 ))}
               </ul>
 
-              <div className={`h-px w-full mb-6 ${b.highlight ? 'bg-[#F7F1E8]/15' : 'bg-foreground/10'}`} />
+              <div className="h-px w-full mb-6" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
 
               <div className="mb-2">
-                <span className={`font-serif text-[36px] leading-none ${b.highlight ? 'text-[#F7F1E8]' : 'text-foreground'}`}>
+                <span className="font-serif text-[36px] leading-none" style={{ color: '#EAE7E0' }}>
                   €{b.total}
                 </span>
               </div>
-              <p className={`text-xs mb-6 ${b.highlight ? 'text-[#F7F1E8]/40' : 'text-foreground/40'}`}>
+              <p className="text-xs mb-6" style={{ color: 'rgba(234,231,224,0.35)' }}>
                 {b.items.length === 1 ? 'One-time purchase' : `${b.items.length} items · Free EU shipping`}
               </p>
 
-              <p className={`text-[11px] leading-relaxed mb-7 mt-auto ${b.highlight ? 'text-[#F7F1E8]/55' : 'text-foreground/50'}`}>
+              <p className="text-[11px] leading-relaxed mb-7 mt-auto" style={{ color: 'rgba(234,231,224,0.45)' }}>
                 {b.ritualNote}
               </p>
 
               <button
                 onClick={() => handleAddBundle(b)}
                 disabled={isLoading || isAdded}
-                className={`w-full py-4 text-[11px] tracking-[0.18em] uppercase rounded-full transition-all duration-300 hover:shadow-lg disabled:opacity-50 ${
-                  b.highlight
-                    ? 'bg-[#F7F1E8] text-[#2A211A] hover:bg-white'
-                    : 'bg-[#2A211A] text-[#F7F1E8] hover:bg-[#1A1714]'
-                }`}
+                className="w-full py-4 text-[11px] tracking-[0.18em] uppercase rounded-full transition-all duration-300 hover:shadow-lg disabled:opacity-50"
+                style={b.highlight ? {
+                  backgroundColor: '#E87040',
+                  color: '#fff',
+                  border: 'none',
+                } : {
+                  backgroundColor: 'transparent',
+                  color: '#E87040',
+                  border: '1px solid #E87040',
+                }}
               >
                 {isLoading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -192,11 +213,11 @@ export function BundleSection() {
         })}
       </div>
 
-      <div className="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-[10px] tracking-[0.25em] uppercase text-foreground/55">
+      <div className="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-[10px] tracking-[0.25em] uppercase" style={{ color: 'rgba(234,231,224,0.4)' }}>
         <span>Free EU Shipping</span>
-        <span className="hidden md:inline w-1 h-1 rounded-full bg-foreground/20" />
+        <span className="hidden md:inline w-1 h-1 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
         <span>30-Day Guarantee</span>
-        <span className="hidden md:inline w-1 h-1 rounded-full bg-foreground/20" />
+        <span className="hidden md:inline w-1 h-1 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
         <span>2-Year Warranty</span>
       </div>
     </section>
