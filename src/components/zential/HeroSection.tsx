@@ -7,10 +7,10 @@ import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 
 const modalities = [
-  { icon: Sun, label: "Red Light" },
-  { icon: Zap, label: "Microcurrent" },
-  { icon: Activity, label: "EMS" },
-  { icon: Flame, label: "Thermal" },
+  { icon: Sun, label: "Red Light", color: "#E84040", sub: "660–850nm" },
+  { icon: Zap, label: "Microcurrent", color: "#4080FF", sub: "μA precision" },
+  { icon: Activity, label: "EMS", color: "#E87040", sub: "nerve activation" },
+  { icon: Flame, label: "Thermal", color: "#E8A040", sub: "infrared heat" },
 ];
 
 const heroImages = [heroImage0, heroImage1, heroImage2, heroImage3];
@@ -73,14 +73,14 @@ export function HeroSection() {
             transition: 'opacity 0.7s ease-out 0.2s, transform 0.7s ease-out 0.2s',
           }}
         >
-          <span className="h-px w-6" style={{ backgroundColor: '#e8e8ed' }} />
-          <p className="text-muted-foreground text-[10px] md:text-[11px] tracking-[0.32em] uppercase">
-            At-Home Facial Technology
+          <span className="h-px w-6" style={{ backgroundColor: 'rgba(234,231,224,0.25)' }} />
+          <p className="text-[10px] md:text-[11px] tracking-[0.32em] uppercase" style={{ color: 'rgba(234,231,224,0.5)' }}>
+            Recovery Protocol Stack
           </p>
         </div>
 
         <h1
-          className="font-sans font-bold text-[40px] md:text-[56px] lg:text-[68px] leading-[1.04] tracking-tight text-foreground mb-5 text-center md:text-left text-balance"
+          className="font-sans font-bold text-[40px] md:text-[56px] lg:text-[68px] leading-[1.04] tracking-tight mb-5 text-center md:text-left text-balance" style={{ color: '#EAE7E0' }}
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(20px)',
@@ -93,7 +93,7 @@ export function HeroSection() {
         <p
           className="font-serif italic text-[14px] md:text-[15px] mb-5 text-center md:text-left"
           style={{
-            color: '#C6A07C',
+            color: '#E87040',
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(10px)',
             transition: 'opacity 0.8s ease-out 0.38s, transform 0.8s ease-out 0.38s',
@@ -103,7 +103,7 @@ export function HeroSection() {
         </p>
 
         <p
-          className="text-muted-foreground text-[15px] md:text-base leading-relaxed max-w-md mb-8 text-center md:text-left"
+          className="text-[15px] md:text-base leading-relaxed max-w-md mb-8 text-center md:text-left" style={{ color: 'rgba(234,231,224,0.6)' }}
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(14px)',
@@ -124,10 +124,10 @@ export function HeroSection() {
         >
           <div className="flex gap-0.5">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} size={14} fill="#f69251" style={{ color: '#f69251' }} />
+              <Star key={i} size={14} fill="#E87040" style={{ color: '#E87040' }} />
             ))}
           </div>
-          <span className="text-muted-foreground text-xs tracking-wide">
+          <span className="text-xs tracking-wide" style={{ color: 'rgba(234,231,224,0.5)' }}>
             4.9 / 5 — rated by our community
           </span>
         </div>
@@ -143,7 +143,7 @@ export function HeroSection() {
         >
           <button
             className="flex-1 py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full transition-all duration-300 hover:-translate-y-0.5"
-            style={{ backgroundColor: '#f69251', color: '#000000', boxShadow: 'rgba(0,0,0,0.04) 0px 1px 2px, rgba(0,0,0,0.02) 0px 4px 8px' }}
+            style={{ backgroundColor: '#E87040', color: '#ffffff', boxShadow: '0 0 24px rgba(232,112,64,0.25)' }}
             onClick={() => document.getElementById('devices')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Shop the Ritual
@@ -151,7 +151,7 @@ export function HeroSection() {
           <Link
             to="/quiz"
             className="flex-1 py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full border transition-all duration-300 hover:-translate-y-0.5 text-center"
-            style={{ borderColor: '#1d1d1f', color: '#1d1d1f', backgroundColor: 'transparent' }}
+            style={{ borderColor: 'rgba(234,231,224,0.3)', color: '#EAE7E0', backgroundColor: 'transparent' }}
           >
             Take the 60s Quiz
           </Link>
@@ -167,8 +167,8 @@ export function HeroSection() {
           }}
         >
           {['Free EU Shipping', '30-Day Guarantee', 'Dermatologist Tested'].map(label => (
-            <span key={label} className="flex items-center gap-1.5 text-[11px]" style={{ color: '#636363' }}>
-              <span style={{ color: '#2ED8A8', fontSize: 13 }}>✓</span>
+            <span key={label} className="flex items-center gap-1.5 text-[11px]" style={{ color: 'rgba(234,231,224,0.45)' }}>
+              <span style={{ color: '#E87040', fontSize: 13 }}>✓</span>
               {label}
             </span>
           ))}
@@ -178,21 +178,28 @@ export function HeroSection() {
         <div
           className="w-full max-w-md pt-6 border-t"
           style={{
-            borderColor: 'hsl(240 9% 92%)',
+            borderColor: 'rgba(255,255,255,0.08)',
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(12px)',
             transition: 'opacity 0.8s ease-out 0.85s, transform 0.8s ease-out 0.85s',
           }}
         >
-          <p className="text-[10px] tracking-[0.3em] uppercase mb-3 text-center md:text-left" style={{ color: '#636363' }}>
-            Four technologies. One ritual.
+          <p className="text-[10px] tracking-[0.3em] uppercase mb-4 text-center md:text-left" style={{ color: 'rgba(234,231,224,0.35)' }}>
+            Four technologies. One protocol.
           </p>
-          <div className="flex items-center justify-between md:justify-start md:gap-7">
+          <div className="grid grid-cols-4 gap-2">
             {modalities.map((m) => (
-              <div key={m.label} className="flex flex-col items-center md:items-start gap-1.5">
-                <m.icon size={18} strokeWidth={1.3} style={{ color: '#1d1d1f' }} />
-                <span className="text-[10px] md:text-[11px] tracking-[0.12em] uppercase" style={{ color: '#1d1d1f' }}>
+              <div
+                key={m.label}
+                className="flex flex-col items-center gap-2 rounded-xl py-3 px-1"
+                style={{ backgroundColor: '#111820', border: `1px solid ${m.color}30`, borderTop: `2px solid ${m.color}` }}
+              >
+                <m.icon size={16} strokeWidth={1.5} style={{ color: m.color }} />
+                <span className="text-[9px] tracking-[0.12em] uppercase text-center" style={{ color: '#EAE7E0' }}>
                   {m.label}
+                </span>
+                <span className="text-[8px] tracking-wide" style={{ color: 'rgba(234,231,224,0.4)' }}>
+                  {m.sub}
                 </span>
               </div>
             ))}
