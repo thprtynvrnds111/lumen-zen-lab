@@ -33,22 +33,22 @@ export function CommunitySection() {
   };
 
   return (
-    <section ref={ref} className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#F7F4F0' }}>
+    <section ref={ref} className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#0C1118' }}>
       <BubbleBackground />
       <div className="max-w-5xl mx-auto relative z-10">
         <h2 className="font-serif italic text-3xl md:text-4xl text-foreground mb-14 text-center">
           Built with our first customers
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-          <div className="rounded-xl p-7 transition-all duration-500 hover:shadow-lg" style={{ backgroundColor: '#EFEBE5', border: '1px solid #E4DFD8' }}>
-            <p className="font-serif text-lg font-bold text-foreground mb-2">Response within 24 hours</p>
-            <a href="mailto:info@zentialpure.com" className="text-sm font-medium hover:underline" style={{ color: '#9B5A2E' }}>
+          <div className="rounded-xl p-7 transition-all duration-500 hover:shadow-lg" style={{ backgroundColor: '#111820', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <p className="font-serif text-lg font-bold mb-2" style={{ color: '#EAE7E0' }}>Response within 24 hours</p>
+            <a href="mailto:info@zentialpure.com" className="text-sm font-medium hover:underline" style={{ color: '#E87040' }}>
               info@zentialpure.com
             </a>
           </div>
-          <div className="rounded-xl p-7 transition-all duration-500 hover:shadow-lg" style={{ backgroundColor: '#EFEBE5', border: '1px solid #E4DFD8' }}>
-            <p className="font-serif text-lg font-bold text-foreground mb-2">Founding Customer Program</p>
-            <p className="text-sm text-foreground/70 leading-relaxed mb-5">
+          <div className="rounded-xl p-7 transition-all duration-500 hover:shadow-lg" style={{ backgroundColor: '#111820', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <p className="font-serif text-lg font-bold mb-2" style={{ color: '#EAE7E0' }}>Founding Customer Program</p>
+            <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(234,231,224,0.7)' }}>
               We're giving 15 devices to real people for 30 days. No script. No requirement to say it works. Apply below.
             </p>
             <form onSubmit={handleApply} className="flex flex-col min-[400px]:flex-row gap-3">
@@ -57,14 +57,14 @@ export function CommunitySection() {
                 placeholder="your@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-4 py-2.5 text-sm rounded-full border bg-white/80 outline-none focus:ring-1"
-                style={{ borderColor: '#D8D3CC' }}
+                className="flex-1 px-4 py-2.5 text-sm rounded-full outline-none focus:ring-1"
+                style={{ backgroundColor: '#0C1118', border: '1px solid rgba(255,255,255,0.15)', color: '#EAE7E0' }}
               />
               <button
                 type="submit"
                 disabled={submitting}
                 className="px-5 py-2.5 text-sm font-medium text-white rounded-full transition-all duration-300 hover:shadow-md hover:scale-105 whitespace-nowrap disabled:opacity-60"
-                style={{ backgroundColor: '#C6A07C' }}
+                style={{ backgroundColor: '#E87040' }}
               >
                 {submitting ? 'Applying…' : 'Apply'}
               </button>

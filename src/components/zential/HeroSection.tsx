@@ -198,7 +198,7 @@ export function HeroSection() {
                 <span className="text-[9px] tracking-[0.12em] uppercase text-center" style={{ color: '#EAE7E0' }}>
                   {m.label}
                 </span>
-                <span className="text-[8px] tracking-wide" style={{ color: 'rgba(234,231,224,0.4)' }}>
+                <span className="text-[8px] tracking-wide" style={{ color: 'rgba(234,231,224,0.6)' }}>
                   {m.sub}
                 </span>
               </div>

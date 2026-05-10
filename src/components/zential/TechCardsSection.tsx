@@ -33,10 +33,10 @@ export function TechCardsSection() {
   const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <section ref={ref} id="technology" className="relative px-6 md:px-12 lg:px-20 py-12 md:py-28 overflow-hidden" style={{ backgroundColor: '#F7F4F0' }}>
+    <section ref={ref} id="technology" className="relative px-6 md:px-12 lg:px-20 py-12 md:py-28 overflow-hidden" style={{ backgroundColor: '#0C1118' }}>
       <BubbleBackground />
       <div className="max-w-5xl mx-auto relative z-10">
-        <h2 className="font-serif italic text-3xl md:text-4xl text-foreground mb-8 md:mb-14 text-center">
+        <h2 className="font-serif italic text-3xl md:text-4xl mb-8 md:mb-14 text-center" style={{ color: '#EAE7E0' }}>
           The science behind it
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -44,12 +44,12 @@ export function TechCardsSection() {
             <div
               key={c.name}
               className="rounded-lg p-7 md:p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
-              style={{ backgroundColor: '#EFEBE5', border: '1px solid #E4DFD8' }}
+              style={{ backgroundColor: '#111820', border: '1px solid rgba(255,255,255,0.1)' }}
             >
-              <h3 className="font-serif text-xl font-bold text-foreground mb-1">{c.name}</h3>
-              <p className="text-xs font-medium mb-4" style={{ color: '#C6A07C' }}>{c.param}</p>
-              <p className="text-sm text-foreground/80 leading-relaxed mb-4">{c.mechanism}</p>
-              <Link to={c.href} className="text-xs font-medium hover:underline" style={{ color: '#9B5A2E' }}>
+              <h3 className="font-serif text-xl font-bold mb-1" style={{ color: '#EAE7E0' }}>{c.name}</h3>
+              <p className="text-xs font-medium mb-4" style={{ color: '#E87040' }}>{c.param}</p>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: 'rgba(234,231,224,0.8)' }}>{c.mechanism}</p>
+              <Link to={c.href} className="text-xs font-medium hover:underline" style={{ color: '#E87040' }}>
                 Learn more →
               </Link>
             </div>

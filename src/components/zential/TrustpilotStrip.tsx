@@ -46,7 +46,7 @@ function RatingDots({ rating }: { rating: number }) {
             width: "6px",
             height: "6px",
             borderRadius: "50%",
-            backgroundColor: i < rating ? "#C6A07C" : "rgba(198,160,124,0.25)",
+            backgroundColor: i < rating ? "#E87040" : "rgba(232,112,64,0.25)",
           }}
         />
       ))}
@@ -62,7 +62,7 @@ export function TrustpilotStrip({ className = "" }: Props) {
   return (
     <section
       className={className}
-      style={{ backgroundColor: "#FAF7F3", padding: "64px 24px" }}
+      style={{ backgroundColor: "#0C1118", padding: "64px 24px" }}
     >
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         {/* Header */}
@@ -73,7 +73,7 @@ export function TrustpilotStrip({ className = "" }: Props) {
               fontWeight: 300,
               fontSize: "10px",
               letterSpacing: "0.3em",
-              color: "rgba(26,23,20,0.5)",
+              color: "rgba(234,231,224,0.5)",
               textTransform: "uppercase",
               marginBottom: "14px",
             }}
@@ -89,9 +89,9 @@ export function TrustpilotStrip({ className = "" }: Props) {
               fontStyle: "italic",
               fontWeight: 400,
               fontSize: "26px",
-              color: "#1A1714",
+              color: "#EAE7E0",
               textDecoration: "none",
-              borderBottom: "1px solid rgba(198,160,124,0.4)",
+              borderBottom: "1px solid rgba(232,112,64,0.4)",
               paddingBottom: "2px",
             }}
           >
@@ -111,8 +111,8 @@ export function TrustpilotStrip({ className = "" }: Props) {
             <div
               key={i}
               style={{
-                backgroundColor: "#FFFFFF",
-                border: "1px solid rgba(198,160,124,0.18)",
+                backgroundColor: "#111820",
+                border: "1px solid rgba(255,255,255,0.08)",
                 borderRadius: "2px",
                 padding: "28px 24px",
               }}
@@ -123,7 +123,7 @@ export function TrustpilotStrip({ className = "" }: Props) {
                   fontFamily: "'Poppins', sans-serif",
                   fontWeight: 300,
                   fontSize: "13px",
-                  color: "#3A3530",
+                  color: "rgba(234,231,224,0.85)",
                   lineHeight: 1.75,
                   marginBottom: "16px",
                 }}
@@ -136,7 +136,7 @@ export function TrustpilotStrip({ className = "" }: Props) {
                     fontFamily: "'Poppins', sans-serif",
                     fontWeight: 400,
                     fontSize: "11px",
-                    color: "#1A1714",
+                    color: "#EAE7E0",
                   }}
                 >
                   {r.name}
@@ -147,7 +147,7 @@ export function TrustpilotStrip({ className = "" }: Props) {
                     fontWeight: 300,
                     fontSize: "10px",
                     letterSpacing: "0.12em",
-                    color: "#C6A07C",
+                    color: "rgba(234,231,224,0.55)",
                     textTransform: "uppercase",
                   }}
                 >
@@ -169,7 +169,7 @@ export function TrustpilotStrip({ className = "" }: Props) {
               fontWeight: 400,
               fontSize: "10px",
               letterSpacing: "0.2em",
-              color: "rgba(26,23,20,0.45)",
+              color: "rgba(234,231,224,0.45)",
               textTransform: "uppercase",
               textDecoration: "none",
             }}

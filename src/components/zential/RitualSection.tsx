@@ -97,7 +97,7 @@ export function RitualSection() {
         <div className="text-center mt-12">
           <p
             className="font-serif italic text-base max-w-md mx-auto"
-            style={{ color: "rgba(234,231,224,0.35)" }}
+            style={{ color: "rgba(234,231,224,0.5)" }}
           >
             "Transformation comes from repetition, not force."
           </p>
