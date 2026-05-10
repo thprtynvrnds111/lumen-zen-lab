@@ -74,24 +74,21 @@ const alternativeTiers = [
     price: "€349",
     sub: "one-time",
     note: "1–2 technologies",
-    bg: "#FDF4EE",
-    border: "#F0C9A8",
+    accent: "#4080FF",
   },
   {
     label: "Amiro / Anlan",
     price: "~€84",
     sub: "one-time",
     note: "1 technology",
-    bg: "#FAEADE",
-    border: "#E8AA7A",
+    accent: "#40D080",
   },
   {
     label: "Clinic visit",
     price: "€80–200",
     sub: "per session",
     note: "~€960–2,400 / year",
-    bg: "#F5DBC8",
-    border: "#D4855A",
+    accent: "#C840E8",
   },
 ];
 
@@ -110,9 +107,9 @@ const DEVICE_NAMES: Record<string, string> = {
 };
 
 function CellIcon({ type }: { type: RowIcon }) {
-  if (type === "good") return <Check size={13} className="shrink-0" style={{ color: "#7CAE9B" }} />;
-  if (type === "bad") return <X size={13} className="shrink-0" style={{ color: "#C97B5A" }} />;
-  return <Minus size={13} className="shrink-0 opacity-30" />;
+  if (type === "good") return <Check size={13} className="shrink-0" style={{ color: "#40D080" }} />;
+  if (type === "bad") return <X size={13} className="shrink-0" style={{ color: "#E84040" }} />;
+  return <Minus size={13} className="shrink-0" style={{ color: 'rgba(234,231,224,0.25)' }} />;
 }
 
 export function ComparisonSection() {
@@ -128,48 +125,52 @@ export function ComparisonSection() {
   }, []);
 
   return (
-    <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: "#F7F4F0" }}>
+    <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: "#070A0E" }}>
       {/* Headline */}
       <div className="text-center mb-14">
-        <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: "#9B5A2E" }}>Compare</p>
-        <h2 className="text-3xl md:text-5xl font-semibold leading-tight">Freedom, Not Appointments.</h2>
+        <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: "#E87040" }}>Compare</p>
+        <h2 className="text-3xl md:text-5xl font-semibold leading-tight" style={{ color: '#EAE7E0' }}>
+          Freedom, Not Appointments.
+        </h2>
       </div>
 
       {/* Hero price cards */}
       <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 mb-10">
 
         {/* Alternatives card */}
-        <div className="rounded-2xl border border-border/40 bg-white/70 p-7 flex flex-col">
-          <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-5">The Alternatives</p>
+        <div className="rounded-2xl p-7 flex flex-col" style={{ backgroundColor: '#111820', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <p className="text-[10px] tracking-[0.2em] uppercase mb-5" style={{ color: 'rgba(234,231,224,0.45)' }}>
+            The Alternatives
+          </p>
           <div className="space-y-2.5 flex-1">
             {alternativeTiers.map(tier => (
               <div
                 key={tier.label}
-                className="flex items-center justify-between rounded-xl px-4 py-3 border"
-                style={{ backgroundColor: tier.bg, borderColor: tier.border }}
+                className="flex items-center justify-between rounded-xl px-4 py-3"
+                style={{ backgroundColor: '#0C1118', border: `1px solid ${tier.accent}25`, borderLeft: `2px solid ${tier.accent}` }}
               >
                 <div>
-                  <span className="text-[9px] tracking-[0.2em] uppercase" style={{ color: "#9B5A2E" }}>{tier.label}</span>
-                  <p className="text-sm font-semibold text-foreground mt-0.5">
+                  <span className="text-[9px] tracking-[0.2em] uppercase" style={{ color: tier.accent }}>{tier.label}</span>
+                  <p className="text-sm font-semibold mt-0.5" style={{ color: '#EAE7E0' }}>
                     {tier.price}{" "}
-                    <span className="text-xs font-normal text-muted-foreground">{tier.sub}</span>
+                    <span className="text-xs font-normal" style={{ color: 'rgba(234,231,224,0.45)' }}>{tier.sub}</span>
                   </p>
                 </div>
-                <span className="text-xs text-muted-foreground/80 font-medium tabular-nums">{tier.note}</span>
+                <span className="text-xs font-medium tabular-nums" style={{ color: 'rgba(234,231,224,0.5)' }}>{tier.note}</span>
               </div>
             ))}
           </div>
-          <p className="mt-5 pt-4 border-t border-border/30 text-[11px] text-muted-foreground">
+          <p className="mt-5 pt-4 text-[11px]" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', color: 'rgba(234,231,224,0.4)' }}>
             More cost, fewer technologies, or an appointment every time.
           </p>
         </div>
 
         {/* Zential card */}
         <div
-          className="rounded-2xl border-2 p-7 flex flex-col"
-          style={{ borderColor: "#C6A07C", backgroundColor: "#FDFAF7" }}
+          className="rounded-2xl p-7 flex flex-col"
+          style={{ backgroundColor: '#1C2A3A', border: '1px solid rgba(232,112,64,0.35)', boxShadow: '0 0 40px rgba(232,112,64,0.06)' }}
         >
-          <p className="text-[10px] tracking-[0.2em] uppercase mb-5" style={{ color: "#9B5A2E" }}>Zential Ritual</p>
+          <p className="text-[10px] tracking-[0.2em] uppercase mb-5" style={{ color: '#E87040' }}>Zential Protocol</p>
 
           {/* Device circles */}
           <div className="flex gap-4 mb-6 flex-wrap">
@@ -181,8 +182,8 @@ export function ComparisonSection() {
                   return (
                     <div key={product.node.id} className="flex flex-col items-center gap-1.5">
                       <div
-                        className="w-[68px] h-[68px] rounded-full overflow-hidden border-2 shadow-sm"
-                        style={{ borderColor: "#E4DFD8", backgroundColor: "#EFEBE5" }}
+                        className="w-[68px] h-[68px] rounded-full overflow-hidden"
+                        style={{ border: '1px solid rgba(232,112,64,0.3)', backgroundColor: '#111820' }}
                       >
                         {img && (
                           <img
@@ -194,86 +195,79 @@ export function ComparisonSection() {
                           />
                         )}
                       </div>
-                      <span className="text-[10px] font-semibold" style={{ color: "#9B5A2E" }}>
+                      <span className="text-[10px] font-semibold" style={{ color: '#E87040' }}>
                         {price.currencyCode === "EUR" ? "€" : price.currencyCode}
                         {parseFloat(price.amount).toFixed(0)}
                       </span>
-                      <span className="text-[9px] text-muted-foreground text-center leading-tight max-w-[68px]">{name}</span>
+                      <span className="text-[9px] text-center leading-tight max-w-[68px]" style={{ color: 'rgba(234,231,224,0.5)' }}>{name}</span>
                     </div>
                   );
                 })
               : Array.from({ length: 4 }).map((_, i) => (
                   <div key={i} className="flex flex-col items-center gap-1.5">
-                    <div
-                      className="w-[68px] h-[68px] rounded-full animate-pulse"
-                      style={{ backgroundColor: "#EFEBE5" }}
-                    />
-                    <div className="h-2.5 w-8 rounded animate-pulse" style={{ backgroundColor: "#EFEBE5" }} />
+                    <div className="w-[68px] h-[68px] rounded-full animate-pulse" style={{ backgroundColor: '#111820' }} />
+                    <div className="h-2.5 w-8 rounded animate-pulse" style={{ backgroundColor: '#111820' }} />
                   </div>
                 ))
             }
           </div>
 
-          <div className="rounded-xl px-4 py-3 flex-1" style={{ backgroundColor: "#F0EAE0" }}>
-            <p className="text-sm font-semibold text-foreground">One-time investment</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Yours forever. No subscriptions, no bookings.</p>
+          <div className="rounded-xl px-4 py-3 flex-1" style={{ backgroundColor: 'rgba(232,112,64,0.08)', border: '1px solid rgba(232,112,64,0.2)' }}>
+            <p className="text-sm font-semibold" style={{ color: '#EAE7E0' }}>One-time investment</p>
+            <p className="text-xs mt-0.5" style={{ color: 'rgba(234,231,224,0.5)' }}>Yours forever. No subscriptions, no bookings.</p>
           </div>
-          <p className="mt-5 pt-4 border-t border-border/30 text-[11px] text-muted-foreground">
+          <p className="mt-5 pt-4 text-[11px]" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', color: 'rgba(234,231,224,0.4)' }}>
             No appointments, no downtime, no travel.
           </p>
         </div>
       </div>
 
-      {/* Comparison table — 5 cols: feature | Zential | NuFACE | Amiro/Anlan | Clinic */}
+      {/* Comparison table */}
       <div className="max-w-4xl mx-auto overflow-x-auto">
-        <div className="min-w-[600px] rounded-2xl overflow-hidden border border-border/40 bg-white/60">
+        <div className="min-w-[600px] rounded-2xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.08)', backgroundColor: '#111820' }}>
           {/* Header */}
           <div
-            className="grid grid-cols-5 text-center text-[10px] tracking-[0.15em] uppercase font-semibold border-b border-border/50"
-            style={{ backgroundColor: "rgba(255,255,255,0.85)" }}
+            className="grid grid-cols-5 text-center text-[10px] tracking-[0.15em] uppercase font-semibold"
+            style={{ backgroundColor: '#0C1118', borderBottom: '1px solid rgba(255,255,255,0.08)' }}
           >
             <div className="p-4" />
-            <div className="p-4" style={{ color: "#9B5A2E", backgroundColor: "rgba(198,160,124,0.08)" }}>
+            <div className="p-4" style={{ color: '#E87040', backgroundColor: 'rgba(232,112,64,0.06)', borderBottom: '2px solid #E87040' }}>
               Zential
             </div>
-            <div className="p-4 text-muted-foreground">NuFACE</div>
-            <div className="p-4 text-muted-foreground">Amiro / Anlan</div>
-            <div className="p-4 text-muted-foreground">Clinic</div>
+            <div className="p-4" style={{ color: 'rgba(234,231,224,0.4)' }}>NuFACE</div>
+            <div className="p-4" style={{ color: 'rgba(234,231,224,0.4)' }}>Amiro / Anlan</div>
+            <div className="p-4" style={{ color: 'rgba(234,231,224,0.4)' }}>Clinic</div>
           </div>
 
           {/* Rows */}
           {rows.map((row, i) => (
             <div
               key={row.feature}
-              className="grid grid-cols-5 text-center border-b border-border/20 last:border-0"
-              style={{ backgroundColor: i % 2 === 0 ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.1)" }}
+              className="grid grid-cols-5 text-center"
+              style={{
+                backgroundColor: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent',
+                borderBottom: '1px solid rgba(255,255,255,0.05)',
+              }}
             >
-              {/* Feature label */}
-              <div className="p-4 md:p-5 text-sm font-medium text-left text-foreground/80">{row.feature}</div>
-
-              {/* Zential — always ✓, highlighted */}
+              <div className="p-4 md:p-5 text-sm font-medium text-left" style={{ color: 'rgba(234,231,224,0.7)' }}>
+                {row.feature}
+              </div>
               <div
-                className="p-4 md:p-5 text-sm flex items-center justify-center gap-1.5 font-medium text-foreground/90"
-                style={{ backgroundColor: "rgba(198,160,124,0.06)" }}
+                className="p-4 md:p-5 text-sm flex items-center justify-center gap-1.5 font-medium"
+                style={{ backgroundColor: 'rgba(232,112,64,0.04)', color: '#EAE7E0' }}
               >
-                <Check size={13} className="shrink-0" style={{ color: "#7CAE9B" }} />
+                <Check size={13} className="shrink-0" style={{ color: "#40D080" }} />
                 {row.zential}
               </div>
-
-              {/* NuFACE */}
-              <div className="p-4 md:p-5 text-sm text-muted-foreground flex items-center justify-center gap-1.5">
+              <div className="p-4 md:p-5 text-sm flex items-center justify-center gap-1.5" style={{ color: 'rgba(234,231,224,0.5)' }}>
                 <CellIcon type={row.nuface_icon} />
                 {row.nuface}
               </div>
-
-              {/* Amiro / Anlan */}
-              <div className="p-4 md:p-5 text-sm text-muted-foreground flex items-center justify-center gap-1.5">
+              <div className="p-4 md:p-5 text-sm flex items-center justify-center gap-1.5" style={{ color: 'rgba(234,231,224,0.5)' }}>
                 <CellIcon type={row.amiro_icon} />
                 {row.amiro}
               </div>
-
-              {/* Clinic */}
-              <div className="p-4 md:p-5 text-sm text-muted-foreground flex items-center justify-center gap-1.5">
+              <div className="p-4 md:p-5 text-sm flex items-center justify-center gap-1.5" style={{ color: 'rgba(234,231,224,0.5)' }}>
                 <CellIcon type={row.clinic_icon} />
                 {row.clinic}
               </div>

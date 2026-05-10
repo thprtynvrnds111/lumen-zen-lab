@@ -36,7 +36,7 @@ export function HeroSection() {
   }, [cycleImage]);
 
   return (
-    <section className="flex flex-col md:flex-row md:min-h-[calc(100vh-88px)] bg-background">
+    <section className="flex flex-col md:flex-row md:min-h-[calc(100vh-88px)]" style={{ backgroundColor: '#070A0E' }}>
       {/* Left — Image */}
       <div
         className="w-full md:w-[55%] relative overflow-hidden h-[60vh] md:h-auto"
@@ -50,7 +50,7 @@ export function HeroSection() {
           <img
             key={i}
             src={src}
-            alt="Zential beauty device"
+            alt="Zential recovery device"
             width={1080}
             height={1296}
             className="absolute inset-0 w-full h-full object-cover"
@@ -64,7 +64,11 @@ export function HeroSection() {
       </div>
 
       {/* Right — Content */}
-      <div className="w-full md:w-[45%] flex flex-col items-center md:items-start justify-center px-8 md:px-16 lg:px-20 py-14 md:py-16">
+      <div
+        className="w-full md:w-[45%] flex flex-col items-center md:items-start justify-center px-8 md:px-16 lg:px-20 py-14 md:py-16"
+        style={{ backgroundColor: '#070A0E' }}
+      >
+        {/* Eyebrow */}
         <div
           className="flex items-center gap-3 mb-5"
           style={{
@@ -79,9 +83,11 @@ export function HeroSection() {
           </p>
         </div>
 
+        {/* Headline */}
         <h1
-          className="font-sans font-bold text-[40px] md:text-[56px] lg:text-[68px] leading-[1.04] tracking-tight mb-5 text-center md:text-left text-balance" style={{ color: '#EAE7E0' }}
+          className="font-sans font-bold text-[40px] md:text-[56px] lg:text-[68px] leading-[1.04] tracking-tight mb-5 text-center md:text-left text-balance"
           style={{
+            color: '#EAE7E0',
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(20px)',
             transition: 'opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s',
@@ -90,6 +96,7 @@ export function HeroSection() {
           Clinic Precision.<br />Daily Ritual.
         </h1>
 
+        {/* Italic subline */}
         <p
           className="font-serif italic text-[14px] md:text-[15px] mb-5 text-center md:text-left"
           style={{
@@ -102,15 +109,17 @@ export function HeroSection() {
           The body already knows the frequency. We publish it.
         </p>
 
+        {/* Body copy */}
         <p
-          className="text-[15px] md:text-base leading-relaxed max-w-md mb-8 text-center md:text-left" style={{ color: 'rgba(234,231,224,0.6)' }}
+          className="text-[15px] md:text-base leading-relaxed max-w-md mb-8 text-center md:text-left"
           style={{
+            color: 'rgba(234,231,224,0.65)',
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(14px)',
             transition: 'opacity 0.8s ease-out 0.52s, transform 0.8s ease-out 0.52s',
           }}
         >
-          Four clinically inspired technologies in one quiet ritual. Designed for visible firmness, tone and lift. Five minutes a day, in your own bathroom.
+          Four clinically inspired technologies in one daily protocol. Red light, microcurrent, EMS, and thermal — engineered for performance recovery.
         </p>
 
         {/* Social proof */}
@@ -146,12 +155,12 @@ export function HeroSection() {
             style={{ backgroundColor: '#E87040', color: '#ffffff', boxShadow: '0 0 24px rgba(232,112,64,0.25)' }}
             onClick={() => document.getElementById('devices')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Shop the Ritual
+            Shop the Protocol
           </button>
           <Link
             to="/quiz"
             className="flex-1 py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full border transition-all duration-300 hover:-translate-y-0.5 text-center"
-            style={{ borderColor: 'rgba(234,231,224,0.3)', color: '#EAE7E0', backgroundColor: 'transparent' }}
+            style={{ borderColor: 'rgba(234,231,224,0.25)', color: '#EAE7E0', backgroundColor: 'transparent' }}
           >
             Take the 60s Quiz
           </Link>
@@ -174,11 +183,11 @@ export function HeroSection() {
           ))}
         </div>
 
-        {/* Modality strip — editorial */}
+        {/* Modality cards */}
         <div
-          className="w-full max-w-md pt-6 border-t"
+          className="w-full max-w-md pt-6"
           style={{
-            borderColor: 'rgba(255,255,255,0.08)',
+            borderTop: '1px solid rgba(255,255,255,0.08)',
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(12px)',
             transition: 'opacity 0.8s ease-out 0.85s, transform 0.8s ease-out 0.85s',
@@ -192,7 +201,7 @@ export function HeroSection() {
               <div
                 key={m.label}
                 className="flex flex-col items-center gap-2 rounded-xl py-3 px-1"
-                style={{ backgroundColor: '#111820', border: `1px solid ${m.color}30`, borderTop: `2px solid ${m.color}` }}
+                style={{ backgroundColor: '#111820', border: `1px solid ${m.color}28`, borderTop: `2px solid ${m.color}` }}
               >
                 <m.icon size={16} strokeWidth={1.5} style={{ color: m.color }} />
                 <span className="text-[9px] tracking-[0.12em] uppercase text-center" style={{ color: '#EAE7E0' }}>
