@@ -90,7 +90,7 @@ export function DevicesSection() {
       <BubbleBackground />
       <div className="text-center mb-14 relative z-10">
         <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#E87040' }}>The Collection</p>
-        <h2 className="font-serif italic text-3xl md:text-4xl text-foreground">Our Devices</h2>
+        <h2 className="font-serif italic text-3xl md:text-4xl" style={{ color: '#EAE7E0' }}>The Protocol Stack</h2>
       </div>
 
       {loading ? (
@@ -108,8 +108,10 @@ export function DevicesSection() {
               <Link
                 key={product.node.id}
                 to={productUrl}
-                className="group flex flex-col rounded-xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
-                style={{ backgroundColor: '#111820', border: '1px solid #1C2533', minHeight: 460 }}
+                className="group flex flex-col rounded-xl overflow-hidden transition-all duration-500 hover:-translate-y-1"
+                style={{ backgroundColor: '#111820', border: '1px solid rgba(255,255,255,0.07)', minHeight: 460, boxShadow: '0 0 0 0 rgba(232,112,64,0)' }}
+                onMouseEnter={e => (e.currentTarget.style.border = '1px solid rgba(232,112,64,0.25)')}
+                onMouseLeave={e => (e.currentTarget.style.border = '1px solid rgba(255,255,255,0.07)')}
               >
                 <div className="relative flex-[3] overflow-hidden">
                   {img && (
@@ -121,30 +123,55 @@ export function DevicesSection() {
                       width={800}
                       height={800}
                       loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                     />
                   )}
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111820]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
-                <div className="flex-1 flex flex-col justify-between p-6">
-                  <h3 className="text-xs tracking-[0.15em] uppercase font-medium text-foreground leading-snug mb-1">
+                {/* Card info — instrument readout panel */}
+                <div
+                  className="flex flex-col p-5 pt-4"
+                  style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
+                >
+                  {/* Device name */}
+                  <h3
+                    className="font-serif italic text-[15px] leading-snug mb-1.5 transition-colors duration-300 group-hover:text-white"
+                    style={{ color: '#EAE7E0' }}
+                  >
                     {product.node.title}
                   </h3>
-                  <p className="text-[11px] text-foreground/50 leading-relaxed line-clamp-1 mb-4">
-                    {SUBTITLES[product.node.handle] || "Professional-grade skincare technology"}
+
+                  {/* Function descriptor */}
+                  <p
+                    className="text-[11px] leading-relaxed line-clamp-2 mb-4"
+                    style={{ color: 'rgba(234,231,224,0.6)', letterSpacing: '0.01em' }}
+                  >
+                    {SUBTITLES[product.node.handle] || "Recovery protocol device"}
                   </p>
-                  <div className="flex items-center justify-between mt-auto">
-                    <span className="text-sm font-medium text-foreground">
-                      {price.currencyCode === "EUR" ? "€" : price.currencyCode}{parseFloat(price.amount).toFixed(2)}
-                    </span>
+
+                  {/* Price + CTA */}
+                  <div
+                    className="flex items-center justify-between pt-3"
+                    style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+                  >
+                    <div>
+                      <span
+                        className="text-[9px] tracking-[0.25em] uppercase block mb-0.5"
+                        style={{ color: 'rgba(234,231,224,0.3)' }}
+                      >
+                        From
+                      </span>
+                      <span className="text-[15px] font-medium" style={{ color: '#EAE7E0' }}>
+                        {price.currencyCode === "EUR" ? "€" : price.currencyCode}{Math.round(parseFloat(price.amount))}
+                      </span>
+                    </div>
                     <button
                       onClick={(e) => handleAdd(e, product)}
                       disabled={isCartLoading}
                       aria-label={`Add ${product.node.title} to bag`}
-                      className="text-[10px] tracking-[0.15em] uppercase font-medium px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:shadow-md hover:scale-105 disabled:opacity-50"
-                      style={{ backgroundColor: '#E87040' }}
+                      className="text-[10px] tracking-[0.18em] uppercase font-medium px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:scale-105 disabled:opacity-50"
+                      style={{ backgroundColor: '#E87040', boxShadow: '0 0 16px rgba(232,112,64,0.3)' }}
                     >
                       Add
                     </button>
