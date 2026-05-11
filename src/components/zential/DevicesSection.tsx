@@ -43,6 +43,19 @@ export function DevicesSection() {
     "red-light-therapy-belt-infrared-hot-compress-phototherapy": "USB thermal pad for joint recovery",
   };
 
+  const TECH_TAGS: Record<string, string[]> = {
+    "body-lift": ["EMS", "Lift"],
+    "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": ["LED", "Pulse"],
+    "electric-guasha-massager": ["Microcurrent", "Sculpt"],
+    "electric-micro-current": ["Microcurrent", "EMS"],
+    "eye-massage": ["Red Light", "Thermal"],
+    "color-light-import-micro-current-vibration-massager": ["LED", "Freq"],
+    "facial-beauty-tools-and-ems-beauty-equipment": ["EMS", "Contour"],
+    "lifting-and-tightening-face-introducer": ["Red Light", "EMS", "Thermal"],
+    "portable-ems-microcurrent-facial-beauty-device": ["EMS", "Microcurrent"],
+    "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening": ["LED", "EMS"],
+  };
+
   const SORT_ORDER = [
     "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
     "body-lift",
@@ -129,14 +142,33 @@ export function DevicesSection() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111820]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
-                {/* Card info — instrument readout panel */}
+                {/* Card info — biohacking instrument readout */}
                 <div
                   className="flex flex-col p-5 pt-4"
                   style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
                 >
+                  {/* Protocol tags */}
+                  {TECH_TAGS[product.node.handle] && (
+                    <div className="flex items-center gap-1.5 mb-3 flex-wrap">
+                      {TECH_TAGS[product.node.handle].map((tag, i) => (
+                        <span
+                          key={i}
+                          className="text-[9px] tracking-[0.18em] uppercase font-medium px-2 py-[3px] rounded-sm"
+                          style={{
+                            backgroundColor: 'rgba(232,112,64,0.1)',
+                            color: '#E87040',
+                            border: '1px solid rgba(232,112,64,0.22)',
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
                   {/* Device name */}
                   <h3
-                    className="font-serif italic text-[15px] leading-snug mb-1.5 transition-colors duration-300 group-hover:text-white"
+                    className="font-serif italic text-[16px] leading-snug mb-1.5 transition-colors duration-300 group-hover:text-white"
                     style={{ color: '#EAE7E0' }}
                   >
                     {product.node.title}
@@ -144,8 +176,8 @@ export function DevicesSection() {
 
                   {/* Function descriptor */}
                   <p
-                    className="text-[11px] leading-relaxed line-clamp-2 mb-4"
-                    style={{ color: 'rgba(234,231,224,0.6)', letterSpacing: '0.01em' }}
+                    className="text-[11.5px] leading-relaxed line-clamp-1 mb-4"
+                    style={{ color: 'rgba(234,231,224,0.75)', letterSpacing: '0.01em' }}
                   >
                     {SUBTITLES[product.node.handle] || "Recovery protocol device"}
                   </p>
@@ -155,17 +187,9 @@ export function DevicesSection() {
                     className="flex items-center justify-between pt-3"
                     style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
                   >
-                    <div>
-                      <span
-                        className="text-[9px] tracking-[0.25em] uppercase block mb-0.5"
-                        style={{ color: 'rgba(234,231,224,0.3)' }}
-                      >
-                        From
-                      </span>
-                      <span className="text-[15px] font-medium" style={{ color: '#EAE7E0' }}>
-                        {price.currencyCode === "EUR" ? "€" : price.currencyCode}{Math.round(parseFloat(price.amount))}
-                      </span>
-                    </div>
+                    <span className="text-[16px] font-semibold" style={{ color: '#EAE7E0' }}>
+                      {price.currencyCode === "EUR" ? "€" : price.currencyCode}{Math.round(parseFloat(price.amount))}
+                    </span>
                     <button
                       onClick={(e) => handleAdd(e, product)}
                       disabled={isCartLoading}

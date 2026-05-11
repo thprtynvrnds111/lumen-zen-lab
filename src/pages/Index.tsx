@@ -4,7 +4,7 @@ import { Header } from "@/components/zential/Header";
 import { HeroSection } from "@/components/zential/HeroSection";
 import { TrustStrip } from "@/components/zential/TrustStrip";
 import { ShopByConcern } from "@/components/zential/ShopByConcern";
-import { FinalCTA } from "@/components/zential/FinalCTA";
+
 import { lazy, Suspense } from "react";
 
 const ComparisonSection  = lazy(() => import("@/components/zential/ComparisonSection").then(m => ({ default: m.ComparisonSection })));
@@ -68,7 +68,6 @@ const Index = () => {
           <BundleSection />
           <FAQSection />
           <MovementSection />
-          <FinalCTA />
         </Suspense>
       </main>
       <Suspense fallback={<div className="h-40 bg-foreground" />}>

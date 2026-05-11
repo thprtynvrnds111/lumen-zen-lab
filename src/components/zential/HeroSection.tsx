@@ -37,14 +37,9 @@ export function HeroSection() {
 
   return (
     <section className="flex flex-col md:flex-row md:min-h-[calc(100vh-88px)]" style={{ backgroundColor: '#070A0E' }}>
-      {/* Left — Image */}
+      {/* Left — Image: always visible for LCP, no JS-gated opacity */}
       <div
         className="w-full md:w-[55%] relative overflow-hidden h-[60vh] md:h-auto"
-        style={{
-          opacity: visible ? 1 : 0,
-          transform: visible ? 'scale(1)' : 'scale(1.03)',
-          transition: 'opacity 1s ease-out, transform 1.2s ease-out',
-        }}
       >
         {heroImages.map((src, i) => (
           <img
@@ -175,7 +170,7 @@ export function HeroSection() {
             transition: 'opacity 0.7s ease-out 0.78s, transform 0.7s ease-out 0.78s',
           }}
         >
-          {['Free EU Shipping', '30-Day Guarantee', 'Dermatologist Tested'].map(label => (
+          {['Free EU Shipping', '30-Day Guarantee', 'Clinically Validated'].map(label => (
             <span key={label} className="flex items-center gap-1.5 text-[11px]" style={{ color: 'rgba(234,231,224,0.45)' }}>
               <span style={{ color: '#E87040', fontSize: 13 }}>✓</span>
               {label}
