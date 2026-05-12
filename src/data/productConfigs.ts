@@ -11,12 +11,16 @@ import after3Img from "@/assets/after3.webp";
 import problemFaceIntroducer from "@/assets/problem-face-introducer-v2.png";
 import problemFramePulse from "@/assets/problem-frame-pulse.webp";
 import problemGuasha from "@/assets/problem-guasha-v2.jpeg";
-import problemSkinpulse from "@/assets/problem-skinpulse.jpg";
+import problemSkinpulse from "@/assets/problem-skinpulse-v2.jpeg";
 import problemEyeActivator from "@/assets/problem-eye-activator.webp";
 import problemFrequencyWand from "@/assets/problem-frequency-wand-v2.jpeg";
 import problemDepthMask from "@/assets/problem-depth-mask.jpeg";
 import problemThermalZoneLite from "@/assets/problem-thermal-zone-lite.jpeg";
-import problemSculptWand from "@/assets/problem-sculpt-wand.webp";
+import problemPressureShell from "@/assets/problem-pressure-shell.jpeg";
+import problemPulseRoller from "@/assets/problem-pulse-roller.jpeg";
+import problemRestoreMat from "@/assets/problem-restore-mat.jpeg";
+import problemSculptWand from "@/assets/problem-sculpt-wand-v2.jpeg";
+
 import problemWandPro from "@/assets/problem-wand-pro.png";
 import productBodyLift from "@/assets/product-body-lift.jpg";
 import productSculptWand from "@/assets/ritual-sculpt-wand.png";
@@ -1232,6 +1236,7 @@ const pressureShellConfig: ProductConfig = {
     { week: "Week 4+", heading: "Recovery optimisation", body: "Training recovery shortens. Next-session quality improves as accumulated metabolic waste in the lower body is systematically cleared across weeks of consistent protocol." },
   ],
   techSectionTitle: "Four chambers. One protocol.",
+  problemImage: problemPressureShell,
 };
 
 // ─── PULSE ROLLER ───
@@ -1310,6 +1315,7 @@ const pulseRollerConfig: ProductConfig = {
     { week: "Week 4+", heading: "Tissue quality", body: "Baseline fascial tissue quality improves across treated areas. Warm-up time decreases. The tissue responds faster and holds less accumulation between sessions." },
   ],
   techSectionTitle: "One tool. Three protocols.",
+  problemImage: problemPulseRoller,
 };
 
 // ─── REST SHELL ───
@@ -1466,6 +1472,7 @@ const restoreMatConfig: ProductConfig = {
     { week: "Week 4+", heading: "Systemic relaxation", body: "The endorphin response becomes the expected outcome. The nervous system enters parasympathetic state reliably and on schedule — a structural recalibration of baseline tone." },
   ],
   techSectionTitle: "6,210 points. One protocol.",
+  problemImage: problemRestoreMat,
 };
 
 // ─── RITUAL LIGHT PRO ───
