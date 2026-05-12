@@ -406,11 +406,11 @@ export function ProductLanding({ config }: Props) {
       <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32" style={{ backgroundColor: '#0C1118' }}>
         <div className="max-w-[1100px] mx-auto">
           <div className="text-center mb-14 max-w-2xl mx-auto">
-            <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— Why You Can Trust This —</p>
-            <h2 className="font-serif italic text-[32px] md:text-[46px] leading-[1.05] text-foreground tracking-tight mb-5">
+            <p className="text-[10px] tracking-[0.3em] uppercase mb-4" style={{ color: 'rgba(234,231,224,0.5)' }}>— Why You Can Trust This —</p>
+            <h2 className="font-serif italic text-[32px] md:text-[46px] leading-[1.05] tracking-tight mb-5" style={{ color: '#EAE7E0' }}>
               We launched in 2026.<br/>We won't fabricate reviews.
             </h2>
-            <p className="text-[15px] text-foreground/65 leading-relaxed">
+            <p className="text-[15px] leading-relaxed" style={{ color: 'rgba(234,231,224,0.65)' }}>
               Instead, here's what we offer in their place — concrete, verifiable, and refundable.
             </p>
           </div>
@@ -423,14 +423,14 @@ export function ProductLanding({ config }: Props) {
             ].map((card, i) => (
               <div key={i} className="rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-500" style={{ backgroundColor: '#111820', border: '1px solid rgba(255,255,255,0.08)' }}>
                 <p className="text-[10px] tracking-[0.3em] uppercase mb-5" style={{ color: '#E87040' }}>— {card.eyebrow} —</p>
-                <h3 className="font-serif italic text-[24px] leading-[1.1] text-foreground mb-4">{card.title}</h3>
-                <p className="text-sm text-foreground/65 leading-relaxed mb-6">{card.body}</p>
-                <p className="text-[11px] tracking-[0.18em] uppercase text-foreground/70 hover:text-foreground transition-colors cursor-default">{card.cta}</p>
+                <h3 className="font-serif italic text-[24px] leading-[1.1] mb-4" style={{ color: '#EAE7E0' }}>{card.title}</h3>
+                <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(234,231,224,0.65)' }}>{card.body}</p>
+                <p className="text-[11px] tracking-[0.18em] uppercase cursor-default" style={{ color: 'rgba(234,231,224,0.6)' }}>{card.cta}</p>
               </div>
             ))}
           </div>
 
-          <p className="font-serif italic text-lg md:text-xl text-foreground/55 text-center max-w-xl mx-auto leading-relaxed mt-14">
+          <p className="font-serif italic text-lg md:text-xl text-center max-w-xl mx-auto leading-relaxed mt-14" style={{ color: 'rgba(234,231,224,0.55)' }}>
             "Honest beats inflated. The device works, or your money comes back."
           </p>
         </div>
@@ -460,21 +460,22 @@ export function ProductLanding({ config }: Props) {
       {config.forYouIf && config.forYouIf.length > 0 && (
         <section className="px-6 md:px-12 lg:px-20 py-20 md:py-24" style={{ backgroundColor: '#070A0E' }}>
           <div className="max-w-2xl mx-auto">
-            <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-6 text-center">— This instrument is for you if —</p>
+            <p className="text-[10px] tracking-[0.3em] uppercase mb-6 text-center" style={{ color: 'rgba(234,231,224,0.5)' }}>— This instrument is for you if —</p>
             <ul className="space-y-5">
               {config.forYouIf.map((item, i) => (
                 <li key={i} className="flex items-start gap-4">
                   <span style={{ color: '#C6A07C', fontFamily: "'Lora', serif", fontStyle: 'italic', fontSize: '18px', lineHeight: 1, flexShrink: 0, marginTop: '2px' }}>
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <p className="text-[15px] text-foreground/80 leading-relaxed">{item}</p>
+                  <p className="text-[15px] leading-relaxed" style={{ color: 'rgba(234,231,224,0.85)' }}>{item}</p>
                 </li>
               ))}
             </ul>
             <p className="mt-10 text-center">
               <a
                 href="#technology"
-                className="text-[11px] tracking-[0.2em] uppercase text-foreground/60 hover:text-foreground transition-colors border-b border-foreground/20 pb-0.5"
+                className="text-[11px] tracking-[0.2em] uppercase transition-colors border-b pb-0.5"
+                style={{ color: 'rgba(234,231,224,0.55)', borderColor: 'rgba(234,231,224,0.2)' }}
               >
                 The science behind this instrument →
               </a>
