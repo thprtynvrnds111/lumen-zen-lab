@@ -993,6 +993,7 @@ const depthMaskConfig: ProductConfig = {
     { week: "Week 4+", heading: "Circadian anchoring", body: "Consistent light/dark signalling anchors the circadian rhythm. Sleep pressure accumulates on schedule regardless of travel or environmental variation." },
   ],
   techSectionTitle: "The mechanism. One input.",
+  problemImage: problemDepthMask,
 };
 
 // ─── FLUX PANEL ───
@@ -1938,6 +1939,7 @@ const thermalZoneLiteConfig: ProductConfig = {
     { week: "Week 4+", heading: "Baseline improvement", body: "Chronic stiffness that accumulated over months begins to reduce. Resting mobility improves and accumulated tension between sessions decreases measurably." },
   ],
   techSectionTitle: "One joint. Daily protocol.",
+  problemImage: problemThermalZoneLite,
 };
 
 // ─── FREQUENCY REST (white noise sleep machine) ───
