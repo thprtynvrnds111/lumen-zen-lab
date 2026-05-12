@@ -38,6 +38,7 @@ export function ProductLanding({ config }: Props) {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedBundle, setSelectedBundle] = useState<BundleKey>("ritual-set");
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
+  const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>({});
   const [showSticky, setShowSticky] = useState(false);
   const [gelPrice, setGelPrice] = useState(18);
   const [maskPrice, setMaskPrice] = useState(18);
@@ -53,6 +54,13 @@ export function ProductLanding({ config }: Props) {
         p = await fetchProductByHandle(config.purchaseHandle).catch(() => null);
       }
       setProduct(p);
+      // Initialize selected options from first variant
+      const v0 = p?.variants?.edges?.[0]?.node;
+      if (v0?.selectedOptions) {
+        const init: Record<string, string> = {};
+        (v0.selectedOptions as { name: string; value: string }[]).forEach(o => { init[o.name] = o.value; });
+        setSelectedOptions(init);
+      }
       setLoading(false);
     })();
   }, [config.handle, config.purchaseHandle]);
@@ -132,12 +140,20 @@ export function ProductLanding({ config }: Props) {
 
   const handleVariantChange = (idx: number) => {
     setSelectedVariantIdx(idx);
-    // Switch to the variant's associated image by matching the variant image URL
     const variantImage = variants[idx]?.node?.image;
     if (variantImage?.url && images.length > 1) {
       const matchIdx = images.findIndex((img: any) => img.node.url === variantImage.url);
       setSelectedImage(matchIdx >= 0 ? matchIdx : 0);
     }
+  };
+
+  const selectOption = (name: string, value: string) => {
+    const next = { ...selectedOptions, [name]: value };
+    setSelectedOptions(next);
+    const idx = variants.findIndex((v: any) =>
+      (v.node.selectedOptions as { name: string; value: string }[]).every(o => next[o.name] === o.value)
+    );
+    if (idx >= 0) handleVariantChange(idx);
   };
 
   const bundles = buildBundles(gelPrice, maskPrice);
@@ -286,6 +302,50 @@ export function ProductLanding({ config }: Props) {
             </div>
 
 
+
+            {/* Variant selector — renders for any product with real options */}
+            {hasMultipleVariants && (product?.options || []).filter((o: any) => !(o.values.length === 1 && o.values[0] === 'Default Title')).length > 0 && (
+              <div className="mb-8 space-y-4">
+                {(product.options as { name: string; values: string[] }[])
+                  .filter((o: any) => !(o.values.length === 1 && o.values[0] === 'Default Title'))
+                  .map((opt: { name: string; values: string[] }) => {
+                    const isColorOpt = /colou?r/i.test(opt.name);
+                    const currentVal = selectedOptions[opt.name];
+                    return (
+                      <div key={opt.name}>
+                        <p className="text-[11px] tracking-[0.2em] uppercase mb-2.5" style={{ color: 'rgba(234,231,224,0.5)' }}>
+                          {opt.name}:&nbsp;
+                          <span style={{ color: 'rgba(234,231,224,0.85)' }}>
+                            {colorLabelMap[currentVal] ?? currentVal}
+                          </span>
+                        </p>
+                        <div className="flex gap-2 flex-wrap">
+                          {opt.values.map((val: string) => {
+                            const isSelected = currentVal === val;
+                            const swatch = colorSwatchMap[val];
+                            return isColorOpt && swatch ? (
+                              <button
+                                key={val}
+                                onClick={() => selectOption(opt.name, val)}
+                                title={colorLabelMap[val] ?? val}
+                                className={`w-8 h-8 rounded-full border-2 transition-all ${swatch} ${isSelected ? 'border-[#E87040] ring-2 ring-[#E87040]/30 scale-110' : 'border-foreground/20 hover:border-foreground/50'}`}
+                              />
+                            ) : (
+                              <button
+                                key={val}
+                                onClick={() => selectOption(opt.name, val)}
+                                className={`px-4 py-2 rounded-xl text-xs font-medium tracking-wide border transition-all ${isSelected ? 'border-[#E87040] bg-[#E87040]/10 text-foreground' : 'border-foreground/20 text-foreground/60 hover:border-foreground/50 hover:text-foreground'}`}
+                              >
+                                {colorLabelMap[val] ?? val}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            )}
 
             {/* Bundle Selector – top buttons, single source of truth */}
             {!config.isAccessory && (
