@@ -8,12 +8,14 @@ import after2Img from "@/assets/after2.webp";
 import before3Img from "@/assets/before3.webp";
 import after3Img from "@/assets/after3.webp";
 
-import problemFaceIntroducer from "@/assets/problem-face-introducer.webp";
+import problemFaceIntroducer from "@/assets/problem-face-introducer-v2.png";
 import problemFramePulse from "@/assets/problem-frame-pulse.webp";
-import problemGuasha from "@/assets/problem-guasha.webp";
+import problemGuasha from "@/assets/problem-guasha-v2.jpeg";
 import problemSkinpulse from "@/assets/problem-skinpulse.jpg";
 import problemEyeActivator from "@/assets/problem-eye-activator.webp";
-import problemFrequencyWand from "@/assets/problem-frequency-wand.webp";
+import problemFrequencyWand from "@/assets/problem-frequency-wand-v2.jpeg";
+import problemDepthMask from "@/assets/problem-depth-mask.jpeg";
+import problemThermalZoneLite from "@/assets/problem-thermal-zone-lite.jpeg";
 import problemSculptWand from "@/assets/problem-sculpt-wand.webp";
 import problemWandPro from "@/assets/problem-wand-pro.png";
 import productBodyLift from "@/assets/product-body-lift.jpg";
