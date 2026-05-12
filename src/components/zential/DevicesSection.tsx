@@ -41,6 +41,7 @@ export function DevicesSection() {
     "household-full-body-moisture-removing-infrared-sauna-blanket": "Compact packable infrared sauna blanket",
     "null-1777641441133": "Wearable 360-node infrared LED belt",
     "red-light-therapy-belt-infrared-hot-compress-phototherapy": "USB thermal pad for joint recovery",
+    "white-noise-sleep-aid-machine": "Acoustic masking for deeper sleep cycles",
   };
 
   const TECH_TAGS: Record<string, string[]> = {
@@ -67,6 +68,7 @@ export function DevicesSection() {
     "eye-massage",
     "electric-micro-current",
     "color-light-import-micro-current-vibration-massager",
+    "white-noise-sleep-aid-machine",
   ];
 
   useEffect(() => {

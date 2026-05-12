@@ -114,6 +114,10 @@ const PRODUCT_SEO: Record<string, { title: string; description: string }> = {
     title: "Thermal Pad — USB Heated Joint Recovery Pad | Zential Pure",
     description: "USB thermal pad with 4-motor massage for targeted joint recovery. Knee, shoulder, lower back. 15–20 minutes pre- or post-training. €69.",
   },
+  "white-noise-sleep-aid-machine": {
+    title: "Frequency Rest — White Noise Sleep Machine | Zential Pure",
+    description: "20 ambient sound modes for acoustic sleep masking. Reduces micro-arousals, supports deeper sleep cycles and HRV recovery. USB compact format.",
+  },
 };
 
 // Static prices for JSON-LD prerendering — async Shopify price overrides these client-side
@@ -144,6 +148,7 @@ const PRODUCT_PRICES: Record<string, string> = {
   "household-full-body-moisture-removing-infrared-sauna-blanket": "119.00",
   "null-1777641441133": "89.00",
   "red-light-therapy-belt-infrared-hot-compress-phototherapy": "69.00",
+  "white-noise-sleep-aid-machine": "39.00",
 };
 
 function getProductJsonLd(handle: string, seo: { title: string; description: string }, price?: string, image?: string) {

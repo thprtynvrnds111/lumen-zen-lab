@@ -1938,6 +1938,93 @@ const thermalZoneLiteConfig: ProductConfig = {
   techSectionTitle: "One joint. Daily protocol.",
 };
 
+// ─── FREQUENCY REST (white noise sleep machine) ───
+const frequencyRestConfig: ProductConfig = {
+  handle: "white-noise-sleep-aid-machine",
+  name: "Frequency Rest",
+  subheadline: "Acoustic Masking. Sleep Onset Protocol.",
+  benefits: [
+    { icon: Waves, label: "20 Ambient Sound Modes" },
+    { icon: Brain, label: "Sleep Latency Reduction" },
+    { icon: Heart, label: "HRV & Recovery Support" },
+    { icon: CircleDot, label: "USB · 110mm Compact Form" },
+  ],
+  testimonials: [
+    { name: "Lena, 34", text: "I've tried everything for city apartment noise. This is the first thing that actually changes the room. I'm asleep 20 minutes faster — I tracked it." },
+    { name: "Daan, 41", text: "Two months in. My deep sleep percentage went from 14% to 22% on my tracker. The consistent acoustic environment is the variable I changed." },
+    { name: "Sofía, 29", text: "Travel changed completely. Same sound every hotel room. My body doesn't know the difference anymore between home and anywhere else." },
+  ],
+  problemReframe: {
+    headline: "Your Nervous System Monitors Sound While You Sleep.",
+    paragraphs: [
+      "The auditory cortex remains partially active throughout sleep — particularly in light sleep and the transitions between cycles. Any novel sound above your ambient baseline can trigger a micro-arousal: a brief cortisol spike, a shift in sleep stage, a reduction in slow-wave depth. You don't need to fully wake up for this to degrade your sleep quality.",
+      "White noise doesn't silence your environment. It raises the acoustic floor — the consistent baseline against which your auditory system evaluates threat. When the baseline is consistent, novel sounds produce less signal contrast. Less contrast means fewer micro-arousals, more time in deep sleep stages, and more complete overnight recovery.",
+      "Frequency Rest delivers 20 ambient sound modes — broadband white noise, pink noise, brown noise, rainfall, ocean — from a 110mm compact unit. USB powered. No subscription. No phone screen. No blue light exposure at the moment your melatonin should peak.",
+    ],
+    closing: "Same sound. Every night. Consistent acoustic environment for consistent sleep.",
+  },
+  techCards: [
+    { icon: Waves, title: "Broadband Acoustic Masking", desc: "White noise distributes sound energy across all audible frequencies equally. Pink noise weights lower frequencies for a warmer profile. Brown noise emphasises bass — associated with deeper perceived relaxation in several sleep studies. 20 modes across all three noise types plus natural soundscapes." },
+    { icon: Brain, title: "Micro-Arousal Suppression", desc: "The auditory system evaluates novel sounds against the ambient acoustic baseline. Consistent broadband masking raises that baseline, reducing signal contrast for transient sounds — traffic, voices, building noise. Fewer micro-arousals means more unbroken sleep cycles and more time in slow-wave and REM stages." },
+    { icon: Heart, title: "HRV & Autonomic Regulation", desc: "Sleep quality and heart rate variability are directly linked. Fragmented sleep suppresses parasympathetic recovery overnight, reducing next-day HRV. Consistent acoustic environments support deeper sleep stages where autonomic recovery happens — measurable on any HRV-capable tracker." },
+    { icon: CircleDot, title: "Compact. USB. Always On.", desc: "110 × 110 × 62mm. USB powered from any adapter or power bank. No Wi-Fi, no app, no notification risk. Volume dial, mode button, and optional timer — that's the entire interface. Travel-ready. Works in any acoustic environment." },
+  ],
+  ritualSteps: [
+    { step: "01", title: "Place", desc: "Position Frequency Rest 1–2 metres from your bed — on a nightstand or floor. Distance determines volume and dispersion. Start at 30–40% volume: ambient enough to mask, not loud enough to become the sound you notice." },
+    { step: "02", title: "Select", desc: "Choose your mode. White noise for broad masking. Pink noise for a warmer profile. Brown noise if you prefer deep bass-weighted ambience. Natural soundscapes if you respond better to biophilic acoustic environments." },
+    { step: "03", title: "Commit", desc: "Run it every night. Acoustic conditioning works through consistency — your nervous system learns to associate the sound with sleep. Within two weeks, the sound itself becomes a sleep onset trigger. Silence becomes the exception." },
+  ],
+  problemImage: problemEyeActivator,
+  fallbackImage: problemEyeActivator,
+  beforeAfter: { before: before3Img, after: after3Img },
+  comparisonRows: [
+    { feature: "Cost over 6 months", zential: "One-time investment", clinic: "N/A", creams: "€120+ (app subscription)", generic: "€10–€20 (earplugs, repeated)" },
+    { feature: "Acoustic masking quality", zential: true, clinic: false, creams: false, generic: false },
+    { feature: "No blue light exposure", zential: true, clinic: true, creams: false, generic: true },
+    { feature: "HRV & sleep cycle support", zential: true, clinic: true, creams: false, generic: false },
+    { feature: "Travel-ready", zential: true, clinic: false, creams: true, generic: true },
+    { feature: "No app or subscription", zential: true, clinic: false, creams: false, generic: true },
+  ],
+  faqs: [
+    { q: "What's the difference between white, pink, and brown noise?", a: "White noise distributes energy equally across all frequencies — the broadest masking profile. Pink noise has equal energy per octave, with a warmer, lower-weighted sound. Brown noise emphasises the bass end further — often described as a deep rumble or heavy rainfall. Most people find pink or brown noise more comfortable for sleep; white noise has the strongest masking effect for high-frequency sounds like voices." },
+    { q: "How loud should I run it?", a: "Start at 30–40% volume — roughly 50–60 dB at arm's length. Loud enough to mask transient sounds, quiet enough that you don't consciously register it. The goal is for the sound to become background, not foreground. After two weeks of consistent use, you may find lower volume is sufficient as the acoustic conditioning takes effect." },
+    { q: "Will I become dependent on it?", a: "Acoustic conditioning is not dependency in a neurological sense — your nervous system learns to associate consistent inputs with sleep, which is the mechanism behind any good sleep ritual. If you travel without it, re-adaptation takes 2–3 nights. Most people consider this a worthwhile trade for the consistent sleep quality they gain." },
+    { q: "My partner doesn't like it — what do I do?", a: "Start with pink or brown noise — both are more universally accepted than white noise due to their warmer, less 'static' character. Lower volume than you think necessary. Most people who resist white noise are convinced after 5–7 nights." },
+    { q: "Can I use it for babies or children?", a: "White noise for infant sleep is one of the most well-documented acoustic interventions in sleep science. For infants, keep the unit further from the cot and volume below 50 dB. Consult your paediatrician if you have specific questions about your child's needs." },
+    { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. Track your sleep for 30 nights with consistent use. If you don't see measurable improvement in sleep onset or continuity, full refund — no conditions." },
+  ],
+  studyCards: [
+    { technology: "White Noise · Sleep Onset", studyTitle: "White Noise and Sleep Induction", journal: "A & A Case Reports, 2016", url: "https://scholar.google.com/scholar?q=white+noise+sleep+onset+latency+reduction" },
+    { technology: "Acoustic Masking · Micro-Arousals", studyTitle: "Effect of Continuous Background White Noise on Nocturnal Arousals", journal: "Sleep Medicine, 2005", url: "https://scholar.google.com/scholar?q=white+noise+nocturnal+micro+arousal+suppression+sleep+quality" },
+    { technology: "Pink Noise · Slow-Wave Sleep", studyTitle: "Pink Noise to Enhance Slow Oscillations and Slow-Wave Sleep", journal: "Frontiers in Human Neuroscience, 2017", url: "https://scholar.google.com/scholar?q=pink+noise+slow+wave+sleep+enhancement+deep+sleep" },
+    { technology: "HRV · Sleep Quality", studyTitle: "Heart Rate Variability as a Biomarker of Sleep Quality", journal: "Sleep Medicine Reviews, 2019", url: "https://scholar.google.com/scholar?q=heart+rate+variability+sleep+quality+biomarker+autonomic" },
+  ],
+  contraindications: [
+    "Do not use at high volume in confined spaces with infants — maintain safe SPL levels",
+    "Individuals with hyperacusis (sound sensitivity disorder) should consult an audiologist before use",
+    "Not a substitute for clinical evaluation of chronic insomnia or sleep disorders",
+  ],
+  normalSensations: [
+    "Initial awareness of the sound — fades within 5–10 minutes as attention habituates",
+    "Slightly earlier sleep onset in the first week — the novelty effect is real and temporary",
+    "Mild disorientation on first nights without it — normal re-adaptation to ambient environment",
+  ],
+  sessionInfo: "Run nightly from lights-out until wake time · Volume: 50–60 dB at arm's length · Mode: pink or brown noise recommended for first-time users",
+  forYouIf: [
+    "You live in a city, apartment building, or shared space with unpredictable ambient noise",
+    "You track sleep and want to reduce micro-arousals and improve deep sleep percentage",
+    "You travel frequently and want a consistent acoustic environment in any location",
+    "You take more than 20 minutes to fall asleep and have ruled out other causes",
+    "You wake frequently in the night and suspect environmental sound is the trigger",
+  ],
+  mechanismTimeline: [
+    { week: "Nights 1–3", heading: "Novelty phase", body: "You will be aware of the sound. This is expected. The auditory system is still evaluating it as a stimulus. Sleep onset may not improve significantly in the first three nights." },
+    { week: "Week 1–2", heading: "Habituation", body: "The auditory cortex begins treating the consistent signal as non-novel background. Micro-arousal frequency decreases. Sleep onset typically shortens. If you track sleep, you may begin to see improvements in sleep efficiency and deep sleep percentage." },
+    { week: "Week 3+", heading: "Acoustic conditioning", body: "The sound becomes a sleep onset cue in its own right. The nervous system begins associating the acoustic environment with sleep — similar to the mechanism behind other consistent pre-sleep rituals. Remove it, and you'll notice its absence. That's the protocol working." },
+  ],
+  techSectionTitle: "One signal. Consistent acoustic floor.",
+};
+
 // Register all new configs
 Object.assign(productConfigs, {
   "breath-seal": breathSealConfig,
@@ -1954,6 +2041,7 @@ Object.assign(productConfigs, {
   "household-full-body-moisture-removing-infrared-sauna-blanket": thermalShellLiteConfig,
   "null-1777641441133": thermalZoneConfig,
   "red-light-therapy-belt-infrared-hot-compress-phototherapy": thermalPadConfig,
+  "white-noise-sleep-aid-machine": frequencyRestConfig,
 });
 
 export function getProductConfig(handle: string): ProductConfig | null {
