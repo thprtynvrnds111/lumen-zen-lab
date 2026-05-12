@@ -20,7 +20,7 @@ import problemPressureShell from "@/assets/problem-pressure-shell.jpeg";
 import problemPulseRoller from "@/assets/problem-pulse-roller.jpeg";
 import problemRestoreMat from "@/assets/problem-restore-mat.jpeg";
 import problemSculptWand from "@/assets/problem-sculpt-wand-v2.jpeg";
-import problemSculptWand from "@/assets/problem-sculpt-wand.webp";
+
 import problemWandPro from "@/assets/problem-wand-pro.png";
 import productBodyLift from "@/assets/product-body-lift.jpg";
 import productSculptWand from "@/assets/ritual-sculpt-wand.png";
