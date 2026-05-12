@@ -8,12 +8,14 @@ import after2Img from "@/assets/after2.webp";
 import before3Img from "@/assets/before3.webp";
 import after3Img from "@/assets/after3.webp";
 
-import problemFaceIntroducer from "@/assets/problem-face-introducer.webp";
+import problemFaceIntroducer from "@/assets/problem-face-introducer-v2.png";
 import problemFramePulse from "@/assets/problem-frame-pulse.webp";
-import problemGuasha from "@/assets/problem-guasha.webp";
+import problemGuasha from "@/assets/problem-guasha-v2.jpeg";
 import problemSkinpulse from "@/assets/problem-skinpulse.jpg";
 import problemEyeActivator from "@/assets/problem-eye-activator.webp";
-import problemFrequencyWand from "@/assets/problem-frequency-wand.webp";
+import problemFrequencyWand from "@/assets/problem-frequency-wand-v2.jpeg";
+import problemDepthMask from "@/assets/problem-depth-mask.jpeg";
+import problemThermalZoneLite from "@/assets/problem-thermal-zone-lite.jpeg";
 import problemSculptWand from "@/assets/problem-sculpt-wand.webp";
 import problemWandPro from "@/assets/problem-wand-pro.png";
 import productBodyLift from "@/assets/product-body-lift.jpg";
@@ -991,6 +993,7 @@ const depthMaskConfig: ProductConfig = {
     { week: "Week 4+", heading: "Circadian anchoring", body: "Consistent light/dark signalling anchors the circadian rhythm. Sleep pressure accumulates on schedule regardless of travel or environmental variation." },
   ],
   techSectionTitle: "The mechanism. One input.",
+  problemImage: problemDepthMask,
 };
 
 // ─── FLUX PANEL ───
@@ -1936,6 +1939,7 @@ const thermalZoneLiteConfig: ProductConfig = {
     { week: "Week 4+", heading: "Baseline improvement", body: "Chronic stiffness that accumulated over months begins to reduce. Resting mobility improves and accumulated tension between sessions decreases measurably." },
   ],
   techSectionTitle: "One joint. Daily protocol.",
+  problemImage: problemThermalZoneLite,
 };
 
 // ─── FREQUENCY REST (white noise sleep machine) ───
