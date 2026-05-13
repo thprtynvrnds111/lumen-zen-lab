@@ -60,12 +60,12 @@ export function MegaMenu({ onNavigate }: MegaMenuProps) {
             {concerns.map(c => (
               <li key={c.label}>
                 <Link to={c.href} onClick={onNavigate} className="group block">
-                  <p className="font-serif italic text-xl text-foreground group-hover:text-foreground/70 transition-colors flex items-center gap-2">
-                    {c.label}
+                  <div className="flex items-center gap-2">
+                    <p className="font-serif italic text-xl text-foreground group-hover:text-foreground/70 transition-colors">{c.label}</p>
                     {(c as any).isNew && (
-                      <span className="text-[9px] font-sans not-italic tracking-[0.12em] uppercase border border-foreground/25 text-foreground/50 px-1.5 py-0.5 rounded-sm">New</span>
+                      <span className="text-[9px] font-sans tracking-[0.12em] uppercase border border-foreground/25 text-foreground/50 px-1.5 py-0.5 rounded-sm shrink-0">New</span>
                     )}
-                  </p>
+                  </div>
                   <p className="text-xs text-foreground/55 mt-0.5">{c.desc}</p>
                 </Link>
               </li>
@@ -80,10 +80,10 @@ export function MegaMenu({ onNavigate }: MegaMenuProps) {
             {byArea.map(a => (
               <li key={a.label}>
                 <Link to={a.href} onClick={onNavigate}
-                  className="text-sm text-foreground/75 hover:text-foreground transition-colors flex items-center gap-2">
+                  className="text-sm text-foreground/75 hover:text-foreground transition-colors inline-flex items-center gap-2">
                   {a.label}
                   {(a as any).isNew && (
-                    <span className="text-[9px] tracking-[0.12em] uppercase border border-foreground/20 text-foreground/45 px-1.5 py-0.5 rounded-sm">New</span>
+                    <span className="text-[9px] tracking-[0.12em] uppercase border border-foreground/20 text-foreground/45 px-1.5 py-0.5 rounded-sm shrink-0">New</span>
                   )}
                 </Link>
               </li>
@@ -98,10 +98,10 @@ export function MegaMenu({ onNavigate }: MegaMenuProps) {
             {byTech.map(t => (
               <li key={t.label}>
                 <Link to={t.href} onClick={onNavigate}
-                  className="text-sm text-foreground/75 hover:text-foreground transition-colors flex items-center gap-2">
+                  className="text-sm text-foreground/75 hover:text-foreground transition-colors inline-flex items-center gap-2">
                   {t.label}
                   {(t as any).isNew && (
-                    <span className="text-[9px] tracking-[0.12em] uppercase border border-foreground/20 text-foreground/45 px-1.5 py-0.5 rounded-sm">New</span>
+                    <span className="text-[9px] tracking-[0.12em] uppercase border border-foreground/20 text-foreground/45 px-1.5 py-0.5 rounded-sm shrink-0">New</span>
                   )}
                 </Link>
               </li>
