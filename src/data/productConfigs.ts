@@ -465,6 +465,14 @@ export const productConfigs: Record<string, ProductConfig> = {
       "Subtle pulse with vibration — comfortable and expected",
     ],
     sessionInfo: "Session time: 5–7 minutes · Frequency: daily, every morning · Stop if: burning sensation, unusual pain, or persistent redness",
+    valueAnchor: "Traditional gua sha facial: €60–€90 per session. Gua Sha Frequency: €88. Once.",
+    guaranteeName: "30-Day Protocol Guarantee",
+    guaranteeDesc: "30 days daily practice. No visible change in tension, definition, or drainage — full refund, no friction.",
+    bonusStack: [
+      { title: "The Gua Sha Ritual Map", desc: "Stroke-by-stroke guide following facial anatomy. Exactly which direction, which pressure, which zones in which order.", value: "€17" },
+      { title: "Facial Oil Pairing Guide", desc: "Which oils conduct best with microcurrent. Which actives to layer after each stroke sequence.", value: "€14" },
+      { title: "21-Day Sculpting Tracker", desc: "Weekly photo template for jawline, cheekbones, and neck. The ritual without tracking is just habit.", value: "€12" },
+    ],
   },
 
   // ─── SKIN PULSE ───
@@ -526,6 +534,14 @@ export const productConfigs: Record<string, ProductConfig> = {
       "Slight warmth after sustained contact on one zone — normal",
     ],
     sessionInfo: "Session time: 5–8 minutes · Frequency: 4–5× per week · Stop if: burning sensation, unusual pain, or persistent redness",
+    valueAnchor: "Microcurrent clinic sessions: €90–€150 each. Skin Pulse: €88. Once.",
+    guaranteeName: "30-Day Protocol Guarantee",
+    guaranteeDesc: "30 days, 5× per week. No visible change in texture, tone, or firmness — full refund, no form.",
+    bonusStack: [
+      { title: "The Circuit Protocol Guide", desc: "Zone-by-zone sequence — which area, how long, what order. The dual-ball circuit breaks without both balls in contact.", value: "€19" },
+      { title: "Serum Compatibility Guide", desc: "Which conductors work best. Why oil-based products break the circuit and which water-based actives to use instead.", value: "€14" },
+      { title: "4-Week Fibroblast Log", desc: "Track texture and tone changes week by week. Microcurrent results compound — document them.", value: "€12" },
+    ],
   },
 
   // ─── SCULPT WAND ───
@@ -587,6 +603,14 @@ export const productConfigs: Record<string, ProductConfig> = {
       "Vibration at the surface — like a gentle buzz, not discomfort",
     ],
     sessionInfo: "Session time: 8–12 minutes · Frequency: 3–5× per week · Stop if: burning sensation, unusual pain, or persistent redness",
+    valueAnchor: "Clinical EMS facial sessions: €80–€150/session. Sculpt Wand: €88. Once.",
+    guaranteeName: "30-Day Protocol Guarantee",
+    guaranteeDesc: "30 days of consistent EMS training. No visible change in definition or drainage — full refund, no friction.",
+    bonusStack: [
+      { title: "The EMS Training Schedule", desc: "Week-by-week intensity progression map. Same progressive overload logic as athletic training — applied to facial muscle.", value: "€19" },
+      { title: "Zone Targeting Guide", desc: "Which areas to hold, how long, in which sequence. Chin, jaw, cheekbones, forehead — each zone has a protocol.", value: "€17" },
+      { title: "Lymphatic Follow-Up Sequence", desc: "Vibration mode guide for post-EMS drainage. Downward strokes from temples to clavicle — completes the protocol.", value: "€12" },
+    ],
   },
 
   // ─── FRAME PULSE ACTIVATOR ───
@@ -649,6 +673,14 @@ export const productConfigs: Record<string, ProductConfig> = {
       "No sensation between pulse cycles — normal",
     ],
     sessionInfo: "Session time: 10 minutes · Frequency: daily or every other day · Stop if: burning sensation, unusual pain, or persistent redness",
+    valueAnchor: "Hands-free clinic EMS facial: €80–€120/session. Frame Pulse: €128. Once.",
+    guaranteeName: "30-Day Protocol Guarantee",
+    guaranteeDesc: "30 days daily use. No visible change in muscle tone or skin texture — full refund, no friction.",
+    bonusStack: [
+      { title: "The 10-Minute Program Guide", desc: "Which setting for which concern. Toning, lifting, depuffing — when to use each program and how to stack them.", value: "€19" },
+      { title: "Hands-Free Habit Protocol", desc: "How to build daily consistency when the device does the work. The hands-free advantage is only real with a fixed trigger.", value: "€14" },
+      { title: "Progress Documentation Template", desc: "Forehead, crow's feet, jaw — weekly photo angles for consistent before/after tracking.", value: "€12" },
+    ],
   },
 
   // ─── MICROCURRENT SCULPT WAND (unlisted) ───
