@@ -523,8 +523,8 @@ export function ProductLanding({ config }: Props) {
       {/* ── SECTION 3: PROBLEM REFRAME ── */}
       <section className="section-padding">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-secondary/20">
-            <img src={problemImageSrc} alt={`${config.name} Real Issue`} className="w-full h-full object-cover" />
+          <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-secondary/40 flex items-center justify-center">
+            <img src={problemImageSrc} alt={`${config.name} Real Issue`} className="w-full h-full object-contain" />
           </div>
           <div>
             <div className="flex items-center gap-3 mb-4">
