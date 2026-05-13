@@ -17,8 +17,31 @@ import { ScarcityBanner } from "@/components/zential/ScarcityBanner";
 import type { ProductConfig } from "@/data/productConfigs";
 import { TrustpilotStrip } from "@/components/zential/TrustpilotStrip";
 import { SkinFitSection } from "@/components/zential/SkinFitSection";
+import realIssueFaceIntroducer from "@/assets/problem-face-introducer-v2.png";
+import realIssueFrequencyWand from "@/assets/problem-frequency-wand-v2.jpeg";
+import realIssueGuasha from "@/assets/problem-guasha-v2.jpeg";
+import realIssueSkinPulse from "@/assets/problem-skinpulse-v2.jpeg";
+import realIssueSculptWand from "@/assets/problem-sculpt-wand-v2.jpeg";
+import realIssueDepthMask from "@/assets/problem-depth-mask.jpeg";
+import realIssuePressureShell from "@/assets/problem-pressure-shell.jpeg";
+import realIssuePulseRoller from "@/assets/problem-pulse-roller.jpeg";
+import realIssueRestoreMat from "@/assets/problem-restore-mat.jpeg";
+import realIssueThermalZoneLite from "@/assets/problem-thermal-zone-lite.jpeg";
 
 type BundleKey = "single" | "ritual-set" | "pro-set";
+
+const REAL_ISSUE_IMAGE_OVERRIDES: Record<string, string> = {
+  "lifting-and-tightening-face-introducer": realIssueFaceIntroducer,
+  "color-light-import-micro-current-vibration-massager": realIssueFrequencyWand,
+  "electric-guasha-massager": realIssueGuasha,
+  "electric-micro-current": realIssueSkinPulse,
+  "facial-beauty-tools-and-ems-beauty-equipment": realIssueSculptWand,
+  "blackout-eye-mask-3d-deep-contoured-sleep-mask-lash-extensions-no-pressure-blindfold-sleeping-eye-mask-women-men-side-sleepers": realIssueDepthMask,
+  "pneumatic-air-wave-massager-pneumatic-circulation-leg-massager-pneumatic-massager": realIssuePressureShell,
+  "electric-foam-roller-muscle-relaxation-fitness-yoga-column": realIssuePulseRoller,
+  "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow": realIssueRestoreMat,
+  "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad": realIssueThermalZoneLite,
+};
 
 function buildBundles(gelPrice: number, maskPrice: number) {
   return [
@@ -133,6 +156,7 @@ export function ProductLanding({ config }: Props) {
   const basePrice = parseFloat(variant?.price?.amount || "84");
   const currency = variant?.price?.currencyCode || "EUR";
   const sym = currency === "EUR" ? "€" : currency;
+  const problemImageSrc = REAL_ISSUE_IMAGE_OVERRIDES[config.handle] || config.problemImage || config.beforeAfter.before;
 
   // Color label mapping (Shopify uses "Pink" but we display "Rose")
   const colorLabelMap: Record<string, string> = { Pink: "Rose", Silver: "Silver" };
@@ -500,7 +524,7 @@ export function ProductLanding({ config }: Props) {
       <section className="section-padding">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-secondary/20">
-            <img src={config.problemImage || config.beforeAfter.before} alt="Lifestyle" className="w-full h-full object-cover" />
+            <img src={problemImageSrc} alt={`${config.name} Real Issue`} className="w-full h-full object-cover" />
           </div>
           <div>
             <div className="flex items-center gap-3 mb-4">
