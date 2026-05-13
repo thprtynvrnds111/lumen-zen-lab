@@ -371,6 +371,13 @@ export function ProductLanding({ config }: Props) {
               </div>
             )}
 
+            {/* Value anchor — clinic cost vs. device */}
+            {config.valueAnchor && (
+              <p className="text-[11px] text-foreground/50 text-center mb-4 tracking-wide leading-snug">
+                {config.valueAnchor}
+              </p>
+            )}
+
             {/* Bundle Selector – top buttons, single source of truth */}
             {!config.isAccessory && (
               <div className="mb-6">
@@ -426,7 +433,7 @@ export function ProductLanding({ config }: Props) {
 
             <div className="flex items-center justify-center gap-6 mt-5 text-muted-foreground">
               {[
-                { icon: RotateCcw, label: "30-Day Guarantee" },
+                { icon: RotateCcw, label: config.guaranteeName ?? "30-Day Guarantee" },
                 { icon: Lock, label: "Secure Checkout" },
                 { icon: Truck, label: "3–7 Day EU Delivery" },
               ].map(b => (
@@ -437,6 +444,31 @@ export function ProductLanding({ config }: Props) {
             </div>
 
             <PaymentBadges className="mt-4" />
+
+            {/* Bonus stack — "Everything included" */}
+            {config.bonusStack && config.bonusStack.length > 0 && (
+              <div className="mt-6 pt-5 border-t border-foreground/10">
+                <p className="text-[9px] tracking-[0.25em] uppercase text-foreground/45 mb-3">Everything included with your order</p>
+                <ul className="space-y-2">
+                  {config.bonusStack.map((b) => (
+                    <li key={b.title} className="flex items-start gap-2.5">
+                      <span className="text-[#E87040] mt-0.5 shrink-0 text-xs">✓</span>
+                      <div className="flex-1 min-w-0">
+                        <span className="text-[11px] font-medium text-foreground">{b.title}</span>
+                        <span className="text-[10px] text-foreground/50 ml-1.5">— {b.desc}</span>
+                      </div>
+                      <span className="text-[10px] text-foreground/35 shrink-0 line-through">{b.value}</span>
+                    </li>
+                  ))}
+                </ul>
+                {config.guaranteeName && config.guaranteeDesc && (
+                  <div className="mt-4 p-3 rounded-xl bg-foreground/4 border border-foreground/8">
+                    <p className="text-[10px] font-semibold tracking-wide uppercase text-foreground/70 mb-1">{config.guaranteeName}</p>
+                    <p className="text-[10px] text-foreground/50 leading-relaxed">{config.guaranteeDesc}</p>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* By the numbers — micro trust strip */}
             <div className="mt-8 pt-6 border-t border-foreground/10 grid grid-cols-3 gap-2 text-center">

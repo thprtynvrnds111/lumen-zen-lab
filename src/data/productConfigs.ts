@@ -67,6 +67,10 @@ export interface ProductConfig {
   sessionInfo?: string;
   mechanismTimeline?: { week: string; heading: string; body: string }[];
   techSectionTitle?: string;
+  bonusStack?: { title: string; desc: string; value: string }[];
+  guaranteeName?: string;
+  guaranteeDesc?: string;
+  valueAnchor?: string;
 }
 
 const defaultComparison = [
@@ -93,7 +97,7 @@ const defaultDeviceFaqs = [
   { q: "Is it safe for all skin types?", a: "Yes, it's designed for all skin types. If you have sensitive skin, start at the lowest setting. If irritation persists, reduce frequency and consult your dermatologist." },
   { q: "Who should not use this device?", a: "Do not use if you have a pacemaker, are pregnant, have active skin infections, epilepsy, or metal implants in the treatment area. Always consult your physician if you have a medical condition." },
   { q: "What serum works best?", a: "Any water-based conductive serum or gel works well. Avoid oil-based products as they can interfere with conductivity. Our Collagen Face Gel is specially formulated for optimal results." },
-  { q: "What is your guarantee?", a: "We offer a 30-Day Ritual Guarantee. If you don't feel visible improvement within 30 days of consistent daily use, contact us for a full refund. No friction, no pressure." },
+  { q: "What is your guarantee?", a: "30 days, daily use. If you see no visible improvement, email us. Full refund — no form, no questionnaire, no restocking fee. That is the 30-Day Protocol Guarantee." },
 ];
 
 const accessoryComparison = [
@@ -220,8 +224,8 @@ export const productConfigs: Record<string, ProductConfig> = {
       { q: "Does this actually work?", a: "The four mechanisms in this device — LED photobiomodulation, EMS microcurrent, galvanic ion cleansing, and iontophoretic delivery — are each supported by peer-reviewed research. We link the actual studies on this page. What we cannot promise is the consistency you bring to it. Use it daily for 14 days before forming a conclusion." },
       { q: "How long until I see results?", a: "Improved skin absorption is measurable from the first session — the galvanic ion delivery changes how actives penetrate. Skin clarity and texture typically respond within 7 to 10 days. Fine line reduction and firming become visible at 3 to 4 weeks of consistent daily use." },
       { q: "Is it safe for daily use?", a: "Yes. The Face Introducer is designed for daily 7–10 minute protocols. The 45°C thermal stays within safe tissue temperature. Galvanic cleansing is non-abrasive. EMS is calibrated at home-device intensity. Start on the lowest of the four speed settings and increase over the first week." },
-      { q: "What if it doesn't work for me?", a: "30 consecutive days of daily use. If your skin shows no change, contact us. Full refund, no questionnaire, no restocking fee. The 30-Day Ritual Guarantee is unconditional." },
-      { q: "How is this different from a clinic?", a: "A professional galvanic facial costs €90–€180 per session. This device uses the same class of technology — ion cleansing, photobiomodulation, EMS microcurrent, thermal — for a one-time €88 purchase. The mechanism is the same. The appointment is not." },
+      { q: "What if it doesn't work for me?", a: "30 days, daily use. If you see no visible change in skin tone, firmness, or definition, email us. Full refund — no form, no questionnaire, no restocking fee. That is the 30-Day Protocol Guarantee. We print it on the box." },
+      { q: "How is this different from a clinic?", a: "One professional microcurrent session: €90–€180. Monthly clinic protocol: €220+/month, €2,640+/year. The Face Introducer uses the same class of technology — ion cleansing, photobiomodulation, EMS microcurrent, thermal — for a one-time €88 purchase. The mechanism is the same. The math is not." },
       { q: "Which mode should I use first?", a: "Start with ion cleansing (negative ion mode) every session — it clears the follicle so subsequent modes work on clean tissue. Then select one light mode based on your primary concern: Blue for oily/sensitive skin and pores, Red for anti-aging and firming, Purple for puffiness and microcirculation. Use EMS mode to finish on days when you want deeper muscle engagement." },
     ],
     studyCards: [
@@ -244,6 +248,16 @@ export const productConfigs: Record<string, ProductConfig> = {
       "Subtle tingle during positive ion infusion — confirms galvanic delivery",
     ],
     sessionInfo: "Session time: 7–10 minutes · Frequency: 3–5× per week · Four intensity levels · Stop if: burning, unusual pain, or redness persisting over 30 min",
+    valueAnchor: "One professional microcurrent session: €90–€180. The Face Introducer: €88. Once.",
+    guaranteeName: "30-Day Protocol Guarantee",
+    guaranteeDesc: "Use it daily for 30 days. If you see no visible change in skin tone, firmness, or definition, full refund. No form, no questions, no restocking fee.",
+    bonusStack: [
+      { title: "The Face Protocol Guide", desc: "Step-by-step ritual breakdown for all four modes. Which order. Which serum. Which frequency.", value: "€19" },
+      { title: "Modality Masterclass PDF", desc: "Mechanism explanation for each technology — so you know exactly what's happening at the cellular level.", value: "€27" },
+      { title: "21-Day Progress Tracker", desc: "Week-by-week photo + observation template. The protocol without tracking is just hope.", value: "€17" },
+      { title: "Serum Pairing Guide", desc: "Which actives work with each mode. What to apply before ion cleansing vs. before iontophoresis.", value: "€14" },
+      { title: "Clinic Cost Calculator", desc: "A one-page breakdown: what you would have spent at the clinic in 6 months vs. this device.", value: "€12" },
+    ],
   },
 
   // ─── EYE ACTIVATOR ───
@@ -312,6 +326,14 @@ export const productConfigs: Record<string, ProductConfig> = {
       "Slight redness that fades within 30 minutes — normal",
     ],
     sessionInfo: "Session time: 3 minutes per eye · Frequency: daily · Stop if: burning sensation, unusual pain, or persistent redness",
+    valueAnchor: "Eye-zone clinic treatments: €80–€150 per session. Eye Activator: €88. Once.",
+    guaranteeName: "30-Day Protocol Guarantee",
+    guaranteeDesc: "Use it daily for 30 days. If you see no visible change in puffiness, dark circles, or fine lines, full refund. No questions.",
+    bonusStack: [
+      { title: "The Eye Zone Protocol Guide", desc: "Morning depuff routine vs. evening repair routine — exactly which movements, which order.", value: "€17" },
+      { title: "Serum Pairing Guide", desc: "Which eye actives (peptides, caffeine, retinol) work with sonic delivery vs. heat mode.", value: "€14" },
+      { title: "Progress Tracker", desc: "Photo template to document the periorbital zone week by week.", value: "€12" },
+    ],
   },
 
   // ─── FREQUENCY WAND ───
@@ -374,6 +396,14 @@ export const productConfigs: Record<string, ProductConfig> = {
       "Brief surface tingle during electroporation — normal, confirms micro-channel formation",
     ],
     sessionInfo: "Session time: 3–5 min per mode · Frequency: 3–5× per week · IPX3 waterproof · Stop if: burning sensation, unusual pain, or persistent redness",
+    valueAnchor: "Five modes. Five clinical mechanisms. One €147 device vs. €150+ per multi-modality clinic session.",
+    guaranteeName: "30-Day Protocol Guarantee",
+    guaranteeDesc: "30 days daily use. No visible improvement — full refund, no friction.",
+    bonusStack: [
+      { title: "The 5-Mode Prescription Guide", desc: "Which mode for which concern. Glow, Line, Contour, Pore, Acne — prescribed not randomised.", value: "€22" },
+      { title: "Electroporation Serum Guide", desc: "Which active molecules benefit from electroporation delivery vs. standard application.", value: "€17" },
+      { title: "Weekly Protocol Planner", desc: "How to rotate modes across a 7-day cycle without overworking any skin variable.", value: "€14" },
+    ],
   },
 
   // ─── GUA SHA FREQUENCY ───
