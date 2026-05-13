@@ -12,10 +12,10 @@ export const translations = {
   },
   announcement: {
     guarantee: {
-      en: '30-Day Ritual Guarantee — No Friction. No Questions.',
-      nl: '30 Dagen Ritueel Garantie — Geen Gedoe. Geen Vragen.',
-      de: '30-Tage-Ritual-Garantie — Kein Aufwand. Keine Fragen.',
-      fr: 'Garantie Rituel 30 Jours — Sans Friction. Sans Questions.',
+      en: '30-Day Optimization Guarantee — No Friction. No Questions.',
+      nl: '30 Dagen Optimalisatiegarantie — Geen Gedoe. Geen Vragen.',
+      de: '30-Tage-Optimierungsgarantie — Kein Aufwand. Keine Fragen.',
+      fr: 'Garantie Optimisation 30 Jours — Sans Friction. Sans Questions.',
     },
     shipping: {
       en: 'Free Shipping on Orders Over €75',
@@ -24,10 +24,10 @@ export const translations = {
       fr: 'Livraison gratuite dès €75 d\'achat',
     },
     science: {
-      en: 'Science-backed. Built for your daily ritual.',
-      nl: 'Wetenschappelijk onderbouwd. Gemaakt voor jouw dagelijkse ritueel.',
-      de: 'Wissenschaftlich fundiert. Für dein tägliches Ritual.',
-      fr: 'Fondé sur la science. Conçu pour votre rituel quotidien.',
+      en: 'Photobiomodulation · Bioelectrical · EMS · Infrared — One Daily Stack',
+      nl: 'Fotobiomodulatie · Bio-elektrisch · EMS · Infrarood — Één dagelijkse stack',
+      de: 'Photobiomodulation · Bioelektrisch · EMS · Infrarot — Ein täglicher Stack',
+      fr: 'Photobiomodulation · Bioélectrique · EMS · Infrarouge — Une stack quotidienne',
     },
     delivery: {
       en: 'Delivered in 3–7 Business Days Across the EU',
@@ -36,10 +36,10 @@ export const translations = {
       fr: 'Livré en 3–7 jours ouvrés dans toute l\'UE',
     },
     clinic: {
-      en: 'Clinic precision. Home convenience. Daily results.',
-      nl: 'Kliniekprecisie. Thuisgemak. Dagelijkse resultaten.',
-      de: 'Klinikpräzision. Heimkomfort. Tägliche Ergebnisse.',
-      fr: 'Précision clinique. Confort à domicile. Résultats quotidiens.',
+      en: 'Recover faster. Age slower. Train harder. Your daily biohacking protocol.',
+      nl: 'Sneller herstellen. Langzamer verouderen. Harder trainen. Jouw dagelijkse biohacking-protocol.',
+      de: 'Schneller erholen. Langsamer altern. Härter trainieren. Dein tägliches Biohacking-Protokoll.',
+      fr: 'Récupérez plus vite. Vieillissez moins vite. Entraînez-vous plus fort. Votre protocole biohacking quotidien.',
     },
   },
 } as const;

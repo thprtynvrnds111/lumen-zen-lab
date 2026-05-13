@@ -10,7 +10,9 @@ const concerns = [
   { label: "Lift & Contour", href: "/product/portable-ems-microcurrent-facial-beauty-device", desc: "Sculpt & jawline definition" },
   { label: "Tone & Glow", href: "/product/facial-beauty-tools-and-ems-beauty-equipment", desc: "Even skin & radiance" },
   { label: "Eyes & Fine Lines", href: "/product/eye-massage", desc: "Periorbital renewal" },
-  { label: "Body & Tissue", href: "/body-lift", desc: "Firming & circulation" },
+  { label: "Red Light Therapy", href: "/product/red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device", desc: "630–850nm · Face & body" },
+  { label: "Sleep", href: "/product/blackout-eye-mask-3d-deep-contoured-sleep-mask-lash-extensions-no-pressure-blindfold-sleeping-eye-mask-women-men-side-sleepers", desc: "Deep rest & recovery", isNew: true },
+  { label: "Recovery & Body", href: "/body-lift", desc: "Thermal · pressure · infrared", isNew: true },
 ];
 
 const byArea = [
@@ -18,16 +20,16 @@ const byArea = [
   { label: "Eye Contour", href: "/product/eye-massage" },
   { label: "Jawline", href: "/product/facial-beauty-tools-and-ems-beauty-equipment" },
   { label: "Neck & Décolleté", href: "/product/color-light-import-micro-current-vibration-massager" },
-  { label: "Body", href: "/body-lift" },
+  { label: "Body", href: "/body-lift", isNew: true },
+  { label: "Full Panel", href: "/product/red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device", isNew: true },
 ];
 
 const byTech = [
   { label: "Red Light Therapy", href: "/technology/red-light" },
   { label: "Microcurrent", href: "/technology/microcurrent" },
   { label: "EMS", href: "/technology/ems" },
-  { label: "Thermal", href: "/technology/thermal" },
-  { label: "Electroporation", href: "/technology/electroporation" },
-  { label: "Iontophoresis", href: "/technology/iontophoresis" },
+  { label: "Heat & Infrared", href: "/technology/thermal", isNew: true },
+  { label: "Sleep Tech", href: "/product/blackout-eye-mask-3d-deep-contoured-sleep-mask-lash-extensions-no-pressure-blindfold-sleeping-eye-mask-women-men-side-sleepers", isNew: true },
 ];
 
 export function MegaMenu({ onNavigate }: MegaMenuProps) {
@@ -58,7 +60,12 @@ export function MegaMenu({ onNavigate }: MegaMenuProps) {
             {concerns.map(c => (
               <li key={c.label}>
                 <Link to={c.href} onClick={onNavigate} className="group block">
-                  <p className="font-serif italic text-xl text-foreground group-hover:text-foreground/70 transition-colors">{c.label}</p>
+                  <p className="font-serif italic text-xl text-foreground group-hover:text-foreground/70 transition-colors flex items-center gap-2">
+                    {c.label}
+                    {(c as any).isNew && (
+                      <span className="text-[9px] font-sans not-italic tracking-[0.12em] uppercase border border-foreground/25 text-foreground/50 px-1.5 py-0.5 rounded-sm">New</span>
+                    )}
+                  </p>
                   <p className="text-xs text-foreground/55 mt-0.5">{c.desc}</p>
                 </Link>
               </li>
@@ -73,8 +80,11 @@ export function MegaMenu({ onNavigate }: MegaMenuProps) {
             {byArea.map(a => (
               <li key={a.label}>
                 <Link to={a.href} onClick={onNavigate}
-                  className="text-sm text-foreground/75 hover:text-foreground transition-colors">
+                  className="text-sm text-foreground/75 hover:text-foreground transition-colors flex items-center gap-2">
                   {a.label}
+                  {(a as any).isNew && (
+                    <span className="text-[9px] tracking-[0.12em] uppercase border border-foreground/20 text-foreground/45 px-1.5 py-0.5 rounded-sm">New</span>
+                  )}
                 </Link>
               </li>
             ))}
@@ -88,8 +98,11 @@ export function MegaMenu({ onNavigate }: MegaMenuProps) {
             {byTech.map(t => (
               <li key={t.label}>
                 <Link to={t.href} onClick={onNavigate}
-                  className="text-sm text-foreground/75 hover:text-foreground transition-colors">
+                  className="text-sm text-foreground/75 hover:text-foreground transition-colors flex items-center gap-2">
                   {t.label}
+                  {(t as any).isNew && (
+                    <span className="text-[9px] tracking-[0.12em] uppercase border border-foreground/20 text-foreground/45 px-1.5 py-0.5 rounded-sm">New</span>
+                  )}
                 </Link>
               </li>
             ))}

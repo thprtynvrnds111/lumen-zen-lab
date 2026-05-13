@@ -337,9 +337,9 @@ export function ProductLanding({ config }: Props) {
                     const currentVal = selectedOptions[opt.name];
                     return (
                       <div key={opt.name}>
-                        <p className="text-[11px] tracking-[0.2em] uppercase mb-2.5" style={{ color: 'rgba(234,231,224,0.5)' }}>
+                        <p className="text-[11px] tracking-[0.2em] uppercase mb-2.5 text-foreground/60">
                           {opt.name}:&nbsp;
-                          <span style={{ color: 'rgba(234,231,224,0.85)' }}>
+                          <span className="text-foreground">
                             {colorLabelMap[currentVal] ?? currentVal}
                           </span>
                         </p>

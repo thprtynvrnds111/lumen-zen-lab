@@ -7,10 +7,10 @@ import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 
 const modalities = [
-  { icon: Sun, label: "Red Light", color: "#E84040", sub: "660–850nm" },
-  { icon: Zap, label: "Microcurrent", color: "#4080FF", sub: "μA precision" },
-  { icon: Activity, label: "EMS", color: "#E87040", sub: "nerve activation" },
-  { icon: Flame, label: "Thermal", color: "#E8A040", sub: "infrared heat" },
+  { icon: Sun, label: "Red Light", color: "#E84040", sub: "photobiomodulation" },
+  { icon: Zap, label: "Microcurrent", color: "#4080FF", sub: "bioelectrical" },
+  { icon: Activity, label: "EMS", color: "#E87040", sub: "neuromuscular" },
+  { icon: Flame, label: "Thermal", color: "#E8A040", sub: "heat shock" },
 ];
 
 const heroImages = [heroImage0, heroImage1, heroImage2, heroImage3];
@@ -74,7 +74,7 @@ export function HeroSection() {
         >
           <span className="h-px w-6" style={{ backgroundColor: 'rgba(234,231,224,0.25)' }} />
           <p className="text-[10px] md:text-[11px] tracking-[0.32em] uppercase" style={{ color: 'rgba(234,231,224,0.5)' }}>
-            Recovery Protocol Stack
+            Human Performance Stack
           </p>
         </div>
 
@@ -88,7 +88,7 @@ export function HeroSection() {
             transition: 'opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s',
           }}
         >
-          Clinic Precision.<br />Daily Ritual.
+          Optimize Your<br />Biology.
         </h1>
 
         {/* Italic subline */}
@@ -101,7 +101,7 @@ export function HeroSection() {
             transition: 'opacity 0.8s ease-out 0.38s, transform 0.8s ease-out 0.38s',
           }}
         >
-          The body already knows the frequency. We publish it.
+          Four technologies. One daily protocol. Measurable output.
         </p>
 
         {/* Body copy */}
@@ -114,7 +114,7 @@ export function HeroSection() {
             transition: 'opacity 0.8s ease-out 0.52s, transform 0.8s ease-out 0.52s',
           }}
         >
-          Four clinically inspired technologies in one daily protocol. Red light, microcurrent, EMS, and thermal — engineered for performance recovery.
+          Red light therapy, microcurrent, EMS, and infrared — the same technologies used in elite performance labs, now engineered into your daily stack.
         </p>
 
         {/* Social proof */}
@@ -170,7 +170,7 @@ export function HeroSection() {
             transition: 'opacity 0.7s ease-out 0.78s, transform 0.7s ease-out 0.78s',
           }}
         >
-          {['Free EU Shipping', '30-Day Guarantee', 'Clinically Validated'].map(label => (
+          {['Free EU Shipping', '30-Day Guarantee', 'Lab-Grade Technology'].map(label => (
             <span key={label} className="flex items-center gap-1.5 text-[11px]" style={{ color: 'rgba(234,231,224,0.45)' }}>
               <span style={{ color: '#E87040', fontSize: 13 }}>✓</span>
               {label}
@@ -189,7 +189,7 @@ export function HeroSection() {
           }}
         >
           <p className="text-[10px] tracking-[0.3em] uppercase mb-4 text-center md:text-left" style={{ color: 'rgba(234,231,224,0.35)' }}>
-            Four technologies. One protocol.
+            Four protocols. One stack.
           </p>
           <div className="grid grid-cols-4 gap-2">
             {modalities.map((m) => (
