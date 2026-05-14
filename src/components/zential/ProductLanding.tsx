@@ -473,7 +473,7 @@ export function ProductLanding({ config }: Props) {
             {/* By the numbers — micro trust strip */}
             <div className="mt-8 pt-6 border-t border-foreground/10 grid grid-cols-3 gap-2 text-center">
               <div>
-                <p className="font-serif italic text-2xl text-foreground leading-none">4</p>
+                <p className="font-serif italic text-2xl text-foreground leading-none">{config.techCards.length}</p>
                 <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">Clinical<br/>Modalities</p>
               </div>
               <div className="border-x border-foreground/10">
@@ -551,6 +551,34 @@ export function ProductLanding({ config }: Props) {
           </p>
         </div>
       </section>
+
+      {/* ── TESTIMONIALS ── */}
+      {config.testimonials && config.testimonials.length > 0 && (
+        <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28 bg-background">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="text-center mb-12">
+              <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4">— From the Community —</p>
+              <h2 className="font-serif italic text-[28px] md:text-[38px] leading-[1.1] text-foreground tracking-tight">Early adopters. Honest accounts.</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {config.testimonials.map((t, i) => (
+                <div key={i} className="glass-card p-7">
+                  <div className="flex items-center gap-1 mb-4">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} size={12} className="text-[#C6A07C] fill-[#C6A07C]" />
+                    ))}
+                  </div>
+                  <p className="text-sm text-foreground/80 leading-relaxed mb-5 italic">"{t.text}"</p>
+                  <p className="text-[11px] tracking-[0.15em] uppercase text-foreground/50 font-medium">{t.name}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-center text-[10px] text-muted-foreground/40 mt-8">
+              Results not typical. Individual results may vary.
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* ── SECTION 3: PROBLEM REFRAME ── */}
       <section className="section-padding">
