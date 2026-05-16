@@ -132,9 +132,9 @@ export function ComparisonSection() {
     <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: "#070A0E" }}>
       {/* Headline */}
       <div className="text-center mb-14">
-        <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: "#E87040" }}>Compare</p>
+        <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: "#E87040" }}>The Gap</p>
         <h2 className="text-3xl md:text-5xl font-semibold leading-tight" style={{ color: '#EAE7E0' }}>
-          Freedom, Not Appointments.
+          The Clinic-or-Nothing Trap. Closed.
         </h2>
       </div>
 
@@ -144,7 +144,7 @@ export function ComparisonSection() {
         {/* Alternatives card */}
         <div className="rounded-2xl p-7 flex flex-col" style={{ backgroundColor: '#111820', border: '1px solid rgba(255,255,255,0.08)' }}>
           <p className="text-[10px] tracking-[0.2em] uppercase mb-5" style={{ color: 'rgba(234,231,224,0.45)' }}>
-            The Alternatives
+            The Clinic-or-Nothing Trap
           </p>
           <div className="space-y-2.5 flex-1">
             {alternativeTiers.map(tier => (

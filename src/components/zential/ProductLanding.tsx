@@ -882,6 +882,31 @@ export function ProductLanding({ config }: Props) {
       {/* ── RELATED PRODUCTS ── */}
       <RelatedProducts currentHandle={config.handle} />
 
+      {/* ── SECTION 8b: 3-STEP PLAN ── */}
+      <section className="px-6 md:px-12 lg:px-20 py-20 md:py-24 bg-background">
+        <div className="max-w-[860px] mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/50 mb-4">— How It Works —</p>
+            <h2 className="font-serif italic text-[28px] md:text-[38px] leading-[1.1] text-foreground tracking-tight">
+              Three steps. Then it runs itself.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { step: "01", title: "Order", body: "Arrives in 3–5 days. The Protocol Guide ships with it — no onboarding required." },
+              { step: "02", title: "Start the protocol", body: "10 minutes. Five-step sequence. Take a Day 1 photo before you begin." },
+              { step: "03", title: "Track the compound", body: "Week 3 is where most people notice the shift. Pull up the Day 1 photo. Compare." },
+            ].map(s => (
+              <div key={s.step} className="glass-card p-7 relative">
+                <span className="text-[11px] tracking-[0.25em] uppercase text-foreground/25 font-medium block mb-4">{s.step}</span>
+                <h3 className="font-serif italic text-[20px] text-foreground mb-3">{s.title}</h3>
+                <p className="text-sm text-foreground/60 leading-relaxed">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── SECTION 9: FINAL CTA ── */}
       <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32" style={{ backgroundColor: '#1A1714' }}>
         <div className="max-w-[1200px] mx-auto text-center">
@@ -893,7 +918,7 @@ export function ProductLanding({ config }: Props) {
             disabled={isCartLoading}
             className="inline-flex items-center justify-center bg-white hover:bg-white/90 text-[#1A1714] rounded-full uppercase tracking-[0.18em] text-[11px] font-medium px-12 py-5 transition-all duration-300 disabled:opacity-50"
           >
-            {isCartLoading ? <Loader2 className="animate-spin" size={16} /> : "Begin My Ritual"}
+            {isCartLoading ? <Loader2 className="animate-spin" size={16} /> : "Start the Protocol"}
           </button>
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mt-10 text-white/50">
             {[

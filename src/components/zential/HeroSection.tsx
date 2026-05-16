@@ -114,7 +114,7 @@ export function HeroSection() {
             transition: 'opacity 0.8s ease-out 0.52s, transform 0.8s ease-out 0.52s',
           }}
         >
-          Red light therapy, microcurrent, EMS, and infrared — the same technologies used in elite performance labs, now engineered into your daily stack.
+          The same four technologies used in professional microcurrent facials — red light, EMS, thermal, galvanic — engineered into a 10-minute daily protocol. At home. €88. Once.
         </p>
 
         {/* Social proof */}
@@ -150,7 +150,7 @@ export function HeroSection() {
             style={{ backgroundColor: '#E87040', color: '#ffffff', boxShadow: '0 0 24px rgba(232,112,64,0.25)' }}
             onClick={() => document.getElementById('devices')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Shop the Protocol
+            Start the Protocol
           </button>
           <Link
             to="/quiz"
@@ -170,7 +170,7 @@ export function HeroSection() {
             transition: 'opacity 0.7s ease-out 0.78s, transform 0.7s ease-out 0.78s',
           }}
         >
-          {['Free EU Shipping', '30-Day Guarantee', 'Lab-Grade Technology'].map(label => (
+          {['Free EU Shipping', '30-Day Guarantee', 'Clinic Precision. Daily Ritual.'].map(label => (
             <span key={label} className="flex items-center gap-1.5 text-[11px]" style={{ color: 'rgba(234,231,224,0.45)' }}>
               <span style={{ color: '#E87040', fontSize: 13 }}>✓</span>
               {label}

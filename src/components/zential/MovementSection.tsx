@@ -44,10 +44,7 @@ export function MovementSection() {
           className="text-base md:text-[17px] leading-relaxed max-w-2xl mx-auto mb-16"
           style={{ color: "#1A1714", opacity: 0.6 }}
         >
-          The most optimized people on earth don't leave anything to chance.
-          Sleep, nutrition, performance. Each one has its category leader.
-          Zential is building the same category for skin.
-          Not skincare. Skin Intelligence.
+          The most optimized people on earth don't leave anything to chance. Sleep, nutrition, performance — each closed with a protocol and a category leader. The gap was always the skin. Not anymore.
         </p>
 
         {/* Stack row */}
