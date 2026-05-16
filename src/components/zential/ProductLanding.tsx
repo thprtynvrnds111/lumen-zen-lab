@@ -27,6 +27,9 @@ import realIssuePressureShell from "@/assets/problem-pressure-shell.jpeg";
 import realIssuePulseRoller from "@/assets/problem-pulse-roller.jpeg";
 import realIssueRestoreMat from "@/assets/problem-restore-mat.jpeg";
 import realIssueThermalZoneLite from "@/assets/problem-thermal-zone-lite.jpeg";
+import realIssueWhiteNoise from "@/assets/problem-white-noise.jpeg";
+import realIssueEyeActivator from "@/assets/problem-eye-activator.jpeg";
+import realIssueRestShell from "@/assets/problem-rest-shell.jpeg";
 
 type BundleKey = "single" | "ritual-set" | "pro-set";
 
@@ -41,6 +44,9 @@ const REAL_ISSUE_IMAGE_OVERRIDES: Record<string, string> = {
   "electric-foam-roller-muscle-relaxation-fitness-yoga-column": realIssuePulseRoller,
   "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow": realIssueRestoreMat,
   "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad": realIssueThermalZoneLite,
+  "white-noise-sleep-aid-machine": realIssueWhiteNoise,
+  "eye-massage": realIssueEyeActivator,
+  "gravity-quilt-cotton-weighted-blanket": realIssueRestShell,
 };
 
 function buildBundles(gelPrice: number, maskPrice: number) {
