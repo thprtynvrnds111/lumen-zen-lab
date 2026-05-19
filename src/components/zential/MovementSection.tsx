@@ -1,14 +1,16 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-
-const STACK = [
-  { category: "Sleep", brand: "Eight Sleep" },
-  { category: "Nutrition", brand: "AG1" },
-  { category: "Performance", brand: "Whoop" },
-  { category: "Skin", brand: "Zential Pure", active: true },
-];
+import { useTranslation } from "react-i18next";
 
 export function MovementSection() {
   const ref = useScrollReveal<HTMLElement>();
+  const { t } = useTranslation('home');
+
+  const stack = [
+    { key: "sleep", brand: "Eight Sleep" },
+    { key: "nutrition", brand: "AG1" },
+    { key: "performance", brand: "Whoop" },
+    { key: "skin", brand: "Zential Pure", active: true },
+  ];
 
   return (
     <section
@@ -18,53 +20,45 @@ export function MovementSection() {
     >
       <div className="max-w-4xl mx-auto px-6 md:px-12 py-24 md:py-32 text-center">
 
-        {/* Eyebrow */}
         <div className="flex items-center justify-center gap-3 mb-10">
           <span className="h-px w-8" style={{ backgroundColor: "#C6A07C", opacity: 0.6 }} />
-          <p
-            className="text-[10px] md:text-[11px] tracking-[0.35em] uppercase"
-            style={{ color: "#C6A07C" }}
-          >
-            Skin Intelligence
+          <p className="text-[10px] md:text-[11px] tracking-[0.35em] uppercase" style={{ color: "#C6A07C" }}>
+            {t('movement.eyebrow')}
           </p>
           <span className="h-px w-8" style={{ backgroundColor: "#C6A07C", opacity: 0.6 }} />
         </div>
 
-        {/* Headline */}
         <h2
           className="font-serif italic text-[38px] md:text-[58px] lg:text-[64px] leading-[1.04] tracking-[-0.01em] mb-8 text-balance"
           style={{ color: "#1A1714" }}
         >
-          You already track everything.<br className="hidden md:block" />
-          Your skin is next.
+          {t('movement.headline').split('\n').map((line, i) => (
+            <span key={i}>{line}{i === 0 && <br className="hidden md:block" />}</span>
+          ))}
         </h2>
 
-        {/* Body */}
         <p
           className="text-base md:text-[17px] leading-relaxed max-w-2xl mx-auto mb-16"
           style={{ color: "#1A1714", opacity: 0.6 }}
         >
-          The most optimized people on earth don't leave anything to chance. Sleep, nutrition, performance — each closed with a protocol and a category leader. The gap was always the skin. Not anymore.
+          {t('movement.body')}
         </p>
 
-        {/* Stack row */}
         <div
           className="inline-grid grid-cols-2 md:grid-cols-4 gap-px mb-16 rounded-2xl overflow-hidden border"
           style={{ borderColor: "rgba(26,23,20,0.1)" }}
         >
-          {STACK.map((item) => (
+          {stack.map((item) => (
             <div
-              key={item.category}
+              key={item.key}
               className="flex flex-col items-center justify-center px-6 py-6 md:py-7 gap-1.5"
-              style={{
-                backgroundColor: item.active ? "#1A1714" : "#F0EDE8",
-              }}
+              style={{ backgroundColor: item.active ? "#1A1714" : "#F0EDE8" }}
             >
               <span
                 className="text-[9px] tracking-[0.3em] uppercase font-medium"
                 style={{ color: item.active ? "#C6A07C" : "rgba(26,23,20,0.4)" }}
               >
-                {item.category}
+                {t(`movement.stack.${item.key}`)}
               </span>
               <span
                 className="text-[13px] md:text-[14px] font-medium tracking-wide"
@@ -76,21 +70,15 @@ export function MovementSection() {
           ))}
         </div>
 
-        {/* Manifesto pull quote */}
         <blockquote
           className="font-serif italic text-[20px] md:text-[26px] leading-[1.45] max-w-2xl mx-auto mb-6"
           style={{ color: "#1A1714", opacity: 0.82 }}
         >
-          "This isn't about looking younger.<br className="hidden md:block" />
-          It's about taking your skin as seriously<br className="hidden md:block" />
-          as everything else you already optimise."
+          "{t('movement.quote')}"
         </blockquote>
 
-        <p
-          className="text-[11px] tracking-[0.25em] uppercase"
-          style={{ color: "#C6A07C" }}
-        >
-The Zential Movement
+        <p className="text-[11px] tracking-[0.25em] uppercase" style={{ color: "#C6A07C" }}>
+          {t('movement.quoteAttribution')}
         </p>
 
       </div>

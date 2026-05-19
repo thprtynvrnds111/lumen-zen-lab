@@ -5,13 +5,11 @@ import heroImage3 from "@/assets/hero-lifestyle-3.webp";
 import { Sun, Zap, Activity, Flame, Star } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
-const modalities = [
-  { icon: Sun, label: "Red Light", color: "#E84040", sub: "photobiomodulation" },
-  { icon: Zap, label: "Microcurrent", color: "#4080FF", sub: "bioelectrical" },
-  { icon: Activity, label: "EMS", color: "#E87040", sub: "neuromuscular" },
-  { icon: Flame, label: "Thermal", color: "#E8A040", sub: "heat shock" },
-];
+const MODALITY_ICONS = [Sun, Zap, Activity, Flame];
+const MODALITY_KEYS = ['redLight', 'microcurrent', 'ems', 'thermal'] as const;
+const MODALITY_COLORS = ["#E84040", "#4080FF", "#E87040", "#E8A040"];
 
 const heroImages = [heroImage0, heroImage1, heroImage2, heroImage3];
 
@@ -19,6 +17,7 @@ export function HeroSection() {
   const [visible, setVisible] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const { t } = useTranslation('home');
 
   useEffect(() => { setVisible(true); }, []);
 
@@ -35,12 +34,16 @@ export function HeroSection() {
     return () => clearInterval(interval);
   }, [cycleImage]);
 
+  const trustItems = [
+    t('hero.trust.shipping'),
+    t('hero.trust.guarantee'),
+    t('hero.trust.tagline'),
+  ];
+
   return (
     <section className="flex flex-col md:flex-row md:min-h-[calc(100vh-88px)]" style={{ backgroundColor: '#070A0E' }}>
-      {/* Left — Image: always visible for LCP, no JS-gated opacity */}
-      <div
-        className="w-full md:w-[55%] relative overflow-hidden h-[60vh] md:h-auto"
-      >
+      {/* Left — Image */}
+      <div className="w-full md:w-[55%] relative overflow-hidden h-[60vh] md:h-auto">
         {heroImages.map((src, i) => (
           <img
             key={i}
@@ -74,7 +77,7 @@ export function HeroSection() {
         >
           <span className="h-px w-6" style={{ backgroundColor: 'rgba(234,231,224,0.25)' }} />
           <p className="text-[10px] md:text-[11px] tracking-[0.32em] uppercase" style={{ color: 'rgba(234,231,224,0.5)' }}>
-            Human Performance Stack
+            {t('hero.eyebrow')}
           </p>
         </div>
 
@@ -88,7 +91,7 @@ export function HeroSection() {
             transition: 'opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s',
           }}
         >
-          Optimize Your<br />Biology.
+          {t('hero.headline')}
         </h1>
 
         {/* Italic subline */}
@@ -101,7 +104,7 @@ export function HeroSection() {
             transition: 'opacity 0.8s ease-out 0.38s, transform 0.8s ease-out 0.38s',
           }}
         >
-          Four technologies. One daily protocol. Measurable output.
+          {t('hero.subline')}
         </p>
 
         {/* Body copy */}
@@ -114,7 +117,7 @@ export function HeroSection() {
             transition: 'opacity 0.8s ease-out 0.52s, transform 0.8s ease-out 0.52s',
           }}
         >
-          The same four technologies used in professional microcurrent facials — red light, EMS, thermal, galvanic — engineered into a 10-minute daily protocol. At home. €88. Once.
+          {t('hero.body')}
         </p>
 
         {/* Social proof */}
@@ -132,7 +135,7 @@ export function HeroSection() {
             ))}
           </div>
           <span className="text-xs tracking-wide" style={{ color: 'rgba(234,231,224,0.5)' }}>
-            4.9 / 5 — rated by our community
+            {t('hero.rating')}
           </span>
         </div>
 
@@ -150,14 +153,14 @@ export function HeroSection() {
             style={{ backgroundColor: '#E87040', color: '#ffffff', boxShadow: '0 0 24px rgba(232,112,64,0.25)' }}
             onClick={() => document.getElementById('devices')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Start the Protocol
+            {t('hero.ctaPrimary')}
           </button>
           <Link
             to="/quiz"
             className="flex-1 py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full border transition-all duration-300 hover:-translate-y-0.5 text-center"
             style={{ borderColor: 'rgba(234,231,224,0.25)', color: '#EAE7E0', backgroundColor: 'transparent' }}
           >
-            Take the 60s Quiz
+            {t('hero.ctaSecondary')}
           </Link>
         </div>
 
@@ -170,7 +173,7 @@ export function HeroSection() {
             transition: 'opacity 0.7s ease-out 0.78s, transform 0.7s ease-out 0.78s',
           }}
         >
-          {['Free EU Shipping', '30-Day Guarantee', 'Clinic Precision. Daily Ritual.'].map(label => (
+          {trustItems.map(label => (
             <span key={label} className="flex items-center gap-1.5 text-[11px]" style={{ color: 'rgba(234,231,224,0.45)' }}>
               <span style={{ color: '#E87040', fontSize: 13 }}>✓</span>
               {label}
@@ -189,24 +192,28 @@ export function HeroSection() {
           }}
         >
           <p className="text-[10px] tracking-[0.3em] uppercase mb-4 text-center md:text-left" style={{ color: 'rgba(234,231,224,0.35)' }}>
-            Four protocols. One stack.
+            {t('hero.modalities.label')}
           </p>
           <div className="grid grid-cols-4 gap-2">
-            {modalities.map((m) => (
-              <div
-                key={m.label}
-                className="flex flex-col items-center gap-2 rounded-xl py-3 px-1"
-                style={{ backgroundColor: '#111820', border: `1px solid ${m.color}28`, borderTop: `2px solid ${m.color}` }}
-              >
-                <m.icon size={16} strokeWidth={1.5} style={{ color: m.color }} />
-                <span className="text-[9px] tracking-[0.12em] uppercase text-center" style={{ color: '#EAE7E0' }}>
-                  {m.label}
-                </span>
-                <span className="text-[8px] tracking-wide" style={{ color: 'rgba(234,231,224,0.6)' }}>
-                  {m.sub}
-                </span>
-              </div>
-            ))}
+            {MODALITY_KEYS.map((key, idx) => {
+              const Icon = MODALITY_ICONS[idx];
+              const color = MODALITY_COLORS[idx];
+              return (
+                <div
+                  key={key}
+                  className="flex flex-col items-center gap-2 rounded-xl py-3 px-1"
+                  style={{ backgroundColor: '#111820', border: `1px solid ${color}28`, borderTop: `2px solid ${color}` }}
+                >
+                  <Icon size={16} strokeWidth={1.5} style={{ color }} />
+                  <span className="text-[9px] tracking-[0.12em] uppercase text-center" style={{ color: '#EAE7E0' }}>
+                    {t(`hero.modalities.${key}.label`)}
+                  </span>
+                  <span className="text-[8px] tracking-wide" style={{ color: 'rgba(234,231,224,0.6)' }}>
+                    {t(`hero.modalities.${key}.sub`)}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

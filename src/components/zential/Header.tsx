@@ -7,8 +7,7 @@ import { CartDrawer } from "@/components/CartDrawer";
 import { SearchOverlay } from "@/components/zential/SearchOverlay";
 import { MegaMenu } from "@/components/zential/MegaMenu";
 import { LanguageSwitcher } from "@/components/zential/LanguageSwitcher";
-import { useLanguageStore } from "@/stores/languageStore";
-import { t } from "@/lib/i18n";
+import { useTranslation } from "react-i18next";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -16,7 +15,7 @@ export function Header() {
   const [shopOpen, setShopOpen] = useState(false);
   const closeTimer = useRef<NodeJS.Timeout | null>(null);
   const location = useLocation();
-  const { lang } = useLanguageStore();
+  const { t } = useTranslation('common');
 
   const openMega = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -51,21 +50,21 @@ export function Header() {
                 shopOpen ? "text-foreground" : "text-muted-foreground hover:text-foreground"
               )}
             >
-              {t('nav', 'shop', lang)} <ChevronDown size={12} className={cn("transition-transform", shopOpen && "rotate-180")} />
+              {t('nav.shop')} <ChevronDown size={12} className={cn("transition-transform", shopOpen && "rotate-180")} />
             </button>
             <Link to="/collection"
               className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
-              {t('nav', 'collection', lang)}
+              {t('nav.collection')}
             </Link>
             <Link to="/#ritual"
               onClick={(e) => handleHashClick(e, "/#ritual")}
               className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
-              {t('nav', 'ritual', lang)}
+              {t('nav.ritual')}
             </Link>
           </nav>
 
           {/* Mobile menu button */}
-          <button className="lg:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label={mobileOpen ? "Close menu" : "Open menu"}>
+          <button className="lg:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label={mobileOpen ? t('nav.closeMenu') : t('nav.openMenu')}>
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
 
@@ -79,15 +78,15 @@ export function Header() {
             <nav className="hidden lg:flex items-center gap-6">
               <Link to="/quiz"
                 className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
-                {t('nav', 'quiz', lang)}
+                {t('nav.quiz')}
               </Link>
               <Link to="/journal"
                 className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
-                {t('nav', 'journal', lang)}
+                {t('nav.journal')}
               </Link>
               <Link to="/support"
                 className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors">
-                {t('nav', 'support', lang)}
+                {t('nav.support')}
               </Link>
             </nav>
             <LanguageSwitcher />
@@ -114,33 +113,33 @@ export function Header() {
           <nav className="lg:hidden border-t border-border/30 bg-background px-6 py-5 space-y-4">
             <Link to="/#devices" onClick={(e) => { handleHashClick(e, "/#devices"); setMobileOpen(false); }}
               className="block text-sm tracking-[0.1em] uppercase text-foreground">
-              {t('nav', 'shopDevices', lang)}
+              {t('nav.shopDevices')}
             </Link>
             <div className="pl-4 space-y-2.5 border-l border-border/30">
-              <Link to="/product/portable-ems-microcurrent-facial-beauty-device" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Lift & Contour</Link>
-              <Link to="/product/facial-beauty-tools-and-ems-beauty-equipment" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Tone & Glow</Link>
-              <Link to="/product/eye-massage" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Eyes & Fine Lines</Link>
-              <Link to="/body-lift" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">Body & Tissue</Link>
+              <Link to="/product/portable-ems-microcurrent-facial-beauty-device" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">{t('nav.liftContour')}</Link>
+              <Link to="/product/facial-beauty-tools-and-ems-beauty-equipment" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">{t('nav.toneGlow')}</Link>
+              <Link to="/product/eye-massage" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">{t('nav.eyeFinelines')}</Link>
+              <Link to="/body-lift" onClick={() => setMobileOpen(false)} className="block text-xs text-muted-foreground hover:text-foreground">{t('nav.bodyTissue')}</Link>
             </div>
             <Link to="/collection" onClick={() => setMobileOpen(false)}
               className="block text-sm tracking-[0.1em] uppercase text-foreground">
-              {t('nav', 'collection', lang)}
+              {t('nav.collection')}
             </Link>
             <Link to="/#ritual" onClick={(e) => { handleHashClick(e, "/#ritual"); setMobileOpen(false); }}
               className="block text-sm tracking-[0.1em] uppercase text-foreground">
-              {t('nav', 'ritual', lang)}
+              {t('nav.ritual')}
             </Link>
             <Link to="/quiz" onClick={() => setMobileOpen(false)}
               className="block text-sm tracking-[0.1em] uppercase text-foreground">
-              {t('nav', 'quiz', lang)}
+              {t('nav.quiz')}
             </Link>
             <Link to="/journal" onClick={() => setMobileOpen(false)}
               className="block text-sm tracking-[0.1em] uppercase text-foreground">
-              {t('nav', 'journal', lang)}
+              {t('nav.journal')}
             </Link>
             <Link to="/support" onClick={() => setMobileOpen(false)}
               className="block text-sm tracking-[0.1em] uppercase text-foreground">
-              {t('nav', 'support', lang)}
+              {t('nav.support')}
             </Link>
             <div className="pt-1 border-t border-border/20">
               <LanguageSwitcher />

@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "shop": "Shop",
+    "collection": "Collection",
+    "ritual": "Ritual",
+    "quiz": "Quiz",
+    "journal": "Journal",
+    "support": "Support",
+    "shopDevices": "Shop Devices",
+    "liftContour": "Lift & Contour",
+    "toneGlow": "Tone & Glow",
+    "eyeFinelines": "Eyes & Fine Lines",
+    "bodyTissue": "Body & Tissue",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "announcement": {
+    "guarantee": "30-Day Optimization Guarantee — No Friction. No Questions.",
+    "shipping": "Free Shipping on Orders Over €75",
+    "science": "Photobiomodulation · Bioelectrical · EMS · Infrared — One Daily Stack",
+    "delivery": "Delivered in 3–7 Business Days Across the EU",
+    "clinic": "Recover faster. Age slower. Train harder. Your daily biohacking protocol."
+  },
+  "cart": {
+    "empty": "Your bag is empty",
+    "startRitual": "Start your ritual",
+    "item": "item",
+    "items": "items",
+    "freeShippingUnlocked": "Free standard shipping unlocked",
+    "awayFromFreeShipping": "{{amount}} away from free shipping",
+    "upsellLabel": "Complete your ritual",
+    "upsellSub": "Add Collagen Face Gel — formulated for device use",
+    "included": "Included",
+    "subtotal": "Subtotal",
+    "shippingNote": "Shipping, taxes & discounts calculated at checkout",
+    "checkout": "Proceed to Checkout",
+    "redirecting": "Redirecting to secure checkout…"
+  },
+  "footer": {
+    "sections": {
+      "Shop": "Shop",
+      "Ritual": "Ritual",
+      "Technology": "Technology",
+      "Support": "Support",
+      "Legal": "Legal"
+    },
+    "links": {
+      "allDevices": "All Devices",
+      "bundles": "Bundles",
+      "journal": "Journal",
+      "fiveStepMethod": "The 5-Step Method",
+      "eveningProtocol": "Evening Protocol",
+      "howItWorks": "How It Works",
+      "microcurrent": "Microcurrent",
+      "redLightTherapy": "Red Light Therapy",
+      "ems": "EMS",
+      "thermalTherapy": "Thermal Therapy",
+      "theScience": "The Science",
+      "contact": "Contact",
+      "shipping": "Shipping",
+      "returns": "Returns",
+      "faq": "FAQ",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    },
+    "tagline": "Know your skin. Work with it.",
+    "copyright": "© 2026 Zential Pure. All rights reserved."
+  }
+}

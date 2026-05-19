@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useLanguageStore } from "@/stores/languageStore";
-import { t } from "@/lib/i18n";
 
 const MESSAGE_KEYS = [
-  'guarantee',
-  'shipping',
-  'science',
-  'delivery',
-  'clinic',
+  'announcement.guarantee',
+  'announcement.shipping',
+  'announcement.science',
+  'announcement.delivery',
+  'announcement.clinic',
 ] as const;
 
 export function AnnouncementBar() {
   const [index, setIndex] = useState(0);
+  const { t } = useTranslation('common');
   const { lang } = useLanguageStore();
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export function AnnouncementBar() {
     <div className="bg-foreground text-background py-2.5 text-center overflow-hidden">
       <p className="text-xs tracking-[0.2em] uppercase font-light" key={`${index}-${lang}`}
         style={{ animation: 'slide-announcement 5s ease-in-out' }}>
-        {t('announcement', MESSAGE_KEYS[index], lang)}
+        {t(MESSAGE_KEYS[index])}
       </p>
     </div>
   );
