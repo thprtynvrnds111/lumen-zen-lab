@@ -1,0 +1,22 @@
+{
+  "tagline": "PRÉCISION CLINIQUE. RITUEL QUOTIDIEN.",
+  "headline": "Ta commande est confirmée.",
+  "orderLabel": "Commande",
+  "bodyWithEmail": "Une confirmation a été envoyée à {{email}}. Ton appareil est préparé avec soin et sera expédié dans 1–2 jours ouvrables.",
+  "bodyNoEmail": "Ton appareil est préparé avec soin et sera expédié dans 1–2 jours ouvrables. Un e-mail de confirmation est en route.",
+  "ritualEyebrow": "Ton rituel commence à son arrivée",
+  "ritualTimeline": [
+    { "day": "Ce Soir", "instruction": "Nettoie ta peau. Applique le gel conducteur. Utilise ton appareil pendant 5 minutes au réglage le plus bas. Ne te presse pas lors de la première séance." },
+    { "day": "Jour 3", "instruction": "Tu remarqueras peut-être une meilleure absorption après l'utilisation. C'est l'effet de conductivité. Ta barrière cutanée réagit." },
+    { "day": "Jour 14", "instruction": "Les changements structurels commencent ici. La texture de la peau se raffermit grâce à la stimulation électrique répétée. C'est là que la régularité porte ses fruits." },
+    { "day": "Jour 30", "instruction": "Si tu ne vois pas de changement visible après 30 jours d'utilisation quotidienne régulière, contacte-nous. Nous te rembourserons intégralement." }
+  ],
+  "reviewCopy": "Après 14 jours, ton avis pourrait aider quelqu'un comme toi.",
+  "reviewLink": "Laisser un avis Trustpilot →",
+  "whileYouWait": "En attendant",
+  "postPurchaseLinks": [
+    { "label": "Protocole du Soir", "desc": "Ton rituel quotidien de 5 minutes" },
+    { "label": "La Science", "desc": "Pourquoi la technologie fonctionne" },
+    { "label": "Journal", "desc": "Conseils, études et plus encore" }
+  ]
+}

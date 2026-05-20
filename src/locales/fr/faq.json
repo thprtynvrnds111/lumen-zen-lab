@@ -1,0 +1,58 @@
+{
+  "hero": {
+    "badge": "Centre d'aide",
+    "headline": "Questions\nFréquentes.",
+    "sub": "Tout ce que tu dois savoir sur tes appareils, la livraison, les retours et plus encore."
+  },
+  "categories": [
+    {
+      "label": "Livraison & Expédition",
+      "items": [
+        { "q": "Combien de temps prend la livraison ?", "a": "Pays-Bas : 2–3 jours ouvrables. UE : 3–7 jours ouvrables. International : 7–14 jours ouvrables. Tu recevras un suivi par e-mail dès que ta commande sera expédiée." },
+        { "q": "Proposez-vous la livraison gratuite ?", "a": "Oui — livraison gratuite à partir de €50 pour les Pays-Bas et €75 pour les commandes UE." },
+        { "q": "Livrez-vous à l'international ?", "a": "Oui, nous expédions dans plus de 50 pays dans le monde. Les frais de livraison internationale sont calculés lors du paiement. Des droits de douane peuvent s'appliquer." },
+        { "q": "Puis-je suivre ma commande ?", "a": "Absolument. Tu recevras un lien de suivi par e-mail dès que ta commande sera expédiée. Tu peux aussi contacter le support avec ton numéro de commande." }
+      ]
+    },
+    {
+      "label": "Retours & Garantie",
+      "items": [
+        { "q": "Qu'est-ce que la Garantie Rituel 30 Jours ?", "a": "Si après 30 jours d'utilisation quotidienne régulière tu ne vois aucune amélioration visible, contacte-nous pour un remboursement complet. Aucune procédure longue, aucune pression." },
+        { "q": "Comment retourner un produit ?", "a": "Écris à info@zentialpure.com avec ton numéro de commande. Nous approuverons ta demande dans les 24 heures et fournirons une étiquette de retour prépayée." },
+        { "q": "Puis-je retourner des accessoires ouverts ?", "a": "Pour des raisons d'hygiène, les consommables ouverts (gels, pads) ne peuvent pas être retournés. Les appareils peuvent être retournés dans leur emballage d'origine dans les 30 jours." }
+      ]
+    },
+    {
+      "label": "Utilisation du Produit",
+      "items": [
+        { "q": "Puis-je utiliser les appareils quotidiennement ?", "a": "Oui. Nos appareils sont conçus pour une utilisation quotidienne en séances de 5 minutes. Commence à la plus faible intensité et augmente progressivement pendant que ta peau s'adapte." },
+        { "q": "Ai-je besoin de gel conducteur ?", "a": "Pour les appareils à microcourant, un gel conducteur ou un sérum à base d'eau est indispensable pour une transmission optimale du courant et la protection de la peau. Notre Gel Visage Collagène est spécialement formulé à cet effet." },
+        { "q": "Combien de temps avant de voir des résultats ?", "a": "La plupart des utilisatrices remarquent une amélioration de la texture de la peau dans les 2 semaines. Les changements structurels (lift, définition) deviennent généralement visibles après 3–4 semaines d'utilisation quotidienne." },
+        { "q": "Puis-je utiliser plusieurs appareils ensemble ?", "a": "Oui, nos appareils sont conçus pour se compléter mutuellement. Utilise-les dans l'ordre dans le cadre de ton rituel quotidien pour de meilleurs résultats." }
+      ]
+    },
+    {
+      "label": "Sécurité",
+      "items": [
+        { "q": "Les appareils sont-ils sûrs ?", "a": "Oui. Tous les appareils utilisent une technologie cliniquement étudiée avec plusieurs fonctions de sécurité. Suis toujours le guide rituel fourni et commence au niveau le plus bas." },
+        { "q": "Qui ne devrait pas utiliser ces appareils ?", "a": "Ne pas utiliser avec un pacemaker, pendant la grossesse, en cas d'épilepsie, d'infections cutanées actives ou d'implants métalliques dans la zone de traitement. Consulte ton médecin en cas de doute." },
+        { "q": "Est-ce sûr pour les peaux sensibles ?", "a": "Oui. Commence à la plus faible intensité. Si les irritations persistent au-delà d'une légère rougeur initiale, réduis la fréquence et consulte un dermatologue." }
+      ]
+    },
+    {
+      "label": "Technologie",
+      "items": [
+        { "q": "Qu'est-ce que le microcourant ?", "a": "Le microcourant délivre une stimulation électrique de faible niveau qui imite les courants bioélectriques naturels de ton corps, activant les muscles faciaux et stimulant la production de collagène." },
+        { "q": "Que fait la luminothérapie rouge ?", "a": "La lumière rouge (620–660 nm) pénètre dans la peau pour stimuler la production d'énergie cellulaire, favoriser la synthèse du collagène et réduire l'inflammation." },
+        { "q": "Qu'est-ce que l'EMS ?", "a": "La stimulation musculaire électrique utilise des impulsions ciblées pour contracter et tonifier les muscles faciaux, comme un entraînement pour ton visage." }
+      ]
+    },
+    {
+      "label": "Paiement",
+      "items": [
+        { "q": "Quels modes de paiement acceptez-vous ?", "a": "Visa, Mastercard, American Express, iDEAL, Bancontact, Klarna, Shop Pay, Apple Pay et Google Pay. Toutes les transactions sont traitées de manière sécurisée." },
+        { "q": "Proposez-vous le paiement en plusieurs fois ?", "a": "Oui — Klarna est disponible lors du paiement, ce qui te permet de diviser ton achat en versements sans intérêts." }
+      ]
+    }
+  ]
+}

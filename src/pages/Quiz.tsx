@@ -1,5 +1,6 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { ArrowRight, ArrowLeft, Check } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { Header } from "@/components/zential/Header";
@@ -9,6 +10,7 @@ const STORAGE_KEY = "zential.quiz.answers";
 
 export default function Quiz() {
   const nav = useNavigate();
+  const { t } = useTranslation('quiz');
   const [stepIdx, setStepIdx] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [email, setEmail] = useState("");
@@ -49,9 +51,6 @@ export default function Quiz() {
     const params = new URLSearchParams(answers as Record<string, string>);
     const target = `/quiz/result?${params.toString()}`;
 
-    // Fire-and-forget newsletter signup with a hard timeout so it can never
-    // block navigation (especially on mobile or in preview environments where
-    // the /api endpoint may not be available).
     if (!skipEmail && email && /\S+@\S+\.\S+/.test(email)) {
       try {
         const controller = new AbortController();
@@ -68,11 +67,14 @@ export default function Quiz() {
       } catch {}
     }
 
-    // Navigate immediately — do not await the network call.
     nav(target);
   };
 
   const selected = answers[step.id as keyof QuizAnswers];
+
+  const footerCompletionLabel = t('footer.completionLabel').split('\n');
+  const footerSignalsLabel = t('footer.signalsLabel').split('\n');
+  const footerProtocolLabel = t('footer.protocolLabel').split('\n');
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#FBF8F4" }}>
@@ -92,10 +94,10 @@ export default function Quiz() {
               disabled={stepIdx === 0 && !showEmailGate}
               className="flex items-center gap-1.5 text-[11px] tracking-[0.18em] uppercase text-foreground/55 hover:text-foreground transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
             >
-              <ArrowLeft size={12} /> Back
+              <ArrowLeft size={12} /> {t('back')}
             </button>
             <span className="text-[10px] tracking-[0.25em] uppercase text-foreground/45">
-              {showEmailGate ? "Final step" : `${stepIdx + 1} of ${totalSteps}`}
+              {showEmailGate ? t('finalStep') : t('stepOf', { step: stepIdx + 1, total: totalSteps })}
             </span>
           </div>
           <div className="h-[2px] bg-foreground/10 rounded-full overflow-hidden">
@@ -159,19 +161,19 @@ export default function Quiz() {
           <>
             <div className="flex items-center gap-3 mb-5">
               <span className="h-px w-6" style={{ backgroundColor: "#9B5A2E", opacity: 0.45 }} />
-              <p className="text-[10px] tracking-[0.32em] uppercase" style={{ color: "#9B5A2E" }}>— Almost there —</p>
+              <p className="text-[10px] tracking-[0.32em] uppercase" style={{ color: "#9B5A2E" }}>— {t('emailGate.eyebrow')} —</p>
             </div>
             <h1 className="font-serif italic text-[34px] md:text-5xl leading-[1.05] tracking-[-0.01em] text-foreground mb-4 text-balance">
-              Where should we send your protocol?
+              {t('emailGate.headline')}
             </h1>
             <p className="text-base text-foreground/60 mb-10 leading-relaxed max-w-lg">
-              We'll save your personalized ritual and send a Day 1 → Day 90 guide. No spam, ever — unsubscribe in one click.
+              {t('emailGate.sub')}
             </p>
 
             <div className="space-y-4 max-w-md">
               <input
                 type="email"
-                placeholder="your@email.com"
+                placeholder={t('emailGate.placeholder')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-5 py-4 rounded-full border border-foreground/15 bg-background text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground/40 transition-colors"
@@ -182,14 +184,14 @@ export default function Quiz() {
                 className="w-full py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium text-white rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0"
                 style={{ backgroundColor: "#2A211A" }}
               >
-                {submitting ? "Building your ritual…" : "Reveal my ritual"}
+                {submitting ? t('emailGate.submitting') : t('emailGate.submit')}
               </button>
               <button
                 onClick={() => submit(true)}
                 disabled={submitting}
                 className="w-full text-[11px] tracking-[0.2em] uppercase text-foreground/45 hover:text-foreground/70 transition-colors py-2"
               >
-                Skip — show results without saving
+                {t('emailGate.skip')}
               </button>
             </div>
           </>
@@ -198,16 +200,22 @@ export default function Quiz() {
         {/* Reassurance footer */}
         <div className="mt-16 pt-8 border-t border-foreground/10 grid grid-cols-3 gap-4 text-center">
           <div>
-            <p className="font-serif italic text-2xl text-foreground">60s</p>
-            <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">Average<br/>completion</p>
+            <p className="font-serif italic text-2xl text-foreground">{t('footer.completion')}</p>
+            <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">
+              {footerCompletionLabel[0]}<br />{footerCompletionLabel[1]}
+            </p>
           </div>
           <div>
-            <p className="font-serif italic text-2xl text-foreground">5</p>
-            <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">Calibration<br/>signals</p>
+            <p className="font-serif italic text-2xl text-foreground">{t('footer.signals')}</p>
+            <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">
+              {footerSignalsLabel[0]}<br />{footerSignalsLabel[1]}
+            </p>
           </div>
           <div>
-            <p className="font-serif italic text-2xl text-foreground">1</p>
-            <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">Personalized<br/>protocol</p>
+            <p className="font-serif italic text-2xl text-foreground">{t('footer.protocol')}</p>
+            <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">
+              {footerProtocolLabel[0]}<br />{footerProtocolLabel[1]}
+            </p>
           </div>
         </div>
       </main>

@@ -1,0 +1,78 @@
+{
+  "hero": {
+    "badge": "Support & Care",
+    "headline": "We're Here\nFor Your Ritual.",
+    "sub": "Questions, returns, or guidance, our team responds within 24 hours."
+  },
+  "quickCards": [
+    { "title": "Track Your Order", "desc": "Check your shipment status and delivery timeline." },
+    { "title": "Returns & Guarantee", "desc": "30-Day Ritual Guarantee, no friction, no pressure." },
+    { "title": "Product Safety", "desc": "Usage guidelines and important safety information." },
+    { "title": "Contact Support", "desc": "Reach us directly, response within 24 to 48 hours." }
+  ],
+  "faqTitle": "Frequently Asked Questions",
+  "categories": [
+    {
+      "label": "Efficacy & Authenticity",
+      "items": [
+        { "q": "Does this actually work?", "a": "Yes. Our devices use clinically-studied microcurrent, EMS, and red light therapy — the same technologies found in professional clinics. Most users notice improved skin texture within 2 weeks and visible lift after 3–4 weeks of daily use." },
+        { "q": "How do I know this is an authentic device?", "a": "Every Zential device ships with a unique serial number and authenticity seal. We sell exclusively through our official store — no third-party resellers — so you always receive a genuine product with full warranty." }
+      ]
+    },
+    {
+      "label": "Skin Type Suitability",
+      "items": [
+        { "q": "Will this work on my skin type?", "a": "Our devices are effective on all skin types and tones. Start at the lowest intensity and increase gradually. If you have sensitive skin, mild initial redness is normal and subsides within minutes." },
+        { "q": "Do I need conductive gel?", "a": "For microcurrent devices, a conductive gel or water-based serum is essential for optimal current delivery and skin protection. Our Collagen Face Gel is formulated specifically for this." }
+      ]
+    },
+    {
+      "label": "Safety",
+      "items": [
+        { "q": "Is it safe to use every day?", "a": "Yes. All devices include multiple safety features and auto-shutoff protection. Start with 5-minute sessions daily and follow the included ritual guide. Consult your physician if you have a pacemaker, are pregnant, or have epilepsy." },
+        { "q": "Is it safe with sensitive skin?", "a": "Yes. Start at the lowest intensity setting and gradually increase. If you experience persistent irritation beyond mild initial redness, discontinue use and consult a dermatologist." }
+      ]
+    },
+    {
+      "label": "Price & Value",
+      "items": [
+        { "q": "Is it worth the investment?", "a": "One device replaces hundreds of euros in monthly clinic visits. With daily 5-minute rituals, you get professional-grade results at home — backed by our 30-Day Ritual Guarantee." },
+        { "q": "Do you offer payment plans?", "a": "Yes — Klarna is available at checkout, allowing you to split your purchase into interest-free installments." }
+      ]
+    },
+    {
+      "label": "After-Sales",
+      "items": [
+        { "q": "What if I need help after my purchase?", "a": "Our support team responds within 24 hours. You're covered by a 30-Day Ritual Guarantee, easy returns, and lifetime access to ritual guides and tips." },
+        { "q": "What is the 30-Day Ritual Guarantee?", "a": "If you don't feel visible improvement within 30 days of consistent daily use, contact us for a full refund. No lengthy process, no pressure." }
+      ]
+    }
+  ],
+  "guarantee": {
+    "eyebrow": "Our Promise",
+    "headline": "Feel The Shift, Or It's On Us.",
+    "sub": "If you don't feel visible improvement within 30 days of consistent use, contact us. No friction. No pressure.",
+    "badges": ["30-Day Guarantee", "Fast Shipping", "Easy Returns", "Secure Checkout"]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "orderLabel": "Order Number (optional)",
+    "messageLabel": "Message",
+    "submit": "Send via Email",
+    "submitting": "Opening…",
+    "footnote": "Opens your email client · Response within 24–48 hours.",
+    "validationError": "Please fill in the required fields."
+  },
+  "safety": {
+    "title": "Important Safety Guidelines",
+    "items": [
+      "Do not use with pacemakers or implanted electrical devices",
+      "Avoid use during pregnancy",
+      "Do not use on active skin infections or open wounds",
+      "Always start at the lowest intensity setting",
+      "Consult your physician if you have a medical condition"
+    ]
+  }
+}

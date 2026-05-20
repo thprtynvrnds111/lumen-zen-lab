@@ -1,0 +1,45 @@
+{
+  "hero": {
+    "badge": "Livraison & Expédition",
+    "headline": "De Nos Mains,\nÀ Ton Rituel.",
+    "sub": "Chaque commande est soigneusement emballée, rapidement expédiée et entièrement suivie, pour que ton rituel commence sans délai."
+  },
+  "journey": {
+    "eyebrow": "Le Parcours de Ta Commande",
+    "title": "Chaque Étape, Suivie.",
+    "steps": [
+      { "title": "Commande Confirmée", "desc": "Ton rituel commence. Nous vérifions ta commande et la préparons pour l'expédition en quelques heures.", "time": "Instantané" },
+      { "title": "Soigneusement Emballé", "desc": "Chaque appareil est inspecté, enveloppé dans un emballage protecteur et scellé avec soin dans notre entrepôt européen.", "time": "1 jour" },
+      { "title": "En Transit", "desc": "Ton colis est remis à notre partenaire logistique de confiance. Le suivi en temps réel est envoyé dans ta boîte mail.", "time": "2–7 jours" },
+      { "title": "En Cours de Livraison", "desc": "Ton colis est en route vers ta porte. Nos transporteurs livrent 6 jours par semaine partout en Europe.", "time": "1–2 jours" },
+      { "title": "Livré", "desc": "Ton rituel arrive. Déballe, explore et commence ta première séance de 5 minutes aujourd'hui.", "time": "Fait" }
+    ]
+  },
+  "zones": {
+    "eyebrow": "Zones de Livraison",
+    "title": "Où Nous Expédions.",
+    "footnote": "Les commandes internationales peuvent être soumises aux droits de douane et taxes d'importation.",
+    "items": [
+      { "region": "Pays-Bas", "time": "2–3 jours ouvrables", "cost": "Gratuit dès €50", "flag": "🇳🇱" },
+      { "region": "Allemagne & Belgique", "time": "3–5 jours ouvrables", "cost": "Gratuit dès €75", "flag": "🇩🇪 🇧🇪" },
+      { "region": "Reste de l'UE", "time": "3–7 jours ouvrables", "cost": "Gratuit dès €75", "flag": "🇪🇺" },
+      { "region": "Royaume-Uni", "time": "5–8 jours ouvrables", "cost": "Gratuit dès €90", "flag": "🇬🇧" },
+      { "region": "États-Unis & Canada", "time": "7–14 jours ouvrables", "cost": "Gratuit dès €95", "flag": "🇺🇸 🇨🇦" }
+    ]
+  },
+  "trust": {
+    "eyebrow": "Notre Promesse",
+    "title": "Conçu Pour Ta Tranquillité.",
+    "items": [
+      { "title": "Expéditions Assurées", "desc": "Chaque colis est entièrement assuré contre les dommages ou pertes pendant le transit." },
+      { "title": "Traitement Le Jour Même", "desc": "Les commandes passées avant 14h CET sont expédiées le même jour ouvrable." },
+      { "title": "Portée Mondiale", "desc": "Nous livrons dans plus de 50 pays avec des transporteurs internationaux fiables." },
+      { "title": "Emballage Écologique", "desc": "Matériaux recyclables et déchets minimaux, parce que les rituels doivent être conscients." }
+    ]
+  },
+  "cta": {
+    "headline": "Des questions sur ta commande ?",
+    "sub": "Notre équipe de support répond dans les 24 heures.",
+    "button": "Contacter le Support"
+  }
+}

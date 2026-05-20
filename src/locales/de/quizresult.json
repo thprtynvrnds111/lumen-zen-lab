@@ -1,0 +1,16 @@
+{
+  "oneTime": "Einmalig",
+  "addDeviceOnly": "Nur Gerät hinzufügen",
+  "addingDevice": "Wird hinzugefügt…",
+  "fullProtocolTitle": "Dein vollständiges Protokoll",
+  "ritualPriceLabel": "Ritualpreis",
+  "save": "Spare €{{amount}}",
+  "addRitual": "Vollständiges Ritual hinzufügen",
+  "addingRitual": "Ritual wird hinzugefügt…",
+  "howToUse": "So wendest du es wirklich an.",
+  "trustItems": [
+    "Kostenloser EU-Versand ab €75",
+    "30-Tage-Ritualgarantie",
+    "Lebenslanger Ritual-Support"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "oneTime": "Eenmalig",
+  "addDeviceOnly": "Alleen apparaat toevoegen",
+  "addingDevice": "Toevoegen…",
+  "fullProtocolTitle": "Jouw volledige protocol",
+  "ritualPriceLabel": "Rituele prijs",
+  "save": "Bespaar €{{amount}}",
+  "addRitual": "Volledig ritueel toevoegen",
+  "addingRitual": "Ritueel toevoegen…",
+  "howToUse": "Hoe je het echt gebruikt.",
+  "trustItems": [
+    "Gratis EU-verzending boven €75",
+    "30-Dagen Ritueel Garantie",
+    "Levenslange rituele ondersteuning"
+  ]
+}

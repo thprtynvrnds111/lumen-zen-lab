@@ -1,0 +1,22 @@
+{
+  "tagline": "CLINIC PRECISION. DAILY RITUAL.",
+  "headline": "Your order is confirmed.",
+  "orderLabel": "Order",
+  "bodyWithEmail": "A confirmation has been sent to {{email}}. Your device is being prepared with care and will ship within 1–2 business days.",
+  "bodyNoEmail": "Your device is being prepared with care and will ship within 1–2 business days. A confirmation email is on its way.",
+  "ritualEyebrow": "Your ritual begins when it arrives",
+  "ritualTimeline": [
+    { "day": "Tonight", "instruction": "Cleanse your skin. Apply conductive gel. Run your device for 5 minutes on the lowest setting. Don't rush the first session." },
+    { "day": "Day 3", "instruction": "You may notice improved absorption after use. This is the conductivity effect. Your skin barrier is responding." },
+    { "day": "Day 14", "instruction": "Structural changes begin here. Skin texture firms from repeated electrical stimulation. This is where consistency pays." },
+    { "day": "Day 30", "instruction": "If you don't see visible change after 30 days of consistent daily use, contact us. We will refund you in full." }
+  ],
+  "reviewCopy": "After 14 days, your review could help someone like you.",
+  "reviewLink": "Leave a Trustpilot review →",
+  "whileYouWait": "While you wait",
+  "postPurchaseLinks": [
+    { "label": "Evening Protocol", "desc": "Your 5-minute daily ritual" },
+    { "label": "The Science", "desc": "Why the technology works" },
+    { "label": "Journal", "desc": "Tips, studies, and more" }
+  ]
+}

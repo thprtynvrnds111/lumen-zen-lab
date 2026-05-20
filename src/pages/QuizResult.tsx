@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { ArrowRight, Sparkles, ShieldCheck, Truck, Calendar } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { Header } from "@/components/zential/Header";
@@ -7,7 +8,10 @@ import { getRecommendation, type QuizAnswers } from "@/data/quizData";
 import { fetchProductByHandle, type ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 
+const trustIcons = [Truck, ShieldCheck, Sparkles];
+
 export default function QuizResult() {
+  const { t } = useTranslation('quizresult');
   const [params] = useSearchParams();
   const answers: QuizAnswers = useMemo(() => Object.fromEntries(params.entries()) as QuizAnswers, [params]);
   const rec = useMemo(() => getRecommendation(answers), [answers]);
@@ -148,7 +152,7 @@ export default function QuizResult() {
                 ) : (
                   <span className="inline-block h-8 w-20 rounded-md animate-pulse bg-foreground/10" />
                 )}
-                <span className="text-[11px] tracking-[0.18em] uppercase text-foreground/50">One-time</span>
+                <span className="text-[11px] tracking-[0.18em] uppercase text-foreground/50">{t('oneTime')}</span>
               </div>
 
               <button
@@ -156,7 +160,7 @@ export default function QuizResult() {
                 disabled={adding || !primary}
                 className="py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full border border-foreground/25 text-foreground hover:bg-foreground/5 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50"
               >
-                {adding ? "Adding…" : "Add device only"}
+                {adding ? t('addingDevice') : t('addDeviceOnly')}
               </button>
             </div>
           </div>
@@ -173,7 +177,7 @@ export default function QuizResult() {
             </div>
             <div className="p-8 md:p-12">
               <p className="text-[10px] tracking-[0.3em] uppercase mb-3" style={{ color: "#C6A07C" }}>— The complete ritual —</p>
-              <h3 className="font-serif italic text-3xl md:text-4xl mb-4">Your full protocol</h3>
+              <h3 className="font-serif italic text-3xl md:text-4xl mb-4">{t('fullProtocolTitle')}</h3>
               <p className="text-[15px] leading-relaxed mb-8 max-w-xl" style={{ opacity: 0.7 }}>
                 {rec.bundlePitch}
               </p>
@@ -193,11 +197,11 @@ export default function QuizResult() {
 
               <div className="flex flex-wrap items-end gap-4 mb-6">
                 <div>
-                  <p className="text-[10px] tracking-[0.2em] uppercase mb-1.5" style={{ opacity: 0.5 }}>Ritual price</p>
+                  <p className="text-[10px] tracking-[0.2em] uppercase mb-1.5" style={{ opacity: 0.5 }}>{t('ritualPriceLabel')}</p>
                   <div className="flex items-baseline gap-3">
                     <span className="font-serif italic text-4xl">€{(ritualTotal - ritualSave).toFixed(0)}</span>
                     <span className="text-base line-through" style={{ opacity: 0.4 }}>€{ritualTotal.toFixed(0)}</span>
-                    <span className="text-[11px] px-2 py-1 rounded-full" style={{ backgroundColor: "#C6A07C", color: "#2A211A" }}>Save €{ritualSave}</span>
+                    <span className="text-[11px] px-2 py-1 rounded-full" style={{ backgroundColor: "#C6A07C", color: "#2A211A" }}>{t('save', { amount: ritualSave })}</span>
                   </div>
                 </div>
               </div>
@@ -208,7 +212,7 @@ export default function QuizResult() {
                 className="w-full md:w-auto py-4 px-10 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl disabled:opacity-50"
                 style={{ backgroundColor: "#FAF7F3", color: "#2A211A" }}
               >
-                {adding ? "Adding ritual…" : "Add complete ritual"}
+                {adding ? t('addingRitual') : t('addRitual')}
                 <ArrowRight size={14} className="inline ml-2" />
               </button>
             </div>
@@ -218,7 +222,7 @@ export default function QuizResult() {
         {/* Protocol */}
         <section className="bg-background rounded-3xl border border-foreground/10 p-8 md:p-12 mb-10 md:mb-14">
           <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/50 mb-3">— Your 90-day protocol —</p>
-          <h3 className="font-serif italic text-3xl md:text-4xl text-foreground mb-3">How to actually use it.</h3>
+          <h3 className="font-serif italic text-3xl md:text-4xl text-foreground mb-3">{t('howToUse')}</h3>
           <p className="text-[15px] text-foreground/60 mb-8 max-w-xl">{rec.expectedTimeline}</p>
 
           <div className="space-y-4">
@@ -238,16 +242,14 @@ export default function QuizResult() {
 
         {/* Reassurance */}
         <section className="grid sm:grid-cols-3 gap-4 mb-10">
-          {[
-            { icon: ShieldCheck, label: "30-day no-condition refund" },
-            { icon: Truck, label: "Free EU shipping over €75" },
-            { icon: Sparkles, label: "Lifetime ritual support" },
-          ].map((it) => (
-            <div key={it.label} className="flex items-center gap-3 p-5 rounded-2xl border border-foreground/10 bg-background">
-              <it.icon size={16} style={{ color: "#9B5A2E" }} />
-              <span className="text-[12px] tracking-wide text-foreground/75">{it.label}</span>
+          {(t('trustItems', { returnObjects: true }) as string[]).map((label, i) => {
+            const Icon = trustIcons[i] ?? ShieldCheck;
+            return (
+            <div key={i} className="flex items-center gap-3 p-5 rounded-2xl border border-foreground/10 bg-background">
+              <Icon size={16} style={{ color: "#9B5A2E" }} />
+              <span className="text-[12px] tracking-wide text-foreground/75">{label}</span>
             </div>
-          ))}
+          );})}
         </section>
 
         <div className="text-center">

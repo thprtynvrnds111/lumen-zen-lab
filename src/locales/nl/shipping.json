@@ -1,0 +1,45 @@
+{
+  "hero": {
+    "badge": "Verzending & Levering",
+    "headline": "Van Onze Handen,\nNaar Jouw Ritueel.",
+    "sub": "Elke bestelling wordt zorgvuldig verpakt, snel verzonden en volledig gevolgd, zodat jouw ritueel zonder vertraging begint."
+  },
+  "journey": {
+    "eyebrow": "Jouw Bestelreis",
+    "title": "Elke Stap, Gevolgd.",
+    "steps": [
+      { "title": "Bestelling Bevestigd", "desc": "Jouw ritueel begint. We controleren je bestelling en bereiden deze binnen uren voor op verzending.", "time": "Direct" },
+      { "title": "Zorgvuldig Verpakt", "desc": "Elk apparaat wordt geïnspecteerd, in beschermende verpakking gewikkeld en zorgvuldig verzegeld in ons Europese magazijn.", "time": "1 dag" },
+      { "title": "Onderweg", "desc": "Jouw pakket is overgedragen aan onze vertrouwde logistieke partner. Realtime tracking wordt naar je inbox gestuurd.", "time": "2–7 dagen" },
+      { "title": "Onderweg naar Jou", "desc": "Je pakket is op weg naar je deur. Onze bezorgers leveren 6 dagen per week door heel Europa.", "time": "1–2 dagen" },
+      { "title": "Afgeleverd", "desc": "Jouw ritueel arriveert. Uitpakken, verkennen en begin vandaag nog met je eerste 5-minutensessie.", "time": "Klaar" }
+    ]
+  },
+  "zones": {
+    "eyebrow": "Leveringszones",
+    "title": "Waar Wij Naartoe Verzenden.",
+    "footnote": "Internationale bestellingen kunnen onderworpen zijn aan douanerechten en invoerbelastingen.",
+    "items": [
+      { "region": "Nederland", "time": "2–3 werkdagen", "cost": "Gratis boven €50", "flag": "🇳🇱" },
+      { "region": "Duitsland & België", "time": "3–5 werkdagen", "cost": "Gratis boven €75", "flag": "🇩🇪 🇧🇪" },
+      { "region": "Rest van EU", "time": "3–7 werkdagen", "cost": "Gratis boven €75", "flag": "🇪🇺" },
+      { "region": "Verenigd Koninkrijk", "time": "5–8 werkdagen", "cost": "Gratis boven €90", "flag": "🇬🇧" },
+      { "region": "Verenigde Staten & Canada", "time": "7–14 werkdagen", "cost": "Gratis boven €95", "flag": "🇺🇸 🇨🇦" }
+    ]
+  },
+  "trust": {
+    "eyebrow": "Onze Belofte",
+    "title": "Gebouwd voor Gemoedsrust.",
+    "items": [
+      { "title": "Verzekerde Zendingen", "desc": "Elk pakket is volledig verzekerd tegen schade of verlies tijdens transport." },
+      { "title": "Dezelfde Dag Verwerking", "desc": "Bestellingen geplaatst vóór 14.00 uur CET worden dezelfde werkdag verzonden." },
+      { "title": "Wereldwijd Bereik", "desc": "We leveren aan 50+ landen met betrouwbare internationale bezorgers." },
+      { "title": "Eco Verpakking", "desc": "Recyclebare materialen en minimaal afval, omdat rituelen bewust moeten zijn." }
+    ]
+  },
+  "cta": {
+    "headline": "Vragen over je bestelling?",
+    "sub": "Ons supportteam reageert binnen 24 uur.",
+    "button": "Contact Support"
+  }
+}

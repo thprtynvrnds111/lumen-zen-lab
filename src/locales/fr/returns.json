@@ -1,0 +1,32 @@
+{
+  "hero": {
+    "badge": "Retours & Garantie",
+    "headline": "Sans Friction.\nSans Pression.",
+    "sub": "Nous garantissons chaque appareil avec notre Garantie Rituel 30 Jours. Si ça ne fonctionne pas pour toi, c'est pour nous."
+  },
+  "steps": {
+    "eyebrow": "Comment Ça Marche",
+    "title": "Simple. Honnête. Rapide.",
+    "items": [
+      { "title": "Demander un Retour", "desc": "Envoie-nous un e-mail à info@zentialpure.com dans les 30 jours suivant la livraison avec ton numéro de commande." },
+      { "title": "Obtenir l'Approbation", "desc": "Nous examinerons et approuverons ta demande dans les 24 heures, sans longs questionnaires." },
+      { "title": "Renvoyer l'Article", "desc": "Nous fournirons une étiquette de retour prépayée. Emballe l'appareil dans son emballage d'origine." },
+      { "title": "Être Remboursé", "desc": "Une fois reçu et inspecté, ton remboursement est traité dans les 5 à 7 jours ouvrables." }
+    ]
+  },
+  "policy": {
+    "eyebrow": "Détails de la Politique",
+    "title": "Ce Que Tu Dois Savoir.",
+    "items": [
+      { "title": "Garantie Rituel 30 Jours", "desc": "Si tu ne ressens pas d'amélioration visible dans les 30 jours d'utilisation quotidienne régulière, contacte-nous pour un remboursement complet. Nous croyons en la technologie, et nous croyons en ton expérience." },
+      { "title": "Conditions Requises", "desc": "Les appareils doivent être retournés dans leur emballage d'origine et en état de fonctionnement. Les accessoires (gels, pads) ne sont pas retournables une fois ouverts pour des raisons d'hygiène." },
+      { "title": "Articles Endommagés ou Défectueux", "desc": "Si ton produit arrive endommagé ou défectueux, contacte-nous immédiatement. Nous enverrons un remplacement sans frais, aucun retour nécessaire." },
+      { "title": "Échanges", "desc": "Tu veux une couleur ou variante différente ? Contacte-nous dans les 14 jours et nous organiserons un échange, selon disponibilité." }
+    ]
+  },
+  "cta": {
+    "headline": "Prêt à retourner ou besoin d'aide ?",
+    "sub": "Notre équipe traite chaque demande dans les 24 heures.",
+    "button": "Contacter le Support"
+  }
+}

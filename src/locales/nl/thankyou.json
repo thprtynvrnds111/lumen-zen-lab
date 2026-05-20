@@ -1,0 +1,22 @@
+{
+  "tagline": "KLINISCHE PRECISIE. DAGELIJKS RITUEEL.",
+  "headline": "Je bestelling is bevestigd.",
+  "orderLabel": "Bestelling",
+  "bodyWithEmail": "Een bevestiging is gestuurd naar {{email}}. Je apparaat wordt met zorg voorbereid en verzonden binnen 1–2 werkdagen.",
+  "bodyNoEmail": "Je apparaat wordt met zorg voorbereid en verzonden binnen 1–2 werkdagen. Een bevestigingsmail is onderweg.",
+  "ritualEyebrow": "Jouw ritueel begint wanneer het aankomt",
+  "ritualTimeline": [
+    { "day": "Vanavond", "instruction": "Reinig je huid. Breng geleidend gel aan. Gebruik je apparaat 5 minuten op de laagste stand. Haast je niet tijdens de eerste sessie." },
+    { "day": "Dag 3", "instruction": "Je merkt mogelijk verbeterde absorptie na gebruik. Dit is het geleidbaarheidseffect. Je huidbarrière reageert." },
+    { "day": "Dag 14", "instruction": "Structurele veranderingen beginnen hier. Huidtextuur verstevigt door herhaalde elektrische stimulatie. Hier betaalt consistentie zich uit." },
+    { "day": "Dag 30", "instruction": "Als je na 30 dagen consistent dagelijks gebruik geen zichtbare verandering ziet, neem dan contact op. We betalen je volledig terug." }
+  ],
+  "reviewCopy": "Na 14 dagen kan jouw review iemand zoals jij helpen.",
+  "reviewLink": "Laat een Trustpilot-review achter →",
+  "whileYouWait": "Terwijl je wacht",
+  "postPurchaseLinks": [
+    { "label": "Avondprotocol", "desc": "Jouw dagelijks 5-minutenritueel" },
+    { "label": "De Wetenschap", "desc": "Waarom de technologie werkt" },
+    { "label": "Journal", "desc": "Tips, studies en meer" }
+  ]
+}

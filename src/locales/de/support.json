@@ -1,0 +1,78 @@
+{
+  "hero": {
+    "badge": "Support & Betreuung",
+    "headline": "Wir Sind Für\nDein Ritual Da.",
+    "sub": "Fragen, Rücksendungen oder Beratung — unser Team antwortet innerhalb von 24 Stunden."
+  },
+  "quickCards": [
+    { "title": "Bestellung Verfolgen", "desc": "Überprüfe deinen Versandstatus und die Lieferzeit." },
+    { "title": "Rücksendungen & Garantie", "desc": "30-Tage-Ritualgarantie, kein Aufwand, kein Druck." },
+    { "title": "Produktsicherheit", "desc": "Anwendungshinweise und wichtige Sicherheitsinformationen." },
+    { "title": "Support Kontaktieren", "desc": "Erreiche uns direkt — Antwort innerhalb von 24 bis 48 Stunden." }
+  ],
+  "faqTitle": "Häufig gestellte Fragen",
+  "categories": [
+    {
+      "label": "Wirksamkeit & Echtheit",
+      "items": [
+        { "q": "Funktioniert das wirklich?", "a": "Ja. Unsere Geräte nutzen klinisch erforschten Mikrostrom, EMS und Rotlichttherapie — dieselben Technologien wie in professionellen Kliniken. Die meisten Anwenderinnen bemerken eine verbesserte Hauttextur innerhalb von 2 Wochen und einen sichtbaren Lift nach 3–4 Wochen täglicher Anwendung." },
+        { "q": "Wie weiß ich, dass es ein echtes Gerät ist?", "a": "Jedes Zential-Gerät wird mit einer eindeutigen Seriennummer und einem Echtheitssiegel geliefert. Wir verkaufen ausschließlich über unseren offiziellen Shop — keine Drittanbieter — sodass du immer ein echtes Produkt mit voller Garantie erhältst." }
+      ]
+    },
+    {
+      "label": "Hauttyp-Eignung",
+      "items": [
+        { "q": "Funktioniert das bei meinem Hauttyp?", "a": "Unsere Geräte sind für alle Hauttypen und -töne wirksam. Beginne mit der niedrigsten Intensität und steigere dich schrittweise. Bei empfindlicher Haut ist eine leichte anfängliche Rötung normal und klingt innerhalb von Minuten ab." },
+        { "q": "Benötige ich Leitgel?", "a": "Für Mikrostrom-Geräte ist ein Leitgel oder wasserbasiertes Serum für optimale Stromübertragung und Hautschutz unerlässlich. Unser Kollagen-Gesichtsgel ist speziell dafür formuliert." }
+      ]
+    },
+    {
+      "label": "Sicherheit",
+      "items": [
+        { "q": "Ist tägliche Anwendung sicher?", "a": "Ja. Alle Geräte verfügen über mehrere Sicherheitsfunktionen und automatischen Abschaltschutz. Beginne täglich mit 5-Minuten-Sitzungen und folge dem beiliegenden Ritual-Leitfaden. Konsultiere deinen Arzt bei Herzschrittmacher, Schwangerschaft oder Epilepsie." },
+        { "q": "Ist es sicher bei empfindlicher Haut?", "a": "Ja. Beginne auf der niedrigsten Intensitätsstufe und steigere dich schrittweise. Wenn anhaltende Reizungen über leichte anfängliche Rötungen hinausgehen, unterbreche die Anwendung und konsultiere einen Dermatologen." }
+      ]
+    },
+    {
+      "label": "Preis & Wert",
+      "items": [
+        { "q": "Lohnt sich die Investition?", "a": "Ein Gerät ersetzt Hunderte von Euro an monatlichen Klinikbesuchen. Mit täglichen 5-Minuten-Ritualen erhältst du professionelle Ergebnisse zuhause — abgesichert durch unsere 30-Tage-Ritualgarantie." },
+        { "q": "Bietet ihr Ratenzahlungen an?", "a": "Ja — Klarna ist beim Checkout verfügbar und ermöglicht die Aufteilung deines Kaufs in zinsfreie Raten." }
+      ]
+    },
+    {
+      "label": "After-Sales",
+      "items": [
+        { "q": "Was wenn ich nach dem Kauf Hilfe brauche?", "a": "Unser Support-Team antwortet innerhalb von 24 Stunden. Du bist durch eine 30-Tage-Ritualgarantie, einfache Rücksendungen und lebenslangen Zugang zu Ritual-Leitfäden und Tipps abgesichert." },
+        { "q": "Was ist die 30-Tage-Ritualgarantie?", "a": "Wenn du innerhalb von 30 Tagen konsequenter täglicher Anwendung keine sichtbare Verbesserung siehst, kontaktiere uns für eine vollständige Rückerstattung. Kein langer Prozess, kein Druck." }
+      ]
+    }
+  ],
+  "guarantee": {
+    "eyebrow": "Unser Versprechen",
+    "headline": "Spür Die Veränderung, Oder Wir Zahlen.",
+    "sub": "Wenn du innerhalb von 30 Tagen konsequenter Anwendung keine sichtbare Verbesserung spürst, kontaktiere uns. Kein Aufwand. Kein Druck.",
+    "badges": ["30-Tage-Garantie", "Schneller Versand", "Einfache Rücksendung", "Sicherer Checkout"]
+  },
+  "contact": {
+    "title": "Kontakt",
+    "nameLabel": "Name",
+    "emailLabel": "E-Mail",
+    "orderLabel": "Bestellnummer (optional)",
+    "messageLabel": "Nachricht",
+    "submit": "Per E-Mail senden",
+    "submitting": "Öffnet…",
+    "footnote": "Öffnet deinen E-Mail-Client · Antwort innerhalb von 24–48 Stunden.",
+    "validationError": "Bitte fülle die Pflichtfelder aus."
+  },
+  "safety": {
+    "title": "Wichtige Sicherheitshinweise",
+    "items": [
+      "Nicht bei Herzschrittmachern oder implantierten elektrischen Geräten verwenden",
+      "Nicht während der Schwangerschaft verwenden",
+      "Nicht bei aktiven Hautinfektionen oder offenen Wunden anwenden",
+      "Immer auf der niedrigsten Intensitätsstufe beginnen",
+      "Konsultiere deinen Arzt bei bestehenden Erkrankungen"
+    ]
+  }
+}

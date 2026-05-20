@@ -1,0 +1,16 @@
+{
+  "oneTime": "Unique",
+  "addDeviceOnly": "Ajouter l'appareil uniquement",
+  "addingDevice": "Ajout en cours…",
+  "fullProtocolTitle": "Ton protocole complet",
+  "ritualPriceLabel": "Prix rituel",
+  "save": "Économise €{{amount}}",
+  "addRitual": "Ajouter le rituel complet",
+  "addingRitual": "Ajout du rituel…",
+  "howToUse": "Comment vraiment l'utiliser.",
+  "trustItems": [
+    "Livraison UE gratuite dès €75",
+    "Garantie Rituel 30 Jours",
+    "Support rituel à vie"
+  ]
+}

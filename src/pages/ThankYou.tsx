@@ -1,31 +1,27 @@
 import { useSearchParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { SEO } from "@/components/SEO";
 import { useCartStore } from "@/stores/cartStore";
 
-const postPurchaseLinks = [
-  { label: "Evening Protocol", desc: "Your 5-minute daily ritual", href: "/journal/evening-protocol" },
-  { label: "The Science", desc: "Why the technology works", href: "/journal/microcurrent-collagen" },
-  { label: "Journal", desc: "Tips, studies, and more", href: "/journal" },
-];
-
-const ritualTimeline = [
-  { day: "Tonight", instruction: "Cleanse your skin. Apply conductive gel. Run your device for 5 minutes on the lowest setting. Don't rush the first session." },
-  { day: "Day 3", instruction: "You may notice improved absorption after use. This is the conductivity effect. Your skin barrier is responding." },
-  { day: "Day 14", instruction: "Structural changes begin here. Skin texture firms from repeated electrical stimulation. This is where consistency pays." },
-  { day: "Day 30", instruction: "If you don't see visible change after 30 days of consistent daily use, contact us. We will refund you in full." },
-];
+const postPurchaseHrefs = ["/journal/evening-protocol", "/journal/microcurrent-collagen", "/journal"];
 
 export default function ThankYou() {
+  const { t } = useTranslation('thankyou');
   const [searchParams] = useSearchParams();
   const orderName = searchParams.get("order_name");
   const email = searchParams.get("email");
   const [mounted, setMounted] = useState(false);
   const { items, clearCart } = useCartStore();
 
+  const ritualTimeline = t('ritualTimeline', { returnObjects: true }) as Array<{ day: string; instruction: string }>;
+  const postPurchaseLinks = (t('postPurchaseLinks', { returnObjects: true }) as Array<{ label: string; desc: string }>).map(
+    (link, i) => ({ ...link, href: postPurchaseHrefs[i] })
+  );
+
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 30);
-    return () => clearTimeout(t);
+    const t2 = setTimeout(() => setMounted(true), 30);
+    return () => clearTimeout(t2);
   }, []);
 
   // Fire purchase events once per order — guard with sessionStorage to prevent duplicate on re-render
@@ -170,7 +166,7 @@ export default function ThankYou() {
               lineHeight: 1.3,
             }}
           >
-            Your order is confirmed.
+            {t('headline')}
           </h1>
 
           {/* Subline */}
@@ -185,7 +181,7 @@ export default function ThankYou() {
               margin: "0 0 32px",
             }}
           >
-            CLINIC PRECISION. DAILY RITUAL.
+            {t('tagline')}
           </p>
 
           {/* Order pill */}
@@ -211,7 +207,7 @@ export default function ThankYou() {
                   textTransform: "uppercase",
                 }}
               >
-                Order
+                {t('orderLabel')}
               </span>
               <span
                 style={{
@@ -239,8 +235,8 @@ export default function ThankYou() {
             }}
           >
             {email
-              ? `A confirmation has been sent to ${email}. Your device is being prepared with care and will ship within 1–2 business days.`
-              : "Your device is being prepared with care and will ship within 1–2 business days. A confirmation email is on its way."}
+              ? t('bodyWithEmail', { email })
+              : t('bodyNoEmail')}
           </p>
 
           {/* Ritual timeline */}
@@ -257,12 +253,12 @@ export default function ThankYou() {
                 marginBottom: "14px",
               }}
             >
-              Your ritual begins when it arrives
+              {t('ritualEyebrow')}
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              {ritualTimeline.map((item) => (
+              {ritualTimeline.map((item, i) => (
                 <div
-                  key={item.day}
+                  key={i}
                   style={{
                     display: "flex",
                     gap: "14px",
@@ -304,7 +300,7 @@ export default function ThankYou() {
             }}
           >
             <p style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300, fontSize: "11px", color: "#5C5753", margin: "0 0 8px" }}>
-              After 14 days, your review could help someone like you.
+              {t('reviewCopy')}
             </p>
             <a
               href="https://nl.trustpilot.com/review/zentialpure.com"
@@ -322,7 +318,7 @@ export default function ThankYou() {
                 paddingBottom: "1px",
               }}
             >
-              Leave a Trustpilot review →
+              {t('reviewLink')}
             </a>
           </div>
 
@@ -343,7 +339,7 @@ export default function ThankYou() {
                 marginBottom: "14px",
               }}
             >
-              While you wait
+              {t('whileYouWait')}
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               {postPurchaseLinks.map((link) => (
