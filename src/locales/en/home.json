@@ -1,23 +1,35 @@
 {
   "hero": {
-    "eyebrow": "Human Performance Stack",
+    "eyebrow": "Resonance Restoration",
     "headline": "Optimize Your Biology.",
     "subline": "Four technologies. One daily protocol. Measurable output.",
-    "body": "The same four technologies used in professional microcurrent facials — red light, EMS, thermal, galvanic — engineered into a 10-minute daily protocol. At home. €88. Once.",
+    "body": "An editorial on returning. On skin not as surface but as instrument. On the science beneath the ritual, and the ritual within the science.",
     "rating": "4.9 / 5 — rated by our community",
-    "ctaPrimary": "Start the Protocol",
-    "ctaSecondary": "Take the 60s Quiz",
+    "ctaPrimary": "Order the Face Introducer",
+    "ctaSecondary": "Find Your Protocol",
     "trust": {
-      "shipping": "Free EU Shipping",
-      "guarantee": "30-Day Guarantee",
-      "tagline": "Clinic Precision. Daily Ritual."
+      "shipping": "Free EU shipping",
+      "guarantee": "30-Day Protocol Guarantee",
+      "tagline": "Clinic precision. Daily ritual."
     },
     "modalities": {
       "label": "Four protocols. One stack.",
-      "redLight": { "label": "Red Light", "sub": "photobiomodulation" },
-      "microcurrent": { "label": "Microcurrent", "sub": "bioelectrical" },
-      "ems": { "label": "EMS", "sub": "neuromuscular" },
-      "thermal": { "label": "Thermal", "sub": "heat shock" }
+      "redLight": {
+        "label": "Red Light",
+        "sub": "photobiomodulation"
+      },
+      "microcurrent": {
+        "label": "Microcurrent",
+        "sub": "bioelectrical"
+      },
+      "ems": {
+        "label": "EMS",
+        "sub": "neuromuscular"
+      },
+      "thermal": {
+        "label": "Thermal",
+        "sub": "heat shock"
+      }
     }
   },
   "faq": {

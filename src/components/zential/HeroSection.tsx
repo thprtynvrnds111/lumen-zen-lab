@@ -2,16 +2,23 @@ import heroImage0 from "@/assets/hero-neck-device.png";
 import heroImage1 from "@/assets/hero-ritual-v2.webp";
 import heroImage2 from "@/assets/hero-lifestyle-2.webp";
 import heroImage3 from "@/assets/hero-lifestyle-3.webp";
-import { Sun, Zap, Activity, Flame, Star } from "lucide-react";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const MODALITY_ICONS = [Sun, Zap, Activity, Flame];
-const MODALITY_KEYS = ['redLight', 'microcurrent', 'ems', 'thermal'] as const;
-const MODALITY_COLORS = ["#E84040", "#4080FF", "#E87040", "#E8A040"];
-
 const heroImages = [heroImage0, heroImage1, heroImage2, heroImage3];
+
+const S = {
+  dark: '#1A1714',
+  teal: '#2ED8A8',
+  cream: '#F7F4F0',
+  muted: 'rgba(247,244,240,0.55)',
+  faint: 'rgba(247,244,240,0.25)',
+  ghost: 'rgba(247,244,240,0.05)',
+  tealFaint: 'rgba(46,216,168,0.4)',
+  lora: { fontFamily: "'Lora', serif" } as React.CSSProperties,
+  dm: { fontFamily: "'DM Sans', sans-serif" } as React.CSSProperties,
+} as const;
 
 export function HeroSection() {
   const [visible, setVisible] = useState(false);
@@ -19,12 +26,41 @@ export function HeroSection() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const { t } = useTranslation('home');
 
+  // Cursor glow — lerped rAF
+  const sectionRef = useRef<HTMLElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+  const cursorTarget = useRef({ x: -9999, y: -9999 });
+  const cursorLerped = useRef({ x: -9999, y: -9999 });
+  const frameRef = useRef<number>();
+
+  useEffect(() => {
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+    const tick = () => {
+      cursorLerped.current.x = lerp(cursorLerped.current.x, cursorTarget.current.x, 0.07);
+      cursorLerped.current.y = lerp(cursorLerped.current.y, cursorTarget.current.y, 0.07);
+      if (glowRef.current) {
+        const { x, y } = cursorLerped.current;
+        glowRef.current.style.background =
+          `radial-gradient(circle 520px at ${x}px ${y}px, rgba(46,216,168,0.07) 0%, rgba(46,216,168,0.02) 40%, transparent 70%)`;
+      }
+      frameRef.current = requestAnimationFrame(tick);
+    };
+    frameRef.current = requestAnimationFrame(tick);
+    return () => { if (frameRef.current) cancelAnimationFrame(frameRef.current); };
+  }, []);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    const rect = sectionRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    cursorTarget.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  }, []);
+
   useEffect(() => { setVisible(true); }, []);
 
   const cycleImage = useCallback(() => {
     setIsTransitioning(true);
     setTimeout(() => {
-      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+      setCurrentImage(prev => (prev + 1) % heroImages.length);
       setIsTransitioning(false);
     }, 600);
   }, []);
@@ -34,187 +70,198 @@ export function HeroSection() {
     return () => clearInterval(interval);
   }, [cycleImage]);
 
-  const trustItems = [
-    t('hero.trust.shipping'),
-    t('hero.trust.guarantee'),
-    t('hero.trust.tagline'),
-  ];
+  const reveal = {
+    opacity: visible ? 1 : 0,
+    transform: visible ? 'translateY(0)' : 'translateY(24px)',
+    transition: 'opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.25s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.25s',
+  };
 
   return (
-    <section className="flex flex-col md:flex-row md:min-h-[calc(100vh-88px)]" style={{ backgroundColor: '#070A0E' }}>
-      {/* Left — Image */}
-      <div className="w-full md:w-[55%] relative overflow-hidden h-[60vh] md:h-auto">
+    <section
+      ref={sectionRef}
+      onMouseMove={handleMouseMove}
+      className="relative grid grid-cols-1 md:grid-cols-2 overflow-hidden"
+      style={{ backgroundColor: S.dark, minHeight: '100dvh' }}
+      aria-label="Hero — Zential Pure"
+    >
+      {/* Cursor glow */}
+      <div ref={glowRef} className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }} aria-hidden />
+
+      {/* Film grain — print depth on flat dark surface */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          zIndex: 2,
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          backgroundRepeat: 'repeat',
+          backgroundSize: '160px 160px',
+          opacity: 0.04,
+          mixBlendMode: 'overlay',
+        }}
+        aria-hidden
+      />
+
+      {/* ── Left: Cover content ── */}
+      <div className="flex flex-col justify-between px-10 md:px-14 lg:px-16 py-12 md:py-14 relative" style={{ zIndex: 10 }}>
+
+        {/* Spacer — replaces removed masthead height so title sits at correct position */}
+        <div style={{ height: 48 }} aria-hidden />
+
+        {/* Title block */}
+        <div style={reveal}>
+          <p style={{ ...S.dm, fontWeight: 200, fontSize: 11, letterSpacing: '0.35em', textTransform: 'uppercase', color: S.teal, marginBottom: 28 }}>
+            {t('hero.eyebrow', 'Resonance Restoration')}
+          </p>
+
+          <h1 style={{
+            ...S.lora,
+            fontStyle: 'italic',
+            fontSize: 'clamp(44px, 5vw, 80px)',
+            lineHeight: 1.03,
+            color: S.cream,
+            fontWeight: 400,
+            letterSpacing: '-0.02em',
+            marginBottom: 28,
+          }}>
+            {t('hero.line1', 'The Body')}<br />
+            {t('hero.line2', 'Remembers')}<br />
+            <span style={{ color: S.teal }}>{t('hero.line3', 'its Frequency.')}</span>
+          </h1>
+
+          <p style={{ ...S.dm, fontWeight: 300, fontSize: 14, lineHeight: 1.75, color: S.muted, maxWidth: 340, letterSpacing: '0.01em', marginBottom: 16 }}>
+            {t('hero.body', 'An editorial on returning. On skin not as surface but as instrument. On the science beneath the ritual, and the ritual within the science.')}
+          </p>
+
+          {/* Trust strip */}
+          <div className="flex flex-wrap gap-x-5 gap-y-1.5 mb-10">
+            {[
+              t('hero.trust.shipping', 'Free EU shipping'),
+              t('hero.trust.guarantee', '30-Day Protocol Guarantee'),
+              t('hero.trust.tagline', 'Clinic precision. Daily ritual.'),
+            ].map(label => (
+              <span key={label} className="flex items-center gap-1.5" style={{ ...S.dm, fontSize: 11, color: 'rgba(247,244,240,0.4)' }}>
+                <span style={{ color: S.teal, fontSize: 12 }}>—</span>
+                {label}
+              </span>
+            ))}
+          </div>
+
+          {/* CTAs — manifesto style */}
+          <div className="flex flex-col min-[480px]:flex-row gap-3 max-w-sm">
+            <button
+              className="flex-1 py-4 px-6 transition-all duration-300"
+              style={{
+                ...S.dm,
+                fontWeight: 400,
+                fontSize: 11,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: S.cream,
+                border: '1px solid rgba(247,244,240,0.28)',
+                backgroundColor: 'transparent',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.borderColor = S.teal;
+                (e.currentTarget as HTMLElement).style.color = S.teal;
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(247,244,240,0.28)';
+                (e.currentTarget as HTMLElement).style.color = S.cream;
+              }}
+              onClick={() => document.getElementById('devices')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              {t('hero.ctaPrimary', 'Order the Face Introducer')}
+            </button>
+            <Link
+              to="/quiz"
+              className="flex-1 py-4 px-6 text-center transition-all duration-300"
+              style={{
+                ...S.dm,
+                fontWeight: 300,
+                fontSize: 11,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: 'rgba(247,244,240,0.4)',
+                border: '1px solid rgba(247,244,240,0.1)',
+                backgroundColor: 'transparent',
+              }}
+            >
+              {t('hero.ctaSecondary', 'Find Your Protocol')}
+            </Link>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="flex items-end justify-between">
+          <span style={{ ...S.dm, fontWeight: 200, fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(247,244,240,0.22)' }}>
+            Issue 001 · Spring 2025 · zentialpure.com
+          </span>
+          <span style={{ ...S.lora, fontStyle: 'italic', fontSize: 48, color: S.ghost, fontWeight: 400, lineHeight: 1 }}>
+            01
+          </span>
+        </div>
+      </div>
+
+      {/* ── Right: Editorial image ── */}
+      <div className="relative overflow-hidden min-h-[60vh] md:min-h-0 order-first md:order-last">
         {heroImages.map((src, i) => (
           <img
             key={i}
             src={src}
-            alt="Zential recovery device"
-            width={1080}
-            height={1296}
+            alt={i === 0 ? 'Face Introducer clinic-precision instrument' : 'Zential Pure ritual'}
             className="absolute inset-0 w-full h-full object-cover"
-            {...(i === 0 ? { fetchpriority: "high" as any, loading: "eager" as const } : { loading: "lazy" as const })}
+            {...(i === 0 ? { fetchPriority: 'high' as any, loading: 'eager' as const } : { loading: 'lazy' as const })}
             style={{
               opacity: currentImage === i ? (isTransitioning ? 0 : 1) : 0,
               transition: 'opacity 0.6s ease-in-out',
             }}
           />
         ))}
-      </div>
 
-      {/* Right — Content */}
-      <div
-        className="w-full md:w-[45%] flex flex-col items-center md:items-start justify-center px-8 md:px-16 lg:px-20 py-14 md:py-16"
-        style={{ backgroundColor: '#070A0E' }}
-      >
-        {/* Eyebrow */}
+        {/* Left bleed into dark */}
         <div
-          className="flex items-center gap-3 mb-5"
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0)' : 'translateY(12px)',
-            transition: 'opacity 0.7s ease-out 0.2s, transform 0.7s ease-out 0.2s',
-          }}
-        >
-          <span className="h-px w-6" style={{ backgroundColor: 'rgba(234,231,224,0.25)' }} />
-          <p className="text-[10px] md:text-[11px] tracking-[0.32em] uppercase" style={{ color: 'rgba(234,231,224,0.5)' }}>
-            {t('hero.eyebrow')}
-          </p>
+          className="absolute inset-0 pointer-events-none hidden md:block"
+          style={{ background: 'linear-gradient(to right, #1A1714 0%, transparent 12%)' }}
+        />
+        {/* Bottom bleed on mobile */}
+        <div
+          className="absolute inset-0 pointer-events-none md:hidden"
+          style={{ background: 'linear-gradient(to top, #1A1714 0%, transparent 30%)' }}
+        />
+        {/* Atmospheric tint */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'linear-gradient(135deg, transparent 50%, rgba(13,38,32,0.28) 100%)' }}
+        />
+        {/* Clinical scan line */}
+        <div className="scan-line-wrap hidden md:block" aria-hidden>
+          <div className="scan-line" />
         </div>
 
-        {/* Headline */}
-        <h1
-          className="font-sans font-bold text-[40px] md:text-[56px] lg:text-[68px] leading-[1.04] tracking-tight mb-5 text-center md:text-left text-balance"
-          style={{
-            color: '#EAE7E0',
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0)' : 'translateY(20px)',
-            transition: 'opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s',
-          }}
-        >
-          {t('hero.headline')}
-        </h1>
-
-        {/* Italic subline */}
-        <p
-          className="font-serif italic text-[14px] md:text-[15px] mb-5 text-center md:text-left"
-          style={{
-            color: '#E87040',
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0)' : 'translateY(10px)',
-            transition: 'opacity 0.8s ease-out 0.38s, transform 0.8s ease-out 0.38s',
-          }}
-        >
-          {t('hero.subline')}
-        </p>
-
-        {/* Body copy */}
-        <p
-          className="text-[15px] md:text-base leading-relaxed max-w-md mb-8 text-center md:text-left"
-          style={{
-            color: 'rgba(234,231,224,0.65)',
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0)' : 'translateY(14px)',
-            transition: 'opacity 0.8s ease-out 0.52s, transform 0.8s ease-out 0.52s',
-          }}
-        >
-          {t('hero.body')}
-        </p>
-
-        {/* Social proof */}
+        {/* Vertical caption */}
         <div
-          className="flex items-center gap-3 mb-8"
+          className="absolute top-12 right-10 hidden md:block"
           style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0)' : 'translateY(12px)',
-            transition: 'opacity 0.7s ease-out 0.55s, transform 0.7s ease-out 0.55s',
+            writingMode: 'vertical-rl',
+            textOrientation: 'mixed',
+            transform: 'rotate(180deg)',
+            ...S.dm,
+            fontWeight: 200,
+            fontSize: 9,
+            letterSpacing: '0.25em',
+            textTransform: 'uppercase',
+            color: 'rgba(247,244,240,0.2)',
           }}
         >
-          <div className="flex gap-0.5">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} size={14} fill="#E87040" style={{ color: '#E87040' }} />
-            ))}
-          </div>
-          <span className="text-xs tracking-wide" style={{ color: 'rgba(234,231,224,0.5)' }}>
-            {t('hero.rating')}
-          </span>
+          Campaign I · Resonance Series
         </div>
 
-        {/* CTAs */}
+        {/* Format tag */}
         <div
-          className="flex flex-col min-[480px]:flex-row gap-3 w-full max-w-md mb-9"
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0)' : 'translateY(12px)',
-            transition: 'opacity 0.7s ease-out 0.7s, transform 0.7s ease-out 0.7s',
-          }}
+          className="absolute bottom-12 left-10 hidden md:block"
+          style={{ ...S.dm, fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: S.tealFaint }}
         >
-          <button
-            className="flex-1 py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full transition-all duration-300 hover:-translate-y-0.5"
-            style={{ backgroundColor: '#E87040', color: '#ffffff', boxShadow: '0 0 24px rgba(232,112,64,0.25)' }}
-            onClick={() => document.getElementById('devices')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            {t('hero.ctaPrimary')}
-          </button>
-          <Link
-            to="/quiz"
-            className="flex-1 py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full border transition-all duration-300 hover:-translate-y-0.5 text-center"
-            style={{ borderColor: 'rgba(234,231,224,0.25)', color: '#EAE7E0', backgroundColor: 'transparent' }}
-          >
-            {t('hero.ctaSecondary')}
-          </Link>
-        </div>
-
-        {/* Trust strip */}
-        <div
-          className="flex flex-wrap gap-x-5 gap-y-1.5 mb-8"
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0)' : 'translateY(10px)',
-            transition: 'opacity 0.7s ease-out 0.78s, transform 0.7s ease-out 0.78s',
-          }}
-        >
-          {trustItems.map(label => (
-            <span key={label} className="flex items-center gap-1.5 text-[11px]" style={{ color: 'rgba(234,231,224,0.45)' }}>
-              <span style={{ color: '#E87040', fontSize: 13 }}>✓</span>
-              {label}
-            </span>
-          ))}
-        </div>
-
-        {/* Modality cards */}
-        <div
-          className="w-full max-w-md pt-6"
-          style={{
-            borderTop: '1px solid rgba(255,255,255,0.08)',
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0)' : 'translateY(12px)',
-            transition: 'opacity 0.8s ease-out 0.85s, transform 0.8s ease-out 0.85s',
-          }}
-        >
-          <p className="text-[10px] tracking-[0.3em] uppercase mb-4 text-center md:text-left" style={{ color: 'rgba(234,231,224,0.35)' }}>
-            {t('hero.modalities.label')}
-          </p>
-          <div className="grid grid-cols-4 gap-2">
-            {MODALITY_KEYS.map((key, idx) => {
-              const Icon = MODALITY_ICONS[idx];
-              const color = MODALITY_COLORS[idx];
-              return (
-                <div
-                  key={key}
-                  className="flex flex-col items-center gap-2 rounded-xl py-3 px-1"
-                  style={{ backgroundColor: '#111820', border: `1px solid ${color}28`, borderTop: `2px solid ${color}` }}
-                >
-                  <Icon size={16} strokeWidth={1.5} style={{ color }} />
-                  <span className="text-[9px] tracking-[0.12em] uppercase text-center" style={{ color: '#EAE7E0' }}>
-                    {t(`hero.modalities.${key}.label`)}
-                  </span>
-                  <span className="text-[8px] tracking-wide" style={{ color: 'rgba(234,231,224,0.6)' }}>
-                    {t(`hero.modalities.${key}.sub`)}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
+          4×5 · Editorial
         </div>
       </div>
     </section>

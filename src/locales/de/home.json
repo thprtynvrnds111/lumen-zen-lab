@@ -1,23 +1,35 @@
 {
   "hero": {
-    "eyebrow": "Human Performance Stack",
+    "eyebrow": "Resonanz-Wiederherstellung",
     "headline": "Optimiere deine Biologie.",
     "subline": "Vier Technologien. Ein tägliches Protokoll. Messbare Ergebnisse.",
-    "body": "Die gleichen vier Technologien, die in professionellen Mikrostrom-Facials eingesetzt werden — Rotlicht, EMS, Thermisch, Galvanisch — in ein 10-Minuten-Tagesprotokoll verpackt. Zu Hause. €88. Einmalig.",
+    "body": "Ein Editorial über die Rückkehr. Über Haut nicht als Oberfläche, sondern als Instrument. Über die Wissenschaft hinter dem Ritual und das Ritual in der Wissenschaft.",
     "rating": "4.9 / 5 — bewertet von unserer Community",
-    "ctaPrimary": "Protokoll starten",
-    "ctaSecondary": "60s-Quiz machen",
+    "ctaPrimary": "Face Introducer bestellen",
+    "ctaSecondary": "Dein Protokoll finden",
     "trust": {
       "shipping": "Kostenloser EU-Versand",
-      "guarantee": "30-Tage-Garantie",
+      "guarantee": "30-Tage Protokoll-Garantie",
       "tagline": "Klinische Präzision. Tägliches Ritual."
     },
     "modalities": {
       "label": "Vier Protokolle. Ein Stack.",
-      "redLight": { "label": "Rotlicht", "sub": "Photobiomodulation" },
-      "microcurrent": { "label": "Mikrostrom", "sub": "bioelektrisch" },
-      "ems": { "label": "EMS", "sub": "neuromuskulär" },
-      "thermal": { "label": "Thermisch", "sub": "Hitzeschock" }
+      "redLight": {
+        "label": "Rotlicht",
+        "sub": "Photobiomodulation"
+      },
+      "microcurrent": {
+        "label": "Mikrostrom",
+        "sub": "bioelektrisch"
+      },
+      "ems": {
+        "label": "EMS",
+        "sub": "neuromuskulär"
+      },
+      "thermal": {
+        "label": "Thermisch",
+        "sub": "Hitzeschock"
+      }
     }
   },
   "faq": {

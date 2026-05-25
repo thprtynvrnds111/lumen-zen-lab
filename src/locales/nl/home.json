@@ -1,23 +1,35 @@
 {
   "hero": {
-    "eyebrow": "Human Performance Stack",
+    "eyebrow": "Resonantie Herstel",
     "headline": "Optimaliseer je biologie.",
     "subline": "Vier technologieën. Één dagelijks protocol. Meetbaar resultaat.",
-    "body": "Dezelfde vier technologieën die gebruikt worden in professionele microcurrent-facials — rood licht, EMS, thermisch, galvanisch — geëngineered in een 10-minuten dagelijks protocol. Thuis. €88. Eenmalig.",
+    "body": "Een editoriaal over terugkeer. Over huid niet als oppervlak maar als instrument. Over de wetenschap achter het ritueel en het ritueel in de wetenschap.",
     "rating": "4.9 / 5 — beoordeeld door onze community",
-    "ctaPrimary": "Start het Protocol",
-    "ctaSecondary": "Doe de 60s Quiz",
+    "ctaPrimary": "Bestel de Face Introducer",
+    "ctaSecondary": "Vind Jouw Protocol",
     "trust": {
       "shipping": "Gratis EU Verzending",
-      "guarantee": "30 Dagen Garantie",
+      "guarantee": "30-Dagen Protocol Garantie",
       "tagline": "Klinische Precisie. Dagelijks Ritueel."
     },
     "modalities": {
       "label": "Vier protocollen. Één stack.",
-      "redLight": { "label": "Rood Licht", "sub": "fotobiomodulatie" },
-      "microcurrent": { "label": "Microcurrent", "sub": "bio-elektrisch" },
-      "ems": { "label": "EMS", "sub": "neuromusculair" },
-      "thermal": { "label": "Thermisch", "sub": "warmteshock" }
+      "redLight": {
+        "label": "Rood Licht",
+        "sub": "fotobiomodulatie"
+      },
+      "microcurrent": {
+        "label": "Microcurrent",
+        "sub": "bio-elektrisch"
+      },
+      "ems": {
+        "label": "EMS",
+        "sub": "neuromusculair"
+      },
+      "thermal": {
+        "label": "Thermisch",
+        "sub": "warmteshock"
+      }
     }
   },
   "faq": {

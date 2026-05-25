@@ -1,23 +1,35 @@
 {
   "hero": {
-    "eyebrow": "Human Performance Stack",
+    "eyebrow": "Restauration de Résonance",
     "headline": "Optimisez votre biologie.",
     "subline": "Quatre technologies. Un protocole quotidien. Des résultats mesurables.",
-    "body": "Les quatre mêmes technologies utilisées dans les soins faciaux professionnels au microcourant — lumière rouge, EMS, thermique, galvanique — conçues en un protocole quotidien de 10 minutes. Chez vous. €88. Une seule fois.",
+    "body": "Un éditorial sur le retour. Sur la peau non comme surface mais comme instrument. Sur la science derrière le rituel et le rituel dans la science.",
     "rating": "4,9 / 5 — noté par notre communauté",
-    "ctaPrimary": "Démarrer le protocole",
-    "ctaSecondary": "Faire le quiz en 60s",
+    "ctaPrimary": "Commander le Face Introducer",
+    "ctaSecondary": "Trouver Votre Protocole",
     "trust": {
       "shipping": "Livraison UE gratuite",
-      "guarantee": "Garantie 30 jours",
+      "guarantee": "Garantie Protocole 30 Jours",
       "tagline": "Précision clinique. Rituel quotidien."
     },
     "modalities": {
       "label": "Quatre protocoles. Une stack.",
-      "redLight": { "label": "Lumière rouge", "sub": "photobiomodulation" },
-      "microcurrent": { "label": "Microcourant", "sub": "bioélectrique" },
-      "ems": { "label": "EMS", "sub": "neuromusculaire" },
-      "thermal": { "label": "Thermique", "sub": "choc thermique" }
+      "redLight": {
+        "label": "Lumière rouge",
+        "sub": "photobiomodulation"
+      },
+      "microcurrent": {
+        "label": "Microcourant",
+        "sub": "bioélectrique"
+      },
+      "ems": {
+        "label": "EMS",
+        "sub": "neuromusculaire"
+      },
+      "thermal": {
+        "label": "Thermique",
+        "sub": "choc thermique"
+      }
     }
   },
   "faq": {

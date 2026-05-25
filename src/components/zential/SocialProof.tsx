@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import testimonialSarah from "@/assets/testimonial-sarah.webp";
 import testimonialMarie from "@/assets/testimonial-marie.webp";
 import testimonialElena from "@/assets/testimonial-elena.webp";
@@ -15,17 +15,22 @@ const testimonials = [
 
 export function SocialProof() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [paused, setPaused] = useState(false);
+  const pausedRef = useRef(false);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
-    const timer = setInterval(() => {
-      if (!paused) el.scrollLeft += 1;
-      if (el.scrollLeft >= el.scrollWidth / 2) el.scrollLeft = 0;
-    }, 30);
-    return () => clearInterval(timer);
-  }, [paused]);
+    let frame: number;
+    const tick = () => {
+      if (!pausedRef.current) {
+        el.scrollLeft += 0.5;
+        if (el.scrollLeft >= el.scrollWidth / 2) el.scrollLeft = 0;
+      }
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   return (
     <section className="section-padding bg-secondary/30">
@@ -33,7 +38,7 @@ export function SocialProof() {
         <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Early Experiences</p>
         <h2 className="text-3xl md:text-4xl font-semibold">First to Start the Ritual</h2>
       </div>
-      <div ref={scrollRef} className="overflow-hidden" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+      <div ref={scrollRef} className="overflow-hidden" onMouseEnter={() => { pausedRef.current = true; }} onMouseLeave={() => { pausedRef.current = false; }}>
         <div className="flex gap-6" style={{ width: 'max-content' }}>
           {[...testimonials, ...testimonials].map((t, i) => (
             <div key={i} className="glass-card p-8 w-[340px] flex-shrink-0">

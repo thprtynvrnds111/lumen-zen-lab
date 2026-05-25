@@ -7,6 +7,8 @@ import { ShopByConcern } from "@/components/zential/ShopByConcern";
 
 import { lazy, Suspense } from "react";
 
+const PhilosophySection  = lazy(() => import("@/components/zential/PhilosophySection").then(m => ({ default: m.PhilosophySection })));
+const ScienceSection     = lazy(() => import("@/components/zential/ScienceSection").then(m => ({ default: m.ScienceSection })));
 const ComparisonSection  = lazy(() => import("@/components/zential/ComparisonSection").then(m => ({ default: m.ComparisonSection })));
 const MovementSection    = lazy(() => import("@/components/zential/MovementSection").then(m => ({ default: m.MovementSection })));
 const DevicesSection     = lazy(() => import("@/components/zential/DevicesSection").then(m => ({ default: m.DevicesSection })));
@@ -56,15 +58,19 @@ const Index = () => {
           <ShopByConcern />
           <DevicesSection />
 
-          {/* 3. Proof */}
+          {/* 3. Philosophy + Science — earned after products are seen */}
+          <PhilosophySection />
+          <ScienceSection />
+
+          {/* 4. Proof */}
           <StatsBar />
           <SocialProof />
           <TrustpilotStrip />
 
-          {/* 4. Ritual */}
+          {/* 5. Ritual */}
           <RitualSection />
 
-          {/* 5. AOV + close */}
+          {/* 6. AOV + close */}
           <BundleSection />
           <FAQSection />
           <MovementSection />

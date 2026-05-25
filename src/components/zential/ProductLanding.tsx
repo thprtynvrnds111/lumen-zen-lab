@@ -30,6 +30,7 @@ import realIssueThermalZoneLite from "@/assets/problem-thermal-zone-lite.jpeg";
 import realIssueWhiteNoise from "@/assets/problem-white-noise.jpeg";
 import realIssueEyeActivator from "@/assets/problem-eye-activator.jpeg";
 import realIssueRestShell from "@/assets/problem-rest-shell.jpeg";
+import realIssueFrequencyMatPlus from "@/assets/problem-frequency-mat-plus.jpeg";
 
 type BundleKey = "single" | "ritual-set" | "pro-set";
 
@@ -47,6 +48,7 @@ const REAL_ISSUE_IMAGE_OVERRIDES: Record<string, string> = {
   "white-noise-sleep-aid-machine": realIssueWhiteNoise,
   "eye-massage": realIssueEyeActivator,
   "gravity-quilt-cotton-weighted-blanket": realIssueRestShell,
+  "household-red-light-charging-vibrating-red-light-therapy-mat": realIssueFrequencyMatPlus,
 };
 
 function buildBundles(gelPrice: number, maskPrice: number) {
@@ -291,19 +293,45 @@ export function ProductLanding({ config }: Props) {
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-[45fr_55fr] gap-10 lg:gap-16 items-start">
           {/* Gallery */}
           <div className="space-y-4">
-            <div className="aspect-square rounded-2xl overflow-hidden bg-secondary/20 group cursor-zoom-in">
-              {images[selectedImage] ? (
-                <img src={images[selectedImage].node.url} alt={config.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">No image available</div>
+            <div className="relative" style={{ aspectRatio: '4/5' }}>
+              {/* Main image */}
+              <div className="w-full h-full overflow-hidden bg-secondary/20 group cursor-zoom-in" style={{ borderRadius: 0 }}>
+                {images[selectedImage] ? (
+                  <img src={images[selectedImage].node.url} alt={config.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">No image available</div>
+                )}
+              </div>
+              {/* Inset detail shot */}
+              {images.length > 1 && (
+                <div
+                  className="absolute overflow-hidden"
+                  style={{
+                    width: '48%',
+                    aspectRatio: '1/1',
+                    bottom: -16,
+                    right: -16,
+                    border: '3px solid var(--background, #F7F4F0)',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+                    cursor: 'pointer',
+                  }}
+                  onClick={() => setSelectedImage(selectedImage === 0 ? 1 : 0)}
+                >
+                  <img
+                    src={images[selectedImage === 0 ? 1 : 0].node.url}
+                    alt="Detail"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               )}
             </div>
-            {images.length > 1 && (
-              <div className="flex gap-3 overflow-x-auto pb-1">
+            {images.length > 2 && (
+              <div className="flex gap-3 overflow-x-auto pb-1 pt-6">
                 {images.map((img: any, i: number) => (
                   <button key={i} onClick={() => setSelectedImage(i)}
-                    className={`w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 border-2 transition-all ${i === selectedImage ? "border-primary shadow-md" : "border-transparent opacity-60 hover:opacity-100"}`}>
+                    className={`w-16 h-16 flex-shrink-0 border-2 transition-all overflow-hidden ${i === selectedImage ? "border-foreground/40" : "border-transparent opacity-50 hover:opacity-80"}`}
+                    style={{ borderRadius: 0 }}>
                     <img src={img.node.url} alt="" className="w-full h-full object-cover" />
                   </button>
                 ))}
@@ -411,7 +439,7 @@ export function ProductLanding({ config }: Props) {
             )}
 
             <div className="flex items-baseline gap-3 mb-1">
-              <span className="font-serif text-[34px] md:text-[40px] leading-none text-foreground">{sym}{bundlePrice.toFixed(2)}</span>
+              <span className="font-serif italic text-[34px] md:text-[40px] leading-none text-foreground">{sym}{bundlePrice.toFixed(2)}</span>
               {bundle.savePercent > 0 && (
                 <span className="text-[10px] font-semibold tracking-[0.15em] uppercase text-emerald bg-emerald/10 px-2.5 py-1 rounded-full">Save {bundle.savePercent}%</span>
               )}
@@ -431,9 +459,34 @@ export function ProductLanding({ config }: Props) {
               <button
                 onClick={handleAdd}
                 disabled={isCartLoading || !variant?.availableForSale}
-                className="w-full bg-[#E87040] hover:bg-[#D4633A] text-white rounded-full uppercase tracking-[0.18em] text-[11px] font-medium py-5 transition-all duration-300 disabled:opacity-50 flex items-center justify-center"
+                style={{
+                  width: '100%',
+                  padding: '18px 24px',
+                  border: '1px solid rgba(42,36,32,0.3)',
+                  backgroundColor: 'transparent',
+                  color: '#2A2420',
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontWeight: 300,
+                  fontSize: 11,
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase' as const,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'border-color 0.2s, color 0.2s',
+                  opacity: (isCartLoading || !variant?.availableForSale) ? 0.4 : 1,
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.borderColor = '#2ED8A8';
+                  (e.currentTarget as HTMLElement).style.color = '#2ED8A8';
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(42,36,32,0.3)';
+                  (e.currentTarget as HTMLElement).style.color = '#2A2420';
+                }}
               >
-                {isCartLoading ? <Loader2 className="animate-spin" size={16} /> : "Add To Ritual"}
+                {isCartLoading ? <Loader2 className="animate-spin" size={16} /> : `Order the ${config.name}`}
               </button>
             </div>
 
@@ -922,9 +975,33 @@ export function ProductLanding({ config }: Props) {
           <button
             onClick={handleAdd}
             disabled={isCartLoading}
-            className="inline-flex items-center justify-center bg-white hover:bg-white/90 text-[#1A1714] rounded-full uppercase tracking-[0.18em] text-[11px] font-medium px-12 py-5 transition-all duration-300 disabled:opacity-50"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '18px 48px',
+              border: '1px solid rgba(247,244,240,0.28)',
+              backgroundColor: 'transparent',
+              color: '#F7F4F0',
+              fontFamily: "'DM Sans', sans-serif",
+              fontWeight: 300,
+              fontSize: 11,
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase' as const,
+              cursor: 'pointer',
+              transition: 'border-color 0.2s, color 0.2s',
+              opacity: isCartLoading ? 0.4 : 1,
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.borderColor = '#2ED8A8';
+              (e.currentTarget as HTMLElement).style.color = '#2ED8A8';
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.borderColor = 'rgba(247,244,240,0.28)';
+              (e.currentTarget as HTMLElement).style.color = '#F7F4F0';
+            }}
           >
-            {isCartLoading ? <Loader2 className="animate-spin" size={16} /> : "Start the Protocol"}
+            {isCartLoading ? <Loader2 className="animate-spin" size={16} /> : `Order the ${config.name}`}
           </button>
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mt-10 text-white/50">
             {[
@@ -957,9 +1034,33 @@ export function ProductLanding({ config }: Props) {
             <button
               onClick={handleAdd}
               disabled={isCartLoading}
-              className="flex-shrink-0 bg-[#E87040] hover:bg-[#D4633A] text-white rounded-full uppercase tracking-[0.18em] text-[10px] font-medium px-6 py-3.5 transition-all disabled:opacity-50"
+              style={{
+                flexShrink: 0,
+                padding: '12px 24px',
+                border: '1px solid rgba(42,36,32,0.3)',
+                backgroundColor: 'transparent',
+                color: '#2A2420',
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 300,
+                fontSize: 10,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase' as const,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                transition: 'border-color 0.2s, color 0.2s',
+                opacity: isCartLoading ? 0.4 : 1,
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.borderColor = '#2ED8A8';
+                (e.currentTarget as HTMLElement).style.color = '#2ED8A8';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(42,36,32,0.3)';
+                (e.currentTarget as HTMLElement).style.color = '#2A2420';
+              }}
             >
-              {isCartLoading ? <Loader2 className="animate-spin" size={14} /> : "Add To Ritual"}
+              {isCartLoading ? <Loader2 className="animate-spin" size={14} /> : `Order the ${config.name}`}
             </button>
           </div>
         </div>
