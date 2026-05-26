@@ -157,14 +157,44 @@
     }
     </script>
 
-    <!-- Preconnects (fonts + Shopify) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preconnects (Shopify storefront + checkout) -->
     <link rel="preconnect" href="https://0d1m9a-w7.myshopify.com" crossorigin />
+    <link rel="preconnect" href="https://checkout.zentialpure.com" crossorigin />
+    <link rel="dns-prefetch" href="https://checkout.zentialpure.com" />
 
-    <!-- Fonts with display=swap -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" /></noscript>
+    <!-- Self-hosted variable fonts (DM Sans + Lora) -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-wght.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/lora-wght.woff2" crossorigin />
+    <style>
+      @font-face {
+        font-family: 'DM Sans';
+        src: url('/fonts/dm-sans-wght.woff2') format('woff2-variations');
+        font-weight: 100 1000;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'DM Sans';
+        src: url('/fonts/dm-sans-wght-italic.woff2') format('woff2-variations');
+        font-weight: 100 1000;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Lora';
+        src: url('/fonts/lora-wght.woff2') format('woff2-variations');
+        font-weight: 100 1000;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Lora';
+        src: url('/fonts/lora-wght-italic.woff2') format('woff2-variations');
+        font-weight: 100 1000;
+        font-style: italic;
+        font-display: swap;
+      }
+    </style>
 
     <!-- Critical above-the-fold CSS (inlined) -->
     <style>

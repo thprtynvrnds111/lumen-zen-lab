@@ -1,5 +1,5 @@
 import RitualGuideLayout, { type RitualGuideConfig } from "@/components/zential/RitualGuideLayout";
-import heroImg from "@/assets/ritual-sculpt-wand.png";
+import heroImg from "@/assets/ritual-sculpt-wand.webp";
 
 const config: RitualGuideConfig = {
   seoTitle: "Ritual Guide — Sculpt Wand | Zential Pure",

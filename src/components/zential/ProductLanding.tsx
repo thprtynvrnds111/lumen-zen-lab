@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
+import { prefetchCheckout } from "@/lib/prefetchCheckout";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Header } from "@/components/zential/Header";
@@ -17,20 +18,20 @@ import { ScarcityBanner } from "@/components/zential/ScarcityBanner";
 import type { ProductConfig } from "@/data/productConfigs";
 import { TrustpilotStrip } from "@/components/zential/TrustpilotStrip";
 import { SkinFitSection } from "@/components/zential/SkinFitSection";
-import realIssueFaceIntroducer from "@/assets/problem-face-introducer-v2.png";
-import realIssueFrequencyWand from "@/assets/problem-frequency-wand-v2.jpeg";
-import realIssueGuasha from "@/assets/problem-guasha-v2.jpeg";
-import realIssueSkinPulse from "@/assets/problem-skinpulse-v2.jpeg";
-import realIssueSculptWand from "@/assets/problem-sculpt-wand-v2.jpeg";
-import realIssueDepthMask from "@/assets/problem-depth-mask.jpeg";
-import realIssuePressureShell from "@/assets/problem-pressure-shell.jpeg";
-import realIssuePulseRoller from "@/assets/problem-pulse-roller.jpeg";
-import realIssueRestoreMat from "@/assets/problem-restore-mat.jpeg";
-import realIssueThermalZoneLite from "@/assets/problem-thermal-zone-lite.jpeg";
-import realIssueWhiteNoise from "@/assets/problem-white-noise.jpeg";
-import realIssueEyeActivator from "@/assets/problem-eye-activator.jpeg";
-import realIssueRestShell from "@/assets/problem-rest-shell.jpeg";
-import realIssueFrequencyMatPlus from "@/assets/problem-frequency-mat-plus.jpeg";
+import realIssueFaceIntroducer from "@/assets/problem-face-introducer-v2.webp";
+import realIssueFrequencyWand from "@/assets/problem-frequency-wand-v2.webp";
+import realIssueGuasha from "@/assets/problem-guasha-v2.webp";
+import realIssueSkinPulse from "@/assets/problem-skinpulse-v2.webp";
+import realIssueSculptWand from "@/assets/problem-sculpt-wand-v2.webp";
+import realIssueDepthMask from "@/assets/problem-depth-mask.webp";
+import realIssuePressureShell from "@/assets/problem-pressure-shell.webp";
+import realIssuePulseRoller from "@/assets/problem-pulse-roller.webp";
+import realIssueRestoreMat from "@/assets/problem-restore-mat.webp";
+import realIssueThermalZoneLite from "@/assets/problem-thermal-zone-lite.webp";
+import realIssueWhiteNoise from "@/assets/problem-white-noise.webp";
+import realIssueEyeActivator from "@/assets/problem-eye-activator.webp";
+import realIssueRestShell from "@/assets/problem-rest-shell.webp";
+import realIssueFrequencyMatPlus from "@/assets/problem-frequency-mat-plus.webp";
 
 type BundleKey = "single" | "ritual-set" | "pro-set";
 
@@ -458,6 +459,8 @@ export function ProductLanding({ config }: Props) {
             <div ref={ctaRef}>
               <button
                 onClick={handleAdd}
+                onFocus={prefetchCheckout}
+                onTouchStart={prefetchCheckout}
                 disabled={isCartLoading || !variant?.availableForSale}
                 style={{
                   width: '100%',
@@ -478,6 +481,7 @@ export function ProductLanding({ config }: Props) {
                   opacity: (isCartLoading || !variant?.availableForSale) ? 0.4 : 1,
                 }}
                 onMouseEnter={e => {
+                  prefetchCheckout();
                   (e.currentTarget as HTMLElement).style.borderColor = '#2ED8A8';
                   (e.currentTarget as HTMLElement).style.color = '#2ED8A8';
                 }}
@@ -974,6 +978,8 @@ export function ProductLanding({ config }: Props) {
           <p className="text-white/60 text-base md:text-lg mb-10 max-w-lg mx-auto leading-relaxed">Email info@zentialpure.com. We refund. No forms, no photos, no return required.</p>
           <button
             onClick={handleAdd}
+            onFocus={prefetchCheckout}
+            onTouchStart={prefetchCheckout}
             disabled={isCartLoading}
             style={{
               display: 'inline-flex',
@@ -993,6 +999,7 @@ export function ProductLanding({ config }: Props) {
               opacity: isCartLoading ? 0.4 : 1,
             }}
             onMouseEnter={e => {
+              prefetchCheckout();
               (e.currentTarget as HTMLElement).style.borderColor = '#2ED8A8';
               (e.currentTarget as HTMLElement).style.color = '#2ED8A8';
             }}
@@ -1033,6 +1040,8 @@ export function ProductLanding({ config }: Props) {
             </div>
             <button
               onClick={handleAdd}
+              onFocus={prefetchCheckout}
+              onTouchStart={prefetchCheckout}
               disabled={isCartLoading}
               style={{
                 flexShrink: 0,
@@ -1052,6 +1061,7 @@ export function ProductLanding({ config }: Props) {
                 opacity: isCartLoading ? 0.4 : 1,
               }}
               onMouseEnter={e => {
+                prefetchCheckout();
                 (e.currentTarget as HTMLElement).style.borderColor = '#2ED8A8';
                 (e.currentTarget as HTMLElement).style.color = '#2ED8A8';
               }}

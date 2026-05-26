@@ -1,4 +1,4 @@
-import heroImage0 from "@/assets/hero-neck-device.png";
+import heroImage0 from "@/assets/hero-neck-device.webp";
 import heroImage1 from "@/assets/hero-ritual-v2.webp";
 import heroImage2 from "@/assets/hero-lifestyle-2.webp";
 import heroImage3 from "@/assets/hero-lifestyle-3.webp";

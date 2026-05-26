@@ -3,6 +3,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ShoppingBag, Minus, Plus, X, Loader2, Sparkles } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
+import { prefetchCheckout } from "@/lib/prefetchCheckout";
 
 const FREE_SHIPPING_THRESHOLD = 75;
 const GEL_HANDLE = "medicube-collagen-elastic-jelly-moisturizing-cream";
@@ -43,7 +44,12 @@ export function CartDrawer() {
     setAddingGel(false);
   };
 
-  useEffect(() => { if (isOpen) syncCart(); }, [isOpen, syncCart]);
+  useEffect(() => {
+    if (isOpen) {
+      syncCart();
+      prefetchCheckout();
+    }
+  }, [isOpen, syncCart]);
 
   const [redirecting, setRedirecting] = useState(false);
 
@@ -240,6 +246,9 @@ export function CartDrawer() {
             </p>
             <button
               onClick={handleCheckout}
+              onMouseEnter={prefetchCheckout}
+              onFocus={prefetchCheckout}
+              onTouchStart={prefetchCheckout}
               disabled={isLoading || isSyncing || redirecting}
               className="w-full bg-foreground text-background py-3.5 rounded-full text-sm font-semibold tracking-[0.15em] uppercase hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
             >

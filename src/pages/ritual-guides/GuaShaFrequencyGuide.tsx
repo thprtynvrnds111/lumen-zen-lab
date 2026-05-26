@@ -1,5 +1,5 @@
 import RitualGuideLayout, { type RitualGuideConfig } from "@/components/zential/RitualGuideLayout";
-import heroImg from "@/assets/ritual-gua-sha.png";
+import heroImg from "@/assets/ritual-gua-sha.webp";
 
 const config: RitualGuideConfig = {
   seoTitle: "Ritual Guide — Gua Sha Frequency | Zential Pure",

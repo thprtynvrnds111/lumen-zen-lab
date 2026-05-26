@@ -1,5 +1,5 @@
 import RitualGuideLayout, { type RitualGuideConfig } from "@/components/zential/RitualGuideLayout";
-import heroImg from "@/assets/ritual-skin-pulse.jpg";
+import heroImg from "@/assets/ritual-skin-pulse.webp";
 
 const config: RitualGuideConfig = {
   seoTitle: "Ritual Guide — Skin Pulse | Zential Pure",

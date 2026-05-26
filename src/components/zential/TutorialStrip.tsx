@@ -1,5 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import poster1 from "@/assets/tutorial-step-1.png";
+import poster1 from "@/assets/tutorial-step-1.webp";
 import poster2 from "@/assets/lifestyle-redlight.webp";
 import poster3 from "@/assets/hero-ritual-v2.webp";
 
