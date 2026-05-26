@@ -9,6 +9,14 @@
  *   1. vite build            → dist/          (client bundle)
  *   2. vite build --ssr …    → .ssr/          (server bundle)
  *   3. node scripts/prerender.mjs             (this script)
+ *
+ * BUG-FIX (2026-05-26):
+ *   - Snapshot the template BEFORE writing the homepage file, so subsequent
+ *     route writes start from a clean shell (not the homepage-with-helmet).
+ *   - Add every Helmet-using route to ROUTES so each gets its own per-route
+ *     title/OG output instead of falling through to the homepage shell on Vercel.
+ *   - removeStaticTags now also strips the trailing newline/indent left
+ *     behind, so the final <head> contains no empty <title>-shaped gap.
  */
 
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
@@ -41,7 +49,10 @@ const ROUTES = [
   '/technology/microcurrent',
   '/technology/ems',
   '/technology/thermal',
+  '/technology/electroporation',
+  '/technology/iontophoresis',
   '/body-lift',
+  '/science',
   // Product pages — SSR renders the static config shell; Shopify data loads
   // client-side as normal. Bots get the correct <title> + meta immediately.
   '/product/lifting-and-tightening-face-introducer',
@@ -56,6 +67,14 @@ const ROUTES = [
   '/product/white-noise-sleep-aid-machine',
   // Comparison pages
   '/compare/nuface-vs-zential-pure',
+  '/compare/foreo-bear-vs-zential-pure',
+  // Long-tail SEO landing pages
+  '/clinic-vs-home-facial-device',
+  '/facial-muscle-training',
+  // Funnel pages
+  '/quiz',
+  '/quiz/result',
+  '/thank-you',
   // Ritual guides
   '/ritual-guide',
   '/ritual-guide/frame-pulse-activator',
@@ -85,16 +104,21 @@ function buildHead(helmet) {
 
 // Remove duplicate static head tags that index.html carries as homepage defaults.
 // The helmet-injected versions (which are per-page correct) will be the only ones.
+//
+// Each pattern also captures any trailing newline + leading whitespace on the
+// next line, so we don't leave an empty blank line where the title used to be
+// (some naive HTML scrapers grep the first hundred head bytes for <title> and
+// see "nothing" if it's been left as just whitespace).
 const STATIC_TAG_PATTERNS = [
-  /<title>[^<]*<\/title>/,
-  /<meta name="description"[^>]*>/,
-  /<meta property="og:title"[^>]*>/,
-  /<meta property="og:description"[^>]*>/,
-  /<meta property="og:url"[^>]*>/,
-  /<meta property="og:type"[^>]*>/,
-  /<meta name="twitter:title"[^>]*>/,
-  /<meta name="twitter:description"[^>]*>/,
-  /<link rel="canonical"[^>]*>/,
+  /<title>[^<]*<\/title>\s*/,
+  /<meta name="description"[^>]*>\s*/,
+  /<meta property="og:title"[^>]*>\s*/,
+  /<meta property="og:description"[^>]*>\s*/,
+  /<meta property="og:url"[^>]*>\s*/,
+  /<meta property="og:type"[^>]*>\s*/,
+  /<meta name="twitter:title"[^>]*>\s*/,
+  /<meta name="twitter:description"[^>]*>\s*/,
+  /<link rel="canonical"[^>]*>\s*/,
 ];
 
 function removeStaticTags(html) {
@@ -107,6 +131,11 @@ function removeStaticTags(html) {
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 async function prerender() {
+  // CRITICAL: read the template ONCE, keep it in memory. Earlier versions
+  // re-read dist/index.html each loop iteration, which meant after the '/'
+  // route was prerendered, every subsequent route inherited the homepage's
+  // baked-in helmet output. Snapshotting up-front guarantees a clean shell
+  // per route.
   const template = readFileSync(join(dist, 'index.html'), 'utf-8');
 
   // Dynamic import of the Vite SSR bundle
@@ -121,6 +150,12 @@ async function prerender() {
       const { html, helmet } = await render(route);
 
       const headHtml = buildHead(helmet);
+
+      if (!headHtml || !/<title/i.test(headHtml)) {
+        // Loud warning — every route MUST emit a <title>. If this fires,
+        // the page is missing a <SEO/> or <Helmet> usage.
+        console.warn(`\n    [WARN] no <title> for ${route} — page is missing SEO component`);
+      }
 
       // 1. Remove static per-page tags from the shared template
       // 2. Inject helmet (per-page) tags at the <!--app-head--> marker

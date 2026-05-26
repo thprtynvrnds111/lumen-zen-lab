@@ -123,7 +123,7 @@ export function getRecommendation(a: QuizAnswers): Recommendation {
     tone: {
       handle: "portable-ems-microcurrent-facial-beauty-device",
       name: "Frequency Wand Pro",
-      reason: "Red light at 630nm + thermal — the clinical pairing for cellular renewal and even tone. The most studied modality combination for radiance.",
+      reason: "Advanced EMS plus microcurrent — the at-home pairing for facial muscle tone and visible structural definition. The strongest current available in the Zential face stack.",
     },
     eyes: {
       handle: "eye-massage",

@@ -851,7 +851,7 @@ export function ProductLanding({ config }: Props) {
               {
                 week: "Week 1–2",
                 heading: "Cellular activation",
-                body: "Red light at 630–660nm begins stimulating ATP production. Microcurrent re-establishes neuromuscular pathways. Skin texture and morning puffiness typically respond first.",
+                body: "Microcurrent begins re-establishing neuromuscular pathways. Galvanic delivery shifts how actives absorb. Skin texture and morning puffiness typically respond first.",
               },
               {
                 week: "Week 3–4",

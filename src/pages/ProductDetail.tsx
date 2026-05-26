@@ -11,15 +11,15 @@ import { SEO } from "@/components/SEO";
 const PRODUCT_SEO: Record<string, { title: string; description: string }> = {
   "lifting-and-tightening-face-introducer": {
     title: "Microcurrent Face Device — Face Introducer | Zential Pure",
-    description: "Red light at 630–660nm, microcurrent, EMS, and blue light. Four modalities in one daily ritual at clinic precision. €88.",
+    description: "EMS, microcurrent, 45°C thermal, and cosmetic LED. Four modalities in one daily ritual at clinic precision. €88.",
   },
   "body-lift": {
     title: "Body Lift — Microcurrent Body Sculpting Device | Zential Pure",
-    description: "Microcurrent, red light, and sonic pulse for the body. Stimulates tissue, supports visible firming with consistent daily use.",
+    description: "Microcurrent, cosmetic LED, and sonic pulse for the body. Stimulates tissue, supports visible firming with consistent daily use.",
   },
   "eye-massage": {
     title: "Eye Activator — Microcurrent Eye Contour Device | Zential Pure",
-    description: "Microcurrent and red light targeting the periorbital zone. Stimulates collagen, supports fine line reduction with consistent use. €88.",
+    description: "Microcurrent, sonic vibration, and cosmetic LED for the periorbital zone. Supports lymphatic drainage and tone with consistent use. €88.",
   },
   "color-light-import-micro-current-vibration-massager": {
     title: "Frequency Wand — Full-Face EMS Device | Zential Pure",
@@ -38,8 +38,8 @@ const PRODUCT_SEO: Record<string, { title: string; description: string }> = {
     description: "Precision EMS delivers targeted electrical pulses to the jawline and cheekbones. Defined facial contours with consistent daily use. €88.",
   },
   "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": {
-    title: "Protocol Lens — Blue Light Blocking Glasses | Zential Pure",
-    description: "Amber-tinted lenses filter 450–490nm blue light before it reaches the retina. Protects melatonin production for earlier sleep onset. €39.",
+    title: "Frame Pulse — Clinical Red Light + Microcurrent Eye Activator | Zential Pure",
+    description: "Clinical red light therapy at 630–660nm with microcurrent for the eye and upper-face zone. Hands-free wearable, 8-minute daily protocol. €149.",
   },
   "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening": {
     title: "Face Lift Device — Red Light & EMS | Zential Pure",
@@ -129,7 +129,7 @@ const PRODUCT_PRICES: Record<string, string> = {
   "electric-guasha-massager": "88.00",
   "electric-micro-current": "88.00",
   "facial-beauty-tools-and-ems-beauty-equipment": "88.00",
-  "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": "39.00",
+  "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": "149.00",
   "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening": "88.00",
   "portable-ems-microcurrent-facial-beauty-device": "147.00",
   "medicube-collagen-elastic-jelly-moisturizing-cream": "18.00",
