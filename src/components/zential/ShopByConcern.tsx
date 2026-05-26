@@ -46,7 +46,6 @@ const concerns = [
     sub: "EMS sculpt, compression, fascia release",
     devices: "Body Lift · Foam Roller · Leg Massager",
     handle: "electric-foam-roller-muscle-relaxation-fitness-yoga-column",
-    to: "/body-lift",
     accent: "#C6A07C",
     glow: "rgba(198,160,124,0.1)",
     border: "rgba(198,160,124,0.28)",
