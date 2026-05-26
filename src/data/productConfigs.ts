@@ -1139,6 +1139,14 @@ const fluxPanelConfig: ProductConfig = {
     { week: "Week 5+", heading: "Compounding recovery", body: "Mitochondrial density and efficiency build with continued input. The panel becomes part of the daily stack — producing structural improvement that accumulates across months." },
   ],
   techSectionTitle: "Two wavelengths. One panel.",
+  valueAnchor: "Clinic red light + NIR session: €60–€90 per 10-minute exposure. Flux Panel: €280. Daily.",
+  guaranteeName: "30-Day Protocol Guarantee",
+  guaranteeDesc: "Use the Flux Panel daily for 30 days. If it has not earned its place in your morning, return it. Full refund. We cover return shipping.",
+  bonusStack: [
+    { title: "The Photon Protocol Guide", desc: "Distance, duration, frequency — calibration for skin, recovery, and combined sessions.", value: "€19" },
+    { title: "Dual-Wavelength Science Primer", desc: "What 660nm and 850nm actually do at the cellular level. PubMed citations.", value: "€27" },
+    { title: "Recovery Tracker Template", desc: "Weekly soreness, sleep, and energy log. Photobiomodulation effects compound; tracking surfaces the trend.", value: "€17" },
+  ],
 };
 
 // ─── FREQUENCY MAT + ───
@@ -1218,6 +1226,14 @@ const frequencyMatPlusConfig: ProductConfig = {
     { week: "Week 5+", heading: "Baseline shift", body: "Chronic tension patterns that accumulated over months begin to reduce. The combined heat and light input produces structural change that passive rest cannot achieve alone." },
   ],
   techSectionTitle: "Two mechanisms. One mat.",
+  valueAnchor: "Clinic recovery mat session: €40–€80 each. Frequency Mat +: €220. Daily.",
+  guaranteeName: "30-Day Protocol Guarantee",
+  guaranteeDesc: "Use the Frequency Mat + daily for 30 days. If recovery has not noticeably shifted, return it. Full refund. We cover return shipping.",
+  bonusStack: [
+    { title: "The Full-Body Protocol Guide", desc: "Position, timing, frequency. How to layer the mat with training, sleep, or stress recovery.", value: "€19" },
+    { title: "Infrared Heat Science Primer", desc: "What far-infrared does to circulation, lymphatic flow, and tissue absorption at sub-clinical doses.", value: "€17" },
+    { title: "Recovery Stack Mapping", desc: "Which body devices stack with the mat. Sequence ideas for evening or morning rituals.", value: "€14" },
+  ],
 };
 
 // ─── PRESSURE SHELL ───
@@ -1299,6 +1315,14 @@ const pressureShellConfig: ProductConfig = {
   ],
   techSectionTitle: "Four chambers. One protocol.",
   problemImage: problemPressureShell,
+  valueAnchor: "Clinic pneumatic compression session: €50–€90 each. Pressure Shell: €148. Daily.",
+  guaranteeName: "30-Day Protocol Guarantee",
+  guaranteeDesc: "Use the Pressure Shell daily for 30 days. If recovery has not noticeably shifted, return it. Full refund. We cover return shipping.",
+  bonusStack: [
+    { title: "The Sequential Protocol Guide", desc: "Sequence, intensity, duration. How to layer pneumatic compression with training, sleep, or stress recovery.", value: "€19" },
+    { title: "Lymphatic Flow Science Primer", desc: "What sequential compression does to circulation, lymphatic clearance, and venous return at sub-clinical doses.", value: "€17" },
+    { title: "Recovery Stack Mapping", desc: "Which body devices stack with the compression boots. Sequence ideas for evening or post-training rituals.", value: "€14" },
+  ],
 };
 
 // ─── PULSE ROLLER ───
@@ -1378,6 +1402,14 @@ const pulseRollerConfig: ProductConfig = {
   ],
   techSectionTitle: "One tool. Three protocols.",
   problemImage: problemPulseRoller,
+  valueAnchor: "Clinic percussion massage session: €30–€60 each. Pulse Roller: €128. Daily.",
+  guaranteeName: "30-Day Protocol Guarantee",
+  guaranteeDesc: "Use the Pulse Roller daily for 30 days. If soreness and recovery have not noticeably shifted, return it. Full refund. We cover return shipping.",
+  bonusStack: [
+    { title: "The Percussion Protocol Guide", desc: "Intensity, duration, target zones. Three preset protocols for warm-up, recovery, and fascia release.", value: "€19" },
+    { title: "Fascia Science Primer", desc: "What percussion does to fascial tissue, blood flow, and neuromuscular reset at sub-clinical doses.", value: "€17" },
+    { title: "Recovery Stack Mapping", desc: "Which body devices stack with the Pulse Roller. Sequence ideas for pre-training and post-training rituals.", value: "€14" },
+  ],
 };
 
 // ─── REST SHELL ───
@@ -1621,6 +1653,14 @@ const ritualLightProConfig: ProductConfig = {
     { week: "Week 5+", heading: "Structural renewal", body: "Consistent daily dosing drives collagen synthesis at a rate detectable without close inspection. The compounding effect of daily sessions produces the visible change the clinical evidence supports." },
   ],
   techSectionTitle: "One wavelength. Daily dose.",
+  valueAnchor: "Clinic desktop red light session: €40–€80 each. Ritual Light Pro: €225. Daily.",
+  guaranteeName: "30-Day Protocol Guarantee",
+  guaranteeDesc: "Use the Ritual Light Pro daily for 30 days. If skin response or rhythm has not shifted, return it. Full refund. We cover return shipping.",
+  bonusStack: [
+    { title: "The Desktop Protocol Guide", desc: "Distance, duration, frequency. How to integrate the panel into morning and workday rituals without adding time.", value: "€19" },
+    { title: "660nm Wavelength Science Primer", desc: "What 660nm light does at the cellular level. Mitochondrial absorption, ATP output, fibroblast response.", value: "€17" },
+    { title: "Stack Mapping Guide", desc: "Which face and body devices pair with the Ritual Light Pro for compounding effect.", value: "€14" },
+  ],
 };
 
 // ─── THERMAL PAD ───
@@ -1700,6 +1740,14 @@ const thermalPadConfig: ProductConfig = {
     { week: "Week 4+", heading: "Baseline reduction", body: "Chronic stiffness patterns that built over months begin to reduce. The joint baseline — resting mobility and comfort — measurably improves with continued daily protocol." },
   ],
   techSectionTitle: "Heat + vibration. One joint.",
+  valueAnchor: "Clinic targeted heat session: €25–€60 each. Thermal Pad: €158. Daily.",
+  guaranteeName: "30-Day Protocol Guarantee",
+  guaranteeDesc: "Use the Thermal Pad daily for 30 days. If joint comfort or baseline mobility has not shifted, return it. Full refund. We cover return shipping.",
+  bonusStack: [
+    { title: "The Targeted Heat Protocol Guide", desc: "Position, duration, temperature settings for specific joint and muscle zones.", value: "€19" },
+    { title: "Thermal Mechanism Primer", desc: "How controlled heat affects tissue absorption, circulation, and stiffness response.", value: "€17" },
+    { title: "Recovery Stack Mapping", desc: "Which devices layer with the Thermal Pad. Sequence ideas for evening recovery or pre-training warm-up.", value: "€14" },
+  ],
 };
 
 // ─── THERMAL SHELL (full sauna blanket) ───
@@ -1938,6 +1986,14 @@ const thermalZoneConfig: ProductConfig = {
     { week: "Week 4+", heading: "Protocol integrated", body: "The belt becomes a standard recovery input. The combination of thermal and photobiomodulation produces structural improvement in the target zone that neither mechanism alone provides." },
   ],
   techSectionTitle: "360 LEDs. Two mechanisms.",
+  valueAnchor: "Clinic red light + heat session: €50–€90 each. Thermal Zone: €198. Daily.",
+  guaranteeName: "30-Day Protocol Guarantee",
+  guaranteeDesc: "Use the Thermal Zone daily for 30 days. If recovery or tissue comfort has not noticeably shifted, return it. Full refund. We cover return shipping.",
+  bonusStack: [
+    { title: "The Combination Protocol Guide", desc: "When thermal alone, when red light alone, when both. Calibration for specific recovery scenarios.", value: "€19" },
+    { title: "660nm + Heat Science Primer", desc: "Why dual mechanism outperforms either alone for targeted recovery. PubMed citations.", value: "€17" },
+    { title: "Body Stack Mapping", desc: "Which body devices layer with the Thermal Zone for compounding recovery effect.", value: "€14" },
+  ],
 };
 
 // ─── THERMAL ZONE LITE (targeted joint wrap) ───
