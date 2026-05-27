@@ -5,7 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useCartSync } from "@/hooks/useCartSync";
 import { useHashScroll } from "@/hooks/useHashScroll";
-import { lazy, Suspense } from "react";
+import { captureFbclid } from "@/lib/meta-tracking";
+import { lazy, Suspense, useEffect } from "react";
 import Index from "./pages/Index";
 
 // Lazy-load non-homepage routes
@@ -56,6 +57,9 @@ const queryClient = new QueryClient();
 function AppContent() {
   useCartSync();
   useHashScroll();
+  useEffect(() => {
+    captureFbclid();
+  }, []);
   return (
     <Suspense fallback={<div className="min-h-screen bg-background" />}>
       <Routes>

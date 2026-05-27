@@ -7,9 +7,11 @@ import {
   updateShopifyCartLine,
   removeLineFromShopifyCart,
   storefrontApiRequest,
+  updateCartAttributes,
   CART_QUERY,
   formatCheckoutUrl,
 } from '@/lib/shopify';
+import { getMetaAttributes } from '@/lib/meta-tracking';
 
 export interface CartItem {
   lineId: string | null;
@@ -55,8 +57,9 @@ export const useCartStore = create<CartStore>()(
         const existingItem = items.find(i => i.variantId === item.variantId);
         set({ isLoading: true });
         try {
+          const metaAttrs = getMetaAttributes();
           if (!cartId) {
-            const result = await createShopifyCart(item.variantId, item.quantity);
+            const result = await createShopifyCart(item.variantId, item.quantity, metaAttrs);
             if (result) {
               set({ cartId: result.cartId, checkoutUrl: result.checkoutUrl, items: [{ ...item, lineId: result.lineId }] });
             }
@@ -66,11 +69,13 @@ export const useCartStore = create<CartStore>()(
             const result = await updateShopifyCartLine(cartId, existingItem.lineId, newQty);
             if (result.success) {
               set({ items: get().items.map(i => i.variantId === item.variantId ? { ...i, quantity: newQty } : i) });
+              if (metaAttrs.length > 0) updateCartAttributes(cartId, metaAttrs).catch(() => {});
             } else if (result.cartNotFound) clearCart();
           } else {
             const result = await addLineToShopifyCart(cartId, item.variantId, item.quantity);
             if (result.success) {
               set({ items: [...get().items, { ...item, lineId: result.lineId ?? null }] });
+              if (metaAttrs.length > 0) updateCartAttributes(cartId, metaAttrs).catch(() => {});
             } else if (result.cartNotFound) clearCart();
           }
         } catch (e) { console.error('Failed to add item:', e); }

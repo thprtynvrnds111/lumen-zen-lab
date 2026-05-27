@@ -167,6 +167,15 @@ const CART_CREATE = `
   }
 `;
 
+const CART_ATTRIBUTES_UPDATE = `
+  mutation cartAttributesUpdate($cartId: ID!, $attributes: [AttributeInput!]!) {
+    cartAttributesUpdate(cartId: $cartId, attributes: $attributes) {
+      cart { id attributes { key value } }
+      userErrors { field message }
+    }
+  }
+`;
+
 const CART_LINES_ADD = `
   mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
     cartLinesAdd(cartId: $cartId, lines: $lines) {
@@ -211,16 +220,31 @@ function isCartNotFoundError(userErrors: Array<{ message: string }>): boolean {
   return userErrors.some(e => e.message.toLowerCase().includes('cart not found') || e.message.toLowerCase().includes('does not exist'));
 }
 
-export async function createShopifyCart(variantId: string, quantity: number) {
-  const data = await storefrontApiRequest(CART_CREATE, {
-    input: { lines: [{ quantity, merchandiseId: variantId }] },
-  });
+export async function createShopifyCart(
+  variantId: string,
+  quantity: number,
+  attributes: Array<{ key: string; value: string }> = [],
+) {
+  const input: Record<string, unknown> = { lines: [{ quantity, merchandiseId: variantId }] };
+  if (attributes.length > 0) input.attributes = attributes;
+  const data = await storefrontApiRequest(CART_CREATE, { input });
   if (data?.data?.cartCreate?.userErrors?.length > 0) return null;
   const cart = data?.data?.cartCreate?.cart;
   if (!cart?.checkoutUrl) return null;
   const lineId = cart.lines.edges[0]?.node?.id;
   if (!lineId) return null;
   return { cartId: cart.id, checkoutUrl: formatCheckoutUrl(cart.checkoutUrl), lineId };
+}
+
+export async function updateCartAttributes(
+  cartId: string,
+  attributes: Array<{ key: string; value: string }>,
+) {
+  if (attributes.length === 0) return { success: true, skipped: true };
+  const data = await storefrontApiRequest(CART_ATTRIBUTES_UPDATE, { cartId, attributes });
+  const userErrors = data?.data?.cartAttributesUpdate?.userErrors || [];
+  if (userErrors.length > 0) return { success: false };
+  return { success: true };
 }
 
 export async function addLineToShopifyCart(cartId: string, variantId: string, quantity: number) {
