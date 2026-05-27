@@ -51,6 +51,8 @@ const Quiz = lazy(() => import("./pages/Quiz"));
 const QuizResult = lazy(() => import("./pages/QuizResult"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Protocols = lazy(() => import("./pages/Protocols"));
+const ProtocolDetail = lazy(() => import("./pages/ProtocolDetail"));
 
 const queryClient = new QueryClient();
 
@@ -64,6 +66,8 @@ function AppContent() {
     <Suspense fallback={<div className="min-h-screen bg-background" />}>
       <Routes>
         <Route path="/" element={<Index />} />
+        <Route path="/protocols" element={<Protocols />} />
+        <Route path="/protocols/:slug" element={<ProtocolDetail />} />
         <Route path="/product/:handle" element={<ProductDetail />} />
         <Route path="/body-lift" element={<BodyLift />} />
         <Route path="/journal" element={<Journal />} />

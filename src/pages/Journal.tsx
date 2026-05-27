@@ -1,16 +1,22 @@
-import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
-import { Header } from "@/components/zential/Header";
-import { ZentialFooter } from "@/components/zential/ZentialFooter";
-import { NewsletterSection } from "@/components/zential/NewsletterSection";
-import { BubbleBackground } from "@/components/zential/BubbleBackground";
+import { PageShell } from "@/components/zential/v2/PageShell";
 import { Link } from "react-router-dom";
-import { SEO } from "@/components/SEO";
 
-const articles = [
+interface Article {
+  category: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  slug: string;
+  featured?: boolean;
+}
+
+const articles: Article[] = [
   {
     category: "Ritual",
-    title: "The Night My Frequency Shifted, and I Finally Trusted the Stillness",
-    excerpt: "A sacred reflection on what happens when microcurrent becomes more than skincare, when it becomes a conversation with the nervous system, a vote for slowness, and a return to self-trust.",
+    title: "The Night My Frequency Shifted",
+    excerpt:
+      "A sacred reflection on what happens when microcurrent becomes more than skincare, when it becomes a conversation with the nervous system, a vote for slowness, and a return to self-trust.",
     date: "February 16, 2026",
     readTime: "12 min read",
     featured: true,
@@ -18,8 +24,9 @@ const articles = [
   },
   {
     category: "Science",
-    title: "How Microcurrent Therapy Rebuilds Collagen at the Cellular Level",
-    excerpt: "Understanding the biophysics behind electrical stimulation and its proven effects on fibroblast activity, ATP production, and dermal remodeling.",
+    title: "How Microcurrent Rebuilds Collagen",
+    excerpt:
+      "Understanding the biophysics behind electrical stimulation and its effects on fibroblast activity, ATP production, and dermal remodeling.",
     date: "February 12, 2026",
     readTime: "8 min read",
     slug: "/journal/microcurrent-collagen",
@@ -27,31 +34,35 @@ const articles = [
   {
     category: "Ritual",
     title: "The 5-Minute Evening Protocol",
-    excerpt: "A structured guide to integrating microcurrent therapy into your nightly wind-down, designed for consistency, not perfection.",
+    excerpt:
+      "A structured guide to integrating microcurrent into your nightly wind-down. Designed for consistency, not perfection.",
     date: "February 5, 2026",
     readTime: "5 min read",
     slug: "/journal/evening-protocol",
   },
   {
     category: "Research",
-    title: "660nm Red Light: What the Clinical Data Actually Shows",
-    excerpt: "A transparent review of peer-reviewed studies on red light therapy for skin rejuvenation, wound healing, and inflammation reduction.",
+    title: "660nm Red Light: What the Data Shows",
+    excerpt:
+      "A transparent review of peer-reviewed studies on red light therapy for skin rejuvenation, wound healing, and inflammation.",
     date: "January 28, 2026",
     readTime: "10 min read",
     slug: "/journal/red-light-clinical",
   },
   {
     category: "Wellness",
-    title: "Lymphatic Drainage and Facial Sculpting: The Connection",
-    excerpt: "Why gentle electrical stimulation supports the body's natural detoxification pathways, and what that means for facial contour.",
+    title: "Lymphatic Drainage and Facial Sculpting",
+    excerpt:
+      "Why gentle electrical stimulation supports the body's natural detoxification pathways.",
     date: "January 20, 2026",
     readTime: "6 min read",
     slug: "/journal/lymphatic-drainage",
   },
   {
     category: "Science",
-    title: "EMS vs. Microcurrent: Understanding the Spectrum",
-    excerpt: "Not all electrical stimulation is equal. A clinical breakdown of frequency ranges, muscle response types, and ideal use cases.",
+    title: "EMS vs. Microcurrent",
+    excerpt:
+      "Not all electrical stimulation is equal. A clinical breakdown of frequency ranges, muscle response types, and ideal use cases.",
     date: "January 14, 2026",
     readTime: "7 min read",
     slug: "/journal/ems-vs-microcurrent",
@@ -59,129 +70,131 @@ const articles = [
   {
     category: "Ritual",
     title: "Building a Skin Ritual That Lasts",
-    excerpt: "Consistency over intensity. How to design a personal protocol that adapts to your life, without burnout or guilt.",
+    excerpt:
+      "Consistency over intensity. How to design a personal protocol that adapts to your life, without burnout or guilt.",
     date: "January 7, 2026",
     readTime: "4 min read",
     slug: "/journal/ritual-that-lasts",
   },
 ];
 
-const categoryColors: Record<string, string> = {
-  Science: "text-teal",
-  Ritual: "text-primary",
-  Research: "text-teal",
-  Wellness: "text-primary",
-};
-
 const Journal = () => {
-  const featured = articles[0];
-  const rest = articles.slice(1);
+  const featured = articles.find((a) => a.featured) || articles[0];
+  const rest = articles.filter((a) => a !== featured);
 
   return (
-    <div className="min-h-screen bg-background">
-      <SEO
-        title="The Journal — Zential Pure"
-        description="Science, ritual, and clarity. Evidence-based insights on skin science, device technology, and the art of daily transformation."
-        canonicalUrl="/journal"
-      />
-      <AnnouncementBar />
-      <Header />
-      <main>
-        {/* Hero */}
-        <section className="relative py-20 md:py-28 px-6 md:px-12 lg:px-20 overflow-hidden">
-          {/* Ambient background */}
-          <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(135deg, hsl(30 27% 95%) 0%, hsl(30 20% 92%) 40%, hsl(340 15% 93%) 70%, hsl(30 27% 95%) 100%)' }} />
-
-          {/* Soft radial glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[900px] md:h-[900px] rounded-full pointer-events-none"
-            style={{ background: 'radial-gradient(circle, hsl(var(--accent) / 0.06) 0%, transparent 70%)' }}
-          />
-
-          <BubbleBackground />
-
-          <div className="max-w-4xl mx-auto text-center relative z-10">
-            <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent rounded-full px-4 py-1.5 text-[10px] tracking-[0.2em] uppercase mb-6">The Journal</div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-              Science. Ritual. Clarity.
-            </h1>
-            <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-              Evidence based insights on skin science, device technology, and the art of daily transformation.
-            </p>
-          </div>
-        </section>
-
-        {/* Featured Article */}
-        <section className="px-6 md:px-12 lg:px-20 pb-16">
-          <div className="max-w-6xl mx-auto">
-            <Link to={featured.slug || "#"} className="block bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl p-8 md:p-12 hover:shadow-lg transition-shadow duration-500 cursor-pointer group">
-              <span className={`text-xs tracking-[0.2em] uppercase ${categoryColors[featured.category] || "text-muted-foreground"}`}>
-                {featured.category} · Featured
-              </span>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mt-4 mb-4 group-hover:text-primary transition-colors duration-300">
-                {featured.title}
-              </h2>
-              <p className="text-muted-foreground text-lg max-w-3xl mb-6 leading-relaxed">
-                {featured.excerpt}
+    <PageShell
+      title="Journal — Zential Pure"
+      description="Field notes from the lab. Mechanism, ritual, science."
+      canonical="https://zentialpure.com/journal"
+      eyebrow="Zential Pure  ·  Journal  ·  Edition 2026"
+      displayTitle="Field notes."
+      displaySubtitle="Mechanism. Ritual. Science. Notes from the lab in Rotterdam."
+      stickyTag="Journal 2026"
+    >
+      {/* Featured article — full-bleed band */}
+      <section className="px-6 md:pl-32 pb-24 max-w-6xl">
+        <Link to={featured.slug} className="group block">
+          <div className="bg-[#1A1714] text-[#F7F4F0] p-10 md:p-16 hover:bg-[#0d2620] transition-colors">
+            <div className="flex items-baseline justify-between mb-8">
+              <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#F7F4F0]/55">
+                Featured  ·  {featured.category}
               </p>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <span>{featured.date}</span>
-                <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
-                <span>{featured.readTime}</span>
-              </div>
-            </Link>
-          </div>
-        </section>
-
-        {/* Article Grid */}
-        <section className="px-6 md:px-12 lg:px-20 pb-24">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {rest.map((article, i) => {
-                const CardTag = article.slug ? Link : "article";
-                const cardProps = article.slug ? { to: article.slug } : {};
-                return (
-                  <CardTag
-                    key={i}
-                    {...(cardProps as any)}
-                    className="bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl p-6 hover:shadow-lg transition-all duration-500 cursor-pointer group flex flex-col"
-                  >
-                    <span className={`text-xs tracking-[0.2em] uppercase ${categoryColors[article.category] || "text-muted-foreground"}`}>
-                      {article.category}
-                    </span>
-                    <h3 className="text-lg font-semibold text-foreground mt-3 mb-3 group-hover:text-primary transition-colors duration-300 leading-snug">
-                      {article.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed flex-1">
-                      {article.excerpt}
-                    </p>
-                    <div className="flex items-center gap-3 text-xs text-muted-foreground mt-5 pt-4 border-t border-border/20">
-                      <span>{article.date}</span>
-                      <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
-                      <span>{article.readTime}</span>
-                    </div>
-                  </CardTag>
-                );
-              })}
+              <p className="font-mono text-[10px] tracking-[0.18em] text-[#F7F4F0]/40">
+                {featured.readTime}
+              </p>
+            </div>
+            <h2
+              className="font-[Lora] italic leading-[0.95] text-[#2ED8A8] mb-8 max-w-3xl"
+              style={{ fontSize: "clamp(2.5rem, 7vw, 5rem)" }}
+            >
+              {featured.title}.
+            </h2>
+            <p className="text-base md:text-lg text-[#F7F4F0]/75 max-w-2xl leading-relaxed mb-10">
+              {featured.excerpt}
+            </p>
+            <div className="flex items-baseline justify-between">
+              <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#F7F4F0]/55">
+                {featured.date}
+              </span>
+              <span className="text-xs tracking-[0.18em] uppercase text-[#2ED8A8] border-b border-[#2ED8A8] pb-1 group-hover:translate-x-1 transition-transform">
+                Read  →
+              </span>
             </div>
           </div>
-        </section>
+        </Link>
+      </section>
 
-        {/* Editorial Quote */}
-        <section className="px-6 md:px-12 lg:px-20 pb-24">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="font-serif italic text-2xl md:text-3xl text-foreground/80 leading-relaxed">
-              "The skin remembers what the mind forgets. Consistency is the only protocol that works."
-            </p>
-            <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mt-6">
-              The Zential Philosophy
-            </p>
-          </div>
-        </section>
+      {/* Section label */}
+      <section className="px-6 md:pl-32 pb-12 max-w-6xl">
+        <div className="flex items-baseline justify-between border-b border-[#1A1714]/15 pb-6">
+          <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#6B5A4A]">
+            Section ( 02 )  ·  Recent
+          </p>
+          <p className="font-mono text-[10px] tracking-[0.18em] text-[#6B5A4A] tabular-nums">
+            {rest.length.toString().padStart(2, "0")} entries
+          </p>
+        </div>
+      </section>
 
-        <NewsletterSection />
-      </main>
-      <ZentialFooter />
-    </div>
+      {/* Article list — editorial rows */}
+      <section className="px-6 md:pl-32 pb-32 max-w-6xl">
+        <div className="space-y-12 md:space-y-16">
+          {rest.map((article, idx) => (
+            <Link
+              key={article.slug}
+              to={article.slug}
+              className="group block border-b border-[#1A1714]/10 pb-12 hover:border-[#2ED8A8] transition-colors"
+            >
+              <div className="grid grid-cols-12 gap-6 md:gap-10 items-baseline">
+                <div className="col-span-2 md:col-span-1">
+                  <p className="font-mono text-xs text-[#6B5A4A] tabular-nums">
+                    {String(idx + 2).padStart(2, "0")}
+                  </p>
+                </div>
+                <div className="col-span-10 md:col-span-2">
+                  <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#2ED8A8]">
+                    {article.category}
+                  </p>
+                  <p className="font-mono text-[10px] tracking-[0.18em] text-[#6B5A4A] mt-2">
+                    {article.readTime}
+                  </p>
+                </div>
+                <div className="col-span-12 md:col-span-7">
+                  <h3 className="font-[Lora] italic text-3xl md:text-5xl leading-tight text-[#1A1714] group-hover:text-[#2ED8A8] transition-colors mb-3">
+                    {article.title}.
+                  </h3>
+                  <p className="text-sm md:text-base text-[#1A1714]/70 max-w-xl">
+                    {article.excerpt}
+                  </p>
+                </div>
+                <div className="col-span-12 md:col-span-2 md:text-right">
+                  <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#6B5A4A]">
+                    {article.date}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Closer */}
+      <section className="px-6 py-32 max-w-3xl mx-auto text-center">
+        <div className="inline-flex items-center gap-3 mb-10">
+          <span className="block w-12 h-px bg-[#1A1714]/20" />
+          <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-[#6B5A4A]">
+            Zential Pure
+          </span>
+          <span className="block w-12 h-px bg-[#1A1714]/20" />
+        </div>
+        <p className="font-[Lora] italic text-2xl md:text-4xl leading-[1.35] text-[#1A1714]">
+          The lab posts what it learns.
+          <br />
+          <span className="text-[#1A1714]/65">Slowly, in full sentences.</span>
+        </p>
+      </section>
+    </PageShell>
   );
 };
 

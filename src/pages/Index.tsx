@@ -2,23 +2,24 @@ import { SEO } from "@/components/SEO";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { HeroSection } from "@/components/zential/HeroSection";
-import { TrustStrip } from "@/components/zential/TrustStrip";
-import { ShopByConcern } from "@/components/zential/ShopByConcern";
+import { ProtocolsShowcase } from "@/components/zential/v2/ProtocolsShowcase";
+import { PhilosophyBand } from "@/components/zential/v2/PhilosophyBand";
+import { SparseFooter } from "@/components/zential/v2/SparseFooter";
 
 import { lazy, Suspense } from "react";
 
-const PhilosophySection  = lazy(() => import("@/components/zential/PhilosophySection").then(m => ({ default: m.PhilosophySection })));
-const ScienceSection     = lazy(() => import("@/components/zential/ScienceSection").then(m => ({ default: m.ScienceSection })));
-const ComparisonSection  = lazy(() => import("@/components/zential/ComparisonSection").then(m => ({ default: m.ComparisonSection })));
-const MovementSection    = lazy(() => import("@/components/zential/MovementSection").then(m => ({ default: m.MovementSection })));
-const DevicesSection     = lazy(() => import("@/components/zential/DevicesSection").then(m => ({ default: m.DevicesSection })));
-const StatsBar           = lazy(() => import("@/components/zential/StatsBar").then(m => ({ default: m.StatsBar })));
-const SocialProof        = lazy(() => import("@/components/zential/SocialProof").then(m => ({ default: m.SocialProof })));
-const TrustpilotStrip    = lazy(() => import("@/components/zential/TrustpilotStrip").then(m => ({ default: m.TrustpilotStrip })));
-const RitualSection      = lazy(() => import("@/components/zential/RitualSection").then(m => ({ default: m.RitualSection })));
-const BundleSection      = lazy(() => import("@/components/zential/BundleSection").then(m => ({ default: m.BundleSection })));
-const FAQSection         = lazy(() => import("@/components/zential/FAQSection").then(m => ({ default: m.FAQSection })));
-const ZentialFooter      = lazy(() => import("@/components/zential/ZentialFooter").then(m => ({ default: m.ZentialFooter })));
+// Keep existing devices grid — workhorse, already serves product discovery.
+const DevicesSection = lazy(() =>
+  import("@/components/zential/DevicesSection").then((m) => ({
+    default: m.DevicesSection,
+  }))
+);
+// Keep FAQ — utility, accordion already neutral.
+const FAQSection = lazy(() =>
+  import("@/components/zential/FAQSection").then((m) => ({
+    default: m.FAQSection,
+  }))
+);
 
 const homepageJsonLd = {
   "@context": "https://schema.org",
@@ -26,7 +27,8 @@ const homepageJsonLd = {
   name: "Zential Pure",
   url: "https://zentialpure.com",
   logo: "https://zentialpure.com/og-image.jpg",
-  description: "Clinic-precision facial technology — red light, microcurrent, EMS, thermal — engineered for daily home use. €88 once. 30-Day Protocol Guarantee. Free EU shipping.",
+  description:
+    "Three Protocols. One system. EMS · Microcurrent · Thermal · Cosmetic LED — engineered for daily home use.",
   sameAs: [],
   contactPoint: {
     "@type": "ContactPoint",
@@ -37,10 +39,10 @@ const homepageJsonLd = {
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#F7F4F0]">
       <SEO
         title="Zential Pure — Clinic Precision. Daily Ritual."
-        description="Clinic-precision facial technology — red light, microcurrent, EMS, thermal — engineered for daily home use. €88 once. 30-Day Protocol Guarantee. Free EU shipping."
+        description="Three Protocols. One system. EMS · Microcurrent · Thermal · Cosmetic LED — engineered for daily home use."
         canonicalUrl="/"
         jsonLd={homepageJsonLd}
       />
@@ -48,37 +50,34 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <TrustStrip />
 
-        <Suspense fallback={<div className="min-h-[50vh]" />}>
-          {/* 1. Value prop */}
-          <ComparisonSection />
+        <ProtocolsShowcase />
 
-          {/* 2. Product discovery */}
-          <ShopByConcern />
-          <DevicesSection />
+        <PhilosophyBand
+          label="Discipline ( 01 )"
+          lines={[
+            "A device works because of its mechanism.",
+            "A protocol works because of its order.",
+          ]}
+        />
 
-          {/* 3. Philosophy + Science — earned after products are seen */}
-          <PhilosophySection />
-          <ScienceSection />
+        <Suspense fallback={<div className="min-h-[50vh] bg-[#F7F4F0]" />}>
+          <div id="devices">
+            <DevicesSection />
+          </div>
 
-          {/* 4. Proof */}
-          <StatsBar />
-          <SocialProof />
-          <TrustpilotStrip />
+          <PhilosophyBand
+            label="Discipline ( 02 )"
+            lines={[
+              "Bundles are not discounts.",
+              "They are sequences.",
+            ]}
+          />
 
-          {/* 5. Ritual */}
-          <RitualSection />
-
-          {/* 6. AOV + close */}
-          <BundleSection />
           <FAQSection />
-          <MovementSection />
         </Suspense>
       </main>
-      <Suspense fallback={<div className="h-40 bg-foreground" />}>
-        <ZentialFooter />
-      </Suspense>
+      <SparseFooter />
     </div>
   );
 };

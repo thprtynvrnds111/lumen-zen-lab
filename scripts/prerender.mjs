@@ -85,6 +85,11 @@ const ROUTES = [
   '/ritual-guide/skin-pulse',
   '/ritual-guide/frequency-wand',
   '/collection',
+  // Protocols
+  '/protocols',
+  '/protocols/01-face',
+  '/protocols/02-body',
+  '/protocols/03-recovery',
 ];
 
 // ─── Inject helmet head tags into the HTML template ───────────────────────────

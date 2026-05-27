@@ -73,6 +73,23 @@ export function Header() {
           {/* Right: desktop */}
           <div className="hidden md:flex items-center gap-8">
             <Link
+              to="/protocols"
+              style={{
+                ...S.dm,
+                fontWeight: 300,
+                fontSize: 11,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: 'rgba(247,244,240,0.55)',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = S.teal)}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(247,244,240,0.55)')}
+            >
+              Protocols
+            </Link>
+            <Link
               to="/#devices"
               onClick={scrollToDevices}
               style={{
@@ -88,7 +105,7 @@ export function Header() {
               onMouseEnter={e => (e.currentTarget.style.color = S.teal)}
               onMouseLeave={e => (e.currentTarget.style.color = 'rgba(247,244,240,0.55)')}
             >
-              Shop the Protocol
+              Devices
             </Link>
             <button
               onClick={() => setSearchOpen(true)}
