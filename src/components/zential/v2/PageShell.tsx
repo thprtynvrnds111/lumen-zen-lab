@@ -54,8 +54,15 @@ export function PageShell({
 
       {stickyTag && (
         <div
-          className="hidden md:flex fixed left-6 top-1/2 -translate-y-1/2 z-30 flex-col items-start gap-3 pointer-events-none transition-opacity duration-300"
-          style={{ opacity: scrollPct > 0.85 ? 0 : 1 }}
+          className="hidden md:flex fixed left-6 top-1/2 -translate-y-1/2 z-30 flex-col items-start gap-3 pointer-events-none transition-opacity duration-500"
+          style={{
+            opacity:
+              scrollPct < 0.04 ? 0
+              : scrollPct < 0.10 ? (scrollPct - 0.04) / 0.06
+              : scrollPct > 0.92 ? 0
+              : scrollPct > 0.85 ? 1 - (scrollPct - 0.85) / 0.07
+              : 1,
+          }}
           aria-hidden
         >
           <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#6B5A4A]">
