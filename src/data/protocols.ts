@@ -1,3 +1,7 @@
+import protocolFaceImg from "@/assets/editorial/protocol-face.webp";
+import protocolBodyImg from "@/assets/editorial/protocol-body.webp";
+import protocolRecoveryImg from "@/assets/editorial/protocol-recovery.webp";
+
 export interface Protocol {
   slug: string;
   number: string;
@@ -14,6 +18,8 @@ export interface Protocol {
   }[];
   totalPrice: number;
   cardBg: string;
+  image?: string;
+  imageQuote?: string;
 }
 
 export const protocols: Protocol[] = [
@@ -51,26 +57,21 @@ export const protocols: Protocol[] = [
     ],
     totalPrice: 264,
     cardBg: "#F7F4F0",
+    image: protocolFaceImg,
+    imageQuote: "The face is the first instrument. Touch it as such.",
   },
   {
     slug: "02-body",
     number: "02",
     title: "Body",
-    modalities: "Vibration · Red Light · Compression",
-    sessionMinutes: 33,
+    modalities: "Red Light · Compression",
+    sessionMinutes: 30,
     description:
-      "Body protocol. Movement, mitochondrial light, then sequential pressure. The same precision, scaled to the limbs and torso.",
+      "Body protocol. Mitochondrial light, then sequential pressure. The same precision, scaled to the limbs and torso.",
     devices: [
       {
-        name: "Pulse Roller",
-        role: "Open · 3 min",
-        minutes: 3,
-        handle: "electric-foam-roller-muscle-relaxation-fitness-yoga-column",
-        price: 109,
-      },
-      {
         name: "Flux Panel",
-        role: "Stack · 10 min",
+        role: "Open · 10 min",
         minutes: 10,
         handle:
           "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
@@ -85,17 +86,19 @@ export const protocols: Protocol[] = [
         price: 159,
       },
     ],
-    totalPrice: 467,
+    totalPrice: 358,
     cardBg: "#1A1714",
+    image: protocolBodyImg,
+    imageQuote: "Scaled to the limbs. Same precision.",
   },
   {
     slug: "03-recovery",
     number: "03",
     title: "Recovery",
-    modalities: "Red Light · Acupressure · Light Seal",
-    sessionMinutes: 25,
+    modalities: "Red Light · Acupressure · Vibration",
+    sessionMinutes: 28,
     description:
-      "Pre-sleep sequence. Red light at the desk, parasympathetic activation on the mat, blackout to close. For the days the body needs more than maintenance.",
+      "Pre-sleep sequence. Red light at the desk, parasympathetic activation on the mat, then targeted vibration to close. For the days the body needs more than maintenance.",
     devices: [
       {
         name: "Ritual Light Pro",
@@ -113,16 +116,17 @@ export const protocols: Protocol[] = [
         price: 34,
       },
       {
-        name: "Depth Mask",
-        role: "Close · all night",
-        minutes: 0,
-        handle:
-          "blackout-eye-mask-3d-deep-contoured-sleep-mask-lash-extensions-no-pressure-blindfold-sleeping-eye-mask-women-men-side-sleepers",
-        price: 29,
+        name: "Pulse Roller",
+        role: "Close · 3 min",
+        minutes: 3,
+        handle: "electric-foam-roller-muscle-relaxation-fitness-yoga-column",
+        price: 109,
       },
     ],
-    totalPrice: 152,
+    totalPrice: 232,
     cardBg: "#C6A07C",
+    image: protocolRecoveryImg,
+    imageQuote: "Closing the day is also a protocol.",
   },
 ];
 
