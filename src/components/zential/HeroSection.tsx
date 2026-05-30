@@ -1,7 +1,7 @@
-import heroImage0 from "@/assets/hero-neck-device.webp";
-import heroImage1 from "@/assets/hero-ritual-v2.webp";
-import heroImage2 from "@/assets/hero-lifestyle-2.webp";
-import heroImage3 from "@/assets/hero-lifestyle-3.webp";
+import heroImage0 from "@/assets/hero-restore-mat.webp";
+import heroImage1 from "@/assets/hero-redlight-belt.webp";
+import heroImage2 from "@/assets/hero-neck-device.webp";
+import heroImage3 from "@/assets/hero-lifestyle-2.webp";
 import { useEffect, useState, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -128,33 +128,75 @@ export function HeroSection() {
             <span style={{ color: S.teal }}>{t('hero.line3', 'its Frequency.')}</span>
           </h1>
 
-          <p style={{ ...S.dm, fontWeight: 300, fontSize: 14, lineHeight: 1.75, color: S.muted, maxWidth: 340, letterSpacing: '0.01em', marginBottom: 16 }}>
-            {t('hero.body', 'An editorial on returning. On skin not as surface but as instrument. On the science beneath the ritual, and the ritual within the science.')}
+          <p style={{ ...S.dm, fontWeight: 300, fontSize: 15, lineHeight: 1.7, color: 'rgba(247,244,240,0.7)', maxWidth: 460, letterSpacing: '0.005em', marginBottom: 32 }}>
+            {t('hero.subhead', 'A four-modality at-home instrument calibrated to clinic protocols. EMS, Microcurrent, Thermal and Cosmetic LED in a single 12-minute ritual. Built for the woman who left the clinic but kept the standard.')}
           </p>
 
-          {/* Trust strip */}
-          <div className="flex flex-wrap gap-x-5 gap-y-1.5 mb-10">
+          {/* Proof strip — 3 numeric anchors */}
+          <div
+            className="grid grid-cols-3 mb-9"
+            style={{
+              maxWidth: 540,
+              borderTop: '1px solid rgba(247,244,240,0.08)',
+              borderBottom: '1px solid rgba(247,244,240,0.08)',
+            }}
+          >
             {[
-              t('hero.trust.shipping', 'Free EU shipping'),
-              t('hero.trust.guarantee', '30-Day Protocol Guarantee'),
-              t('hero.trust.tagline', 'Clinic precision. Daily ritual.'),
-            ].map(label => (
-              <span key={label} className="flex items-center gap-1.5" style={{ ...S.dm, fontSize: 11, color: 'rgba(247,244,240,0.4)' }}>
-                <span style={{ color: S.teal, fontSize: 12 }}>—</span>
-                {label}
-              </span>
+              { n: t('hero.proof.modalities.value', '4'), lbl: t('hero.proof.modalities.label', 'Clinical\nmodalities') },
+              { n: t('hero.proof.price.value', '€88'), lbl: t('hero.proof.price.label', 'vs €1,440 / yr\nclinic average') },
+              { n: t('hero.proof.guarantee.value', '30d'), lbl: t('hero.proof.guarantee.label', 'Protocol\nguarantee') },
+            ].map((row, i, arr) => (
+              <div
+                key={row.lbl}
+                style={{
+                  padding: '18px 4px 18px 0',
+                  borderRight: i === arr.length - 1 ? 'none' : '1px solid rgba(247,244,240,0.08)',
+                }}
+              >
+                <div style={{ ...S.lora, fontStyle: 'italic', fontWeight: 400, fontSize: 34, lineHeight: 1, color: S.teal, marginBottom: 7, letterSpacing: '-0.01em' }}>
+                  {row.n}
+                </div>
+                <div style={{ ...S.dm, fontWeight: 300, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(247,244,240,0.5)', lineHeight: 1.5, whiteSpace: 'pre-line' }}>
+                  {row.lbl}
+                </div>
+              </div>
             ))}
           </div>
 
-          {/* CTAs — manifesto style */}
-          <div className="flex flex-col min-[480px]:flex-row gap-3 max-w-sm">
+          {/* CTAs — filled-teal primary, ghost secondary */}
+          <div className="flex flex-col min-[480px]:flex-row gap-3 max-w-md mb-6">
             <button
               className="flex-1 py-4 px-6 transition-all duration-300"
               style={{
                 ...S.dm,
+                fontWeight: 500,
+                fontSize: 11,
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+                color: S.dark,
+                border: `1px solid ${S.teal}`,
+                backgroundColor: S.teal,
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
+                (e.currentTarget as HTMLElement).style.color = S.teal;
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = S.teal;
+                (e.currentTarget as HTMLElement).style.color = S.dark;
+              }}
+              onClick={() => document.getElementById('devices')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              {t('hero.ctaPrimaryWithPrice', 'Order Face Introducer · €88')}
+            </button>
+            <Link
+              to="/quiz"
+              className="flex-1 py-4 px-6 text-center transition-all duration-300"
+              style={{
+                ...S.dm,
                 fontWeight: 400,
                 fontSize: 11,
-                letterSpacing: '0.2em',
+                letterSpacing: '0.22em',
                 textTransform: 'uppercase',
                 color: S.cream,
                 border: '1px solid rgba(247,244,240,0.28)',
@@ -168,26 +210,23 @@ export function HeroSection() {
                 (e.currentTarget as HTMLElement).style.borderColor = 'rgba(247,244,240,0.28)';
                 (e.currentTarget as HTMLElement).style.color = S.cream;
               }}
-              onClick={() => document.getElementById('devices')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              {t('hero.ctaPrimary', 'Order the Face Introducer')}
-            </button>
-            <Link
-              to="/quiz"
-              className="flex-1 py-4 px-6 text-center transition-all duration-300"
-              style={{
-                ...S.dm,
-                fontWeight: 300,
-                fontSize: 11,
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                color: 'rgba(247,244,240,0.4)',
-                border: '1px solid rgba(247,244,240,0.1)',
-                backgroundColor: 'transparent',
-              }}
             >
               {t('hero.ctaSecondary', 'Find Your Protocol')}
             </Link>
+          </div>
+
+          {/* Trust micro-row — teal dots */}
+          <div className="flex flex-wrap gap-x-6 gap-y-2 mb-10">
+            {[
+              t('hero.trust.shipping', 'Free EU shipping'),
+              t('hero.trust.guarantee', '30-Day Protocol Guarantee'),
+              t('hero.trust.rotterdam', 'Ships from Rotterdam'),
+            ].map(label => (
+              <span key={label} className="flex items-center gap-2" style={{ ...S.dm, fontWeight: 300, fontSize: 11, color: 'rgba(247,244,240,0.45)' }}>
+                <span style={{ display: 'inline-block', width: 5, height: 5, backgroundColor: S.teal, borderRadius: '50%' }} aria-hidden />
+                {label}
+              </span>
+            ))}
           </div>
         </div>
 
@@ -208,7 +247,7 @@ export function HeroSection() {
           <img
             key={i}
             src={src}
-            alt={i === 0 ? 'Face Introducer clinic-precision instrument' : 'Zential Pure ritual'}
+            alt={i === 0 ? 'Red light therapy mat full-body restoration ritual' : 'Zential Pure ritual'}
             className="absolute inset-0 w-full h-full object-cover"
             {...(i === 0 ? { fetchPriority: 'high' as any, loading: 'eager' as const } : { loading: 'lazy' as const })}
             style={{
