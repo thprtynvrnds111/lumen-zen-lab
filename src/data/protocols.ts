@@ -15,6 +15,7 @@ export interface Protocol {
     minutes: number;
     handle: string;
     price: number;
+    imageUrl: string;
   }[];
   totalPrice: number;
   cardBg: string;
@@ -49,6 +50,8 @@ export const protocols: Protocol[] = [
         handle:
           "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
         price: 88,
+        imageUrl:
+          "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/b41f3ea5-5070-4b21-89de-7dc2b927d54f.jpg?v=1779030443",
       },
       {
         name: "Face Introducer",
@@ -56,6 +59,8 @@ export const protocols: Protocol[] = [
         minutes: 6,
         handle: "lifting-and-tightening-face-introducer",
         price: 88,
+        imageUrl:
+          "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/94d36d02-390a-462a-8749-64007fa10d18.png?v=1777502654",
       },
       {
         name: "Gua Sha Frequency",
@@ -63,6 +68,8 @@ export const protocols: Protocol[] = [
         minutes: 2,
         handle: "electric-guasha-massager",
         price: 88,
+        imageUrl:
+          "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/hf_20260411_230258_97a218c2-8973-4ac1-8a65-6d1459a5b051.png?v=1775948700",
       },
     ],
     totalPrice: 264,
@@ -103,6 +110,8 @@ export const protocols: Protocol[] = [
         handle:
           "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
         price: 199,
+        imageUrl:
+          "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/a42f0fa0-65aa-4eb3-a705-ba9058044e17.jpg?v=1778533310",
       },
       {
         name: "Pressure Shell",
@@ -111,6 +120,8 @@ export const protocols: Protocol[] = [
         handle:
           "pneumatic-air-wave-massager-pneumatic-circulation-leg-massager-pneumatic-massager",
         price: 159,
+        imageUrl:
+          "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/hf_20260509_004926_d0888809-c17d-4123-b1a2-a9cc01b1525e.png?v=1778289993",
       },
     ],
     totalPrice: 358,
@@ -145,6 +156,8 @@ export const protocols: Protocol[] = [
         minutes: 10,
         handle: "led-beauty-lamp-red-light-therapy-lamp-desktop-stand",
         price: 89,
+        imageUrl:
+          "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/e224de39-dd41-4759-babc-dc96bc27db14.jpg?v=1778951696",
       },
       {
         name: "Restore Mat",
@@ -153,6 +166,8 @@ export const protocols: Protocol[] = [
         handle:
           "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow",
         price: 34,
+        imageUrl:
+          "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/Gemini_Generated_Image_lz4og3lz4og3lz4o_1.png?v=1778370884",
       },
       {
         name: "Pulse Roller",
@@ -160,6 +175,8 @@ export const protocols: Protocol[] = [
         minutes: 3,
         handle: "electric-foam-roller-muscle-relaxation-fitness-yoga-column",
         price: 109,
+        imageUrl:
+          "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/eb1c4f0b-c064-4c98-b8ae-b83c23f76b63.jpg?v=1778511630",
       },
     ],
     totalPrice: 232,

@@ -150,22 +150,36 @@ const ProtocolDetail = () => {
             <Link
               key={device.handle}
               to={`/product/${device.handle}`}
-              className="group block border-b border-[#1A1714]/15 pb-12 hover:border-[#2ED8A8] transition-colors"
+              className="group flex items-center gap-5 md:gap-10 border-b border-[#1A1714]/15 pb-10 md:pb-12 hover:border-[#2ED8A8] transition-colors"
             >
-              <div className="flex items-baseline justify-between mb-6">
-                <span className="font-mono text-sm tracking-[0.16em] text-[#6B5A4A]">
-                  Step ( {String(idx + 1).padStart(2, "0")} )
-                </span>
-                <span className="font-mono text-sm tracking-[0.12em] text-[#6B5A4A]">
-                  {device.role}
-                </span>
+              {/* Device thumbnail — fast visual grasp */}
+              <div className="shrink-0 w-24 h-24 md:w-36 md:h-36 rounded-2xl bg-white border border-[#1A1714]/8 overflow-hidden grid place-items-center">
+                <img
+                  src={`${device.imageUrl}&width=320`}
+                  srcSet={`${device.imageUrl}&width=160 160w, ${device.imageUrl}&width=320 320w`}
+                  sizes="(max-width: 768px) 96px, 144px"
+                  alt={device.name}
+                  loading="lazy"
+                  className="w-[82%] h-[82%] object-contain transition-transform duration-500 group-hover:scale-105"
+                />
               </div>
-              <h3 className="font-[Lora] italic text-4xl md:text-6xl leading-tight text-[#1A1714] group-hover:text-[#2ED8A8] transition-colors">
-                {device.name}.
-              </h3>
-              <p className="mt-4 text-sm md:text-base text-[#1A1714]/70">
-                €{device.price}  ·  See device →
-              </p>
+
+              <div className="flex-1 min-w-0">
+                <div className="flex items-baseline justify-between mb-3">
+                  <span className="font-mono text-xs md:text-sm tracking-[0.16em] text-[#6B5A4A]">
+                    Step ( {String(idx + 1).padStart(2, "0")} )
+                  </span>
+                  <span className="font-mono text-xs md:text-sm tracking-[0.12em] text-[#6B5A4A]">
+                    {device.role}
+                  </span>
+                </div>
+                <h3 className="font-[Lora] italic text-3xl md:text-5xl leading-tight text-[#1A1714] group-hover:text-[#2ED8A8] transition-colors">
+                  {device.name}.
+                </h3>
+                <p className="mt-3 text-sm md:text-base text-[#1A1714]/70">
+                  €{device.price}  ·  See device →
+                </p>
+              </div>
             </Link>
           ))}
         </div>
