@@ -266,26 +266,18 @@ const ProtocolDetail = () => {
               <span className="font-mono text-sm text-[#6B5A4A]">Included</span>
             </li>
             <li className="flex justify-between items-baseline pt-3">
-              <span className="font-[Lora] italic text-lg md:text-xl text-[#1A1714]/70">
-                Bought separately
+              <span className="font-[Lora] italic text-2xl md:text-3xl">
+                Protocol total
               </span>
-              <span className="font-mono text-base text-[#6B5A4A] line-through">
+              <span className="font-[Lora] italic text-2xl md:text-3xl">
                 €{protocol.totalPrice}
-              </span>
-            </li>
-            <li className="flex justify-between items-baseline pt-2">
-              <span className="font-[Lora] italic text-2xl md:text-3xl">
-                Protocol price
-              </span>
-              <span className="font-[Lora] italic text-2xl md:text-3xl">
-                €{protocol.bundlePrice}
               </span>
             </li>
           </ul>
 
           <div className="mt-5 flex justify-center">
-            <span className="font-mono text-[11px] tracking-[0.16em] uppercase px-4 py-2 bg-[#2ED8A8] text-[#1A1714] rounded-full">
-              Bought as a protocol · save €{protocol.totalPrice - protocol.bundlePrice}
+            <span className="font-mono text-[11px] tracking-[0.16em] uppercase px-4 py-2 border border-[#1A1714]/20 rounded-full text-[#6B5A4A]">
+              One price · no codes · no countdowns
             </span>
           </div>
 

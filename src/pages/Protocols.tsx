@@ -83,7 +83,7 @@ const Protocols = () => {
         </h1>
         <p className="text-base md:text-xl text-[#1A1714]/75 max-w-xl leading-relaxed">
           Each Protocol is a sequence, not a shopping list.
-          Buy the devices in order — and as a set, priced below the parts.
+          One price. No codes, no countdowns. The sum of its parts, kept in order.
         </p>
       </section>
 

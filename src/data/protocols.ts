@@ -91,7 +91,7 @@ export const protocols: Protocol[] = [
     slug: "02-body",
     number: "02",
     title: "Body",
-    modalities: "Red Light · Compression",
+    modalities: "Red Light Therapy · Compression",
     sessionMinutes: 30,
     description:
       "Body protocol. Mitochondrial light, then sequential pressure. The same precision, scaled to the limbs and torso.",
@@ -134,7 +134,7 @@ export const protocols: Protocol[] = [
     slug: "03-recovery",
     number: "03",
     title: "Recovery",
-    modalities: "Red Light · Acupressure · Vibration",
+    modalities: "Red Light Therapy · Acupressure · Vibration",
     sessionMinutes: 28,
     description:
       "For the nervous system that never clocks out. A screen day keeps you switched on — shallow breath, shoulders up, wired past bedtime. This sequence is the off-switch: red light at the desk, deep-pressure on the mat, then targeted vibration to close.",
