@@ -1,10 +1,12 @@
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { SparseFooter } from "@/components/zential/v2/SparseFooter";
+import { ImageDivider } from "@/components/zential/ImageDivider";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { getProtocol, protocols } from "@/data/protocols";
-import { ProtocolCardPreview } from "@/components/zential/ProtocolCardPreview";
+import { ProtocolSpecCard } from "@/components/zential/ProtocolSpecCard";
+import { CategoryGrid } from "@/components/zential/CategoryGrid";
 import { useEffect, useState } from "react";
 
 const ProtocolDetail = () => {
@@ -112,6 +114,15 @@ const ProtocolDetail = () => {
         </div>
       </section>
 
+      {/* Editorial break — protocol-specific image */}
+      {protocol.image && (
+        <ImageDivider
+          src={protocol.image}
+          alt=""
+          quote={protocol.imageQuote}
+        />
+      )}
+
       {/* Mechanism chips — quick legend */}
       <section className="px-6 py-12 max-w-5xl mx-auto md:ml-32 border-b border-[#1A1714]/10">
         <div className="flex flex-wrap gap-3">
@@ -205,7 +216,7 @@ const ProtocolDetail = () => {
             </p>
           </div>
           <div className="max-w-md mx-auto w-full">
-            <ProtocolCardPreview protocol={protocol} />
+            <ProtocolSpecCard protocol={protocol} />
           </div>
         </div>
       </section>
@@ -255,16 +266,30 @@ const ProtocolDetail = () => {
               <span className="font-mono text-sm text-[#6B5A4A]">Included</span>
             </li>
             <li className="flex justify-between items-baseline pt-3">
-              <span className="font-[Lora] italic text-xl md:text-2xl">
-                Total
+              <span className="font-[Lora] italic text-lg md:text-xl text-[#1A1714]/70">
+                Bought separately
               </span>
-              <span className="font-[Lora] italic text-xl md:text-2xl">
+              <span className="font-mono text-base text-[#6B5A4A] line-through">
                 €{protocol.totalPrice}
+              </span>
+            </li>
+            <li className="flex justify-between items-baseline pt-2">
+              <span className="font-[Lora] italic text-2xl md:text-3xl">
+                Protocol price
+              </span>
+              <span className="font-[Lora] italic text-2xl md:text-3xl">
+                €{protocol.bundlePrice}
               </span>
             </li>
           </ul>
 
-          <div className="mt-12 flex flex-col items-center gap-3">
+          <div className="mt-5 flex justify-center">
+            <span className="font-mono text-[11px] tracking-[0.16em] uppercase px-4 py-2 bg-[#2ED8A8] text-[#1A1714] rounded-full">
+              Bought as a protocol · save €{protocol.totalPrice - protocol.bundlePrice}
+            </span>
+          </div>
+
+          <div className="mt-10 flex flex-col items-center gap-3">
             <a
               href="mailto:hello@zentialpure.com?subject=Protocol Reservation"
               className="inline-block bg-[#1A1714] text-[#F7F4F0] px-12 py-5 text-xs tracking-[0.18em] uppercase hover:bg-[#2ED8A8] hover:text-[#1A1714] transition-colors"
@@ -272,9 +297,31 @@ const ProtocolDetail = () => {
               Reserve Protocol ( {protocol.number} )
             </a>
             <p className="text-center text-[10px] tracking-[0.15em] uppercase text-[#6B5A4A] font-mono">
-              Bundles ship as a single order  ·  configure in Shopify Bundles at launch
+              Three devices, one order  ·  ships with the printed Protocol Card
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Full category — every device in this protocol's family */}
+      <section className="px-6 py-24 md:py-32 bg-[#F7F4F0] border-t border-[#1A1714]/10">
+        <div className="max-w-6xl mx-auto md:ml-32">
+          <div className="flex items-baseline justify-between mb-3">
+            <p className="font-mono text-xs tracking-[0.18em] uppercase text-[#6B5A4A]">
+              Every {protocol.title} device · {protocol.categoryHandles.length}
+            </p>
+            <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#6B5A4A]">
+              {protocol.outcomeLabel}
+            </p>
+          </div>
+          <h2 className="font-[Lora] italic text-4xl md:text-6xl leading-tight mb-4">
+            Build your own.
+          </h2>
+          <p className="text-base md:text-lg text-[#1A1714]/70 max-w-xl mb-12">
+            The sequence is the shortcut. Below is the full {protocol.title.toLowerCase()} catalog —
+            every device, on its own. Tap any one for the full page.
+          </p>
+          <CategoryGrid handles={protocol.categoryHandles} />
         </div>
       </section>
 
