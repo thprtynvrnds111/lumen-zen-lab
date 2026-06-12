@@ -9,13 +9,12 @@ import { useTranslation } from "react-i18next";
 const heroImages = [heroImage0, heroImage1, heroImage2, heroImage3];
 
 const S = {
-  dark: '#1A1714',
-  teal: '#2ED8A8',
+  ink: '#1A1714',
+  teal: '#2ED8A8',        // bright accent — fills, dots
+  tealDeep: '#157A5C',    // teal that reads on a light background (text/contrast)
   cream: '#F7F4F0',
-  muted: 'rgba(247,244,240,0.55)',
-  faint: 'rgba(247,244,240,0.25)',
-  ghost: 'rgba(247,244,240,0.05)',
-  tealFaint: 'rgba(46,216,168,0.4)',
+  // light, airy ground with a faint teal wash (Nurosym-calm, not flat)
+  bg: 'linear-gradient(165deg, #F1F5F3 0%, #F7F4F0 48%, #E9F3EE 100%)',
   lora: { fontFamily: "'Lora', serif" } as React.CSSProperties,
   dm: { fontFamily: "'DM Sans', sans-serif" } as React.CSSProperties,
 } as const;
@@ -41,7 +40,7 @@ export function HeroSection() {
       if (glowRef.current) {
         const { x, y } = cursorLerped.current;
         glowRef.current.style.background =
-          `radial-gradient(circle 520px at ${x}px ${y}px, rgba(46,216,168,0.07) 0%, rgba(46,216,168,0.02) 40%, transparent 70%)`;
+          `radial-gradient(circle 540px at ${x}px ${y}px, rgba(46,216,168,0.10) 0%, rgba(46,216,168,0.04) 42%, transparent 72%)`;
       }
       frameRef.current = requestAnimationFrame(tick);
     };
@@ -81,13 +80,13 @@ export function HeroSection() {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       className="relative grid grid-cols-1 md:grid-cols-2 overflow-hidden"
-      style={{ backgroundColor: S.dark, minHeight: '100dvh' }}
+      style={{ background: S.bg, minHeight: '100dvh' }}
       aria-label="Hero — Zential Pure"
     >
       {/* Cursor glow */}
       <div ref={glowRef} className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }} aria-hidden />
 
-      {/* Film grain — print depth on flat dark surface */}
+      {/* Film grain — subtle paper texture on the light ground */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -95,8 +94,8 @@ export function HeroSection() {
           backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
           backgroundRepeat: 'repeat',
           backgroundSize: '160px 160px',
-          opacity: 0.04,
-          mixBlendMode: 'overlay',
+          opacity: 0.06,
+          mixBlendMode: 'multiply',
         }}
         aria-hidden
       />
@@ -109,7 +108,7 @@ export function HeroSection() {
 
         {/* Title block */}
         <div style={reveal}>
-          <p style={{ ...S.dm, fontWeight: 200, fontSize: 11, letterSpacing: '0.35em', textTransform: 'uppercase', color: S.teal, marginBottom: 28 }}>
+          <p style={{ ...S.dm, fontWeight: 400, fontSize: 11, letterSpacing: '0.35em', textTransform: 'uppercase', color: S.tealDeep, marginBottom: 28 }}>
             {t('hero.eyebrow', 'Resonance Restoration')}
           </p>
 
@@ -118,17 +117,17 @@ export function HeroSection() {
             fontStyle: 'italic',
             fontSize: 'clamp(44px, 5vw, 80px)',
             lineHeight: 1.03,
-            color: S.cream,
+            color: S.ink,
             fontWeight: 400,
             letterSpacing: '-0.02em',
             marginBottom: 28,
           }}>
             {t('hero.line1', 'The Body')}<br />
             {t('hero.line2', 'Remembers')}<br />
-            <span style={{ color: S.teal }}>{t('hero.line3', 'its Frequency.')}</span>
+            <span style={{ color: S.tealDeep }}>{t('hero.line3', 'its Frequency.')}</span>
           </h1>
 
-          <p style={{ ...S.dm, fontWeight: 300, fontSize: 15, lineHeight: 1.7, color: 'rgba(247,244,240,0.7)', maxWidth: 460, letterSpacing: '0.005em', marginBottom: 32 }}>
+          <p style={{ ...S.dm, fontWeight: 400, fontSize: 15, lineHeight: 1.7, color: 'rgba(26,23,20,0.66)', maxWidth: 460, letterSpacing: '0.005em', marginBottom: 32 }}>
             {t('hero.subhead', 'A four-modality at-home instrument calibrated to clinic protocols. EMS, Microcurrent, Thermal and Cosmetic LED in a single 12-minute ritual. Built for the woman who left the clinic but kept the standard.')}
           </p>
 
@@ -137,8 +136,8 @@ export function HeroSection() {
             className="grid grid-cols-3 mb-9"
             style={{
               maxWidth: 540,
-              borderTop: '1px solid rgba(247,244,240,0.08)',
-              borderBottom: '1px solid rgba(247,244,240,0.08)',
+              borderTop: '1px solid rgba(26,23,20,0.12)',
+              borderBottom: '1px solid rgba(26,23,20,0.12)',
             }}
           >
             {[
@@ -150,40 +149,40 @@ export function HeroSection() {
                 key={row.lbl}
                 style={{
                   padding: '18px 4px 18px 0',
-                  borderRight: i === arr.length - 1 ? 'none' : '1px solid rgba(247,244,240,0.08)',
+                  borderRight: i === arr.length - 1 ? 'none' : '1px solid rgba(26,23,20,0.12)',
                 }}
               >
-                <div style={{ ...S.lora, fontStyle: 'italic', fontWeight: 400, fontSize: 34, lineHeight: 1, color: S.teal, marginBottom: 7, letterSpacing: '-0.01em' }}>
+                <div style={{ ...S.lora, fontStyle: 'italic', fontWeight: 400, fontSize: 34, lineHeight: 1, color: S.tealDeep, marginBottom: 7, letterSpacing: '-0.01em' }}>
                   {row.n}
                 </div>
-                <div style={{ ...S.dm, fontWeight: 300, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(247,244,240,0.5)', lineHeight: 1.5, whiteSpace: 'pre-line' }}>
+                <div style={{ ...S.dm, fontWeight: 400, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(26,23,20,0.5)', lineHeight: 1.5, whiteSpace: 'pre-line' }}>
                   {row.lbl}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* CTAs — filled-teal primary, ghost secondary */}
+          {/* CTAs — filled-teal primary, outlined secondary */}
           <div className="flex flex-col min-[480px]:flex-row gap-3 max-w-md mb-6">
             <button
               className="flex-1 py-4 px-6 transition-all duration-300"
               style={{
                 ...S.dm,
-                fontWeight: 500,
+                fontWeight: 600,
                 fontSize: 11,
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
-                color: S.dark,
+                color: S.ink,
                 border: `1px solid ${S.teal}`,
                 backgroundColor: S.teal,
               }}
               onMouseEnter={e => {
                 (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
-                (e.currentTarget as HTMLElement).style.color = S.teal;
+                (e.currentTarget as HTMLElement).style.color = S.tealDeep;
               }}
               onMouseLeave={e => {
                 (e.currentTarget as HTMLElement).style.backgroundColor = S.teal;
-                (e.currentTarget as HTMLElement).style.color = S.dark;
+                (e.currentTarget as HTMLElement).style.color = S.ink;
               }}
               onClick={() => document.getElementById('devices')?.scrollIntoView({ behavior: 'smooth' })}
             >
@@ -194,21 +193,21 @@ export function HeroSection() {
               className="flex-1 py-4 px-6 text-center transition-all duration-300"
               style={{
                 ...S.dm,
-                fontWeight: 400,
+                fontWeight: 500,
                 fontSize: 11,
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
-                color: S.cream,
-                border: '1px solid rgba(247,244,240,0.28)',
+                color: S.ink,
+                border: '1px solid rgba(26,23,20,0.28)',
                 backgroundColor: 'transparent',
               }}
               onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.borderColor = S.teal;
-                (e.currentTarget as HTMLElement).style.color = S.teal;
+                (e.currentTarget as HTMLElement).style.borderColor = S.tealDeep;
+                (e.currentTarget as HTMLElement).style.color = S.tealDeep;
               }}
               onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(247,244,240,0.28)';
-                (e.currentTarget as HTMLElement).style.color = S.cream;
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(26,23,20,0.28)';
+                (e.currentTarget as HTMLElement).style.color = S.ink;
               }}
             >
               {t('hero.ctaSecondary', 'Find Your Protocol')}
@@ -222,7 +221,7 @@ export function HeroSection() {
               t('hero.trust.guarantee', '30-Day Protocol Guarantee'),
               t('hero.trust.rotterdam', 'Ships from Rotterdam'),
             ].map(label => (
-              <span key={label} className="flex items-center gap-2" style={{ ...S.dm, fontWeight: 300, fontSize: 11, color: 'rgba(247,244,240,0.45)' }}>
+              <span key={label} className="flex items-center gap-2" style={{ ...S.dm, fontWeight: 400, fontSize: 11, color: 'rgba(26,23,20,0.5)' }}>
                 <span style={{ display: 'inline-block', width: 5, height: 5, backgroundColor: S.teal, borderRadius: '50%' }} aria-hidden />
                 {label}
               </span>
@@ -232,10 +231,10 @@ export function HeroSection() {
 
         {/* Footer */}
         <div className="flex items-end justify-between">
-          <span style={{ ...S.dm, fontWeight: 200, fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(247,244,240,0.22)' }}>
+          <span style={{ ...S.dm, fontWeight: 400, fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(26,23,20,0.28)' }}>
             Issue 001 · Spring 2025 · zentialpure.com
           </span>
-          <span style={{ ...S.lora, fontStyle: 'italic', fontSize: 48, color: S.ghost, fontWeight: 400, lineHeight: 1 }}>
+          <span style={{ ...S.lora, fontStyle: 'italic', fontSize: 48, color: 'rgba(26,23,20,0.08)', fontWeight: 400, lineHeight: 1 }}>
             01
           </span>
         </div>
@@ -257,20 +256,20 @@ export function HeroSection() {
           />
         ))}
 
-        {/* Left bleed into dark */}
+        {/* Left bleed into the light ground */}
         <div
           className="absolute inset-0 pointer-events-none hidden md:block"
-          style={{ background: 'linear-gradient(to right, #1A1714 0%, transparent 12%)' }}
+          style={{ background: 'linear-gradient(to right, #F7F4F0 0%, transparent 14%)' }}
         />
         {/* Bottom bleed on mobile */}
         <div
           className="absolute inset-0 pointer-events-none md:hidden"
-          style={{ background: 'linear-gradient(to top, #1A1714 0%, transparent 30%)' }}
+          style={{ background: 'linear-gradient(to top, #F7F4F0 0%, transparent 32%)' }}
         />
-        {/* Atmospheric tint */}
+        {/* Soft teal atmospheric tint */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'linear-gradient(135deg, transparent 50%, rgba(13,38,32,0.28) 100%)' }}
+          style={{ background: 'linear-gradient(135deg, transparent 55%, rgba(46,216,168,0.14) 100%)' }}
         />
         {/* Clinical scan line */}
         <div className="scan-line-wrap hidden md:block" aria-hidden>
@@ -285,11 +284,11 @@ export function HeroSection() {
             textOrientation: 'mixed',
             transform: 'rotate(180deg)',
             ...S.dm,
-            fontWeight: 200,
+            fontWeight: 400,
             fontSize: 9,
             letterSpacing: '0.25em',
             textTransform: 'uppercase',
-            color: 'rgba(247,244,240,0.2)',
+            color: 'rgba(255,255,255,0.6)',
           }}
         >
           Campaign I · Resonance Series
@@ -298,7 +297,7 @@ export function HeroSection() {
         {/* Format tag */}
         <div
           className="absolute bottom-12 left-10 hidden md:block"
-          style={{ ...S.dm, fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: S.tealFaint }}
+          style={{ ...S.dm, fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)' }}
         >
           4×5 · Editorial
         </div>
