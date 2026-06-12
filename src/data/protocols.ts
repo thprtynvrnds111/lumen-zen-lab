@@ -202,3 +202,15 @@ export const protocols: Protocol[] = [
 
 export const getProtocol = (slug: string): Protocol | undefined =>
   protocols.find((p) => p.slug === slug);
+
+/** Find the Protocol whose category (or sequence) contains a given product handle. */
+export const getProtocolForHandle = (
+  ...handles: (string | undefined)[]
+): Protocol | undefined => {
+  const set = handles.filter(Boolean) as string[];
+  return protocols.find(
+    (p) =>
+      p.categoryHandles.some((h) => set.includes(h)) ||
+      p.devices.some((d) => set.includes(d.handle)),
+  );
+};

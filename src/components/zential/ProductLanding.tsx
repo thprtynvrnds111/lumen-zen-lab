@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { PaymentBadges } from "@/components/zential/PaymentBadges";
 import { RelatedProducts } from "@/components/zential/RelatedProducts";
+import { ProtocolCrossSell } from "@/components/zential/ProtocolCrossSell";
 import { ScarcityBanner } from "@/components/zential/ScarcityBanner";
 import type { ProductConfig } from "@/data/productConfigs";
 import { TrustpilotStrip } from "@/components/zential/TrustpilotStrip";
@@ -32,6 +33,7 @@ import realIssueWhiteNoise from "@/assets/problem-white-noise.webp";
 import realIssueEyeActivator from "@/assets/problem-eye-activator.webp";
 import realIssueRestShell from "@/assets/problem-rest-shell.webp";
 import realIssueFrequencyMatPlus from "@/assets/problem-frequency-mat-plus.webp";
+import realIssueThermalPad from "@/assets/editorial/problem-thermal-pad.webp";
 
 type BundleKey = "single" | "ritual-set" | "pro-set";
 
@@ -50,6 +52,7 @@ const REAL_ISSUE_IMAGE_OVERRIDES: Record<string, string> = {
   "eye-massage": realIssueEyeActivator,
   "gravity-quilt-cotton-weighted-blanket": realIssueRestShell,
   "household-red-light-charging-vibrating-red-light-therapy-mat": realIssueFrequencyMatPlus,
+  "red-light-therapy-belt-infrared-hot-compress-phototherapy": realIssueThermalPad,
 };
 
 function buildBundles(gelPrice: number, maskPrice: number) {
@@ -941,6 +944,9 @@ export function ProductLanding({ config }: Props) {
 
       {/* ── TRUSTPILOT REVIEWS ── */}
       <TrustpilotStrip />
+
+      {/* ── PART OF A PROTOCOL (system cross-sell) ── */}
+      <ProtocolCrossSell handle={config.handle} purchaseHandle={config.purchaseHandle} />
 
       {/* ── RELATED PRODUCTS ── */}
       <RelatedProducts currentHandle={config.handle} />
