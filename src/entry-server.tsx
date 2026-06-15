@@ -55,6 +55,8 @@ const Dashboard        = lazy(() => import("./pages/Dashboard"));
 const Protocols        = lazy(() => import("./pages/Protocols"));
 const ProtocolDetail   = lazy(() => import("./pages/ProtocolDetail"));
 const ProtocolFaceIntroducer = lazy(() => import("./pages/ProtocolFaceIntroducer"));
+const TruthMovement    = lazy(() => import("./pages/TruthMovement"));
+const Reset            = lazy(() => import("./pages/Reset"));
 
 function ServerApp() {
   return (
@@ -103,6 +105,8 @@ function ServerApp() {
         <Route path="/collection"                               element={<Collection />} />
         <Route path="/quiz"                                     element={<Quiz />} />
         <Route path="/quiz/result"                              element={<QuizResult />} />
+        <Route path="/movement"                                 element={<TruthMovement />} />
+        <Route path="/reset"                                    element={<Reset />} />
         <Route path="/dashboard"                                element={<Dashboard />} />
         <Route path="*"                                         element={<NotFound />} />
       </Routes>
