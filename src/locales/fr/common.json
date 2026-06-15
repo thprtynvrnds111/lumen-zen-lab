@@ -1,69 +1,69 @@
 {
-  "nav": {
-    "shop": "Shop",
-    "collection": "Collection",
-    "ritual": "Rituel",
-    "quiz": "Quiz",
-    "journal": "Journal",
-    "support": "Service client",
-    "shopDevices": "Nos appareils",
-    "liftContour": "Lift & Contour",
-    "toneGlow": "Tonifier & Éclat",
-    "eyeFinelines": "Yeux & Ridules",
-    "bodyTissue": "Corps & Tissu",
-    "openMenu": "Ouvrir le menu",
-    "closeMenu": "Fermer le menu"
+ "nav": {
+  "shop": "Shop",
+  "collection": "Collection",
+  "ritual": "Rituel",
+  "quiz": "Quiz",
+  "journal": "Journal",
+  "support": "Service client",
+  "shopDevices": "Nos appareils",
+  "liftContour": "Lift & Contour",
+  "toneGlow": "Tonifier & Éclat",
+  "eyeFinelines": "Yeux & Ridules",
+  "bodyTissue": "Corps & Tissu",
+  "openMenu": "Ouvrir le menu",
+  "closeMenu": "Fermer le menu"
+ },
+ "announcement": {
+  "guarantee": "Garantie Protocole 14 Jours. Sans Friction. Sans Questions.",
+  "shipping": "Livraison gratuite dès €75 d'achat",
+  "science": "Photobiomodulation · Bioélectrique · EMS · Infrarouge, Une stack quotidienne",
+  "delivery": "Livré en 3–7 jours ouvrés dans toute l'UE",
+  "clinic": "Récupérez plus vite. Vieillissez moins vite. Entraînez-vous plus fort. Votre protocole biohacking quotidien."
+ },
+ "cart": {
+  "empty": "Votre panier est vide",
+  "startRitual": "Commencez votre rituel",
+  "item": "article",
+  "items": "articles",
+  "freeShippingUnlocked": "Livraison standard gratuite débloquée",
+  "awayFromFreeShipping": "{{amount}} avant la livraison gratuite",
+  "upsellLabel": "Complétez votre rituel",
+  "upsellSub": "Ajouter le Gel Visage Collagène, formulé pour l'utilisation avec les appareils",
+  "included": "Inclus",
+  "subtotal": "Sous-total",
+  "shippingNote": "Livraison, taxes & réductions calculées au paiement",
+  "checkout": "Procéder au paiement",
+  "redirecting": "Redirection vers la caisse sécurisée…"
+ },
+ "footer": {
+  "sections": {
+   "Shop": "Shop",
+   "Ritual": "Rituel",
+   "Technology": "Technologie",
+   "Support": "Support",
+   "Legal": "Légal"
   },
-  "announcement": {
-    "guarantee": "Garantie Protocole 30 Jours. Sans Friction. Sans Questions.",
-    "shipping": "Livraison gratuite dès €75 d'achat",
-    "science": "Photobiomodulation · Bioélectrique · EMS · Infrarouge — Une stack quotidienne",
-    "delivery": "Livré en 3–7 jours ouvrés dans toute l'UE",
-    "clinic": "Récupérez plus vite. Vieillissez moins vite. Entraînez-vous plus fort. Votre protocole biohacking quotidien."
+  "links": {
+   "allDevices": "Tous les appareils",
+   "bundles": "Offres groupées",
+   "journal": "Journal",
+   "fiveStepMethod": "La méthode en 5 étapes",
+   "eveningProtocol": "Protocole du soir",
+   "howItWorks": "Comment ça marche",
+   "microcurrent": "Microcourant",
+   "redLightTherapy": "Luminothérapie rouge",
+   "ems": "EMS",
+   "thermalTherapy": "Thérapie thermique",
+   "theScience": "La science",
+   "contact": "Contact",
+   "shipping": "Livraison",
+   "returns": "Retours",
+   "faq": "FAQ",
+   "privacyPolicy": "Politique de confidentialité",
+   "termsOfService": "Conditions d'utilisation"
   },
-  "cart": {
-    "empty": "Votre panier est vide",
-    "startRitual": "Commencez votre rituel",
-    "item": "article",
-    "items": "articles",
-    "freeShippingUnlocked": "Livraison standard gratuite débloquée",
-    "awayFromFreeShipping": "{{amount}} avant la livraison gratuite",
-    "upsellLabel": "Complétez votre rituel",
-    "upsellSub": "Ajouter le Gel Visage Collagène — formulé pour l'utilisation avec les appareils",
-    "included": "Inclus",
-    "subtotal": "Sous-total",
-    "shippingNote": "Livraison, taxes & réductions calculées au paiement",
-    "checkout": "Procéder au paiement",
-    "redirecting": "Redirection vers la caisse sécurisée…"
-  },
-  "footer": {
-    "sections": {
-      "Shop": "Shop",
-      "Ritual": "Rituel",
-      "Technology": "Technologie",
-      "Support": "Support",
-      "Legal": "Légal"
-    },
-    "links": {
-      "allDevices": "Tous les appareils",
-      "bundles": "Offres groupées",
-      "journal": "Journal",
-      "fiveStepMethod": "La méthode en 5 étapes",
-      "eveningProtocol": "Protocole du soir",
-      "howItWorks": "Comment ça marche",
-      "microcurrent": "Microcourant",
-      "redLightTherapy": "Luminothérapie rouge",
-      "ems": "EMS",
-      "thermalTherapy": "Thérapie thermique",
-      "theScience": "La science",
-      "contact": "Contact",
-      "shipping": "Livraison",
-      "returns": "Retours",
-      "faq": "FAQ",
-      "privacyPolicy": "Politique de confidentialité",
-      "termsOfService": "Conditions d'utilisation"
-    },
-    "tagline": "Connaissez votre peau. Travaillez avec elle.",
-    "copyright": "© 2026 Zential Pure. Tous droits réservés."
-  }
+  "tagline": "Connaissez votre peau. Travaillez avec elle.",
+  "copyright": "© 2026 Zential Pure. Tous droits réservés."
+ }
 }

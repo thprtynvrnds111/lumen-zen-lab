@@ -9,7 +9,7 @@
     { "day": "Tonight", "instruction": "Cleanse your skin. Apply conductive gel. Run your device for 5 minutes on the lowest setting. Don't rush the first session." },
     { "day": "Day 3", "instruction": "You may notice improved absorption after use. This is the conductivity effect. Your skin barrier is responding." },
     { "day": "Day 14", "instruction": "Structural changes begin here. Skin texture firms from repeated electrical stimulation. This is where consistency pays." },
-    { "day": "Day 30", "instruction": "If you don't see visible change after 30 days of consistent daily use, contact us. We will refund you in full." }
+    { "day": "Day 14", "instruction": "If you don't see visible change after 14 days of consistent daily use, contact us. We will refund you in full." }
   ],
   "reviewCopy": "After 14 days, your review could help someone like you.",
   "reviewLink": "Leave a Trustpilot review →",

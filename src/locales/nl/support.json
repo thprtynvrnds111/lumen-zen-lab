@@ -1,78 +1,78 @@
 {
-  "hero": {
-    "badge": "Support & Zorg",
-    "headline": "Wij staan\nKlaar Voor Jou.",
-    "sub": "Vragen, retourzendingen of begeleiding — ons team reageert binnen 24 uur."
+ "hero": {
+  "badge": "Support & Zorg",
+  "headline": "Wij staan\nKlaar Voor Jou.",
+  "sub": "Vragen, retourzendingen of begeleiding, ons team reageert binnen 24 uur."
+ },
+ "quickCards": [
+  { "title": "Bestelling Volgen", "desc": "Controleer je verzendstatus en leveringstermijn." },
+  { "title": "Retourneren & Garantie", "desc": "14-Dagen Ritueel Garantie, geen gedoe, geen druk." },
+  { "title": "Productveiligheid", "desc": "Gebruiksrichtlijnen en belangrijke veiligheidsinformatie." },
+  { "title": "Contact Support", "desc": "Bereik ons direct, reactie binnen 24 tot 48 uur." }
+ ],
+ "faqTitle": "Veelgestelde Vragen",
+ "categories": [
+  {
+   "label": "Werkzaamheid & Authenticiteit",
+   "items": [
+    { "q": "Werkt dit echt?", "a": "Ja. Onze apparaten gebruiken klinisch bestudeerde microcurrent, EMS en rood-lichttherapie, dezelfde technologieën als in professionele klinieken. De meeste gebruikers merken verbeterde huidtextuur binnen 2 weken en zichtbare lift na 3–4 weken dagelijks gebruik." },
+    { "q": "Hoe weet ik dat dit een authentiek apparaat is?", "a": "Elk Zential-apparaat wordt geleverd met een uniek serienummer en authenticiteitssleutel. We verkopen uitsluitend via onze officiële winkel, geen externe verkopers, zodat je altijd een origineel product met volledige garantie ontvangt." }
+   ]
   },
-  "quickCards": [
-    { "title": "Bestelling Volgen", "desc": "Controleer je verzendstatus en leveringstermijn." },
-    { "title": "Retourneren & Garantie", "desc": "30-Dagen Ritueel Garantie, geen gedoe, geen druk." },
-    { "title": "Productveiligheid", "desc": "Gebruiksrichtlijnen en belangrijke veiligheidsinformatie." },
-    { "title": "Contact Support", "desc": "Bereik ons direct, reactie binnen 24 tot 48 uur." }
-  ],
-  "faqTitle": "Veelgestelde Vragen",
-  "categories": [
-    {
-      "label": "Werkzaamheid & Authenticiteit",
-      "items": [
-        { "q": "Werkt dit echt?", "a": "Ja. Onze apparaten gebruiken klinisch bestudeerde microcurrent, EMS en rood-lichttherapie — dezelfde technologieën als in professionele klinieken. De meeste gebruikers merken verbeterde huidtextuur binnen 2 weken en zichtbare lift na 3–4 weken dagelijks gebruik." },
-        { "q": "Hoe weet ik dat dit een authentiek apparaat is?", "a": "Elk Zential-apparaat wordt geleverd met een uniek serienummer en authenticiteitssleutel. We verkopen uitsluitend via onze officiële winkel — geen externe verkopers — zodat je altijd een origineel product met volledige garantie ontvangt." }
-      ]
-    },
-    {
-      "label": "Geschiktheid voor Huidtype",
-      "items": [
-        { "q": "Werkt dit voor mijn huidtype?", "a": "Onze apparaten zijn effectief voor alle huidtypen en -tinten. Begin op de laagste intensiteit en verhoog geleidelijk. Bij gevoelige huid is milde aanvankelijke roodheid normaal en verdwijnt binnen enkele minuten." },
-        { "q": "Heb ik geleidend gel nodig?", "a": "Voor microcurrent-apparaten is geleidend gel of een waterig serum essentieel voor optimale stroomoverdracht en huidbescherming. Onze Collageen Gezichtsgel is speciaal hiervoor geformuleerd." }
-      ]
-    },
-    {
-      "label": "Veiligheid",
-      "items": [
-        { "q": "Is het veilig om elke dag te gebruiken?", "a": "Ja. Alle apparaten hebben meerdere veiligheidsfuncties en automatische uitschakeling. Begin met sessies van 5 minuten dagelijks en volg de meegeleverde rituele handleiding. Raadpleeg je arts als je een pacemaker hebt, zwanger bent of epilepsie hebt." },
-        { "q": "Is het veilig voor gevoelige huid?", "a": "Ja. Begin op de laagste intensiteitsstand en verhoog geleidelijk. Als je aanhoudende irritatie ervaart na milde aanvankelijke roodheid, stop dan het gebruik en raadpleeg een dermatoloog." }
-      ]
-    },
-    {
-      "label": "Prijs & Waarde",
-      "items": [
-        { "q": "Is het de investering waard?", "a": "Één apparaat vervangt honderden euro's aan maandelijkse kliniekbezoeken. Met dagelijkse 5-minuten rituelen krijg je professionele resultaten thuis — gedekt door onze 30-Dagen Ritueel Garantie." },
-        { "q": "Bieden jullie betaalplannen aan?", "a": "Ja — Klarna is beschikbaar bij het afrekenen, waarmee je je aankoop in rentevrije termijnen kunt splitsen." }
-      ]
-    },
-    {
-      "label": "Na de Verkoop",
-      "items": [
-        { "q": "Wat als ik na mijn aankoop hulp nodig heb?", "a": "Ons supportteam reageert binnen 24 uur. Je bent gedekt door een 30-Dagen Ritueel Garantie, eenvoudig retourneren en levenslange toegang tot rituele handleidingen en tips." },
-        { "q": "Wat is de 30-Dagen Ritueel Garantie?", "a": "Als je binnen 30 dagen consistent dagelijks gebruik geen zichtbare verbetering voelt, neem dan contact op voor een volledige terugbetaling. Geen langdurig proces, geen druk." }
-      ]
-    }
-  ],
-  "guarantee": {
-    "eyebrow": "Onze Belofte",
-    "headline": "Voel het Verschil, Anders Vergoeden Wij.",
-    "sub": "Als je binnen 30 dagen consistent gebruik geen zichtbare verbetering voelt, neem dan contact op. Geen gedoe. Geen druk.",
-    "badges": ["30-Dagen Garantie", "Snelle Verzending", "Eenvoudig Retourneren", "Veilig Afrekenen"]
+  {
+   "label": "Geschiktheid voor Huidtype",
+   "items": [
+    { "q": "Werkt dit voor mijn huidtype?", "a": "Onze apparaten zijn effectief voor alle huidtypen en -tinten. Begin op de laagste intensiteit en verhoog geleidelijk. Bij gevoelige huid is milde aanvankelijke roodheid normaal en verdwijnt binnen enkele minuten." },
+    { "q": "Heb ik geleidend gel nodig?", "a": "Voor microcurrent-apparaten is geleidend gel of een waterig serum essentieel voor optimale stroomoverdracht en huidbescherming. Onze Collageen Gezichtsgel is speciaal hiervoor geformuleerd." }
+   ]
   },
-  "contact": {
-    "title": "Neem Contact Op",
-    "nameLabel": "Naam",
-    "emailLabel": "E-mail",
-    "orderLabel": "Bestelnummer (optioneel)",
-    "messageLabel": "Bericht",
-    "submit": "Stuur via E-mail",
-    "submitting": "Openen…",
-    "footnote": "Opent je e-mailprogramma · Reactie binnen 24–48 uur.",
-    "validationError": "Vul de verplichte velden in."
+  {
+   "label": "Veiligheid",
+   "items": [
+    { "q": "Is het veilig om elke dag te gebruiken?", "a": "Ja. Alle apparaten hebben meerdere veiligheidsfuncties en automatische uitschakeling. Begin met sessies van 5 minuten dagelijks en volg de meegeleverde rituele handleiding. Raadpleeg je arts als je een pacemaker hebt, zwanger bent of epilepsie hebt." },
+    { "q": "Is het veilig voor gevoelige huid?", "a": "Ja. Begin op de laagste intensiteitsstand en verhoog geleidelijk. Als je aanhoudende irritatie ervaart na milde aanvankelijke roodheid, stop dan het gebruik en raadpleeg een dermatoloog." }
+   ]
   },
-  "safety": {
-    "title": "Belangrijke Veiligheidsrichtlijnen",
-    "items": [
-      "Gebruik niet met pacemakers of geïmplanteerde elektrische apparaten",
-      "Vermijd gebruik tijdens zwangerschap",
-      "Gebruik niet op actieve huidinfecties of open wonden",
-      "Begin altijd op de laagste intensiteitsstand",
-      "Raadpleeg je arts als je een medische aandoening hebt"
-    ]
+  {
+   "label": "Prijs & Waarde",
+   "items": [
+    { "q": "Is het de investering waard?", "a": "Één apparaat vervangt honderden euro's aan maandelijkse kliniekbezoeken. Met dagelijkse 5-minuten rituelen krijg je professionele resultaten thuis, gedekt door onze 14-Dagen Ritueel Garantie." },
+    { "q": "Bieden jullie betaalplannen aan?", "a": "Ja, Klarna is beschikbaar bij het afrekenen, waarmee je je aankoop in rentevrije termijnen kunt splitsen." }
+   ]
+  },
+  {
+   "label": "Na de Verkoop",
+   "items": [
+    { "q": "Wat als ik na mijn aankoop hulp nodig heb?", "a": "Ons supportteam reageert binnen 24 uur. Je bent gedekt door een 14-Dagen Ritueel Garantie, eenvoudig retourneren en levenslange toegang tot rituele handleidingen en tips." },
+    { "q": "Wat is de 14-Dagen Ritueel Garantie?", "a": "Als je binnen 14 dagen consistent dagelijks gebruik geen zichtbare verbetering voelt, neem dan contact op voor een volledige terugbetaling. Geen langdurig proces, geen druk." }
+   ]
   }
+ ],
+ "guarantee": {
+  "eyebrow": "Onze Belofte",
+  "headline": "Voel het Verschil, Anders Vergoeden Wij.",
+  "sub": "Als je binnen 14 dagen consistent gebruik geen zichtbare verbetering voelt, neem dan contact op. Geen gedoe. Geen druk.",
+  "badges": ["14-Dagen Garantie", "Snelle Verzending", "Eenvoudig Retourneren", "Veilig Afrekenen"]
+ },
+ "contact": {
+  "title": "Neem Contact Op",
+  "nameLabel": "Naam",
+  "emailLabel": "E-mail",
+  "orderLabel": "Bestelnummer (optioneel)",
+  "messageLabel": "Bericht",
+  "submit": "Stuur via E-mail",
+  "submitting": "Openen…",
+  "footnote": "Opent je e-mailprogramma · Reactie binnen 24–48 uur.",
+  "validationError": "Vul de verplichte velden in."
+ },
+ "safety": {
+  "title": "Belangrijke Veiligheidsrichtlijnen",
+  "items": [
+   "Gebruik niet met pacemakers of geïmplanteerde elektrische apparaten",
+   "Vermijd gebruik tijdens zwangerschap",
+   "Gebruik niet op actieve huidinfecties of open wonden",
+   "Begin altijd op de laagste intensiteitsstand",
+   "Raadpleeg je arts als je een medische aandoening hebt"
+  ]
+ }
 }

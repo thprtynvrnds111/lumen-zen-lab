@@ -1,58 +1,58 @@
 {
-  "hero": {
-    "badge": "Hulpcentrum",
-    "headline": "Veelgestelde\nVragen.",
-    "sub": "Alles wat je moet weten over je apparaten, verzending, retournering en meer."
+ "hero": {
+  "badge": "Hulpcentrum",
+  "headline": "Veelgestelde\nVragen.",
+  "sub": "Alles wat je moet weten over je apparaten, verzending, retournering en meer."
+ },
+ "categories": [
+  {
+   "label": "Verzending & Levering",
+   "items": [
+    { "q": "Hoe lang duurt de verzending?", "a": "Nederland: 2–3 werkdagen. EU: 3–7 werkdagen. Internationaal: 7–14 werkdagen. Je ontvangt een track-en-trace per e-mail zodra je bestelling verzonden is." },
+    { "q": "Bieden jullie gratis verzending aan?", "a": "Ja, gratis verzending bij bestellingen boven €50 binnen Nederland, en boven €75 voor EU-bestellingen." },
+    { "q": "Verzenden jullie internationaal?", "a": "Ja, we verzenden naar 50+ landen wereldwijd. Internationale verzendkosten worden berekend bij het afrekenen. Douanerechten kunnen van toepassing zijn." },
+    { "q": "Kan ik mijn bestelling volgen?", "a": "Absoluut. Je ontvangt een track-link per e-mail zodra je bestelling verzonden is. Je kunt ook contact opnemen met de klantenservice met je bestelnummer." }
+   ]
   },
-  "categories": [
-    {
-      "label": "Verzending & Levering",
-      "items": [
-        { "q": "Hoe lang duurt de verzending?", "a": "Nederland: 2–3 werkdagen. EU: 3–7 werkdagen. Internationaal: 7–14 werkdagen. Je ontvangt een track-en-trace per e-mail zodra je bestelling verzonden is." },
-        { "q": "Bieden jullie gratis verzending aan?", "a": "Ja — gratis verzending bij bestellingen boven €50 binnen Nederland, en boven €75 voor EU-bestellingen." },
-        { "q": "Verzenden jullie internationaal?", "a": "Ja, we verzenden naar 50+ landen wereldwijd. Internationale verzendkosten worden berekend bij het afrekenen. Douanerechten kunnen van toepassing zijn." },
-        { "q": "Kan ik mijn bestelling volgen?", "a": "Absoluut. Je ontvangt een track-link per e-mail zodra je bestelling verzonden is. Je kunt ook contact opnemen met de klantenservice met je bestelnummer." }
-      ]
-    },
-    {
-      "label": "Retourneren & Garantie",
-      "items": [
-        { "q": "Wat is de 30-Dagen Ritueel Garantie?", "a": "Als je binnen 30 dagen consistent dagelijks gebruik geen zichtbare verbetering ziet, neem dan contact op voor een volledige terugbetaling. Geen langdurig proces, geen druk." },
-        { "q": "Hoe retourneer ik een product?", "a": "Mail naar info@zentialpure.com met je bestelnummer. We keuren je verzoek binnen 24 uur goed en sturen een voorbetaald retourlabel." },
-        { "q": "Kan ik geopende accessoires retourneren?", "a": "Om hygiënische redenen kunnen geopende verbruiksartikelen (gels, pads) niet worden geretourneerd. Apparaten kunnen in originele verpakking worden geretourneerd binnen 30 dagen." }
-      ]
-    },
-    {
-      "label": "Productgebruik",
-      "items": [
-        { "q": "Kan ik de apparaten dagelijks gebruiken?", "a": "Ja. Onze apparaten zijn ontworpen voor dagelijks gebruik in sessies van 5 minuten. Begin op de laagste intensiteit en verhoog geleidelijk naarmate je huid gewend raakt." },
-        { "q": "Heb ik geleidend gel nodig?", "a": "Voor microcurrent-apparaten is geleidend gel of een waterig serum essentieel voor optimale stroomoverdracht en huidbescherming. Onze Collageen Gezichtsgel is speciaal hiervoor geformuleerd." },
-        { "q": "Hoe lang duurt het voor ik resultaat zie?", "a": "De meeste gebruikers merken verbeterde huidtextuur binnen 2 weken. Structurele veranderingen (lift, definitie) worden doorgaans zichtbaar na 3–4 weken dagelijks gebruik." },
-        { "q": "Kan ik meerdere apparaten samen gebruiken?", "a": "Ja, onze apparaten zijn ontworpen om elkaar aan te vullen. Gebruik ze in volgorde als onderdeel van je dagelijkse ritueel voor verbeterde resultaten." }
-      ]
-    },
-    {
-      "label": "Veiligheid",
-      "items": [
-        { "q": "Zijn de apparaten veilig?", "a": "Ja. Alle apparaten gebruiken klinisch bestudeerde technologie met meerdere veiligheidsfuncties. Volg altijd de meegeleverde rituele handleiding en begin op de laagste stand." },
-        { "q": "Wie mag deze apparaten niet gebruiken?", "a": "Gebruik niet als je een pacemaker hebt, zwanger bent, epilepsie hebt, actieve huidinfecties of metalen implantaten in het behandelgebied. Raadpleeg je arts bij twijfel." },
-        { "q": "Is het veilig voor gevoelige huid?", "a": "Ja. Begin op de laagste intensiteit. Als irritatie aanhoudt na milde aanvankelijke roodheid, verminder dan de frequentie en raadpleeg een dermatoloog." }
-      ]
-    },
-    {
-      "label": "Technologie",
-      "items": [
-        { "q": "Wat is microcurrent?", "a": "Microcurrent levert lage elektrische stimulatie die de natuurlijke bio-elektrische stromen van je lichaam nabootst, waarmee gezichtsspieren worden geactiveerd en collageen wordt gestimuleerd." },
-        { "q": "Wat doet rood-lichttherapie?", "a": "Rood licht (620–660nm) dringt door in de huid om cellulaire energieproductie te stimuleren, waarmee collageensynthese wordt ondersteund en ontsteking verminderd." },
-        { "q": "Wat is EMS?", "a": "Elektrische Spierstimulatie gebruikt gerichte pulsen om gezichtsspieren samen te trekken en te tonen, vergelijkbaar met een workout voor je gezicht." }
-      ]
-    },
-    {
-      "label": "Betaling",
-      "items": [
-        { "q": "Welke betaalmethoden accepteren jullie?", "a": "Visa, Mastercard, American Express, iDEAL, Bancontact, Klarna, Shop Pay, Apple Pay en Google Pay. Alle transacties worden veilig verwerkt." },
-        { "q": "Bieden jullie betaalplannen aan?", "a": "Ja — Klarna is beschikbaar bij het afrekenen, waarmee je je aankoop in rentevrije termijnen kunt splitsen." }
-      ]
-    }
-  ]
+  {
+   "label": "Retourneren & Garantie",
+   "items": [
+    { "q": "Wat is de 14-Dagen Ritueel Garantie?", "a": "Als je binnen 14 dagen consistent dagelijks gebruik geen zichtbare verbetering ziet, neem dan contact op voor een volledige terugbetaling. Geen langdurig proces, geen druk." },
+    { "q": "Hoe retourneer ik een product?", "a": "Mail naar info@zentialpure.com met je bestelnummer. We keuren je verzoek binnen 24 uur goed en sturen een voorbetaald retourlabel." },
+    { "q": "Kan ik geopende accessoires retourneren?", "a": "Om hygiënische redenen kunnen geopende verbruiksartikelen (gels, pads) niet worden geretourneerd. Apparaten kunnen in originele verpakking worden geretourneerd binnen 14 dagen." }
+   ]
+  },
+  {
+   "label": "Productgebruik",
+   "items": [
+    { "q": "Kan ik de apparaten dagelijks gebruiken?", "a": "Ja. Onze apparaten zijn ontworpen voor dagelijks gebruik in sessies van 5 minuten. Begin op de laagste intensiteit en verhoog geleidelijk naarmate je huid gewend raakt." },
+    { "q": "Heb ik geleidend gel nodig?", "a": "Voor microcurrent-apparaten is geleidend gel of een waterig serum essentieel voor optimale stroomoverdracht en huidbescherming. Onze Collageen Gezichtsgel is speciaal hiervoor geformuleerd." },
+    { "q": "Hoe lang duurt het voor ik resultaat zie?", "a": "De meeste gebruikers merken verbeterde huidtextuur binnen 2 weken. Structurele veranderingen (lift, definitie) worden doorgaans zichtbaar na 3–4 weken dagelijks gebruik." },
+    { "q": "Kan ik meerdere apparaten samen gebruiken?", "a": "Ja, onze apparaten zijn ontworpen om elkaar aan te vullen. Gebruik ze in volgorde als onderdeel van je dagelijkse ritueel voor verbeterde resultaten." }
+   ]
+  },
+  {
+   "label": "Veiligheid",
+   "items": [
+    { "q": "Zijn de apparaten veilig?", "a": "Ja. Alle apparaten gebruiken klinisch bestudeerde technologie met meerdere veiligheidsfuncties. Volg altijd de meegeleverde rituele handleiding en begin op de laagste stand." },
+    { "q": "Wie mag deze apparaten niet gebruiken?", "a": "Gebruik niet als je een pacemaker hebt, zwanger bent, epilepsie hebt, actieve huidinfecties of metalen implantaten in het behandelgebied. Raadpleeg je arts bij twijfel." },
+    { "q": "Is het veilig voor gevoelige huid?", "a": "Ja. Begin op de laagste intensiteit. Als irritatie aanhoudt na milde aanvankelijke roodheid, verminder dan de frequentie en raadpleeg een dermatoloog." }
+   ]
+  },
+  {
+   "label": "Technologie",
+   "items": [
+    { "q": "Wat is microcurrent?", "a": "Microcurrent levert lage elektrische stimulatie die de natuurlijke bio-elektrische stromen van je lichaam nabootst, waarmee gezichtsspieren worden geactiveerd en collageen wordt gestimuleerd." },
+    { "q": "Wat doet rood-lichttherapie?", "a": "Rood licht (620–660nm) dringt door in de huid om cellulaire energieproductie te stimuleren, waarmee collageensynthese wordt ondersteund en ontsteking verminderd." },
+    { "q": "Wat is EMS?", "a": "Elektrische Spierstimulatie gebruikt gerichte pulsen om gezichtsspieren samen te trekken en te tonen, vergelijkbaar met een workout voor je gezicht." }
+   ]
+  },
+  {
+   "label": "Betaling",
+   "items": [
+    { "q": "Welke betaalmethoden accepteren jullie?", "a": "Visa, Mastercard, American Express, iDEAL, Bancontact, Klarna, Shop Pay, Apple Pay en Google Pay. Alle transacties worden veilig verwerkt." },
+    { "q": "Bieden jullie betaalplannen aan?", "a": "Ja, Klarna is beschikbaar bij het afrekenen, waarmee je je aankoop in rentevrije termijnen kunt splitsen." }
+   ]
+  }
+ ]
 }

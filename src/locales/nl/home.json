@@ -1,164 +1,164 @@
 {
-  "hero": {
-    "eyebrow": "Resonantie Herstel",
-    "headline": "Optimaliseer je biologie.",
-    "subline": "Vier technologieën. Één dagelijks protocol. Meetbaar resultaat.",
-    "body": "Een editoriaal over terugkeer. Over huid niet als oppervlak maar als instrument. Over de wetenschap achter het ritueel en het ritueel in de wetenschap.",
-    "rating": "4.9 / 5 — beoordeeld door onze community",
-    "ctaPrimary": "Bestel de Face Introducer",
-    "ctaSecondary": "Vind Jouw Protocol",
-    "trust": {
-      "shipping": "Gratis EU Verzending",
-      "guarantee": "30-Dagen Protocol Garantie",
-      "tagline": "Klinische Precisie. Dagelijks Ritueel."
-    },
-    "modalities": {
-      "label": "Vier protocollen. Één stack.",
-      "redLight": {
-        "label": "Rood Licht",
-        "sub": "fotobiomodulatie"
-      },
-      "microcurrent": {
-        "label": "Microcurrent",
-        "sub": "bio-elektrisch"
-      },
-      "ems": {
-        "label": "EMS",
-        "sub": "neuromusculair"
-      },
-      "thermal": {
-        "label": "Thermisch",
-        "sub": "warmteshock"
-      }
-    }
+ "hero": {
+  "eyebrow": "Resonantie Herstel",
+  "headline": "Optimaliseer je biologie.",
+  "subline": "Vier technologieën. Één dagelijks protocol. Meetbaar resultaat.",
+  "body": "Een editoriaal over terugkeer. Over huid niet als oppervlak maar als instrument. Over de wetenschap achter het ritueel en het ritueel in de wetenschap.",
+  "rating": "4.9 / 5, beoordeeld door onze community",
+  "ctaPrimary": "Bestel de Face Introducer",
+  "ctaSecondary": "Vind Jouw Protocol",
+  "trust": {
+   "shipping": "Gratis EU Verzending",
+   "guarantee": "14-Dagen Protocol Garantie",
+   "tagline": "Klinische Precisie. Dagelijks Ritueel."
   },
-  "faq": {
-    "eyebrow": "Vragen",
-    "title": "Veelgestelde Vragen",
-    "items": [
-      {
-        "q": "Werkt dit echt?",
-        "a": "Ja. Onze apparaten gebruiken klinisch bestudeerde microcurrent, EMS en rood-lichttherapie — dezelfde technologieën als in professionele klinieken. De meeste gebruikers merken verbeterde huidtextuur binnen 2 weken en zichtbare lift na 3–4 weken dagelijks gebruik."
-      },
-      {
-        "q": "Hoe weet ik dat dit een authentiek apparaat is?",
-        "a": "Elk Zential-apparaat wordt geleverd met een uniek serienummer en authenticiteitssleutel. We verkopen uitsluitend via onze officiële winkel — geen externe verkopers — zodat je altijd een origineel product met volledige garantie ontvangt."
-      },
-      {
-        "q": "Werkt dit voor mijn huidtype?",
-        "a": "Onze apparaten zijn effectief voor alle huidtypen en -tinten. Begin op de laagste intensiteit en verhoog geleidelijk. Bij een gevoelige huid is milde aanvankelijke roodheid normaal en verdwijnt binnen enkele minuten."
-      },
-      {
-        "q": "Is het veilig om elke dag te gebruiken?",
-        "a": "Ja. Alle apparaten hebben meerdere veiligheidsfuncties en automatische uitschakeling. Begin met 5-minuten sessies dagelijks en volg de meegeleverde rituele handleiding. Raadpleeg je arts als je een pacemaker hebt, zwanger bent of epilepsie hebt."
-      },
-      {
-        "q": "Is het de investering waard?",
-        "a": "Één apparaat vervangt honderden euro's aan maandelijkse kliniekbezoeken. Met dagelijkse 5-minuten rituelen krijg je professionele resultaten thuis — gedekt door onze 30-Dagen Ritueel Garantie."
-      },
-      {
-        "q": "Wat als ik na mijn aankoop hulp nodig heb?",
-        "a": "Ons supportteam reageert binnen 24 uur. Je bent gedekt door een 30-Dagen Ritueel Garantie, eenvoudig retourneren en levenslange toegang tot rituele handleidingen en tips."
-      }
-    ]
-  },
-  "devices": {
-    "eyebrow": "De Stack",
-    "title": "Jouw Dagelijks Protocol",
-    "addToCart": "Voeg toe aan Ritueel",
-    "adding": "Toevoegen…",
-    "addedToast": "Toegevoegd aan je ritueel",
-    "subtitles": {
-      "body-lift": "Lift, verstevigt en egaliseer de huid",
-      "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": "Lichttherapie voor helderdere, uitgeruste ogen",
-      "electric-guasha-massager": "Microcurrent sculpterende Gua Sha facial",
-      "electric-micro-current": "Dagelijkse microcurrent toning voor getilde contouren",
-      "eye-massage": "Rood licht en thermische zorg voor vermoeide ogen",
-      "color-light-import-micro-current-vibration-massager": "Volledig gezicht frequentie facial voor glow en helderheid",
-      "facial-beauty-tools-and-ems-beauty-equipment": "Precisie contour wand voor wang en kaak lift",
-      "lifting-and-tightening-face-introducer": "Diepe infusie voor volle, gehydrateerde huid",
-      "portable-ems-microcurrent-facial-beauty-device": "Geavanceerde EMS & microcurrent gezichtszuivering",
-      "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening": "EMS sculpting met dubbele-golflengte LED",
-      "breath-seal": "Medische neusbandage voor neusademhaling",
-      "blackout-eye-mask-3d-deep-contoured-sleep-mask-lash-extensions-no-pressure-blindfold-sleeping-eye-mask-women-men-side-sleepers": "3D gecontoureerd verduisterend slaapmasker",
-      "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": "80W dubbele-golflengte full-body rood licht paneel",
-      "household-red-light-charging-vibrating-red-light-therapy-mat": "Infrarood warmte en rood licht herstelmat",
-      "pneumatic-air-wave-massager-pneumatic-circulation-leg-massager-pneumatic-massager": "Sequentiële compressie voor beenherstel",
-      "electric-foam-roller-muscle-relaxation-fitness-yoga-column": "Percussieve vibratie voor fascia-ontspanning",
-      "gravity-quilt-cotton-weighted-blanket": "7kg katoenen verzwaarde deken voor diepe slaap",
-      "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow": "6.210-punts acupressuurmat en kussen",
-      "led-beauty-lamp-red-light-therapy-lamp-desktop-stand": "Desktop 660nm rood-licht therapielamp",
-      "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad": "USB thermische wrap voor gewrichtsprotocol",
-      "portable-home-use-charging-red-light-therapy-blanket-far-infrared": "Volledige lichaam ver-infrarood saunadeked",
-      "household-full-body-moisture-removing-infrared-sauna-blanket": "Compacte draagbare infrarood saunadeken",
-      "null-1777641441133": "Draagbare 360-knooppunts infrarood LED gordel",
-      "red-light-therapy-belt-infrared-hot-compress-phototherapy": "USB thermisch pad voor gewrichtsherstel",
-      "white-noise-sleep-aid-machine": "Akoestische maskering voor diepere slaap"
-    }
-  },
-  "movement": {
-    "eyebrow": "Skin Intelligence",
-    "headline": "Je trackt al alles.\nJe huid is de volgende.",
-    "body": "De meest geoptimaliseerde mensen ter wereld laten niets aan het toeval over. Slaap, voeding, prestaties — elk afgesloten met een protocol en een categoriekampioen. De ontbrekende schakel was altijd de huid. Niet meer.",
-    "stack": {
-      "sleep": "Slaap",
-      "nutrition": "Voeding",
-      "performance": "Prestaties",
-      "skin": "Huid"
-    },
-    "quote": "Dit gaat niet over er jonger uitzien. Het gaat over je huid net zo serieus nemen als alles wat je al optimaliseert.",
-    "quoteAttribution": "De Zential Beweging"
-  },
-  "philosophy": {
-    "eyebrow": "Een Nieuwe Categorie",
-    "headline": "Dit is geen schoonheidsmerk\ndat wetenschap gebruikt.",
-    "body1": "Zential Pure is een zelfoptimalisatiemerk dat toevallig werkt op je gezicht. We verkopen geen apparaten. We verkopen een praktijk.",
-    "body2": "De vrouwen die Zential gebruiken, tracken al hun slaap, begrijpen al cortisol, weten al wat mitochondriën doen. Ze zijn naar de dermatoloog gegaan en dachten: er moet een versie van dit zijn die ik zelf kan doen, elke dag, zonder elke zes weken een afspraak te boeken.",
-    "categoryEyebrow": "De Categorie Die Wij Bezitten",
-    "categoryTitle": "Skin Intelligence",
-    "categoryDesc": "De praktijk van begrijpen wat je huid werkelijk doet — en haar de juiste inputs geven, consistent.",
-    "think": "Denk"
-  },
-  "comparison": {
-    "eyebrow": "Waarom Zential",
-    "title": "Klinische Precisie.\nZonder de Kliniek.",
-    "oneTimeInvestment": "Eenmalige investering",
-    "oneTimeSub": "Voor altijd van jou. Geen abonnementen, geen boekingen.",
-    "noBookings": "Geen boekingen, geen downtime, geen afhankelijkheid.",
-    "rows": {
-      "price": "Prijs",
-      "techStack": "Tech stack",
-      "protocolTime": "Protocoltijd",
-      "access": "Toegang",
-      "recurringCost": "Terugkerende kosten"
-    },
-    "columns": {
-      "zential": "Zential",
-      "ziip": "ZIIP / CurrentBody",
-      "generic": "Generieke Apparaten",
-      "studio": "Herstelstudio"
-    },
-    "values": {
-      "priceZential": "€88 — eenmalig",
-      "priceZiip": "€350+ — eenmalig",
-      "priceGeneric": "€60–100 — eenmalig",
-      "priceStudio": "€80–200 / sessie",
-      "techZential": "4 modaliteiten",
-      "techZiip": "1–2 modaliteiten",
-      "techGeneric": "1 modaliteit",
-      "techStudio": "1 behandelingstype",
-      "timeZential": "5 minuten",
-      "timeZiip": "15–20 min",
-      "timeGeneric": "10–20 min",
-      "timeStudio": "60–90 min + reistijd",
-      "accessZential": "Op aanvraag",
-      "accessZiip": "Op aanvraag",
-      "accessGeneric": "Op aanvraag",
-      "accessStudio": "Weken vooruit boeken",
-      "costZential": "Geen",
-      "costZiip": "Geen",
-      "costGeneric": "Geen",
-      "costStudio": "Elke sessie, elk jaar"
-    }
+  "modalities": {
+   "label": "Vier protocollen. Één stack.",
+   "redLight": {
+    "label": "Rood Licht",
+    "sub": "fotobiomodulatie"
+   },
+   "microcurrent": {
+    "label": "Microcurrent",
+    "sub": "bio-elektrisch"
+   },
+   "ems": {
+    "label": "EMS",
+    "sub": "neuromusculair"
+   },
+   "thermal": {
+    "label": "Thermisch",
+    "sub": "warmteshock"
+   }
   }
+ },
+ "faq": {
+  "eyebrow": "Vragen",
+  "title": "Veelgestelde Vragen",
+  "items": [
+   {
+    "q": "Werkt dit echt?",
+    "a": "Ja. Onze apparaten gebruiken klinisch bestudeerde microcurrent, EMS en rood-lichttherapie, dezelfde technologieën als in professionele klinieken. De meeste gebruikers merken verbeterde huidtextuur binnen 2 weken en zichtbare lift na 3–4 weken dagelijks gebruik."
+   },
+   {
+    "q": "Hoe weet ik dat dit een authentiek apparaat is?",
+    "a": "Elk Zential-apparaat wordt geleverd met een uniek serienummer en authenticiteitssleutel. We verkopen uitsluitend via onze officiële winkel, geen externe verkopers, zodat je altijd een origineel product met volledige garantie ontvangt."
+   },
+   {
+    "q": "Werkt dit voor mijn huidtype?",
+    "a": "Onze apparaten zijn effectief voor alle huidtypen en -tinten. Begin op de laagste intensiteit en verhoog geleidelijk. Bij een gevoelige huid is milde aanvankelijke roodheid normaal en verdwijnt binnen enkele minuten."
+   },
+   {
+    "q": "Is het veilig om elke dag te gebruiken?",
+    "a": "Ja. Alle apparaten hebben meerdere veiligheidsfuncties en automatische uitschakeling. Begin met 5-minuten sessies dagelijks en volg de meegeleverde rituele handleiding. Raadpleeg je arts als je een pacemaker hebt, zwanger bent of epilepsie hebt."
+   },
+   {
+    "q": "Is het de investering waard?",
+    "a": "Één apparaat vervangt honderden euro's aan maandelijkse kliniekbezoeken. Met dagelijkse 5-minuten rituelen krijg je professionele resultaten thuis, gedekt door onze 14-Dagen Ritueel Garantie."
+   },
+   {
+    "q": "Wat als ik na mijn aankoop hulp nodig heb?",
+    "a": "Ons supportteam reageert binnen 24 uur. Je bent gedekt door een 14-Dagen Ritueel Garantie, eenvoudig retourneren en levenslange toegang tot rituele handleidingen en tips."
+   }
+  ]
+ },
+ "devices": {
+  "eyebrow": "De Stack",
+  "title": "Jouw Dagelijks Protocol",
+  "addToCart": "Voeg toe aan Ritueel",
+  "adding": "Toevoegen…",
+  "addedToast": "Toegevoegd aan je ritueel",
+  "subtitles": {
+   "body-lift": "Lift, verstevigt en egaliseer de huid",
+   "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": "Lichttherapie voor helderdere, uitgeruste ogen",
+   "electric-guasha-massager": "Microcurrent sculpterende Gua Sha facial",
+   "electric-micro-current": "Dagelijkse microcurrent toning voor getilde contouren",
+   "eye-massage": "Rood licht en thermische zorg voor vermoeide ogen",
+   "color-light-import-micro-current-vibration-massager": "Volledig gezicht frequentie facial voor glow en helderheid",
+   "facial-beauty-tools-and-ems-beauty-equipment": "Precisie contour wand voor wang en kaak lift",
+   "lifting-and-tightening-face-introducer": "Diepe infusie voor volle, gehydrateerde huid",
+   "portable-ems-microcurrent-facial-beauty-device": "Geavanceerde EMS & microcurrent gezichtszuivering",
+   "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening": "EMS sculpting met dubbele-golflengte LED",
+   "breath-seal": "Medische neusbandage voor neusademhaling",
+   "blackout-eye-mask-3d-deep-contoured-sleep-mask-lash-extensions-no-pressure-blindfold-sleeping-eye-mask-women-men-side-sleepers": "3D gecontoureerd verduisterend slaapmasker",
+   "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": "80W dubbele-golflengte full-body rood licht paneel",
+   "household-red-light-charging-vibrating-red-light-therapy-mat": "Infrarood warmte en rood licht herstelmat",
+   "pneumatic-air-wave-massager-pneumatic-circulation-leg-massager-pneumatic-massager": "Sequentiële compressie voor beenherstel",
+   "electric-foam-roller-muscle-relaxation-fitness-yoga-column": "Percussieve vibratie voor fascia-ontspanning",
+   "gravity-quilt-cotton-weighted-blanket": "7kg katoenen verzwaarde deken voor diepe slaap",
+   "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow": "6.210-punts acupressuurmat en kussen",
+   "led-beauty-lamp-red-light-therapy-lamp-desktop-stand": "Desktop 660nm rood-licht therapielamp",
+   "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad": "USB thermische wrap voor gewrichtsprotocol",
+   "portable-home-use-charging-red-light-therapy-blanket-far-infrared": "Volledige lichaam ver-infrarood saunadeked",
+   "household-full-body-moisture-removing-infrared-sauna-blanket": "Compacte draagbare infrarood saunadeken",
+   "null-1777641441133": "Draagbare 360-knooppunts infrarood LED gordel",
+   "red-light-therapy-belt-infrared-hot-compress-phototherapy": "USB thermisch pad voor gewrichtsherstel",
+   "white-noise-sleep-aid-machine": "Akoestische maskering voor diepere slaap"
+  }
+ },
+ "movement": {
+  "eyebrow": "Skin Intelligence",
+  "headline": "Je trackt al alles.\nJe huid is de volgende.",
+  "body": "De meest geoptimaliseerde mensen ter wereld laten niets aan het toeval over. Slaap, voeding, prestaties, elk afgesloten met een protocol en een categoriekampioen. De ontbrekende schakel was altijd de huid. Niet meer.",
+  "stack": {
+   "sleep": "Slaap",
+   "nutrition": "Voeding",
+   "performance": "Prestaties",
+   "skin": "Huid"
+  },
+  "quote": "Dit gaat niet over er jonger uitzien. Het gaat over je huid net zo serieus nemen als alles wat je al optimaliseert.",
+  "quoteAttribution": "De Zential Beweging"
+ },
+ "philosophy": {
+  "eyebrow": "Een Nieuwe Categorie",
+  "headline": "Dit is geen schoonheidsmerk\ndat wetenschap gebruikt.",
+  "body1": "Zential Pure is een zelfoptimalisatiemerk dat toevallig werkt op je gezicht. We verkopen geen apparaten. We verkopen een praktijk.",
+  "body2": "De vrouwen die Zential gebruiken, tracken al hun slaap, begrijpen al cortisol, weten al wat mitochondriën doen. Ze zijn naar de dermatoloog gegaan en dachten: er moet een versie van dit zijn die ik zelf kan doen, elke dag, zonder elke zes weken een afspraak te boeken.",
+  "categoryEyebrow": "De Categorie Die Wij Bezitten",
+  "categoryTitle": "Skin Intelligence",
+  "categoryDesc": "De praktijk van begrijpen wat je huid werkelijk doet, en haar de juiste inputs geven, consistent.",
+  "think": "Denk"
+ },
+ "comparison": {
+  "eyebrow": "Waarom Zential",
+  "title": "Klinische Precisie.\nZonder de Kliniek.",
+  "oneTimeInvestment": "Eenmalige investering",
+  "oneTimeSub": "Voor altijd van jou. Geen abonnementen, geen boekingen.",
+  "noBookings": "Geen boekingen, geen downtime, geen afhankelijkheid.",
+  "rows": {
+   "price": "Prijs",
+   "techStack": "Tech stack",
+   "protocolTime": "Protocoltijd",
+   "access": "Toegang",
+   "recurringCost": "Terugkerende kosten"
+  },
+  "columns": {
+   "zential": "Zential",
+   "ziip": "ZIIP / CurrentBody",
+   "generic": "Generieke Apparaten",
+   "studio": "Herstelstudio"
+  },
+  "values": {
+   "priceZential": "€88, eenmalig",
+   "priceZiip": "€350+, eenmalig",
+   "priceGeneric": "€60–100, eenmalig",
+   "priceStudio": "€80–200 / sessie",
+   "techZential": "4 modaliteiten",
+   "techZiip": "1–2 modaliteiten",
+   "techGeneric": "1 modaliteit",
+   "techStudio": "1 behandelingstype",
+   "timeZential": "5 minuten",
+   "timeZiip": "15–20 min",
+   "timeGeneric": "10–20 min",
+   "timeStudio": "60–90 min + reistijd",
+   "accessZential": "Op aanvraag",
+   "accessZiip": "Op aanvraag",
+   "accessGeneric": "Op aanvraag",
+   "accessStudio": "Weken vooruit boeken",
+   "costZential": "Geen",
+   "costZiip": "Geen",
+   "costGeneric": "Geen",
+   "costStudio": "Elke sessie, elk jaar"
+  }
+ }
 }

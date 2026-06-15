@@ -1,164 +1,164 @@
 {
-  "hero": {
-    "eyebrow": "Restauration de Résonance",
-    "headline": "Optimisez votre biologie.",
-    "subline": "Quatre technologies. Un protocole quotidien. Des résultats mesurables.",
-    "body": "Un éditorial sur le retour. Sur la peau non comme surface mais comme instrument. Sur la science derrière le rituel et le rituel dans la science.",
-    "rating": "4,9 / 5 — noté par notre communauté",
-    "ctaPrimary": "Commander le Face Introducer",
-    "ctaSecondary": "Trouver Votre Protocole",
-    "trust": {
-      "shipping": "Livraison UE gratuite",
-      "guarantee": "Garantie Protocole 30 Jours",
-      "tagline": "Précision clinique. Rituel quotidien."
-    },
-    "modalities": {
-      "label": "Quatre protocoles. Une stack.",
-      "redLight": {
-        "label": "Lumière rouge",
-        "sub": "photobiomodulation"
-      },
-      "microcurrent": {
-        "label": "Microcourant",
-        "sub": "bioélectrique"
-      },
-      "ems": {
-        "label": "EMS",
-        "sub": "neuromusculaire"
-      },
-      "thermal": {
-        "label": "Thermique",
-        "sub": "choc thermique"
-      }
-    }
+ "hero": {
+  "eyebrow": "Restauration de Résonance",
+  "headline": "Optimisez votre biologie.",
+  "subline": "Quatre technologies. Un protocole quotidien. Des résultats mesurables.",
+  "body": "Un éditorial sur le retour. Sur la peau non comme surface mais comme instrument. Sur la science derrière le rituel et le rituel dans la science.",
+  "rating": "4,9 / 5, noté par notre communauté",
+  "ctaPrimary": "Commander le Face Introducer",
+  "ctaSecondary": "Trouver Votre Protocole",
+  "trust": {
+   "shipping": "Livraison UE gratuite",
+   "guarantee": "Garantie Protocole 14 Jours",
+   "tagline": "Précision clinique. Rituel quotidien."
   },
-  "faq": {
-    "eyebrow": "Questions",
-    "title": "Questions fréquentes",
-    "items": [
-      {
-        "q": "Est-ce que ça fonctionne vraiment ?",
-        "a": "Oui. Nos appareils utilisent le microcourant, l'EMS et la luminothérapie rouge — les mêmes technologies que dans les cliniques professionnelles. La plupart des utilisatrices remarquent une texture de peau améliorée en 2 semaines et un effet lift visible après 3–4 semaines d'utilisation quotidienne."
-      },
-      {
-        "q": "Comment savoir que c'est un appareil authentique ?",
-        "a": "Chaque appareil Zential est livré avec un numéro de série unique et un sceau d'authenticité. Nous vendons exclusivement via notre boutique officielle — aucun revendeur tiers — vous recevez donc toujours un produit authentique avec garantie complète."
-      },
-      {
-        "q": "Est-ce adapté à mon type de peau ?",
-        "a": "Nos appareils sont efficaces sur tous les types et tons de peau. Commencez à la plus faible intensité et augmentez progressivement. Pour les peaux sensibles, une légère rougeur initiale est normale et disparaît en quelques minutes."
-      },
-      {
-        "q": "Est-il sûr de l'utiliser tous les jours ?",
-        "a": "Oui. Tous les appareils incluent plusieurs fonctions de sécurité et une coupure automatique. Commencez par des séances de 5 minutes quotidiennes et suivez le guide de rituel inclus. Consultez votre médecin si vous avez un stimulateur cardiaque, êtes enceinte ou souffrez d'épilepsie."
-      },
-      {
-        "q": "L'investissement en vaut-il la peine ?",
-        "a": "Un seul appareil remplace des centaines d'euros de visites mensuelles en clinique. Avec des rituels quotidiens de 5 minutes, vous obtenez des résultats de qualité professionnelle chez vous — garantis par notre Garantie Rituel 30 jours."
-      },
-      {
-        "q": "Et si j'ai besoin d'aide après mon achat ?",
-        "a": "Notre équipe support répond dans les 24 heures. Vous bénéficiez d'une Garantie Rituel 30 jours, de retours faciles et d'un accès à vie aux guides de rituel et aux conseils."
-      }
-    ]
-  },
-  "devices": {
-    "eyebrow": "La Stack",
-    "title": "Votre protocole quotidien",
-    "addToCart": "Ajouter au rituel",
-    "adding": "Ajout en cours…",
-    "addedToast": "Ajouté à votre rituel",
-    "subtitles": {
-      "body-lift": "Lifter, raffermir et lisser la peau",
-      "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": "Luminothérapie pour des yeux plus lumineux et reposés",
-      "electric-guasha-massager": "Soin facial Gua Sha sculptant au microcourant",
-      "electric-micro-current": "Tonification quotidienne au microcourant pour des contours lifté",
-      "eye-massage": "Soin lumière rouge et thermique pour les yeux fatigués",
-      "color-light-import-micro-current-vibration-massager": "Soin facial fréquentiel visage entier pour éclat et clarté",
-      "facial-beauty-tools-and-ems-beauty-equipment": "Baguette de contour de précision pour lift des joues et de la mâchoire",
-      "lifting-and-tightening-face-introducer": "Infusion profonde pour une peau pulpeuse et hydratée",
-      "portable-ems-microcurrent-facial-beauty-device": "Purification faciale avancée EMS & microcourant",
-      "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening": "Sculpture EMS avec LED double longueur d'onde",
-      "breath-seal": "Ruban nasal médical pour la respiration nasale",
-      "blackout-eye-mask-3d-deep-contoured-sleep-mask-lash-extensions-no-pressure-blindfold-sleeping-eye-mask-women-men-side-sleepers": "Masque de sommeil occultant 3D contouré",
-      "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": "Panneau de luminothérapie rouge corps entier 80W double longueur d'onde",
-      "household-red-light-charging-vibrating-red-light-therapy-mat": "Tapis de récupération chaleur infrarouge et lumière rouge",
-      "pneumatic-air-wave-massager-pneumatic-circulation-leg-massager-pneumatic-massager": "Compression séquentielle pour la récupération des jambes",
-      "electric-foam-roller-muscle-relaxation-fitness-yoga-column": "Vibration percussive pour libérer les fascias",
-      "gravity-quilt-cotton-weighted-blanket": "Couverture lestée en coton 7kg pour un sommeil profond",
-      "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow": "Tapis d'acupression 6 210 points et oreiller",
-      "led-beauty-lamp-red-light-therapy-lamp-desktop-stand": "Lampe de thérapie lumière rouge 660nm de bureau",
-      "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad": "Wrap thermique USB pour protocole articulaire",
-      "portable-home-use-charging-red-light-therapy-blanket-far-infrared": "Couverture sauna infrarouge lointain corps entier",
-      "household-full-body-moisture-removing-infrared-sauna-blanket": "Couverture sauna infrarouge compacte et portable",
-      "null-1777641441133": "Ceinture LED infrarouge 360 nœuds portable",
-      "red-light-therapy-belt-infrared-hot-compress-phototherapy": "Pad thermique USB pour récupération articulaire",
-      "white-noise-sleep-aid-machine": "Masquage acoustique pour des cycles de sommeil plus profonds"
-    }
-  },
-  "movement": {
-    "eyebrow": "Skin Intelligence",
-    "headline": "Vous tracez déjà tout.\nVotre peau est la prochaine étape.",
-    "body": "Les personnes les plus optimisées au monde ne laissent rien au hasard. Sommeil, nutrition, performance — chacun maîtrisé avec un protocole et un leader de catégorie. Le manque a toujours été la peau. Plus maintenant.",
-    "stack": {
-      "sleep": "Sommeil",
-      "nutrition": "Nutrition",
-      "performance": "Performance",
-      "skin": "Peau"
-    },
-    "quote": "Il ne s'agit pas de paraître plus jeune. Il s'agit de prendre votre peau aussi sérieusement que tout ce que vous optimisez déjà.",
-    "quoteAttribution": "Le Mouvement Zential"
-  },
-  "philosophy": {
-    "eyebrow": "Une Nouvelle Catégorie",
-    "headline": "Ce n'est pas une marque de beauté\nqui utilise la science.",
-    "body1": "Zential Pure est une marque d'auto-optimisation qui travaille sur votre visage. Nous ne vendons pas des appareils. Nous vendons une pratique.",
-    "body2": "Les femmes qui utilisent Zential suivent déjà leur sommeil, comprennent déjà le cortisol, savent déjà ce que font les mitochondries. Elles sont allées chez le dermatologue et sont reparties en pensant : il devrait exister une version de cela que je peux faire moi-même, tous les jours, sans prendre rendez-vous toutes les six semaines.",
-    "categoryEyebrow": "La Catégorie Que Nous Possédons",
-    "categoryTitle": "Skin Intelligence",
-    "categoryDesc": "La pratique de comprendre ce que fait réellement votre peau — et de lui donner les bons apports, de manière constante.",
-    "think": "Pensez"
-  },
-  "comparison": {
-    "eyebrow": "Pourquoi Zential",
-    "title": "Précision clinique.\nSans la clinique.",
-    "oneTimeInvestment": "Investissement unique",
-    "oneTimeSub": "À vous pour toujours. Pas d'abonnements, pas de réservations.",
-    "noBookings": "Pas de réservations, pas d'interruptions, pas de dépendance.",
-    "rows": {
-      "price": "Prix",
-      "techStack": "Stack technologique",
-      "protocolTime": "Durée du protocole",
-      "access": "Accès",
-      "recurringCost": "Coût récurrent"
-    },
-    "columns": {
-      "zential": "Zential",
-      "ziip": "ZIIP / CurrentBody",
-      "generic": "Appareils génériques",
-      "studio": "Studio de récupération"
-    },
-    "values": {
-      "priceZential": "€88 — une fois",
-      "priceZiip": "€350+ — une fois",
-      "priceGeneric": "€60–100 — une fois",
-      "priceStudio": "€80–200 / séance",
-      "techZential": "4 modalités",
-      "techZiip": "1–2 modalités",
-      "techGeneric": "1 modalité",
-      "techStudio": "1 type de traitement",
-      "timeZential": "5 minutes",
-      "timeZiip": "15–20 min",
-      "timeGeneric": "10–20 min",
-      "timeStudio": "60–90 min + déplacement",
-      "accessZential": "À la demande",
-      "accessZiip": "À la demande",
-      "accessGeneric": "À la demande",
-      "accessStudio": "Réserver des semaines à l'avance",
-      "costZential": "Aucun",
-      "costZiip": "Aucun",
-      "costGeneric": "Aucun",
-      "costStudio": "Chaque séance, chaque année"
-    }
+  "modalities": {
+   "label": "Quatre protocoles. Une stack.",
+   "redLight": {
+    "label": "Lumière rouge",
+    "sub": "photobiomodulation"
+   },
+   "microcurrent": {
+    "label": "Microcourant",
+    "sub": "bioélectrique"
+   },
+   "ems": {
+    "label": "EMS",
+    "sub": "neuromusculaire"
+   },
+   "thermal": {
+    "label": "Thermique",
+    "sub": "choc thermique"
+   }
   }
+ },
+ "faq": {
+  "eyebrow": "Questions",
+  "title": "Questions fréquentes",
+  "items": [
+   {
+    "q": "Est-ce que ça fonctionne vraiment ?",
+    "a": "Oui. Nos appareils utilisent le microcourant, l'EMS et la luminothérapie rouge, les mêmes technologies que dans les cliniques professionnelles. La plupart des utilisatrices remarquent une texture de peau améliorée en 2 semaines et un effet lift visible après 3–4 semaines d'utilisation quotidienne."
+   },
+   {
+    "q": "Comment savoir que c'est un appareil authentique ?",
+    "a": "Chaque appareil Zential est livré avec un numéro de série unique et un sceau d'authenticité. Nous vendons exclusivement via notre boutique officielle, aucun revendeur tiers, vous recevez donc toujours un produit authentique avec garantie complète."
+   },
+   {
+    "q": "Est-ce adapté à mon type de peau ?",
+    "a": "Nos appareils sont efficaces sur tous les types et tons de peau. Commencez à la plus faible intensité et augmentez progressivement. Pour les peaux sensibles, une légère rougeur initiale est normale et disparaît en quelques minutes."
+   },
+   {
+    "q": "Est-il sûr de l'utiliser tous les jours ?",
+    "a": "Oui. Tous les appareils incluent plusieurs fonctions de sécurité et une coupure automatique. Commencez par des séances de 5 minutes quotidiennes et suivez le guide de rituel inclus. Consultez votre médecin si vous avez un stimulateur cardiaque, êtes enceinte ou souffrez d'épilepsie."
+   },
+   {
+    "q": "L'investissement en vaut-il la peine ?",
+    "a": "Un seul appareil remplace des centaines d'euros de visites mensuelles en clinique. Avec des rituels quotidiens de 5 minutes, vous obtenez des résultats de qualité professionnelle chez vous, garantis par notre Garantie Rituel 14 jours."
+   },
+   {
+    "q": "Et si j'ai besoin d'aide après mon achat ?",
+    "a": "Notre équipe support répond dans les 24 heures. Vous bénéficiez d'une Garantie Rituel 14 jours, de retours faciles et d'un accès à vie aux guides de rituel et aux conseils."
+   }
+  ]
+ },
+ "devices": {
+  "eyebrow": "La Stack",
+  "title": "Votre protocole quotidien",
+  "addToCart": "Ajouter au rituel",
+  "adding": "Ajout en cours…",
+  "addedToast": "Ajouté à votre rituel",
+  "subtitles": {
+   "body-lift": "Lifter, raffermir et lisser la peau",
+   "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": "Luminothérapie pour des yeux plus lumineux et reposés",
+   "electric-guasha-massager": "Soin facial Gua Sha sculptant au microcourant",
+   "electric-micro-current": "Tonification quotidienne au microcourant pour des contours lifté",
+   "eye-massage": "Soin lumière rouge et thermique pour les yeux fatigués",
+   "color-light-import-micro-current-vibration-massager": "Soin facial fréquentiel visage entier pour éclat et clarté",
+   "facial-beauty-tools-and-ems-beauty-equipment": "Baguette de contour de précision pour lift des joues et de la mâchoire",
+   "lifting-and-tightening-face-introducer": "Infusion profonde pour une peau pulpeuse et hydratée",
+   "portable-ems-microcurrent-facial-beauty-device": "Purification faciale avancée EMS & microcourant",
+   "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening": "Sculpture EMS avec LED double longueur d'onde",
+   "breath-seal": "Ruban nasal médical pour la respiration nasale",
+   "blackout-eye-mask-3d-deep-contoured-sleep-mask-lash-extensions-no-pressure-blindfold-sleeping-eye-mask-women-men-side-sleepers": "Masque de sommeil occultant 3D contouré",
+   "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": "Panneau de luminothérapie rouge corps entier 80W double longueur d'onde",
+   "household-red-light-charging-vibrating-red-light-therapy-mat": "Tapis de récupération chaleur infrarouge et lumière rouge",
+   "pneumatic-air-wave-massager-pneumatic-circulation-leg-massager-pneumatic-massager": "Compression séquentielle pour la récupération des jambes",
+   "electric-foam-roller-muscle-relaxation-fitness-yoga-column": "Vibration percussive pour libérer les fascias",
+   "gravity-quilt-cotton-weighted-blanket": "Couverture lestée en coton 7kg pour un sommeil profond",
+   "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow": "Tapis d'acupression 6 210 points et oreiller",
+   "led-beauty-lamp-red-light-therapy-lamp-desktop-stand": "Lampe de thérapie lumière rouge 660nm de bureau",
+   "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad": "Wrap thermique USB pour protocole articulaire",
+   "portable-home-use-charging-red-light-therapy-blanket-far-infrared": "Couverture sauna infrarouge lointain corps entier",
+   "household-full-body-moisture-removing-infrared-sauna-blanket": "Couverture sauna infrarouge compacte et portable",
+   "null-1777641441133": "Ceinture LED infrarouge 360 nœuds portable",
+   "red-light-therapy-belt-infrared-hot-compress-phototherapy": "Pad thermique USB pour récupération articulaire",
+   "white-noise-sleep-aid-machine": "Masquage acoustique pour des cycles de sommeil plus profonds"
+  }
+ },
+ "movement": {
+  "eyebrow": "Skin Intelligence",
+  "headline": "Vous tracez déjà tout.\nVotre peau est la prochaine étape.",
+  "body": "Les personnes les plus optimisées au monde ne laissent rien au hasard. Sommeil, nutrition, performance, chacun maîtrisé avec un protocole et un leader de catégorie. Le manque a toujours été la peau. Plus maintenant.",
+  "stack": {
+   "sleep": "Sommeil",
+   "nutrition": "Nutrition",
+   "performance": "Performance",
+   "skin": "Peau"
+  },
+  "quote": "Il ne s'agit pas de paraître plus jeune. Il s'agit de prendre votre peau aussi sérieusement que tout ce que vous optimisez déjà.",
+  "quoteAttribution": "Le Mouvement Zential"
+ },
+ "philosophy": {
+  "eyebrow": "Une Nouvelle Catégorie",
+  "headline": "Ce n'est pas une marque de beauté\nqui utilise la science.",
+  "body1": "Zential Pure est une marque d'auto-optimisation qui travaille sur votre visage. Nous ne vendons pas des appareils. Nous vendons une pratique.",
+  "body2": "Les femmes qui utilisent Zential suivent déjà leur sommeil, comprennent déjà le cortisol, savent déjà ce que font les mitochondries. Elles sont allées chez le dermatologue et sont reparties en pensant : il devrait exister une version de cela que je peux faire moi-même, tous les jours, sans prendre rendez-vous toutes les six semaines.",
+  "categoryEyebrow": "La Catégorie Que Nous Possédons",
+  "categoryTitle": "Skin Intelligence",
+  "categoryDesc": "La pratique de comprendre ce que fait réellement votre peau, et de lui donner les bons apports, de manière constante.",
+  "think": "Pensez"
+ },
+ "comparison": {
+  "eyebrow": "Pourquoi Zential",
+  "title": "Précision clinique.\nSans la clinique.",
+  "oneTimeInvestment": "Investissement unique",
+  "oneTimeSub": "À vous pour toujours. Pas d'abonnements, pas de réservations.",
+  "noBookings": "Pas de réservations, pas d'interruptions, pas de dépendance.",
+  "rows": {
+   "price": "Prix",
+   "techStack": "Stack technologique",
+   "protocolTime": "Durée du protocole",
+   "access": "Accès",
+   "recurringCost": "Coût récurrent"
+  },
+  "columns": {
+   "zential": "Zential",
+   "ziip": "ZIIP / CurrentBody",
+   "generic": "Appareils génériques",
+   "studio": "Studio de récupération"
+  },
+  "values": {
+   "priceZential": "€88, une fois",
+   "priceZiip": "€350+, une fois",
+   "priceGeneric": "€60–100, une fois",
+   "priceStudio": "€80–200 / séance",
+   "techZential": "4 modalités",
+   "techZiip": "1–2 modalités",
+   "techGeneric": "1 modalité",
+   "techStudio": "1 type de traitement",
+   "timeZential": "5 minutes",
+   "timeZiip": "15–20 min",
+   "timeGeneric": "10–20 min",
+   "timeStudio": "60–90 min + déplacement",
+   "accessZential": "À la demande",
+   "accessZiip": "À la demande",
+   "accessGeneric": "À la demande",
+   "accessStudio": "Réserver des semaines à l'avance",
+   "costZential": "Aucun",
+   "costZiip": "Aucun",
+   "costGeneric": "Aucun",
+   "costStudio": "Chaque séance, chaque année"
+  }
+ }
 }

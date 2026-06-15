@@ -1,69 +1,69 @@
 {
-  "nav": {
-    "shop": "Shop",
-    "collection": "Kollektion",
-    "ritual": "Ritual",
-    "quiz": "Quiz",
-    "journal": "Journal",
-    "support": "Support",
-    "shopDevices": "Geräte shoppen",
-    "liftContour": "Lift & Kontur",
-    "toneGlow": "Tonen & Glow",
-    "eyeFinelines": "Augen & Fältchen",
-    "bodyTissue": "Körper & Gewebe",
-    "openMenu": "Menü öffnen",
-    "closeMenu": "Menü schließen"
+ "nav": {
+  "shop": "Shop",
+  "collection": "Kollektion",
+  "ritual": "Ritual",
+  "quiz": "Quiz",
+  "journal": "Journal",
+  "support": "Support",
+  "shopDevices": "Geräte shoppen",
+  "liftContour": "Lift & Kontur",
+  "toneGlow": "Tonen & Glow",
+  "eyeFinelines": "Augen & Fältchen",
+  "bodyTissue": "Körper & Gewebe",
+  "openMenu": "Menü öffnen",
+  "closeMenu": "Menü schließen"
+ },
+ "announcement": {
+  "guarantee": "14-Tage-Protokollgarantie. Kein Aufwand. Keine Fragen.",
+  "shipping": "Kostenloser Versand ab €75 Bestellwert",
+  "science": "Photobiomodulation · Bioelektrisch · EMS · Infrarot, Ein täglicher Stack",
+  "delivery": "Lieferung in 3–7 Werktagen in der gesamten EU",
+  "clinic": "Schneller erholen. Langsamer altern. Härter trainieren. Dein tägliches Biohacking-Protokoll."
+ },
+ "cart": {
+  "empty": "Deine Tasche ist leer",
+  "startRitual": "Starte dein Ritual",
+  "item": "Artikel",
+  "items": "Artikel",
+  "freeShippingUnlocked": "Kostenloser Standardversand freigeschaltet",
+  "awayFromFreeShipping": "{{amount}} bis zum kostenlosen Versand",
+  "upsellLabel": "Vervollständige dein Ritual",
+  "upsellSub": "Kollagen-Gesichtsgel hinzufügen, speziell für die Gerätenutzung",
+  "included": "Inklusive",
+  "subtotal": "Zwischensumme",
+  "shippingNote": "Versand, Steuern & Rabatte werden beim Checkout berechnet",
+  "checkout": "Zur Kasse",
+  "redirecting": "Weiterleitung zur sicheren Kasse…"
+ },
+ "footer": {
+  "sections": {
+   "Shop": "Shop",
+   "Ritual": "Ritual",
+   "Technology": "Technologie",
+   "Support": "Support",
+   "Legal": "Rechtliches"
   },
-  "announcement": {
-    "guarantee": "30-Tage-Protokollgarantie. Kein Aufwand. Keine Fragen.",
-    "shipping": "Kostenloser Versand ab €75 Bestellwert",
-    "science": "Photobiomodulation · Bioelektrisch · EMS · Infrarot — Ein täglicher Stack",
-    "delivery": "Lieferung in 3–7 Werktagen in der gesamten EU",
-    "clinic": "Schneller erholen. Langsamer altern. Härter trainieren. Dein tägliches Biohacking-Protokoll."
+  "links": {
+   "allDevices": "Alle Geräte",
+   "bundles": "Bundles",
+   "journal": "Journal",
+   "fiveStepMethod": "Die 5-Schritte-Methode",
+   "eveningProtocol": "Abendprotokoll",
+   "howItWorks": "Wie es funktioniert",
+   "microcurrent": "Mikrostrom",
+   "redLightTherapy": "Rotlichttherapie",
+   "ems": "EMS",
+   "thermalTherapy": "Wärmetherapie",
+   "theScience": "Die Wissenschaft",
+   "contact": "Kontakt",
+   "shipping": "Versand",
+   "returns": "Rücksendungen",
+   "faq": "FAQ",
+   "privacyPolicy": "Datenschutzrichtlinie",
+   "termsOfService": "Nutzungsbedingungen"
   },
-  "cart": {
-    "empty": "Deine Tasche ist leer",
-    "startRitual": "Starte dein Ritual",
-    "item": "Artikel",
-    "items": "Artikel",
-    "freeShippingUnlocked": "Kostenloser Standardversand freigeschaltet",
-    "awayFromFreeShipping": "{{amount}} bis zum kostenlosen Versand",
-    "upsellLabel": "Vervollständige dein Ritual",
-    "upsellSub": "Kollagen-Gesichtsgel hinzufügen — speziell für die Gerätenutzung",
-    "included": "Inklusive",
-    "subtotal": "Zwischensumme",
-    "shippingNote": "Versand, Steuern & Rabatte werden beim Checkout berechnet",
-    "checkout": "Zur Kasse",
-    "redirecting": "Weiterleitung zur sicheren Kasse…"
-  },
-  "footer": {
-    "sections": {
-      "Shop": "Shop",
-      "Ritual": "Ritual",
-      "Technology": "Technologie",
-      "Support": "Support",
-      "Legal": "Rechtliches"
-    },
-    "links": {
-      "allDevices": "Alle Geräte",
-      "bundles": "Bundles",
-      "journal": "Journal",
-      "fiveStepMethod": "Die 5-Schritte-Methode",
-      "eveningProtocol": "Abendprotokoll",
-      "howItWorks": "Wie es funktioniert",
-      "microcurrent": "Mikrostrom",
-      "redLightTherapy": "Rotlichttherapie",
-      "ems": "EMS",
-      "thermalTherapy": "Wärmetherapie",
-      "theScience": "Die Wissenschaft",
-      "contact": "Kontakt",
-      "shipping": "Versand",
-      "returns": "Rücksendungen",
-      "faq": "FAQ",
-      "privacyPolicy": "Datenschutzrichtlinie",
-      "termsOfService": "Nutzungsbedingungen"
-    },
-    "tagline": "Kenne deine Haut. Arbeite damit.",
-    "copyright": "© 2026 Zential Pure. Alle Rechte vorbehalten."
-  }
+  "tagline": "Kenne deine Haut. Arbeite damit.",
+  "copyright": "© 2026 Zential Pure. Alle Rechte vorbehalten."
+ }
 }

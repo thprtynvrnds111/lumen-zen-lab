@@ -1,58 +1,58 @@
 {
-  "hero": {
-    "badge": "Hilfecenter",
-    "headline": "Häufig gestellte\nFragen.",
-    "sub": "Alles, was du über deine Geräte, Versand, Rücksendungen und mehr wissen musst."
+ "hero": {
+  "badge": "Hilfecenter",
+  "headline": "Häufig gestellte\nFragen.",
+  "sub": "Alles, was du über deine Geräte, Versand, Rücksendungen und mehr wissen musst."
+ },
+ "categories": [
+  {
+   "label": "Versand & Lieferung",
+   "items": [
+    { "q": "Wie lange dauert die Lieferung?", "a": "Niederlande: 2–3 Werktage. EU: 3–7 Werktage. International: 7–14 Werktage. Du erhältst eine Sendungsverfolgung per E-Mail, sobald deine Bestellung versendet wurde." },
+    { "q": "Bietet ihr kostenlosen Versand an?", "a": "Ja, kostenloser Versand ab €50 in die Niederlande und ab €75 für EU-Bestellungen." },
+    { "q": "Versendet ihr international?", "a": "Ja, wir versenden in 50+ Länder weltweit. Internationale Versandkosten werden beim Checkout berechnet. Zölle können anfallen." },
+    { "q": "Kann ich meine Bestellung verfolgen?", "a": "Absolut. Du erhältst einen Tracking-Link per E-Mail, sobald deine Bestellung versendet wird. Du kannst auch den Support mit deiner Bestellnummer kontaktieren." }
+   ]
   },
-  "categories": [
-    {
-      "label": "Versand & Lieferung",
-      "items": [
-        { "q": "Wie lange dauert die Lieferung?", "a": "Niederlande: 2–3 Werktage. EU: 3–7 Werktage. International: 7–14 Werktage. Du erhältst eine Sendungsverfolgung per E-Mail, sobald deine Bestellung versendet wurde." },
-        { "q": "Bietet ihr kostenlosen Versand an?", "a": "Ja — kostenloser Versand ab €50 in die Niederlande und ab €75 für EU-Bestellungen." },
-        { "q": "Versendet ihr international?", "a": "Ja, wir versenden in 50+ Länder weltweit. Internationale Versandkosten werden beim Checkout berechnet. Zölle können anfallen." },
-        { "q": "Kann ich meine Bestellung verfolgen?", "a": "Absolut. Du erhältst einen Tracking-Link per E-Mail, sobald deine Bestellung versendet wird. Du kannst auch den Support mit deiner Bestellnummer kontaktieren." }
-      ]
-    },
-    {
-      "label": "Rücksendungen & Garantie",
-      "items": [
-        { "q": "Was ist die 30-Tage-Ritualgarantie?", "a": "Wenn du nach 30 Tagen konsequenter täglicher Anwendung keine sichtbare Verbesserung siehst, kontaktiere uns für eine vollständige Rückerstattung. Kein langer Prozess, kein Druck." },
-        { "q": "Wie sende ich ein Produkt zurück?", "a": "Schreib an info@zentialpure.com mit deiner Bestellnummer. Wir genehmigen deinen Antrag innerhalb von 24 Stunden und stellen ein vorausbezahltes Rücksendeetikett bereit." },
-        { "q": "Kann ich geöffnetes Zubehör zurücksenden?", "a": "Aus Hygienegründen können geöffnete Verbrauchsartikel (Gele, Pads) nicht zurückgesandt werden. Geräte können in der Originalverpackung innerhalb von 30 Tagen zurückgesandt werden." }
-      ]
-    },
-    {
-      "label": "Produktnutzung",
-      "items": [
-        { "q": "Kann ich die Geräte täglich verwenden?", "a": "Ja. Unsere Geräte sind für die tägliche Anwendung in 5-Minuten-Sitzungen konzipiert. Beginne mit der niedrigsten Intensität und steigere dich schrittweise, während sich deine Haut anpasst." },
-        { "q": "Benötige ich Leitgel?", "a": "Für Mikrostrom-Geräte ist ein Leitgel oder wasserbasiertes Serum für optimale Stromübertragung und Hautschutz unerlässlich. Unser Kollagen-Gesichtsgel ist speziell dafür formuliert." },
-        { "q": "Wie lange bis ich Ergebnisse sehe?", "a": "Die meisten Nutzerinnen bemerken eine verbesserte Hauttextur innerhalb von 2 Wochen. Strukturelle Veränderungen (Lift, Definition) werden typischerweise nach 3–4 Wochen täglicher Anwendung sichtbar." },
-        { "q": "Kann ich mehrere Geräte zusammen verwenden?", "a": "Ja, unsere Geräte sind darauf ausgelegt, sich gegenseitig zu ergänzen. Verwende sie in Reihenfolge als Teil deines täglichen Rituals für verbesserte Ergebnisse." }
-      ]
-    },
-    {
-      "label": "Sicherheit",
-      "items": [
-        { "q": "Sind die Geräte sicher?", "a": "Ja. Alle Geräte verwenden klinisch erforschte Technologie mit mehreren Sicherheitsfunktionen. Folge immer dem beigefügten Ritual-Leitfaden und beginne auf der niedrigsten Stufe." },
-        { "q": "Wer sollte diese Geräte nicht verwenden?", "a": "Nicht verwenden bei Herzschrittmacher, Schwangerschaft, Epilepsie, aktiven Hautinfektionen oder Metallimplantaten im Behandlungsbereich. Konsultiere deinen Arzt bei Unsicherheit." },
-        { "q": "Ist es sicher für empfindliche Haut?", "a": "Ja. Beginne mit der niedrigsten Intensität. Wenn Reizungen über leichte anfängliche Rötung hinaus anhalten, reduziere die Häufigkeit und konsultiere einen Dermatologen." }
-      ]
-    },
-    {
-      "label": "Technologie",
-      "items": [
-        { "q": "Was ist Mikrostrom?", "a": "Mikrostrom liefert niedrigschwellige elektrische Stimulation, die die natürlichen bioelektrischen Ströme deines Körpers nachahmt, Gesichtsmuskeln aktiviert und Kollagenproduktion anregt." },
-        { "q": "Was bewirkt Rotlichttherapie?", "a": "Rotes Licht (620–660nm) dringt in die Haut ein, um die zelluläre Energieproduktion zu stimulieren, Kollagensynthese zu unterstützen und Entzündungen zu reduzieren." },
-        { "q": "Was ist EMS?", "a": "Elektrische Muskelstimulation verwendet gezielte Pulse, um Gesichtsmuskeln zusammenzuziehen und zu tonen, ähnlich wie ein Workout für dein Gesicht." }
-      ]
-    },
-    {
-      "label": "Zahlung",
-      "items": [
-        { "q": "Welche Zahlungsmethoden akzeptiert ihr?", "a": "Visa, Mastercard, American Express, iDEAL, Bancontact, Klarna, Shop Pay, Apple Pay und Google Pay. Alle Transaktionen werden sicher verarbeitet." },
-        { "q": "Bietet ihr Ratenzahlungen an?", "a": "Ja — Klarna ist beim Checkout verfügbar, womit du deinen Kauf in zinsfreie Raten aufteilen kannst." }
-      ]
-    }
-  ]
+  {
+   "label": "Rücksendungen & Garantie",
+   "items": [
+    { "q": "Was ist die 14-Tage-Ritualgarantie?", "a": "Wenn du nach 14 Tagen konsequenter täglicher Anwendung keine sichtbare Verbesserung siehst, kontaktiere uns für eine vollständige Rückerstattung. Kein langer Prozess, kein Druck." },
+    { "q": "Wie sende ich ein Produkt zurück?", "a": "Schreib an info@zentialpure.com mit deiner Bestellnummer. Wir genehmigen deinen Antrag innerhalb von 24 Stunden und stellen ein vorausbezahltes Rücksendeetikett bereit." },
+    { "q": "Kann ich geöffnetes Zubehör zurücksenden?", "a": "Aus Hygienegründen können geöffnete Verbrauchsartikel (Gele, Pads) nicht zurückgesandt werden. Geräte können in der Originalverpackung innerhalb von 14 Tagen zurückgesandt werden." }
+   ]
+  },
+  {
+   "label": "Produktnutzung",
+   "items": [
+    { "q": "Kann ich die Geräte täglich verwenden?", "a": "Ja. Unsere Geräte sind für die tägliche Anwendung in 5-Minuten-Sitzungen konzipiert. Beginne mit der niedrigsten Intensität und steigere dich schrittweise, während sich deine Haut anpasst." },
+    { "q": "Benötige ich Leitgel?", "a": "Für Mikrostrom-Geräte ist ein Leitgel oder wasserbasiertes Serum für optimale Stromübertragung und Hautschutz unerlässlich. Unser Kollagen-Gesichtsgel ist speziell dafür formuliert." },
+    { "q": "Wie lange bis ich Ergebnisse sehe?", "a": "Die meisten Nutzerinnen bemerken eine verbesserte Hauttextur innerhalb von 2 Wochen. Strukturelle Veränderungen (Lift, Definition) werden typischerweise nach 3–4 Wochen täglicher Anwendung sichtbar." },
+    { "q": "Kann ich mehrere Geräte zusammen verwenden?", "a": "Ja, unsere Geräte sind darauf ausgelegt, sich gegenseitig zu ergänzen. Verwende sie in Reihenfolge als Teil deines täglichen Rituals für verbesserte Ergebnisse." }
+   ]
+  },
+  {
+   "label": "Sicherheit",
+   "items": [
+    { "q": "Sind die Geräte sicher?", "a": "Ja. Alle Geräte verwenden klinisch erforschte Technologie mit mehreren Sicherheitsfunktionen. Folge immer dem beigefügten Ritual-Leitfaden und beginne auf der niedrigsten Stufe." },
+    { "q": "Wer sollte diese Geräte nicht verwenden?", "a": "Nicht verwenden bei Herzschrittmacher, Schwangerschaft, Epilepsie, aktiven Hautinfektionen oder Metallimplantaten im Behandlungsbereich. Konsultiere deinen Arzt bei Unsicherheit." },
+    { "q": "Ist es sicher für empfindliche Haut?", "a": "Ja. Beginne mit der niedrigsten Intensität. Wenn Reizungen über leichte anfängliche Rötung hinaus anhalten, reduziere die Häufigkeit und konsultiere einen Dermatologen." }
+   ]
+  },
+  {
+   "label": "Technologie",
+   "items": [
+    { "q": "Was ist Mikrostrom?", "a": "Mikrostrom liefert niedrigschwellige elektrische Stimulation, die die natürlichen bioelektrischen Ströme deines Körpers nachahmt, Gesichtsmuskeln aktiviert und Kollagenproduktion anregt." },
+    { "q": "Was bewirkt Rotlichttherapie?", "a": "Rotes Licht (620–660nm) dringt in die Haut ein, um die zelluläre Energieproduktion zu stimulieren, Kollagensynthese zu unterstützen und Entzündungen zu reduzieren." },
+    { "q": "Was ist EMS?", "a": "Elektrische Muskelstimulation verwendet gezielte Pulse, um Gesichtsmuskeln zusammenzuziehen und zu tonen, ähnlich wie ein Workout für dein Gesicht." }
+   ]
+  },
+  {
+   "label": "Zahlung",
+   "items": [
+    { "q": "Welche Zahlungsmethoden akzeptiert ihr?", "a": "Visa, Mastercard, American Express, iDEAL, Bancontact, Klarna, Shop Pay, Apple Pay und Google Pay. Alle Transaktionen werden sicher verarbeitet." },
+    { "q": "Bietet ihr Ratenzahlungen an?", "a": "Ja, Klarna ist beim Checkout verfügbar, womit du deinen Kauf in zinsfreie Raten aufteilen kannst." }
+   ]
+  }
+ ]
 }

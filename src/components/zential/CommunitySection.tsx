@@ -49,7 +49,7 @@ export function CommunitySection() {
           <div className="rounded-xl p-7 transition-all duration-500 hover:shadow-lg" style={{ backgroundColor: '#111820', border: '1px solid rgba(255,255,255,0.1)' }}>
             <p className="font-serif text-lg font-bold mb-2" style={{ color: '#EAE7E0' }}>Founding Customer Program</p>
             <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(234,231,224,0.7)' }}>
-              We're giving 15 devices to real people for 30 days. No script. No requirement to say it works. Apply below.
+              We're giving 15 devices to real people for 14 days. No script. No requirement to say it works. Apply below.
             </p>
             <form onSubmit={handleApply} className="flex flex-col min-[400px]:flex-row gap-3">
               <input

@@ -32,7 +32,7 @@ export function PriceGuaranteeSection() {
           ))}
         </div>
         <p className="font-serif italic text-lg max-w-md mx-auto leading-relaxed" style={{ color: 'rgba(26,23,20,0.65)' }}>
-          30-day return. Email us at info@zentialpure.com. We refund.<br />
+          14-day return. Email us at info@zentialpure.com. We refund.<br />
           No forms. No photos. No return required.
         </p>
       </div>

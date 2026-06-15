@@ -1,22 +1,22 @@
 {
-  "back": "Back",
-  "finalStep": "Final step",
-  "stepOf": "{{step}} of {{total}}",
-  "emailGate": {
-    "eyebrow": "Almost there",
-    "headline": "Where should we send your protocol?",
-    "sub": "We'll save your personalized ritual and send a Day 1 → Day 90 guide. No spam, ever — unsubscribe in one click.",
-    "placeholder": "your@email.com",
-    "submit": "Reveal my ritual",
-    "submitting": "Building your ritual…",
-    "skip": "Skip — show results without saving"
-  },
-  "footer": {
-    "completion": "60s",
-    "completionLabel": "Average\ncompletion",
-    "signals": "8",
-    "signalsLabel": "Calibration\nsignals",
-    "protocol": "1",
-    "protocolLabel": "Personalized\nprotocol"
-  }
+ "back": "Back",
+ "finalStep": "Final step",
+ "stepOf": "{{step}} of {{total}}",
+ "emailGate": {
+  "eyebrow": "Almost there",
+  "headline": "Where should we send your protocol?",
+  "sub": "We'll save your personalized ritual and send a Day 1 → Day 90 guide. No spam, ever, unsubscribe in one click.",
+  "placeholder": "your@email.com",
+  "submit": "Reveal my ritual",
+  "submitting": "Building your ritual…",
+  "skip": "Skip, show results without saving"
+ },
+ "footer": {
+  "completion": "60s",
+  "completionLabel": "Average\ncompletion",
+  "signals": "8",
+  "signalsLabel": "Calibration\nsignals",
+  "protocol": "1",
+  "protocolLabel": "Personalized\nprotocol"
+ }
 }

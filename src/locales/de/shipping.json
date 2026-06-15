@@ -1,45 +1,45 @@
 {
-  "hero": {
-    "badge": "Versand & Lieferung",
-    "headline": "Von Unseren Händen,\nZu Deinem Ritual.",
-    "sub": "Jede Bestellung wird sorgfältig verpackt, schnell versandt und vollständig verfolgt, damit dein Ritual ohne Verzögerung beginnt."
-  },
-  "journey": {
-    "eyebrow": "Deine Bestellreise",
-    "title": "Jeder Schritt, Verfolgt.",
-    "steps": [
-      { "title": "Bestellung Bestätigt", "desc": "Dein Ritual beginnt. Wir prüfen deine Bestellung und bereiten sie innerhalb von Stunden für den Versand vor.", "time": "Sofort" },
-      { "title": "Sorgfältig Verpackt", "desc": "Jedes Gerät wird geprüft, in Schutzverpackung gewickelt und sorgfältig versiegelt in unserem europäischen Lager.", "time": "1 Tag" },
-      { "title": "Unterwegs", "desc": "Dein Paket wird an unseren zuverlässigen Logistikpartner übergeben. Echtzeit-Tracking wird an dein Postfach gesendet.", "time": "2–7 Tage" },
-      { "title": "Zur Lieferung Unterwegs", "desc": "Dein Paket ist auf dem Weg zu dir. Unsere Zusteller liefern 6 Tage die Woche in ganz Europa.", "time": "1–2 Tage" },
-      { "title": "Geliefert", "desc": "Dein Ritual ist angekommen. Auspacken, erkunden und noch heute mit deiner ersten 5-Minuten-Sitzung beginnen.", "time": "Fertig" }
-    ]
-  },
-  "zones": {
-    "eyebrow": "Lieferzonen",
-    "title": "Wohin Wir Versenden.",
-    "footnote": "Internationale Bestellungen können Zöllen und Einfuhrsteuern unterliegen.",
-    "items": [
-      { "region": "Niederlande", "time": "2–3 Werktage", "cost": "Kostenlos ab €50", "flag": "🇳🇱" },
-      { "region": "Deutschland & Belgien", "time": "3–5 Werktage", "cost": "Kostenlos ab €75", "flag": "🇩🇪 🇧🇪" },
-      { "region": "Rest der EU", "time": "3–7 Werktage", "cost": "Kostenlos ab €75", "flag": "🇪🇺" },
-      { "region": "Vereinigtes Königreich", "time": "5–8 Werktage", "cost": "Kostenlos ab €90", "flag": "🇬🇧" },
-      { "region": "USA & Kanada", "time": "7–14 Werktage", "cost": "Kostenlos ab €95", "flag": "🇺🇸 🇨🇦" }
-    ]
-  },
-  "trust": {
-    "eyebrow": "Unser Versprechen",
-    "title": "Für Deine Sicherheit.",
-    "items": [
-      { "title": "Versicherter Versand", "desc": "Jedes Paket ist vollständig gegen Beschädigungen oder Verluste während des Transports versichert." },
-      { "title": "Gleichtages-Bearbeitung", "desc": "Bestellungen vor 14 Uhr MEZ werden noch am selben Werktag versandt." },
-      { "title": "Weltweite Reichweite", "desc": "Wir liefern in 50+ Länder mit zuverlässigen internationalen Spediteuren." },
-      { "title": "Öko-Verpackung", "desc": "Recycelbare Materialien und minimaler Abfall — denn Rituale sollten achtsam sein." }
-    ]
-  },
-  "cta": {
-    "headline": "Fragen zu deiner Bestellung?",
-    "sub": "Unser Support-Team antwortet innerhalb von 24 Stunden.",
-    "button": "Support Kontaktieren"
-  }
+ "hero": {
+  "badge": "Versand & Lieferung",
+  "headline": "Von Unseren Händen,\nZu Deinem Ritual.",
+  "sub": "Jede Bestellung wird sorgfältig verpackt, schnell versandt und vollständig verfolgt, damit dein Ritual ohne Verzögerung beginnt."
+ },
+ "journey": {
+  "eyebrow": "Deine Bestellreise",
+  "title": "Jeder Schritt, Verfolgt.",
+  "steps": [
+   { "title": "Bestellung Bestätigt", "desc": "Dein Ritual beginnt. Wir prüfen deine Bestellung und bereiten sie innerhalb von Stunden für den Versand vor.", "time": "Sofort" },
+   { "title": "Sorgfältig Verpackt", "desc": "Jedes Gerät wird geprüft, in Schutzverpackung gewickelt und sorgfältig versiegelt in unserem europäischen Lager.", "time": "1 Tag" },
+   { "title": "Unterwegs", "desc": "Dein Paket wird an unseren zuverlässigen Logistikpartner übergeben. Echtzeit-Tracking wird an dein Postfach gesendet.", "time": "2–7 Tage" },
+   { "title": "Zur Lieferung Unterwegs", "desc": "Dein Paket ist auf dem Weg zu dir. Unsere Zusteller liefern 6 Tage die Woche in ganz Europa.", "time": "1–2 Tage" },
+   { "title": "Geliefert", "desc": "Dein Ritual ist angekommen. Auspacken, erkunden und noch heute mit deiner ersten 5-Minuten-Sitzung beginnen.", "time": "Fertig" }
+  ]
+ },
+ "zones": {
+  "eyebrow": "Lieferzonen",
+  "title": "Wohin Wir Versenden.",
+  "footnote": "Internationale Bestellungen können Zöllen und Einfuhrsteuern unterliegen.",
+  "items": [
+   { "region": "Niederlande", "time": "2–3 Werktage", "cost": "Kostenlos ab €50", "flag": "🇳🇱" },
+   { "region": "Deutschland & Belgien", "time": "3–5 Werktage", "cost": "Kostenlos ab €75", "flag": "🇩🇪 🇧🇪" },
+   { "region": "Rest der EU", "time": "3–7 Werktage", "cost": "Kostenlos ab €75", "flag": "🇪🇺" },
+   { "region": "Vereinigtes Königreich", "time": "5–8 Werktage", "cost": "Kostenlos ab €90", "flag": "🇬🇧" },
+   { "region": "USA & Kanada", "time": "7–14 Werktage", "cost": "Kostenlos ab €95", "flag": "🇺🇸 🇨🇦" }
+  ]
+ },
+ "trust": {
+  "eyebrow": "Unser Versprechen",
+  "title": "Für Deine Sicherheit.",
+  "items": [
+   { "title": "Versicherter Versand", "desc": "Jedes Paket ist vollständig gegen Beschädigungen oder Verluste während des Transports versichert." },
+   { "title": "Gleichtages-Bearbeitung", "desc": "Bestellungen vor 14 Uhr MEZ werden noch am selben Werktag versandt." },
+   { "title": "Weltweite Reichweite", "desc": "Wir liefern in 50+ Länder mit zuverlässigen internationalen Spediteuren." },
+   { "title": "Öko-Verpackung", "desc": "Recycelbare Materialien und minimaler Abfall, denn Rituale sollten achtsam sein." }
+  ]
+ },
+ "cta": {
+  "headline": "Fragen zu deiner Bestellung?",
+  "sub": "Unser Support-Team antwortet innerhalb von 24 Stunden.",
+  "button": "Support Kontaktieren"
+ }
 }

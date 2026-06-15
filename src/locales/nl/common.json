@@ -1,69 +1,69 @@
 {
-  "nav": {
-    "shop": "Shop",
-    "collection": "Collectie",
-    "ritual": "Ritueel",
-    "quiz": "Quiz",
-    "journal": "Journal",
-    "support": "Klantenservice",
-    "shopDevices": "Shop Apparaten",
-    "liftContour": "Lift & Contouring",
-    "toneGlow": "Tonen & Glow",
-    "eyeFinelines": "Ogen & Fijne Lijntjes",
-    "bodyTissue": "Lichaam & Weefsel",
-    "openMenu": "Menu openen",
-    "closeMenu": "Menu sluiten"
+ "nav": {
+  "shop": "Shop",
+  "collection": "Collectie",
+  "ritual": "Ritueel",
+  "quiz": "Quiz",
+  "journal": "Journal",
+  "support": "Klantenservice",
+  "shopDevices": "Shop Apparaten",
+  "liftContour": "Lift & Contouring",
+  "toneGlow": "Tonen & Glow",
+  "eyeFinelines": "Ogen & Fijne Lijntjes",
+  "bodyTissue": "Lichaam & Weefsel",
+  "openMenu": "Menu openen",
+  "closeMenu": "Menu sluiten"
+ },
+ "announcement": {
+  "guarantee": "14 Dagen Protocollgarantie. Geen Gedoe. Geen Vragen.",
+  "shipping": "Gratis verzending bij bestellingen boven €75",
+  "science": "Fotobiomodulatie · Bio-elektrisch · EMS · Infrarood, Één dagelijkse stack",
+  "delivery": "Geleverd in 3–7 werkdagen door heel de EU",
+  "clinic": "Sneller herstellen. Langzamer verouderen. Harder trainen. Jouw dagelijks biohacking-protocol."
+ },
+ "cart": {
+  "empty": "Je tas is leeg",
+  "startRitual": "Start je ritueel",
+  "item": "artikel",
+  "items": "artikelen",
+  "freeShippingUnlocked": "Gratis standaardverzending ontgrendeld",
+  "awayFromFreeShipping": "{{amount}} verwijderd van gratis verzending",
+  "upsellLabel": "Voltooi je ritueel",
+  "upsellSub": "Voeg Collageen Gezichtsgel toe, speciaal voor apparaatgebruik",
+  "included": "Inbegrepen",
+  "subtotal": "Subtotaal",
+  "shippingNote": "Verzending, belastingen & kortingen worden berekend bij het afrekenen",
+  "checkout": "Naar Afrekenen",
+  "redirecting": "Doorsturen naar beveiligde kassa…"
+ },
+ "footer": {
+  "sections": {
+   "Shop": "Shop",
+   "Ritual": "Ritueel",
+   "Technology": "Technologie",
+   "Support": "Klantenservice",
+   "Legal": "Juridisch"
   },
-  "announcement": {
-    "guarantee": "30 Dagen Protocollgarantie. Geen Gedoe. Geen Vragen.",
-    "shipping": "Gratis verzending bij bestellingen boven €75",
-    "science": "Fotobiomodulatie · Bio-elektrisch · EMS · Infrarood — Één dagelijkse stack",
-    "delivery": "Geleverd in 3–7 werkdagen door heel de EU",
-    "clinic": "Sneller herstellen. Langzamer verouderen. Harder trainen. Jouw dagelijks biohacking-protocol."
+  "links": {
+   "allDevices": "Alle Apparaten",
+   "bundles": "Bundels",
+   "journal": "Journal",
+   "fiveStepMethod": "De 5-Stappen Methode",
+   "eveningProtocol": "Avondprotocol",
+   "howItWorks": "Hoe het werkt",
+   "microcurrent": "Microcurrent",
+   "redLightTherapy": "Rood Licht Therapie",
+   "ems": "EMS",
+   "thermalTherapy": "Thermische Therapie",
+   "theScience": "De Wetenschap",
+   "contact": "Contact",
+   "shipping": "Verzending",
+   "returns": "Retourneren",
+   "faq": "Veelgestelde vragen",
+   "privacyPolicy": "Privacybeleid",
+   "termsOfService": "Gebruiksvoorwaarden"
   },
-  "cart": {
-    "empty": "Je tas is leeg",
-    "startRitual": "Start je ritueel",
-    "item": "artikel",
-    "items": "artikelen",
-    "freeShippingUnlocked": "Gratis standaardverzending ontgrendeld",
-    "awayFromFreeShipping": "{{amount}} verwijderd van gratis verzending",
-    "upsellLabel": "Voltooi je ritueel",
-    "upsellSub": "Voeg Collageen Gezichtsgel toe — speciaal voor apparaatgebruik",
-    "included": "Inbegrepen",
-    "subtotal": "Subtotaal",
-    "shippingNote": "Verzending, belastingen & kortingen worden berekend bij het afrekenen",
-    "checkout": "Naar Afrekenen",
-    "redirecting": "Doorsturen naar beveiligde kassa…"
-  },
-  "footer": {
-    "sections": {
-      "Shop": "Shop",
-      "Ritual": "Ritueel",
-      "Technology": "Technologie",
-      "Support": "Klantenservice",
-      "Legal": "Juridisch"
-    },
-    "links": {
-      "allDevices": "Alle Apparaten",
-      "bundles": "Bundels",
-      "journal": "Journal",
-      "fiveStepMethod": "De 5-Stappen Methode",
-      "eveningProtocol": "Avondprotocol",
-      "howItWorks": "Hoe het werkt",
-      "microcurrent": "Microcurrent",
-      "redLightTherapy": "Rood Licht Therapie",
-      "ems": "EMS",
-      "thermalTherapy": "Thermische Therapie",
-      "theScience": "De Wetenschap",
-      "contact": "Contact",
-      "shipping": "Verzending",
-      "returns": "Retourneren",
-      "faq": "Veelgestelde vragen",
-      "privacyPolicy": "Privacybeleid",
-      "termsOfService": "Gebruiksvoorwaarden"
-    },
-    "tagline": "Ken je huid. Werk ermee.",
-    "copyright": "© 2026 Zential Pure. Alle rechten voorbehouden."
-  }
+  "tagline": "Ken je huid. Werk ermee.",
+  "copyright": "© 2026 Zential Pure. Alle rechten voorbehouden."
+ }
 }

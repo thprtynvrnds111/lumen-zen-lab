@@ -1,32 +1,32 @@
 {
-  "hero": {
-    "badge": "Rücksendungen & Garantie",
-    "headline": "Kein Aufwand.\nKein Druck.",
-    "sub": "Wir stehen hinter jedem Gerät mit unserer 30-Tage-Ritualgarantie. Wenn es für dich nicht funktioniert, übernehmen wir die Kosten."
-  },
-  "steps": {
-    "eyebrow": "So Funktioniert Es",
-    "title": "Einfach. Ehrlich. Schnell.",
-    "items": [
-      { "title": "Rücksendung Beantragen", "desc": "Schreib uns an info@zentialpure.com innerhalb von 30 Tagen nach der Lieferung mit deiner Bestellnummer." },
-      { "title": "Genehmigung Erhalten", "desc": "Wir prüfen und genehmigen deinen Antrag innerhalb von 24 Stunden — keine langen Fragebögen." },
-      { "title": "Zurücksenden", "desc": "Wir stellen ein vorausbezahltes Rücksendeetikett bereit. Verpacke das Gerät in der Originalverpackung." },
-      { "title": "Erstattung Erhalten", "desc": "Nach Eingang und Prüfung wird deine Rückerstattung innerhalb von 5 bis 7 Werktagen bearbeitet." }
-    ]
-  },
-  "policy": {
-    "eyebrow": "Richtliniendetails",
-    "title": "Was Du Wissen Solltest.",
-    "items": [
-      { "title": "30-Tage-Ritualgarantie", "desc": "Wenn du innerhalb von 30 Tagen konsequenter täglicher Anwendung keine sichtbare Verbesserung siehst, kontaktiere uns für eine vollständige Rückerstattung. Wir glauben an die Technologie und an deine Erfahrung." },
-      { "title": "Zustandsanforderungen", "desc": "Geräte müssen in Originalverpackung und funktionstüchtigem Zustand zurückgesandt werden. Zubehör (Gele, Pads) ist nach dem Öffnen aus Hygienegründen nicht rückgabefähig." },
-      { "title": "Beschädigte oder Defekte Artikel", "desc": "Wenn dein Produkt beschädigt oder defekt ankommt, kontaktiere uns sofort. Wir senden einen Ersatz kostenlos — keine Rücksendung erforderlich." },
-      { "title": "Umtausch", "desc": "Möchtest du eine andere Farbe oder Variante? Kontaktiere uns innerhalb von 14 Tagen und wir arrangieren einen Umtausch, vorbehaltlich der Verfügbarkeit." }
-    ]
-  },
-  "cta": {
-    "headline": "Möchtest du zurücksenden oder brauchst du Hilfe?",
-    "sub": "Unser Team bearbeitet jede Anfrage innerhalb von 24 Stunden.",
-    "button": "Support Kontaktieren"
-  }
+ "hero": {
+  "badge": "Rücksendungen & Garantie",
+  "headline": "Kein Aufwand.\nKein Druck.",
+  "sub": "Wir stehen hinter jedem Gerät mit unserer 14-Tage-Ritualgarantie. Wenn es für dich nicht funktioniert, übernehmen wir die Kosten."
+ },
+ "steps": {
+  "eyebrow": "So Funktioniert Es",
+  "title": "Einfach. Ehrlich. Schnell.",
+  "items": [
+   { "title": "Rücksendung Beantragen", "desc": "Schreib uns an info@zentialpure.com innerhalb von 14 Tagen nach der Lieferung mit deiner Bestellnummer." },
+   { "title": "Genehmigung Erhalten", "desc": "Wir prüfen und genehmigen deinen Antrag innerhalb von 24 Stunden, keine langen Fragebögen." },
+   { "title": "Zurücksenden", "desc": "Wir stellen ein vorausbezahltes Rücksendeetikett bereit. Verpacke das Gerät in der Originalverpackung." },
+   { "title": "Erstattung Erhalten", "desc": "Nach Eingang und Prüfung wird deine Rückerstattung innerhalb von 5 bis 7 Werktagen bearbeitet." }
+  ]
+ },
+ "policy": {
+  "eyebrow": "Richtliniendetails",
+  "title": "Was Du Wissen Solltest.",
+  "items": [
+   { "title": "14-Tage-Ritualgarantie", "desc": "Wenn du innerhalb von 14 Tagen konsequenter täglicher Anwendung keine sichtbare Verbesserung siehst, kontaktiere uns für eine vollständige Rückerstattung. Wir glauben an die Technologie und an deine Erfahrung." },
+   { "title": "Zustandsanforderungen", "desc": "Geräte müssen in Originalverpackung und funktionstüchtigem Zustand zurückgesandt werden. Zubehör (Gele, Pads) ist nach dem Öffnen aus Hygienegründen nicht rückgabefähig." },
+   { "title": "Beschädigte oder Defekte Artikel", "desc": "Wenn dein Produkt beschädigt oder defekt ankommt, kontaktiere uns sofort. Wir senden einen Ersatz kostenlos, keine Rücksendung erforderlich." },
+   { "title": "Umtausch", "desc": "Möchtest du eine andere Farbe oder Variante? Kontaktiere uns innerhalb von 14 Tagen und wir arrangieren einen Umtausch, vorbehaltlich der Verfügbarkeit." }
+  ]
+ },
+ "cta": {
+  "headline": "Möchtest du zurücksenden oder brauchst du Hilfe?",
+  "sub": "Unser Team bearbeitet jede Anfrage innerhalb von 24 Stunden.",
+  "button": "Support Kontaktieren"
+ }
 }

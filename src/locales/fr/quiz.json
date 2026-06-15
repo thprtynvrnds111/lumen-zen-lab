@@ -1,22 +1,22 @@
 {
-  "back": "Retour",
-  "finalStep": "Dernière étape",
-  "stepOf": "{{step}} sur {{total}}",
-  "emailGate": {
-    "eyebrow": "Presque terminé",
-    "headline": "Où envoyer ton protocole ?",
-    "sub": "Nous sauvegarderons ton rituel personnalisé et enverrons un guide Jour 1 → Jour 90. Jamais de spam — désabonnement en un clic.",
-    "placeholder": "ton@email.fr",
-    "submit": "Révéler mon rituel",
-    "submitting": "Ton rituel est en cours de création…",
-    "skip": "Ignorer — afficher les résultats sans sauvegarder"
-  },
-  "footer": {
-    "completion": "60s",
-    "completionLabel": "Complétion\nmoyenne",
-    "signals": "8",
-    "signalsLabel": "Signaux de\ncalibration",
-    "protocol": "1",
-    "protocolLabel": "Protocole\npersonnalisé"
-  }
+ "back": "Retour",
+ "finalStep": "Dernière étape",
+ "stepOf": "{{step}} sur {{total}}",
+ "emailGate": {
+  "eyebrow": "Presque terminé",
+  "headline": "Où envoyer ton protocole ?",
+  "sub": "Nous sauvegarderons ton rituel personnalisé et enverrons un guide Jour 1 → Jour 90. Jamais de spam, désabonnement en un clic.",
+  "placeholder": "ton@email.fr",
+  "submit": "Révéler mon rituel",
+  "submitting": "Ton rituel est en cours de création…",
+  "skip": "Ignorer, afficher les résultats sans sauvegarder"
+ },
+ "footer": {
+  "completion": "60s",
+  "completionLabel": "Complétion\nmoyenne",
+  "signals": "8",
+  "signalsLabel": "Signaux de\ncalibration",
+  "protocol": "1",
+  "protocolLabel": "Protocole\npersonnalisé"
+ }
 }

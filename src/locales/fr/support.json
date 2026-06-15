@@ -1,78 +1,78 @@
 {
-  "hero": {
-    "badge": "Support & Assistance",
-    "headline": "Nous Sommes Là\nPour Ton Rituel.",
-    "sub": "Questions, retours ou conseils — notre équipe répond dans les 24 heures."
+ "hero": {
+  "badge": "Support & Assistance",
+  "headline": "Nous Sommes Là\nPour Ton Rituel.",
+  "sub": "Questions, retours ou conseils, notre équipe répond dans les 24 heures."
+ },
+ "quickCards": [
+  { "title": "Suivre Ta Commande", "desc": "Vérifie le statut de ton expédition et le délai de livraison." },
+  { "title": "Retours & Garantie", "desc": "Garantie Rituel 14 Jours, sans friction, sans pression." },
+  { "title": "Sécurité Produit", "desc": "Consignes d'utilisation et informations de sécurité importantes." },
+  { "title": "Contacter le Support", "desc": "Nous rejoindre directement, réponse dans les 24 à 48 heures." }
+ ],
+ "faqTitle": "Questions Fréquentes",
+ "categories": [
+  {
+   "label": "Efficacité & Authenticité",
+   "items": [
+    { "q": "Est-ce que ça fonctionne vraiment ?", "a": "Oui. Nos appareils utilisent un microcourant, un EMS et une luminothérapie rouge cliniquement étudiés, les mêmes technologies que dans les cliniques professionnelles. La plupart des utilisatrices remarquent une amélioration de la texture de la peau dans les 2 semaines et un lift visible après 3–4 semaines d'utilisation quotidienne." },
+    { "q": "Comment savoir si c'est un appareil authentique ?", "a": "Chaque appareil Zential est livré avec un numéro de série unique et un sceau d'authenticité. Nous vendons exclusivement via notre boutique officielle, pas de revendeurs tiers, tu reçois donc toujours un produit authentique avec garantie complète." }
+   ]
   },
-  "quickCards": [
-    { "title": "Suivre Ta Commande", "desc": "Vérifie le statut de ton expédition et le délai de livraison." },
-    { "title": "Retours & Garantie", "desc": "Garantie Rituel 30 Jours, sans friction, sans pression." },
-    { "title": "Sécurité Produit", "desc": "Consignes d'utilisation et informations de sécurité importantes." },
-    { "title": "Contacter le Support", "desc": "Nous rejoindre directement — réponse dans les 24 à 48 heures." }
-  ],
-  "faqTitle": "Questions Fréquentes",
-  "categories": [
-    {
-      "label": "Efficacité & Authenticité",
-      "items": [
-        { "q": "Est-ce que ça fonctionne vraiment ?", "a": "Oui. Nos appareils utilisent un microcourant, un EMS et une luminothérapie rouge cliniquement étudiés — les mêmes technologies que dans les cliniques professionnelles. La plupart des utilisatrices remarquent une amélioration de la texture de la peau dans les 2 semaines et un lift visible après 3–4 semaines d'utilisation quotidienne." },
-        { "q": "Comment savoir si c'est un appareil authentique ?", "a": "Chaque appareil Zential est livré avec un numéro de série unique et un sceau d'authenticité. Nous vendons exclusivement via notre boutique officielle — pas de revendeurs tiers — tu reçois donc toujours un produit authentique avec garantie complète." }
-      ]
-    },
-    {
-      "label": "Compatibilité avec le Type de Peau",
-      "items": [
-        { "q": "Est-ce que ça fonctionnera sur mon type de peau ?", "a": "Nos appareils sont efficaces sur tous les types et teintes de peau. Commence à la plus faible intensité et augmente progressivement. Si tu as la peau sensible, une légère rougeur initiale est normale et disparaît en quelques minutes." },
-        { "q": "Ai-je besoin de gel conducteur ?", "a": "Pour les appareils à microcourant, un gel conducteur ou un sérum à base d'eau est indispensable pour une transmission optimale du courant et la protection de la peau. Notre Gel Visage Collagène est spécialement formulé à cet effet." }
-      ]
-    },
-    {
-      "label": "Sécurité",
-      "items": [
-        { "q": "Est-il sûr de l'utiliser tous les jours ?", "a": "Oui. Tous les appareils incluent plusieurs fonctions de sécurité et une protection d'arrêt automatique. Commence par des séances de 5 minutes par jour et suis le guide rituel fourni. Consulte ton médecin si tu as un pacemaker, es enceinte ou souffres d'épilepsie." },
-        { "q": "Est-ce sûr pour les peaux sensibles ?", "a": "Oui. Commence au réglage d'intensité le plus bas et augmente progressivement. Si tu ressens des irritations persistantes au-delà d'une légère rougeur initiale, arrête l'utilisation et consulte un dermatologue." }
-      ]
-    },
-    {
-      "label": "Prix & Valeur",
-      "items": [
-        { "q": "L'investissement en vaut-il la peine ?", "a": "Un appareil remplace des centaines d'euros de visites mensuelles en clinique. Avec des rituels quotidiens de 5 minutes, tu obtiens des résultats professionnels chez toi — soutenus par notre Garantie Rituel 30 Jours." },
-        { "q": "Proposez-vous des plans de paiement ?", "a": "Oui — Klarna est disponible lors du paiement, te permettant de diviser ton achat en versements sans intérêts." }
-      ]
-    },
-    {
-      "label": "Après-Vente",
-      "items": [
-        { "q": "Que faire si j'ai besoin d'aide après mon achat ?", "a": "Notre équipe de support répond dans les 24 heures. Tu bénéficies d'une Garantie Rituel 30 Jours, de retours faciles et d'un accès à vie aux guides rituels et conseils." },
-        { "q": "Qu'est-ce que la Garantie Rituel 30 Jours ?", "a": "Si tu ne ressens pas d'amélioration visible dans les 30 jours d'utilisation quotidienne régulière, contacte-nous pour un remboursement complet. Aucune procédure longue, aucune pression." }
-      ]
-    }
-  ],
-  "guarantee": {
-    "eyebrow": "Notre Promesse",
-    "headline": "Ressens Le Changement, Ou C'est Pour Nous.",
-    "sub": "Si tu ne ressens pas d'amélioration visible dans les 30 jours d'utilisation régulière, contacte-nous. Sans friction. Sans pression.",
-    "badges": ["Garantie 30 Jours", "Livraison Rapide", "Retours Faciles", "Paiement Sécurisé"]
+  {
+   "label": "Compatibilité avec le Type de Peau",
+   "items": [
+    { "q": "Est-ce que ça fonctionnera sur mon type de peau ?", "a": "Nos appareils sont efficaces sur tous les types et teintes de peau. Commence à la plus faible intensité et augmente progressivement. Si tu as la peau sensible, une légère rougeur initiale est normale et disparaît en quelques minutes." },
+    { "q": "Ai-je besoin de gel conducteur ?", "a": "Pour les appareils à microcourant, un gel conducteur ou un sérum à base d'eau est indispensable pour une transmission optimale du courant et la protection de la peau. Notre Gel Visage Collagène est spécialement formulé à cet effet." }
+   ]
   },
-  "contact": {
-    "title": "Nous Contacter",
-    "nameLabel": "Nom",
-    "emailLabel": "E-mail",
-    "orderLabel": "Numéro de commande (optionnel)",
-    "messageLabel": "Message",
-    "submit": "Envoyer par E-mail",
-    "submitting": "Ouverture…",
-    "footnote": "Ouvre ton client e-mail · Réponse dans les 24–48 heures.",
-    "validationError": "Veuillez remplir les champs obligatoires."
+  {
+   "label": "Sécurité",
+   "items": [
+    { "q": "Est-il sûr de l'utiliser tous les jours ?", "a": "Oui. Tous les appareils incluent plusieurs fonctions de sécurité et une protection d'arrêt automatique. Commence par des séances de 5 minutes par jour et suis le guide rituel fourni. Consulte ton médecin si tu as un pacemaker, es enceinte ou souffres d'épilepsie." },
+    { "q": "Est-ce sûr pour les peaux sensibles ?", "a": "Oui. Commence au réglage d'intensité le plus bas et augmente progressivement. Si tu ressens des irritations persistantes au-delà d'une légère rougeur initiale, arrête l'utilisation et consulte un dermatologue." }
+   ]
   },
-  "safety": {
-    "title": "Consignes de Sécurité Importantes",
-    "items": [
-      "Ne pas utiliser avec un pacemaker ou des appareils électriques implantés",
-      "Éviter l'utilisation pendant la grossesse",
-      "Ne pas utiliser sur des infections cutanées actives ou des plaies ouvertes",
-      "Toujours commencer au réglage d'intensité le plus bas",
-      "Consulte ton médecin si tu as une condition médicale"
-    ]
+  {
+   "label": "Prix & Valeur",
+   "items": [
+    { "q": "L'investissement en vaut-il la peine ?", "a": "Un appareil remplace des centaines d'euros de visites mensuelles en clinique. Avec des rituels quotidiens de 5 minutes, tu obtiens des résultats professionnels chez toi, soutenus par notre Garantie Rituel 14 Jours." },
+    { "q": "Proposez-vous des plans de paiement ?", "a": "Oui, Klarna est disponible lors du paiement, te permettant de diviser ton achat en versements sans intérêts." }
+   ]
+  },
+  {
+   "label": "Après-Vente",
+   "items": [
+    { "q": "Que faire si j'ai besoin d'aide après mon achat ?", "a": "Notre équipe de support répond dans les 24 heures. Tu bénéficies d'une Garantie Rituel 14 Jours, de retours faciles et d'un accès à vie aux guides rituels et conseils." },
+    { "q": "Qu'est-ce que la Garantie Rituel 14 Jours ?", "a": "Si tu ne ressens pas d'amélioration visible dans les 14 jours d'utilisation quotidienne régulière, contacte-nous pour un remboursement complet. Aucune procédure longue, aucune pression." }
+   ]
   }
+ ],
+ "guarantee": {
+  "eyebrow": "Notre Promesse",
+  "headline": "Ressens Le Changement, Ou C'est Pour Nous.",
+  "sub": "Si tu ne ressens pas d'amélioration visible dans les 14 jours d'utilisation régulière, contacte-nous. Sans friction. Sans pression.",
+  "badges": ["Garantie 14 Jours", "Livraison Rapide", "Retours Faciles", "Paiement Sécurisé"]
+ },
+ "contact": {
+  "title": "Nous Contacter",
+  "nameLabel": "Nom",
+  "emailLabel": "E-mail",
+  "orderLabel": "Numéro de commande (optionnel)",
+  "messageLabel": "Message",
+  "submit": "Envoyer par E-mail",
+  "submitting": "Ouverture…",
+  "footnote": "Ouvre ton client e-mail · Réponse dans les 24–48 heures.",
+  "validationError": "Veuillez remplir les champs obligatoires."
+ },
+ "safety": {
+  "title": "Consignes de Sécurité Importantes",
+  "items": [
+   "Ne pas utiliser avec un pacemaker ou des appareils électriques implantés",
+   "Éviter l'utilisation pendant la grossesse",
+   "Ne pas utiliser sur des infections cutanées actives ou des plaies ouvertes",
+   "Toujours commencer au réglage d'intensité le plus bas",
+   "Consulte ton médecin si tu as une condition médicale"
+  ]
+ }
 }

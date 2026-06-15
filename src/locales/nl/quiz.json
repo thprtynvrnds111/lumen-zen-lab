@@ -1,22 +1,22 @@
 {
-  "back": "Terug",
-  "finalStep": "Laatste stap",
-  "stepOf": "{{step}} van {{total}}",
-  "emailGate": {
-    "eyebrow": "Bijna klaar",
-    "headline": "Waar sturen we jouw protocol naartoe?",
-    "sub": "We bewaren je persoonlijke ritueel en sturen een Dag 1 → Dag 90 gids. Nooit spam — uitschrijven met één klik.",
-    "placeholder": "jouw@email.nl",
-    "submit": "Onthul mijn ritueel",
-    "submitting": "Jouw ritueel wordt samengesteld…",
-    "skip": "Overslaan — resultaten tonen zonder opslaan"
-  },
-  "footer": {
-    "completion": "60s",
-    "completionLabel": "Gemiddelde\ncompletion",
-    "signals": "8",
-    "signalsLabel": "Kalibratie-\nsignalen",
-    "protocol": "1",
-    "protocolLabel": "Persoonlijk\nprotocol"
-  }
+ "back": "Terug",
+ "finalStep": "Laatste stap",
+ "stepOf": "{{step}} van {{total}}",
+ "emailGate": {
+  "eyebrow": "Bijna klaar",
+  "headline": "Waar sturen we jouw protocol naartoe?",
+  "sub": "We bewaren je persoonlijke ritueel en sturen een Dag 1 → Dag 90 gids. Nooit spam, uitschrijven met één klik.",
+  "placeholder": "jouw@email.nl",
+  "submit": "Onthul mijn ritueel",
+  "submitting": "Jouw ritueel wordt samengesteld…",
+  "skip": "Overslaan, resultaten tonen zonder opslaan"
+ },
+ "footer": {
+  "completion": "60s",
+  "completionLabel": "Gemiddelde\ncompletion",
+  "signals": "8",
+  "signalsLabel": "Kalibratie-\nsignalen",
+  "protocol": "1",
+  "protocolLabel": "Persoonlijk\nprotocol"
+ }
 }

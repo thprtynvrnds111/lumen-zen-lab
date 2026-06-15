@@ -1,22 +1,22 @@
 {
-  "back": "Zurück",
-  "finalStep": "Letzter Schritt",
-  "stepOf": "{{step}} von {{total}}",
-  "emailGate": {
-    "eyebrow": "Fast geschafft",
-    "headline": "Wohin sollen wir dein Protokoll senden?",
-    "sub": "Wir speichern dein persönliches Ritual und senden einen Tag 1 → Tag 90 Leitfaden. Kein Spam, niemals — mit einem Klick abmelden.",
-    "placeholder": "deine@email.de",
-    "submit": "Mein Ritual enthüllen",
-    "submitting": "Dein Ritual wird zusammengestellt…",
-    "skip": "Überspringen — Ergebnisse ohne Speichern anzeigen"
-  },
-  "footer": {
-    "completion": "60s",
-    "completionLabel": "Durchschnittliche\nAbschlusszeit",
-    "signals": "8",
-    "signalsLabel": "Kalibrierungs-\nsignale",
-    "protocol": "1",
-    "protocolLabel": "Persönliches\nProtokoll"
-  }
+ "back": "Zurück",
+ "finalStep": "Letzter Schritt",
+ "stepOf": "{{step}} von {{total}}",
+ "emailGate": {
+  "eyebrow": "Fast geschafft",
+  "headline": "Wohin sollen wir dein Protokoll senden?",
+  "sub": "Wir speichern dein persönliches Ritual und senden einen Tag 1 → Tag 90 Leitfaden. Kein Spam, niemals, mit einem Klick abmelden.",
+  "placeholder": "deine@email.de",
+  "submit": "Mein Ritual enthüllen",
+  "submitting": "Dein Ritual wird zusammengestellt…",
+  "skip": "Überspringen, Ergebnisse ohne Speichern anzeigen"
+ },
+ "footer": {
+  "completion": "60s",
+  "completionLabel": "Durchschnittliche\nAbschlusszeit",
+  "signals": "8",
+  "signalsLabel": "Kalibrierungs-\nsignale",
+  "protocol": "1",
+  "protocolLabel": "Persönliches\nProtokoll"
+ }
 }

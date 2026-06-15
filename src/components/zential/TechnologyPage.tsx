@@ -113,7 +113,7 @@ export function TechnologyPage({
             Experience it yourself.
           </p>
           <p className="text-sm text-foreground/60 mb-8 max-w-md mx-auto">
-            30-day return. No questions. The technology works or you get your money back.
+            14-day return. No questions. The technology works or you get your money back.
           </p>
           <Link
             to={`/product/${deviceHandle}`}
