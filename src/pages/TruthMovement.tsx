@@ -329,27 +329,31 @@ const TruthMovement = () => {
             First one hundred.
           </h2>
           <p className="text-lg md:text-xl text-[#1A1714]/80 leading-relaxed mb-8">
-            A founding place is a real head start, not a token. You build this with us from the
-            start, and you get the full system before anyone else. Here is what comes with it.
+            One hundred people start this together. You get the whole system, a guided month, and a
+            rate that never comes back. Not a token. A real head start.
           </p>
 
-          <div className="rounded-[1.5rem] border border-[#2ED8A8]/40 bg-[#F7F4F0] p-7 md:p-9 mb-8">
+          <div className="rounded-[1.5rem] border border-[#2ED8A8]/40 bg-[#F7F4F0] p-7 md:p-9 mb-6">
+            <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-[#6B5A4A] mb-5">
+              Everything you get
+            </p>
             <ul className="space-y-4">
               {[
-                ["The 30-Day Nervous-System Protocol", "The full week-by-week guided programme, beyond the free reset.", "47"],
-                ["A seat in the first Founding Cohort", "A live, guided 30-day run with the founding hundred. Accountability, not an app.", "—"],
-                ["Founding price on the device", "The Face Introducer at the founding rate when you are ready.", "lock"],
-                ["Lifetime founding membership rate", "Your monthly rate locked lower, for good, when the membership opens.", "lock"],
-                ["Your place in the founding hundred", "Named, first in, building the movement from day one.", "—"],
+                ["The 30-Day Nervous-System Reset", "Week by week, the full guided programme. Not theory. A path.", "47"],
+                ["The Founding Cohort", "Run the 30 days live, with the first hundred. Accountability, not an app.", "90"],
+                ["The Daily Reset Library", "Four resets for the day: morning, midday, pre-sleep, pre-training.", "29"],
+                ["Founding price on the device", "The Face Introducer at the founding rate when you are ready.", "save"],
+                ["Lifetime founding rate", "Your membership locked lower, for good, when it opens.", "120"],
+                ["Your named place in the Founding 100", "First in. Building the movement from day one.", "—"],
               ].map(([title, body, val]) => (
                 <li key={title} className="flex gap-4">
                   <span className="mt-1 inline-block h-2 w-2 shrink-0 rounded-full bg-[#2ED8A8]" aria-hidden />
                   <div>
                     <p className="text-[#1A1714] font-medium">
                       {title}
-                      {val !== "—" && val !== "lock" && (
+                      {val !== "—" && (
                         <span className="ml-2 font-mono text-[11px] tracking-[0.14em] uppercase text-[#1A9E78]">
-                          {`€${val} value`}
+                          {val === "save" ? "founding price" : `€${val} value`}
                         </span>
                       )}
                     </p>
@@ -359,12 +363,18 @@ const TruthMovement = () => {
               ))}
             </ul>
             <div className="mt-7 flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-border/60 pt-6">
-              <span className="font-[Lora] italic text-[#1A1714]" style={{ fontSize: "2rem" }}>{"€29"}</span>
-              <span className="text-sm text-[#8A7F74]">one time, founding rate</span>
-              <span className="ml-auto font-mono text-[11px] tracking-[0.16em] uppercase text-[#1A9E78]">
-                30-day money-back
-              </span>
+              <span className="text-sm text-[#8A7F74] line-through">Over €285 in value</span>
+              <span className="font-[Lora] italic text-[#1A1714]" style={{ fontSize: "2.25rem" }}>{"€29"}</span>
+              <span className="text-sm text-[#8A7F74]">once, founding rate</span>
             </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-8 text-sm">
+            <span className="inline-flex items-center gap-2 text-[#1A1714]/80">
+              <span className="h-2 w-2 rounded-full bg-[#2ED8A8]" aria-hidden />
+              The 30-Day Reset Guarantee. Run it. If your system does not feel more your own, full
+              refund and you keep the protocol.
+            </span>
           </div>
 
           <div className="flex flex-col sm:flex-row items-start gap-4">
@@ -374,11 +384,14 @@ const TruthMovement = () => {
               disabled={depositLoading}
               className="cta-pill"
             >
-              {depositLoading ? "Opening" : "Join the Founding Circle"}
+              {depositLoading ? "Opening" : "Claim your founding place"}
             </button>
             <a href="#join" className="ghost-pill">Just send the reset first</a>
           </div>
-          {depositMsg && <p className="mt-4 text-sm text-[#1A1714]/70">{depositMsg}</p>}
+          <p className="mt-4 text-xs text-[#8A7F74]">
+            The founding rate holds until the hundredth member. Then it closes.
+          </p>
+          {depositMsg && <p className="mt-3 text-sm text-[#1A1714]/70">{depositMsg}</p>}
         </div>
       </section>
 
