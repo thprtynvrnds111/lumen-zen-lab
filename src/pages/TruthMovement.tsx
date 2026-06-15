@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PageShell } from "@/components/zential/v2/PageShell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { createFoundingCustomer, createShopifyCart } from "@/lib/shopify";
 import { trackMovementJoin, trackDepositIntent } from "@/lib/movement-tracking";
+import { FoundingWall } from "@/components/movement/FoundingWall";
+import { captureRef, getRef } from "@/lib/movement-practice";
 
 /**
  * Founding Circle variant (the paid founding-member offer, €29).
@@ -133,6 +135,8 @@ const TruthMovement = () => {
   const [depositMsg, setDepositMsg] = useState<string | null>(null);
   const [depositLoading, setDepositLoading] = useState(false);
 
+  useEffect(() => { captureRef(); }, []);
+
   const handleDeposit = async () => {
     trackDepositIntent();
     if (!FOUNDING_DEPOSIT_VARIANT_ID) {
@@ -144,9 +148,10 @@ const TruthMovement = () => {
     setDepositLoading(true);
     setDepositMsg(null);
     try {
-      const cart = await createShopifyCart(FOUNDING_DEPOSIT_VARIANT_ID, 1, [
-        { key: "movement_source", value: "truth-movement" },
-      ]);
+      const ref = getRef();
+      const attrs = [{ key: "movement_source", value: "truth-movement" }];
+      if (ref) attrs.push({ key: "referred_by", value: ref });
+      const cart = await createShopifyCart(FOUNDING_DEPOSIT_VARIANT_ID, 1, attrs);
       if (cart?.checkoutUrl) {
         window.location.href = cart.checkoutUrl;
       } else {
@@ -394,6 +399,9 @@ const TruthMovement = () => {
           {depositMsg && <p className="mt-3 text-sm text-[#1A1714]/70">{depositMsg}</p>}
         </div>
       </section>
+
+      {/* FOUNDING WALL — live collective proof */}
+      <FoundingWall />
 
       {/* 7 — PERMISSION / CLOSE */}
       <section className="relative overflow-hidden section-padding">
