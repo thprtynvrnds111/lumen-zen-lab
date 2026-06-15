@@ -6,11 +6,14 @@ import { createFoundingCustomer, createShopifyCart } from "@/lib/shopify";
 import { trackMovementJoin, trackDepositIntent } from "@/lib/movement-tracking";
 
 /**
- * Founding-member deposit variant.
+ * Founding Circle variant (the paid founding-member offer, €29).
  *
- * Paste the "Founding Circle Deposit" product's Storefront variant GID here, e.g.
+ * Paste the "Zential Founding Circle" product's Storefront variant GID here, e.g.
  *   "gid://shopify/ProductVariant/1234567890".
- * While empty, the founding CTA gracefully falls back to the email waitlist.
+ * Product to create in Shopify (price 29.00, digital — untrack qty + non-physical,
+ * Active): delivers the 30-Day Protocol + Founding Cohort seat + device/membership
+ * founding price-locks (fulfilled by the post-purchase flow).
+ * While empty, the CTA gracefully falls back to the email waitlist.
  */
 const FOUNDING_DEPOSIT_VARIANT_ID = "";
 
@@ -135,7 +138,7 @@ const TruthMovement = () => {
     if (!FOUNDING_DEPOSIT_VARIANT_ID) {
       const el = document.getElementById("join");
       if (el) el.scrollIntoView({ behavior: "smooth" });
-      setDepositMsg("Founding deposits open soon. Join below and you go first.");
+      setDepositMsg("The Founding Circle opens shortly. Join below and you go first in line.");
       return;
     }
     setDepositLoading(true);
@@ -317,7 +320,7 @@ const TruthMovement = () => {
         </div>
       </section>
 
-      {/* 6 — FOUNDING CIRCLE */}
+      {/* 6 — FOUNDING CIRCLE (paid offer, real value in return) */}
       <section className="relative overflow-hidden section-padding bg-white border-y border-border/60">
         <Blob id="b-found" className="w-[480px] h-[480px] top-0 -left-32" opacity={0.13} />
         <div className="relative z-10 max-w-3xl">
@@ -326,10 +329,44 @@ const TruthMovement = () => {
             First one hundred.
           </h2>
           <p className="text-lg md:text-xl text-[#1A1714]/80 leading-relaxed mb-8">
-            The founding circle is for the people who want to build this with us from the start.
-            Early access to the protocols, the guided cohorts, and the device that makes the ritual
-            real. Not a discount. A place in the room.
+            A founding place is a real head start, not a token. You build this with us from the
+            start, and you get the full system before anyone else. Here is what comes with it.
           </p>
+
+          <div className="rounded-[1.5rem] border border-[#2ED8A8]/40 bg-[#F7F4F0] p-7 md:p-9 mb-8">
+            <ul className="space-y-4">
+              {[
+                ["The 30-Day Nervous-System Protocol", "The full week-by-week guided programme, beyond the free reset.", "47"],
+                ["A seat in the first Founding Cohort", "A live, guided 30-day run with the founding hundred. Accountability, not an app.", "—"],
+                ["Founding price on the device", "The Face Introducer at the founding rate when you are ready.", "lock"],
+                ["Lifetime founding membership rate", "Your monthly rate locked lower, for good, when the membership opens.", "lock"],
+                ["Your place in the founding hundred", "Named, first in, building the movement from day one.", "—"],
+              ].map(([title, body, val]) => (
+                <li key={title} className="flex gap-4">
+                  <span className="mt-1 inline-block h-2 w-2 shrink-0 rounded-full bg-[#2ED8A8]" aria-hidden />
+                  <div>
+                    <p className="text-[#1A1714] font-medium">
+                      {title}
+                      {val !== "—" && val !== "lock" && (
+                        <span className="ml-2 font-mono text-[11px] tracking-[0.14em] uppercase text-[#1A9E78]">
+                          {`€${val} value`}
+                        </span>
+                      )}
+                    </p>
+                    <p className="text-[#1A1714]/70 leading-relaxed">{body}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-7 flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-border/60 pt-6">
+              <span className="font-[Lora] italic text-[#1A1714]" style={{ fontSize: "2rem" }}>{"€29"}</span>
+              <span className="text-sm text-[#8A7F74]">one time, founding rate</span>
+              <span className="ml-auto font-mono text-[11px] tracking-[0.16em] uppercase text-[#1A9E78]">
+                30-day money-back
+              </span>
+            </div>
+          </div>
+
           <div className="flex flex-col sm:flex-row items-start gap-4">
             <button
               type="button"
@@ -337,7 +374,7 @@ const TruthMovement = () => {
               disabled={depositLoading}
               className="cta-pill"
             >
-              {depositLoading ? "Opening" : "Claim a founding place"}
+              {depositLoading ? "Opening" : "Join the Founding Circle"}
             </button>
             <a href="#join" className="ghost-pill">Just send the reset first</a>
           </div>
