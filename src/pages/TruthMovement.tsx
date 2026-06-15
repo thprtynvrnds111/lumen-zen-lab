@@ -3,6 +3,7 @@ import { PageShell } from "@/components/zential/v2/PageShell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { createFoundingCustomer, createShopifyCart } from "@/lib/shopify";
+import { trackMovementJoin, trackDepositIntent } from "@/lib/movement-tracking";
 
 /**
  * Founding-member deposit variant.
@@ -70,14 +71,13 @@ function JoinForm({
     if (!email.trim()) return;
     setSubmitting(true);
     setMessage(null);
+    const addr = email.trim();
     try {
-      const result = await createFoundingCustomer(email.trim());
+      const result = await createFoundingCustomer(addr);
       if (result.success || result.error === "already_exists") {
         setMessage({ type: "success", text: "You are in. Your reset is ready." });
         setEmail("");
-        try {
-          window.dispatchEvent(new CustomEvent("zp:movement_join", { detail: { source } }));
-        } catch { /* no-op */ }
+        trackMovementJoin(addr, source);
       } else {
         setMessage({ type: "error", text: "Something went wrong. Please try again." });
       }
@@ -133,6 +133,7 @@ const TruthMovement = () => {
   const [depositLoading, setDepositLoading] = useState(false);
 
   const handleDeposit = async () => {
+    trackDepositIntent();
     if (!FOUNDING_DEPOSIT_VARIANT_ID) {
       const el = document.getElementById("join");
       if (el) el.scrollIntoView({ behavior: "smooth" });
