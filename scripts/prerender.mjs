@@ -75,9 +75,6 @@ const ROUTES = [
   '/quiz',
   '/quiz/result',
   '/thank-you',
-  // Movement / community home
-  '/movement',
-  '/reset',
   // Ritual guides
   '/ritual-guide',
   '/ritual-guide/frame-pulse-activator',
