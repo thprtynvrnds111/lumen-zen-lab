@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPractice, currentStreak } from "@/lib/movement-practice";
+import { fetchMovementStats, type MovementStats } from "@/lib/movement-stats";
 
 /**
  * Founding Wall — live collective proof. Reads the founding-circle status endpoint
@@ -18,11 +19,13 @@ export function FoundingWall() {
   const [status, setStatus] = useState<Status>({ count: null });
   const [streak, setStreak] = useState(0);
   const [total, setTotal] = useState(0);
+  const [stats, setStats] = useState<MovementStats | null>(null);
 
   useEffect(() => {
     const p = getPractice();
     setStreak(currentStreak(p));
     setTotal(p.total);
+    fetchMovementStats().then((s) => s && setStats(s));
     let alive = true;
     fetch("/api/founding-circle-status")
       .then((r) => (r.ok ? r.json() : null))
@@ -71,8 +74,12 @@ export function FoundingWall() {
           </div>
           <div className="h-10 w-px bg-[#F7F4F0]/15" aria-hidden />
           <div className="text-left">
-            <p className="font-[Lora] italic text-[#F7F4F0] leading-none" style={{ fontSize: "2rem" }}>{total}</p>
-            <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#F7F4F0]/50 mt-1">resets logged</p>
+            <p className="font-[Lora] italic text-[#F7F4F0] leading-none" style={{ fontSize: "2rem" }}>
+              {stats ? stats.week : total}
+            </p>
+            <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#F7F4F0]/50 mt-1">
+              {stats ? "resets this week" : "your resets"}
+            </p>
           </div>
           <div className="h-10 w-px bg-[#F7F4F0]/15" aria-hidden />
           <a href="/reset" className="font-mono text-[11px] tracking-[0.16em] uppercase text-[#2ED8A8] hover:opacity-80">

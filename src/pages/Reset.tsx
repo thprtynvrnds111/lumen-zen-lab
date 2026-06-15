@@ -12,6 +12,7 @@ import {
   type PracticeState,
 } from "@/lib/movement-practice";
 import { trackPractice } from "@/lib/movement-tracking";
+import { logResetRemote } from "@/lib/movement-stats";
 
 /** Eyebrow, mono, tracked. */
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -89,7 +90,10 @@ const Reset = () => {
     setState(getPractice());
   }, []);
 
-  const handleComplete = () => setState(logReset());
+  const handleComplete = () => {
+    setState(logReset());
+    logResetRemote("reset");
+  };
 
   const handleShare = async () => {
     const url = myShareUrl();
