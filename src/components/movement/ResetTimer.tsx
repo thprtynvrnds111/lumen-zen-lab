@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import { trackPractice } from "@/lib/movement-tracking";
 
 /**
  * The guided 6-Minute Reset. A real tool, not a video: a paced breathing circle
@@ -46,6 +47,7 @@ export function ResetTimer({ onComplete }: { onComplete?: () => void }) {
       setRunning(false);
       setDone(true);
       onComplete?.();
+      trackPractice("reset_completed", { duration: TOTAL });
       return;
     }
     setElapsed(e);
@@ -53,17 +55,31 @@ export function ResetTimer({ onComplete }: { onComplete?: () => void }) {
   }, [onComplete]);
 
   useEffect(() => {
-    if (running) {
-      start.current = performance.now();
-      raf.current = requestAnimationFrame(tick);
-    }
-    return () => { if (raf.current) cancelAnimationFrame(raf.current); };
-  }, [running, tick]);
+    if (!running) return;
+    start.current = performance.now();
+    raf.current = requestAnimationFrame(tick);
+    // Safety net: rAF throttles in background tabs, so a low-rate interval
+    // guarantees completion fires even if the user tabs away mid-reset.
+    const guard = window.setInterval(() => {
+      const e = base.current + (performance.now() - start.current) / 1000;
+      if (e >= TOTAL) {
+        setElapsed(TOTAL);
+        setRunning(false);
+        setDone(true);
+        onComplete?.();
+        trackPractice("reset_completed", { duration: TOTAL });
+      }
+    }, 1000);
+    return () => {
+      if (raf.current) cancelAnimationFrame(raf.current);
+      window.clearInterval(guard);
+    };
+  }, [running, tick, onComplete]);
 
   const toggle = () => {
-    if (done) { base.current = 0; setElapsed(0); setDone(false); setRunning(true); return; }
+    if (done) { base.current = 0; setElapsed(0); setDone(false); setRunning(true); trackPractice("reset_started", { restart: true }); return; }
     if (running) { base.current = elapsed; setRunning(false); }
-    else { setRunning(true); }
+    else { if (elapsed === 0) trackPractice("reset_started"); setRunning(true); }
   };
 
   const phase = PHASES.find((p) => elapsed >= p.from && elapsed < p.to) ?? PHASES[PHASES.length - 1];

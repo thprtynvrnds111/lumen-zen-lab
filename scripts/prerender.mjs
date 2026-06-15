@@ -78,6 +78,7 @@ const ROUTES = [
   // Movement / community home
   '/movement',
   '/reset',
+  '/founding-terms',
   // Ritual guides
   '/ritual-guide',
   '/ritual-guide/frame-pulse-activator',

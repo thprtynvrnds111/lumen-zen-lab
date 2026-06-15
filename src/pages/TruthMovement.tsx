@@ -344,12 +344,12 @@ const TruthMovement = () => {
             </p>
             <ul className="space-y-4">
               {[
-                ["The 30-Day Nervous-System Reset", "Week by week, the full guided programme. Not theory. A path.", "47"],
-                ["The Founding Cohort", "Run the 30 days live, with the first hundred. Accountability, not an app.", "90"],
-                ["The Daily Reset Library", "Four resets for the day: morning, midday, pre-sleep, pre-training.", "29"],
-                ["Founding price on the device", "The Face Introducer at the founding rate when you are ready.", "save"],
-                ["Lifetime founding rate", "Your membership locked lower, for good, when it opens.", "120"],
-                ["Your named place in the Founding 100", "First in. Building the movement from day one.", "—"],
+                ["The 30-Day Nervous-System Reset", "Lands today. The full week-by-week guided programme, yours the moment you join.", "47"],
+                ["The Daily Reset Library", "Lands today. Four resets for the day: morning, midday, pre-sleep, pre-training.", "29"],
+                ["Your named place in the Founding 100", "Lands today. First in, building the movement from day one.", "—"],
+                ["A seat in the first guided cohort", "When it runs. A live 30-day cohort with the founding hundred.", "90"],
+                ["Founding price on the device", "Locked to your email, honoured when the device is your next step.", "save"],
+                ["Lifetime founding membership rate", "Locked lower for good, if and when the membership opens.", "120"],
               ].map(([title, body, val]) => (
                 <li key={title} className="flex gap-4">
                   <span className="mt-1 inline-block h-2 w-2 shrink-0 rounded-full bg-[#2ED8A8]" aria-hidden />
@@ -394,7 +394,9 @@ const TruthMovement = () => {
             <a href="#join" className="ghost-pill">Just send the reset first</a>
           </div>
           <p className="mt-4 text-xs text-[#8A7F74]">
-            The founding rate holds until the hundredth member. Then it closes.
+            The founding rate holds until the hundredth member, then it closes. Not ready to go all
+            in? The reset and the weekly truth are always free above.{" "}
+            <a href="/founding-terms" className="underline hover:text-[#1A1714]">Founding terms</a>.
           </p>
           {depositMsg && <p className="mt-3 text-sm text-[#1A1714]/70">{depositMsg}</p>}
         </div>

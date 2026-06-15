@@ -57,6 +57,7 @@ const ProtocolDetail   = lazy(() => import("./pages/ProtocolDetail"));
 const ProtocolFaceIntroducer = lazy(() => import("./pages/ProtocolFaceIntroducer"));
 const TruthMovement    = lazy(() => import("./pages/TruthMovement"));
 const Reset            = lazy(() => import("./pages/Reset"));
+const FoundingTerms    = lazy(() => import("./pages/FoundingTerms"));
 
 function ServerApp() {
   return (
@@ -107,6 +108,7 @@ function ServerApp() {
         <Route path="/quiz/result"                              element={<QuizResult />} />
         <Route path="/movement"                                 element={<TruthMovement />} />
         <Route path="/reset"                                    element={<Reset />} />
+        <Route path="/founding-terms"                           element={<FoundingTerms />} />
         <Route path="/dashboard"                                element={<Dashboard />} />
         <Route path="*"                                         element={<NotFound />} />
       </Routes>

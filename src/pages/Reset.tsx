@@ -11,6 +11,7 @@ import {
   myShareUrl,
   type PracticeState,
 } from "@/lib/movement-practice";
+import { trackPractice } from "@/lib/movement-tracking";
 
 /** Eyebrow, mono, tracked. */
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -92,6 +93,7 @@ const Reset = () => {
 
   const handleShare = async () => {
     const url = myShareUrl();
+    trackPractice("shared", { from: "reset" });
     try {
       if (navigator.share) {
         await navigator.share({ title: "Reclaim your own frequency", url });
