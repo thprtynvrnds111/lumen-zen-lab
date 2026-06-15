@@ -1,31 +1,30 @@
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { BubbleBackground } from "@/components/zential/BubbleBackground";
 
 const cards = [
   {
-    name: "Red Light",
-    param: "630–660nm wavelength",
-    mechanism: "Stimulates collagen synthesis in dermal fibroblasts, delivering a youthful glow after running when your skin needs repair.",
-    href: "/technology/red-light",
-  },
-  {
-    name: "Microcurrent",
-    param: "Frequency: 200–400μA",
-    mechanism: "Increases ATP production to firm facial muscles, perfect for toning after a long day behind the screen.",
-    href: "/technology/microcurrent",
-  },
-  {
     name: "EMS",
-    param: "Pulse width: 250μs",
-    mechanism: "Re-educates muscle memory for a visible lift, ideal post-workout to sculpt and define your contours.",
+    param: "Pulse width 250μs",
+    mechanism: "Stronger pulses engage the facial muscle directly. The basis of trained lift and definition.",
     href: "/technology/ems",
   },
   {
+    name: "Microcurrent",
+    param: "200–400μA",
+    mechanism: "Low current at the threshold the muscle responds to. The same principle as professional facial toning.",
+    href: "/technology/microcurrent",
+  },
+  {
     name: "Thermal",
-    param: "40–42°C thermal",
-    mechanism: "Enhances product absorption and microcirculation, maximizing serum efficacy right after cleansing for deeper nourishment.",
+    param: "40–42°C",
+    mechanism: "Gentle heat opens microcirculation and primes the skin to take in what follows.",
     href: "/technology/thermal",
+  },
+  {
+    name: "Cosmetic LED",
+    param: "Visible spectrum",
+    mechanism: "A soft light step to close the ritual. Visual, not clinical.",
+    href: "/technology/red-light",
   },
 ];
 
@@ -33,23 +32,22 @@ export function TechCardsSection() {
   const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <section ref={ref} id="technology" className="relative px-6 md:px-12 lg:px-20 py-12 md:py-28 overflow-hidden" style={{ backgroundColor: '#0C1118' }}>
-      <BubbleBackground />
-      <div className="max-w-5xl mx-auto relative z-10">
-        <h2 className="font-serif italic text-3xl md:text-4xl mb-8 md:mb-14 text-center" style={{ color: '#EAE7E0' }}>
-          The science behind it
+    <section ref={ref} id="technology" className="relative px-6 md:px-12 lg:px-20 py-12 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
+      <div className="max-w-5xl mx-auto">
+        <h2 className="font-serif italic text-3xl md:text-4xl mb-8 md:mb-14 text-center" style={{ color: '#1A1714' }}>
+          The four technologies
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {cards.map((c) => (
             <div
               key={c.name}
-              className="rounded-lg p-7 md:p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
-              style={{ backgroundColor: '#111820', border: '1px solid rgba(255,255,255,0.1)' }}
+              className="rounded-lg p-7 md:p-8 transition-all duration-500 hover:-translate-y-1"
+              style={{ backgroundColor: '#FFFFFF', border: '1px solid rgba(107,90,74,0.25)' }}
             >
-              <h3 className="font-serif text-xl font-bold mb-1" style={{ color: '#EAE7E0' }}>{c.name}</h3>
-              <p className="text-xs font-medium mb-4" style={{ color: '#E87040' }}>{c.param}</p>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: 'rgba(234,231,224,0.8)' }}>{c.mechanism}</p>
-              <Link to={c.href} className="text-xs font-medium hover:underline" style={{ color: '#E87040' }}>
+              <h3 className="font-serif text-xl font-bold mb-1" style={{ color: '#1A1714' }}>{c.name}</h3>
+              <p className="text-xs font-medium mb-4" style={{ color: '#F69251' }}>{c.param}</p>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: 'rgba(26,23,20,0.7)' }}>{c.mechanism}</p>
+              <Link to={c.href} className="text-xs font-medium hover:underline" style={{ color: '#F69251' }}>
                 Learn more →
               </Link>
             </div>

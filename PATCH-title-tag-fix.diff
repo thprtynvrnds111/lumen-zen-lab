@@ -1,0 +1,108 @@
+diff --git a/scripts/prerender.mjs b/scripts/prerender.mjs
+index XXXXXX..YYYYYY 100644
+--- a/scripts/prerender.mjs
++++ b/scripts/prerender.mjs
+@@ -8,6 +8,13 @@
+  *   1. vite build            → dist/          (client bundle)
+  *   2. vite build --ssr …    → .ssr/          (server bundle)
+  *   3. node scripts/prerender.mjs             (this script)
++ *
++ * BUG-FIX (2026-05-26):
++ *   - Added every Helmet-using route to ROUTES so each gets its own per-route
++ *     title/OG output instead of falling through to the homepage shell on Vercel.
++ *     Previously, /quiz, /thank-you, /technology/electroporation, /clinic-vs-home,
++ *     /facial-muscle-training, /technology/iontophoresis, /compare/foreo-bear,
++ *     and /science were missing — vercel.json sent them to /index.html, which
++ *     carries the HOMEPAGE helmet output (wrong title for the user's URL).
++ *   - removeStaticTags now also strips trailing whitespace so the final <head>
++ *     does not contain an empty newline-shaped gap where the static <title> was.
++ *   - Adds a [WARN] log when a route emits no <title> (page missing SEO comp).
+  */
+
+ import { readFileSync, writeFileSync, mkdirSync } from 'fs';
+@@ -42,6 +49,9 @@ const ROUTES = [
+   '/technology/microcurrent',
+   '/technology/ems',
+   '/technology/thermal',
++  '/technology/electroporation',
++  '/technology/iontophoresis',
+   '/body-lift',
++  '/science',
+   // Product pages — SSR renders the static config shell; Shopify data loads
+   // client-side as normal. Bots get the correct <title> + meta immediately.
+   '/product/lifting-and-tightening-face-introducer',
+@@ -56,6 +66,14 @@ const ROUTES = [
+   '/product/white-noise-sleep-aid-machine',
+   // Comparison pages
+   '/compare/nuface-vs-zential-pure',
++  '/compare/foreo-bear-vs-zential-pure',
++  // Long-tail SEO landing pages
++  '/clinic-vs-home-facial-device',
++  '/facial-muscle-training',
++  // Funnel pages
++  '/quiz',
++  '/quiz/result',
++  '/thank-you',
+   // Ritual guides
+   '/ritual-guide',
+   '/ritual-guide/frame-pulse-activator',
+@@ -85,16 +103,20 @@ function buildHead(helmet) {
+
+ // Remove duplicate static head tags that index.html carries as homepage defaults.
+ // The helmet-injected versions (which are per-page correct) will be the only ones.
++//
++// Each pattern now also consumes the trailing newline + indent on the next line,
++// so we don't leave an empty blank slot where the title used to be (some naive
++// HTML scrapers grep the first hundred head bytes for <title> and see "nothing").
+ const STATIC_TAG_PATTERNS = [
+-  /<title>[^<]*<\/title>/,
+-  /<meta name="description"[^>]*>/,
+-  /<meta property="og:title"[^>]*>/,
+-  /<meta property="og:description"[^>]*>/,
+-  /<meta property="og:url"[^>]*>/,
+-  /<meta property="og:type"[^>]*>/,
+-  /<meta name="twitter:title"[^>]*>/,
+-  /<meta name="twitter:description"[^>]*>/,
+-  /<link rel="canonical"[^>]*>/,
++  /<title>[^<]*<\/title>\s*/,
++  /<meta name="description"[^>]*>\s*/,
++  /<meta property="og:title"[^>]*>\s*/,
++  /<meta property="og:description"[^>]*>\s*/,
++  /<meta property="og:url"[^>]*>\s*/,
++  /<meta property="og:type"[^>]*>\s*/,
++  /<meta name="twitter:title"[^>]*>\s*/,
++  /<meta name="twitter:description"[^>]*>\s*/,
++  /<link rel="canonical"[^>]*>\s*/,
+ ];
+
+ function removeStaticTags(html) {
+@@ -119,6 +141,12 @@ async function prerender() {
+       const { html, helmet } = await render(route);
+
+       const headHtml = buildHead(helmet);
++
++      if (!headHtml || !/<title/i.test(headHtml)) {
++        // Loud warning — every route MUST emit a <title>. If this fires,
++        // the page is missing a <SEO/> or <Helmet> usage.
++        console.warn(`\n    [WARN] no <title> for ${route} — page is missing SEO component`);
++      }
+
+       // 1. Remove static per-page tags from the shared template
+       // 2. Inject helmet (per-page) tags at the <!--app-head--> marker
+
+# === NOTE TO MIGUEL ===
+#
+# Also recommended (but NOT required for this fix):
+#
+# 1. Once prerender ROUTES is updated, the matching `dest: /index.html` lines
+#    in vercel.json become redundant (the files now exist on the filesystem
+#    handler). You can leave them — they just become inert. Removing them
+#    later is fine; do that as a separate cleanup commit.
+#
+# 2. Dashboard page (/dashboard) currently has NO Helmet/SEO usage — it gets
+#    the homepage title baked in. If /dashboard is meant to be a logged-in-only
+#    page, robots-block it. Otherwise add a <SEO title="Dashboard — Zential Pure"/>.
+#
+# 3. After applying, verify locally with:
+#       npm run build && grep -c '<title' dist/quiz/index.html dist/thank-you/index.html
+#    Both should print "1" (one match per file).

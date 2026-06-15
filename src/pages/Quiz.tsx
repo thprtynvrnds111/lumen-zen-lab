@@ -5,6 +5,7 @@ import { ArrowRight, ArrowLeft, Check } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { Header } from "@/components/zential/Header";
 import { quizSteps, type QuizAnswers } from "@/data/quizData";
+import quizPause from "@/assets/editorial/quiz-pause.webp";
 
 const STORAGE_KEY = "zential.quiz.answers";
 
@@ -84,6 +85,42 @@ export default function Quiz() {
         canonicalUrl="/quiz"
       />
       <Header />
+
+      {/* Editorial opening band — the pause before knowing */}
+      <section className="relative w-full overflow-hidden" style={{ height: 'clamp(220px, 32vh, 360px)' }} aria-hidden>
+        <img
+          src={quizPause}
+          alt=""
+          loading="eager"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: 'center 30%', filter: 'saturate(0.92)' }}
+        />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'linear-gradient(to bottom, rgba(251,248,244,0.05) 0%, rgba(251,248,244,0.35) 100%)' }}
+        />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'linear-gradient(to right, rgba(251,248,244,0.55) 0%, transparent 45%)' }}
+        />
+        <div className="absolute inset-0 flex items-center px-6 md:px-14">
+          <p
+            className="font-serif italic max-w-md text-balance"
+            style={{
+              fontSize: 'clamp(18px, 2.4vw, 30px)',
+              lineHeight: 1.25,
+              color: '#1A1714',
+              letterSpacing: '-0.005em',
+            }}
+          >
+            The pause before knowing.
+            <br />
+            <span style={{ color: 'rgba(26,23,20,0.55)' }}>
+              Sixty seconds to your protocol.
+            </span>
+          </p>
+        </div>
+      </section>
 
       {/* Progress */}
       <div className="sticky top-16 z-40 backdrop-blur-xl" style={{ backgroundColor: "rgba(251,248,244,0.85)" }}>

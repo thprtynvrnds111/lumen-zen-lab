@@ -54,6 +54,7 @@ const NotFound         = lazy(() => import("./pages/NotFound"));
 const Dashboard        = lazy(() => import("./pages/Dashboard"));
 const Protocols        = lazy(() => import("./pages/Protocols"));
 const ProtocolDetail   = lazy(() => import("./pages/ProtocolDetail"));
+const ProtocolFaceIntroducer = lazy(() => import("./pages/ProtocolFaceIntroducer"));
 
 function ServerApp() {
   return (
@@ -62,6 +63,7 @@ function ServerApp() {
         <Route path="/"                                         element={<Index />} />
         <Route path="/protocols"                                element={<Protocols />} />
         <Route path="/protocols/:slug"                          element={<ProtocolDetail />} />
+        <Route path="/protocol/face-introducer"                 element={<ProtocolFaceIntroducer />} />
         <Route path="/product/:handle"                          element={<ProductDetail />} />
         <Route path="/body-lift"                                element={<BodyLift />} />
         <Route path="/journal"                                  element={<Journal />} />

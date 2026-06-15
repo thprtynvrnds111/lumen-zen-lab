@@ -5,12 +5,20 @@
     "subline": "Four technologies. One daily protocol. Measurable output.",
     "body": "An editorial on returning. On skin not as surface but as instrument. On the science beneath the ritual, and the ritual within the science.",
     "rating": "4.9 / 5 — rated by our community",
+    "subhead": "A four-modality at-home instrument calibrated to clinic protocols. EMS, Microcurrent, Thermal and Cosmetic LED in a single 12-minute ritual. Built for the woman who left the clinic but kept the standard.",
     "ctaPrimary": "Order the Face Introducer",
+    "ctaPrimaryWithPrice": "Order Face Introducer · €88",
     "ctaSecondary": "Find Your Protocol",
     "trust": {
       "shipping": "Free EU shipping",
       "guarantee": "30-Day Protocol Guarantee",
-      "tagline": "Clinic precision. Daily ritual."
+      "tagline": "Clinic precision. Daily ritual.",
+      "rotterdam": "Ships from Rotterdam"
+    },
+    "proof": {
+      "modalities": { "value": "4", "label": "Clinical\nmodalities" },
+      "price": { "value": "€88", "label": "vs €1,440 / yr\nclinic average" },
+      "guarantee": { "value": "30d", "label": "Protocol\nguarantee" }
     },
     "modalities": {
       "label": "Four protocols. One stack.",

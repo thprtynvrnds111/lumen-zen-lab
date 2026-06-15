@@ -11,6 +11,14 @@ const S = {
   dm: { fontFamily: "'DM Sans', sans-serif" } as React.CSSProperties,
 } as const;
 
+type NavMatch = 'exact' | 'prefix' | 'none';
+const NAV_ITEMS: { label: string; to: string; match: NavMatch }[] = [
+  { label: 'Devices', to: '/#devices', match: 'none' },
+  { label: 'Protocols', to: '/protocols', match: 'prefix' },
+  { label: 'Method', to: '/clinic-vs-home-facial-device', match: 'prefix' },
+  { label: 'Quiz', to: '/quiz', match: 'prefix' },
+];
+
 function FlowerMark() {
   return (
     <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden>
@@ -71,42 +79,40 @@ export function Header() {
           </Link>
 
           {/* Right: desktop */}
-          <div className="hidden md:flex items-center gap-8">
-            <Link
-              to="/protocols"
-              style={{
-                ...S.dm,
-                fontWeight: 300,
-                fontSize: 11,
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                color: 'rgba(247,244,240,0.55)',
-                textDecoration: 'none',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = S.teal)}
-              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(247,244,240,0.55)')}
-            >
-              Protocols
-            </Link>
-            <Link
-              to="/#devices"
-              onClick={scrollToDevices}
-              style={{
-                ...S.dm,
-                fontWeight: 300,
-                fontSize: 11,
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                color: 'rgba(247,244,240,0.55)',
-                textDecoration: 'none',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = S.teal)}
-              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(247,244,240,0.55)')}
-            >
-              Devices
-            </Link>
+          <div className="hidden md:flex items-center gap-9">
+            {NAV_ITEMS.map(item => {
+              const isActive =
+                item.match === 'exact'
+                  ? location.pathname === item.to
+                  : item.match === 'prefix'
+                  ? location.pathname.startsWith(item.to)
+                  : false;
+              const baseColor = isActive ? S.cream : 'rgba(247,244,240,0.6)';
+              return (
+                <Link
+                  key={item.label}
+                  to={item.to}
+                  onClick={item.label === 'Devices' ? scrollToDevices : undefined}
+                  style={{
+                    ...S.dm,
+                    fontWeight: 300,
+                    fontSize: 11,
+                    letterSpacing: '0.22em',
+                    textTransform: 'uppercase',
+                    color: baseColor,
+                    textDecoration: 'none',
+                    transition: 'color 0.2s',
+                    position: 'relative',
+                    paddingBottom: 6,
+                    borderBottom: isActive ? `1px solid ${S.teal}` : '1px solid transparent',
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.color = S.teal)}
+                  onMouseLeave={e => (e.currentTarget.style.color = baseColor)}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
             <button
               onClick={() => setSearchOpen(true)}
               aria-label="Search"
@@ -168,26 +174,25 @@ export function Header() {
             style={{ borderTop: '1px solid rgba(247,244,240,0.06)', backgroundColor: S.dark }}
             className="md:hidden px-8 py-6 space-y-5"
           >
-            <Link
-              to="/#devices"
-              onClick={(e) => { scrollToDevices(e); setMobileOpen(false); }}
-              style={{ ...S.dm, fontWeight: 300, fontSize: 12, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(247,244,240,0.7)', display: 'block' }}
-            >
-              Shop the Protocol
-            </Link>
+            {NAV_ITEMS.map(item => (
+              <Link
+                key={item.label}
+                to={item.to}
+                onClick={(e) => {
+                  if (item.label === 'Devices') scrollToDevices(e);
+                  setMobileOpen(false);
+                }}
+                style={{ ...S.dm, fontWeight: 300, fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(247,244,240,0.7)', display: 'block' }}
+              >
+                {item.label}
+              </Link>
+            ))}
             <Link
               to="/collection"
               onClick={() => setMobileOpen(false)}
-              style={{ ...S.dm, fontWeight: 300, fontSize: 12, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(247,244,240,0.45)', display: 'block' }}
+              style={{ ...S.dm, fontWeight: 300, fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(247,244,240,0.45)', display: 'block' }}
             >
               Collection
-            </Link>
-            <Link
-              to="/quiz"
-              onClick={() => setMobileOpen(false)}
-              style={{ ...S.dm, fontWeight: 300, fontSize: 12, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(247,244,240,0.45)', display: 'block' }}
-            >
-              Find Your Protocol
             </Link>
           </nav>
         )}

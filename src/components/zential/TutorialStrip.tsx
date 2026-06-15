@@ -57,7 +57,7 @@ export function TutorialStrip() {
               key={i}
               className="group relative overflow-hidden rounded-2xl aspect-[4/5] text-left transition-all duration-500 hover:-translate-y-1"
               style={{
-                boxShadow: "0 8px 30px rgba(74,55,40,0.08)",
+                border: "1px solid rgba(107,90,74,0.2)",
               }}
             >
               <img
