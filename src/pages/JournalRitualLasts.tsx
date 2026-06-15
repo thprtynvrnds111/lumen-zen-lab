@@ -40,7 +40,7 @@ const JournalRitualLasts = () => {
      <div className="max-w-3xl mx-auto space-y-8">
 
       <p className="text-lg text-foreground/90 leading-relaxed">
-       You've tried the 10-step routines. The 14-day challenges. The elaborate Sunday reset protocols with masks and tools and timers. They worked for a week, maybe two. Then life happened. The routine felt like another demand. And you stopped. Not because you didn't care, but because the system wasn't built for a human life. It was built for an Instagram grid.
+       You've tried the 10-step routines. The 30-day challenges. The elaborate Sunday reset protocols with masks and tools and timers. They worked for a week, maybe two. Then life happened. The routine felt like another demand. And you stopped. Not because you didn't care, but because the system wasn't built for a human life. It was built for an Instagram grid.
       </p>
 
       <p className="text-foreground/80 leading-relaxed">

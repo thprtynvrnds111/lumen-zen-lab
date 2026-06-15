@@ -126,7 +126,7 @@ const Support = () => {
      </div>
     </section>
 
-    {/* 14-Day Guarantee */}
+    {/* 30-Day Guarantee */}
     <section className="px-6 md:px-12 lg:px-20 pb-20">
      <div className="max-w-3xl mx-auto text-center">
       <p className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-3">{t('guarantee.eyebrow')}</p>

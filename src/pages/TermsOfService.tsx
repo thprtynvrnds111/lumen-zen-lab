@@ -19,11 +19,11 @@ const sections = [
  },
  {
   title: "4. Shipping & Delivery",
-  content: `We ship to most countries worldwide. Delivery times vary by destination: Netherlands (2–3 days), EU (3–7 days), International (7–14 days). Risk of loss transfers to you upon delivery. See our Shipping page for full details.`,
+  content: `We ship to most countries worldwide. Delivery times vary by destination: Netherlands (2–3 days), EU (3–7 days), International (7–30 days). Risk of loss transfers to you upon delivery. See our Shipping page for full details.`,
  },
  {
   title: "5. Returns & Refunds",
-  content: `We offer a 14-Day Ritual Guarantee on all devices. To initiate a return, contact support within 14 days of delivery. Devices must be returned in original packaging. Opened consumables (gels, pads) are non-returnable for hygiene reasons. Refunds are processed within 5–7 business days after receipt.`,
+  content: `We offer a 30-Day Ritual Guarantee on all devices. To initiate a return, contact support within 30 days of delivery. Devices must be returned in original packaging. Opened consumables (gels, pads) are non-returnable for hygiene reasons. Refunds are processed within 5–7 business days after receipt.`,
  },
  {
   title: "6. Warranty & Liability",

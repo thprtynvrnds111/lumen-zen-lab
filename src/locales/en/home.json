@@ -11,14 +11,14 @@
   "ctaSecondary": "Find Your Protocol",
   "trust": {
    "shipping": "Free EU shipping",
-   "guarantee": "14-Day Protocol Guarantee",
+   "guarantee": "30-Day Protocol Guarantee",
    "tagline": "Clinic precision. Daily ritual.",
    "rotterdam": "Ships from Rotterdam"
   },
   "proof": {
    "modalities": { "value": "4", "label": "Clinical\nmodalities" },
    "price": { "value": "€88", "label": "vs €1,440 / yr\nclinic average" },
-   "guarantee": { "value": "14 days", "label": "Protocol\nguarantee" }
+   "guarantee": { "value": "30 days", "label": "Protocol\nguarantee" }
   },
   "modalities": {
    "label": "Four protocols. One stack.",
@@ -62,11 +62,11 @@
    },
    {
     "q": "Is it worth the investment?",
-    "a": "One device replaces hundreds of euros in monthly clinic visits. With daily 5-minute rituals, you get professional-grade results at home, backed by our 14-Day Ritual Guarantee."
+    "a": "One device replaces hundreds of euros in monthly clinic visits. With daily 5-minute rituals, you get professional-grade results at home, backed by our 30-Day Ritual Guarantee."
    },
    {
     "q": "What if I need help after my purchase?",
-    "a": "Our support team responds within 24 hours. You're covered by a 14-Day Ritual Guarantee, easy returns, and lifetime access to ritual guides and tips."
+    "a": "Our support team responds within 24 hours. You're covered by a 30-Day Ritual Guarantee, easy returns, and lifetime access to ritual guides and tips."
    }
   ]
  },

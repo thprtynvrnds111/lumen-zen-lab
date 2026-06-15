@@ -35,7 +35,7 @@ const sections = [
  },
  {
   title: "8. Contact",
-  content: `For privacy-related inquiries, contact us at privacy@zentialpure.com. We will respond within 14 days. Our data processing is governed by the laws of the Netherlands and the European Union.`,
+  content: `For privacy-related inquiries, contact us at privacy@zentialpure.com. We will respond within 30 days. Our data processing is governed by the laws of the Netherlands and the European Union.`,
  },
 ];
 

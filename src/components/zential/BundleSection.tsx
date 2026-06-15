@@ -216,7 +216,7 @@ export function BundleSection() {
    <div className="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-[10px] tracking-[0.25em] uppercase" style={{ color: 'rgba(234,231,224,0.4)' }}>
     <span>Free EU Shipping</span>
     <span className="hidden md:inline w-1 h-1 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
-    <span>14-Day Guarantee</span>
+    <span>30-Day Guarantee</span>
     <span className="hidden md:inline w-1 h-1 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
     <span>2-Year Warranty</span>
    </div>

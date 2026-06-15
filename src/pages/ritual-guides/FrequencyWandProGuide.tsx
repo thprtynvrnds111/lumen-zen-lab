@@ -34,7 +34,7 @@ const config: RitualGuideConfig = {
    sensation: "Gentle warmth from LED. Faint tingle from ion drive.",
   },
  ],
- frequencyText: "4–5× per week for the first 14 days. Results compound at weeks 4–8.",
+ frequencyText: "4–5× per week for the first 30 days. Results compound at weeks 4–8.",
  afterItems: [
   { title: "Serum", desc: "Apply active serum and use infusion mode to drive it deeper." },
   { title: "LED Close", desc: "Close your session with your preferred LED wavelength." },

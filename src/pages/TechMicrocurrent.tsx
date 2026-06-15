@@ -16,7 +16,7 @@ const TechMicrocurrent = () => (
   }}
   biology={{
    heading: "What happens in your skin",
-   body: "ATP is the primary energy source for every cellular function, including protein synthesis, cell division, and tissue repair. When microcurrent increases ATP availability, fibroblasts produce more collagen and elastin. Facial muscles receive a cumulative toning effect similar to exercise: with consistent use, they regain definition and resist gravitational sagging. Clinical studies demonstrate measurable improvements in facial contour, reduced nasolabial fold depth, and increased skin elasticity after 20–14 days of daily use."
+   body: "ATP is the primary energy source for every cellular function, including protein synthesis, cell division, and tissue repair. When microcurrent increases ATP availability, fibroblasts produce more collagen and elastin. Facial muscles receive a cumulative toning effect similar to exercise: with consistent use, they regain definition and resist gravitational sagging. Clinical studies demonstrate measurable improvements in facial contour, reduced nasolabial fold depth, and increased skin elasticity after 20–30 days of daily use."
   }}
   usage={{
    heading: "How to use it",

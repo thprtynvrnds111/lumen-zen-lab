@@ -499,7 +499,7 @@ export function ProductLanding({ config }: Props) {
 
       <div className="flex items-center justify-center gap-6 mt-5 text-muted-foreground">
        {[
-        { icon: RotateCcw, label: config.guaranteeName ?? "14-Day Guarantee" },
+        { icon: RotateCcw, label: config.guaranteeName ?? "30-Day Guarantee" },
         { icon: Lock, label: "Secure Checkout" },
         { icon: Truck, label: "3–7 Day EU Delivery" },
        ].map(b => (
@@ -600,7 +600,7 @@ export function ProductLanding({ config }: Props) {
      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
       {[
        { eyebrow: "Evidence", title: "Peer-reviewed studies", body: "Every modality on this device, red light, microcurrent, EMS, thermal, is referenced to published clinical research. We link the actual papers below.", cta: "See studies →" },
-       { eyebrow: "Guarantee", title: "14 days. No conditions.", body: "Use it nightly for 14 days. If your skin doesn't show change, we refund you in full. No restocking fee, no questionnaire, no friction.", cta: "Read policy →" },
+       { eyebrow: "Guarantee", title: "30 days. No conditions.", body: "Use it nightly for 30 days. If your skin doesn't show change, we refund you in full. No restocking fee, no questionnaire, no friction.", cta: "Read policy →" },
        { eyebrow: "Manufacturing", title: "Medical-grade build", body: "FDA-cleared modalities, CE-marked construction, 2-year hardware warranty. The device itself is the proof, not borrowed credibility.", cta: "Learn more →" },
       ].map((card, i) => (
        <div key={i} className="rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-500" style={{ backgroundColor: '#111820', border: '1px solid rgba(255,255,255,0.08)' }}>
@@ -980,7 +980,7 @@ export function ProductLanding({ config }: Props) {
    <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32" style={{ backgroundColor: '#1A1714' }}>
     <div className="max-w-[1200px] mx-auto text-center">
      <p className="text-[10px] tracking-[0.3em] uppercase text-white/50 mb-5"> The Promise </p>
-     <h2 className="font-serif italic text-[36px] md:text-[56px] leading-[1.05] text-white mb-6 tracking-tight">14 days. Full refund.<br/>No questions.</h2>
+     <h2 className="font-serif italic text-[36px] md:text-[56px] leading-[1.05] text-white mb-6 tracking-tight">30 days. Full refund.<br/>No questions.</h2>
      <p className="text-white/60 text-base md:text-lg mb-10 max-w-lg mx-auto leading-relaxed">Email info@zentialpure.com. We refund. No forms, no photos, no return required.</p>
      <button
       onClick={handleAdd}
@@ -1018,7 +1018,7 @@ export function ProductLanding({ config }: Props) {
      </button>
      <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mt-10 text-white/50">
       {[
-       { icon: Shield, label: "14-Day Guarantee" },
+       { icon: Shield, label: "30-Day Guarantee" },
        { icon: Truck, label: "Free EU Shipping" },
        { icon: CreditCard, label: "Secure Payment" },
       ].map(b => (

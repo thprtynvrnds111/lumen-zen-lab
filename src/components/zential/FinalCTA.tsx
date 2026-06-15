@@ -74,7 +74,7 @@ export function FinalCTA() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-8 max-w-2xl mx-auto pt-10 border-t" style={{ borderColor: 'rgba(250,247,243,0.12)' }}>
           {[
-            { icon: ShieldCheck, label: '14-Day Guarantee' },
+            { icon: ShieldCheck, label: '30-Day Guarantee' },
             { icon: Truck, label: 'Free EU Shipping over €75' },
             { icon: RotateCcw, label: 'Easy Returns' },
           ].map((it) => (

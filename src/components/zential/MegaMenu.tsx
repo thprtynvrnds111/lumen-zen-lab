@@ -137,7 +137,7 @@ export function MegaMenu({ onNavigate }: MegaMenuProps) {
    {/* Bottom bar */}
    <div className="border-t border-border/30 bg-[#FBF8F4]">
     <div className="max-w-[1400px] mx-auto px-12 lg:px-20 py-4 flex items-center justify-between text-[11px] tracking-[0.15em] uppercase text-foreground/60">
-     <span>Free EU Shipping · 14-Day Guarantee</span>
+     <span>Free EU Shipping · 30-Day Guarantee</span>
      <Link to="/#devices" onClick={onNavigate} className="hover:text-foreground transition-colors">View All Devices →</Link>
     </div>
    </div>

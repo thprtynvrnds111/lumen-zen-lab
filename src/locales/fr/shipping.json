@@ -24,7 +24,7 @@
       { "region": "Allemagne & Belgique", "time": "3–5 jours ouvrables", "cost": "Gratuit dès €75", "flag": "🇩🇪 🇧🇪" },
       { "region": "Reste de l'UE", "time": "3–7 jours ouvrables", "cost": "Gratuit dès €75", "flag": "🇪🇺" },
       { "region": "Royaume-Uni", "time": "5–8 jours ouvrables", "cost": "Gratuit dès €90", "flag": "🇬🇧" },
-      { "region": "États-Unis & Canada", "time": "7–14 jours ouvrables", "cost": "Gratuit dès €95", "flag": "🇺🇸 🇨🇦" }
+      { "region": "États-Unis & Canada", "time": "7–30 jours ouvrables", "cost": "Gratuit dès €95", "flag": "🇺🇸 🇨🇦" }
     ]
   },
   "trust": {

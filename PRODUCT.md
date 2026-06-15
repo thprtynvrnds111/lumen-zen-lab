@@ -28,7 +28,7 @@ NuFACE, FOREO, typical skincare DTC, avoid their visual language: millennial pin
 - Mechanism before benefit, benefit before claim
 - No before/after imagery (positions as cosmetics, not Skin Intelligence)
 - No fake urgency
-- 14-Day Protocol Guarantee, on the purchase, not the result
+- 30-Day Protocol Guarantee, on the purchase, not the result
 - "Clinic-precision facial technology. €88 once." is the core value proposition
 
 ## Flagship Product

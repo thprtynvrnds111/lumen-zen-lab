@@ -219,7 +219,7 @@ export default function Checkout() {
         )}
 
         <p className="text-center text-[10px] tracking-[0.15em] uppercase text-muted-foreground/40 mt-4">
-         14-Day Guarantee Included.
+         30-Day Guarantee Included.
         </p>
 
         {/* Trust row */}

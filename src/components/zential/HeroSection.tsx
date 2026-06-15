@@ -143,7 +143,7 @@ export function HeroSection() {
       {[
        { n: t('hero.proof.modalities.value', '4'), lbl: t('hero.proof.modalities.label', 'Clinical\nmodalities') },
        { n: t('hero.proof.price.value', '€88'), lbl: t('hero.proof.price.label', 'vs €1,440 / yr\nclinic average') },
-       { n: t('hero.proof.guarantee.value', '14 days'), lbl: t('hero.proof.guarantee.label', 'Protocol\nguarantee') },
+       { n: t('hero.proof.guarantee.value', '30 days'), lbl: t('hero.proof.guarantee.label', 'Protocol\nguarantee') },
       ].map((row, i, arr) => (
        <div
         key={row.lbl}
@@ -218,7 +218,7 @@ export function HeroSection() {
      <div className="flex flex-wrap gap-x-6 gap-y-2 mb-10">
       {[
        t('hero.trust.shipping', 'Free EU shipping'),
-       t('hero.trust.guarantee', '14-Day Protocol Guarantee'),
+       t('hero.trust.guarantee', '30-Day Protocol Guarantee'),
        t('hero.trust.rotterdam', 'Ships from Rotterdam'),
       ].map(label => (
        <span key={label} className="flex items-center gap-2" style={{ ...S.dm, fontWeight: 400, fontSize: 11, color: 'rgba(26,23,20,0.5)' }}>

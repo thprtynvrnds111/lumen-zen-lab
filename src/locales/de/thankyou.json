@@ -8,10 +8,10 @@
   "ritualTimeline": [
     { "day": "Heute Abend", "instruction": "Reinige deine Haut. Trage Leitgel auf. Benutze dein Gerät 5 Minuten auf der niedrigsten Stufe. Lass dir bei der ersten Sitzung Zeit." },
     { "day": "Tag 3", "instruction": "Du bemerkst möglicherweise eine verbesserte Absorption nach der Anwendung. Das ist der Leitfähigkeitseffekt. Deine Hautbarriere reagiert." },
-    { "day": "Tag 14", "instruction": "Strukturelle Veränderungen beginnen hier. Die Hauttextur festigt sich durch wiederholte elektrische Stimulation. Hier zahlt sich Konsequenz aus." },
-    { "day": "Tag 14", "instruction": "Wenn du nach 14 Tagen konsequenter täglicher Anwendung keine sichtbare Veränderung siehst, kontaktiere uns. Wir erstatten dir den vollen Betrag." }
+    { "day": "Tag 30", "instruction": "Strukturelle Veränderungen beginnen hier. Die Hauttextur festigt sich durch wiederholte elektrische Stimulation. Hier zahlt sich Konsequenz aus." },
+    { "day": "Tag 30", "instruction": "Wenn du nach 30 Tagen konsequenter täglicher Anwendung keine sichtbare Veränderung siehst, kontaktiere uns. Wir erstatten dir den vollen Betrag." }
   ],
-  "reviewCopy": "Nach 14 Tagen kann deine Bewertung jemandem wie dir helfen.",
+  "reviewCopy": "Nach 30 Tagen kann deine Bewertung jemandem wie dir helfen.",
   "reviewLink": "Trustpilot-Bewertung hinterlassen →",
   "whileYouWait": "Während du wartest",
   "postPurchaseLinks": [

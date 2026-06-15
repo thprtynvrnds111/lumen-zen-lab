@@ -3,7 +3,7 @@ import { ShieldCheck, Truck, Sparkles, Microscope } from "lucide-react";
 const items = [
  {
   icon: ShieldCheck,
-  title: "14-Day Ritual Guarantee",
+  title: "30-Day Ritual Guarantee",
   sub: "Try it for a full cycle. Refund if it isn't yours.",
  },
  {

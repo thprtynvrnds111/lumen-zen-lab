@@ -637,7 +637,7 @@ export default function ClinicVsHome() {
         marginInline: "auto",
        }}
       >
-       14-day ritual guarantee. If consistent daily use doesn't deliver, return it.
+       30-day ritual guarantee. If consistent daily use doesn't deliver, return it.
       </p>
 
       <div className="flex flex-col min-[480px]:flex-row gap-3 max-w-md mx-auto">

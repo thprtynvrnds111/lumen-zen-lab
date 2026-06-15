@@ -8,7 +8,7 @@
   {
    "label": "Livraison & Expédition",
    "items": [
-    { "q": "Combien de temps prend la livraison ?", "a": "Pays-Bas : 2–3 jours ouvrables. UE : 3–7 jours ouvrables. International : 7–14 jours ouvrables. Tu recevras un suivi par e-mail dès que ta commande sera expédiée." },
+    { "q": "Combien de temps prend la livraison ?", "a": "Pays-Bas : 2–3 jours ouvrables. UE : 3–7 jours ouvrables. International : 7–30 jours ouvrables. Tu recevras un suivi par e-mail dès que ta commande sera expédiée." },
     { "q": "Proposez-vous la livraison gratuite ?", "a": "Oui, livraison gratuite à partir de €50 pour les Pays-Bas et €75 pour les commandes UE." },
     { "q": "Livrez-vous à l'international ?", "a": "Oui, nous expédions dans plus de 50 pays dans le monde. Les frais de livraison internationale sont calculés lors du paiement. Des droits de douane peuvent s'appliquer." },
     { "q": "Puis-je suivre ma commande ?", "a": "Absolument. Tu recevras un lien de suivi par e-mail dès que ta commande sera expédiée. Tu peux aussi contacter le support avec ton numéro de commande." }
@@ -17,9 +17,9 @@
   {
    "label": "Retours & Garantie",
    "items": [
-    { "q": "Qu'est-ce que la Garantie Rituel 14 Jours ?", "a": "Si après 14 jours d'utilisation quotidienne régulière tu ne vois aucune amélioration visible, contacte-nous pour un remboursement complet. Aucune procédure longue, aucune pression." },
+    { "q": "Qu'est-ce que la Garantie Rituel 30 Jours ?", "a": "Si après 30 jours d'utilisation quotidienne régulière tu ne vois aucune amélioration visible, contacte-nous pour un remboursement complet. Aucune procédure longue, aucune pression." },
     { "q": "Comment retourner un produit ?", "a": "Écris à info@zentialpure.com avec ton numéro de commande. Nous approuverons ta demande dans les 24 heures et fournirons une étiquette de retour prépayée." },
-    { "q": "Puis-je retourner des accessoires ouverts ?", "a": "Pour des raisons d'hygiène, les consommables ouverts (gels, pads) ne peuvent pas être retournés. Les appareils peuvent être retournés dans leur emballage d'origine dans les 14 jours." }
+    { "q": "Puis-je retourner des accessoires ouverts ?", "a": "Pour des raisons d'hygiène, les consommables ouverts (gels, pads) ne peuvent pas être retournés. Les appareils peuvent être retournés dans leur emballage d'origine dans les 30 jours." }
    ]
   },
   {

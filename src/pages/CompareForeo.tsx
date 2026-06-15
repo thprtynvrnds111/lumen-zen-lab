@@ -168,7 +168,7 @@ export default function CompareForeo() {
        <div>
         <h3 className="font-medium text-sm tracking-wider uppercase mb-3" style={{ color: ACCENT }}>The honest limitation</h3>
         <p className="text-sm leading-relaxed" style={{ color: MUTED }}>
-         Zential Pure is a newer brand. We do not have the volume of independent third-party reviews that FOREO has accumulated. If external social proof is your primary purchase criterion, acknowledge that clearly. We offer a 14-day ritual guarantee in its place, if the device does not perform, return it.
+         Zential Pure is a newer brand. We do not have the volume of independent third-party reviews that FOREO has accumulated. If external social proof is your primary purchase criterion, acknowledge that clearly. We offer a 30-day ritual guarantee in its place, if the device does not perform, return it.
         </p>
        </div>
       </div>

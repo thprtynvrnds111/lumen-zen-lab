@@ -6,7 +6,7 @@
  },
  "quickCards": [
   { "title": "Bestelling Volgen", "desc": "Controleer je verzendstatus en leveringstermijn." },
-  { "title": "Retourneren & Garantie", "desc": "14-Dagen Ritueel Garantie, geen gedoe, geen druk." },
+  { "title": "Retourneren & Garantie", "desc": "30-Dagen Ritueel Garantie, geen gedoe, geen druk." },
   { "title": "Productveiligheid", "desc": "Gebruiksrichtlijnen en belangrijke veiligheidsinformatie." },
   { "title": "Contact Support", "desc": "Bereik ons direct, reactie binnen 24 tot 48 uur." }
  ],
@@ -36,23 +36,23 @@
   {
    "label": "Prijs & Waarde",
    "items": [
-    { "q": "Is het de investering waard?", "a": "Één apparaat vervangt honderden euro's aan maandelijkse kliniekbezoeken. Met dagelijkse 5-minuten rituelen krijg je professionele resultaten thuis, gedekt door onze 14-Dagen Ritueel Garantie." },
+    { "q": "Is het de investering waard?", "a": "Één apparaat vervangt honderden euro's aan maandelijkse kliniekbezoeken. Met dagelijkse 5-minuten rituelen krijg je professionele resultaten thuis, gedekt door onze 30-Dagen Ritueel Garantie." },
     { "q": "Bieden jullie betaalplannen aan?", "a": "Ja, Klarna is beschikbaar bij het afrekenen, waarmee je je aankoop in rentevrije termijnen kunt splitsen." }
    ]
   },
   {
    "label": "Na de Verkoop",
    "items": [
-    { "q": "Wat als ik na mijn aankoop hulp nodig heb?", "a": "Ons supportteam reageert binnen 24 uur. Je bent gedekt door een 14-Dagen Ritueel Garantie, eenvoudig retourneren en levenslange toegang tot rituele handleidingen en tips." },
-    { "q": "Wat is de 14-Dagen Ritueel Garantie?", "a": "Als je binnen 14 dagen consistent dagelijks gebruik geen zichtbare verbetering voelt, neem dan contact op voor een volledige terugbetaling. Geen langdurig proces, geen druk." }
+    { "q": "Wat als ik na mijn aankoop hulp nodig heb?", "a": "Ons supportteam reageert binnen 24 uur. Je bent gedekt door een 30-Dagen Ritueel Garantie, eenvoudig retourneren en levenslange toegang tot rituele handleidingen en tips." },
+    { "q": "Wat is de 30-Dagen Ritueel Garantie?", "a": "Als je binnen 30 dagen consistent dagelijks gebruik geen zichtbare verbetering voelt, neem dan contact op voor een volledige terugbetaling. Geen langdurig proces, geen druk." }
    ]
   }
  ],
  "guarantee": {
   "eyebrow": "Onze Belofte",
   "headline": "Voel het Verschil, Anders Vergoeden Wij.",
-  "sub": "Als je binnen 14 dagen consistent gebruik geen zichtbare verbetering voelt, neem dan contact op. Geen gedoe. Geen druk.",
-  "badges": ["14-Dagen Garantie", "Snelle Verzending", "Eenvoudig Retourneren", "Veilig Afrekenen"]
+  "sub": "Als je binnen 30 dagen consistent gebruik geen zichtbare verbetering voelt, neem dan contact op. Geen gedoe. Geen druk.",
+  "badges": ["30-Dagen Garantie", "Snelle Verzending", "Eenvoudig Retourneren", "Veilig Afrekenen"]
  },
  "contact": {
   "title": "Neem Contact Op",
