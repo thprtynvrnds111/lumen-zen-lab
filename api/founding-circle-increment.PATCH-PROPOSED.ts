@@ -22,7 +22,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 const SHOPIFY_API_VERSION = "2024-10";
-const TOTAL_SLOTS = 25;
+const TOTAL_SLOTS = 100; // Founding 100 (matches the offer + wall)
 const METAFIELD_NAMESPACE = "zential";
 const METAFIELD_KEY = "founding_orders_count";
 const LOG_PATH =
