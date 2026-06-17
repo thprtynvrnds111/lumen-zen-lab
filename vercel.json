@@ -13,6 +13,10 @@
       "dest": "/sprint-w1.html"
     },
     {
+      "src": "/api/founding-circle-status",
+      "dest": "/api/founding-circle-increment"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/api/$1"
     },

@@ -17,7 +17,7 @@ import { captureRef, getRef } from "@/lib/movement-practice";
  * founding price-locks (fulfilled by the post-purchase flow).
  * While empty, the CTA gracefully falls back to the email waitlist.
  */
-const FOUNDING_DEPOSIT_VARIANT_ID = "";
+const FOUNDING_DEPOSIT_VARIANT_ID = "gid://shopify/ProductVariant/53812317454679";
 
 /**
  * Turquoise organic shape. Soft radial-gradient fill (no blur filter, on system).
