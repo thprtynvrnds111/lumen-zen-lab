@@ -14,7 +14,7 @@ const S = {
 type NavMatch = 'exact' | 'prefix' | 'none';
 const NAV_ITEMS: { label: string; to: string; match: NavMatch }[] = [
  { label: 'Movement', to: '/movement', match: 'prefix' },
- { label: 'Devices', to: '/#devices', match: 'none' },
+ { label: 'Instruments', to: '/instruments', match: 'prefix' },
  { label: 'Protocols', to: '/protocols', match: 'prefix' },
  { label: 'Method', to: '/clinic-vs-home-facial-device', match: 'prefix' },
  { label: 'Quiz', to: '/quiz', match: 'prefix' },
