@@ -80,10 +80,10 @@ const CONFIGS: Record<string, InstrumentConfig> = {
       { label: "Cosmetic LED", sub: "630–660nm" },
     ],
     who: {
-      h2: "You had the appointment. Then you stopped going.",
+      h2: "You stopped booking clinic facials.",
       paras: [
-        "The professional microcurrent worked. So did the cosmetic LED. What ended it was the calendar, the commute, the €180 a session — not the result.",
-        "The Face Introducer takes the same four mechanisms and hands them back to you, dosed for a face and a neck, sized for the edge of a bathroom sink. The output is clinic-precision. The schedule is yours.",
+        "Not because they stopped working. Because €120 a session, every three weeks, indefinitely, is a math that never closes.",
+        "The Face Introducer runs four modalities in one device. EMS for the muscle. Microcurrent for tone. Thermal for absorption. Cosmetic LED to close the ritual. Twelve minutes. €88, once.",
       ],
       kicker: "Clinic precision. Daily ritual.",
       img: edWakingHand,
