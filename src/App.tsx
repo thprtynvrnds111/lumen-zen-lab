@@ -59,6 +59,7 @@ const Reset = lazy(() => import("./pages/Reset"));
 const FoundingTerms = lazy(() => import("./pages/FoundingTerms"));
 const Instruments = lazy(() => import("./pages/Instruments"));
 const InstrumentLanding = lazy(() => import("./pages/InstrumentLanding"));
+const Storefront = lazy(() => import("./pages/Storefront"));
 
 const queryClient = new QueryClient();
 
@@ -75,6 +76,7 @@ function AppContent() {
         <Route path="/protocols" element={<Protocols />} />
         <Route path="/instruments" element={<Instruments />} />
         <Route path="/instruments/:slug" element={<InstrumentLanding />} />
+        <Route path="/storefront" element={<Storefront />} />
         <Route path="/protocols/:slug" element={<ProtocolDetail />} />
         <Route path="/protocol/face-introducer" element={<ProtocolFaceIntroducer />} />
         <Route path="/product/:handle" element={<ProductDetail />} />

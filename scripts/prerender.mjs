@@ -94,6 +94,7 @@ const ROUTES = [
   '/instruments/face-introducer',
   '/instruments/restoration-belt',
   '/instruments/restoration-mat',
+  '/storefront',
   '/protocols',
   '/protocols/01-face',
   '/protocols/02-body',
