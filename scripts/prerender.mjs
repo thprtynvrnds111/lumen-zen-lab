@@ -91,6 +91,9 @@ const ROUTES = [
   '/collection',
   // Protocols
   '/instruments',
+  '/instruments/face-introducer',
+  '/instruments/restoration-belt',
+  '/instruments/restoration-mat',
   '/protocols',
   '/protocols/01-face',
   '/protocols/02-body',

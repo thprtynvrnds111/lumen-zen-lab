@@ -29,7 +29,7 @@ const INSTRUMENTS: Instrument[] = [
     blurb:
       "Four clinic modalities — EMS, microcurrent, thermal and cosmetic LED — in a twelve-minute ritual for face and neck.",
     price: "€88",
-    to: "/protocol/face-introducer",
+    to: "/instruments/face-introducer",
     img: heroFace,
     alt: "The Face Introducer",
   },
@@ -39,7 +39,7 @@ const INSTRUMENTS: Instrument[] = [
     blurb:
       "660nm red and 850nm near-infrared light, pressed to the muscle by a thermal wrap. Recovery, worn close. Fifteen minutes.",
     price: "€280",
-    to: "/product/red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
+    to: "/instruments/restoration-belt",
     img: heroBelt,
     alt: "The Restoration Belt",
   },
@@ -49,7 +49,7 @@ const INSTRUMENTS: Instrument[] = [
     blurb:
       "A full-body bed of 660nm red light and far-infrared heat. You lie down, the array does the rest. Twenty horizontal minutes.",
     price: "€220",
-    to: "/product/household-red-light-charging-vibrating-red-light-therapy-mat",
+    to: "/instruments/restoration-mat",
     img: heroMat,
     alt: "The Restoration Mat",
   },
