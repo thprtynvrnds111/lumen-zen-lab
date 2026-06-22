@@ -8,6 +8,7 @@ import { useHashScroll } from "@/hooks/useHashScroll";
 import { captureFbclid } from "@/lib/meta-tracking";
 import { lazy, Suspense, useEffect } from "react";
 import Index from "./pages/Index";
+import HomeAB from "./pages/HomeAB";
 
 // Lazy-load non-homepage routes
 const ProductDetail = lazy(() => import("./pages/ProductDetail"));
@@ -72,7 +73,7 @@ function AppContent() {
   return (
     <Suspense fallback={<div className="min-h-screen bg-background" />}>
       <Routes>
-        <Route path="/" element={<Index />} />
+        <Route path="/" element={<HomeAB />} />
         <Route path="/protocols" element={<Protocols />} />
         <Route path="/instruments" element={<Instruments />} />
         <Route path="/instruments/:slug" element={<InstrumentLanding />} />

@@ -11,6 +11,7 @@ import { Routes, Route } from "react-router-dom";
 // Eagerly-lazy: import all pages. renderToReadableStream + allReady resolves
 // every React.lazy boundary before the promise settles, so bots get full HTML.
 const Index            = lazy(() => import("./pages/Index"));
+const HomeAB           = lazy(() => import("./pages/HomeAB"));
 const ProductDetail    = lazy(() => import("./pages/ProductDetail"));
 const BodyLift         = lazy(() => import("./pages/BodyLift"));
 const Journal          = lazy(() => import("./pages/Journal"));
@@ -66,7 +67,7 @@ function ServerApp() {
   return (
     <Suspense fallback={null}>
       <Routes>
-        <Route path="/"                                         element={<Index />} />
+        <Route path="/"                                         element={<HomeAB />} />
         <Route path="/protocols"                                element={<Protocols />} />
         <Route path="/instruments"                              element={<Instruments />} />
         <Route path="/instruments/:slug"                        element={<InstrumentLanding />} />

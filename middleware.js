@@ -75,6 +75,37 @@ export default async function middleware(request) {
     return Response.redirect(snapshot, 302)
   }
 
+  // Homepage A/B test (real users only — bots handled above).
+  // A = current homepage (/), B = Claude Design storefront (/storefront).
+  // Sticky 50/50 via the zp_home_ab cookie; the matching prerendered HTML is
+  // served at "/" so there is no client-side flicker. HomeAB.tsx reads the same
+  // cookie to render + report the variant.
+  if (url.pathname === '/') {
+    const cookies = request.headers.get('cookie') || ''
+    const match = cookies.match(/(?:^|;\s*)zp_home_ab=(a|b)/)
+    let variant = match ? match[1] : null
+    let setCookie = null
+    if (!variant) {
+      variant = Math.random() < 0.5 ? 'a' : 'b'
+      setCookie = `zp_home_ab=${variant}; Path=/; Max-Age=31536000; SameSite=Lax`
+    }
+
+    // Variant A with an existing cookie: nothing to do, fall through to origin.
+    if (variant === 'a' && !setCookie) return
+
+    const origin = variant === 'b' ? '/storefront' : '/'
+    const res = await fetch(new URL(origin, request.url).toString(), {
+      headers: { 'user-agent': 'Zential-AB/1.0' },
+    })
+    const html = await res.text()
+    const headers = {
+      'content-type': 'text/html; charset=utf-8',
+      'cache-control': 'no-store',
+    }
+    if (setCookie) headers['set-cookie'] = setCookie
+    return new Response(html, { headers })
+  }
+
   // Product pages: inject product-specific OG tags for crawlers
   const productMatch = url.pathname.match(/^\/product\/(.+)$/)
   if (productMatch && BOT_PATTERN.test(ua)) {
