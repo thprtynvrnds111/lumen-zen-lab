@@ -1,6 +1,9 @@
 # Experiment: Home Redesign A/B (home_redesign)
 
-**Status:** Running · **Launched:** 2026-06-23 · **URL:** `/`
+**Status:** CONCLUDED 2026-06-23 — founder decision, promoted **B** to `/` before
+statistical significance (pre-launch, low traffic). A/B middleware + HomeAB removed;
+`/` now serves the Storefront design permanently, `/storefront` 301s to `/`. Old
+homepage retained at `src/pages/Index.tsx` (unrouted) for rollback.
 
 ## Hypothesis
 Because the Claude Design storefront is a bolder, more editorial homepage, we believe

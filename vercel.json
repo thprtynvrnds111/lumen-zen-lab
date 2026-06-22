@@ -1,6 +1,11 @@
 {
   "routes": [
     {
+      "src": "/storefront",
+      "headers": { "Location": "/" },
+      "status": 301
+    },
+    {
       "src": "/masterplan",
       "dest": "/masterplan.html"
     },

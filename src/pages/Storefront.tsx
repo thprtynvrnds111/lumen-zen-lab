@@ -113,9 +113,9 @@ export default function Storefront() {
 
   return (
     <PageShell
-      title="Zential Pure — The Storefront"
-      description="Clinic precision, daily ritual. Four-modality at-home instruments calibrated to clinic protocols."
-      canonical="https://zentialpure.com/storefront"
+      title="Zential Pure, Clinic Precision. Daily Ritual."
+      description="Three Protocols. One system. EMS · Microcurrent · Thermal · Cosmetic LED, engineered for daily home use."
+      canonical="https://zentialpure.com/"
       hideHero
     >
       {/* ── HERO ── */}

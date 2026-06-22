@@ -7,8 +7,7 @@ import { useCartSync } from "@/hooks/useCartSync";
 import { useHashScroll } from "@/hooks/useHashScroll";
 import { captureFbclid } from "@/lib/meta-tracking";
 import { lazy, Suspense, useEffect } from "react";
-import Index from "./pages/Index";
-import HomeAB from "./pages/HomeAB";
+import Storefront from "./pages/Storefront";
 
 // Lazy-load non-homepage routes
 const ProductDetail = lazy(() => import("./pages/ProductDetail"));
@@ -60,7 +59,6 @@ const Reset = lazy(() => import("./pages/Reset"));
 const FoundingTerms = lazy(() => import("./pages/FoundingTerms"));
 const Instruments = lazy(() => import("./pages/Instruments"));
 const InstrumentLanding = lazy(() => import("./pages/InstrumentLanding"));
-const Storefront = lazy(() => import("./pages/Storefront"));
 
 const queryClient = new QueryClient();
 
@@ -73,11 +71,10 @@ function AppContent() {
   return (
     <Suspense fallback={<div className="min-h-screen bg-background" />}>
       <Routes>
-        <Route path="/" element={<HomeAB />} />
+        <Route path="/" element={<Storefront />} />
         <Route path="/protocols" element={<Protocols />} />
         <Route path="/instruments" element={<Instruments />} />
         <Route path="/instruments/:slug" element={<InstrumentLanding />} />
-        <Route path="/storefront" element={<Storefront />} />
         <Route path="/protocols/:slug" element={<ProtocolDetail />} />
         <Route path="/protocol/face-introducer" element={<ProtocolFaceIntroducer />} />
         <Route path="/product/:handle" element={<ProductDetail />} />
