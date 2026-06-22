@@ -90,6 +90,7 @@ const ROUTES = [
   '/ritual-guide/frequency-wand',
   '/collection',
   // Protocols
+  '/instruments',
   '/protocols',
   '/protocols/01-face',
   '/protocols/02-body',
