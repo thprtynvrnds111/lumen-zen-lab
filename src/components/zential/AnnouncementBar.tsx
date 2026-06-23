@@ -10,6 +10,28 @@ const MESSAGE_KEYS = [
   'announcement.clinic',
 ] as const;
 
+/** Zential-green the lead phrase (up to the first . / · / —, else the first word). */
+function GreenLead({ text }: { text: string }) {
+  const m = text.match(/^(.*?)\s*([.·—].*)$/s);
+  let lead: string;
+  let rest: string;
+  if (m) {
+    lead = m[1];
+    rest = " " + m[2];
+  } else {
+    const sp = text.indexOf(" ");
+    if (sp === -1) return <span style={{ color: "#2ED8A8" }}>{text}</span>;
+    lead = text.slice(0, sp);
+    rest = text.slice(sp);
+  }
+  return (
+    <>
+      <span style={{ color: "#2ED8A8" }}>{lead}</span>
+      {rest}
+    </>
+  );
+}
+
 export function AnnouncementBar() {
   const [index, setIndex] = useState(0);
   const { t } = useTranslation('common');
@@ -24,7 +46,7 @@ export function AnnouncementBar() {
     <div className="bg-foreground text-background py-2.5 text-center overflow-hidden">
       <p className="text-xs tracking-[0.2em] uppercase font-light" key={`${index}-${lang}`}
         style={{ animation: 'slide-announcement 5s ease-in-out' }}>
-        {t(MESSAGE_KEYS[index])}
+        <GreenLead text={t(MESSAGE_KEYS[index])} />
       </p>
     </div>
   );
