@@ -36,11 +36,13 @@ const INSTRUMENTS: Instrument[] = [
   { slug: "restoration-mat", title: "The Restoration Mat", desc: "A full-body bed of 660nm red light and far-infrared heat. You lie down; the array works.", price: 220, handle: "household-red-light-charging-vibrating-red-light-therapy-mat", img: heroMat },
 ];
 
-const MODALITIES = [
+// Cosmetic LED carries NO mechanism/nm/clinic claim (modality-naming-standard.md);
+// clinical wavelength claims are reserved for the Red Light products.
+const MODALITIES: { n: string; verb: string; title: string; body: string; to: string | null }[] = [
   { n: "01", verb: "Lift", title: "EMS", body: "Pulsed electrical stimulation engages the facial muscle, training tone the way resistance trains the body.", to: "/technology/ems" },
-  { n: "02", verb: "Contour", title: "Microcurrent", body: "Sub-sensory current mirrors the body's own bioelectricity, supporting cellular energy at the source.", to: "/technology/microcurrent" },
+  { n: "02", verb: "Contour", title: "Microcurrent", body: "Sub-sensory current mirrors the body's own bioelectric signal rather than overriding it.", to: "/technology/microcurrent" },
   { n: "03", verb: "Prime", title: "Thermal", body: "Gentle, even warmth opens the tissue and primes circulation so the modalities that follow reach deeper.", to: "/technology/thermal" },
-  { n: "04", verb: "Renew", title: "Cosmetic LED", body: "630–660nm light, the wavelength dosed in clinics, supports collagen activity with consistent use.", to: "/technology/red-light" },
+  { n: "04", verb: "Renew", title: "Cosmetic LED", body: "A soft visible-light component that closes the session. Part of the daily ritual, calm on the skin.", to: null },
 ];
 
 const PROTOCOLS = [
@@ -160,10 +162,17 @@ export default function Storefront() {
                 </div>
                 <h3 className="mb-3 font-serif italic font-normal text-[23px] tracking-[-0.01em] text-[#F7F4F0]">{m.title}</h3>
                 <p className="mb-5 text-[13.5px] leading-[1.66] text-[#F7F4F0]/[0.62]">{m.body}</p>
-                <Link to={m.to} className="group mt-auto block border-t border-[rgba(247,244,240,0.10)] pt-[18px]">
-                  <span className="mb-1.5 block font-sans text-[9px] tracking-[0.26em] uppercase text-[#F7F4F0]/40">Evidence</span>
-                  <span className="flex items-baseline gap-1.5 text-[12px] text-[#F7F4F0]/70 transition-colors group-hover:text-[#2ED8A8]">Read the mechanism <span className="text-[#2ED8A8] transition-transform group-hover:translate-x-[3px]">→</span></span>
-                </Link>
+                {m.to ? (
+                  <Link to={m.to} className="group mt-auto block border-t border-[rgba(247,244,240,0.10)] pt-[18px]">
+                    <span className="mb-1.5 block font-sans text-[9px] tracking-[0.26em] uppercase text-[#F7F4F0]/40">Mechanism</span>
+                    <span className="flex items-baseline gap-1.5 text-[12px] text-[#F7F4F0]/70 transition-colors group-hover:text-[#2ED8A8]">Read the mechanism <span className="text-[#2ED8A8] transition-transform group-hover:translate-x-[3px]">→</span></span>
+                  </Link>
+                ) : (
+                  <div className="mt-auto border-t border-[rgba(247,244,240,0.10)] pt-[18px]">
+                    <span className="mb-1.5 block font-sans text-[9px] tracking-[0.26em] uppercase text-[#F7F4F0]/40">About</span>
+                    <span className="text-[12px] text-[#F7F4F0]/55">No clinical claim · part of the ritual</span>
+                  </div>
+                )}
               </div>
             ))}
           </div>
