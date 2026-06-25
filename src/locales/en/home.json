@@ -4,7 +4,7 @@
   "headline": "Optimize Your Biology.",
   "subline": "Four technologies. One daily protocol. Measurable output.",
   "body": "An editorial on returning. On skin not as surface but as instrument. On the science beneath the ritual, and the ritual within the science.",
-  "rating": "4.9 / 5, rated by our community",
+  "rating": "",
   "subhead": "A four-modality at-home instrument calibrated to clinic protocols. EMS, Microcurrent, Thermal and Cosmetic LED in a single 12-minute ritual. Built for the woman who left the clinic but kept the standard.",
   "ctaPrimary": "Order the Face Introducer",
   "ctaPrimaryWithPrice": "Order Face Introducer · €88",
@@ -22,9 +22,9 @@
   },
   "modalities": {
    "label": "Four protocols. One stack.",
-   "redLight": {
-    "label": "Red Light",
-    "sub": "photobiomodulation"
+   "cosmeticLed": {
+    "label": "Cosmetic LED",
+    "sub": "visible-light ritual"
    },
    "microcurrent": {
     "label": "Microcurrent",
@@ -46,7 +46,7 @@
   "items": [
    {
     "q": "Does this actually work?",
-    "a": "Yes. Our devices use clinically-studied microcurrent, EMS, and red light therapy, the same technologies found in professional clinics. Most users notice improved skin texture within 2 weeks and visible lift after 3–4 weeks of daily use."
+    "a": "The Face Introducer combines EMS, microcurrent, 45°C thermal and cosmetic LED in one daily protocol — each mechanism supported by peer-reviewed research where applicable. What it can't do is work without you. Use it daily for 14 days before forming a conclusion. Results build with consistency and vary by individual."
    },
    {
     "q": "How do I know this is an authentic device?",
@@ -62,7 +62,7 @@
    },
    {
     "q": "Is it worth the investment?",
-    "a": "One device replaces hundreds of euros in monthly clinic visits. With daily 5-minute rituals, you get professional-grade results at home, backed by our 30-Day Ritual Guarantee."
+    "a": "One device, one purchase — against hundreds of euros in recurring clinic visits. A daily 12-minute ritual you own outright, backed by our 30-Day Protocol Guarantee."
    },
    {
     "q": "What if I need help after my purchase?",

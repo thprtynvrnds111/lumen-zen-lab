@@ -222,7 +222,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   faqs: [
    { q: "Does this actually work?", a: "The mechanisms in this device, EMS microcurrent, galvanic ion cleansing, iontophoretic delivery, 45°C thermal, and cosmetic LED, are each supported by peer-reviewed research where applicable. We link the actual studies on this page. What we cannot promise is the consistency you bring to it. Use it daily for 14 days before forming a conclusion." },
    { q: "How long until I see results?", a: "Improved skin absorption is measurable from the first session, the galvanic ion delivery changes how actives penetrate. Skin clarity and texture typically respond within 7 to 10 days. Firming becomes visible at 3 to 4 weeks of consistent daily use." },
-   { q: "Is it safe for daily use?", a: "Yes. The Face Introducer is designed for daily 7–10 minute protocols. The 45°C thermal stays within safe tissue temperature. Galvanic cleansing is non-abrasive. EMS is calibrated at home-device intensity. Start on the lowest of the four speed settings and increase over the first week." },
+   { q: "Is it safe for daily use?", a: "Yes. The Face Introducer is designed for a daily 12-minute protocol. The 45°C thermal stays within safe tissue temperature. Galvanic cleansing is non-abrasive. EMS is calibrated at home-device intensity. Start on the lowest of the four speed settings and increase over the first week." },
    { q: "What if it doesn't work for me?", a: "30 days, daily use. If you see no visible change in skin tone, firmness, or definition, email us. Full refund, no form, no questionnaire, no restocking fee. That is the 30-Day Protocol Guarantee. We print it on the box." },
    { q: "How is this different from a clinic?", a: "One professional microcurrent session: €90–€180. Monthly clinic protocol: €220+/month, €2,640+/year. The Face Introducer uses the same class of technology, ion cleansing, EMS microcurrent, thermal, cosmetic LED, for a one-time €88 purchase. The mechanism is the same. The math is not." },
    { q: "Which mode should I use first?", a: "Start with ion cleansing (negative ion mode) every session, it clears the follicle so subsequent modes work on clean tissue. Then select EMS for firming, or one of the three cosmetic LED modes (Blue, Red, Purple) based on the daily protocol you want." },
@@ -246,7 +246,7 @@ export const productConfigs: Record<string, ProductConfig> = {
    "Faint pulse during EMS mode, confirms current delivery",
    "Subtle tingle during positive ion infusion, confirms galvanic delivery",
   ],
-  sessionInfo: "Session time: 7–10 minutes · Frequency: 3–5× per week · Four intensity levels · Stop if: burning, unusual pain, or redness persisting over 30 min",
+  sessionInfo: "Session time: 12 minutes · Frequency: 3–5× per week · Four intensity levels · Stop if: burning, unusual pain, or redness persisting over 30 min",
   valueAnchor: "One professional microcurrent session: €90–€180. The Face Introducer: €88. Once.",
   guaranteeName: "30-Day Protocol Guarantee",
   guaranteeDesc: "Use it daily for 30 days. If you see no visible change in skin tone, firmness, or definition, full refund. No form, no questions, no restocking fee.",
