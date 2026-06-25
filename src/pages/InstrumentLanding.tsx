@@ -4,6 +4,7 @@ import { PageShell } from "@/components/zential/v2/PageShell";
 import { InlinePrimer, ExitIntentPrimer } from "@/components/zential/LeadCapture";
 import { RatingBadge, InstrumentProofSection } from "@/components/zential/InstrumentProof";
 import { TrustBadges } from "@/components/zential/TrustBadges";
+import { useHeroVariant } from "@/lib/heroVariant";
 import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
 
@@ -45,6 +46,8 @@ interface InstrumentConfig {
   heroImg: string;
   heroAlt: string;
   hero: { l1: string; l2pre: string; accent: string };
+  /** Concrete A/B challenger headline (cold-traffic clarity). Optional. */
+  heroConcrete?: string;
   lede: string;
   trust: string[];
   founding: number;
@@ -73,6 +76,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     heroImg: heroFace,
     heroAlt: "The Face Introducer held to the jaw, warm light along the neck",
     hero: { l1: "The clinic, in your", l2pre: "", accent: "own hands." },
+    heroConcrete: "Four clinic modalities. One €88 device. Twelve minutes.",
     lede:
       "EMS, microcurrent, thermal and cosmetic LED — the four inputs a facialist charges you by the session, calibrated into a twelve-minute ritual you run yourself.",
     trust: ["30-day protocol guarantee", "Ships in 48 hours", "12-minute ritual"],
@@ -302,6 +306,7 @@ export default function InstrumentLanding() {
   }, []);
 
   const cfg = slug ? CONFIGS[slug] : undefined;
+  const heroVariant = useHeroVariant(slug ?? "", !!cfg?.heroConcrete);
 
   useEffect(() => {
     if (!cfg) return;
@@ -337,8 +342,9 @@ export default function InstrumentLanding() {
         quantity: 1,
         selectedOptions: variant.selectedOptions || [],
       });
-      const w = window as unknown as { fbq?: (...a: unknown[]) => void };
+      const w = window as unknown as { fbq?: (...a: unknown[]) => void; gtag?: (...a: unknown[]) => void };
       if (w.fbq) w.fbq("track", "AddToCart", { content_name: cfg.name, content_ids: [variant.id], content_type: "product" });
+      if (w.gtag) w.gtag("event", "add_to_cart", { item_name: cfg.name, experiment_id: `hero_${cfg.slug}`, variant: heroVariant });
       const url = useCartStore.getState().getCheckoutUrl();
       if (url) { window.location.href = url; return; }
       navigate(`/product/${cfg.handle}`);
@@ -362,10 +368,16 @@ export default function InstrumentLanding() {
             <div className="relative z-[3] flex flex-col justify-center py-12 md:py-[74px] md:pr-14">
               <Eyebrow num={cfg.num}>{cfg.name}</Eyebrow>
               <h1 className="my-6 font-serif italic font-normal tracking-[-0.02em] leading-[1.02] text-[#F7F4F0] text-[clamp(44px,5.6vw,86px)]">
-                {cfg.hero.l1}
-                <br />
-                {cfg.hero.l2pre}
-                <span className="text-[#2ED8A8]">{cfg.hero.accent}</span>
+                {heroVariant === "concrete" && cfg.heroConcrete ? (
+                  cfg.heroConcrete
+                ) : (
+                  <>
+                    {cfg.hero.l1}
+                    <br />
+                    {cfg.hero.l2pre}
+                    <span className="text-[#2ED8A8]">{cfg.hero.accent}</span>
+                  </>
+                )}
               </h1>
               <p className="mb-8 max-w-[500px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">{cfg.lede}</p>
               <div className="mb-[30px] flex flex-wrap gap-[14px]">
