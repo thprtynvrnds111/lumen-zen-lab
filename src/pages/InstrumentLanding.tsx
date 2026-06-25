@@ -132,7 +132,6 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     name: "The Restoration Belt",
     handle: "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
     price: "€280",
-    // TODO: confirm anchor figure (~€60–90/mo) before publish
     priceAnchor: "A recovery-room membership runs about €75 a month. The Belt is €280, once — and it doesn't close at 9pm.",
     seoTitle: "The Restoration Belt · Recovery, worn close | Zential Pure",
     seoDescription:
@@ -199,7 +198,6 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     name: "The Restoration Mat",
     handle: "household-red-light-charging-vibrating-red-light-therapy-mat",
     price: "€220",
-    // TODO: confirm anchor figure (~€35–50/session) before publish
     priceAnchor: "A single infrared-sauna session is about €40. The Mat is €220, once, and it lives under your bed.",
     seoTitle: "The Restoration Mat · The whole system, laid down | Zential Pure",
     seoDescription:
