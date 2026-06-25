@@ -75,9 +75,6 @@ const ROUTES = [
   '/quiz',
   '/quiz/result',
   '/thank-you',
-  // Movement / community home
-  '/movement',
-  '/reset',
   '/founding-terms',
   // Ritual guides
   '/ritual-guide',

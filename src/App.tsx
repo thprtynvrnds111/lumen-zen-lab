@@ -54,8 +54,6 @@ const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Protocols        = lazy(() => import("./pages/Protocols"));
 const ProtocolDetail   = lazy(() => import("./pages/ProtocolDetail"));
 const ProtocolFaceIntroducer = lazy(() => import("./pages/ProtocolFaceIntroducer"));
-const TruthMovement = lazy(() => import("./pages/TruthMovement"));
-const Reset = lazy(() => import("./pages/Reset"));
 const FoundingTerms = lazy(() => import("./pages/FoundingTerms"));
 const Instruments = lazy(() => import("./pages/Instruments"));
 const InstrumentLanding = lazy(() => import("./pages/InstrumentLanding"));
@@ -116,8 +114,6 @@ function AppContent() {
         <Route path="/collection" element={<Collection />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/quiz/result" element={<QuizResult />} />
-        <Route path="/movement" element={<TruthMovement />} />
-        <Route path="/reset" element={<Reset />} />
         <Route path="/founding-terms" element={<FoundingTerms />} />
 
         <Route path="/dashboard" element={<Dashboard />} />
