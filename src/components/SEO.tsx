@@ -20,7 +20,11 @@ export function SEO({
   canonicalUrl,
   jsonLd,
 }: SEOProps) {
-  const canonicalHref = canonicalUrl ? `${SITE_URL}${canonicalUrl}` : null;
+  const canonicalHref = canonicalUrl
+    ? /^https?:\/\//i.test(canonicalUrl)
+      ? canonicalUrl
+      : `${SITE_URL}${canonicalUrl}`
+    : null;
   const ogUrl = canonicalHref ?? SITE_URL;
 
   return (
