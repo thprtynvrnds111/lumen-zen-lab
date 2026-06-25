@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams, Navigate, useNavigate } from "react-router-dom";
 import { PageShell } from "@/components/zential/v2/PageShell";
 import { InlinePrimer, ExitIntentPrimer } from "@/components/zential/LeadCapture";
+import { RatingBadge, InstrumentProofSection } from "@/components/zential/InstrumentProof";
+import { TrustBadges } from "@/components/zential/TrustBadges";
 import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
 
@@ -130,7 +132,8 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     name: "The Restoration Belt",
     handle: "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
     price: "€280",
-    priceAnchor: "Clinical-grade recovery wraps run €450 and up. This is €280, once — no sessions, no membership.",
+    // TODO: confirm anchor figure (~€60–90/mo) before publish
+    priceAnchor: "A recovery-room membership runs about €75 a month. The Belt is €280, once — and it doesn't close at 9pm.",
     seoTitle: "The Restoration Belt · Recovery, worn close | Zential Pure",
     seoDescription:
       "A contoured array of 660nm red and 850nm near-infrared light, pressed to the muscle by a thermal wrap. The recovery room, narrowed to the span of your lower back.",
@@ -196,7 +199,8 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     name: "The Restoration Mat",
     handle: "household-red-light-charging-vibrating-red-light-therapy-mat",
     price: "€220",
-    priceAnchor: "A full-body infrared mat from the category leader runs about €1,200. This is €220, once.",
+    // TODO: confirm anchor figure (~€35–50/session) before publish
+    priceAnchor: "A single infrared-sauna session is about €40. The Mat is €220, once, and it lives under your bed.",
     seoTitle: "The Restoration Mat · The whole system, laid down | Zential Pure",
     seoDescription:
       "A full-body bed of 660nm red light and far-infrared heat. You lie down, the array does the rest, and the nervous system gets twenty minutes it does not usually get.",
@@ -285,6 +289,19 @@ export default function InstrumentLanding() {
   const addItem = useCartStore((s) => s.addItem);
   const [livePrice, setLivePrice] = useState<string | null>(null);
   const [ordering, setOrdering] = useState(false);
+  const [showSticky, setShowSticky] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    function onScroll() {
+      const y = window.scrollY;
+      const nearBottom = y + window.innerHeight > document.documentElement.scrollHeight - 260;
+      setShowSticky(y > window.innerHeight * 0.6 && !nearBottom);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const cfg = slug ? CONFIGS[slug] : undefined;
 
@@ -364,9 +381,12 @@ export default function InstrumentLanding() {
                   <span key={t} className="inline-flex items-center gap-[9px] font-sans text-[11px] text-[#F7F4F0]/60 before:block before:h-[5px] before:w-[5px] before:rounded-full before:bg-[#2ED8A8]">{t}</span>
                 ))}
               </div>
-              <div className="inline-flex items-center gap-[14px] self-start rounded-full border border-[rgba(247,244,240,0.10)] bg-[#2ED8A8]/[0.05] px-[18px] py-[11px]">
-                <span className="h-[7px] w-[7px] rounded-full bg-[#2ED8A8]" />
-                <span className="font-sans text-[11px] text-[#F7F4F0]/[0.78]"><b className="font-semibold tabular-nums text-[#2ED8A8]">{cfg.founding}</b> of 100 founding places claimed</span>
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="inline-flex items-center gap-[14px] self-start rounded-full border border-[rgba(247,244,240,0.10)] bg-[#2ED8A8]/[0.05] px-[18px] py-[11px]">
+                  <span className="h-[7px] w-[7px] rounded-full bg-[#2ED8A8]" />
+                  <span className="font-sans text-[11px] text-[#F7F4F0]/[0.78]"><b className="font-semibold tabular-nums text-[#2ED8A8]">{cfg.founding}</b> of 100 founding places claimed</span>
+                </div>
+                <RatingBadge slug={cfg.slug} />
               </div>
             </div>
             <div className="relative order-first min-h-[46vh] overflow-hidden md:order-none md:min-h-[640px]">
@@ -479,15 +499,9 @@ export default function InstrumentLanding() {
               <button onClick={order} disabled={ordering} className={`${PILL_ACTION} mb-3 w-full`}>{orderLabel}</button>
               <a href="#science" className={`${PILL_GHOST_LIGHT} w-full`}>Read the mechanism</a>
               <p className="mt-[18px] border-t border-[rgba(26,23,20,0.12)] pt-[18px] text-xs leading-[1.6] text-[#1A1714]/60"><b className="font-medium text-[#1A1714]">30-day protocol guarantee.</b> {cfg.guarantee}</p>
-              <div className="mt-[14px] flex flex-wrap items-center gap-x-[14px] gap-y-2 border-t border-[rgba(26,23,20,0.12)] pt-[14px]">
-                <span className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.12em] uppercase text-[#1A1714]/75">
-                  <span className="grid h-[22px] min-w-[30px] place-items-center rounded-[3px] border border-[#1A1714]/35 px-1 font-serif text-[13px] not-italic tracking-[0.04em]">CE</span>
-                  CE marked
-                </span>
-                <span className="font-sans text-[11px] leading-[1.5] text-[#1A1714]/55">Declaration of Conformity on file · 2-year warranty</span>
-              </div>
             </div>
           </div>
+          <TrustBadges cordless={cfg.slug !== "restoration-mat"} />
         </div>
       </section>
 
@@ -513,15 +527,18 @@ export default function InstrumentLanding() {
         </div>
       </section>
 
+      {/* ── PROOF ── */}
+      <InstrumentProofSection slug={cfg.slug} num="06" />
+
       {/* ── LEAD PRIMER (inline) ── */}
-      <InlinePrimer />
+      <InlinePrimer slug={cfg.slug} />
 
       {/* ── FOUNDING 100 ── */}
       <section className="bg-[#1A1714] py-[clamp(76px,10vw,120px)] text-[#F7F4F0]">
         <div className={WRAP}>
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-14">
             <div>
-              <Eyebrow num="06">Founding 100</Eyebrow>
+              <Eyebrow num="07">Founding 100</Eyebrow>
               <h2 className="my-5 font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] text-[#F7F4F0]">The first hundred set the protocol.</h2>
               <p className="text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">Founding members get the launch price held for life, first access to new instruments, and a direct line to the people calibrating the protocols. When the hundred are claimed, the price moves.</p>
             </div>
@@ -543,7 +560,7 @@ export default function InstrumentLanding() {
       {/* ── COMPLETE THE SYSTEM ── */}
       <section className="bg-[#EDEAE6] py-[clamp(76px,10vw,120px)] text-[#1A1714]">
         <div className={WRAP}>
-          <Eyebrow num="07" tone="meta">Complete the system</Eyebrow>
+          <Eyebrow num="08" tone="meta">Complete the system</Eyebrow>
           <div className="mt-5 flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
             <h2 className="max-w-[18ch] font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] leading-[1.1] text-[#1A1714]">Three instruments, one protocol.</h2>
             <p className="max-w-[44ch] text-[15px] leading-[1.7] text-[#1A1714]/[0.66]">Face, body, full rest. Each instrument works alone — together they cover the whole day. The complete System runs €588.</p>
@@ -573,7 +590,7 @@ export default function InstrumentLanding() {
       </section>
 
       {/* ── MOBILE STICKY ORDER BAR ── */}
-      <div className="fixed inset-x-0 bottom-0 z-[90] flex items-center justify-between gap-4 border-t border-[rgba(247,244,240,0.10)] bg-[rgba(7,10,14,0.92)] px-5 py-3 backdrop-blur-md md:hidden">
+      <div className={`fixed inset-x-0 bottom-0 z-[90] flex items-center justify-between gap-4 border-t border-[rgba(247,244,240,0.10)] bg-[rgba(7,10,14,0.92)] px-5 py-3 backdrop-blur-md transition-transform duration-300 md:hidden ${showSticky ? "translate-y-0" : "translate-y-full"} [padding-bottom:max(0.75rem,env(safe-area-inset-bottom))]`}>
         <div>
           <div className="font-sans text-[11px] tracking-[0.18em] uppercase text-[#F7F4F0]/70">{cfg.name.replace("The ", "")}</div>
           <div className="font-serif italic text-[22px] leading-none text-[#F7F4F0]">{priceLabel}</div>
@@ -581,7 +598,7 @@ export default function InstrumentLanding() {
         <button onClick={order} disabled={ordering} className={`${PILL_ACTION} px-6 py-3.5`}>{ordering ? "Adding…" : "Claim place"}</button>
       </div>
 
-      <ExitIntentPrimer />
+      <ExitIntentPrimer slug={cfg.slug} />
     </PageShell>
   );
 }

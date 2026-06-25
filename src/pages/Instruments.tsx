@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { PageShell } from "@/components/zential/v2/PageShell";
+import { SystemBundle } from "@/components/zential/SystemBundle";
 import heroFace from "@/assets/hero-neck-device.webp";
 import heroBelt from "@/assets/hero-redlight-belt.webp";
 import heroMat from "@/assets/hero-restore-mat.webp";
@@ -123,7 +124,7 @@ export default function Instruments() {
                       {item.price} <small className="text-sm text-[#C6A07C]">once</small>
                     </span>
                     <span className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.16em] uppercase text-[#2ED8A8]">
-                      Order
+                      View instrument
                       <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">
                         →
                       </span>
@@ -135,6 +136,8 @@ export default function Instruments() {
           </div>
         </div>
       </section>
+
+      <SystemBundle />
     </PageShell>
   );
 }

@@ -9,6 +9,14 @@ import { useEffect, useRef, useState } from "react";
 
 type Status = "idle" | "sending" | "done" | "error";
 
+const SUBSCRIBED_KEY = "zp-subscribed";
+
+/** True once this browser has subscribed — used to suppress re-nagging. */
+function alreadySubscribed(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.localStorage.getItem(SUBSCRIBED_KEY) === "1";
+}
+
 function useNewsletter(source: string) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
@@ -23,6 +31,9 @@ function useNewsletter(source: string) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email.trim(), source }),
       });
+      if (res.ok && typeof window !== "undefined") {
+        window.localStorage.setItem(SUBSCRIBED_KEY, "1");
+      }
       setStatus(res.ok ? "done" : "error");
     } catch {
       setStatus("error");
@@ -33,8 +44,8 @@ function useNewsletter(source: string) {
 }
 
 /** Inline primer block — drop into the body of a long PDP. */
-export function InlinePrimer() {
-  const { email, setEmail, status, submit } = useNewsletter("pdp-inline");
+export function InlinePrimer({ slug }: { slug?: string }) {
+  const { email, setEmail, status, submit } = useNewsletter(slug ? `pdp-${slug}` : "pdp-inline");
 
   return (
     <section className="bg-[#070A0E] py-[clamp(64px,8vw,96px)] text-[#F7F4F0]">
@@ -82,28 +93,62 @@ export function InlinePrimer() {
   );
 }
 
-/** One-time exit-intent prompt. Fires on cursor leaving the viewport top. */
-export function ExitIntentPrimer() {
-  const { email, setEmail, status, submit } = useNewsletter("pdp-exit-intent");
+/**
+ * One-time capture prompt. Desktop: fires on cursor leaving the viewport top
+ * (exit intent). Touch/small screens: exit intent is unreliable, so it fires
+ * on a scroll-depth + dwell-time trigger instead. Once per session; suppressed
+ * for anyone who already subscribed.
+ */
+export function ExitIntentPrimer({ slug }: { slug?: string }) {
+  const { email, setEmail, status, submit } = useNewsletter(slug ? `pdp-exit-${slug}` : "pdp-exit-intent");
   const [open, setOpen] = useState(false);
   const fired = useRef(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+    if (alreadySubscribed()) return;
     if (window.sessionStorage.getItem("zp-exit-primer") === "1") return;
 
-    function onLeave(e: MouseEvent) {
-      if (fired.current || e.clientY > 0) return;
+    function trigger() {
+      if (fired.current) return;
       fired.current = true;
       window.sessionStorage.setItem("zp-exit-primer", "1");
       setOpen(true);
+      cleanup();
+    }
+
+    function onLeave(e: MouseEvent) {
+      if (e.clientY <= 0) trigger();
+    }
+
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    let scrollHandler: (() => void) | null = null;
+    let dwellOk = false;
+
+    function onScroll() {
+      const scrolled = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+      if (dwellOk && scrolled > 0.55) trigger();
+    }
+
+    function cleanup() {
+      document.removeEventListener("mouseout", onLeave);
+      if (scrollHandler) window.removeEventListener("scroll", scrollHandler);
     }
 
     // give the visitor a moment before arming
-    const t = window.setTimeout(() => document.addEventListener("mouseout", onLeave), 6000);
+    const arm = window.setTimeout(() => {
+      if (isTouch) {
+        dwellOk = true;
+        scrollHandler = onScroll;
+        window.addEventListener("scroll", scrollHandler, { passive: true });
+      } else {
+        document.addEventListener("mouseout", onLeave);
+      }
+    }, isTouch ? 20000 : 6000);
+
     return () => {
-      window.clearTimeout(t);
-      document.removeEventListener("mouseout", onLeave);
+      window.clearTimeout(arm);
+      cleanup();
     };
   }, []);
 
