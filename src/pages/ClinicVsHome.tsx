@@ -1,702 +1,217 @@
 import { Link } from "react-router-dom";
-import { SEO } from "@/components/SEO";
-import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
-import { Header } from "@/components/zential/Header";
-import { ZentialFooter } from "@/components/zential/ZentialFooter";
-import methodReturning from "@/assets/method/returning.webp";
-import methodStandard from "@/assets/method/standard.webp";
-import methodGlow from "@/assets/method/glow.webp";
+import { PageShell } from "@/components/zential/v2/PageShell";
+import edWalkStone from "@/assets/editorial/walk-stone.webp";
 
-const S = {
- dark: "#1A1714",
- teal: "#2ED8A8",
- cream: "#F7F4F0",
- bg: "#F7F4F0",
- ink: "#2A2420",
- muted: "#8A7F74",
- gold: "#C6A07C",
- cream2: "#EDE8E0",
- border: "rgba(42,36,32,0.10)",
- lora: { fontFamily: "'Lora', serif" } as React.CSSProperties,
- dm: { fontFamily: "'DM Sans', sans-serif" } as React.CSSProperties,
-};
+/**
+ * /clinic-vs-home-facial-device — "The Method". Ported from the Claude Design
+ * landing/clinic-vs-home-facial-device.html: honest clinic-vs-home comparison
+ * (stats, comparison table, fair-to-the-clinic band, the maths, CTA).
+ * Observational comparison + disclaimers — compliance clean. Canonical 12-min,
+ * €88. Order links → /instruments/face-introducer.
+ */
 
-const faqJsonLd = {
- "@context": "https://schema.org",
- "@type": "FAQPage",
- mainEntity: [
-  {
-   "@type": "Question",
-   name: "Can an at-home facial device replace clinic treatments?",
-   acceptedAnswer: {
-    "@type": "Answer",
-    text: "Home devices operate at lower output levels than clinical equipment. They cannot replicate a single high-intensity clinic session. What they can do is deliver consistent, repeated stimulation over months, which, for technologies like microcurrent and red light, is how results accumulate. Consistency at lower intensity over time can outperform sporadic high-intensity clinic sessions.",
-   },
-  },
-  {
-   "@type": "Question",
-   name: "How much do professional microcurrent and red light facial treatments cost?",
-   acceptedAnswer: {
-    "@type": "Answer",
-    text: "Professional microcurrent sessions typically cost €60–120 per session in Europe. Red light and LED facial treatments cost €50–90 per session. A full course of 6–12 sessions is commonly recommended, putting total clinic costs at €360–1,440 for a single course.",
-   },
-  },
-  {
-   "@type": "Question",
-   name: "Which Zential Pure device is closest to a professional microcurrent treatment?",
-   acceptedAnswer: {
-    "@type": "Answer",
-    text: "The Skin Pulse uses dual-ball microcurrent at 2.4V, the same galvanic technology used in professional facial devices. The Frequency Wand Pro adds EMS microcurrent to a negative ion cleansing pre-phase. Both are designed for the buyer who has had professional treatments and wants to continue the protocol at home.",
-   },
-  },
-  {
-   "@type": "Question",
-   name: "How long before I see results from daily home device use?",
-   acceptedAnswer: {
-    "@type": "Answer",
-    text: "Skin texture changes are commonly reported within 2 weeks of consistent use. Structural changes, jawline definition, brow lift, cheek firmness, typically become visible after 4–6 weeks of 4–5 sessions per week. Results compound over months. This is not a one-session technology. It is a daily practice.",
-   },
-  },
-  {
-   "@type": "Question",
-   name: "What is the cost saving compared to clinic visits?",
-   acceptedAnswer: {
-    "@type": "Answer",
-    text: "One clinic microcurrent session costs approximately €80–120. The Zential Pure Skin Pulse costs €70, less than a single session. Used 4–5 times per week for a year, the device delivers 200+ sessions for the price of one clinic visit. The Face Introducer at €88 adds iontophoresis and trichromatic light therapy, technologies that would cost significantly more per session in a professional setting.",
-   },
-  },
- ],
-};
+const WRAP = "mx-auto max-w-[1180px] px-6 md:px-10";
+const GRAIN =
+  "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
+const PILL_ACTION =
+  "inline-flex items-center justify-center rounded-full bg-[#F69251] px-[30px] py-4 font-sans text-[12px] font-semibold tracking-[0.18em] uppercase text-[#1A1714] transition-colors hover:bg-[#E87A38]";
+const PILL_GHOST_DARK =
+  "inline-flex items-center justify-center rounded-full border border-[rgba(247,244,240,0.28)] px-[30px] py-4 font-sans text-[12px] font-semibold tracking-[0.18em] uppercase text-[#F7F4F0] transition-colors hover:border-[#2ED8A8] hover:text-[#2ED8A8]";
 
-const costRows = [
- { line: "Single microcurrent session", clinic: "€80–120", home: "" },
- { line: "6-session course (recommended)", clinic: "€480–720", home: "" },
- { line: "12-session course", clinic: "€960–1,440", home: "" },
- { line: "Monthly maintenance (2× per month)", clinic: "€160–240 / mo", home: "" },
- { line: "Skin Pulse, unlimited sessions", clinic: "", home: "€70 once" },
- { line: "Face Introducer, unlimited sessions", clinic: "", home: "€88 once" },
- { line: "Frequency Wand, unlimited sessions", clinic: "", home: "€147 once" },
+const STATS = [
+  { v: "€1,440", k: "Clinic facials\nyear one, average", warm: true },
+  { v: "€88", k: "The Face Introducer\nonce, then nothing", warm: false },
+  { v: "4 → 1", k: "Four modalities\none 12-min ritual", warm: false },
 ];
 
-const proof = [
- { n: "200+", lbl: "Home sessions\nper year" },
- { n: "6–12", lbl: "Clinic sessions\nper course" },
- { n: "€88", lbl: "vs €1,440 / yr\nclinic average" },
+const ROWS: { rl: string; clinic: string; zp: string; win?: boolean }[] = [
+  { rl: "Year-one cost", clinic: "~€1,440 (≈€120 × 12)", zp: "€88, once", win: true },
+  { rl: "Year two onward", clinic: "~€1,440 / yr, again", zp: "€0", win: true },
+  { rl: "Modalities / session", clinic: "Usually one, booked separately", zp: "Four, sequenced in one pass" },
+  { rl: "Frequency", clinic: "Every few weeks", zp: "Daily, if you want it", win: true },
+  { rl: "The appointment", clinic: "Booked, business hours, across town", zp: "12 minutes, whenever you are home" },
+  { rl: "Operated by", clinic: "A trained aesthetician", zp: "You, guided by the Protocol Card" },
+  { rl: "What drives results", clinic: "Peak intensity, occasional", zp: "Consistency, sustained", win: true },
 ];
 
-function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
- return (
-  <span
-   style={{
-    ...S.dm,
-    fontWeight: 300,
-    fontSize: 10,
-    letterSpacing: "0.35em",
-    textTransform: "uppercase",
-    color: dark ? S.teal : S.gold,
-    display: "inline-flex",
-    alignItems: "center",
-    gap: 14,
-   }}
-  >
-   <span style={{ width: 36, height: 1, backgroundColor: dark ? S.teal : S.gold }} />
-   {children}
-  </span>
- );
+const CLINIC_WINS = [
+  "An expert read of your skin, in person, that adapts the treatment in real time.",
+  "Higher peak intensity, safely supervised, for a single deep session.",
+  "Hands-on work — extractions, massage, peels — a device cannot and should not do.",
+  "The ritual of being cared for by someone else. That has its own value.",
+];
+const HOME_WINS = [
+  "Frequency. The mechanisms we use reward consistency over occasional intensity.",
+  "No calendar, no commute, no €120 deciding whether you go this month.",
+  "The same four modalities, in the order tissue responds to them, every day.",
+  "A cost that ends. €88 once, and the maths stops working against you.",
+];
+const MATH = [
+  { l: "One clinic facial", sub: "European average", v: "~€120", clinic: true },
+  { l: "A clinic year", sub: "≈ 12 sessions", v: "~€1,440", clinic: true },
+  { l: "The Face Introducer", sub: "everything, once", v: "€88", clinic: false },
+];
+
+function Eyebrow({ num, children, tone = "meta" }: { num: string; children: string; tone?: "meta" | "dark" }) {
+  const color = tone === "dark" ? "text-[#2ED8A8]" : "text-[#6B5A4A]";
+  return (
+    <p className={`inline-flex items-center gap-3.5 font-sans text-[11px] tracking-[0.28em] uppercase ${color}`}>
+      <span className="tabular-nums opacity-55">( {num} )</span>
+      <span className="inline-block h-px w-[26px] bg-current opacity-40" />
+      {children}
+    </p>
+  );
 }
 
 export default function ClinicVsHome() {
- return (
-  <div className="min-h-screen" style={{ backgroundColor: S.bg, color: S.ink }}>
-   <SEO
-    title="Clinic Facial vs At-Home Device, The Real Cost Comparison | Zential Pure"
-    description="One clinic microcurrent session costs €80–120. The Zential Pure Skin Pulse costs €70. An honest breakdown of what you pay, what you get, and where daily home devices outperform sporadic clinic visits."
-    canonicalUrl="/clinic-vs-home-facial-device"
-    jsonLd={faqJsonLd}
-   />
-   <AnnouncementBar />
-   <Header />
-
-   <main>
-    {/* ── Hero (dark editorial, matches homepage system) ── */}
-    <section
-     className="relative overflow-hidden"
-     style={{ backgroundColor: S.dark, paddingTop: 100, paddingBottom: 96 }}
+  return (
+    <PageShell
+      title="Clinic vs. Home · The Method | Zential Pure"
+      description="A clinic facial costs about €1,440 a year. The Face Introducer is €88, once. The same four modalities — the difference is the calendar, not the mechanism. The honest comparison."
+      canonical="https://zentialpure.com/clinic-vs-home-facial-device"
+      hideHero
     >
-     {/* Film grain */}
-     <div
-      aria-hidden
-      className="absolute inset-0 pointer-events-none"
-      style={{
-       backgroundImage:
-        "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-       backgroundRepeat: "repeat",
-       backgroundSize: "160px 160px",
-       opacity: 0.04,
-       mixBlendMode: "overlay",
-      }}
-     />
-     <div
-      aria-hidden
-      className="absolute inset-0 pointer-events-none"
-      style={{
-       background:
-        "radial-gradient(circle 700px at 30% 30%, rgba(46,216,168,0.06) 0%, rgba(46,216,168,0.015) 40%, transparent 70%)",
-      }}
-     />
-
-     <div className="relative grid grid-cols-1 md:grid-cols-[5fr_4fr] gap-12 md:gap-20 px-8 md:px-14 lg:px-20 max-w-7xl mx-auto" style={{ zIndex: 2 }}>
-      <div>
-       <div className="mb-7">
-        <Eyebrow dark>Method · Clinic vs Home</Eyebrow>
-       </div>
-       <h1
-        style={{
-         ...S.lora,
-         fontStyle: "italic",
-         fontWeight: 400,
-         fontSize: "clamp(40px, 4.2vw, 68px)",
-         lineHeight: 1.05,
-         letterSpacing: "-0.02em",
-         color: S.cream,
-         marginBottom: 28,
-        }}
-       >
-        One clinic session.<br />
-        Or a device.<br />
-        <span style={{ color: S.teal }}>Forever.</span>
-       </h1>
-       <p
-        style={{
-         ...S.dm,
-         fontWeight: 300,
-         fontSize: 15,
-         lineHeight: 1.7,
-         color: "rgba(247,244,240,0.7)",
-         maxWidth: 520,
-         marginBottom: 36,
-        }}
-       >
-        Professional microcurrent and red light treatments cost €80–120 per session.
-        Daily home devices cost €70–147 once. Here is the real comparison 
-        what each delivers, what each costs, and what consistency actually does to results.
-       </p>
-
-       {/* Proof strip, same Lora italic numerals as homepage */}
-       <div
-        className="grid grid-cols-3"
-        style={{
-         maxWidth: 540,
-         borderTop: "1px solid rgba(247,244,240,0.08)",
-         borderBottom: "1px solid rgba(247,244,240,0.08)",
-        }}
-       >
-        {proof.map((row, i, arr) => (
-         <div
-          key={row.lbl}
-          style={{
-           padding: "18px 4px 18px 0",
-           borderRight: i === arr.length - 1 ? "none" : "1px solid rgba(247,244,240,0.08)",
-          }}
-         >
-          <div
-           style={{
-            ...S.lora,
-            fontStyle: "italic",
-            fontWeight: 400,
-            fontSize: 34,
-            lineHeight: 1,
-            color: S.teal,
-            marginBottom: 7,
-            letterSpacing: "-0.01em",
-           }}
-          >
-           {row.n}
+      {/* ── HERO ── */}
+      <section className="relative overflow-hidden bg-[#1A1714] text-[#F7F4F0]">
+        <div className="pointer-events-none absolute inset-0 z-[1] opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: GRAIN, backgroundSize: "170px 170px" }} aria-hidden />
+        <div className={`relative ${WRAP} pt-[clamp(72px,10vw,118px)] pb-[clamp(54px,7vw,84px)]`}>
+          <Eyebrow num="00" tone="dark">The Method · Clinic vs. Home</Eyebrow>
+          <h1 className="my-6 max-w-[15ch] font-serif italic font-normal tracking-[-0.02em] leading-[1.04] text-[#F7F4F0] text-[clamp(44px,6vw,86px)]">
+            You didn't quit the results.<br />You quit the <span className="text-[#2ED8A8]">commute.</span>
+          </h1>
+          <p className="mb-[38px] max-w-[560px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">
+            The clinic facial works. So does the cost, the booking, the drive across town. The Face Introducer takes the same four modalities and removes everything that wasn't the treatment. Here is the honest comparison — including what the clinic still does better.
+          </p>
+          <div className="grid max-w-[640px] grid-cols-1 gap-px border border-[rgba(247,244,240,0.10)] bg-[rgba(247,244,240,0.10)] sm:grid-cols-3">
+            {STATS.map((s) => (
+              <div key={s.k} className="bg-[#1A1714] px-7 py-[26px]">
+                <div className={`font-serif italic text-[clamp(30px,3.6vw,42px)] leading-none tracking-[-0.01em] ${s.warm ? "text-[#C6A07C]" : "text-[#2ED8A8]"}`}>{s.v}</div>
+                <div className="mt-3 whitespace-pre-line font-sans text-[10px] leading-[1.5] tracking-[0.2em] uppercase text-[#F7F4F0]/50">{s.k}</div>
+              </div>
+            ))}
           </div>
-          <div
-           style={{
-            ...S.dm,
-            fontWeight: 300,
-            fontSize: 10,
-            letterSpacing: "0.25em",
-            textTransform: "uppercase",
-            color: "rgba(247,244,240,0.5)",
-            lineHeight: 1.5,
-            whiteSpace: "pre-line",
-           }}
-          >
-           {row.lbl}
-          </div>
-         </div>
-        ))}
-       </div>
-      </div>
-
-      {/* Right column, editorial image (eye-free, outcome embodiment) */}
-      <div className="hidden md:block relative">
-       <img
-        src={methodReturning}
-        alt=""
-        loading="lazy"
-        className="w-full h-full object-cover"
-        style={{ minHeight: 480, filter: 'contrast(1.02) saturate(0.95)' }}
-        aria-hidden
-       />
-       {/* edge bleed into dark left + bottom */}
-       <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'linear-gradient(to right, rgba(26,23,20,0.65) 0%, transparent 22%)' }}
-       />
-       <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'linear-gradient(135deg, transparent 55%, rgba(26,23,20,0.4) 100%)' }}
-       />
-       {/* meta overlay */}
-       <div
-        style={{
-         position: 'absolute',
-         top: 24,
-         right: 24,
-         ...S.dm,
-         fontWeight: 300,
-         fontSize: 9,
-         letterSpacing: "0.35em",
-         textTransform: "uppercase",
-         color: "rgba(247,244,240,0.55)",
-        }}
-       >
-        Cost Analysis · Issue 002
-       </div>
-       <div
-        style={{
-         position: 'absolute',
-         bottom: 18,
-         left: 24,
-         ...S.dm,
-         fontSize: 9,
-         letterSpacing: "0.28em",
-         textTransform: "uppercase",
-         color: "rgba(46,216,168,0.6)",
-        }}
-       >
-        4×5 · Method Series
-       </div>
-      </div>
-     </div>
-    </section>
-
-    {/* ── Cost table (light editorial) ── */}
-    <section className="px-8 md:px-14 lg:px-20 py-20 md:py-28" style={{ backgroundColor: S.bg }}>
-     <div className="max-w-3xl mx-auto">
-      <div className="mb-8">
-       <Eyebrow>The Numbers</Eyebrow>
-      </div>
-      <h2
-       style={{
-        ...S.lora,
-        fontStyle: "italic",
-        fontWeight: 400,
-        fontSize: "clamp(32px, 3.4vw, 48px)",
-        lineHeight: 1.1,
-        color: S.ink,
-        marginBottom: 40,
-        letterSpacing: "-0.01em",
-       }}
-      >
-       The cost breakdown
-      </h2>
-      <div className="overflow-x-auto">
-       <table className="w-full" style={{ borderCollapse: "collapse", ...S.dm }}>
-        <thead>
-         <tr style={{ borderBottom: `1px solid ${S.border}` }}>
-          <th
-           className="text-left py-4 pr-6"
-           style={{
-            fontWeight: 300,
-            fontSize: 10,
-            letterSpacing: "0.3em",
-            textTransform: "uppercase",
-            color: S.muted,
-           }}
-          >
-           Treatment
-          </th>
-          <th
-           className="text-right py-4 px-4"
-           style={{
-            fontWeight: 300,
-            fontSize: 10,
-            letterSpacing: "0.3em",
-            textTransform: "uppercase",
-            color: S.muted,
-           }}
-          >
-           Clinic
-          </th>
-          <th
-           className="text-right py-4 pl-4"
-           style={{
-            fontWeight: 400,
-            fontSize: 10,
-            letterSpacing: "0.3em",
-            textTransform: "uppercase",
-            color: S.gold,
-           }}
-          >
-           At Home
-          </th>
-         </tr>
-        </thead>
-        <tbody>
-         {costRows.map((row, i) => (
-          <tr key={i} style={{ borderBottom: `1px solid ${S.border}` }}>
-           <td className="py-5 pr-6" style={{ fontSize: 14, fontWeight: 400, color: S.ink }}>
-            {row.line}
-           </td>
-           <td
-            className="py-5 px-4 text-right"
-            style={{
-             fontSize: 14,
-             fontWeight: row.clinic === "" ? 300 : 500,
-             color: row.clinic === "" ? S.muted : S.ink,
-            }}
-           >
-            {row.clinic}
-           </td>
-           <td
-            className="py-5 pl-4 text-right"
-            style={{
-             fontSize: 14,
-             fontWeight: row.home === "" ? 300 : 500,
-             color: row.home === "" ? S.muted : S.gold,
-            }}
-           >
-            {row.home}
-           </td>
-          </tr>
-         ))}
-        </tbody>
-       </table>
-      </div>
-     </div>
-    </section>
-
-    {/* ── Analysis: clinic vs home (cream2 break) ── */}
-    <section className="px-8 md:px-14 lg:px-20 py-20 md:py-28" style={{ backgroundColor: S.cream2 }}>
-     {/* Editorial band image, the standard, embodied */}
-     <div className="max-w-4xl mx-auto mb-16 md:mb-20 relative" style={{ aspectRatio: '4 / 3', overflow: 'hidden' }}>
-      <img
-       src={methodStandard}
-       alt=""
-       loading="lazy"
-       className="absolute inset-0 w-full h-full object-cover"
-       style={{ filter: 'contrast(1.02) saturate(0.95)' }}
-       aria-hidden
-      />
-      <div
-       aria-hidden
-       className="absolute inset-0 pointer-events-none"
-       style={{ background: 'linear-gradient(to bottom, transparent 60%, rgba(237,232,224,0.5) 100%)' }}
-      />
-      <div
-       className="absolute bottom-5 left-6"
-       style={{
-        ...S.dm,
-        fontSize: 9,
-        letterSpacing: "0.32em",
-        textTransform: "uppercase",
-        color: "rgba(42,36,32,0.55)",
-       }}
-      >
-       The Standard · Plate 02
-      </div>
-     </div>
-
-     <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 md:gap-16 lg:gap-24">
-      <div>
-       <div className="mb-6">
-        <Eyebrow>Clinic Advantage</Eyebrow>
-       </div>
-       <h2
-        style={{
-         ...S.lora,
-         fontStyle: "italic",
-         fontWeight: 400,
-         fontSize: "clamp(26px, 2.6vw, 38px)",
-         lineHeight: 1.15,
-         color: S.ink,
-         marginBottom: 24,
-         letterSpacing: "-0.01em",
-        }}
-       >
-        What clinic gives that home doesn't
-       </h2>
-       <div className="space-y-5" style={{ ...S.dm, fontWeight: 300, fontSize: 14, lineHeight: 1.8, color: S.muted }}>
-        <p>
-         Clinical devices operate at higher output levels. A professional microcurrent device delivers more current per session than a home device, the sensations are stronger, the immediate post-treatment tightening is more noticeable. If you've had professional microcurrent, you know this.
-        </p>
-        <p>
-         A trained aesthetician also reads the face in real time and adjusts protocol. They know where to spend extra time. They catch contraindications. For first-time users, clinic is a reasonable starting point.
-        </p>
-        <p>
-         Professional LED panels are larger and often more powerful than home devices. A clinical red light bed covers the full face and neck simultaneously with higher irradiance.
-        </p>
-       </div>
-      </div>
-
-      <div className="mt-14 md:mt-0">
-       <div className="mb-6">
-        <Eyebrow>Home Advantage</Eyebrow>
-       </div>
-       <h2
-        style={{
-         ...S.lora,
-         fontStyle: "italic",
-         fontWeight: 400,
-         fontSize: "clamp(26px, 2.6vw, 38px)",
-         lineHeight: 1.15,
-         color: S.ink,
-         marginBottom: 24,
-         letterSpacing: "-0.01em",
-        }}
-       >
-        What home gives that clinic doesn't
-       </h2>
-       <div className="space-y-5" style={{ ...S.dm, fontWeight: 300, fontSize: 14, lineHeight: 1.8, color: S.muted }}>
-        <p>
-         Frequency. Microcurrent and red light results accumulate through repetition. The technologies work on cellular processes, ATP synthesis, fibroblast stimulation, collagen remodeling, that respond to consistent, repeated stimulus. Not to occasional high-intensity sessions.
-        </p>
-        <p>
-         Most people who achieve visible long-term results from microcurrent and LED do so through sustained daily or near-daily practice. Clinic visits at €80–120 per session make daily practice economically impossible for almost everyone.
-        </p>
-        <p>
-         A home device at €70–147 used 4–5 times per week delivers 200+ sessions in a year. One clinic course delivers 6–12. The frequency advantage sits entirely with home use.
-        </p>
-       </div>
-      </div>
-     </div>
-
-     {/* Pull quote */}
-     <div className="max-w-3xl mx-auto mt-16 md:mt-20 text-center">
-      <p
-       style={{
-        ...S.lora,
-        fontStyle: "italic",
-        fontWeight: 400,
-        fontSize: "clamp(22px, 2.2vw, 32px)",
-        lineHeight: 1.35,
-        color: S.ink,
-        letterSpacing: "-0.005em",
-       }}
-      >
-       "The clinic gave me results.
-       <br />
-       The problem was keeping the appointments, and the bill."
-      </p>
-     </div>
-    </section>
-
-    {/* ── Honest take ── */}
-    <section className="px-8 md:px-14 lg:px-20 py-20 md:py-28" style={{ backgroundColor: S.bg }}>
-     <div className="max-w-2xl mx-auto">
-      <div className="mb-7">
-       <Eyebrow>Position</Eyebrow>
-      </div>
-      <h2
-       style={{
-        ...S.lora,
-        fontStyle: "italic",
-        fontWeight: 400,
-        fontSize: "clamp(30px, 3vw, 44px)",
-        lineHeight: 1.12,
-        color: S.ink,
-        marginBottom: 28,
-        letterSpacing: "-0.01em",
-       }}
-      >
-       The honest position
-      </h2>
-      <div className="space-y-5" style={{ ...S.dm, fontWeight: 300, fontSize: 15, lineHeight: 1.8, color: S.muted }}>
-       <p>
-        Home devices are not as powerful as clinical devices. We will not claim otherwise. A single professional microcurrent session delivers more current than a home session. If you need the maximum possible output from a single treatment, clinic is the answer.
-       </p>
-       <p>
-        But results from these technologies are not built in single sessions. They're built through weeks of consistent repetition. And consistency at clinic prices is not sustainable for most people.
-       </p>
-       <p style={{ color: S.ink }}>
-        The argument for daily home devices is not that they're stronger. It's that they're there every day. That frequency, applied consistently over months, is what produces the results that clinic dropout patients remember from their sessions and can no longer afford to maintain.
-       </p>
-      </div>
-     </div>
-    </section>
-
-    {/* ── FAQ ── */}
-    <section className="px-8 md:px-14 lg:px-20 py-20 md:py-28" style={{ backgroundColor: S.cream2 }}>
-     <div className="max-w-3xl mx-auto">
-      <div className="mb-7">
-       <Eyebrow>Questions</Eyebrow>
-      </div>
-      <h2
-       style={{
-        ...S.lora,
-        fontStyle: "italic",
-        fontWeight: 400,
-        fontSize: "clamp(30px, 3vw, 44px)",
-        lineHeight: 1.12,
-        color: S.ink,
-        marginBottom: 36,
-        letterSpacing: "-0.01em",
-       }}
-      >
-       Common questions
-      </h2>
-      <div>
-       {faqJsonLd.mainEntity.map((item, i) => (
-        <div
-         key={i}
-         style={{ borderTop: i === 0 ? `1px solid ${S.border}` : "none", borderBottom: `1px solid ${S.border}`, padding: "28px 0" }}
-        >
-         <h3
-          style={{
-           ...S.dm,
-           fontWeight: 500,
-           fontSize: 15,
-           lineHeight: 1.4,
-           color: S.ink,
-           marginBottom: 12,
-          }}
-         >
-          {item.name}
-         </h3>
-         <p style={{ ...S.dm, fontWeight: 300, fontSize: 14, lineHeight: 1.75, color: S.muted }}>
-          {item.acceptedAnswer.text}
-         </p>
         </div>
-       ))}
-      </div>
-     </div>
-    </section>
+      </section>
 
-    {/* ── Closing CTA (dark, matches homepage CTA weight) ── */}
-    <section className="relative px-8 md:px-14 lg:px-20 py-24 md:py-32 overflow-hidden" style={{ backgroundColor: S.dark }}>
-     {/* full-bleed editorial bg (the glow, low opacity, dark wash) */}
-     <img
-      src={methodGlow}
-      alt=""
-      aria-hidden
-      loading="lazy"
-      className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-      style={{ opacity: 0.42, filter: 'saturate(0.7) contrast(0.98)' }}
-     />
-     <div
-      aria-hidden
-      className="absolute inset-0 pointer-events-none"
-      style={{ background: 'linear-gradient(to bottom, rgba(26,23,20,0.35) 0%, rgba(26,23,20,0.62) 55%, rgba(26,23,20,0.82) 100%)' }}
-     />
-     <div
-      aria-hidden
-      className="absolute inset-0 pointer-events-none"
-      style={{
-       backgroundImage:
-        "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-       backgroundRepeat: "repeat",
-       backgroundSize: "160px 160px",
-       opacity: 0.05,
-       mixBlendMode: "overlay",
-      }}
-     />
-     <div className="relative max-w-2xl mx-auto text-center" style={{ zIndex: 2 }}>
-      <div className="mb-6 flex justify-center">
-       <Eyebrow dark>Clinic Precision · Daily Ritual</Eyebrow>
-      </div>
-      <h2
-       style={{
-        ...S.lora,
-        fontStyle: "italic",
-        fontWeight: 400,
-        fontSize: "clamp(32px, 3.6vw, 52px)",
-        lineHeight: 1.1,
-        color: S.cream,
-        marginBottom: 24,
-        letterSpacing: "-0.015em",
-       }}
-      >
-       One clinic session costs<br />what this device costs. <span style={{ color: S.teal }}>Once.</span>
-      </h2>
-      <p
-       style={{
-        ...S.dm,
-        fontWeight: 300,
-        fontSize: 14,
-        lineHeight: 1.7,
-        color: "rgba(247,244,240,0.55)",
-        marginBottom: 40,
-        maxWidth: 480,
-        marginInline: "auto",
-       }}
-      >
-       30-day ritual guarantee. If consistent daily use doesn't deliver, return it.
-      </p>
+      {/* ── COMPARISON TABLE ── */}
+      <section className="bg-[#EDEAE6] py-[clamp(72px,10vw,120px)] text-[#1A1714]">
+        <div className={WRAP}>
+          <Eyebrow num="01">Side by side</Eyebrow>
+          <h2 className="mb-8 mt-3.5 max-w-[18ch] font-serif italic font-normal text-[clamp(28px,3.4vw,44px)] text-[#1A1714]">The same treatment, two very different years.</h2>
+          <div className="overflow-hidden rounded-[14px] border border-[rgba(26,23,20,0.12)] bg-white">
+            <div className="hidden grid-cols-[1.1fr_1fr_1fr] border-b border-[rgba(26,23,20,0.12)] bg-[#F7F4F0] md:grid">
+              <div className="px-[26px] py-6" />
+              <div className="px-[26px] py-6">
+                <div className="font-serif italic text-[24px] text-[#1A1714]">The Clinic</div>
+                <div className="mt-1.5 font-sans text-[10px] tracking-[0.16em] uppercase text-[#6B5A4A]">Per visit, booked</div>
+              </div>
+              <div className="border-x border-[#1A1714] bg-[#1A1714] px-[26px] py-6">
+                <div className="font-serif italic text-[24px] text-[#2ED8A8]">The Face Introducer</div>
+                <div className="mt-1.5 font-sans text-[10px] tracking-[0.16em] uppercase text-[#F7F4F0]/55">At your sink, daily</div>
+              </div>
+            </div>
+            {ROWS.map((r) => (
+              <div key={r.rl} className="grid grid-cols-1 border-t border-[rgba(26,23,20,0.12)] first:border-t-0 md:grid-cols-[1.1fr_1fr_1fr]">
+                <div className="bg-[#F7F4F0] px-[26px] py-4 font-sans text-[11px] tracking-[0.16em] uppercase text-[#6B5A4A] md:bg-transparent md:py-[22px]">{r.rl}</div>
+                <div className="px-[26px] py-3 text-[15px] leading-[1.4] text-[#888480] md:py-[22px]">
+                  <span className="mb-1 block font-sans text-[9px] tracking-[0.2em] uppercase text-[#6B5A4A] md:hidden">Clinic</span>{r.clinic}
+                </div>
+                <div className="border-[rgba(46,216,168,0.22)] bg-[rgba(46,216,168,0.06)] px-[26px] py-3 text-[15px] leading-[1.4] md:border-x md:py-[22px]">
+                  <span className="mb-1 block font-sans text-[9px] tracking-[0.2em] uppercase text-[#6B5A4A] md:hidden">Face Introducer</span>
+                  <span className={r.win ? "font-medium text-[#157A5C]" : "text-[#1A1714]"}>{r.zp}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-[30px] max-w-[640px] text-xs leading-[1.6] text-[#1A1714]/50">
+            Clinic figure is an average of European microcurrent / LED facial pricing at roughly €120 a session, twelve sessions a year. Your local pricing will vary. The Face Introducer supports the skin's own processes; it is not a medical device and does not replace professional care.
+          </p>
+        </div>
+      </section>
 
-      <div className="flex flex-col min-[480px]:flex-row gap-3 max-w-md mx-auto">
-       <Link
-        to="/product/lifting-and-tightening-face-introducer"
-        className="flex-1 py-4 px-6 text-center transition-all duration-300"
-        style={{
-         ...S.dm,
-         fontWeight: 500,
-         fontSize: 11,
-         letterSpacing: "0.22em",
-         textTransform: "uppercase",
-         color: S.dark,
-         border: `1px solid ${S.teal}`,
-         backgroundColor: S.teal,
-         textDecoration: "none",
-        }}
-        onMouseEnter={(e) => {
-         (e.currentTarget as HTMLElement).style.backgroundColor = "transparent";
-         (e.currentTarget as HTMLElement).style.color = S.teal;
-        }}
-        onMouseLeave={(e) => {
-         (e.currentTarget as HTMLElement).style.backgroundColor = S.teal;
-         (e.currentTarget as HTMLElement).style.color = S.dark;
-        }}
-       >
-        Order Face Introducer · €88
-       </Link>
-       <Link
-        to="/product/electric-micro-current"
-        className="flex-1 py-4 px-6 text-center transition-all duration-300"
-        style={{
-         ...S.dm,
-         fontWeight: 400,
-         fontSize: 11,
-         letterSpacing: "0.22em",
-         textTransform: "uppercase",
-         color: S.cream,
-         border: "1px solid rgba(247,244,240,0.28)",
-         backgroundColor: "transparent",
-         textDecoration: "none",
-        }}
-        onMouseEnter={(e) => {
-         (e.currentTarget as HTMLElement).style.borderColor = S.teal;
-         (e.currentTarget as HTMLElement).style.color = S.teal;
-        }}
-        onMouseLeave={(e) => {
-         (e.currentTarget as HTMLElement).style.borderColor = "rgba(247,244,240,0.28)";
-         (e.currentTarget as HTMLElement).style.color = S.cream;
-        }}
-       >
-        Skin Pulse · €70
-       </Link>
-      </div>
-     </div>
-    </section>
-   </main>
+      {/* ── FAIR TO THE CLINIC ── */}
+      <section className="bg-[#070A0E] py-[clamp(72px,10vw,120px)] text-[#F7F4F0]">
+        <div className={WRAP}>
+          <Eyebrow num="02" tone="dark">The honest part</Eyebrow>
+          <h2 className="mb-5 mt-3.5 max-w-[20ch] font-serif italic font-normal text-[clamp(28px,3.4vw,44px)] text-[#F7F4F0]">We are not telling you to cancel everything.</h2>
+          <p className="mb-[38px] max-w-[600px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">
+            A device that replaced expert hands would be lying to you. Here is the real division of labour — what the room still does better, and what daily practice does that no appointment can.
+          </p>
+          <div className="grid grid-cols-1 gap-px border border-[rgba(247,244,240,0.10)] bg-[rgba(247,244,240,0.10)] md:grid-cols-2">
+            {[
+              { h: "What the clinic still wins", items: CLINIC_WINS, dot: "bg-[#C6A07C]", head: "text-[#C6A07C]" },
+              { h: "What daily practice wins", items: HOME_WINS, dot: "bg-[#2ED8A8]", head: "text-[#2ED8A8]" },
+            ].map((col) => (
+              <div key={col.h} className="bg-[#070A0E] px-9 py-10">
+                <h3 className={`mb-5 font-serif italic font-normal text-[23px] ${col.head}`}>{col.h}</h3>
+                <ul className="m-0 list-none p-0">
+                  {col.items.map((it) => (
+                    <li key={it} className="flex gap-3.5 border-b border-[rgba(247,244,240,0.10)] py-3 text-[14px] leading-[1.6] text-[#F7F4F0]/70 last:border-b-0">
+                      <span className={`mt-2 h-1.5 w-1.5 flex-none rounded-full ${col.dot}`} />{it}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <p className="mt-[30px] max-w-[640px] text-xs leading-[1.6] text-[#F7F4F0]/40">
+            Many of our members keep an occasional clinic visit and run the daily ritual between them. The instrument is built to complement professional care, not to argue with it.
+          </p>
+        </div>
+      </section>
 
-   <ZentialFooter />
-  </div>
- );
+      {/* ── DIVIDER ── */}
+      <section className="relative flex min-h-[clamp(360px,46vw,520px)] items-center overflow-hidden bg-[#1A1714]">
+        <img src={edWalkStone} alt="Calm movement in warm light" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,10,14,0.7)_0%,rgba(7,10,14,0.32)_50%,rgba(7,10,14,0.55)_100%)]" />
+        <div className={`relative z-[2] ${WRAP}`}>
+          <p className="max-w-[16ch] font-serif italic text-[clamp(26px,3.6vw,46px)] leading-[1.16] text-[#F7F4F0]">Built for the woman who left the clinic but kept the standard.</p>
+          <div className="mt-[22px] font-sans text-[10px] tracking-[0.3em] uppercase text-[#F7F4F0]/55">The Method · Clinic precision, daily ritual</div>
+        </div>
+      </section>
+
+      {/* ── THE MATH ── */}
+      <section className="bg-[#F7F4F0] py-[clamp(72px,10vw,120px)] text-[#1A1714]">
+        <div className={WRAP}>
+          <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-16">
+            <div>
+              <Eyebrow num="03">The maths</Eyebrow>
+              <h2 className="my-5 font-serif italic font-normal text-[clamp(28px,3.4vw,44px)] text-[#1A1714]">The instrument pays for itself before the first month is out.</h2>
+              <p className="text-[17px] leading-[1.75] text-[#1A1714]/[0.66]">One clinic session is more than the whole instrument. Run the numbers across a single year and the comparison stops being close.</p>
+              <p className="mt-[18px] text-[17px] leading-[1.75] text-[#1A1714]/[0.66]">After that, the clinic keeps billing. The Face Introducer keeps working, for nothing.</p>
+            </div>
+            <div className="overflow-hidden rounded-[14px] border border-[rgba(26,23,20,0.12)] bg-white shadow-[0_18px_50px_rgba(26,23,20,0.08)]">
+              {MATH.map((m) => (
+                <div key={m.l} className="flex items-baseline justify-between border-b border-[rgba(26,23,20,0.12)] px-7 py-5 last:border-b-0">
+                  <span className="text-[14px] text-[#1A1714]">{m.l}<small className="mt-0.5 block font-sans text-[10px] tracking-[0.14em] uppercase text-[#6B5A4A]">{m.sub}</small></span>
+                  <span className={`font-serif italic text-[26px] ${m.clinic ? "text-[#6B5A4A]" : "text-[#1A1714]"}`}>{m.v}</span>
+                </div>
+              ))}
+              <div className="flex items-baseline justify-between bg-[#1A1714] px-7 py-5">
+                <span className="text-[14px] text-[#F7F4F0]">Year-one difference<small className="mt-0.5 block font-sans text-[10px] tracking-[0.14em] uppercase text-[#F7F4F0]/50">in your favour</small></span>
+                <span className="font-serif italic text-[34px] text-[#2ED8A8]">~€1,352</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section className="bg-[#1A1714] py-[clamp(72px,10vw,120px)] text-[#F7F4F0]">
+        <div className={`${WRAP} mx-auto max-w-[760px] text-center`}>
+          <p className="inline-flex items-center justify-center gap-3.5 font-sans text-[11px] tracking-[0.28em] uppercase text-[#2ED8A8]">
+            <span className="tabular-nums opacity-55">( 04 )</span><span className="inline-block h-px w-[26px] bg-current opacity-40" /> Bring it home
+          </p>
+          <h2 className="my-5 font-serif italic font-normal text-[clamp(28px,3.4vw,44px)] text-[#F7F4F0]">The mechanism is the same. The maths is yours.</h2>
+          <p className="mx-auto mb-[34px] max-w-[560px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">
+            Four clinic modalities, a twelve-minute ritual, and a 30-day protocol guarantee. If it does not earn its place in a month, send it back for a full refund.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3.5">
+            <Link to="/instruments/face-introducer" className={PILL_ACTION}>Order the Face Introducer · €88</Link>
+            <Link to="/instruments" className={PILL_GHOST_DARK}>See all instruments</Link>
+          </div>
+        </div>
+      </section>
+    </PageShell>
+  );
 }

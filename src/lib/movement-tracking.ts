@@ -57,3 +57,14 @@ export function trackDepositIntent(source = "founding-circle"): void {
     window.gtag?.("event", "begin_checkout", { method: "movement", source });
   } catch { /* no-op */ }
 }
+
+/** Generic movement-product event (reset started/completed, share, streak milestone). */
+export function trackPractice(event: string, params: Record<string, unknown> = {}): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.fbq?.("trackCustom", `Movement_${event}`, params);
+  } catch { /* no-op */ }
+  try {
+    window.gtag?.("event", `movement_${event}`, params);
+  } catch { /* no-op */ }
+}

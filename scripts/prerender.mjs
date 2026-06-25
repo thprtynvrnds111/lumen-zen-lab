@@ -75,6 +75,7 @@ const ROUTES = [
   '/quiz',
   '/quiz/result',
   '/thank-you',
+  '/founding-terms',
   // Ritual guides
   '/ritual-guide',
   '/ritual-guide/frame-pulse-activator',
@@ -86,6 +87,10 @@ const ROUTES = [
   '/ritual-guide/frequency-wand',
   '/collection',
   // Protocols
+  '/instruments',
+  '/instruments/face-introducer',
+  '/instruments/restoration-belt',
+  '/instruments/restoration-mat',
   '/protocols',
   '/protocols/01-face',
   '/protocols/02-body',
