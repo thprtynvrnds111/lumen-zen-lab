@@ -1,6 +1,11 @@
 {
   "routes": [
     {
+      "src": "/ig",
+      "headers": { "Location": "/instruments?utm_source=instagram&utm_medium=bio&utm_campaign=ig_bio" },
+      "status": 302
+    },
+    {
       "src": "/storefront",
       "headers": { "Location": "/" },
       "status": 301
