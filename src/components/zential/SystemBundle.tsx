@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { safeCheckoutUrl } from "@/lib/checkout";
 
 /**
  * "The System" — all three instruments in one purchase. Backed by a real Shopify
@@ -36,7 +37,7 @@ export function SystemBundle() {
     const w = window as unknown as { fbq?: (...a: unknown[]) => void; gtag?: (...a: unknown[]) => void };
     if (w.fbq) w.fbq("track", "AddToCart", { content_name: "The System Bundle", value: BUNDLE_PRICE, currency: "EUR" });
     if (w.gtag) w.gtag("event", "add_to_cart", { item_name: "The System Bundle", value: BUNDLE_PRICE, currency: "EUR" });
-    window.location.href = BUNDLE_PERMALINK;
+    window.location.href = safeCheckoutUrl(BUNDLE_PERMALINK);
   }
 
   const hasFounding = true;
