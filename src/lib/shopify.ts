@@ -132,7 +132,8 @@ const PRODUCT_BY_HANDLE_QUERY = `
         { namespace: "zential", key: "guarantee_block" },
         { namespace: "zential", key: "trust_statement" },
         { namespace: "zential", key: "ritual_instructions" },
-        { namespace: "zential", key: "inventory_signal" }
+        { namespace: "zential", key: "inventory_signal" },
+        { namespace: "zential", key: "founding_claimed" }
       ]) {
         key
         value

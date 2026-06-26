@@ -290,6 +290,7 @@ export default function InstrumentLanding() {
   const navigate = useNavigate();
   const addItem = useCartStore((s) => s.addItem);
   const [livePrice, setLivePrice] = useState<string | null>(null);
+  const [liveFounding, setLiveFounding] = useState<number | null>(null);
   const [ordering, setOrdering] = useState(false);
   const [showSticky, setShowSticky] = useState(false);
 
@@ -313,10 +314,16 @@ export default function InstrumentLanding() {
     let active = true;
     fetchProductByHandle(cfg.handle)
       .then((p) => {
+        if (!active) return;
         const amt = p?.variants?.edges?.[0]?.node?.price?.amount;
-        if (active && amt) {
+        if (amt) {
           const n = parseFloat(amt);
           if (!isNaN(n)) setLivePrice(`€${Math.round(n)}`);
+        }
+        const fc = p?.metafields?.find((m) => m?.key === "founding_claimed")?.value;
+        if (fc) {
+          const c = parseInt(fc, 10);
+          if (!isNaN(c)) setLiveFounding(c);
         }
       })
       .catch(() => {});
@@ -326,6 +333,7 @@ export default function InstrumentLanding() {
   if (!cfg) return <Navigate to="/instruments" replace />;
 
   const priceLabel = livePrice ?? cfg.price;
+  const founding = liveFounding ?? cfg.founding;
 
   async function order() {
     if (!cfg || ordering) return;
@@ -394,7 +402,7 @@ export default function InstrumentLanding() {
               <div className="flex flex-wrap items-center gap-3">
                 <div className="inline-flex items-center gap-[14px] self-start rounded-full border border-[rgba(247,244,240,0.10)] bg-[#2ED8A8]/[0.05] px-[18px] py-[11px]">
                   <span className="h-[7px] w-[7px] rounded-full bg-[#2ED8A8]" />
-                  <span className="font-sans text-[11px] text-[#F7F4F0]/[0.78]"><b className="font-semibold tabular-nums text-[#2ED8A8]">{cfg.founding}</b> of 100 founding places claimed</span>
+                  <span className="font-sans text-[11px] text-[#F7F4F0]/[0.78]"><b className="font-semibold tabular-nums text-[#2ED8A8]">{founding}</b> of 100 founding places claimed</span>
                 </div>
                 <RatingBadge slug={cfg.slug} />
               </div>
@@ -431,7 +439,7 @@ export default function InstrumentLanding() {
               "2-year warranty",
               "30-day protocol guarantee",
               "Ships in 48 hours",
-              `${cfg.founding} / 100 founding places claimed`,
+              `${founding} / 100 founding places claimed`,
             ].map((t) => (
               <span key={t} className="inline-flex items-center gap-2 before:block before:h-[5px] before:w-[5px] before:rounded-full before:bg-[#157A5C]">{t}</span>
             ))}
@@ -556,10 +564,10 @@ export default function InstrumentLanding() {
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(420px_circle_at_80%_0%,rgba(46,216,168,0.12),transparent_65%)]" />
               <div className="relative z-[2] flex flex-wrap items-end justify-between gap-3.5">
                 <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-[#F7F4F0]/50">Places claimed</span>
-                <span className="font-serif italic text-[40px] leading-none tabular-nums text-[#2ED8A8]">{cfg.founding}<small className="text-[20px] text-[#F7F4F0]/40"> / 100</small></span>
+                <span className="font-serif italic text-[40px] leading-none tabular-nums text-[#2ED8A8]">{founding}<small className="text-[20px] text-[#F7F4F0]/40"> / 100</small></span>
               </div>
               <div className="relative z-[2] mt-[22px] h-[6px] overflow-hidden rounded-[3px] bg-[rgba(247,244,240,0.08)]">
-                <i className="block h-full rounded-[3px] bg-[linear-gradient(90deg,#2ED8A8,#1BAF86)]" style={{ width: `${cfg.founding}%` }} />
+                <i className="block h-full rounded-[3px] bg-[linear-gradient(90deg,#2ED8A8,#1BAF86)]" style={{ width: `${founding}%` }} />
               </div>
               <button onClick={order} disabled={ordering} className={`${PILL_BRAND} relative z-[2] mt-7`}>Claim a founding place</button>
             </div>
