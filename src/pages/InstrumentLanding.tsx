@@ -5,6 +5,7 @@ import { InlinePrimer, ExitIntentPrimer } from "@/components/zential/LeadCapture
 import { RatingBadge, InstrumentProofSection } from "@/components/zential/InstrumentProof";
 import { TrustBadges } from "@/components/zential/TrustBadges";
 import { useHeroVariant } from "@/lib/heroVariant";
+import { safeCheckoutUrl } from "@/lib/checkout";
 import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
 
@@ -354,7 +355,7 @@ export default function InstrumentLanding() {
       if (w.fbq) w.fbq("track", "AddToCart", { content_name: cfg.name, content_ids: [variant.id], content_type: "product" });
       if (w.gtag) w.gtag("event", "add_to_cart", { item_name: cfg.name, experiment_id: `hero_${cfg.slug}`, variant: heroVariant });
       const url = useCartStore.getState().getCheckoutUrl();
-      if (url) { window.location.href = url; return; }
+      if (url) { window.location.href = safeCheckoutUrl(url); return; }
       navigate(`/product/${cfg.handle}`);
     } catch {
       navigate(`/product/${cfg.handle}`);
