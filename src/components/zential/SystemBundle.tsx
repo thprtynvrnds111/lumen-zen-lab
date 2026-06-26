@@ -1,64 +1,45 @@
 import { useState } from "react";
-import { useCartStore } from "@/stores/cartStore";
-import { fetchProductByHandle } from "@/lib/shopify";
 
 /**
- * "The System" — all three instruments in one purchase. Adds the three SKUs to
- * the Shopify cart and sends the visitor to checkout.
+ * "The System" — all three instruments in one purchase. Backed by a real Shopify
+ * bundle product (SKU ZP-SYSTEM-BUNDLE, €499) and sold through a Shopify cart
+ * permalink, so checkout works end-to-end without a discount-code scope.
  *
- * FOUNDING DISCOUNT: realising a bundle price below the €588 sum requires a real
- * Shopify discount. Create an automatic discount (or a code) that triggers on
- * the three-instrument combo, then set BUNDLE_CODE + BUNDLE_PRICE below. Until
- * then the bundle is honestly sold at the full combined price — no fake markdown.
+ * Fulfilment note: an order for this bundle is one line item — ship all three
+ * instruments (Face Introducer + Restoration Belt + Restoration Mat) and adjust
+ * component inventory manually. To change the price, edit the bundle product in
+ * Shopify admin and update BUNDLE_PRICE here.
  */
 
 const SYSTEM = [
-  { name: "The Face Introducer", price: 88, handle: "lifting-and-tightening-face-introducer", to: "/instruments/face-introducer" },
-  { name: "The Restoration Belt", price: 280, handle: "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device", to: "/instruments/restoration-belt" },
-  { name: "The Restoration Mat", price: 220, handle: "household-red-light-charging-vibrating-red-light-therapy-mat", to: "/instruments/restoration-mat" },
+  { name: "The Face Introducer", price: 88, to: "/instruments/face-introducer" },
+  { name: "The Restoration Belt", price: 280, to: "/instruments/restoration-belt" },
+  { name: "The Restoration Mat", price: 220, to: "/instruments/restoration-mat" },
 ];
 
 const FULL_PRICE = SYSTEM.reduce((s, i) => s + i.price, 0); // €588
+const BUNDLE_PRICE = 499;
 
-// Set to a real Shopify discount code (and the resulting price) to switch on
-// founding bundle pricing. Leave BUNDLE_CODE empty to sell at full price.
-const BUNDLE_CODE = "";
-const BUNDLE_PRICE: number | null = null; // e.g. 499 once the Shopify discount exists
+// Live Shopify bundle variant (product: the-system-founding-bundle).
+const BUNDLE_VARIANT_ID = "53870945567063";
+const CHECKOUT_BASE = "https://checkout.zentialpure.com";
+const BUNDLE_PERMALINK = `${CHECKOUT_BASE}/cart/${BUNDLE_VARIANT_ID}:1`;
 
 const WRAP = "mx-auto w-[min(1180px,92vw)]";
 
 export function SystemBundle() {
-  const addItem = useCartStore((s) => s.addItem);
   const [busy, setBusy] = useState(false);
 
-  async function claimSystem() {
+  function claimSystem() {
     if (busy) return;
     setBusy(true);
-    try {
-      for (const inst of SYSTEM) {
-        const p = await fetchProductByHandle(inst.handle);
-        const variant = p?.variants?.edges?.[0]?.node;
-        if (!p || !variant) continue;
-        await addItem({
-          product: { node: p.node },
-          variantId: variant.id,
-          variantTitle: variant.title,
-          price: variant.price,
-          quantity: 1,
-          selectedOptions: variant.selectedOptions || [],
-        });
-      }
-      let url = useCartStore.getState().getCheckoutUrl();
-      if (url && BUNDLE_CODE) {
-        url += (url.includes("?") ? "&" : "?") + "discount=" + encodeURIComponent(BUNDLE_CODE);
-      }
-      if (url) window.location.href = url;
-    } finally {
-      setBusy(false);
-    }
+    const w = window as unknown as { fbq?: (...a: unknown[]) => void; gtag?: (...a: unknown[]) => void };
+    if (w.fbq) w.fbq("track", "AddToCart", { content_name: "The System Bundle", value: BUNDLE_PRICE, currency: "EUR" });
+    if (w.gtag) w.gtag("event", "add_to_cart", { item_name: "The System Bundle", value: BUNDLE_PRICE, currency: "EUR" });
+    window.location.href = BUNDLE_PERMALINK;
   }
 
-  const hasFounding = BUNDLE_CODE && BUNDLE_PRICE != null;
+  const hasFounding = true;
 
   return (
     <section className="bg-[#1A1714] py-[clamp(72px,10vw,116px)] text-[#F7F4F0]">
@@ -74,7 +55,7 @@ export function SystemBundle() {
             </p>
             <ul className="mt-6 space-y-2.5">
               {SYSTEM.map((i) => (
-                <li key={i.handle} className="flex items-center justify-between border-b border-[rgba(247,244,240,0.08)] pb-2.5 font-sans text-[13px]">
+                <li key={i.to} className="flex items-center justify-between border-b border-[rgba(247,244,240,0.08)] pb-2.5 font-sans text-[13px]">
                   <a href={i.to} className="text-[#F7F4F0]/80 hover:text-[#2ED8A8]">{i.name}</a>
                   <span className="tabular-nums text-[#F7F4F0]/55">€{i.price}</span>
                 </li>
