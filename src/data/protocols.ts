@@ -104,12 +104,12 @@ export const protocols: Protocol[] = [
    "Body protocol. Mitochondrial light, then sequential pressure. The same precision, scaled to the limbs and torso.",
   devices: [
    {
-    name: "Flux Panel",
+    name: "Restoration Belt",
     role: "Open · 10 min",
     minutes: 10,
     handle:
      "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
-    price: 199,
+    price: 280,
     imageUrl:
      "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/a42f0fa0-65aa-4eb3-a705-ba9058044e17.jpg?v=1778533310",
    },
@@ -124,7 +124,7 @@ export const protocols: Protocol[] = [
      "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/hf_20260509_004926_d0888809-c17d-4123-b1a2-a9cc01b1525e.png?v=1778289993",
    },
   ],
-  totalPrice: 358,
+  totalPrice: 439,
   cardBg: "#1A1714",
   image: protocolBodyImg,
   imageQuote: "Scaled to the limbs. Same precision.",

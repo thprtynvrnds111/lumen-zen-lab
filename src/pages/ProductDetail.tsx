@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { getProductConfig } from "@/data/productConfigs";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { ProductLanding } from "@/components/zential/ProductLanding";
@@ -173,9 +173,21 @@ function getProductJsonLd(handle: string, seo: { title: string; description: str
 
 const SITE = "https://zentialpure.com";
 
+/**
+ * Recovery SKUs whose generic /product config still carries legacy copy
+ * (the belt was authored as an "80W full-body panel", the mat as a "full-back
+ * mat"). Their accurate, on-brand landing pages live at /instruments/<slug>,
+ * so route these handles there instead of rendering the stale duplicate.
+ */
+const INSTRUMENT_REDIRECTS: Record<string, string> = {
+ "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": "restoration-belt",
+ "household-red-light-charging-vibrating-red-light-therapy-mat": "restoration-mat",
+};
+
 export default function ProductDetail() {
  const { handle } = useParams<{ handle: string }>();
- const config = handle ? getProductConfig(handle) : null;
+ const redirectSlug = handle ? INSTRUMENT_REDIRECTS[handle] : undefined;
+ const config = handle && !redirectSlug ? getProductConfig(handle) : null;
  const seo = handle && PRODUCT_SEO[handle]
   ? PRODUCT_SEO[handle]
   : { title: `${config?.name || "Product"}, Zential Pure`, description: config?.subheadline || "Clinical-luxury beauty device by Zential Pure." };
@@ -199,6 +211,10 @@ export default function ProductDetail() {
    if (price) setProductPrice(price);
   }).catch(() => {});
  }, [handle]);
+
+ if (redirectSlug) {
+  return <Navigate to={`/instruments/${redirectSlug}`} replace />;
+ }
 
  if (config) {
   return (

@@ -9,8 +9,8 @@ import heroMat from "@/assets/hero-restore-mat.webp";
  * /instruments — "Three Instruments" hub.
  * Ported from the Claude Design prototype (landing/index.html) onto the real
  * storefront: shared PageShell chrome, repo tokens, real PDP links + prices.
- * Display names use the design rebrand (Restoration Belt / Mat); the underlying
- * SKUs are Flux Panel (€280) and Frequency Mat + (€220).
+ * Display names: Restoration Belt (€280, belt handle) and Restoration Mat
+ * (€220, mat handle). Shopify product titles now match these names.
  */
 
 interface Instrument {

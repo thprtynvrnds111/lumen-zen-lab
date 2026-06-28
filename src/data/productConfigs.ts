@@ -194,7 +194,7 @@ export const productConfigs: Record<string, ProductConfig> = {
    paragraphs: [
     "Most skincare works on the surface. The Face Introducer addresses four mechanisms in one sequential protocol, each with a specific role, each building on the last.",
     "EMS (Mode 4) releases intermittent microcurrent pulses that stimulate ATP production and support facial muscle fiber elasticity. 45°C constant thermal softens tissue and supports absorption throughout every mode. Positive and negative ions cleanse the follicle and then drive actives past the skin barrier, the same galvanic mechanism used in professional facials.",
-    "Cosmetic LED (Modes 1–3, Blue · Red · Purple spectra) adds the visible-light component of the daily ritual. For confirmed clinical wavelength outputs, see Frame Pulse and Flux Panel.",
+    "Cosmetic LED (Modes 1–3, Blue · Red · Purple spectra) adds the visible-light component of the daily ritual. For confirmed clinical wavelength outputs, see Frame Pulse and the Restoration Belt.",
    ],
    closing: "EMS. Microcurrent. Thermal. Cosmetic LED. In that order.",
   },
@@ -202,7 +202,7 @@ export const productConfigs: Record<string, ProductConfig> = {
    { icon: Zap, title: "EMS, Mode 4", desc: "Releases intermittent microcurrent pulses that stimulate ATP production in facial muscle tissue. Supports facial muscle fiber elasticity. Operates current-only, no light component." },
    { icon: ScanFace, title: "Positive & Negative Ions", desc: "Negative ion output attracts and lifts positively charged impurities from the follicle, electrical cleansing, no abrasion, barrier intact. Polarity reverses to drive positively charged actives past the barrier via galvanic gradient. Same class of technology used in professional spa facials." },
    { icon: ThermometerSun, title: "45°C Thermal + Sonic", desc: "Constant 45°C hot compress softens tissue and supports ingredient absorption throughout every mode. Sonic vibration supports lymphatic drainage and product penetration. Both are always-on, not mode-dependent." },
-   { icon: Sun, title: "Cosmetic LED, Mode 1 (Blue)", desc: "Soft visible-spectrum blue LED component of the daily ritual. Supports the morning protocol sequence. For confirmed clinical wavelength claims, see Frame Pulse and Flux Panel." },
+   { icon: Sun, title: "Cosmetic LED, Mode 1 (Blue)", desc: "Soft visible-spectrum blue LED component of the daily ritual. Supports the morning protocol sequence. For confirmed clinical wavelength claims, see Frame Pulse and the Restoration Belt." },
    { icon: Sun, title: "Cosmetic LED, Mode 2 (Red)", desc: "Soft visible-spectrum red LED component of the daily protocol. Supports the visible-light step of the ritual. For confirmed clinical wavelengths, see Frame Pulse." },
    { icon: Aperture, title: "Cosmetic LED, Mode 3 (Purple)", desc: "Combined blue+red LED for the daily ritual stack. Visible-spectrum only." },
   ],
@@ -226,7 +226,7 @@ export const productConfigs: Record<string, ProductConfig> = {
    { q: "What if it doesn't work for me?", a: "30 days, daily use. If you see no visible change in skin tone, firmness, or definition, email us. Full refund, no form, no questionnaire, no restocking fee. That is the 30-Day Protocol Guarantee. We print it on the box." },
    { q: "How is this different from a clinic?", a: "One professional microcurrent session: €90–€180. Monthly clinic protocol: €220+/month, €2,640+/year. The Face Introducer uses the same class of technology, ion cleansing, EMS microcurrent, thermal, cosmetic LED, for a one-time €88 purchase. The mechanism is the same. The math is not." },
    { q: "Which mode should I use first?", a: "Start with ion cleansing (negative ion mode) every session, it clears the follicle so subsequent modes work on clean tissue. Then select EMS for firming, or one of the three cosmetic LED modes (Blue, Red, Purple) based on the daily protocol you want." },
-   { q: "Is this clinical red light therapy?", a: "No. The cosmetic LED modes in the Face Introducer are visible-spectrum LED, not the clinical wavelengths used in photobiomodulation research. For confirmed clinical wavelength output, see Frame Pulse or Flux Panel." },
+   { q: "Is this clinical red light therapy?", a: "No. The cosmetic LED modes in the Face Introducer are visible-spectrum LED, not the clinical wavelengths used in photobiomodulation research. For confirmed clinical wavelength output, see Frame Pulse or the Restoration Belt." },
   ],
   studyCards: [
    { technology: "EMS · ATP Production", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://scholar.google.com/scholar?q=cheng+1982+electric+currents+ATP+generation+protein+synthesis+skin" },
@@ -1949,7 +1949,7 @@ const thermalZoneConfig: ProductConfig = {
  comparisonRows: recoveryComparison,
  faqs: [
   { q: "Can I wear it while moving?", a: "Yes, during gentle activity, walking, stretching, seated work. Not designed for high-intensity movement as the connection may flex. Optimal use is stationary or slow movement." },
-  { q: "Which body areas does it fit?", a: "Waist, abdomen, lower back, and hips. The belt adjusts across a range of sizes. For larger areas (full back), pair with the Frequency Mat+ or Flux Panel." },
+  { q: "Which body areas does it fit?", a: "Waist, abdomen, lower back, and hips. The belt adjusts across a range of sizes. For larger areas (full back), pair with the Restoration Mat or Restoration Belt." },
   { q: "Should I use thermal or thermal + LED?", a: "For pre-training preparation: thermal only. For recovery and tissue work: thermal + LED. The LED mode adds the photobiomodulation mechanism to the thermal input." },
   { q: "How long per session?", a: "20–30 minutes is the standard protocol. The thermal and photobiomodulation effects are cumulative, consistent sessions produce the observable change." },
   { q: "Can I use it on my lower back for chronic pain?", a: "Yes. Thermal input and photobiomodulation both have evidence for reducing musculoskeletal pain. This should be used as a supportive tool, not a replacement for medical assessment of underlying causes." },

@@ -1,20 +1,10 @@
-import { getProductConfig } from "@/data/productConfigs";
-import { ProductLanding } from "@/components/zential/ProductLanding";
-import { SEO } from "@/components/SEO";
+import { Navigate } from "react-router-dom";
 
+/**
+ * /body-lift has no live Shopify product (handle "body-lift" 404s on the
+ * Storefront API), so its buy flow was dead. Recovery/body products live on
+ * the Instruments hub — redirect there until a real Body Lift SKU exists.
+ */
 export default function BodyLift() {
- const config = getProductConfig("body-lift");
-
- if (!config) return null;
-
- return (
-  <>
-   <SEO
-    title="Body Lift, Zential Pure"
-    description="Microcurrent, red light and sonic pulse in one daily body ritual. Visibly firms, lifts and sculpts with consistent use."
-    canonicalUrl="/body-lift"
-   />
-   <ProductLanding config={config} />
-  </>
- );
+ return <Navigate to="/instruments" replace />;
 }

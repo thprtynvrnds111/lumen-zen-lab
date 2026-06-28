@@ -12,7 +12,7 @@ const concerns = [
  { label: "Eyes & Fine Lines", href: "/product/eye-massage", desc: "Periorbital renewal" },
  { label: "Red Light Therapy", href: "/product/red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device", desc: "630–850nm · Face & body" },
  { label: "Sleep", href: "/product/blackout-eye-mask-3d-deep-contoured-sleep-mask-lash-extensions-no-pressure-blindfold-sleeping-eye-mask-women-men-side-sleepers", desc: "Deep rest & recovery", isNew: true },
- { label: "Recovery & Body", href: "/body-lift", desc: "Thermal · pressure · infrared", isNew: true },
+ { label: "Recovery & Body", href: "/instruments", desc: "Thermal · pressure · infrared", isNew: true },
 ];
 
 const byArea = [
@@ -20,8 +20,8 @@ const byArea = [
  { label: "Eye Contour", href: "/product/eye-massage" },
  { label: "Jawline", href: "/product/facial-beauty-tools-and-ems-beauty-equipment" },
  { label: "Neck & Décolleté", href: "/product/color-light-import-micro-current-vibration-massager" },
- { label: "Body", href: "/body-lift", isNew: true },
- { label: "Full Panel", href: "/product/red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device", isNew: true },
+ { label: "Body", href: "/instruments", isNew: true },
+ { label: "Restoration Belt", href: "/product/red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device", isNew: true },
 ];
 
 const byTech = [

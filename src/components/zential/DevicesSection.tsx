@@ -11,7 +11,6 @@ import { useTranslation } from "react-i18next";
 const HIDDEN_HANDLES = ["medicube-collagen-elastic-jelly-moisturizing-cream", "collagen-eye-mask"];
 
 const TECH_TAGS: Record<string, string[]> = {
-  "body-lift": ["EMS", "Lift"],
   "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": ["LED", "Pulse"],
   "electric-guasha-massager": ["Microcurrent", "Sculpt"],
   "electric-micro-current": ["Microcurrent", "EMS"],
@@ -20,14 +19,11 @@ const TECH_TAGS: Record<string, string[]> = {
   "facial-beauty-tools-and-ems-beauty-equipment": ["EMS", "Contour"],
   "lifting-and-tightening-face-introducer": ["Red Light", "EMS", "Thermal"],
   "portable-ems-microcurrent-facial-beauty-device": ["EMS", "Microcurrent"],
-  "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening": ["LED", "EMS"],
 };
 
 const SORT_ORDER = [
   "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
-  "body-lift",
   "lifting-and-tightening-face-introducer",
-  "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening",
   "portable-ems-microcurrent-facial-beauty-device",
   "facial-beauty-tools-and-ems-beauty-equipment",
   "electric-guasha-massager",

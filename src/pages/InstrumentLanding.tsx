@@ -23,11 +23,11 @@ import edThreshold from "@/assets/editorial/threshold.webp";
  * Claude Design prototypes (landing/{face-introducer,restoration-belt,restoration-mat}.html).
  * Shared layout, per-instrument config, real prices + real Shopify checkout.
  *
- * Display names use the design rebrand; underlying SKUs/handles are the real
- * catalog products. The Restoration Mat = Frequency Mat + (660nm red + far-
- * infrared, NO 850nm) — the design's 850nm mat claims were corrected here to
- * match the actual product. The Restoration Belt = Flux Panel (660 + 850nm,
- * accurate). Prices: live Shopify price when fetched, config fallback otherwise.
+ * Display names match the Shopify product titles + handles (the real catalog
+ * products). The Restoration Mat is the 660nm red + far-infrared mat handle (NO
+ * 850nm) — the design's 850nm mat claims were corrected here to match the actual
+ * product. The Restoration Belt is the 660 + 850nm waist/shoulder belt handle
+ * (accurate). Prices: live Shopify price when fetched, config fallback otherwise.
  */
 
 interface Badge { label: string; sub?: string; }
