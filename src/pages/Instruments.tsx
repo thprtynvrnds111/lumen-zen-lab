@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { PageShell } from "@/components/zential/v2/PageShell";
 import { SystemBundle } from "@/components/zential/SystemBundle";
 import heroFace from "@/assets/hero-neck-device.webp";
-import heroBelt from "@/assets/hero-redlight-belt.webp";
+import heroBelt from "@/assets/instruments-belt-back.webp";
 import heroMat from "@/assets/hero-restore-mat.webp";
 
 /**
@@ -21,6 +21,7 @@ interface Instrument {
   to: string;
   img: string;
   alt: string;
+  imgPos?: string;
 }
 
 const INSTRUMENTS: Instrument[] = [
@@ -42,7 +43,8 @@ const INSTRUMENTS: Instrument[] = [
     price: "€280",
     to: "/instruments/restoration-belt",
     img: heroBelt,
-    alt: "The Restoration Belt",
+    alt: "The Restoration Belt worn across the lower back, red light through the array",
+    imgPos: "50% 64%",
   },
   {
     protocol: "Protocol 03",
@@ -105,6 +107,7 @@ export default function Instruments() {
                     src={item.img}
                     alt={item.alt}
                     loading="lazy"
+                    style={item.imgPos ? { objectPosition: item.imgPos } : undefined}
                     className="h-full w-full object-cover [filter:saturate(0.94)_brightness(0.92)] transition-transform duration-[600ms] ease-out group-hover:scale-[1.04]"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(26,23,20,0.6)_100%)]" />
