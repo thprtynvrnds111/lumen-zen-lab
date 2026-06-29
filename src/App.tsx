@@ -57,6 +57,7 @@ const ProtocolFaceIntroducer = lazy(() => import("./pages/ProtocolFaceIntroducer
 const FoundingTerms = lazy(() => import("./pages/FoundingTerms"));
 const Instruments = lazy(() => import("./pages/Instruments"));
 const InstrumentLanding = lazy(() => import("./pages/InstrumentLanding"));
+const TruthMovement = lazy(() => import("./pages/TruthMovement"));
 
 const queryClient = new QueryClient();
 
@@ -70,6 +71,7 @@ function AppContent() {
     <Suspense fallback={<div className="min-h-screen bg-background" />}>
       <Routes>
         <Route path="/" element={<Storefront />} />
+        <Route path="/movement" element={<TruthMovement />} />
         <Route path="/protocols" element={<Protocols />} />
         <Route path="/instruments" element={<Instruments />} />
         <Route path="/instruments/:slug" element={<InstrumentLanding />} />
