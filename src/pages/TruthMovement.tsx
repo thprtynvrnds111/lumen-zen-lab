@@ -1,29 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PageShell } from "@/components/zential/v2/PageShell";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { createFoundingCustomer, createShopifyCart } from "@/lib/shopify";
 import { trackMovementJoin, trackDepositIntent } from "@/lib/movement-tracking";
-import { FoundingWall } from "@/components/movement/FoundingWall";
 import { captureRef, getRef } from "@/lib/movement-practice";
 import edThreshold from "@/assets/editorial/threshold.webp";
 import edSeatedCalm from "@/assets/editorial/seated-calm.webp";
 
 /**
- * /movement — "Reclaim your own frequency". Dark editorial design ported from the
- * Claude Design movement/index.html (flower-breathe motif, grain, scanline, mech
- * cards, the-line band, founding offer). Real wiring preserved from the prior
- * build: JoinForm = Storefront customerCreate email capture; handleDeposit =
- * real founding checkout (createShopifyCart); FoundingWall = live count.
+ * /movement — "Reclaim your own frequency".
+ * Faithful implementation of the Claude Design project `movement/index.html`
+ * (Zential Pure Design System). The design's own CSS is embedded verbatim,
+ * scoped under `.mv-root`, so the page matches the source design exactly:
+ * flower-breathe motif, teal light-bloom, grain + scanline, oversized Lora
+ * numerals, editorial masthead, mech cards, the-line band, founding offer,
+ * live founding-wall count, thank-you overlay.
+ *
+ * Real wiring layered on top of the static design:
+ *   - reset form  → createFoundingCustomer + trackMovementJoin → thank-you overlay
+ *   - founding CTA → createShopifyCart (real €29 founding checkout)
+ *   - referral capture via captureRef/getRef
  */
-const FOUNDING_DEPOSIT_VARIANT_ID = "gid://shopify/ProductVariant/53812317454679";
 
-const WRAP = "mx-auto max-w-[1180px] px-6 md:px-10";
-const GRAIN =
-  "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
+const FOUNDING_DEPOSIT_VARIANT_ID = "gid://shopify/ProductVariant/53812317454679";
+const CLAIMED = 73;
 
 const FLOWER = (
-  <svg viewBox="0 0 100 100" className="h-full w-full">
+  <svg viewBox="0 0 100 100">
     <g fill="currentColor">
       <circle cx="77" cy="50" r="20" /><circle cx="69.1" cy="69.1" r="20" /><circle cx="50" cy="77" r="20" />
       <circle cx="30.9" cy="69.1" r="20" /><circle cx="23" cy="50" r="20" /><circle cx="30.9" cy="30.9" r="20" />
@@ -32,63 +34,301 @@ const FLOWER = (
   </svg>
 );
 
-function Eyebrow({ num, children, tone = "meta" }: { num?: string; children: React.ReactNode; tone?: "meta" | "dark" | "brand" | "gold" }) {
-  const color = tone === "dark" ? "text-[#2ED8A8]" : tone === "brand" ? "text-[#157A5C]" : tone === "gold" ? "text-[#C6A07C]" : "text-[#6B5A4A]";
-  return (
-    <p className={`inline-flex items-center gap-3.5 font-sans text-[11px] tracking-[0.28em] uppercase ${color}`}>
-      {num && <span className="tabular-nums opacity-55">{num}</span>}
-      <span className="inline-block h-px w-[26px] bg-current opacity-40" />
-      {children}
-    </p>
-  );
+const CSS = `
+.mv-root{
+  --font-body:'DM Sans','Inter',system-ui,-apple-system,sans-serif;
+  --font-ui:var(--font-body);
+  --font-serif:'Lora',Georgia,'Times New Roman',serif;
+  --zp-ink:#1A1714;--zp-ink-2:#2A2420;--zp-cream:#F7F4F0;--zp-white:#fff;--zp-bg:#EDEAE6;--zp-near-black:#070A0E;
+  --brand:#2ED8A8;--brand-hover:#1BAF86;--brand-on-light:#157A5C;--zp-teal:#2ED8A8;--zp-teal-dark:#1BAF86;
+  --zp-gold:#C6A07C;--text-meta:#6B5A4A;--text-on-dark:#F7F4F0;
+  --action:#F69251;--action-hover:#E87A38;
+  --zp-line:rgba(26,23,20,.12);--zp-line-strong:rgba(26,23,20,.28);--zp-line-dark:rgba(247,244,240,.10);
+  --radius-pill:999px;--radius-card:14px;
+  --shadow-action:0 12px 30px -12px rgba(246,146,81,.55);
+  --ease-out-soft:cubic-bezier(.22,.61,.36,1);
+  font-family:var(--font-body);background:var(--zp-ink);color:var(--text-on-dark);
+  -webkit-font-smoothing:antialiased;overflow-x:clip;
 }
+.mv-root img{display:block;max-width:100%}
+.mv-root a{color:inherit;text-decoration:none}
+.mv-root ::selection{background:var(--brand);color:var(--zp-ink)}
 
-/** Owned email capture — Storefront customerCreate, marketing consent on. (real) */
-function JoinForm({ source, cta = "Join the movement", placeholder = "you@domain.com" }: { source: string; cta?: string; placeholder?: string }) {
+.mv-root .wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+.mv-root .eyebrow{font-family:var(--font-ui);font-weight:400;font-size:11px;letter-spacing:.28em;text-transform:uppercase;display:inline-flex;align-items:center;gap:14px}
+.mv-root .eyebrow .num{font-variant-numeric:tabular-nums;opacity:.55}
+.mv-root .eyebrow .tick{width:26px;height:1px;background:currentColor;opacity:.4;display:inline-block}
+.mv-root .serif{font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.mv-root .display{font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:-.02em;line-height:1.02}
+.mv-root .lede{font-size:17px;line-height:1.75;color:rgba(247,244,240,.66)}
+.mv-root .lede-dark{font-size:17px;line-height:1.75;color:rgba(26,23,20,.66)}
+
+.mv-root .pill{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--font-ui);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;border-radius:var(--radius-pill);padding:16px 30px;cursor:pointer;border:1px solid transparent;transition:background .18s ease,color .18s ease,border-color .18s ease,transform .12s ease;white-space:nowrap;line-height:1}
+.mv-root .pill:active{transform:scale(.97)}
+.mv-root .pill-action{background:var(--action);color:var(--zp-ink);box-shadow:var(--shadow-action)}
+.mv-root .pill-action:hover{background:var(--action-hover)}
+.mv-root .pill-action:disabled{opacity:.6;cursor:default}
+.mv-root .pill-ghost-dark{background:transparent;color:var(--text-on-dark);border-color:rgba(247,244,240,.28)}
+.mv-root .pill-ghost-dark:hover{border-color:var(--brand);color:var(--brand)}
+.mv-root .pill-ghost-light{background:transparent;color:var(--zp-ink);border-color:var(--zp-line-strong)}
+.mv-root .pill-ghost-light:hover{border-color:var(--brand-on-light);color:var(--brand-on-light)}
+
+.mv-root .reveal{opacity:0;transform:translateY(24px);transition:opacity .85s var(--ease-out-soft),transform .85s var(--ease-out-soft);will-change:transform,opacity}
+.mv-root .reveal.in{opacity:1;transform:none}
+
+.mv-root .grain{position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:170px 170px}
+
+.mv-root .hero{position:relative;overflow:hidden;background:var(--zp-ink)}
+.mv-root .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:660px}
+.mv-root .hero-copy{display:flex;flex-direction:column;justify-content:center;padding:72px 40px 72px 0;position:relative;z-index:3}
+.mv-root .hero-media{position:relative;overflow:hidden}
+.mv-root .hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.92)}
+.mv-root .hero-media .veil{position:absolute;inset:0;background:linear-gradient(90deg,var(--zp-ink) 0%,transparent 22%),linear-gradient(180deg,transparent 50%,rgba(26,23,20,.55) 100%)}
+.mv-root .scanwrap{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.mv-root .scan{position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(46,216,168,.7),transparent);animation:mv-scan 9s ease-in-out 2s infinite}
+@keyframes mv-scan{0%{transform:translateY(0);opacity:0}5%{opacity:.9}92%{opacity:.5}100%{transform:translateY(660px);opacity:0}}
+.mv-root .hero h1{font-size:clamp(46px,6vw,92px);color:var(--zp-cream);margin:26px 0 26px}
+.mv-root .hero h1 .accent{color:var(--brand)}
+.mv-root .hero .lede{max-width:500px;margin-bottom:34px}
+.mv-root .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+.mv-root .momentum{display:inline-flex;align-items:center;gap:14px;padding:11px 18px;border:1px solid var(--zp-line-dark);border-radius:var(--radius-pill);background:rgba(46,216,168,.05)}
+.mv-root .momentum .dot{width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 0 rgba(46,216,168,.5);animation:mv-pulse 2.4s infinite}
+@keyframes mv-pulse{0%{box-shadow:0 0 0 0 rgba(46,216,168,.45)}70%{box-shadow:0 0 0 10px rgba(46,216,168,0)}100%{box-shadow:0 0 0 0 rgba(46,216,168,0)}}
+.mv-root .momentum span{font-family:var(--font-ui);font-size:11px;letter-spacing:.04em;color:rgba(247,244,240,.78)}
+.mv-root .momentum b{color:var(--brand);font-weight:600;font-variant-numeric:tabular-nums}
+@keyframes mv-breathe{0%,100%{transform:scale(1);opacity:var(--bo,.05)}50%{transform:scale(1.06);opacity:calc(var(--bo,.05) * 1.8)}}
+.mv-root .flower-wm{position:absolute;pointer-events:none;color:var(--brand)}
+.mv-root .flower-wm .breathe{width:100%;height:100%;animation:mv-breathe 12s ease-in-out infinite;transform-origin:center;will-change:transform,opacity;opacity:var(--bo,.05)}
+.mv-root .flower-wm svg{display:block;width:100%;height:100%}
+.mv-root .hero-flower{top:50%;right:28%;width:min(44vw,500px);aspect-ratio:1;transform:translateY(-50%);z-index:1;--bo:.10}
+.mv-root .line-flower{top:50%;left:50%;width:min(76vw,820px);aspect-ratio:1;transform:translate(-50%,-50%);z-index:1;--bo:.14}
+.mv-root .bloom{position:absolute;inset:0;pointer-events:none;z-index:0}
+.mv-root .hero-bloom{background:radial-gradient(60% 55% at 72% 32%,rgba(46,216,168,.16),transparent 64%)}
+.mv-root .line-bloom{background:radial-gradient(46% 60% at 50% 50%,rgba(46,216,168,.18),transparent 66%)}
+.mv-root .bignum{position:absolute;top:clamp(28px,4.5vw,60px);right:clamp(16px,5vw,72px);z-index:0;pointer-events:none;font-family:var(--font-serif);font-style:italic;font-weight:400;line-height:.8;letter-spacing:-.04em;font-size:clamp(96px,15vw,230px);color:rgba(198,160,124,.20)}
+.mv-root .bignum.on{color:rgba(46,216,168,.13)}
+.mv-root .masthead{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--zp-gold)}
+.mv-root .masthead .seg{white-space:nowrap}
+.mv-root .masthead .seg.dim{color:rgba(247,244,240,.4)}
+.mv-root .masthead .rule{flex:1;height:1px;background:linear-gradient(90deg,rgba(198,160,124,.5),rgba(247,244,240,.06));min-width:24px}
+.mv-root .hero-foot{position:absolute;bottom:30px;left:0;display:flex;align-items:flex-end;gap:18px;font-family:var(--font-ui);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,244,240,.28)}
+@media(max-width:860px){.mv-root .hero-grid{grid-template-columns:1fr}.mv-root .hero-media{order:-1;min-height:42vh}.mv-root .hero-copy{padding:48px 0}.mv-root .hero-foot{position:static;margin-top:30px}}
+
+.mv-root section{position:relative}
+.mv-root .sec{padding:clamp(80px,11vw,128px) 0}
+.mv-root .sec-cream{background:var(--zp-cream);color:var(--zp-ink)}
+.mv-root .sec-fog{background:var(--zp-bg);color:var(--zp-ink)}
+.mv-root .sec-dark{background:var(--zp-ink);color:var(--text-on-dark)}
+.mv-root .sec-clinical{background:var(--zp-near-black);color:var(--text-on-dark)}
+.mv-root .sec h2{font-size:clamp(32px,4.4vw,58px);line-height:1.05;margin:22px 0}
+.mv-root .sec h2.tight{margin-bottom:0}
+.mv-root .meta-eyebrow{color:var(--text-meta)}
+.mv-root .brand-eyebrow{color:var(--brand-on-light)}
+.mv-root .gold-eyebrow{color:var(--zp-gold)}
+.mv-root .ondark-eyebrow{color:var(--brand)}
+
+.mv-root .diag{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.mv-root .diag-img{border-radius:var(--radius-card);overflow:hidden;aspect-ratio:4/5;background:var(--zp-white)}
+.mv-root .diag-img img{width:100%;height:100%;object-fit:cover}
+.mv-root .diag p+p{margin-top:18px}
+.mv-root .diag .kicker{font-family:var(--font-serif);font-style:italic;font-size:21px;color:var(--zp-ink);margin-top:24px}
+@media(max-width:860px){.mv-root .diag{grid-template-columns:1fr;gap:32px}.mv-root .diag-img{order:-1;aspect-ratio:16/10}}
+
+.mv-root .triad{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--zp-line);border:1px solid var(--zp-line);margin-top:54px}
+.mv-root .tcard{background:var(--zp-cream);padding:40px 34px;min-height:230px;display:flex;flex-direction:column;justify-content:space-between}
+.mv-root .tcard .tnum{font-family:var(--font-ui);font-size:11px;letter-spacing:.2em;color:var(--text-meta)}
+.mv-root .tcard h3{font-family:var(--font-serif);font-style:italic;font-weight:400;font-size:30px;color:var(--zp-ink);margin:0 0 14px}
+.mv-root .tcard p{font-size:14px;line-height:1.6;color:rgba(26,23,20,.62)}
+@media(max-width:760px){.mv-root .triad{grid-template-columns:1fr}}
+
+.mv-root .mech{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--zp-line-dark);border:1px solid var(--zp-line-dark);margin-top:54px}
+.mv-root .mcard{background:var(--zp-near-black);padding:38px 32px}
+.mv-root .mcard .mnum{font-family:var(--font-ui);font-size:11px;letter-spacing:.2em;color:rgba(247,244,240,.4);margin-bottom:22px}
+.mv-root .mcard h3{font-family:var(--font-serif);font-style:italic;font-weight:400;font-size:23px;color:var(--brand);margin:0 0 14px}
+.mv-root .mcard p{font-size:14px;line-height:1.7;color:rgba(247,244,240,.66)}
+.mv-root .disclaimer{font-size:12px;color:rgba(247,244,240,.4);margin-top:34px;max-width:620px;line-height:1.6}
+@media(max-width:760px){.mv-root .mech{grid-template-columns:1fr}}
+
+.mv-root .line-band{text-align:center;padding:clamp(96px,14vw,168px) 0;position:relative;overflow:hidden}
+.mv-root .line-band .lbl{font-family:var(--font-ui);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--zp-gold);margin-bottom:30px}
+.mv-root .line-band .big{font-size:clamp(40px,7vw,104px);line-height:1.0;color:var(--zp-cream)}
+.mv-root .line-band .big .accent{color:var(--brand)}
+
+.mv-root .reset{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.mv-root .reset-card{background:var(--zp-ink);border:1px solid var(--zp-line-dark);border-radius:var(--radius-card);padding:44px;position:relative;overflow:hidden}
+.mv-root .reset-card .glow{position:absolute;inset:0;background:radial-gradient(420px circle at 80% 0%,rgba(46,216,168,.12),transparent 65%);pointer-events:none}
+.mv-root .field-row{display:flex;gap:12px;margin-top:26px;position:relative;z-index:2;flex-wrap:wrap}
+.mv-root .field-row input{flex:1;min-width:200px;font-family:var(--font-body);font-size:15px;color:var(--zp-cream);background:rgba(247,244,240,.04);border:1px solid var(--zp-line-dark);border-radius:var(--radius-pill);padding:15px 22px;outline:none;transition:border-color .18s,box-shadow .18s}
+.mv-root .field-row input::placeholder{color:rgba(247,244,240,.4)}
+.mv-root .field-row input:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(46,216,168,.16)}
+.mv-root .microcopy{font-family:var(--font-ui);font-size:11px;letter-spacing:.06em;color:rgba(247,244,240,.42);margin-top:16px}
+.mv-root .reset h2{color:var(--zp-cream)}
+@media(max-width:860px){.mv-root .reset{grid-template-columns:1fr;gap:40px}}
+
+.mv-root .offer{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+.mv-root .stack{list-style:none;margin-top:38px}
+.mv-root .stack li{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--zp-line-dark)}
+.mv-root .stack li:first-child{border-top:1px solid var(--zp-line-dark)}
+.mv-root .stack .si-main{font-family:var(--font-body);font-size:15px;color:var(--zp-cream)}
+.mv-root .stack .si-sub{font-size:13px;color:rgba(247,244,240,.5);line-height:1.5;margin-top:5px;max-width:380px}
+.mv-root .stack .si-val{font-family:var(--font-ui);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--zp-gold);white-space:nowrap;padding-top:2px}
+.mv-root .offer-side{background:var(--zp-cream);border-radius:var(--radius-card);padding:40px;position:sticky;top:88px}
+.mv-root .offer-side .ov-val{font-family:var(--font-ui);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-meta)}
+.mv-root .offer-side .ov-price{font-family:var(--font-serif);font-style:italic;font-size:64px;color:var(--zp-ink);line-height:1;margin:6px 0}
+.mv-root .offer-side .ov-note{font-size:13px;color:rgba(26,23,20,.6);margin-bottom:24px}
+.mv-root .offer-side .pill{width:100%;margin-bottom:12px}
+.mv-root .offer-side .guarantee{font-size:12px;line-height:1.6;color:rgba(26,23,20,.6);margin-top:18px;padding-top:18px;border-top:1px solid var(--zp-line)}
+.mv-root .offer-side .guarantee a{color:var(--brand-on-light);text-decoration:underline}
+@media(max-width:860px){.mv-root .offer{grid-template-columns:1fr;gap:40px}.mv-root .offer-side{position:static}}
+
+.mv-root .wall{margin-top:80px;border-top:1px solid var(--zp-line-dark);padding-top:56px}
+.mv-root .wall-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:26px}
+.mv-root .wall-head h3{font-family:var(--font-serif);font-style:italic;font-weight:400;font-size:34px;color:var(--zp-cream)}
+.mv-root .wall-count{font-family:var(--font-serif);font-style:italic;font-size:34px;color:var(--brand);font-variant-numeric:tabular-nums}
+.mv-root .wall-count small{font-size:18px;color:rgba(247,244,240,.4)}
+.mv-root .bar{height:6px;border-radius:3px;background:rgba(247,244,240,.08);overflow:hidden}
+.mv-root .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--zp-teal-dark));border-radius:3px;transition:width 1.6s var(--ease-out-soft)}
+.mv-root .joiners{display:flex;align-items:center;gap:14px;margin-top:26px;flex-wrap:wrap}
+.mv-root .avatars{display:flex}
+.mv-root .avatars span{width:34px;height:34px;border-radius:50%;border:2px solid var(--zp-ink);margin-left:-10px;display:flex;align-items:center;justify-content:center;font-family:var(--font-ui);font-size:11px;font-weight:600;color:var(--zp-ink);background:var(--zp-gold)}
+.mv-root .avatars span:first-child{margin-left:0}
+.mv-root .avatars span:nth-child(2){background:var(--brand)}
+.mv-root .avatars span:nth-child(3){background:var(--zp-cream)}
+.mv-root .avatars span:nth-child(4){background:var(--zp-gold)}
+.mv-root .joiners .jtext{font-family:var(--font-ui);font-size:12px;letter-spacing:.04em;color:rgba(247,244,240,.55)}
+.mv-root .joiners .jtext b{color:var(--brand)}
+
+.mv-root .closing{text-align:center}
+.mv-root .closing h2{font-size:clamp(34px,5vw,68px);max-width:14ch;margin:0 auto 26px;color:var(--zp-ink)}
+.mv-root .closing .lede-dark{max-width:560px;margin:0 auto 36px}
+.mv-root .share{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:34px;flex-wrap:wrap}
+.mv-root .share .slbl{font-family:var(--font-ui);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--text-meta)}
+.mv-root .share button{font-family:var(--font-ui);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--zp-ink);background:transparent;border:1px solid var(--zp-line-strong);border-radius:var(--radius-pill);padding:9px 18px;cursor:pointer;transition:.18s}
+.mv-root .share button:hover{border-color:var(--brand-on-light);color:var(--brand-on-light)}
+
+.mv-ty{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:28px;background:rgba(20,18,15,.82);backdrop-filter:blur(10px);opacity:0;visibility:hidden;transition:opacity .25s ease}
+.mv-ty.open{opacity:1;visibility:visible}
+.mv-ty .ty-card{position:relative;overflow:hidden;width:100%;max-width:580px;background:var(--zp-ink);border:1px solid var(--zp-line-dark);border-radius:var(--radius-card);padding:52px 48px;text-align:center;font-family:var(--font-body);color:var(--zp-cream)}
+.mv-ty .ty-card .glow{position:absolute;inset:0;background:radial-gradient(520px circle at 50% -10%,rgba(46,216,168,.16),transparent 60%);pointer-events:none}
+.mv-ty .ty-close{position:absolute;top:18px;right:20px;background:none;border:none;cursor:pointer;color:rgba(247,244,240,.45);font-size:22px;line-height:1;transition:color .18s;z-index:3}
+.mv-ty .ty-close:hover{color:var(--brand)}
+.mv-ty .ty-mark{position:relative;z-index:2;margin:0 auto 22px;width:44px;height:44px;color:var(--brand)}
+.mv-ty .ty-mark svg{width:100%;height:100%}
+.mv-ty .eyebrow{position:relative;z-index:2;justify-content:center;font-family:var(--font-ui);font-weight:400;font-size:11px;letter-spacing:.28em;text-transform:uppercase;display:inline-flex;align-items:center;gap:14px;color:var(--brand)}
+.mv-ty .eyebrow .tick{width:26px;height:1px;background:currentColor;opacity:.4;display:inline-block}
+.mv-ty h2{position:relative;z-index:2;font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:-.02em;font-size:clamp(32px,5vw,46px);line-height:1.04;color:var(--zp-cream);margin:18px 0 14px}
+.mv-ty .ty-to{position:relative;z-index:2;font-family:var(--font-ui);font-size:12px;letter-spacing:.04em;color:rgba(247,244,240,.55);margin-bottom:30px}
+.mv-ty .ty-to b{color:var(--brand);font-weight:500}
+.mv-ty .ty-steps{position:relative;z-index:2;list-style:none;text-align:left;max-width:380px;margin:0 auto 30px;display:flex;flex-direction:column;gap:14px;padding:0}
+.mv-ty .ty-steps li{display:flex;gap:14px;align-items:flex-start}
+.mv-ty .ty-steps .sn{flex:none;width:26px;height:26px;border-radius:50%;border:1px solid var(--brand);color:var(--brand);font-family:var(--font-ui);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.mv-ty .ty-steps .st{font-size:14px;line-height:1.55;color:rgba(247,244,240,.72)}
+.mv-ty .ty-steps .st b{color:var(--zp-cream);font-weight:500}
+.mv-ty .ty-upsell{position:relative;z-index:2;margin-top:6px;font-size:13px;color:rgba(247,244,240,.6)}
+.mv-ty .ty-upsell a{color:var(--brand);border-bottom:1px solid rgba(46,216,168,.4);padding-bottom:1px;cursor:pointer}
+
+@media(prefers-reduced-motion:reduce){.mv-root .scan{animation:none;display:none}.mv-root .momentum .dot{animation:none}.mv-root .reveal{opacity:1;transform:none;transition:none}.mv-root .flower-wm .breathe{animation:none}}
+`;
+
+const STACK: { main: string; sub: string; val: string }[] = [
+  { main: "The 30-Day Nervous-System Reset", sub: "Lands today. The full week-by-week guided programme, yours the moment you join.", val: "€47 value" },
+  { main: "The Daily Reset Library", sub: "Lands today. Four resets for the day: morning, midday, pre-sleep, pre-training.", val: "€29 value" },
+  { main: "Your named place in the Founding 100", sub: "First in, building the movement from day one.", val: "Lands today" },
+  { main: "A seat in the first guided cohort", sub: "When it runs. A live 30-day cohort with the founding hundred.", val: "€90 value" },
+  { main: "Founding price on the device", sub: "Locked to your email, honoured when the device is your next step.", val: "Founding price" },
+  { main: "Lifetime founding membership rate", sub: "Locked lower for good, if and when the membership opens.", val: "€120 value" },
+];
+
+export default function TruthMovement() {
+  const rootRef = useRef<HTMLDivElement>(null);
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [micro, setMicro] = useState("One reset, one truth per week. No noise. Leave anytime.");
+  const [tyOpen, setTyOpen] = useState(false);
+  const [tyEmail, setTyEmail] = useState("you@domain.com");
+  const [depositLoading, setDepositLoading] = useState(false);
+  const [depositMsg, setDepositMsg] = useState<string | null>(null);
+  const [copyLabel, setCopyLabel] = useState("Copy link");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // referral capture + scroll-reveal + count-up (faithful to the design's vanilla JS)
+  useEffect(() => {
+    captureRef();
+    const root = rootRef.current;
+    if (!root) return;
+    const revealEls = [...root.querySelectorAll<HTMLElement>(".reveal")];
+    const prefersReduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+    let barDone = false;
+
+    const countUp = (el: HTMLElement | null, to: number, dur: number) => {
+      if (!el) return;
+      if (prefersReduce) { el.textContent = String(to); return; }
+      let s: number | null = null;
+      const step = (t: number) => {
+        if (s === null) s = t;
+        const p = Math.min((t - s) / dur, 1);
+        el.textContent = String(Math.round((1 - Math.pow(1 - p, 3)) * to));
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    const paint = () => {
+      const vh = window.innerHeight;
+      revealEls.forEach((el) => {
+        if (el.classList.contains("in")) return;
+        if (el.getBoundingClientRect().top < vh * 0.88) el.classList.add("in");
+      });
+      const wall = root.querySelector<HTMLElement>(".wall");
+      if (!barDone && wall && wall.getBoundingClientRect().top < vh * 0.7) {
+        const bar = root.querySelector<HTMLElement>("#mvWallBar");
+        if (bar) bar.style.width = CLAIMED + "%";
+        countUp(root.querySelector<HTMLElement>("#mvWallCount"), CLAIMED, 1500);
+        barDone = true;
+      }
+    };
+
+    countUp(root.querySelector<HTMLElement>("#mvHeroCount"), CLAIMED, 1500);
+    paint();
+    window.addEventListener("scroll", paint, { passive: true });
+    window.addEventListener("resize", paint);
+    const failsafe = setTimeout(() => revealEls.forEach((el) => el.classList.add("in")), 2500);
+    return () => {
+      window.removeEventListener("scroll", paint);
+      window.removeEventListener("resize", paint);
+      clearTimeout(failsafe);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!tyOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setTyOpen(false); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+  }, [tyOpen]);
+
+  const handleReset = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
-    setSubmitting(true);
-    setMessage(null);
     const addr = email.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(addr)) return;
+    setSubmitting(true);
     try {
       const result = await createFoundingCustomer(addr);
       if (result.success || result.error === "already_exists") {
-        setMessage({ type: "success", text: "You are in. Your reset is ready." });
+        trackMovementJoin(addr, "movement-reset");
+        setTyEmail(addr);
+        setTyOpen(true);
         setEmail("");
-        trackMovementJoin(addr, source);
+        setMicro("You are in. Your reset is on its way.");
       } else {
-        setMessage({ type: "error", text: "Something went wrong. Please try again." });
+        setMicro("Something went wrong. Please try again.");
       }
     } catch {
-      setMessage({ type: "error", text: "Something went wrong. Please try again." });
+      setMicro("Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
     }
   };
-
-  return (
-    <div className="w-full max-w-md">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
-        <Input type="email" placeholder={placeholder} value={email} onChange={(e) => setEmail(e.target.value)} className="h-12 rounded-full border-white/15 bg-white/5 px-5 text-[#F7F4F0] placeholder:text-white/40" aria-label="Email address" required />
-        <Button variant="ritual" size="lg" type="submit" disabled={submitting} className="shrink-0">{submitting ? "Sending" : cta}</Button>
-      </form>
-      {message && <p className={`mt-3 text-sm ${message.type === "success" ? "text-[#2ED8A8]" : "text-[#B4472A]"}`}>{message.text}</p>}
-      {message?.type === "success" && <a href="/reset" className="cta-pill mt-4">Open the 6-Minute Reset</a>}
-      <p className="mt-3 text-xs text-white/40">One reset, one truth per week. No noise. Leave anytime.</p>
-    </div>
-  );
-}
-
-const TruthMovement = () => {
-  const [depositMsg, setDepositMsg] = useState<string | null>(null);
-  const [depositLoading, setDepositLoading] = useState(false);
-
-  useEffect(() => { captureRef(); }, []);
 
   const handleDeposit = async () => {
     trackDepositIntent();
@@ -113,14 +353,19 @@ const TruthMovement = () => {
     }
   };
 
-  const STACK: [string, string, string][] = [
-    ["The 30-Day Nervous-System Reset", "Lands today. The full week-by-week guided programme, yours the moment you join.", "47"],
-    ["The Daily Reset Library", "Lands today. Four resets for the day: morning, midday, pre-sleep, pre-training.", "29"],
-    ["Your named place in the Founding 100", "Lands today. First in, building the movement from day one.", "—"],
-    ["A seat in the first guided cohort", "When it runs. A live 30-day cohort with the founding hundred.", "90"],
-    ["Founding price on the device", "Locked to your email, honoured when the device is your next step.", "save"],
-    ["Lifetime founding membership rate", "Locked lower for good, if and when the membership opens.", "120"],
-  ];
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
+  const shareMovement = (mode: "x" | "copy") => {
+    const url = "https://zentialpure.com/movement";
+    const text = "Reclaim your own frequency. Six minutes a day. Zential Pure.";
+    if (mode === "x") {
+      window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(url), "_blank");
+      return;
+    }
+    navigator.clipboard?.writeText(url);
+    setCopyLabel("Link copied");
+    setTimeout(() => setCopyLabel("Copy link"), 1800);
+  };
 
   return (
     <PageShell
@@ -129,212 +374,218 @@ const TruthMovement = () => {
       canonical="https://zentialpure.com/movement"
       hideHero
     >
-      <style>{`
-        @keyframes mv-breathe{0%,100%{transform:scale(1);opacity:var(--bo,.05)}50%{transform:scale(1.06);opacity:calc(var(--bo,.05)*1.8)}}
-        @keyframes mv-scan{0%{transform:translateY(0);opacity:0}5%{opacity:.9}92%{opacity:.5}100%{transform:translateY(660px);opacity:0}}
-        @keyframes mv-pulse{0%{box-shadow:0 0 0 0 rgba(46,216,168,.45)}70%{box-shadow:0 0 0 10px rgba(46,216,168,0)}100%{box-shadow:0 0 0 0 rgba(46,216,168,0)}}
-        .mv-breathe{animation:mv-breathe 12s ease-in-out infinite;transform-origin:center;will-change:transform,opacity}
-        .mv-scan{animation:mv-scan 9s ease-in-out 2s infinite}
-        .mv-dot{animation:mv-pulse 2.4s infinite}
-        @media(prefers-reduced-motion:reduce){.mv-breathe,.mv-scan,.mv-dot{animation:none}}
-      `}</style>
+      <div className="mv-root" ref={rootRef}>
+        <style>{CSS}</style>
 
-      {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-[#1A1714] text-[#F7F4F0]">
-        <div className="pointer-events-none absolute inset-0 z-[1] opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: GRAIN, backgroundSize: "170px 170px" }} aria-hidden />
-        <div className="pointer-events-none absolute right-[28%] top-1/2 z-[1] aspect-square w-[min(40vw,440px)] -translate-y-1/2 text-[#2ED8A8]" aria-hidden>
-          <div className="mv-breathe h-full w-full" style={{ ["--bo" as string]: 0.05 }}>{FLOWER}</div>
-        </div>
-        <div className={`relative z-[3] ${WRAP}`}>
-          <div className="grid items-center md:grid-cols-[1.05fr_0.95fr] md:min-h-[660px]">
-            <div className="py-12 md:py-[72px] md:pr-10">
-              <Eyebrow num="( 01 )" tone="dark">Zential Pure · The Movement</Eyebrow>
-              <h1 className="my-[26px] font-serif italic font-normal tracking-[-0.02em] leading-[1.02] text-[#F7F4F0] text-[clamp(46px,6vw,92px)]">
-                Reclaim your<br />own <span className="text-[#2ED8A8]">frequency.</span>
-              </h1>
-              <p className="mb-[34px] max-w-[500px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">
-                You were not built for a world that never lets your system power down. The cost shows up everywhere. Your sleep. Your training. Your stress. Your skin. This is the place where we take the controls back.
-              </p>
-              <div className="mb-[34px] flex flex-wrap gap-3.5">
-                <a href="#reset" className="cta-pill">Get the 6-Minute Reset</a>
-                <a href="#diagnosis" className="ghost-pill">Read the manifesto</a>
-              </div>
-              <div className="inline-flex items-center gap-3.5 rounded-full border border-white/10 bg-[#2ED8A8]/5 px-[18px] py-[11px]">
-                <span className="mv-dot h-[7px] w-[7px] rounded-full bg-[#2ED8A8]" />
-                <span className="font-sans text-[11px] text-[#F7F4F0]/[0.78]">The <b className="font-semibold text-[#2ED8A8]">Founding 100</b> is open now</span>
-              </div>
-              <div className="mt-[30px] flex items-center gap-3.5 font-sans text-[10px] tracking-[0.3em] uppercase text-[#C6A07C]">
-                <span>Issue 001</span><span className="h-px flex-1 bg-gradient-to-r from-[#C6A07C]/50 to-white/10" />
-                <span>Resonance Series</span><span className="h-px flex-1 bg-gradient-to-r from-[#C6A07C]/50 to-white/10" />
-                <span className="text-white/40">Edition 2026</span>
-              </div>
-            </div>
-            <div className="relative order-first min-h-[42vh] overflow-hidden md:order-none md:min-h-[660px]">
-              <img src={edThreshold} alt="Bare feet stepping across a sunlit threshold" className="absolute inset-0 h-full w-full object-cover [filter:saturate(0.9)_brightness(0.92)]" />
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,#1A1714_0%,transparent_22%),linear-gradient(180deg,transparent_50%,rgba(26,23,20,0.55)_100%)]" />
-              <div className="absolute inset-x-0 top-0 mv-scan h-px bg-[linear-gradient(90deg,transparent,rgba(46,216,168,0.7),transparent)]" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 01 DIAGNOSIS ── */}
-      <section id="diagnosis" className="bg-[#F7F4F0] py-[clamp(80px,11vw,128px)] text-[#1A1714]">
-        <div className={WRAP}>
-          <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-            <div>
-              <Eyebrow num="01">Diagnosis</Eyebrow>
-              <h2 className="mb-7 mt-[18px] font-serif italic font-normal text-[clamp(32px,4.4vw,56px)] leading-[1.05] text-[#1A1714]">Notice your breath.<br />Right now.</h2>
-              <div className="space-y-6 text-[17px] leading-[1.75] text-[#1A1714]/[0.66]">
-                <p>Most people reading this are holding their breath. Shallow. Frozen. A body braced against a screen that never stops asking for more.</p>
-                <p>Modern life is an interference engine. It keeps your nervous system switched on when it was built to switch off. You feel it before you can name it. The shallow breath at the desk. The sleep that does not restore. The training that stops working. The face that looks tired after a full night.</p>
-              </div>
-              <p className="mt-6 font-serif italic text-[21px] text-[#1A1714]">This is not who you are. It is what the noise does to you.</p>
-            </div>
-            <div className="order-first aspect-[16/10] overflow-hidden rounded-[14px] bg-white md:order-none md:aspect-[4/5]">
-              <img src={edSeatedCalm} alt="A moment of stillness" className="h-full w-full object-cover" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 02 REFRAME ── */}
-      <section className="bg-[#EDEAE6] py-[clamp(80px,11vw,128px)] text-[#1A1714]">
-        <div className={WRAP}>
-          <Eyebrow num="02">Reframe</Eyebrow>
-          <h2 className="my-5 max-w-[18ch] font-serif italic font-normal text-[clamp(32px,4.4vw,58px)] leading-[1.05] text-[#1A1714]">One nerve is a gadget. The whole system is a practice.</h2>
-          <p className="max-w-[620px] text-[17px] leading-[1.75] text-[#1A1714]/[0.66]">The market sells you a single nerve, a single fix, a single mode. Regulation does not work that way. The body is one connected system. Calm the signal, then feed the tissue. That is the whole point.</p>
-          <div className="mt-[54px] grid gap-px border border-[rgba(26,23,20,0.12)] bg-[rgba(26,23,20,0.12)] md:grid-cols-3">
-            {[
-              ["i", "Sports", "Recovery is a nervous-system event before it is a muscle event."],
-              ["ii", "Stress", "A system that never down-regulates never fully repairs."],
-              ["iii", "Skin", "The face keeps the score. Tension and cortisol show up there first."],
-            ].map(([n, k, v]) => (
-              <div key={k} className="flex min-h-[230px] flex-col justify-between bg-[#F7F4F0] px-[34px] py-10">
-                <div className="font-sans text-[11px] tracking-[0.2em] text-[#6B5A4A]">{n}</div>
-                <div>
-                  <h3 className="mb-3.5 font-serif italic font-normal text-[30px] text-[#1A1714]">{k}</h3>
-                  <p className="text-[14px] leading-[1.6] text-[#1A1714]/[0.62]">{v}</p>
+        {/* ── HERO ── */}
+        <section className="hero">
+          <div className="bloom hero-bloom" />
+          <div className="grain" />
+          <div className="flower-wm hero-flower" aria-hidden><div className="breathe">{FLOWER}</div></div>
+          <div className="wrap">
+            <div className="hero-grid">
+              <div className="hero-copy reveal">
+                <p className="eyebrow ondark-eyebrow"><span className="num">( 01 )</span><span className="tick" /> Zential Pure · The Movement</p>
+                <h1 className="display">Reclaim your<br />own <span className="accent">frequency.</span></h1>
+                <p className="lede">You were not built for a world that never lets your system power down. The cost shows up everywhere. Your sleep. Your training. Your stress. Your skin. This is the place where we take the controls back.</p>
+                <div className="hero-cta">
+                  <button className="pill pill-action" onClick={() => scrollTo("reset")}>Get the 6-Minute Reset</button>
+                  <button className="pill pill-ghost-dark" onClick={() => scrollTo("diagnosis")}>Read the manifesto</button>
+                </div>
+                <div className="momentum">
+                  <span className="dot" />
+                  <span><b id="mvHeroCount">73</b> of 100 founding places claimed</span>
+                </div>
+                <div className="hero-foot">
+                  <div className="masthead" style={{ width: "100%" }}>
+                    <span className="seg">Issue 001</span>
+                    <span className="rule" />
+                    <span className="seg">Resonance Series</span>
+                    <span className="rule" />
+                    <span className="seg dim">Edition 2026</span>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 03 SCIENCE ── */}
-      <section className="relative overflow-hidden bg-[#070A0E] py-[clamp(80px,11vw,128px)] text-[#F7F4F0]">
-        <div className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: GRAIN, backgroundSize: "170px 170px" }} aria-hidden />
-        <div className={`relative ${WRAP}`}>
-          <Eyebrow num="03" tone="dark">Science, made human</Eyebrow>
-          <h2 className="my-5 font-serif italic font-normal text-[clamp(32px,4.4vw,58px)] text-[#F7F4F0]">Mechanism over marketing.</h2>
-          <div className="mt-[54px] grid gap-px border border-white/10 bg-white/10 md:grid-cols-3">
-            {[
-              ["01 · Cortisol", "The long-term project", "Cortisol tells the body to stop investing in long-term projects. Collagen synthesis is a long-term project. Under chronic load the system reads it as not now."],
-              ["02 · Microcurrent", "It mirrors the signal", "Microcurrent works because your face already runs on electricity. It does not override the signal. It mirrors it. That is why it works with the body over time, not against it."],
-              ["03 · Red light", "A process they know", "Red light at 630 to 660 nanometres does not add anything to your cells. It supports a process they already know. The mitochondria respond. The renewal cycle that slowed starts moving again."],
-            ].map(([num, h, p]) => (
-              <div key={num} className="bg-[#070A0E] px-8 py-[38px]">
-                <div className="mb-[22px] font-sans text-[11px] tracking-[0.2em] text-white/40">{num}</div>
-                <h3 className="mb-3.5 font-serif italic font-normal text-[23px] text-[#2ED8A8]">{h}</h3>
-                <p className="text-[14px] leading-[1.7] text-white/[0.66]">{p}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-[34px] max-w-[620px] text-xs leading-[1.6] text-white/40">We name mechanisms, not outcomes. This is education, not medical advice, and not a promise of any specific result.</p>
-        </div>
-      </section>
-
-      {/* ── 04 RITUAL ── */}
-      <section className="bg-[#F7F4F0] py-[clamp(80px,11vw,128px)] text-[#1A1714]">
-        <div className={`${WRAP} mx-auto max-w-[760px] text-center`}>
-          <div className="flex justify-center"><Eyebrow num="04">Ritual</Eyebrow></div>
-          <h2 className="my-5 font-serif italic font-normal text-[clamp(32px,4.4vw,58px)] leading-[1.05] text-[#1A1714]">Six minutes, before the world asks anything of you.</h2>
-          <p className="mx-auto max-w-[620px] text-[17px] leading-[1.75] text-[#1A1714]/[0.66]">The most radical thing you can do right now is be unreachable for six minutes while you bring your own system back online. Before the emails. Before the noise. Six minutes that belong to no one but you.</p>
-          <p className="mt-6 font-serif italic text-[24px] text-[#1A1714]">The ritual is the result.</p>
-        </div>
-      </section>
-
-      {/* ── THE LINE ── */}
-      <section className="relative overflow-hidden bg-[#1A1714] py-[clamp(96px,14vw,168px)] text-center">
-        <div className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: GRAIN, backgroundSize: "170px 170px" }} aria-hidden />
-        <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[min(72vw,740px)] -translate-x-1/2 -translate-y-1/2 text-[#2ED8A8]" aria-hidden>
-          <div className="mv-breathe h-full w-full" style={{ ["--bo" as string]: 0.055 }}>{FLOWER}</div>
-        </div>
-        <div className={`relative z-[2] ${WRAP}`}>
-          <p className="mb-[30px] font-sans text-[11px] tracking-[0.3em] uppercase text-[#C6A07C]">The line we live by</p>
-          <p className="font-serif italic font-normal text-[clamp(40px,7vw,104px)] leading-none text-[#F7F4F0]">The body remembers<br />its <span className="text-[#2ED8A8]">frequency.</span></p>
-        </div>
-      </section>
-
-      {/* ── 05 RESET (real email capture) ── */}
-      <section id="reset" className="bg-[#EDEAE6] py-[clamp(80px,11vw,128px)] text-[#1A1714]">
-        <div className={WRAP}>
-          <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-            <div>
-              <Eyebrow num="05" tone="brand">The Reset</Eyebrow>
-              <h2 className="my-5 font-serif italic font-normal text-[clamp(32px,4.4vw,58px)] text-[#1A1714]">Get the 6-Minute Reset.</h2>
-              <p className="max-w-[440px] text-[17px] leading-[1.75] text-[#1A1714]/[0.66]">A simple down-regulation practice you can run anywhere, plus one true finding each week on how your system actually works. This is the door into the movement.</p>
-            </div>
-            <div className="relative overflow-hidden rounded-[14px] border border-white/10 bg-[#1A1714] p-11">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(420px_circle_at_80%_0%,rgba(46,216,168,0.12),transparent_65%)]" />
-              <div className="relative z-[2]">
-                <Eyebrow tone="dark">Free · Arrives instantly</Eyebrow>
-                <h3 className="mb-6 mt-3.5 font-serif italic font-normal text-[30px] text-[#F7F4F0]">One reset. One truth per week.</h3>
-                <JoinForm source="movement-reset" cta="Send me the reset" />
+              <div className="hero-media">
+                <img src={edThreshold} alt="Bare feet stepping across a sunlit threshold" />
+                <div className="veil" />
+                <div className="scanwrap"><div className="scan" /></div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── 06 FOUNDING 100 (real checkout) ── */}
-      <section className="bg-[#1A1714] py-[clamp(80px,11vw,128px)] text-[#F7F4F0]">
-        <div className={WRAP}>
-          <Eyebrow num="06" tone="dark">Founding Circle</Eyebrow>
-          <h2 className="my-5 font-serif italic font-normal text-[clamp(32px,4.4vw,58px)] text-[#F7F4F0]">First one hundred.</h2>
-          <p className="max-w-[560px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">One hundred people start this together. You get the whole system, a guided month, and a rate that never comes back. Not a token. A real head start.</p>
-          <div className="mt-12 grid items-start gap-14 md:grid-cols-[1.15fr_0.85fr]">
-            <ul className="list-none">
-              {STACK.map(([title, body, val]) => (
-                <li key={title} className="flex justify-between gap-5 border-b border-white/10 py-[18px] first:border-t first:border-white/10">
-                  <div>
-                    <div className="text-[15px] text-[#F7F4F0]">{title}</div>
-                    <div className="mt-1.5 max-w-[380px] text-[13px] leading-[1.5] text-white/50">{body}</div>
-                  </div>
-                  <div className="whitespace-nowrap pt-0.5 font-sans text-[11px] tracking-[0.14em] uppercase text-[#C6A07C]">{val === "save" ? "founding price" : val === "—" ? "lands today" : `€${val} value`}</div>
-                </li>
-              ))}
+        {/* ── 01 DIAGNOSIS ── */}
+        <section className="sec sec-cream" id="diagnosis">
+          <div className="bignum">01</div>
+          <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
+            <div className="diag">
+              <div className="reveal">
+                <p className="eyebrow meta-eyebrow"><span className="num">01</span><span className="tick" /> Diagnosis</p>
+                <h2 className="serif tight" style={{ marginTop: 18 }}>Notice your breath.<br />Right now.</h2>
+                <p className="lede-dark" style={{ marginTop: 28 }}>Most people reading this are holding their breath. Shallow. Frozen. A body braced against a screen that never stops asking for more.</p>
+                <p className="lede-dark">Modern life is an interference engine. It keeps your nervous system switched on when it was built to switch off. You feel it before you can name it. The shallow breath at the desk. The sleep that does not restore. The training that stops working. The face that looks tired after a full night.</p>
+                <p className="kicker serif">This is not who you are. It is what the noise does to you.</p>
+              </div>
+              <div className="diag-img reveal"><img src={edSeatedCalm} alt="A moment of stillness" /></div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 02 REFRAME ── */}
+        <section className="sec sec-fog">
+          <div className="bignum">02</div>
+          <div className="wrap reveal" style={{ position: "relative", zIndex: 1 }}>
+            <p className="eyebrow meta-eyebrow"><span className="num">02</span><span className="tick" /> Reframe</p>
+            <h2 className="serif" style={{ maxWidth: "18ch" }}>One nerve is a gadget. The whole system is a practice.</h2>
+            <p className="lede-dark" style={{ maxWidth: 620 }}>The market sells you a single nerve, a single fix, a single mode. Regulation does not work that way. The body is one connected system. Calm the signal, then feed the tissue. That is the whole point.</p>
+            <div className="triad">
+              <div className="tcard"><div className="tnum">i</div><div><h3>Sports</h3><p>Recovery is a nervous-system event before it is a muscle event.</p></div></div>
+              <div className="tcard"><div className="tnum">ii</div><div><h3>Stress</h3><p>A system that never down-regulates never fully repairs.</p></div></div>
+              <div className="tcard"><div className="tnum">iii</div><div><h3>Skin</h3><p>The face keeps the score. Tension and cortisol show up there first.</p></div></div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 03 SCIENCE ── */}
+        <section className="sec sec-clinical">
+          <div className="bignum on">03</div>
+          <div className="grain" />
+          <div className="wrap reveal" style={{ position: "relative", zIndex: 2 }}>
+            <p className="eyebrow ondark-eyebrow"><span className="num">03</span><span className="tick" /> Science, made human</p>
+            <h2 className="serif" style={{ color: "var(--zp-cream)" }}>Mechanism over marketing.</h2>
+            <div className="mech">
+              <div className="mcard"><div className="mnum">01 · Cortisol</div><h3>The long-term project</h3><p>Cortisol tells the body to stop investing in long-term projects. Collagen synthesis is a long-term project. Under chronic load the system reads it as not now.</p></div>
+              <div className="mcard"><div className="mnum">02 · Microcurrent</div><h3>It mirrors the signal</h3><p>Microcurrent works because your face already runs on electricity. It does not override the signal. It mirrors it. That is why it works with the body over time, not against it.</p></div>
+              <div className="mcard"><div className="mnum">03 · Red light</div><h3>A process they know</h3><p>Red light at 630 to 660 nanometres does not add anything to your cells. It supports a process they already know. The mitochondria respond. The renewal cycle that slowed starts moving again.</p></div>
+            </div>
+            <p className="disclaimer">We name mechanisms, not outcomes. This is education, not medical advice, and not a promise of any specific result.</p>
+          </div>
+        </section>
+
+        {/* ── 04 RITUAL ── */}
+        <section className="sec sec-cream">
+          <div className="bignum">04</div>
+          <div className="wrap reveal" style={{ textAlign: "center", maxWidth: 760, position: "relative", zIndex: 1 }}>
+            <p className="eyebrow meta-eyebrow" style={{ justifyContent: "center" }}><span className="num">04</span><span className="tick" /> Ritual</p>
+            <h2 className="serif" style={{ marginBottom: 18 }}>Six minutes, before the world asks anything of you.</h2>
+            <p className="lede-dark" style={{ margin: "0 auto 8px" }}>The most radical thing you can do right now is be unreachable for six minutes while you bring your own system back online. Before the emails. Before the noise. Six minutes that belong to no one but you.</p>
+            <p className="kicker serif" style={{ fontSize: 24, marginTop: 24 }}>The ritual is the result.</p>
+          </div>
+        </section>
+
+        {/* ── THE LINE ── */}
+        <section className="line-band sec-dark">
+          <div className="bloom line-bloom" />
+          <div className="grain" />
+          <div className="flower-wm line-flower" aria-hidden><div className="breathe">{FLOWER}</div></div>
+          <div className="wrap" style={{ position: "relative", zIndex: 2 }}>
+            <p className="lbl">The line we live by</p>
+            <p className="display big">The body remembers<br />its <span className="accent">frequency.</span></p>
+          </div>
+          <div className="scanwrap"><div className="scan" style={{ animationDelay: "4s" }} /></div>
+        </section>
+
+        {/* ── 05 RESET (real email capture) ── */}
+        <section className="sec sec-fog" id="reset">
+          <div className="wrap">
+            <div className="reset">
+              <div className="reveal">
+                <p className="eyebrow brand-eyebrow"><span className="num">05</span><span className="tick" /> The Reset</p>
+                <h2 className="serif" style={{ color: "var(--zp-ink)" }}>Get the 6-Minute Reset.</h2>
+                <p className="lede-dark" style={{ maxWidth: 440 }}>A simple down-regulation practice you can run anywhere, plus one true finding each week on how your system actually works. This is the door into the movement.</p>
+              </div>
+              <div className="reset-card reveal">
+                <div className="glow" />
+                <p className="eyebrow ondark-eyebrow" style={{ position: "relative", zIndex: 2 }}>Free · Arrives instantly</p>
+                <h3 className="serif" style={{ fontSize: 30, color: "var(--zp-cream)", margin: "14px 0 0", position: "relative", zIndex: 2 }}>One reset. One truth per&nbsp;week.</h3>
+                <form className="field-row" onSubmit={handleReset}>
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@domain.com" aria-label="Email address" required />
+                  <button type="submit" className="pill pill-action" disabled={submitting}>{submitting ? "Sending" : "Send me the reset"}</button>
+                </form>
+                <p className="microcopy">{micro}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 06 FOUNDING 100 (real checkout) ── */}
+        <section className="sec sec-dark" id="join">
+          <div className="bignum on">06</div>
+          <div className="wrap reveal" style={{ position: "relative", zIndex: 1 }}>
+            <p className="eyebrow ondark-eyebrow"><span className="num">06</span><span className="tick" /> Founding Circle</p>
+            <h2 className="serif" style={{ color: "var(--zp-cream)" }}>First one hundred.</h2>
+            <p className="lede" style={{ maxWidth: 560 }}>One hundred people start this together. You get the whole system, a guided month, and a rate that never comes back. Not a token. A real head start.</p>
+
+            <div className="offer" style={{ marginTop: 48 }}>
+              <div>
+                <ul className="stack">
+                  {STACK.map((s) => (
+                    <li key={s.main}>
+                      <div><div className="si-main">{s.main}</div><div className="si-sub">{s.sub}</div></div>
+                      <div className="si-val">{s.val}</div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <aside className="offer-side">
+                <p className="ov-val">Over €285 in value</p>
+                <p className="ov-price">€29</p>
+                <p className="ov-note">once · founding rate</p>
+                <button className="pill pill-action" onClick={handleDeposit} disabled={depositLoading}>{depositLoading ? "Opening" : "Claim your founding place"}</button>
+                <button className="pill pill-ghost-light" onClick={() => scrollTo("reset")}>Just send the reset first</button>
+                <p className="guarantee">The 30-Day Reset Guarantee. Run it. If your system does not feel more your own, full refund and you keep the protocol. <a href="/founding-terms">Founding terms</a>.</p>
+                {depositMsg && <p className="ov-note" style={{ marginTop: 14, marginBottom: 0 }}>{depositMsg}</p>}
+              </aside>
+            </div>
+
+            <div className="wall reveal">
+              <div className="wall-head">
+                <h3>The Founding 100.</h3>
+                <div className="wall-count"><span id="mvWallCount">73</span><small> / 100 claimed</small></div>
+              </div>
+              <div className="bar"><i id="mvWallBar" style={{ width: "73%" }} /></div>
+              <div className="joiners">
+                <div className="avatars"><span>M</span><span>A</span><span>J</span><span>S</span></div>
+                <span className="jtext">Mara, Anke, Jonas and 70 others have taken their place. <b>27 places remain.</b></span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── CLOSING MANIFESTO ── */}
+        <section className="sec sec-cream">
+          <div className="wrap closing reveal">
+            <p className="eyebrow gold-eyebrow" style={{ justifyContent: "center" }}><span className="tick" /> The standard <span className="tick" /></p>
+            <h2 className="serif">You are allowed to take your morning seriously.</h2>
+            <p className="lede-dark">To build something that is only for you. We are the people taking the controls back, six minutes at a time. Truth over hype. Mechanism over marketing.</p>
+            <button className="pill pill-action" onClick={() => scrollTo("reset")}>Reclaim your frequency</button>
+            <div className="share">
+              <span className="slbl">Bring someone in</span>
+              <button onClick={() => shareMovement("x")}>Share on X</button>
+              <button onClick={() => shareMovement("copy")}>{copyLabel}</button>
+            </div>
+          </div>
+        </section>
+
+        {/* ── THANK-YOU OVERLAY ── */}
+        <div className={`mv-ty${tyOpen ? " open" : ""}`} role="dialog" aria-modal="true" onClick={(e) => { if (e.target === e.currentTarget) setTyOpen(false); }}>
+          <div className="ty-card">
+            <div className="glow" />
+            <button className="ty-close" aria-label="Close" onClick={() => setTyOpen(false)}>&times;</button>
+            <div className="ty-mark">{FLOWER}</div>
+            <p className="eyebrow"><span className="tick" /> You are in · The Movement <span className="tick" /></p>
+            <h2>Your reset is on its way.</h2>
+            <p className="ty-to">Sent to <b>{tyEmail}</b></p>
+            <ul className="ty-steps">
+              <li><span className="sn">1</span><span className="st"><b>Open the email.</b> Your 6-Minute Reset is inside, ready to run tonight.</span></li>
+              <li><span className="sn">2</span><span className="st"><b>Run it tomorrow morning.</b> Before the emails. Before the noise. Six minutes that belong to no one but you.</span></li>
+              <li><span className="sn">3</span><span className="st"><b>One truth each week.</b> A single, true finding on how your system actually works. No noise.</span></li>
             </ul>
-            <aside className="rounded-[14px] bg-[#F7F4F0] p-10 text-[#1A1714] md:sticky md:top-[88px]">
-              <p className="font-sans text-[11px] tracking-[0.16em] uppercase text-[#6B5A4A]">Over €285 in value</p>
-              <p className="my-1.5 font-serif italic text-[64px] leading-none text-[#1A1714]">€29</p>
-              <p className="mb-6 text-[13px] text-[#1A1714]/60">once · founding rate</p>
-              <button type="button" onClick={handleDeposit} disabled={depositLoading} className="cta-pill mb-3 w-full justify-center">{depositLoading ? "Opening" : "Claim your founding place"}</button>
-              <a href="#reset" className="ghost-pill w-full justify-center">Just send the reset first</a>
-              <p className="mt-[18px] border-t border-[rgba(26,23,20,0.12)] pt-[18px] text-xs leading-[1.6] text-[#1A1714]/60">The 30-Day Reset Guarantee. Run it. If your system does not feel more your own, full refund and you keep the protocol. <a href="/founding-terms" className="underline hover:text-[#1A1714]">Founding terms</a>.</p>
-              {depositMsg && <p className="mt-3 text-sm text-[#1A1714]/70">{depositMsg}</p>}
-            </aside>
+            <p className="ty-upsell">Want the whole system? <a onClick={() => { setTyOpen(false); scrollTo("join"); }}>27 founding places remain &rarr;</a></p>
           </div>
         </div>
-      </section>
-
-      {/* ── FOUNDING WALL — live proof ── */}
-      <FoundingWall />
-
-      {/* ── CLOSING ── */}
-      <section className="bg-[#F7F4F0] py-[clamp(80px,11vw,128px)] text-[#1A1714]">
-        <div className={`${WRAP} mx-auto max-w-[760px] text-center`}>
-          <div className="flex justify-center"><Eyebrow tone="gold">The standard</Eyebrow></div>
-          <h2 className="mx-auto my-6 max-w-[14ch] font-serif italic font-normal text-[clamp(34px,5vw,68px)] leading-[1.1] text-[#1A1714]">You are allowed to take your morning seriously.</h2>
-          <p className="mx-auto mb-9 max-w-[560px] text-[17px] leading-[1.75] text-[#1A1714]/[0.66]">To build something that is only for you. We are the people taking the controls back, six minutes at a time. Truth over hype. Mechanism over marketing.</p>
-          <div className="flex justify-center [&_input]:border-[rgba(26,23,20,0.15)] [&_input]:bg-white [&_input]:text-[#1A1714] [&_input]:placeholder:text-[#1A1714]/40 [&_p]:text-[#1A1714]/50">
-            <JoinForm source="movement-close" cta="Reclaim your frequency" />
-          </div>
-        </div>
-      </section>
+      </div>
     </PageShell>
   );
-};
-
-export default TruthMovement;
+}
