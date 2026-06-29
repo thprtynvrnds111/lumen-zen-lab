@@ -14,9 +14,9 @@ import heroBelt from "@/assets/hero-redlight-belt.webp";
 import heroMat from "@/assets/hero-restore-mat.webp";
 import edWakingHand from "@/assets/editorial/waking-hand.webp";
 import edThreeVessels from "@/assets/editorial/three-vessels.webp";
-import edWalkStone from "@/assets/editorial/walk-stone.webp";
 import edSeatedCalm from "@/assets/editorial/seated-calm.webp";
 import edThreshold from "@/assets/editorial/threshold.webp";
+import edBeltWorn from "@/assets/editorial/belt-worn.webp";
 
 /**
  * /instruments/:slug — full editorial product landing pages, ported from the
@@ -162,8 +162,8 @@ const CONFIGS: Record<string, InstrumentConfig> = {
         "The Restoration Belt puts a panel of red and near-infrared light directly on the muscle and holds it there with a thermal wrap, so the dose lands where the load was. You read, you cook, you keep moving. The instrument works underneath.",
       ],
       kicker: "Put the light where the work was.",
-      img: edWalkStone,
-      imgAlt: "Calm movement in warm light",
+      img: edBeltWorn,
+      imgAlt: "The Restoration Belt worn at the lower back, red light glowing through the thermal wrap",
     },
     mech: {
       h2: "Penetrate. Circulate. Recover.",
