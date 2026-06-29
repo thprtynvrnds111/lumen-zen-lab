@@ -31,6 +31,7 @@ const ssrDir    = join(root, '.ssr');
 // ─── All routes to prerender ──────────────────────────────────────────────────
 const ROUTES = [
   '/',
+  '/movement',
   '/journal',
   '/journal/frequency-shift',
   '/journal/microcurrent-collagen',
