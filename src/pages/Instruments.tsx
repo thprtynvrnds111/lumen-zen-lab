@@ -43,8 +43,8 @@ const INSTRUMENTS: Instrument[] = [
     price: "€280",
     to: "/instruments/restoration-belt",
     img: heroBelt,
-    alt: "The Restoration Belt worn across the lower back, red light through the array",
-    imgPos: "50% 64%",
+    alt: "A man at home wearing the Restoration Belt at his waist, red light glowing from the array",
+    imgPos: "50% 90%",
   },
   {
     protocol: "Protocol 03",

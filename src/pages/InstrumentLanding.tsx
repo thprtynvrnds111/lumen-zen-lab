@@ -201,7 +201,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     slug: "restoration-mat",
     num: "03",
     name: "The Restoration Mat",
-    handle: "household-red-light-charging-vibrating-red-light-therapy-mat",
+    handle: "portable-home-use-charging-red-light-therapy-blanket-far-infrared",
     price: "€220",
     priceAnchor: "A single infrared-sauna session is about €40. The Mat is €220, once, and it lives under your bed.",
     seoTitle: "The Restoration Mat · The whole system, laid down | Zential Pure",
