@@ -44,7 +44,7 @@ const INSTRUMENTS: Instrument[] = [
     to: "/instruments/restoration-belt",
     img: heroBelt,
     alt: "The Restoration Belt worn across the lower back, red light through the array",
-    imgPos: "50% 64%",
+    imgPos: "50% 78%",
   },
   {
     protocol: "Protocol 03",
