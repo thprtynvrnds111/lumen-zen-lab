@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { PageShell } from "@/components/zential/v2/PageShell";
 import { SystemBundle } from "@/components/zential/SystemBundle";
 import heroFace from "@/assets/hero-neck-device.webp";
-import heroBelt from "@/assets/instruments-belt-back.webp";
+import heroBelt from "@/assets/storefront-belt-woman.png";
 import heroMat from "@/assets/hero-restore-mat.webp";
 
 /**

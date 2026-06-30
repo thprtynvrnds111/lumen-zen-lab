@@ -8,7 +8,50 @@
  *
  * Required Vercel env vars:
  *   - SHOPIFY_ADMIN_TOKEN  (Admin API token with write_customers + read_customers)
+ *   - KLAVIYO_API_KEY      (private pk_… key — fires the lead-magnet flow trigger)
  */
+
+/**
+ * Fire a Klaviyo "Requested Face Protocol" event so a metric-triggered flow
+ * sends the 10-Minute Face Protocol email immediately. Deterministic trigger —
+ * does not depend on Shopify→Klaviyo sync. Non-fatal: never blocks signup.
+ */
+async function fireKlaviyoEvent(email: string, source: string): Promise<void> {
+  const key = process.env.KLAVIYO_API_KEY;
+  if (!key) {
+    console.warn('[newsletter] KLAVIYO_API_KEY missing — skipping flow trigger event');
+    return;
+  }
+  try {
+    const resp = await fetch('https://a.klaviyo.com/api/events/', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Klaviyo-API-Key ${key}`,
+        'revision': '2024-10-15',
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          type: 'event',
+          attributes: {
+            properties: { source: source || 'unknown' },
+            metric: { data: { type: 'metric', attributes: { name: 'Requested Face Protocol' } } },
+            profile: { data: { type: 'profile', attributes: { email } } },
+          },
+        },
+      }),
+    });
+    if (!resp.ok) {
+      console.error(`[newsletter] klaviyo event failed status=${resp.status}`);
+    } else {
+      console.log(`[newsletter] klaviyo event fired email=${email}`);
+    }
+  } catch (err: any) {
+    console.error('[newsletter] klaviyo event threw', err?.message ?? err);
+  }
+}
+
 export default async function handler(req: any, res: any) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -32,6 +75,9 @@ export default async function handler(req: any, res: any) {
       console.error('[newsletter] SHOPIFY_ADMIN_TOKEN env var is missing');
       return res.status(500).json({ error: 'Server is not configured' });
     }
+
+    // Fire the lead-magnet flow trigger first — independent of Shopify success.
+    await fireKlaviyoEvent(email, source);
 
     const shopBase = 'https://0d1m9a-w7.myshopify.com/admin/api/2024-01';
     const tags = source ? `newsletter, source-${source.replace(/[^a-z0-9-]/g, '-')}` : 'newsletter';

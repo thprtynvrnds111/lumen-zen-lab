@@ -4,7 +4,7 @@ import { PageShell } from "@/components/zential/v2/PageShell";
 import { fetchProductByHandle } from "@/lib/shopify";
 
 import heroFace from "@/assets/hero-neck-device.webp";
-import heroBelt from "@/assets/hero-redlight-belt.webp";
+import heroBelt from "@/assets/storefront-belt-woman.png";
 import heroMat from "@/assets/hero-restore-mat.webp";
 import edThreshold from "@/assets/editorial/threshold.webp";
 import edBrandStory from "@/assets/editorial/morning-mug.webp";
@@ -33,7 +33,7 @@ interface Instrument { slug: string; title: string; desc: string; price: number;
 const INSTRUMENTS: Instrument[] = [
   { slug: "face-introducer", title: "The Face Introducer", desc: "Four modalities for face and neck, in a twelve-minute ritual.", price: 88, handle: "lifting-and-tightening-face-introducer", img: heroFace },
   { slug: "restoration-belt", title: "The Restoration Belt", desc: "660nm and 850nm light, pressed to the muscle by a thermal wrap.", price: 280, handle: "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device", img: heroBelt },
-  { slug: "restoration-mat", title: "The Restoration Mat", desc: "A full-body bed of 660nm red light and far-infrared heat. You lie down; the array works.", price: 220, handle: "household-red-light-charging-vibrating-red-light-therapy-mat", img: heroMat },
+  { slug: "restoration-mat", title: "The Restoration Mat", desc: "A full-body bed of 660nm red light and far-infrared heat. You lie down; the array works.", price: 220, handle: "portable-home-use-charging-red-light-therapy-blanket-far-infrared", img: heroMat },
 ];
 
 // Cosmetic LED carries NO mechanism/nm/clinic claim (modality-naming-standard.md);
