@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { PageShell } from "@/components/zential/v2/PageShell";
 import { SystemBundle } from "@/components/zential/SystemBundle";
-import { RecoverySystem } from "@/components/zential/RecoverySystem";
 import heroFace from "@/assets/hero-neck-device.webp";
 import heroBelt from "@/assets/instruments-belt-back.webp";
 import heroMat from "@/assets/hero-restore-mat.webp";
@@ -142,7 +141,6 @@ export default function Instruments() {
       </section>
 
       <SystemBundle />
-      <RecoverySystem />
     </PageShell>
   );
 }
