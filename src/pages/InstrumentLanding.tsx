@@ -10,13 +10,13 @@ import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
 
 import heroFace from "@/assets/hero-neck-device.webp";
-import heroBelt from "@/assets/storefront-belt-woman.png";
+import heroBelt from "@/assets/belt-pdp-hero.png";
 import heroMat from "@/assets/hero-restore-mat.webp";
 import edWakingHand from "@/assets/editorial/waking-hand.webp";
 import edThreeVessels from "@/assets/editorial/three-vessels.webp";
 import edSeatedCalm from "@/assets/editorial/seated-calm.webp";
 import edThreshold from "@/assets/editorial/threshold.webp";
-import edBeltWorn from "@/assets/editorial/belt-worn.webp";
+import edBeltWorn from "@/assets/belt-who.png";
 
 /**
  * /instruments/:slug — full editorial product landing pages, ported from the
