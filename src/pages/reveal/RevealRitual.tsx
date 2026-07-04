@@ -238,8 +238,7 @@ const css = `
   background: var(--dark);
   color: var(--cream);
   font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
-  overscroll-behavior: none;
+  overflow-x: clip;
   touch-action: manipulation;
   -webkit-font-smoothing: antialiased;
 }
@@ -671,12 +670,13 @@ const css = `
 
 /* ── desktop ────────────────────────────────────────────────── */
 @media (min-width: 768px) {
-  .zr-header { padding-top: 64px; }
+  .zr-header { padding-top: 36px; }
   .zr-headline { font-size: 44px; }
-  .zr-card { width: 184px; top: 210px; }
+  .zr-card { width: 184px; top: 190px; }
   /* taller card, taller header — rise less so the headline keeps its air */
-  .zr-card.is-chosen { transform: translate(-50%, -82%) rotate(0deg) scale(0.78); }
-  .zr-gifts { width: 400px; margin-top: 248px; }
+  .zr-card.is-chosen { transform: translate(-50%, -86%) rotate(0deg) scale(0.68); }
+  .zr-gifts { width: 400px; margin-top: 196px; }
+  .zr-footer { padding-bottom: 20px; }
 }
 
 /* ── homepage takeover chrome ───────────────────────────────── */
