@@ -144,7 +144,10 @@ export default function Reveal() {
           {GIFTS.map((g) => (
             <div className="zr-gift" key={g.num} style={{ opacity: 1, animation: "none" }}>
               <span className="zr-gift-num">{g.num}</span>
-              <span className="zr-gift-title">{g.title}</span>
+              <span className="zr-gift-body">
+                <span className="zr-gift-title">{g.title}</span>
+                <span className="zr-gift-detail">{g.detail}</span>
+              </span>
             </div>
           ))}
           <a className="zr-cta" href={CTA_HREF} style={{ marginTop: "16px" }}>
@@ -197,7 +200,10 @@ export default function Reveal() {
                 style={{ animationDelay: `${i * TIMING.giftStagger}ms` }}
               >
                 <span className="zr-gift-num">{g.num}</span>
-                <span className="zr-gift-title">{g.title}</span>
+                <span className="zr-gift-body">
+                  <span className="zr-gift-title">{g.title}</span>
+                  <span className="zr-gift-detail">{g.detail}</span>
+                </span>
               </div>
             ))}
 
@@ -363,7 +369,7 @@ const css = `
 }
 .zr-card {
   position: absolute;
-  left: 50%; top: 38%;
+  left: 50%; top: 190px;
   width: min(37vw, 160px);
   aspect-ratio: 2 / 3;
   padding: 0; border: 0; background: none; cursor: pointer;
@@ -522,12 +528,12 @@ const css = `
 
 /* ── gifts ──────────────────────────────────────────────────── */
 .zr-gifts {
-  position: absolute;
-  left: 50%; top: 40%;
-  transform: translateX(-50%);
-  width: min(86vw, 360px);
+  position: relative; z-index: 4;
+  margin: 168px auto 0;
+  width: min(88vw, 368px);
   display: flex; flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+  padding-bottom: 24px;
 }
 .zr-gifts-lead {
   margin: 0 0 4px;
@@ -539,13 +545,19 @@ const css = `
 }
 .zr-gift {
   display: flex; align-items: center; gap: 16px;
-  padding: 16px 20px;
+  padding: 12px 16px;
   border: 1px solid rgba(198,160,124,0.35);
   border-left: 2px solid var(--terra);
   border-radius: 4px;
   background: rgba(247,244,240,0.03);
   opacity: 0;
   animation: zr-gift-in ${TIMING.giftDur}ms cubic-bezier(0,0,.2,1) both;
+}
+.zr-gift-body { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+.zr-gift-detail {
+  font-size: 11px;
+  line-height: 1.45;
+  color: rgba(247,244,240,0.5);
 }
 @keyframes zr-gift-in {
   from { opacity: 0; transform: translateY(14px) scale(0.98); }
@@ -674,6 +686,16 @@ const css = `
 .zr-page.is-restored .zr-cta-wrap { opacity: 1 !important; }
 .zr-page.is-restored .zr-draw ellipse { stroke-dashoffset: 0; fill-opacity: 0.05; }
 .zr-page.is-restored .zr-draw circle { opacity: 1; }
+
+/* ── short screens — the ritual compresses, nothing is lost ── */
+@media (max-height: 700px) {
+  .zr-header { padding-top: 24px; }
+  .zr-brand { margin-bottom: 12px; }
+  .zr-card { top: 150px; }
+  .zr-card.is-chosen { transform: translate(-50%, -116%) rotate(0deg) scale(0.72); }
+  .zr-gifts { margin-top: 116px; }
+  .zr-stage { min-height: 420px; }
+}
 
 /* ── desktop ────────────────────────────────────────────────── */
 @media (min-width: 768px) {
