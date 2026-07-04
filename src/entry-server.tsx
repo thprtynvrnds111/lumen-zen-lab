@@ -60,6 +60,7 @@ const Instruments      = lazy(() => import("./pages/Instruments"));
 const InstrumentLanding = lazy(() => import("./pages/InstrumentLanding"));
 const TruthMovement    = lazy(() => import("./pages/TruthMovement"));
 const Storefront        = lazy(() => import("./pages/Storefront"));
+const Reveal            = lazy(() => import("./pages/reveal/Reveal"));
 
 function ServerApp() {
   return (
@@ -112,6 +113,7 @@ function ServerApp() {
         <Route path="/quiz"                                     element={<Quiz />} />
         <Route path="/quiz/result"                              element={<QuizResult />} />
         <Route path="/founding-terms"                           element={<FoundingTerms />} />
+        <Route path="/reveal"                                   element={<Reveal />} />
         <Route path="/dashboard"                                element={<Dashboard />} />
         <Route path="*"                                         element={<NotFound />} />
       </Routes>

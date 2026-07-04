@@ -73,6 +73,7 @@ const ROUTES = [
   '/clinic-vs-home-facial-device',
   '/facial-muscle-training',
   // Funnel pages
+  '/reveal',
   '/quiz',
   '/quiz/result',
   '/thank-you',
