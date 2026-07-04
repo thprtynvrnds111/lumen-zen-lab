@@ -3,19 +3,19 @@ import { useLocation } from "react-router-dom";
 import { RevealRitual } from "./RevealRitual";
 
 /**
- * Homepage takeover — opens the reveal ritual over zentialpure.com.
+ * Homepage takeover — opens the reveal ritual over zentialpure.com,
+ * for PAID traffic only.
  *
  * Rules:
- * - homepage ("/") only
- * - waits 6s for organic landings, 2.5s when the visit carries ad markers
- *   (fbclid / utm) — those visitors came for the offer
+ * - homepage ("/") only, and only when the visit carries ad markers
+ *   (fbclid / utm) — organic visitors never see it, so search landings
+ *   carry no interstitial and the Klaviyo popup owns the organic funnel
  * - once per session: never reopens after a dismissal, never shows again
  *   once a card has been chosen (the /reveal page shares the same key)
  */
 
 const DISMISS_KEY = "zp-reveal-dismissed";
 const CHOSEN_KEY = "zp-reveal-chosen";
-const DELAY_ORGANIC = 6000;
 const DELAY_AD = 2500;
 
 export default function RevealTakeover() {
@@ -33,7 +33,8 @@ export default function RevealTakeover() {
     const params = new URLSearchParams(window.location.search);
     const fromAd =
       params.has("fbclid") || params.has("utm_source") || params.has("utm_campaign");
-    const t = window.setTimeout(() => setOpen(true), fromAd ? DELAY_AD : DELAY_ORGANIC);
+    if (!fromAd) return; // organic homepage stays interstitial free
+    const t = window.setTimeout(() => setOpen(true), DELAY_AD);
     return () => window.clearTimeout(t);
   }, [pathname, open]);
 
