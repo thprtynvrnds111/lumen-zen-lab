@@ -31,4 +31,16 @@ describe("ZenMascot", () => {
     const svg = screen.getByRole("img");
     expect(svg).toHaveAttribute("width", "96");
   });
+
+  it("carries the animation class by default and drops it when animated=false", () => {
+    const { rerender } = render(<ZenMascot />);
+    expect(screen.getByRole("img").classList.contains("zen-animated")).toBe(true);
+    rerender(<ZenMascot animated={false} />);
+    expect(screen.getByRole("img").classList.contains("zen-animated")).toBe(false);
+  });
+
+  it("adds the tilt class only when tilt=true", () => {
+    render(<ZenMascot tilt />);
+    expect(screen.getByRole("img").classList.contains("zen-tilt")).toBe(true);
+  });
 });

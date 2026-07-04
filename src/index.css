@@ -323,4 +323,55 @@
   .word-reveal.revealed span {
     animation: word-in 0.4s ease-out forwards;
   }
+
+  /* ---- Zen mascot (see zential-agent-engine/knowledge/brand/mascot-zen.md) ---- */
+  @keyframes zen-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+  }
+  @keyframes zen-halo-drift {
+    0%, 100% { transform: rotate(-12deg) translateY(0); }
+    50% { transform: rotate(-7deg) translateY(-4px); }
+  }
+  @keyframes zen-blink {
+    0%, 91%, 100% { transform: scaleY(1); }
+    94% { transform: scaleY(0.12); }
+  }
+  @keyframes zen-shadow-breathe {
+    0%, 100% { transform: scaleX(1); opacity: 0.08; }
+    50% { transform: scaleX(0.88); opacity: 0.05; }
+  }
+
+  .zen-animated .zen-body,
+  .zen-animated .zen-halo,
+  .zen-animated .zen-eyes,
+  .zen-animated .zen-shadow {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .zen-animated .zen-body { animation: zen-float 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .zen-animated .zen-halo { animation: zen-halo-drift 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .zen-animated .zen-eyes { animation: zen-blink 6s linear infinite; }
+  .zen-animated .zen-shadow { animation: zen-shadow-breathe 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+
+  .zen-tilt {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .zen-tilt:hover {
+    transform: rotate3d(1, -1, 0, 10deg) scale(1.03);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .zen-animated .zen-body,
+    .zen-animated .zen-halo,
+    .zen-animated .zen-eyes,
+    .zen-animated .zen-shadow {
+      animation: none;
+    }
+    .zen-tilt,
+    .zen-tilt:hover {
+      transition: none;
+      transform: none;
+    }
+  }
 }
