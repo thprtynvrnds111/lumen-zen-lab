@@ -15,13 +15,23 @@ function FlowerMark({
   size,
   stroke,
   strokeWidth = 1.25,
+  draw = false,
 }: {
   size: number;
   stroke: string;
   strokeWidth?: number;
+  /** true = petals draw themselves in when the card is chosen */
+  draw?: boolean;
 }) {
   return (
-    <svg viewBox="0 0 64 64" width={size} height={size} fill="none" aria-hidden="true">
+    <svg
+      viewBox="0 0 64 64"
+      width={size}
+      height={size}
+      fill="none"
+      className={draw ? "zr-draw" : undefined}
+      aria-hidden="true"
+    >
       {[0, 45, 90, 135].map((a) => (
         <ellipse
           key={a}
@@ -29,6 +39,7 @@ function FlowerMark({
           cy="32"
           rx="20"
           ry="12"
+          pathLength={100}
           stroke={stroke}
           strokeWidth={strokeWidth}
           fill={stroke}
@@ -41,12 +52,33 @@ function FlowerMark({
   );
 }
 
+function vibrate(pattern: number | number[]) {
+  try {
+    if (typeof navigator !== "undefined" && "vibrate" in navigator) {
+      navigator.vibrate(pattern);
+    }
+  } catch {
+    /* haptics are a garnish, never a dependency */
+  }
+}
+
 export default function Reveal() {
   const { phase, chosen, ctaReady, restored, choose } = useRevealRitual((i) => {
     ga4Event("card_selected", { card_index: i });
     pixelRevealEngaged();
+    vibrate(12);
   });
   const giftsEventFired = useRef(false);
+
+  // reward haptics — one soft tick as each gift lands, one as the CTA arrives
+  useEffect(() => {
+    if (phase === "gifts" && !restored) {
+      vibrate([10, TIMING.giftStagger - 10, 10, TIMING.giftStagger - 10, 10]);
+    }
+  }, [phase, restored]);
+  useEffect(() => {
+    if (ctaReady && !restored) vibrate(18);
+  }, [ctaReady, restored]);
 
   useEffect(() => {
     ga4Event("reveal_page_view");
@@ -69,7 +101,7 @@ export default function Reveal() {
   }, [ctaReady, restored]);
 
   return (
-    <div className={`zr-page ${restored ? "is-restored" : ""}`}>
+    <div className={`zr-page ${restored ? "is-restored" : ""} ${phase === "flip" ? "is-focus" : ""}`}>
       <Helmet>
         <title>{COPY.title}</title>
         <meta name="robots" content="noindex, nofollow" />
@@ -85,7 +117,10 @@ export default function Reveal() {
       <div className="zr-grain" aria-hidden="true" />
 
       <header className="zr-header">
-        <p className="zr-eyebrow">{COPY.eyebrow}</p>
+        <div className="zr-brand">
+          <FlowerMark size={22} stroke="#C6A07C" strokeWidth={2} />
+          <p className="zr-eyebrow">{COPY.eyebrow}</p>
+        </div>
         <div className="zr-headline-wrap">
           <h1 className={`zr-headline ${phase === "idle" ? "is-in" : "is-out"}`}>
             {COPY.headline1}
@@ -141,7 +176,8 @@ export default function Reveal() {
                       <span className="zr-face-wordmark">ZP</span>
                     </span>
                     <span className="zr-face zr-face--front">
-                      <FlowerMark size={72} stroke="#2ED8A8" strokeWidth={1.5} />
+                      <FlowerMark size={72} stroke="#2ED8A8" strokeWidth={1.5} draw />
+                      <span className="zr-face-tagline">{COPY.cardFrontLine}</span>
                     </span>
                   </span>
                 </span>
@@ -153,6 +189,7 @@ export default function Reveal() {
         {/* the gift stack */}
         {phase === "gifts" && (
           <div className="zr-gifts" role="status">
+            <p className="zr-gifts-lead">{COPY.subAfter}</p>
             {GIFTS.map((g, i) => (
               <div
                 className="zr-gift"
@@ -174,6 +211,7 @@ export default function Reveal() {
                   {COPY.cta}
                 </a>
                 <p className="zr-cta-note">{COPY.ctaNote}</p>
+                <p className="zr-cta-tagline">{COPY.footerAfter}</p>
               </div>
             )}
           </div>
@@ -249,7 +287,7 @@ const css = `
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-.zr-eyebrow   { animation: zr-rise 600ms cubic-bezier(0,0,.2,1) backwards; }
+.zr-brand     { animation: zr-rise 600ms cubic-bezier(0,0,.2,1) backwards; }
 .zr-headline  { animation: zr-rise 600ms cubic-bezier(0,0,.2,1) 120ms backwards; }
 .zr-sub       { animation: zr-rise 600ms cubic-bezier(0,0,.2,1) 260ms backwards; }
 .zr-foot-line { animation: zr-rise 600ms cubic-bezier(0,0,.2,1) 900ms backwards; }
@@ -261,8 +299,13 @@ const css = `
   padding: 40px 24px 0;
   text-align: center;
 }
+.zr-brand {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
 .zr-eyebrow {
-  margin: 0 0 20px;
+  margin: 0;
   font-family: 'DM Sans', sans-serif;
   font-weight: 300;
   font-size: 12px;
@@ -295,7 +338,18 @@ const css = `
   color: rgba(247,244,240,0.55);
   transition: opacity 400ms cubic-bezier(.4,0,.2,1);
 }
-.zr-sub.is-out { opacity: 0; }
+.zr-sub.is-out { opacity: 0; pointer-events: none; }
+
+/* the room dims while the card turns — cinema, not spotlight */
+.zr-page::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 2;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 700ms cubic-bezier(.4,0,.2,1);
+}
+.zr-page.is-focus::after { opacity: 0.3; }
 
 /* ── stage / cards ──────────────────────────────────────────── */
 .zr-stage {
@@ -336,7 +390,32 @@ const css = `
 .zr-hand.is-locked .zr-card { animation: none; }
 
 /* idle breathing — the hand is alive, barely */
-.zr-card-float { display: block; width: 100%; height: 100%; }
+.zr-card-float { display: block; width: 100%; height: 100%; transition: transform 150ms cubic-bezier(.4,0,.2,1); }
+
+/* press feedback — the card gives under the thumb */
+.zr-card:not(:disabled):active .zr-card-float {
+  animation: none;
+  transform: scale(0.97);
+}
+
+/* gold glint — light passes over the resting cards, one at a time */
+.zr-face--back { overflow: hidden; }
+.zr-face--back::after {
+  content: '';
+  position: absolute; inset: -20%;
+  background: linear-gradient(105deg, transparent 42%, rgba(251,249,246,0.55) 50%, rgba(198,160,124,0.25) 54%, transparent 62%);
+  transform: translateX(-130%);
+  animation: zr-glint 5200ms cubic-bezier(.4,0,.2,1) 2400ms infinite;
+  pointer-events: none;
+}
+.zr-card--1 .zr-face--back::after { animation-delay: 3400ms; }
+.zr-card--2 .zr-face--back::after { animation-delay: 4400ms; }
+@keyframes zr-glint {
+  0%   { transform: translateX(-130%); }
+  14%  { transform: translateX(130%); }
+  100% { transform: translateX(130%); }
+}
+.zr-hand.is-locked .zr-face--back::after { animation: none; opacity: 0; }
 @keyframes zr-breathe {
   from { transform: translateY(0); }
   to   { transform: translateY(-5px); }
@@ -406,6 +485,29 @@ const css = `
   letter-spacing: 0.3em;
   color: var(--gold);
 }
+.zr-face-tagline {
+  position: absolute; bottom: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  color: var(--terra);
+  white-space: nowrap;
+}
+
+/* the mark draws itself once the card has turned — the reveal's second beat */
+.zr-draw ellipse { stroke-dasharray: 100; stroke-dashoffset: 100; fill-opacity: 0; }
+.zr-draw circle  { opacity: 0; }
+.zr-card.is-chosen .zr-draw ellipse {
+  animation: zr-draw-stroke 700ms cubic-bezier(.4,0,.2,1) forwards, zr-fill-in 400ms ease 1150ms forwards;
+}
+.zr-card.is-chosen .zr-draw ellipse:nth-of-type(1) { animation-delay: 560ms, 1150ms; }
+.zr-card.is-chosen .zr-draw ellipse:nth-of-type(2) { animation-delay: 660ms, 1150ms; }
+.zr-card.is-chosen .zr-draw ellipse:nth-of-type(3) { animation-delay: 760ms, 1150ms; }
+.zr-card.is-chosen .zr-draw ellipse:nth-of-type(4) { animation-delay: 860ms, 1150ms; }
+.zr-card.is-chosen .zr-draw circle { animation: zr-fade-only 300ms ease 1250ms forwards; }
+@keyframes zr-draw-stroke { to { stroke-dashoffset: 0; } }
+@keyframes zr-fill-in { to { fill-opacity: 0.05; } }
 
 /* teal glow — ignites as the card turns */
 .zr-card-glow {
@@ -421,30 +523,47 @@ const css = `
 /* ── gifts ──────────────────────────────────────────────────── */
 .zr-gifts {
   position: absolute;
-  left: 50%; top: 42%;
+  left: 50%; top: 40%;
   transform: translateX(-50%);
   width: min(86vw, 360px);
   display: flex; flex-direction: column;
   gap: 12px;
 }
+.zr-gifts-lead {
+  margin: 0 0 4px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: rgba(46,216,168,0.75);
+  animation: zr-fade-only 500ms cubic-bezier(0,0,.2,1) 100ms both;
+}
 .zr-gift {
   display: flex; align-items: center; gap: 16px;
   padding: 16px 20px;
   border: 1px solid rgba(198,160,124,0.35);
+  border-left: 2px solid var(--terra);
   border-radius: 4px;
   background: rgba(247,244,240,0.03);
   opacity: 0;
   animation: zr-gift-in ${TIMING.giftDur}ms cubic-bezier(0,0,.2,1) both;
 }
 @keyframes zr-gift-in {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 .zr-gift-num {
   font-weight: 600;
   font-size: 11px;
   letter-spacing: 0.2em;
   color: var(--gold);
+  animation: zr-ignite 900ms cubic-bezier(.4,0,.2,1) both;
+  animation-delay: inherit;
+}
+/* each number lands teal, then settles to gold — the hit, then the calm */
+@keyframes zr-ignite {
+  0%   { color: var(--teal); }
+  55%  { color: var(--teal); }
+  100% { color: var(--gold); }
 }
 .zr-gift-title {
   font-weight: 400;
@@ -455,9 +574,24 @@ const css = `
 
 /* ── CTA ────────────────────────────────────────────────────── */
 .zr-cta-wrap {
+  position: relative;
   margin-top: 16px;
   text-align: center;
   animation: zr-gift-in 500ms cubic-bezier(0,0,.2,1) both;
+}
+/* one exhale of teal light behind the CTA as it arrives — once, then still */
+.zr-cta-wrap::before {
+  content: '';
+  position: absolute; inset: -32px -24px;
+  background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(46,216,168,0.22) 0%, transparent 70%);
+  opacity: 0;
+  animation: zr-halo 1600ms cubic-bezier(.4,0,.2,1) 300ms;
+  pointer-events: none;
+}
+@keyframes zr-halo {
+  0%   { opacity: 0; }
+  35%  { opacity: 1; }
+  100% { opacity: 0; }
 }
 .zr-cta {
   display: block;
@@ -479,6 +613,13 @@ const css = `
   margin: 12px 0 0;
   font-size: 11px;
   color: rgba(247,244,240,0.45);
+}
+.zr-cta-tagline {
+  margin: 16px 0 0;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(198,160,124,0.8);
 }
 
 /* ── no-JS fallback ─────────────────────────────────────────── */
@@ -504,11 +645,12 @@ const css = `
   color: rgba(198,160,124,0.6);
   transition: opacity 400ms;
 }
-.zr-foot-line.is-out { opacity: 0; }
+.zr-foot-line.is-out { opacity: 0; pointer-events: none; }
 
 /* ── reduced motion — the ritual becomes a sequence of fades ── */
 @media (prefers-reduced-motion: reduce) {
-  .zr-card, .zr-card-float, .zr-eyebrow, .zr-headline, .zr-sub, .zr-foot-line { animation: none !important; }
+  .zr-card, .zr-card-float, .zr-brand, .zr-headline, .zr-sub, .zr-foot-line,
+  .zr-face--back::after, .zr-cta-wrap::before, .zr-gift-num { animation: none !important; }
   .zr-headline, .zr-sub, .zr-foot-line { transition: opacity 400ms ease !important; transform: none !important; }
   .zr-card { transition: opacity 400ms ease !important; }
   .zr-card-inner { transition: none !important; }
@@ -519,18 +661,19 @@ const css = `
   .zr-card-glow { transition: opacity 400ms ease 200ms !important; }
   .zr-gift { animation-name: zr-fade-only !important; }
   .zr-cta-wrap { animation-name: zr-fade-only !important; }
+  .zr-draw ellipse { animation: none !important; stroke-dashoffset: 0; fill-opacity: 0.05; }
+  .zr-draw circle { animation: none !important; opacity: 1; }
+  .zr-page::after { transition: none !important; }
 }
 
 /* ── restored session (back-button return) — no replay ─────── */
-.zr-page.is-restored .zr-card,
-.zr-page.is-restored .zr-card-inner,
-.zr-page.is-restored .zr-card-glow,
-.zr-page.is-restored .zr-headline,
-.zr-page.is-restored .zr-sub,
-.zr-page.is-restored .zr-foot-line,
-.zr-page.is-restored .zr-eyebrow { animation: none !important; transition: none !important; }
+.zr-page.is-restored *,
+.zr-page.is-restored *::before,
+.zr-page.is-restored *::after { animation: none !important; transition: none !important; }
 .zr-page.is-restored .zr-gift,
-.zr-page.is-restored .zr-cta-wrap { animation: none !important; opacity: 1 !important; }
+.zr-page.is-restored .zr-cta-wrap { opacity: 1 !important; }
+.zr-page.is-restored .zr-draw ellipse { stroke-dashoffset: 0; fill-opacity: 0.05; }
+.zr-page.is-restored .zr-draw circle { opacity: 1; }
 
 /* ── desktop ────────────────────────────────────────────────── */
 @media (min-width: 768px) {
