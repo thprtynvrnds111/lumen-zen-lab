@@ -60,6 +60,7 @@ const InstrumentLanding = lazy(() => import("./pages/InstrumentLanding"));
 const TruthMovement = lazy(() => import("./pages/TruthMovement"));
 const Reveal = lazy(() => import("./pages/reveal/Reveal"));
 const RevealTakeover = lazy(() => import("./pages/reveal/RevealTakeover"));
+const HomeLeadPrimer = lazy(() => import("./components/zential/HomeLeadPrimer"));
 
 const queryClient = new QueryClient();
 
@@ -72,6 +73,7 @@ function AppContent() {
   return (
     <Suspense fallback={<div className="min-h-screen bg-background" />}>
       <RevealTakeover />
+      <HomeLeadPrimer />
       <Routes>
         <Route path="/" element={<Storefront />} />
         <Route path="/movement" element={<TruthMovement />} />
