@@ -3,6 +3,7 @@ import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { SEO } from "@/components/SEO";
+import { ZenMascot } from "@/components/zential/ZenMascot";
 
 const devices = [
  { name: "Face Introducer", handle: "lifting-and-tightening-face-introducer" },
@@ -19,6 +20,9 @@ const NotFound = () => {
    <Header />
    <main className="section-padding">
     <div className="max-w-2xl mx-auto text-center py-20">
+     <div className="flex justify-center mb-8">
+      <ZenMascot expression="skeptical" size={120} tilt />
+     </div>
      <p className="text-xs tracking-[0.25em] uppercase text-accent mb-6">404</p>
      <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">This page doesn't exist.</h1>
      <p className="text-muted-foreground text-lg mb-12">But your ritual does. Start here.</p>
