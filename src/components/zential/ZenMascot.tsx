@@ -1,7 +1,7 @@
 import { useId } from "react";
 import { cn } from "@/lib/utils";
 
-export type ZenExpression = "calm" | "delighted" | "skeptical" | "sleepy";
+export type ZenExpression = "calm" | "delighted" | "skeptical" | "sleepy" | "thinking";
 
 interface ZenMascotProps {
   expression?: ZenExpression;
@@ -33,6 +33,15 @@ const Eyes = ({ expression }: { expression: ZenExpression }) => {
       </g>
     );
   }
+  if (expression === "thinking") {
+    // eyes glance up and to the side
+    return (
+      <g className="zen-eyes" data-part="eyes">
+        <ellipse cx="82" cy="124" rx="5.5" ry="8.5" fill={CHARCOAL} />
+        <ellipse cx="126" cy="124" rx="5.5" ry="8.5" fill={CHARCOAL} />
+      </g>
+    );
+  }
   // calm + skeptical share open oval eyes
   return (
     <g className="zen-eyes" data-part="eyes">
@@ -50,6 +59,8 @@ const Mouth = ({ expression }: { expression: ZenExpression }) => {
       return <path data-part="mouth" d="M88 164 L112 164" stroke={CHARCOAL} strokeWidth="4.5" strokeLinecap="round" fill="none" />;
     case "sleepy":
       return <circle data-part="mouth" cx="100" cy="164" r="5" fill={CHARCOAL} />;
+    case "thinking":
+      return <path data-part="mouth" d="M92 164 L110 160" stroke={CHARCOAL} strokeWidth="4.5" strokeLinecap="round" fill="none" />;
     default: // calm
       return <path data-part="mouth" d="M88 160 Q100 170 112 160" stroke={CHARCOAL} strokeWidth="4.5" strokeLinecap="round" fill="none" />;
   }
@@ -99,6 +110,9 @@ export const ZenMascot = ({
           )}
           <Eyes expression={expression} />
           <Mouth expression={expression} />
+          {expression === "thinking" && (
+            <ellipse data-part="hand" cx="88" cy="174" rx="8" ry="6" fill="#fdf6f0" stroke="#8b5a3c" strokeWidth="2.5" />
+          )}
         </g>
       </g>
 
