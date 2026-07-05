@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ShoppingBag, Minus, Plus, X, Loader2, Sparkles } from "lucide-react";
+import { ZenMascot } from "@/components/zential/ZenMascot";
 import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { prefetchCheckout } from "@/lib/prefetchCheckout";
@@ -136,7 +137,7 @@ export function CartDrawer() {
     <div className="flex-1 overflow-y-auto min-h-0">
      {items.length === 0 ? (
       <div className="flex flex-col items-center justify-center h-full gap-4">
-       <ShoppingBag size={36} className="text-muted-foreground/30" />
+       <ZenMascot expression="sleepy" size={88} />
        <p className="text-sm text-muted-foreground">Start your ritual</p>
       </div>
      ) : (
