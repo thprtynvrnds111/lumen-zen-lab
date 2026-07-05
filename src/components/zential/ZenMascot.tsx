@@ -70,7 +70,7 @@ export const ZenMascot = ({
     <svg
       viewBox="0 0 200 240"
       width={size}
-      height={size * 1.2}
+      height={Math.round(size * 1.2)}
       role="img"
       aria-label="Zen, the Zential Pure mascot"
       data-expression={expression}

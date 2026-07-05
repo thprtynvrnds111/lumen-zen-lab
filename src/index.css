@@ -368,6 +368,10 @@
     .zen-animated .zen-shadow {
       animation: none;
     }
+    .zen-animated .zen-halo {
+      transform-box: view-box;
+      transform-origin: 0 0;
+    }
     .zen-tilt,
     .zen-tilt:hover {
       transition: none;
