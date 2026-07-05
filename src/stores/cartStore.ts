@@ -12,6 +12,7 @@ import {
   formatCheckoutUrl,
 } from '@/lib/shopify';
 import { getMetaAttributes } from '@/lib/meta-tracking';
+import { preloadCartItemImage } from '@/lib/cartImage';
 
 export interface CartItem {
   lineId: string | null;
@@ -53,6 +54,9 @@ export const useCartStore = create<CartStore>()(
       closeCart: () => set({ isOpen: false }),
 
       addItem: async (item) => {
+        // Warm the drawer thumbnail now — the fetch completes during the
+        // Shopify API round-trip below, so the drawer opens with the image.
+        preloadCartItemImage(item.product, item.variantId);
         const { items, cartId, clearCart } = get();
         const existingItem = items.find(i => i.variantId === item.variantId);
         set({ isLoading: true });

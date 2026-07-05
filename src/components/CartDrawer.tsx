@@ -5,6 +5,7 @@ import { ZenMascot } from "@/components/zential/ZenMascot";
 import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { prefetchCheckout } from "@/lib/prefetchCheckout";
+import { cartItemImageUrl, shopifyThumb } from "@/lib/cartImage";
 
 const FREE_SHIPPING_THRESHOLD = 75;
 const GEL_HANDLE = "medicube-collagen-elastic-jelly-moisturizing-cream";
@@ -147,14 +148,10 @@ export function CartDrawer() {
          {/* Product Image, prefer variant image, then 2nd product image, then 1st */}
          <div className="w-[72px] h-[72px] bg-secondary/40 rounded-lg overflow-hidden flex-shrink-0">
           {(() => {
-           // Find the selected variant's image
-           const variant = item.product.node.variants.edges.find(v => v.node.id === item.variantId);
-           const variantImg = variant?.node?.image;
-           const edges = item.product.node.images?.edges;
-           const img = variantImg || edges?.[1]?.node || edges?.[0]?.node;
-           return img ? (
+           const url = cartItemImageUrl(item.product, item.variantId);
+           return url ? (
             <img
-             src={img.url}
+             src={shopifyThumb(url)}
              alt={item.product.node.title}
              width={72}
              height={72}
