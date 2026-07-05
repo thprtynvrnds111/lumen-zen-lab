@@ -44,11 +44,9 @@ describe("ZenMascot", () => {
     expect(screen.getByRole("img").classList.contains("zen-tilt")).toBe(true);
   });
 
-  it("renders the thinking expression with a hand at the chin", () => {
-    const { container, rerender } = render(<ZenMascot expression="thinking" />);
+  it("renders the thinking expression with upward-glancing eyes and offset mouth", () => {
+    const { container } = render(<ZenMascot expression="thinking" />);
     expect(screen.getByRole("img")).toHaveAttribute("data-expression", "thinking");
-    expect(container.querySelector('[data-part="hand"]')).not.toBeNull();
-    rerender(<ZenMascot expression="calm" />);
-    expect(container.querySelector('[data-part="hand"]')).toBeNull();
+    expect(container.querySelector('[data-part="mouth"]')).toHaveAttribute("d", "M100 162 L114 162");
   });
 });

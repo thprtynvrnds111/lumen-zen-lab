@@ -110,9 +110,6 @@ export const ZenMascot = ({
           )}
           <Eyes expression={expression} />
           <Mouth expression={expression} />
-          {expression === "thinking" && (
-            <ellipse data-part="hand" cx="88" cy="174" rx="8" ry="6" fill="#fdf6f0" stroke="#8b5a3c" strokeWidth="2.5" />
-          )}
         </g>
       </g>
 
