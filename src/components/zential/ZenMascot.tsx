@@ -60,7 +60,7 @@ const Mouth = ({ expression }: { expression: ZenExpression }) => {
     case "sleepy":
       return <circle data-part="mouth" cx="100" cy="164" r="5" fill={CHARCOAL} />;
     case "thinking":
-      return <path data-part="mouth" d="M92 164 L110 160" stroke={CHARCOAL} strokeWidth="4.5" strokeLinecap="round" fill="none" />;
+      return <path data-part="mouth" d="M100 162 L114 162" stroke={CHARCOAL} strokeWidth="4.5" strokeLinecap="round" fill="none" />;
     default: // calm
       return <path data-part="mouth" d="M88 160 Q100 170 112 160" stroke={CHARCOAL} strokeWidth="4.5" strokeLinecap="round" fill="none" />;
   }
