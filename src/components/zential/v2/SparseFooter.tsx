@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { ZenMascot } from "@/components/zential/ZenMascot";
 
 const sections = [
   {
@@ -204,6 +205,11 @@ export function SparseFooter() {
             <span className="md:ml-2">Shipped EU-wide.</span>
           </p>
         </div>
+      </div>
+
+      {/* Zen easter egg: peeks up from the bottom edge, clipped by the footer's overflow-hidden */}
+      <div aria-hidden className="absolute bottom-0 right-8 translate-y-[35%] pointer-events-none hidden md:block">
+        <ZenMascot size={64} />
       </div>
     </footer>
   );

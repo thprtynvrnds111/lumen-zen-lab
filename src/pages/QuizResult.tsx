@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { ArrowRight, Sparkles, ShieldCheck, Truck, Calendar } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { Header } from "@/components/zential/Header";
+import { ZenMascot } from "@/components/zential/ZenMascot";
 import { getRecommendation, type QuizAnswers } from "@/data/quizData";
 import { fetchProductByHandle, type ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
@@ -111,6 +112,9 @@ export default function QuizResult() {
    <main className="max-w-5xl mx-auto px-6 py-14 md:py-20">
     {/* Reveal banner */}
     <div className="text-center mb-12 md:mb-16">
+     <div className="flex justify-center mb-6">
+      <ZenMascot expression="delighted" size={96} tilt />
+     </div>
      <div className="inline-flex items-center gap-3 mb-5">
       <span className="h-px w-8" style={{ backgroundColor: "#9B5A2E", opacity: 0.45 }} />
       <p className="text-[10px] tracking-[0.32em] uppercase" style={{ color: "#9B5A2E" }}>

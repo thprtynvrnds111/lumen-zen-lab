@@ -5,6 +5,7 @@ import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { HelpCircle, Truck, RotateCcw, Heart, ShieldCheck, CreditCard, Zap } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { ZenMascot } from "@/components/zential/ZenMascot";
 
 const categoryIcons = [Truck, RotateCcw, Heart, ShieldCheck, Zap, CreditCard];
 
@@ -26,6 +27,9 @@ const FAQ = () => {
       <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent rounded-full px-4 py-1.5 text-xs tracking-[0.15em] uppercase mb-6">
        <HelpCircle size={14} />
        {t('hero.badge')}
+      </div>
+      <div className="flex justify-center mb-6">
+       <ZenMascot expression="thinking" size={100} tilt />
       </div>
       <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-5 tracking-tight">
        {headline[0]}<br />

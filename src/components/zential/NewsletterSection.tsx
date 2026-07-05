@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { createFoundingCustomer } from "@/lib/shopify";
+import { ZenMascot } from "@/components/zential/ZenMascot";
 
 export function NewsletterSection() {
   const [email, setEmail] = useState("");
@@ -49,9 +50,14 @@ export function NewsletterSection() {
           </Button>
         </form>
         {message && (
-          <p className={`mt-3 text-sm ${message.type === "success" ? "text-green-700" : "text-red-600"}`}>
-            {message.text}
-          </p>
+          message.type === "success" ? (
+            <div className="mt-4 flex items-center justify-center gap-3">
+              <ZenMascot expression="delighted" size={44} animated={false} />
+              <p className="text-sm text-green-700">{message.text}</p>
+            </div>
+          ) : (
+            <p className="mt-3 text-sm text-red-600">{message.text}</p>
+          )
         )}
       </div>
     </section>
