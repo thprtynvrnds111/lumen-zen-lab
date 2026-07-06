@@ -80,13 +80,6 @@ const ROUTES = [
   '/founding-terms',
   // Ritual guides
   '/ritual-guide',
-  '/ritual-guide/frame-pulse-activator',
-  '/ritual-guide/frequency-wand-pro',
-  '/ritual-guide/sculpt-wand',
-  '/ritual-guide/gua-sha-frequency',
-  '/ritual-guide/eye-activator',
-  '/ritual-guide/skin-pulse',
-  '/ritual-guide/frequency-wand',
   '/collection',
   // Protocols
   '/instruments',

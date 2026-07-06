@@ -26,13 +26,6 @@
 
   <!-- Ritual guides -->
   <url><loc>https://zentialpure.com/ritual-guide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://zentialpure.com/ritual-guide/frame-pulse-activator</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://zentialpure.com/ritual-guide/frequency-wand-pro</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://zentialpure.com/ritual-guide/sculpt-wand</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://zentialpure.com/ritual-guide/gua-sha-frequency</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://zentialpure.com/ritual-guide/eye-activator</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://zentialpure.com/ritual-guide/skin-pulse</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://zentialpure.com/ritual-guide/frequency-wand</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Journal articles -->
   <url><loc>https://zentialpure.com/journal/frequency-shift</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>

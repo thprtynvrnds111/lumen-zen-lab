@@ -33,13 +33,6 @@ const TechEMS          = lazy(() => import("./pages/TechEMS"));
 const TechThermal      = lazy(() => import("./pages/TechThermal"));
 const Science          = lazy(() => import("./pages/Science"));
 const RitualGuide      = lazy(() => import("./pages/RitualGuide"));
-const FramePulseActivatorGuide  = lazy(() => import("./pages/ritual-guides/FramePulseActivatorGuide"));
-const FrequencyWandProGuide     = lazy(() => import("./pages/ritual-guides/FrequencyWandProGuide"));
-const SculptWandGuide           = lazy(() => import("./pages/ritual-guides/SculptWandGuide"));
-const GuaShaFrequencyGuide      = lazy(() => import("./pages/ritual-guides/GuaShaFrequencyGuide"));
-const EyeActivatorGuide         = lazy(() => import("./pages/ritual-guides/EyeActivatorGuide"));
-const SkinPulseGuide            = lazy(() => import("./pages/ritual-guides/SkinPulseGuide"));
-const FrequencyWandGuide        = lazy(() => import("./pages/ritual-guides/FrequencyWandGuide"));
 const CompareNuFACE        = lazy(() => import("./pages/CompareNuFACE"));
 const CompareForeo         = lazy(() => import("./pages/CompareForeo"));
 const TechElectroporation  = lazy(() => import("./pages/TechElectroporation"));
@@ -95,13 +88,6 @@ function ServerApp() {
         <Route path="/technology/thermal"                       element={<TechThermal />} />
         <Route path="/science"                                  element={<Science />} />
         <Route path="/ritual-guide"                             element={<RitualGuide />} />
-        <Route path="/ritual-guide/frame-pulse-activator"       element={<FramePulseActivatorGuide />} />
-        <Route path="/ritual-guide/frequency-wand-pro"          element={<FrequencyWandProGuide />} />
-        <Route path="/ritual-guide/sculpt-wand"                 element={<SculptWandGuide />} />
-        <Route path="/ritual-guide/gua-sha-frequency"           element={<GuaShaFrequencyGuide />} />
-        <Route path="/ritual-guide/eye-activator"               element={<EyeActivatorGuide />} />
-        <Route path="/ritual-guide/skin-pulse"                  element={<SkinPulseGuide />} />
-        <Route path="/ritual-guide/frequency-wand"              element={<FrequencyWandGuide />} />
         <Route path="/compare/nuface-vs-zential-pure"           element={<CompareNuFACE />} />
         <Route path="/compare/foreo-bear-vs-zential-pure"       element={<CompareForeo />} />
         <Route path="/technology/electroporation"               element={<TechElectroporation />} />

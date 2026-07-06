@@ -115,6 +115,13 @@
       "status": 301
     },
     {
+      "src": "/ritual-guide/(.*)",
+      "headers": {
+        "Location": "/ritual-guide"
+      },
+      "status": 301
+    },
+    {
       "src": "/quiz",
       "dest": "/index.html"
     },
