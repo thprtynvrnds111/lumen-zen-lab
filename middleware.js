@@ -82,8 +82,9 @@ export default async function middleware(request) {
     const og = PRODUCT_OG[handle]
 
     if (og) {
-      // Fetch the SPA shell (goes directly to origin, does not re-trigger middleware)
-      const indexResponse = await fetch(new URL('/', request.url).toString(), {
+      // Fetch the SPA shell from a pinned origin (do not derive host from the
+      // incoming request — avoids trusting request-controlled host for egress).
+      const indexResponse = await fetch('https://zentialpure.com/', {
         headers: { 'user-agent': 'Zential-OG-Bot/1.0' },
       })
       let html = await indexResponse.text()

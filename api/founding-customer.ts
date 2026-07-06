@@ -1,5 +1,6 @@
 export default async function handler(req: any, res: any) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', 'https://zentialpure.com');
+  res.setHeader('Vary', 'Origin');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -55,12 +56,12 @@ export default async function handler(req: any, res: any) {
 
     if (!shopifyRes.ok) {
       console.error('Shopify error:', JSON.stringify(data));
-      return res.status(500).json({ error: 'Shopify error', details: data });
+      return res.status(500).json({ error: 'Signup failed' });
     }
 
     return res.status(200).json({ success: true });
   } catch (err: any) {
     console.error('Server error:', err.message);
-    return res.status(500).json({ error: 'Server error', message: err.message });
+    return res.status(500).json({ error: 'Server error' });
   }
 }

@@ -53,7 +53,8 @@ async function fireKlaviyoEvent(email: string, source: string): Promise<void> {
 }
 
 export default async function handler(req: any, res: any) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', 'https://zentialpure.com');
+  res.setHeader('Vary', 'Origin');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -166,9 +167,9 @@ export default async function handler(req: any, res: any) {
     }
 
     console.error(`[newsletter] shopify create failed status=${createRes.status}`, createData);
-    return res.status(502).json({ error: 'Shopify error', status: createRes.status, details: createData });
+    return res.status(502).json({ error: 'Signup failed' });
   } catch (err: any) {
     console.error('[newsletter] unhandled error', err);
-    return res.status(500).json({ error: 'Server error', message: err?.message ?? String(err) });
+    return res.status(500).json({ error: 'Server error' });
   }
 }

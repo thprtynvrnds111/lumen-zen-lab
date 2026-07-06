@@ -51,11 +51,33 @@ function dateRangeQuery(days: number) {
   return `financial_status:paid created_at:>=${from}`;
 }
 
-export default async function handler(req: any, res: any) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Cache-Control', 'no-store');
+import crypto from 'node:crypto';
 
-  if (req.method === 'OPTIONS') return res.status(200).end();
+function safeEqual(a: string, b: string): boolean {
+  const ab = Buffer.from(a);
+  const bb = Buffer.from(b);
+  if (ab.length !== bb.length) return false;
+  return crypto.timingSafeEqual(ab, bb);
+}
+
+export default async function handler(req: any, res: any) {
+  // First-party only — no cross-origin reads of live financials.
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('Vary', 'Authorization');
+
+  if (req.method === 'OPTIONS') return res.status(405).end();
+
+  // Auth gate: this endpoint returns live revenue/orders — require an operator token.
+  const expected = process.env.DASHBOARD_TOKEN;
+  if (!expected) {
+    return res.status(500).json({ error: 'Dashboard auth not configured' });
+  }
+  const auth = (req.headers['authorization'] || '').toString();
+  const bearer = auth.startsWith('Bearer ') ? auth.slice(7) : '';
+  const provided = bearer || (req.headers['x-dashboard-token'] || '').toString();
+  if (!provided || !safeEqual(provided, expected)) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
 
   try {
     const [today, week] = await Promise.all([

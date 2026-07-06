@@ -17,8 +17,19 @@ export default function Dashboard() {
  const [loading, setLoading] = useState(true);
 
  useEffect(() => {
-  fetch("/api/dashboard")
-   .then(r => r.json())
+  let token = localStorage.getItem("zp_dashboard_token");
+  if (!token) {
+   token = window.prompt("Dashboard access token:") || "";
+   if (token) localStorage.setItem("zp_dashboard_token", token);
+  }
+  fetch("/api/dashboard", { headers: { Authorization: `Bearer ${token}` } })
+   .then(r => {
+    if (r.status === 401) {
+     localStorage.removeItem("zp_dashboard_token");
+     throw new Error("Unauthorized — refresh to re-enter token");
+    }
+    return r.json();
+   })
    .then(d => {
     if (d.error) setError(d.error);
     else setData(d);

@@ -113,43 +113,54 @@ export function getRecommendation(a: QuizAnswers): Recommendation {
  const goal = a.goal ?? "maintain";
  const time = a.time ?? "5min";
 
- // Primary device by concern
+ // Live Shopify handles — the ONLY three instruments the store currently sells.
+ // Verified against InstrumentLanding.tsx CONFIGS + knowledge/products/LIVE-CATALOG-TRUTH.md.
+ // The old 8-SKU face/wand line (Sculpt Wand, Frequency Wand Pro, Eye Activator, Skin Pulse,
+ // Gua Sha Frequency, …) is DISCONTINUED — its handles return no live product, which left the
+ // quiz result hanging with no price and a disabled Add-to-cart. Do not reintroduce them.
+ const FACE = "lifting-and-tightening-face-introducer"; // The Face Introducer — €88
+ const BELT = "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device"; // The Restoration Belt — €280
+ const MAT = "portable-home-use-charging-red-light-therapy-blanket-far-infrared"; // The Restoration Mat — €220
+
+ // Primary device by concern. Face concerns → the Face Introducer (the only live face
+ // instrument); body → the Restoration Belt.
  const primaryByConcern: Record<ConcernId, { handle: string; name: string; reason: string }> = {
   lift: {
-   handle: "facial-beauty-tools-and-ems-beauty-equipment",
-   name: "Sculpt Wand",
-   reason: "EMS + microcurrent stack, the at-home pairing that addresses both muscle tone and structural firmness, the two pillars of contour.",
+   handle: FACE,
+   name: "The Face Introducer",
+   reason: "EMS and microcurrent work facial muscle tone and definition, while 45°C thermal and cosmetic LED round out the ritual — four modalities for lift and contour in one twelve-minute daily protocol.",
   },
   tone: {
-   handle: "portable-ems-microcurrent-facial-beauty-device",
-   name: "Frequency Wand Pro",
-   reason: "Advanced EMS plus microcurrent, the at-home pairing for facial muscle tone and visible structural definition. The strongest current available in the Zential face stack.",
+   handle: FACE,
+   name: "The Face Introducer",
+   reason: "Galvanic ion cleansing, cosmetic LED and microcurrent target dull tone and uneven surface texture — the full four-modality face protocol in a single instrument.",
   },
   eyes: {
-   handle: "eye-massage",
-   name: "Eye Activator",
-   reason: "The periorbital area needs precision frequencies you cannot get from a full-face device. Dedicated 3MHz vibration + warmth designed for the orbital bone.",
+   handle: FACE,
+   name: "The Face Introducer",
+   reason: "The Face Introducer's microcurrent, sonic and 45°C thermal modes work the whole face — run the gentlest setting across the delicate periorbital zone to support the eye area within your daily ritual.",
   },
   texture: {
-   handle: "electric-micro-current",
-   name: "Skin Pulse",
-   reason: "EMS-led device tuned for elasticity. Stimulates the deeper tissue layer where pore structure and firmness originate.",
+   handle: FACE,
+   name: "The Face Introducer",
+   reason: "Galvanic ion cleansing and microcurrent address surface texture and elasticity at the layer where pore structure and firmness originate.",
   },
   body: {
-   handle: "lifting-and-tightening-face-introducer",
-   name: "Face Introducer",
-   reason: "EMS muscle stimulation + dual-wavelength LED. The most versatile device for sculpting and skin quality across larger treatment areas.",
+   handle: BELT,
+   name: "The Restoration Belt",
+   reason: "660nm red and 850nm near-infrared, pressed to the muscle by a thermal wrap — targeted recovery and firmness for the body, worn close for fifteen minutes.",
   },
  };
 
- // Ritual companions, scale with time commitment + goal.
- // All handles must be live Shopify products in this store.
+ // Ritual companions, scale with time commitment (0/1/2 by `ritualSize` below).
+ // Only the live instruments — a face primary extends into full-body recovery (Belt + Mat),
+ // which together with the Face Introducer is "The System" bundle. Never lists the primary itself.
  const ritualByConcern: Record<ConcernId, string[]> = {
-  lift:  ["lifting-and-tightening-face-introducer", "eye-massage"],
-  tone:  ["electric-guasha-massager", "electric-micro-current"],
-  eyes:  ["electric-guasha-massager", "facial-beauty-tools-and-ems-beauty-equipment"],
-  texture: ["portable-ems-microcurrent-facial-beauty-device", "electric-guasha-massager"],
-  body:  ["facial-beauty-tools-and-ems-beauty-equipment"],
+  lift:    [BELT, MAT],
+  tone:    [BELT, MAT],
+  eyes:    [BELT, MAT],
+  texture: [BELT, MAT],
+  body:    [MAT, FACE],
  };
 
  const ritualSize = time === "3min" ? 0 : time === "5min" ? 1 : 2;
