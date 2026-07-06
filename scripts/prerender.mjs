@@ -144,6 +144,18 @@ async function prerender() {
   // per route.
   const template = readFileSync(join(dist, 'index.html'), 'utf-8');
 
+  // GUARD: prerender must only run on a fresh `vite build` output. If the
+  // markers are already consumed, a second run would silently no-op the head
+  // injection while removeStaticTags strips the previously injected <title>,
+  // shipping a title-less site (this exact failure hit prod on 2026-07-06).
+  if (!template.includes('<!--app-head-->') || !template.includes('<!--app-html-->')) {
+    console.error(
+      'prerender: dist/index.html has no <!--app-head-->/<!--app-html--> markers.\n' +
+      'It was already prerendered. Re-run the full build (`npm run build`) instead.'
+    );
+    process.exit(1);
+  }
+
   // Dynamic import of the Vite SSR bundle
   const { render } = await import(join(ssrDir, 'entry-server.js'));
 
