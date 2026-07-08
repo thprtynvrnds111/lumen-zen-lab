@@ -134,9 +134,25 @@ const STATIC_TAG_PATTERNS = [
   /<link rel="canonical"[^>]*>\s*/,
 ];
 
-function removeStaticTags(html) {
+// Image tags are stripped ONLY when the page's helmet output carries its own
+// og:image — otherwise the template's generic 1200x630 stays as the fallback.
+// Scrapers take the FIRST og:image, so leaving the generic one in front of a
+// page-specific one (e.g. the editorial 1000x1500 pin cards) ships wrong pins.
+const STATIC_IMAGE_TAG_PATTERNS = [
+  /<meta property="og:image"[^>]*>\s*/,
+  /<meta property="og:image:width"[^>]*>\s*/,
+  /<meta property="og:image:height"[^>]*>\s*/,
+  /<meta property="og:image:alt"[^>]*>\s*/,
+  /<meta name="twitter:image"[^>]*>\s*/,
+  /<meta name="twitter:image:alt"[^>]*>\s*/,
+];
+
+function removeStaticTags(html, { stripImages = false } = {}) {
   let out = html;
-  for (const pat of STATIC_TAG_PATTERNS) {
+  const patterns = stripImages
+    ? [...STATIC_TAG_PATTERNS, ...STATIC_IMAGE_TAG_PATTERNS]
+    : STATIC_TAG_PATTERNS;
+  for (const pat of patterns) {
     out = out.replace(pat, '');
   }
   return out;
@@ -185,7 +201,8 @@ async function prerender() {
       // 1. Remove static per-page tags from the shared template
       // 2. Inject helmet (per-page) tags at the <!--app-head--> marker
       // 3. Inject rendered body HTML at the <!--app-html--> marker
-      let finalHtml = removeStaticTags(template)
+      const stripImages = /property="og:image"/.test(headHtml);
+      let finalHtml = removeStaticTags(template, { stripImages })
         .replace('<!--app-head-->', headHtml)
         .replace('<!--app-html-->', html);
 
