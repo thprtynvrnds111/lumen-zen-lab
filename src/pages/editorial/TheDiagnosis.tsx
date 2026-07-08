@@ -36,7 +36,7 @@ export default function TheDiagnosis() {
     >
       {/* DARK HERO (masthead already dark via layout; hero ground continues it) */}
       <div style={{ background: "var(--ed-dark)", marginTop: "-1px" }}>
-        <section style={{ padding: "40px 24px 44px" }}>
+        <section className="ed-sec ed-hero ed-hero--dark" style={{ padding: "40px 24px 44px" }}>
           <span className="eyebrow eyebrow--teal">The Diagnosis</span>
           <h1 className="headline" style={{ fontSize: "42px", lineHeight: 1.1, color: "var(--ed-on-dark)" }}>
             Why your skin stopped listening.
@@ -56,11 +56,12 @@ export default function TheDiagnosis() {
         width={390}
         height={280}
         artDirection="seated figure in calm natural side light, back or profile, contemplative; no product, no direct gaze"
+        className="ed-band-img"
         eager
       />
 
       {/* ESSAY */}
-      <section className="reveal" style={{ padding: "36px 24px 8px" }}>
+      <section className="reveal ed-sec ed-essay" style={{ padding: "36px 24px 8px" }}>
         <p className="body-copy">
           <span className="drop-cap">S</span>kin is an electrical organ before it is a chemical one.
           Every cream on your shelf speaks chemistry. Almost nothing you own speaks current,
@@ -74,7 +75,7 @@ export default function TheDiagnosis() {
       </section>
 
       {/* MODALITY STRIP */}
-      <section className="reveal" style={{ padding: "32px 24px", display: "flex", gap: "8px", flexWrap: "wrap" }}>
+      <section className="reveal ed-sec ed-modalities" style={{ padding: "32px 24px", display: "flex", gap: "8px", flexWrap: "wrap" }}>
         <span className="badge">EMS</span>
         <span className="badge">Microcurrent</span>
         <span className="badge">Thermal</span>
@@ -82,7 +83,7 @@ export default function TheDiagnosis() {
       </section>
 
       {/* PRODUCT FIGURE + SOFT CTA */}
-      <section className="reveal" style={{ padding: "0 24px 36px" }}>
+      <section className="reveal ed-sec ed-figure" style={{ padding: "0 24px 36px" }}>
         {/* IMAGE SLOT diagnosis-product · 342×260 · Face Introducer held or resting in warm natural
             light, real environment (NOT product-on-white) · warm, precise, calm */}
         <EditorialImageSlot
@@ -91,6 +92,7 @@ export default function TheDiagnosis() {
           width={342}
           height={260}
           artDirection="Face Introducer held or resting in warm natural light, real environment, NOT product-on-white"
+          className="ed-figure-img"
         />
         <p className="body-copy" style={{ fontSize: "15px", lineHeight: 1.7, margin: "18px 0 14px" }}>
           Four modalities, calibrated to a twelve-minute daily ritual. €88. Once.
@@ -101,7 +103,7 @@ export default function TheDiagnosis() {
       <QuoteCarousel quotes={QUOTES} />
 
       {/* END CTA */}
-      <section style={{ padding: "40px 24px", display: "flex", flexDirection: "column", gap: "16px" }}>
+      <section className="ed-sec ed-cta" style={{ padding: "40px 24px", display: "flex", flexDirection: "column", gap: "16px" }}>
         <p style={{ fontFamily: "var(--ed-font-serif)", fontStyle: "italic", fontSize: "26px", lineHeight: 1.25, margin: 0 }}>
           Speak the skin's language.
         </p>

@@ -63,12 +63,119 @@
 .page-footer { padding: 24px; display: flex; justify-content: space-between; align-items: center; }
 .page-footer .folio { font-size: 10px; color: var(--ed-grey); }
 
-/* Scroll reveal — applied via IntersectionObserver in EditorialLayout.
-   Respects prefers-reduced-motion. */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.reveal--visible { opacity: 1; transform: none; }
+/* Scroll reveal — no-JS-safe. Base .reveal carries NO hidden state, so
+   no-JS / reader-mode / crawlers / prerendered HTML see everything. The hidden
+   initial state is armed only under html.js-reveal, a root class EditorialLayout
+   adds in its effect before observing — so JS users still get the fade in.
+   prefers-reduced-motion disables it entirely. */
+.reveal { transition: opacity 0.6s ease, transform 0.6s ease; }
+html.js-reveal .reveal { opacity: 0; transform: translateY(16px); }
+html.js-reveal .reveal.reveal--visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  html.js-reveal .reveal { opacity: 1; transform: none; transition: none; }
 }
 
-/* ≥768px enhancement: two-column editorial spreads (see README §Responsive). */
+/* Wrappers that are transparent on mobile (identical to pre-task rendering) and
+   only become layout containers at desktop widths. */
+.ed-hero-grid { display: contents; }
+.ed-nl-row { display: flex; flex-direction: column; gap: 16px; }
+
+/* ============================================================================
+   DESKTOP EDITORIAL LAYER (≥768px, refined ≥1100px)
+   The mobile pages are a 390px column; below turns them into a framed magazine
+   spread floating on the --ed-fog canvas. Grammar taken from the Zential journal
+   desktop references: oversized Lora-italic heroes, hairline spec sheets,
+   full-bleed dark passages, generous folio margins. Mobile (<768px) is untouched.
+   !important is used only to defeat the pages' inline mobile styles inside these
+   min-width queries — it never leaks below 768px.
+   ========================================================================== */
+
+@media (min-width: 768px) {
+  .ed-page { max-width: 720px; box-shadow: 0 10px 48px rgba(26, 23, 20, 0.13); }
+  .masthead { padding: 22px 40px; }
+  .masthead__logo { height: 22px; }
+
+  /* Unified section rhythm — generous, print-like. */
+  .ed-sec { padding: 44px 56px !important; }
+
+  .headline { font-size: 54px; }
+  .ed-hero .headline { font-size: 56px !important; line-height: 1.05 !important; }
+
+  /* Newsletter: input + button share one row. */
+  .ed-nl-row { flex-direction: row; align-items: center; gap: 12px; }
+  .ed-nl-row .input { flex: 1; }
+  .ed-nl-row .btn { width: auto !important; min-width: 190px; padding: 0 30px; }
+
+  /* Contained inline images get room to breathe. */
+  .ed-inline-img { max-width: 560px; margin: 8px auto 0; display: block; height: 380px !important; }
+}
+
+@media (min-width: 1100px) {
+  .ed-page { max-width: 1080px; margin: 44px auto; box-shadow: 0 18px 64px rgba(26, 23, 20, 0.16); }
+  .masthead { padding: 26px 72px; }
+
+  .ed-sec { padding: 62px 96px !important; }
+
+  /* ---- Hero: oversized Lora italic + narrow deck ---- */
+  .ed-hero .headline { font-size: 70px !important; line-height: 1.02 !important; }
+  .ed-hero .deck { font-size: 17px; max-width: 34ch; }
+
+  /* The Ritual hero: text left, warm image bleeding the right column. */
+  .ed-hero-grid { display: grid; grid-template-columns: 1.02fr 0.98fr; align-items: stretch; }
+  .ed-hero-grid > .ed-hero { padding: 76px 56px 76px 96px !important; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+  .ed-hero-img { height: 100% !important; min-height: 480px; object-fit: cover; }
+
+  /* The Diagnosis hero: full-shell dark, headline on a two-thirds measure. */
+  .ed-hero--dark .headline { max-width: 66%; }
+  .ed-hero--dark .deck { max-width: 34ch; }
+  /* Its below-hero image reads as a full-shell band. */
+  .ed-band-img { height: 520px !important; }
+
+  /* The Science hero: mechanism-review cover, meta row spans the shell. */
+  .ed-hero--journal .headline { font-size: 60px !important; }
+
+  /* ---- Essays: single readable measure, folio left margin ---- */
+  .ed-essay .body-copy { max-width: 62ch; }
+  .ed-essay .drop-cap { font-size: 72px; }
+
+  /* ---- Pull quote: breaks out wider than the essay measure ---- */
+  .ed-pull .pull-quote { padding: 40px 0; }
+  .ed-pull .pull-quote p { font-size: 36px; line-height: 1.28; max-width: 22ch; }
+
+  /* ---- The Ritual mechanism: text left, badges + caption right rail ---- */
+  .ed-mechanism { display: grid !important; grid-template-columns: 1fr 300px; gap: 20px 56px; align-items: start; }
+  .ed-mechanism .body-copy { max-width: 52ch; }
+  .ed-mechanism .ed-mech-badges { grid-column: 2; grid-row: 1; align-self: start; }
+  .ed-mechanism .ed-mech-note { grid-column: 2; grid-row: 2; margin: 0 !important; }
+
+  /* ---- The Science mechanism list: hairline spec sheet ---- */
+  .ed-mechlist { gap: 0 !important; }
+  .ed-mech-item { grid-template-columns: 100px 1fr !important; gap: 40px !important; padding: 34px 0; border-top: 1px solid var(--ed-line); align-items: start; }
+  .ed-mech-item:first-child { padding-top: 0; border-top: none; }
+  .ed-mech-item > span:first-child { font-family: var(--ed-font-serif); font-style: italic; font-size: 34px !important; color: var(--ed-terra) !important; letter-spacing: 0 !important; padding-top: 0 !important; }
+
+  /* ---- Product figures: image one side, caption block the other ---- */
+  .ed-figure-dark { display: grid !important; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+  .ed-figure-dark .science-fig { grid-column: 1; grid-row: 1 / span 3; height: 100% !important; min-height: 360px; object-fit: cover; }
+  .ed-figure { display: grid !important; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .ed-figure .ed-figure-img { grid-column: 1; grid-row: 1 / span 2; height: 100% !important; min-height: 360px; }
+
+  /* ---- Expert quotes: portrait beside an enlarged quote ---- */
+  .ed-expert { display: grid !important; grid-template-columns: 128px 1fr; gap: 44px; align-items: start; }
+  .ed-expert > .portrait { grid-row: 1 / span 2; width: 128px !important; height: 128px !important; }
+  .ed-expert .expert-quote { font-size: 26px; max-width: 42ch; }
+
+  /* ---- Quote carousel: enlarged, capped measure ---- */
+  .ed-carousel .expert-quote { font-size: 30px !important; max-width: 30ch; }
+
+  /* ---- CTAs: italic title scales, button caps + left-aligns ---- */
+  .ed-cta { align-items: flex-start !important; }
+  .ed-cta > p:first-child { font-size: 42px !important; }
+  .ed-cta .btn { width: 320px !important; align-self: flex-start; }
+
+  /* ---- Newsletter: heading block + inline row, on a comfortable measure ---- */
+  .ed-newsletter .ed-nl-row { max-width: 560px; }
+
+  /* ---- Modality strip: roomier ---- */
+  .ed-modalities { gap: 12px !important; }
+}

@@ -37,7 +37,7 @@ export default function TheScience() {
       pageVariant="white"
     >
       {/* JOURNAL HERO */}
-      <section style={{ padding: "36px 24px 30px", borderBottom: "1px solid var(--ed-line)" }}>
+      <section className="ed-sec ed-hero ed-hero--journal" style={{ padding: "36px 24px 30px", borderBottom: "1px solid var(--ed-line)" }}>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
           <span className="masthead__tag" style={{ letterSpacing: "0.28em" }}>Mechanism Review</span>
           <span className="masthead__tag" style={{ letterSpacing: "0.28em" }}>No. 04</span>
@@ -52,9 +52,9 @@ export default function TheScience() {
       </section>
 
       {/* ANNOTATED SECTIONS */}
-      <section className="reveal" style={{ padding: "32px 24px", display: "flex", flexDirection: "column", gap: "28px" }}>
+      <section className="reveal ed-sec ed-mechlist" style={{ padding: "32px 24px", display: "flex", flexDirection: "column", gap: "28px" }}>
         {MECHANISMS.map((m) => (
-          <div key={m.label} style={{ display: "grid", gridTemplateColumns: "44px 1fr", gap: "14px" }}>
+          <div key={m.label} className="ed-mech-item" style={{ display: "grid", gridTemplateColumns: "44px 1fr", gap: "14px" }}>
             <span style={{ fontSize: "11px", color: "var(--ed-grey-warm)", letterSpacing: "0.1em", paddingTop: "4px" }}>{m.n}</span>
             <div>
               <p style={{ fontSize: "13px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--ed-teal-deep)", fontWeight: 500, margin: "0 0 8px" }}>
@@ -70,7 +70,7 @@ export default function TheScience() {
       </section>
 
       {/* PRODUCT FIGURE (clinical dark ground) */}
-      <section style={{ background: "var(--ed-near-black)", padding: "36px 24px" }}>
+      <section className="ed-sec ed-figure-dark" style={{ background: "var(--ed-near-black)", padding: "36px 24px" }}>
         {/* IMAGE SLOT science-fig1 · 342×260 · Restoration Belt on dark surface, ONLY edge glow +
             side control unit visible (LED array faces inward — never an outward-facing panel) */}
         <EditorialImageSlot
@@ -92,7 +92,7 @@ export default function TheScience() {
       </section>
 
       {/* EXPERT QUOTE */}
-      <section className="reveal" style={{ padding: "36px 24px", borderBottom: "1px solid var(--ed-line)", display: "grid", gridTemplateColumns: "56px 1fr", gap: "16px", alignItems: "start" }}>
+      <section className="reveal ed-sec ed-expert" style={{ padding: "36px 24px", borderBottom: "1px solid var(--ed-line)", display: "grid", gridTemplateColumns: "56px 1fr", gap: "16px", alignItems: "start" }}>
         <img className="portrait" src="/editorial/people/expert-2.webp" alt="Portrait" width={56} height={56} loading="lazy" />
         <div>
           <p className="expert-quote" style={{ fontSize: "18px", marginBottom: "10px" }}>
@@ -104,7 +104,7 @@ export default function TheScience() {
       </section>
 
       {/* FOOTNOTES */}
-      <section style={{ padding: "28px 24px", borderBottom: "1px solid var(--ed-line)" }}>
+      <section className="ed-sec ed-notes" style={{ padding: "28px 24px", borderBottom: "1px solid var(--ed-line)" }}>
         <p className="meta-label" style={{ margin: "0 0 14px" }}>References</p>
         <p style={{ fontSize: "12px", lineHeight: 1.7, color: "var(--ed-grey)", margin: 0 }}>
           1. Hamblin, M. Mechanisms of low level light therapy. 2017.
@@ -116,7 +116,7 @@ export default function TheScience() {
       </section>
 
       {/* END CTA */}
-      <section style={{ padding: "40px 24px", display: "flex", flexDirection: "column", gap: "16px" }}>
+      <section className="ed-sec ed-cta" style={{ padding: "40px 24px", display: "flex", flexDirection: "column", gap: "16px" }}>
         <p style={{ fontFamily: "var(--ed-font-serif)", fontStyle: "italic", fontSize: "26px", lineHeight: 1.25, margin: 0 }}>
           Mechanism, at home.
         </p>

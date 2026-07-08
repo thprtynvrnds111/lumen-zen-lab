@@ -11,7 +11,7 @@ export function QuoteCarousel({ quotes }: { quotes: CarouselQuote[] }) {
   const pad = (n: number) => String(n).padStart(2, "0");
   const q = quotes[i];
   return (
-    <section style={{ background: "#FFFFFF", borderTop: "1px solid var(--ed-line)", borderBottom: "1px solid var(--ed-line)", padding: "36px 24px" }}>
+    <section className="ed-sec ed-carousel" style={{ background: "#FFFFFF", borderTop: "1px solid var(--ed-line)", borderBottom: "1px solid var(--ed-line)", padding: "36px 24px" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "22px" }}>
         <span className="meta-label">Voices</span>
         <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>

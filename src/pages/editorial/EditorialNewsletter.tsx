@@ -35,6 +35,7 @@ export function EditorialNewsletter({
   const dark = variant === "dark";
   return (
     <section
+      className="ed-sec ed-newsletter"
       style={{
         background: dark ? "var(--ed-dark)" : "var(--ed-bg)",
         padding: "40px 24px",
@@ -61,22 +62,24 @@ export function EditorialNewsletter({
         </p>
       ) : (
         <>
-          <input
-            className="input"
-            type="email"
-            placeholder="Your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            aria-label="Email address"
-          />
-          <button
-            className={dark ? "btn btn--brand" : "btn btn--outline"}
-            type="button"
-            onClick={submit}
-            disabled={state === "sending"}
-          >
-            {state === "sending" ? "One moment…" : "Subscribe"}
-          </button>
+          <div className="ed-nl-row">
+            <input
+              className="input"
+              type="email"
+              placeholder="Your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              aria-label="Email address"
+            />
+            <button
+              className={dark ? "btn btn--brand" : "btn btn--outline"}
+              type="button"
+              onClick={submit}
+              disabled={state === "sending"}
+            >
+              {state === "sending" ? "One moment…" : "Subscribe"}
+            </button>
+          </div>
           {state === "error" && (
             <p style={{ fontSize: "13px", color: "var(--ed-grey)", margin: 0 }}>
               That didn't go through. Try once more.

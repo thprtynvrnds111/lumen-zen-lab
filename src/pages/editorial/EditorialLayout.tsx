@@ -36,6 +36,9 @@ export function EditorialLayout({
   useEffect(() => {
     const els = mainRef.current?.querySelectorAll(".reveal");
     if (!els?.length || typeof IntersectionObserver === "undefined") return;
+    // Arm the hidden initial state only now that we can observe — so no-JS and
+    // prerendered HTML render everything visible (see editorial.css .reveal).
+    document.documentElement.classList.add("js-reveal");
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
@@ -45,10 +48,17 @@ export function EditorialLayout({
           }
         }
       },
-      { threshold: 0.15 },
+      // Large bottom rootMargin: reveal fires for everything already laid out
+      // below the fold on load, so nothing is ever left invisible without a
+      // scroll (crawlers, print, and headless full-page captures included).
+      // Real users still get the fade-up; reduced-motion disables it.
+      { threshold: 0, rootMargin: "0px 0px 3000px 0px" },
     );
     els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    return () => {
+      io.disconnect();
+      document.documentElement.classList.remove("js-reveal");
+    };
   }, [slug]);
 
   const dark = mastheadVariant === "dark";
