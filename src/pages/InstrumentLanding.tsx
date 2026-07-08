@@ -136,8 +136,8 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     num: "02",
     name: "The Restoration Belt",
     handle: "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
-    price: "€280",
-    priceAnchor: "A recovery-room membership runs about €75 a month. The Belt is €280, once — and it doesn't close at 9pm.",
+    price: "€180",
+    priceAnchor: "A recovery-room membership runs about €75 a month. The Belt is €180, once — and it doesn't close at 9pm.",
     seoTitle: "The Restoration Belt · Recovery, worn close | Zential Pure",
     seoDescription:
       "A contoured array of 660nm red and 850nm near-infrared light, pressed to the muscle by a thermal wrap. The recovery room, narrowed to the span of your lower back.",
@@ -202,8 +202,8 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     num: "03",
     name: "The Restoration Mat",
     handle: "portable-home-use-charging-red-light-therapy-blanket-far-infrared",
-    price: "€220",
-    priceAnchor: "A single infrared-sauna session is about €40. The Mat is €220, once, and it lives under your bed.",
+    price: "€200",
+    priceAnchor: "A single infrared-sauna session is about €40. The Mat is €200, once, and it lives under your bed.",
     seoTitle: "The Restoration Mat · The whole system, laid down | Zential Pure",
     seoDescription:
       "A full-body bed of 660nm red light and far-infrared heat. You lie down, the array does the rest, and the nervous system gets twenty minutes it does not usually get.",
@@ -258,7 +258,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
       { q: "How big is it, and where does it live?", a: "Full-body length, and it rolls flat. Unroll it on a bed, a sofa or the floor for the session, then roll it away. It does not need a dedicated corner." },
       { q: "Front of the body or back?", a: "You lie on it, so the array works the back of the body — where most tension is held. Turn over for the last few minutes if you want the front." },
       { q: "When in the day should I use it?", a: "Most people run it in the evening as a wind-down before sleep. It works any time you can give it twenty horizontal minutes." },
-      { q: "Why does it cost what it does?", a: "It carries the largest array we build — a full-body field of red light and far-infrared heat. Comparable full-body infrared mats run past €1,200. The Restoration Mat is €220, once — the price reflects the panel, not a subscription." },
+      { q: "Why does it cost what it does?", a: "It carries the largest array we build — a full-body field of red light and far-infrared heat. Comparable full-body infrared mats run past €1,200. The Restoration Mat is €200, once — the price reflects the panel, not a subscription." },
       { q: "What if it is not for me?", a: "The 30-day protocol guarantee covers exactly that. Use it for a month; if it does not earn its place, return it for a full refund." },
     ],
   },
@@ -582,7 +582,7 @@ export default function InstrumentLanding() {
           <Eyebrow num="08" tone="meta">Complete the system</Eyebrow>
           <div className="mt-5 flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
             <h2 className="max-w-[18ch] font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] leading-[1.1] text-[#1A1714]">Three instruments, one protocol.</h2>
-            <p className="max-w-[44ch] text-[15px] leading-[1.7] text-[#1A1714]/[0.66]">Face, body, full rest. Each instrument works alone — together they cover the whole day. The complete System runs €588.</p>
+            <p className="max-w-[44ch] text-[15px] leading-[1.7] text-[#1A1714]/[0.66]">Face, body, full rest. Each instrument works alone — together they cover the whole day. The complete System runs €468.</p>
           </div>
           <div className="mt-[44px] grid gap-px border border-[rgba(26,23,20,0.12)] bg-[rgba(26,23,20,0.12)] md:grid-cols-2">
             {others.map((o) => (
