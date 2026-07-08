@@ -9,8 +9,8 @@ import heroMat from "@/assets/hero-restore-mat.webp";
  * /instruments — "Three Instruments" hub.
  * Ported from the Claude Design prototype (landing/index.html) onto the real
  * storefront: shared PageShell chrome, repo tokens, real PDP links + prices.
- * Display names: Restoration Belt (€280, belt handle) and Restoration Mat
- * (€220, mat handle). Shopify product titles now match these names.
+ * Display names: Restoration Belt (€180, belt handle) and Restoration Mat
+ * (€200, mat handle). Shopify product titles now match these names.
  */
 
 interface Instrument {
@@ -40,7 +40,7 @@ const INSTRUMENTS: Instrument[] = [
     name: "The Restoration Belt",
     blurb:
       "660nm red and 850nm near-infrared light, pressed to the muscle by a thermal wrap. Recovery, worn close. Fifteen minutes.",
-    price: "€280",
+    price: "€180",
     to: "/instruments/restoration-belt",
     img: heroBelt,
     alt: "The Restoration Belt worn across the lower back, red light through the array",
@@ -51,7 +51,7 @@ const INSTRUMENTS: Instrument[] = [
     name: "The Restoration Mat",
     blurb:
       "A full-body bed of 660nm red light and far-infrared heat. You lie down, the array does the rest. Twenty horizontal minutes.",
-    price: "€220",
+    price: "€200",
     to: "/instruments/restoration-mat",
     img: heroMat,
     alt: "The Restoration Mat",

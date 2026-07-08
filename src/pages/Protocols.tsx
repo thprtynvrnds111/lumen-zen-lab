@@ -57,7 +57,7 @@ const PROTOCOLS: Protocol[] = [
     kicker: "Body & Circulation",
     title: "Body.",
     seqLabel: "15-minute sequence",
-    price: "€280",
+    price: "€180",
     steps: [
       { n: "01", verb: "Warm", mod: "Thermal contact", min: "2 min", body: "The contour wrap warms against the muscle, the cue that begins relaxing the tissue and softening the load it has been holding." },
       { n: "02", verb: "Penetrate", mod: "Near-Infrared · 850nm", min: "6 min", body: "Near-infrared reaches past the surface into deeper muscle tissue — the depth red light alone cannot carry to." },
@@ -70,14 +70,14 @@ const PROTOCOLS: Protocol[] = [
     modalities: "Red 660nm · Near-IR 850nm · Thermal · Wrap",
     cadence: "After load · 15 minutes",
     to: "/instruments/restoration-belt",
-    begin: "Begin Protocol 02 · €280",
+    begin: "Begin Protocol 02 · €180",
   },
   {
     num: "03",
     kicker: "Sleep & Recovery",
     title: "Recovery.",
     seqLabel: "20-minute sequence",
-    price: "€220",
+    price: "€200",
     steps: [
       { n: "01", verb: "Settle", mod: "Lie flat · Thermal", min: "3 min", body: "You lie down on the full-body array and gentle warmth begins the downshift — the cue the body reads as permission to stop bracing." },
       { n: "02", verb: "Saturate", mod: "Red 660nm + Far-Infrared", min: "14 min", body: "The array delivers red light and far-infrared warmth evenly across the back of the body — a wide field, not one spot at a time." },
@@ -89,7 +89,7 @@ const PROTOCOLS: Protocol[] = [
     modalities: "Red 660nm · Far-Infrared · Full-body · Thermal",
     cadence: "Evening · 20 minutes",
     to: "/instruments/restoration-mat",
-    begin: "Begin Protocol 03 · €220",
+    begin: "Begin Protocol 03 · €200",
   },
 ];
 

@@ -165,7 +165,7 @@ export function ProductLanding({ config }: Props) {
  }, {});
  const hasMultipleVariants = variants.length > 1;
  const variant = variants[selectedVariantIdx]?.node || variants[0]?.node;
- const basePrice = parseFloat(variant?.price?.amount || "84");
+ const basePrice = parseFloat(variant?.price?.amount || "88");
  const currency = variant?.price?.currencyCode || "EUR";
  const sym = currency === "EUR" ? "€" : currency;
  const problemImageSrc = REAL_ISSUE_IMAGE_OVERRIDES[config.handle] || config.problemImage || config.beforeAfter.before;

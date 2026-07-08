@@ -3,7 +3,7 @@ import { safeCheckoutUrl } from "@/lib/checkout";
 
 /**
  * "The System" — all three instruments in one purchase. Backed by a real Shopify
- * bundle product (SKU ZP-SYSTEM-BUNDLE, €499) and sold through a Shopify cart
+ * bundle product (SKU ZP-SYSTEM-BUNDLE, €399) and sold through a Shopify cart
  * permalink, so checkout works end-to-end without a discount-code scope.
  *
  * Fulfilment note: an order for this bundle is one line item — ship all three
@@ -14,12 +14,12 @@ import { safeCheckoutUrl } from "@/lib/checkout";
 
 const SYSTEM = [
   { name: "The Face Introducer", price: 88, to: "/instruments/face-introducer" },
-  { name: "The Restoration Belt", price: 280, to: "/instruments/restoration-belt" },
-  { name: "The Restoration Mat", price: 220, to: "/instruments/restoration-mat" },
+  { name: "The Restoration Belt", price: 180, to: "/instruments/restoration-belt" },
+  { name: "The Restoration Mat", price: 200, to: "/instruments/restoration-mat" },
 ];
 
-const FULL_PRICE = SYSTEM.reduce((s, i) => s + i.price, 0); // €588
-const BUNDLE_PRICE = 499;
+const FULL_PRICE = SYSTEM.reduce((s, i) => s + i.price, 0); // €468
+const BUNDLE_PRICE = 399;
 
 // Live Shopify bundle variant (product: the-system-founding-bundle).
 const BUNDLE_VARIANT_ID = "53870945567063";
