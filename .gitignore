@@ -26,3 +26,7 @@ dist-ssr
 .vercel
 .superpowers/
 .dashboard-token.local
+
+# build info + local backups
+*.tsbuildinfo
+*.BAK-*
