@@ -57,12 +57,19 @@ export function EditorialNewsletter({
         {copy}
       </p>
       {state === "done" ? (
-        <p style={{ fontSize: "14px", color: dark ? "var(--ed-teal)" : "var(--ed-teal-deep)", margin: 0 }}>
+        <p role="status" style={{ fontSize: "14px", color: dark ? "var(--ed-teal)" : "var(--ed-teal-deep)", margin: 0 }}>
           Confirmed. The next letter arrives Sunday.
         </p>
       ) : (
         <>
-          <div className="ed-nl-row">
+          <form
+            className="ed-nl-row"
+            aria-label={heading}
+            onSubmit={(e) => {
+              e.preventDefault();
+              submit();
+            }}
+          >
             <input
               className="input"
               type="email"
@@ -73,15 +80,14 @@ export function EditorialNewsletter({
             />
             <button
               className={dark ? "btn btn--brand" : "btn btn--outline"}
-              type="button"
-              onClick={submit}
+              type="submit"
               disabled={state === "sending"}
             >
               {state === "sending" ? "One moment…" : "Subscribe"}
             </button>
-          </div>
+          </form>
           {state === "error" && (
-            <p style={{ fontSize: "13px", color: "var(--ed-grey)", margin: 0 }}>
+            <p role="alert" style={{ fontSize: "13px", color: dark ? "var(--ed-on-dark-dim)" : "var(--ed-grey-warm)", margin: 0 }}>
               That didn't go through. Try once more.
             </p>
           )}

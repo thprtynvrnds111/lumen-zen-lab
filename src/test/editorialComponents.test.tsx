@@ -79,4 +79,32 @@ describe("EditorialNewsletter", () => {
     });
     vi.unstubAllGlobals();
   });
+
+  it("submits on Enter via the form element", async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true, json: async () => ({}) });
+    vi.stubGlobal("fetch", fetchMock);
+    wrap(<EditorialNewsletter slug="the-science" copy="One letter a week." />);
+    fireEvent.change(screen.getByPlaceholderText("Your email"), {
+      target: { value: "reader@example.com" },
+    });
+    fireEvent.submit(screen.getByRole("form", { name: /sunday protocol/i }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    expect(JSON.parse((fetchMock.mock.calls[0][1] as RequestInit).body as string).source).toBe(
+      "sunday-protocol-the-science",
+    );
+    vi.unstubAllGlobals();
+  });
+
+  it("announces the error state politely", async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: false, json: async () => ({}) });
+    vi.stubGlobal("fetch", fetchMock);
+    wrap(<EditorialNewsletter slug="the-ritual" copy="One letter a week." />);
+    fireEvent.change(screen.getByPlaceholderText("Your email"), {
+      target: { value: "reader@example.com" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: /subscribe/i }));
+    const alert = await screen.findByRole("alert");
+    expect(alert).toHaveTextContent(/didn't go through/i);
+    vi.unstubAllGlobals();
+  });
 });
