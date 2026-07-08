@@ -79,6 +79,7 @@ const ROUTES = [
   '/f/restoration-mat',
   // Editorial (Pinterest destinations)
   '/editorial/the-ritual',
+  '/editorial/the-science',
   '/quiz',
   '/quiz/result',
   '/thank-you',

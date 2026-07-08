@@ -56,6 +56,7 @@ const FunnelBridge = lazy(() => import("./pages/funnel/FunnelBridge"));
 const RevealTakeover = lazy(() => import("./pages/reveal/RevealTakeover"));
 const HomeLeadPrimer = lazy(() => import("./components/zential/HomeLeadPrimer"));
 const TheRitual = lazy(() => import("./pages/editorial/TheRitual"));
+const TheScience = lazy(() => import("./pages/editorial/TheScience"));
 
 const queryClient = new QueryClient();
 
@@ -88,6 +89,7 @@ function AppContent() {
         <Route path="/journal/ems-vs-microcurrent" element={<JournalEMS />} />
         <Route path="/journal/ritual-that-lasts" element={<JournalRitualLasts />} />
         <Route path="/editorial/the-ritual" element={<TheRitual />} />
+        <Route path="/editorial/the-science" element={<TheScience />} />
         <Route path="/support" element={<Support />} />
         <Route path="/shipping" element={<Shipping />} />
         <Route path="/returns" element={<Returns />} />

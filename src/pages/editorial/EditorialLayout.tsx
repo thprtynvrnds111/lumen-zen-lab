@@ -12,6 +12,7 @@ interface EditorialLayoutProps {
   publishedTime: string;
   folio: string;
   mastheadVariant?: "light" | "dark";
+  pageVariant?: "default" | "white";
   children: React.ReactNode;
 }
 
@@ -23,6 +24,7 @@ export function EditorialLayout({
   publishedTime,
   folio,
   mastheadVariant = "light",
+  pageVariant = "default",
   children,
 }: EditorialLayoutProps) {
   const mainRef = useRef<HTMLElement>(null);
@@ -72,7 +74,7 @@ export function EditorialLayout({
         }}
       />
       <div style={{ background: "var(--ed-fog)", minHeight: "100vh" }}>
-        <main className="ed-page" ref={mainRef}>
+        <main className={pageVariant === "white" ? "ed-page ed-page--white" : "ed-page"} ref={mainRef}>
           <header className={dark ? "masthead masthead--dark" : "masthead"}>
             {dark ? (
               <span style={{ display: "flex", alignItems: "center", gap: "10px" }}>
