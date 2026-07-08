@@ -1,0 +1,74 @@
+/* Zential Pure — editorial page component classes.
+   REFERENCE ONLY: the Google Fonts import below is for viewing these standalone
+   files. In the repo, Lora + DM Sans are already self-hosted — do NOT port it. */
+
+/* Page frame — mobile-first, designed at 390px. */
+.ed-page { max-width: 390px; margin: 0 auto; background: var(--ed-bg); box-shadow: 0 2px 24px rgba(26,23,20,0.12); }
+.ed-page--white { background: #FFFFFF; }
+
+/* Masthead */
+.masthead { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--ed-line); }
+.masthead--dark { border-bottom-color: var(--ed-line-dark); }
+.masthead__logo { height: 20px; width: auto; }
+.masthead__tag { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ed-grey-warm); }
+.masthead--dark .masthead__tag { color: var(--ed-on-dark-dim); }
+.masthead__wordmark { font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ed-on-dark); font-weight: 500; }
+
+/* Type */
+.eyebrow { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ed-grey-warm); }
+.eyebrow--teal { color: var(--ed-teal); }        /* on dark grounds */
+.eyebrow--teal-light { color: var(--ed-teal-deep); } /* on light grounds */
+.headline { font-family: var(--ed-font-serif); font-style: italic; font-weight: 400; font-size: 44px; line-height: 1.08; letter-spacing: -0.02em; margin: 18px 0 16px; text-wrap: pretty; }
+.deck { font-size: 15px; line-height: 1.65; color: var(--ed-grey); margin: 0; }
+.body-copy { font-size: 16px; line-height: 1.75; color: var(--ed-dark); margin: 0 0 20px; }
+.body-copy:last-child { margin-bottom: 0; }
+.drop-cap { float: left; font-family: var(--ed-font-serif); font-style: italic; font-size: 58px; line-height: 0.85; padding: 6px 10px 0 0; color: var(--ed-teal-deep); }
+.meta-label { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ed-grey-warm); }
+
+/* Pull quote — teal, hairline-framed */
+.pull-quote { border-top: 1px solid var(--ed-line); border-bottom: 1px solid var(--ed-line); padding: 28px 0; }
+.pull-quote p { font-family: var(--ed-font-serif); font-style: italic; font-size: 26px; line-height: 1.3; color: var(--ed-teal-deep); margin: 0; text-wrap: pretty; }
+
+/* Modality badge */
+.badge { display: inline-block; padding: 5px 10px; font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ed-teal-deep); border: 1px solid var(--ed-teal-deep); }
+
+/* Buttons — pill. Tangerine = the single "do this now" action per view. */
+.btn { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 48px; border-radius: 9999px; border: none; font-family: var(--ed-font-sans); font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, opacity 0.2s, transform 0.1s; }
+.btn:active { transform: scale(0.97); }
+.btn--primary { background: var(--ed-tangerine); color: var(--ed-dark); box-shadow: 0 6px 24px rgba(246,146,81,0.35); }
+.btn--primary:hover { background: var(--ed-tangerine-hover); color: var(--ed-dark); }
+.btn--outline { background: transparent; color: var(--ed-dark); border: 1px solid var(--ed-line-strong); font-weight: 500; height: 44px; }
+.btn--outline:hover { opacity: 0.7; color: var(--ed-dark); }
+.btn--brand { background: var(--ed-teal); color: var(--ed-dark); height: 44px; }
+.btn--brand:hover { background: var(--ed-teal-hover); color: var(--ed-dark); }
+
+/* Soft CTA text link */
+.soft-cta { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
+
+/* Newsletter input */
+.input { width: 100%; height: 48px; padding: 0 18px; border-radius: 12px; border: 1px solid var(--ed-line); background: #FFFFFF; font-family: var(--ed-font-sans); font-size: 14px; color: var(--ed-dark); outline: none; }
+.input:focus { border-color: var(--ed-teal); box-shadow: 0 0 0 3px rgba(46,216,168,0.25); }
+
+/* Expert quote */
+.expert-quote { font-family: var(--ed-font-serif); font-style: italic; font-size: 19px; line-height: 1.45; margin: 0; }
+.attribution { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-grey-warm); margin: 0; }
+.portrait { border-radius: 9999px; object-fit: cover; }
+
+/* Carousel controls */
+.car-btn { width: 32px; height: 32px; border-radius: 9999px; border: 1px solid var(--ed-line-strong); background: transparent; color: var(--ed-dark); font-size: 14px; cursor: pointer; }
+.car-btn:hover { opacity: 0.7; }
+.car-counter { font-size: 11px; color: var(--ed-grey); font-variant-numeric: tabular-nums; }
+
+/* Footer */
+.page-footer { padding: 24px; display: flex; justify-content: space-between; align-items: center; }
+.page-footer .folio { font-size: 10px; color: var(--ed-grey); }
+
+/* Scroll reveal — applied via IntersectionObserver in EditorialLayout.
+   Respects prefers-reduced-motion. */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.reveal--visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ≥768px enhancement: two-column editorial spreads (see README §Responsive). */

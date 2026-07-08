@@ -1,0 +1,20 @@
+[
+  { "page": "the-ritual", "type": "quote", "text": "The instrument does not ask for effort. It asks for consistency.", "attribution": null },
+  { "page": "the-ritual", "type": "quote", "text": "Consistency beats intensity. A short daily session, held at the same hour, is where the skin's own rhythm does the work.", "attribution": "Clinical Advisor · Zential Pure" },
+  { "page": "the-ritual", "type": "claim", "text": "Inside the belt, an inward-facing LED array delivers red light in the 630 to 660 nanometre range, paired with gentle thermal support. Published research associates these wavelengths with cellular energy processes in skin tissue.", "attribution": null },
+  { "page": "the-ritual", "type": "claim", "text": "This is not a routine. A routine is something you get through. A ritual is something you return to. The difference is attention.", "attribution": null },
+  { "page": "the-ritual", "type": "stat", "text": "The Restoration Belt is calibrated to a twelve-minute session. €180. Once.", "attribution": null },
+
+  { "page": "the-science", "type": "claim", "text": "Light at 660 nanometres penetrates the upper layers of skin, where it is absorbed by cytochrome c oxidase, an enzyme in the mitochondrial respiratory chain.", "attribution": "Hamblin, M. Mechanisms of low level light therapy. 2017." },
+  { "page": "the-science", "type": "claim", "text": "Absorption is associated in published studies with increased ATP production, the energy currency cells use for maintenance and renewal.", "attribution": "de Freitas & Hamblin. Proposed mechanisms of photobiomodulation. 2016." },
+  { "page": "the-science", "type": "claim", "text": "Researchers describe this as photobiomodulation. Light as a signal to tissue, not a treatment applied onto it.", "attribution": "Anders et al. Low-level light/laser therapy versus photobiomodulation therapy. 2015." },
+  { "page": "the-science", "type": "quote", "text": "The literature is careful, and so should we be. What we can say is mechanistic. What the skin does with it takes weeks of consistency.", "attribution": "Research Lead · Zential Pure" },
+  { "page": "the-science", "type": "stat", "text": "630 to 660nm, calibrated to a twelve-minute session.", "attribution": null },
+
+  { "page": "the-diagnosis", "type": "claim", "text": "Skin is an electrical organ before it is a chemical one. Every cream on your shelf speaks chemistry. Almost nothing you own speaks current, frequency or warmth. That is the gap.", "attribution": null },
+  { "page": "the-diagnosis", "type": "claim", "text": "Twelve products on the shelf and the same face in the mirror. The problem is not the ingredients. It is the signal.", "attribution": null },
+  { "page": "the-diagnosis", "type": "quote", "text": "Most home devices fail because they are single-modality. The clinic result comes from stacking signals in one session.", "attribution": "Clinical Advisor · Zential Pure" },
+  { "page": "the-diagnosis", "type": "quote", "text": "I stopped recommending twelve-step routines years ago. One instrument, one ritual, held daily. That is the honest protocol.", "attribution": "Aesthetic Practitioner" },
+  { "page": "the-diagnosis", "type": "quote", "text": "The research on microcurrent is older than most people think. What changed is that the output is now safe to hold at home.", "attribution": "Research Lead · Zential Pure" },
+  { "page": "the-diagnosis", "type": "stat", "text": "Four modalities, calibrated to a twelve-minute daily ritual. €88. Once.", "attribution": null }
+]

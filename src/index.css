@@ -78,6 +78,22 @@
   --ed-muted: #8A7F74;
   --ed-teal: #2ED8A8;
   --ed-gold: #C6A07C;
+  /* Editorial pages (design handoff 2026-07-08) */
+  --ed-fog: #EDEAE6;
+  --ed-near-black: #070A0E;
+  --ed-teal-deep: #157A5C;   /* teal TEXT on light grounds (AA) */
+  --ed-teal-hover: #1BAF86;
+  --ed-grey: #888480;
+  --ed-grey-warm: #6B5A4A;
+  --ed-on-dark: #F7F4F0;
+  --ed-on-dark-dim: rgba(247, 244, 240, 0.6);
+  --ed-tangerine: #F69251;   /* single primary action per view */
+  --ed-tangerine-hover: #E87A38;
+  --ed-line: rgba(26, 23, 20, 0.12);
+  --ed-line-strong: rgba(26, 23, 20, 0.28);
+  --ed-line-dark: rgba(247, 244, 240, 0.10);
+  --ed-font-serif: 'Lora', Georgia, serif;
+  --ed-font-sans: 'DM Sans', system-ui, sans-serif;
   }
 }
 

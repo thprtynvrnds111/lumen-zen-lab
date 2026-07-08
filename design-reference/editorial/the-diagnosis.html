@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why your skin stopped listening. — Zential Pure Journal</title>
+<!-- DESIGN REFERENCE — recreate in the repo as /editorial/the-diagnosis. Hero SKU: Face Introducer €88. -->
+<link rel="stylesheet" href="../tokens/editorial-tokens.css">
+<link rel="stylesheet" href="../styles/editorial.css">
+</head>
+<body>
+<main class="ed-page">
+
+  <!-- DARK MASTHEAD + HERO -->
+  <div style="background: var(--ed-dark);">
+    <header class="masthead masthead--dark">
+      <span style="display:flex; align-items:center; gap:10px;">
+        <img src="../assets/logo/zential-mark-teal.png" alt="" width="20" height="20" style="height:20px; width:auto;">
+        <span class="masthead__wordmark">Zential Pure</span>
+      </span>
+      <span class="masthead__tag">Journal</span>
+    </header>
+    <section style="padding: 40px 24px 44px;">
+      <span class="eyebrow eyebrow--teal">The Diagnosis</span>
+      <h1 class="headline" style="font-size:42px; line-height:1.1; color:var(--ed-on-dark);">Why your skin stopped listening.</h1>
+      <p class="deck" style="color:var(--ed-on-dark-dim);">Twelve products on the shelf and the same face in the mirror. The problem is not the ingredients. It is the signal.</p>
+    </section>
+  </div>
+
+  <!-- IMAGE SLOT diagnosis-hero · 390×280 (~7:5) · subject: seated figure in calm natural side light, back or profile, contemplative · mood: still, warm-muted, editorial · no product, no direct gaze -->
+  <img src="../assets/editorial/seated-calm.webp" alt="Seated figure in calm light" width="390" height="280" style="width:100%; height:280px; object-fit:cover;">
+
+  <!-- ESSAY -->
+  <section style="padding: 36px 24px 8px;">
+    <p class="body-copy"><span class="drop-cap">S</span>kin is an electrical organ before it is a chemical one. Every cream on your shelf speaks chemistry. Almost nothing you own speaks current, frequency or warmth. That is the gap.</p>
+    <p class="body-copy">Clinics have known this for decades. Microcurrent, EMS, thermal work and cosmetic LED are the standard toolkit of a professional facial. The Face Introducer folds all four into one instrument.</p>
+  </section>
+
+  <!-- MODALITY STRIP -->
+  <section style="padding: 32px 24px; display:flex; gap:8px; flex-wrap:wrap;">
+    <span class="badge">EMS</span>
+    <span class="badge">Microcurrent</span>
+    <span class="badge">Thermal</span>
+    <span class="badge">LED 630–660nm</span>
+  </section>
+
+  <!-- PRODUCT FIGURE + SOFT CTA -->
+  <section style="padding: 0 24px 36px;">
+    <!-- IMAGE SLOT diagnosis-product · 342×260 (~4:3) · subject: Face Introducer held or resting in warm natural light, real environment (NOT product-on-white) · mood: warm, precise, calm -->
+    <img src="../assets/product/hero-neck-device.webp" alt="Face Introducer instrument" width="342" height="260" style="width:100%; height:260px; object-fit:cover; margin-bottom:18px;" loading="lazy">
+    <p class="body-copy" style="font-size:15px; line-height:1.7; margin:0 0 14px;">Four modalities, calibrated to a twelve-minute daily ritual. €88. Once.</p>
+    <a class="soft-cta" href="/instruments/face-introducer?utm_source=pinterest&utm_medium=pin&utm_campaign=the-diagnosis">Read about the instrument →</a>
+  </section>
+
+  <!-- QUOTE CAROUSEL (see README §Interactions) -->
+  <section style="background:#FFFFFF; border-top:1px solid var(--ed-line); border-bottom:1px solid var(--ed-line); padding: 36px 24px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:22px;">
+      <span class="meta-label">Voices</span>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <button class="car-btn" id="prev" type="button" aria-label="Previous quote">←</button>
+        <span class="car-counter" id="counter">01 / 03</span>
+        <button class="car-btn" id="next" type="button" aria-label="Next quote">→</button>
+      </div>
+    </div>
+    <div style="min-height:168px;">
+      <p class="expert-quote" id="q-text" style="font-size:20px; margin-bottom:18px;"></p>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <img class="portrait" id="q-img" src="" alt="Portrait" width="44" height="44">
+        <p class="attribution" id="q-role"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- END CTA -->
+  <section style="padding: 40px 24px; display:flex; flex-direction:column; gap:16px;">
+    <p style="font-family:var(--ed-font-serif); font-style:italic; font-size:26px; line-height:1.25; margin:0;">Speak the skin's language.</p>
+    <p style="font-size:14px; line-height:1.6; color:var(--ed-grey); margin:0;">Face Introducer · €88. Once.</p>
+    <a class="btn btn--primary" href="/instruments/face-introducer?utm_source=pinterest&utm_medium=pin&utm_campaign=the-diagnosis">Order the Face Introducer</a>
+  </section>
+
+  <!-- NEWSLETTER (tweak: showNewsletter — remove this whole section when off) -->
+  <section style="background: var(--ed-dark); padding: 40px 24px; display:flex; flex-direction:column; gap:16px;">
+    <span class="eyebrow eyebrow--teal">The Sunday Protocol</span>
+    <p style="font-size:14px; line-height:1.6; color:var(--ed-on-dark-dim); margin:0;">One letter a week. Mechanism before benefit, always.</p>
+    <input class="input" type="email" placeholder="Your email">
+    <button class="btn btn--brand" type="button">Subscribe</button>
+  </section>
+
+  <footer class="page-footer">
+    <span class="meta-label">Zential Pure</span>
+    <span class="folio">( 02 / 05 )</span>
+  </footer>
+
+</main>
+
+<script>
+// Quote carousel — wraps both directions; counter is 1-based, zero-padded.
+// Optional autoplay (Tweaks variant): setInterval(next, 5000) when enabled.
+const quotes = [
+  { text: "Most home devices fail because they are single-modality. The clinic result comes from stacking signals in one session.", role: "Clinical Advisor · Zential Pure", img: "../assets/people/expert-1.webp" },
+  { text: "I stopped recommending twelve-step routines years ago. One instrument, one ritual, held daily. That is the honest protocol.", role: "Aesthetic Practitioner", img: "../assets/people/expert-2.webp" },
+  { text: "The research on microcurrent is older than most people think. What changed is that the output is now safe to hold at home.", role: "Research Lead · Zential Pure", img: "../assets/people/expert-3.webp" }
+];
+let qi = 0;
+function renderQuote() {
+  document.getElementById('q-text').textContent = quotes[qi].text;
+  document.getElementById('q-role').textContent = quotes[qi].role;
+  document.getElementById('q-img').src = quotes[qi].img;
+  document.getElementById('counter').textContent = String(qi + 1).padStart(2, '0') + ' / ' + String(quotes.length).padStart(2, '0');
+}
+document.getElementById('next').addEventListener('click', () => { qi = (qi + 1) % quotes.length; renderQuote(); });
+document.getElementById('prev').addEventListener('click', () => { qi = (qi - 1 + quotes.length) % quotes.length; renderQuote(); });
+renderQuote();
+</script>
+</body>
+</html>
