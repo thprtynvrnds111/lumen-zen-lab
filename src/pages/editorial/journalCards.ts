@@ -91,9 +91,9 @@ export type JournalCard = ImageCard | TextCard | QuoteCard | FactCard | Newslett
  */
 export function pinterestSaveHref(link: string, description: string): string {
   const url = `https://zentialpure.com${link}`;
-  return `https://www.pinterest.com/pin/create/button/?url=${url}&description=${encodeURIComponent(
-    description,
-  )}`;
+  return `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(
+    url,
+  )}&description=${encodeURIComponent(description)}`;
 }
 
 // Alternating pin-image heights, taken from the 1c reference (320 / 230 / 280).

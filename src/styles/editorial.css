@@ -66,6 +66,9 @@
 .attribution { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-grey-warm); margin: 0; }
 .portrait { border-radius: 9999px; object-fit: cover; }
 
+/* Quote carousel section ground */
+.ed-carousel { background: #FFFFFF; }
+
 /* Carousel controls — 32px visual per reference; ::after widens the hit area
    to 48px for touch without changing the rendered size. */
 .car-btn { position: relative; width: 32px; height: 32px; border-radius: 9999px; border: 1px solid var(--ed-line-strong); background: transparent; color: var(--ed-dark); font-size: 14px; cursor: pointer; }
