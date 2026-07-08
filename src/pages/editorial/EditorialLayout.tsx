@@ -85,7 +85,7 @@ export function EditorialLayout({
       />
       <div style={{ background: "var(--ed-fog)", minHeight: "100vh" }}>
         <main className={pageVariant === "white" ? "ed-page ed-page--white" : "ed-page"} ref={mainRef}>
-          <header className={dark ? "masthead masthead--dark" : "masthead"}>
+          <header className={dark ? "masthead masthead--dark" : "masthead"} style={dark ? { background: "var(--ed-dark)" } : {}}>
             {dark ? (
               <span style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <img src="/editorial/logo/zential-mark-teal.png" alt="" width={20} height={20} style={{ height: 20, width: "auto" }} />
