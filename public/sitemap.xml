@@ -65,5 +65,6 @@
   <!-- Editorial (Pinterest destinations) -->
   <url><loc>https://zentialpure.com/editorial/the-ritual</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://zentialpure.com/editorial/the-science</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/editorial/the-diagnosis</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
 </urlset>

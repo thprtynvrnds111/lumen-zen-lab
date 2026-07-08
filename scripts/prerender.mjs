@@ -80,6 +80,7 @@ const ROUTES = [
   // Editorial (Pinterest destinations)
   '/editorial/the-ritual',
   '/editorial/the-science',
+  '/editorial/the-diagnosis',
   '/quiz',
   '/quiz/result',
   '/thank-you',
