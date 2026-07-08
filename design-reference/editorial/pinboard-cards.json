@@ -1,0 +1,124 @@
+{
+  "$comment": "1c Pin Board — full masonry card inventory, in board order. These become 1000x1500 Pinterest pins. 'category' matches the board filter chips (All / Mechanism / Ritual / Evidence / Experts). 'source-page' is the suggested canonical URL the pin links back to. 'type' and 'image' are extra context for pin production; copy is final, do not edit before compliance review.",
+  "cards": [
+    {
+      "type": "article",
+      "category": "Ritual",
+      "headline": "The 12-minute window",
+      "body": "Why the protocol is calibrated to twelve minutes, and what happens in tissue when you stop at eleven.",
+      "source-page": "/journal/the-12-minute-window",
+      "image": "assets/editorial/morning-mug.webp"
+    },
+    {
+      "type": "fact",
+      "category": "Evidence",
+      "headline": "€3.40",
+      "body": "Cost per session over one year of daily use. A single clinic microcurrent visit averages €180.",
+      "source-page": "/journal/the-clinic-dropouts-guide",
+      "image": null
+    },
+    {
+      "type": "article",
+      "category": "Mechanism",
+      "headline": "Microcurrent needs moisture",
+      "body": "Conductivity is chemistry. What a conductive gel actually does, and why water alone underperforms.",
+      "source-page": "/journal/microcurrent-needs-moisture",
+      "image": "assets/editorial/pour-water.webp"
+    },
+    {
+      "type": "quote",
+      "category": "Experts",
+      "headline": "Dr. Amara Osei — Clinical dermatology, Berlin",
+      "body": "The honest claim for home microcurrent is frequency. Daily, correctly dosed stimulation is something no monthly clinic visit can replicate.",
+      "source-page": "/experts/amara-osei",
+      "image": "assets/people/expert-1.webp"
+    },
+    {
+      "type": "article",
+      "category": "Mechanism",
+      "headline": "What happens at 630 nanometres",
+      "body": "Cosmetic LED explained at the level of the mitochondrion. The wavelength, the dose, the study.",
+      "source-page": "/journal/what-happens-at-630-nanometres",
+      "image": "assets/editorial/waking-hand.webp"
+    },
+    {
+      "type": "newsletter",
+      "category": "Ritual",
+      "headline": "One mechanism, every Sunday. Pin it for later.",
+      "body": "The Protocol, weekly. No launches. No offers. One piece of skin science you can verify.",
+      "source-page": "/newsletter",
+      "image": null
+    },
+    {
+      "type": "article",
+      "category": "Evidence",
+      "headline": "Read a label like a chemist",
+      "body": "A working method for cross-referencing ingredient claims against the papers they cite.",
+      "source-page": "/journal/read-a-label-like-a-chemist",
+      "image": "assets/editorial/three-vessels.webp"
+    },
+    {
+      "type": "fact",
+      "category": "Mechanism",
+      "headline": "630nm",
+      "body": "The red wavelength window where dermal penetration and mitochondrial response overlap.",
+      "source-page": "/journal/what-happens-at-630-nanometres",
+      "image": null
+    },
+    {
+      "type": "quote",
+      "category": "Experts",
+      "headline": "Dr. Elena Vasquez — Photobiomodulation researcher",
+      "body": "At 630 to 660 nanometres the literature is genuinely strong. The variable that decides outcomes is not the device. It is adherence.",
+      "source-page": "/experts/elena-vasquez",
+      "image": "assets/people/expert-2.webp"
+    },
+    {
+      "type": "article",
+      "category": "Ritual",
+      "headline": "Consistency beats intensity",
+      "body": "The clinic delivers peaks. The instrument delivers frequency. Which one your skin remembers.",
+      "source-page": "/journal/consistency-beats-intensity",
+      "image": "assets/editorial/seated-calm.webp"
+    },
+    {
+      "type": "article",
+      "category": "Skin",
+      "headline": "Recovery is a skin strategy",
+      "body": "Sleep, circulation and cortisol set the ceiling on any protocol. The physiology, briefly.",
+      "source-page": "/journal/recovery-is-a-skin-strategy",
+      "image": "assets/editorial/walk-stone.webp"
+    },
+    {
+      "type": "fact",
+      "category": "Ritual",
+      "headline": "12 min",
+      "body": "The full four-modality sequence. Calibrated so it survives contact with a real morning.",
+      "source-page": "/journal/the-12-minute-window",
+      "image": null
+    },
+    {
+      "type": "quote",
+      "category": "Experts",
+      "headline": "Maren Holt — Medical aesthetician, 14 yrs clinical",
+      "body": "I stopped selling single treatments. Tissue responds to sequence, not to events. Twelve minutes a day outperforms an hour a month.",
+      "source-page": "/experts/maren-holt",
+      "image": "assets/people/expert-3.webp"
+    },
+    {
+      "type": "article",
+      "category": "Evidence",
+      "headline": "The clinic dropout's guide",
+      "body": "What professional microcurrent costs per session, what it delivers, and where home output now stands.",
+      "source-page": "/journal/the-clinic-dropouts-guide",
+      "image": "assets/editorial/threshold.webp"
+    }
+  ],
+  "pin-production-notes": {
+    "format": "1000x1500 (2:3)",
+    "article-pins": "Photo top ~62% of canvas, white panel below with category label (uppercase #157A5C, 0.22em tracking), Lora italic headline, DM Sans dek, flower mark bottom-left.",
+    "quote-pins": "Ink #1A1714 ground, oversized teal Lora quotation mark, quote in Lora italic #F7F4F0, hairline rule, circular portrait + name in teal #2ED8A8.",
+    "fact-pins": "Teal-washed gradient ground (see --ed-hero-wash), giant Lora italic stat in ink, DM Sans supporting line in #6B5A4A.",
+    "rules": "No before/after imagery. No exclamation marks. No em dashes. Category label always present so boards stay filterable."
+  }
+}

@@ -179,3 +179,142 @@ html.js-reveal .reveal.reveal--visible { opacity: 1; transform: none; }
   /* ---- Modality strip: roomier ---- */
   .ed-modalities { gap: 12px !important; }
 }
+
+/* ============================================================================
+   JOURNAL HUB — "The Pin Board" (/journal index)
+   Self-contained masonry surface, grammar from the 1c Pin Board reference:
+   compact masthead, centred Lora-italic intro, single-select filter chips, and a
+   CSS-column masonry of four pin types (image / dark-quote / gradient-stat /
+   text) plus an inline subscribe pin. Mobile-first: 1 column, 2 at 768px, 3 at
+   1100px. Colours/radii are the design tokens; no new fonts.
+   ========================================================================== */
+
+.jh-root { min-height: 100vh; background: var(--ed-bg); color: var(--ed-dark); }
+
+/* Masthead — logo (home link) · centre tagline · save-the-board pill */
+.jh-masthead {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 16px 20px; border-bottom: 1px solid var(--ed-line);
+}
+.jh-brand { display: inline-flex; }
+.jh-brand img { height: 20px; width: auto; display: block; }
+.jh-masthead-tag {
+  display: none; font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--ed-grey-warm); text-align: center;
+}
+.jh-follow {
+  flex: none; font-family: var(--ed-font-sans); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--ed-dark);
+  background: var(--ed-teal); border-radius: 9999px; padding: 9px 16px;
+  transition: background 0.2s ease;
+}
+.jh-follow:hover { background: var(--ed-teal-hover); color: var(--ed-dark); }
+
+/* Hero — centred intro + filter chips */
+.jh-hero {
+  padding: 40px 20px 8px; display: flex; flex-direction: column;
+  align-items: center; text-align: center; gap: 16px;
+}
+.jh-hero-head {
+  margin: 0; font-family: var(--ed-font-serif); font-style: italic; font-weight: 400;
+  font-size: 34px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ed-dark);
+  max-width: 22ch; text-wrap: pretty;
+}
+.jh-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 4px; }
+.jh-chip {
+  cursor: pointer; font-family: var(--ed-font-sans); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase; padding: 9px 18px;
+  border-radius: 9999px; border: 1px solid var(--ed-line-strong);
+  background: transparent; color: var(--ed-grey-warm);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+.jh-chip:hover { opacity: 0.75; }
+.jh-chip--active { background: var(--ed-dark); color: var(--ed-on-dark); border-color: var(--ed-dark); }
+
+/* Masonry — CSS columns, pins avoid breaking across columns */
+.jh-masonry { padding: 32px 20px 56px; column-count: 1; column-gap: 20px; }
+.jh-card {
+  position: relative; break-inside: avoid; margin-bottom: 20px; border-radius: 24px;
+  overflow: hidden;
+}
+
+/* Save pill — top-right on every pin except the subscribe card */
+.jh-save {
+  position: absolute; top: 14px; right: 14px; z-index: 2;
+  font-family: var(--ed-font-sans); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; font-weight: 600; padding: 8px 16px; border-radius: 9999px;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+.jh-save--image { border: none; background: var(--ed-tangerine); color: var(--ed-dark); box-shadow: 0 6px 16px rgba(246,146,81,0.4); }
+.jh-save--image:hover { background: var(--ed-tangerine-hover); color: var(--ed-dark); }
+.jh-save--quote { border: 1px solid rgba(247,244,240,0.3); background: transparent; color: var(--ed-on-dark); font-weight: 500; }
+.jh-save--quote:hover { border-color: var(--ed-teal); color: var(--ed-teal); }
+.jh-save--fact { border: 1px solid var(--ed-line-strong); background: transparent; color: var(--ed-dark); font-weight: 500; }
+.jh-save--fact:hover { opacity: 0.7; }
+
+/* Shared body block (image / fact / text pins) */
+.jh-body { display: flex; flex-direction: column; gap: 8px; padding: 20px 22px 24px; }
+.jh-topic { font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-teal-deep); }
+.jh-head { margin: 0; font-family: var(--ed-font-serif); font-style: italic; font-weight: 400; font-size: 20px; line-height: 1.3; color: var(--ed-dark); text-wrap: pretty; }
+.jh-dek { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--ed-grey); }
+
+/* Image pin */
+.jh-card--image { background: #FFFFFF; border: 1px solid var(--ed-line); box-shadow: 0 6px 18px rgba(26,23,20,0.05); transition: transform 0.3s var(--ease-out-soft, ease), box-shadow 0.3s var(--ease-out-soft, ease); }
+.jh-card--image:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(26,23,20,0.10); }
+.jh-imgwrap { position: relative; }
+.jh-imgwrap img { width: 100%; object-fit: cover; display: block; }
+
+/* Text pin (legacy articles — no image) */
+.jh-card--text { background: var(--ed-cream); border: 1px solid var(--ed-line); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.jh-card--text:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(26,23,20,0.08); }
+.jh-card--text .jh-body { padding-top: 26px; }
+.jh-meta { font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-teal-deep); }
+.jh-read { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ed-grey-warm); margin-top: 4px; }
+
+/* Fact / stat pin — teal-washed gradient ground */
+.jh-card--fact { background: linear-gradient(165deg, #F1F5F3, #E9F3EE); border: 1px solid var(--ed-line); transition: transform 0.3s ease; }
+.jh-card--fact:hover { transform: translateY(-3px); }
+.jh-card--fact .jh-body { gap: 12px; padding: 30px 26px 28px; }
+.jh-stat { font-family: var(--ed-font-serif); font-style: italic; font-weight: 400; font-size: 52px; line-height: 1; letter-spacing: -0.02em; color: var(--ed-dark); }
+.jh-dek--fact { font-size: 14px; line-height: 1.6; color: var(--ed-grey-warm); }
+
+/* Quote pin — ink ground, teal accents */
+.jh-card--quote { background: var(--ed-dark); padding: 30px 26px; transition: transform 0.3s ease; }
+.jh-card--quote:hover { transform: translateY(-3px); }
+.jh-quotemark { display: block; font-family: var(--ed-font-serif); font-style: italic; font-size: 44px; line-height: 0.4; color: var(--ed-teal); margin: 6px 0 0; }
+.jh-quote-body { display: flex; flex-direction: column; gap: 18px; margin-top: 14px; }
+.jh-quote { margin: 0; font-family: var(--ed-font-serif); font-style: italic; font-size: 20px; line-height: 1.45; color: var(--ed-on-dark); text-wrap: pretty; }
+.jh-quote-attr { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--ed-line-dark); padding-top: 16px; }
+.jh-portrait { width: 40px; height: 40px; border-radius: 9999px; object-fit: cover; flex: none; }
+.jh-quote-who { display: flex; flex-direction: column; gap: 1px; }
+.jh-quote-name { font-size: 12.5px; font-weight: 600; color: var(--ed-teal); }
+.jh-quote-role { font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-on-dark-dim); }
+
+/* Inline subscribe pin — reuse EditorialNewsletter, stripped to sit flush in a card */
+.jh-card--nl { background: #FFFFFF; border: 1px solid var(--ed-line); }
+.jh-card--nl .ed-newsletter { padding: 26px 24px !important; background: transparent !important; border-bottom: none !important; }
+
+/* Footer strip */
+.jh-footer {
+  padding: 24px 20px; border-top: 1px solid var(--ed-line); background: var(--ed-fog);
+  display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-grey-warm);
+}
+
+@media (min-width: 768px) {
+  .jh-masthead { padding: 20px 40px; }
+  .jh-masthead-tag { display: block; }
+  .jh-hero { padding: 52px 40px 10px; }
+  .jh-hero-head { font-size: 44px; }
+  .jh-masonry { padding: 40px 40px 60px; column-count: 2; column-gap: 22px; }
+  .jh-card { margin-bottom: 22px; }
+  .jh-footer { flex-direction: row; align-items: center; justify-content: space-between; padding: 28px 40px; }
+}
+
+@media (min-width: 1100px) {
+  .jh-masthead { padding: 20px 48px; }
+  .jh-hero { padding: 56px 48px 8px; }
+  .jh-hero-head { font-size: 48px; }
+  .jh-masonry { padding: 40px 48px 64px; column-count: 3; }
+  .jh-footer { padding: 28px 48px; }
+}

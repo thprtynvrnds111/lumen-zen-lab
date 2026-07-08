@@ -1,201 +1,177 @@
-import { PageShell } from "@/components/zential/v2/PageShell";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
+import { EditorialNewsletter } from "./editorial/EditorialNewsletter";
+import {
+  JOURNAL_CARDS,
+  FILTERS,
+  pinterestSaveHref,
+  type Filter,
+  type JournalCard,
+} from "./editorial/journalCards";
+import "@/styles/editorial.css";
 
-interface Article {
- category: string;
- title: string;
- excerpt: string;
- date: string;
- readTime: string;
- slug: string;
- featured?: boolean;
+const INTRO = "Skin science you can pin, verify, and practice.";
+
+/** Pinterest save-intent pill. Plain link, no SDK — opens the save dialog. */
+function SaveLink({
+  link,
+  description,
+  variant,
+}: {
+  link: string;
+  description: string;
+  variant: "image" | "fact" | "quote";
+}) {
+  return (
+    <a
+      className={`jh-save jh-save--${variant}`}
+      href={pinterestSaveHref(link, description)}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Save
+    </a>
+  );
 }
 
-const articles: Article[] = [
- {
-  category: "Ritual",
-  title: "The Night My Frequency Shifted",
-  excerpt:
-   "A sacred reflection on what happens when microcurrent becomes more than skincare, when it becomes a conversation with the nervous system, a vote for slowness, and a return to self-trust.",
-  date: "February 16, 2026",
-  readTime: "12 min read",
-  featured: true,
-  slug: "/journal/frequency-shift",
- },
- {
-  category: "Science",
-  title: "How Microcurrent Rebuilds Collagen",
-  excerpt:
-   "Understanding the biophysics behind electrical stimulation and its effects on fibroblast activity, ATP production, and dermal remodeling.",
-  date: "February 12, 2026",
-  readTime: "8 min read",
-  slug: "/journal/microcurrent-collagen",
- },
- {
-  category: "Ritual",
-  title: "The 5-Minute Evening Protocol",
-  excerpt:
-   "A structured guide to integrating microcurrent into your nightly wind-down. Designed for consistency, not perfection.",
-  date: "February 5, 2026",
-  readTime: "5 min read",
-  slug: "/journal/evening-protocol",
- },
- {
-  category: "Research",
-  title: "660nm Red Light: What the Data Shows",
-  excerpt:
-   "A transparent review of peer-reviewed studies on red light therapy for skin rejuvenation, wound healing, and inflammation.",
-  date: "January 28, 2026",
-  readTime: "10 min read",
-  slug: "/journal/red-light-clinical",
- },
- {
-  category: "Wellness",
-  title: "Lymphatic Drainage and Facial Sculpting",
-  excerpt:
-   "Why gentle electrical stimulation supports the body's natural detoxification pathways.",
-  date: "January 20, 2026",
-  readTime: "6 min read",
-  slug: "/journal/lymphatic-drainage",
- },
- {
-  category: "Science",
-  title: "EMS vs. Microcurrent",
-  excerpt:
-   "Not all electrical stimulation is equal. A clinical breakdown of frequency ranges, muscle response types, and ideal use cases.",
-  date: "January 14, 2026",
-  readTime: "7 min read",
-  slug: "/journal/ems-vs-microcurrent",
- },
- {
-  category: "Ritual",
-  title: "Building a Skin Ritual That Lasts",
-  excerpt:
-   "Consistency over intensity. How to design a personal protocol that adapts to your life, without burnout or guilt.",
-  date: "January 7, 2026",
-  readTime: "4 min read",
-  slug: "/journal/ritual-that-lasts",
- },
-];
+function PinCard({ card }: { card: JournalCard }) {
+  switch (card.kind) {
+    case "image":
+      return (
+        <article className="jh-card jh-card--image">
+          <div className="jh-imgwrap">
+            <img src={card.image} alt={card.imgAlt} loading="lazy" style={{ height: card.imgH }} />
+            <SaveLink link={card.link} description={card.headline} variant="image" />
+          </div>
+          <Link to={card.link} className="jh-body">
+            <span className="jh-topic">{card.category}</span>
+            <h3 className="jh-head">{card.headline}</h3>
+            <p className="jh-dek">{card.body}</p>
+          </Link>
+        </article>
+      );
 
-const Journal = () => {
- const featured = articles.find((a) => a.featured) || articles[0];
- const rest = articles.filter((a) => a !== featured);
+    case "text":
+      return (
+        <article className="jh-card jh-card--text">
+          <SaveLink link={card.link} description={card.headline} variant="fact" />
+          <Link to={card.link} className="jh-body">
+            <span className="jh-meta">{card.meta}</span>
+            <h3 className="jh-head">{card.headline}</h3>
+            <p className="jh-dek">{card.body}</p>
+            <span className="jh-read">Read the entry &rarr;</span>
+          </Link>
+        </article>
+      );
 
- return (
-  <PageShell
-   title="Journal, Zential Pure"
-   description="Field notes from the lab. Mechanism, ritual, science."
-   canonical="https://zentialpure.com/journal"
-   eyebrow="Zential Pure · Journal · Edition 2026"
-   displayTitle="Field notes."
-   displaySubtitle="Mechanism. Ritual. Science. Notes from the lab in Rotterdam."
-   stickyTag="Journal 2026"
-  >
-   {/* Featured article, full-bleed band */}
-   <section className="px-6 md:pl-32 pb-24 max-w-6xl">
-    <Link to={featured.slug} className="group block">
-     <div className="bg-[#1A1714] text-[#F7F4F0] p-10 md:p-16 hover:bg-[#0d2620] transition-colors">
-      <div className="flex items-baseline justify-between mb-8">
-       <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#F7F4F0]/55">
-        Featured · {featured.category}
-       </p>
-       <p className="font-mono text-[10px] tracking-[0.18em] text-[#F7F4F0]/40">
-        {featured.readTime}
-       </p>
+    case "quote":
+      return (
+        <article className="jh-card jh-card--quote">
+          <SaveLink link={card.link} description={card.quote} variant="quote" />
+          <span className="jh-quotemark" aria-hidden>
+            &ldquo;
+          </span>
+          <Link to={card.link} className="jh-quote-body">
+            <blockquote className="jh-quote">{card.quote}</blockquote>
+            <span className="jh-quote-attr">
+              <img className="jh-portrait" src={card.image} alt={card.name} loading="lazy" />
+              <span className="jh-quote-who">
+                <span className="jh-quote-name">{card.name}</span>
+                <span className="jh-quote-role">{card.role}</span>
+              </span>
+            </span>
+          </Link>
+        </article>
+      );
+
+    case "fact":
+      return (
+        <article className="jh-card jh-card--fact">
+          <SaveLink link={card.link} description={`${card.stat} — ${card.body}`} variant="fact" />
+          <Link to={card.link} className="jh-body">
+            <span className="jh-topic">{card.category}</span>
+            <span className="jh-stat">{card.stat}</span>
+            <p className="jh-dek jh-dek--fact">{card.body}</p>
+          </Link>
+        </article>
+      );
+
+    case "newsletter":
+      return (
+        <article className="jh-card jh-card--nl">
+          <EditorialNewsletter
+            slug="journal"
+            heading="The Protocol, weekly"
+            copy="One mechanism, every Sunday. Pin it for later. No launches. No offers. One piece of skin science you can verify."
+          />
+        </article>
+      );
+  }
+}
+
+export default function Journal() {
+  const [filter, setFilter] = useState<Filter>("All");
+
+  const visible = filter === "All" ? JOURNAL_CARDS : JOURNAL_CARDS.filter((c) => c.category === filter);
+
+  return (
+    <div className="jh-root">
+      <SEO
+        title="The Journal — Zential Pure"
+        description={INTRO}
+        canonicalUrl="/journal"
+      />
+
+      <header className="jh-masthead">
+        <Link to="/" className="jh-brand" aria-label="Zential Pure — home">
+          <img src="/editorial/logo/zential-logo-primary.png" alt="Zential Pure" />
+        </Link>
+        <span className="jh-masthead-tag">The Journal · Save what you will actually use</span>
+        <a
+          className="jh-follow"
+          href={pinterestSaveHref("/journal", `Zential Pure — ${INTRO}`)}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Save the board
+        </a>
+      </header>
+
+      <section className="jh-hero">
+        <p className="eyebrow eyebrow--teal-light">( 01 ) &nbsp;·&nbsp; The board</p>
+        <h1 className="jh-hero-head">{INTRO}</h1>
+        <div className="jh-filters" role="group" aria-label="Filter the board">
+          {FILTERS.map((f) => (
+            <button
+              key={f}
+              type="button"
+              className={`jh-chip${filter === f ? " jh-chip--active" : ""}`}
+              aria-pressed={filter === f}
+              onClick={() => setFilter(f)}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <div className="jh-masonry">
+        {visible.map((card) => (
+          <PinCard key={card.id} card={card} />
+        ))}
       </div>
-      <h2
-       className="font-[Lora] italic leading-[0.95] text-[#2ED8A8] mb-8 max-w-3xl"
-       style={{ fontSize: "clamp(2.5rem, 7vw, 5rem)" }}
-      >
-       {featured.title}.
-      </h2>
-      <p className="text-base md:text-lg text-[#F7F4F0]/75 max-w-2xl leading-relaxed mb-10">
-       {featured.excerpt}
-      </p>
-      <div className="flex items-baseline justify-between">
-       <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#F7F4F0]/55">
-        {featured.date}
-       </span>
-       <span className="text-xs tracking-[0.18em] uppercase text-[#2ED8A8] border-b border-[#2ED8A8] pb-1 group-hover:translate-x-1 transition-transform">
-        Read →
-       </span>
-      </div>
-     </div>
-    </Link>
-   </section>
 
-   {/* Section label */}
-   <section className="px-6 md:pl-32 pb-12 max-w-6xl">
-    <div className="flex items-baseline justify-between border-b border-[#1A1714]/15 pb-6">
-     <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#6B5A4A]">
-      Section ( 02 ) · Recent
-     </p>
-     <p className="font-mono text-[10px] tracking-[0.18em] text-[#6B5A4A] tabular-nums">
-      {rest.length.toString().padStart(2, "0")} entries
-     </p>
+      <EditorialNewsletter
+        slug="journal"
+        heading="The Sunday Protocol"
+        copy="One mechanism, every Sunday. No launches. No offers. One piece of skin science you can verify."
+      />
+
+      <footer className="jh-footer">
+        <span>Zential Pure · Clinic precision. Daily ritual.</span>
+        <span>Free EU shipping · Ships from Rotterdam</span>
+      </footer>
     </div>
-   </section>
-
-   {/* Article list, editorial rows */}
-   <section className="px-6 md:pl-32 pb-32 max-w-6xl">
-    <div className="space-y-12 md:space-y-16">
-     {rest.map((article, idx) => (
-      <Link
-       key={article.slug}
-       to={article.slug}
-       className="group block border-b border-[#1A1714]/10 pb-12 hover:border-[#2ED8A8] transition-colors"
-      >
-       <div className="grid grid-cols-12 gap-6 md:gap-10 items-baseline">
-        <div className="col-span-2 md:col-span-1">
-         <p className="font-mono text-xs text-[#6B5A4A] tabular-nums">
-          {String(idx + 2).padStart(2, "0")}
-         </p>
-        </div>
-        <div className="col-span-10 md:col-span-2">
-         <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#2ED8A8]">
-          {article.category}
-         </p>
-         <p className="font-mono text-[10px] tracking-[0.18em] text-[#6B5A4A] mt-2">
-          {article.readTime}
-         </p>
-        </div>
-        <div className="col-span-12 md:col-span-7">
-         <h3 className="font-[Lora] italic text-3xl md:text-5xl leading-tight text-[#1A1714] group-hover:text-[#2ED8A8] transition-colors mb-3">
-          {article.title}.
-         </h3>
-         <p className="text-sm md:text-base text-[#1A1714]/70 max-w-xl">
-          {article.excerpt}
-         </p>
-        </div>
-        <div className="col-span-12 md:col-span-2 md:text-right">
-         <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#6B5A4A]">
-          {article.date}
-         </p>
-        </div>
-       </div>
-      </Link>
-     ))}
-    </div>
-   </section>
-
-   {/* Closer */}
-   <section className="px-6 py-32 max-w-3xl mx-auto text-center">
-    <div className="inline-flex items-center gap-3 mb-10">
-     <span className="block w-12 h-px bg-[#1A1714]/20" />
-     <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-[#6B5A4A]">
-      Zential Pure
-     </span>
-     <span className="block w-12 h-px bg-[#1A1714]/20" />
-    </div>
-    <p className="font-[Lora] italic text-2xl md:text-4xl leading-[1.35] text-[#1A1714]">
-     The lab posts what it learns.
-     <br />
-     <span className="text-[#1A1714]/65">Slowly, in full sentences.</span>
-    </p>
-   </section>
-  </PageShell>
- );
-};
-
-export default Journal;
+  );
+}
