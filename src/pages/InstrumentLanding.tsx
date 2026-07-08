@@ -294,6 +294,14 @@ export default function InstrumentLanding() {
   const [liveFounding, setLiveFounding] = useState<number | null>(null);
   const [ordering, setOrdering] = useState(false);
   const [showSticky, setShowSticky] = useState(false);
+  // Bridge-funnel continuity: arriving with ?discount= shows a quiet founding
+  // strip so the promise made on the bridge is visibly kept. No param, no strip.
+  const [foundingArrival, setFoundingArrival] = useState(false);
+  useEffect(() => {
+    try {
+      setFoundingArrival(new URLSearchParams(window.location.search).has("discount"));
+    } catch { /* never break the PDP */ }
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -354,8 +362,17 @@ export default function InstrumentLanding() {
       const w = window as unknown as { fbq?: (...a: unknown[]) => void; gtag?: (...a: unknown[]) => void };
       if (w.fbq) w.fbq("track", "AddToCart", { content_name: cfg.name, content_ids: [variant.id], content_type: "product" });
       if (w.gtag) w.gtag("event", "add_to_cart", { item_name: cfg.name, experiment_id: `hero_${cfg.slug}`, variant: heroVariant });
-      const url = useCartStore.getState().getCheckoutUrl();
-      if (url) { window.location.href = safeCheckoutUrl(url); return; }
+      let url = useCartStore.getState().getCheckoutUrl();
+      if (url) {
+        // Bridge-funnel continuity: forward ?discount= into Shopify checkout so
+        // the founding code applies without the customer typing anything.
+        try {
+          const disc = new URLSearchParams(window.location.search).get("discount");
+          if (disc) url += (url.includes("?") ? "&" : "?") + "discount=" + encodeURIComponent(disc);
+        } catch { /* never block checkout */ }
+        window.location.href = safeCheckoutUrl(url);
+        return;
+      }
       navigate(`/product/${cfg.handle}`);
     } catch {
       navigate(`/product/${cfg.handle}`);
@@ -369,6 +386,22 @@ export default function InstrumentLanding() {
 
   return (
     <PageShell title={cfg.seoTitle} description={cfg.seoDescription} canonical={`https://zentialpure.com/instruments/${cfg.slug}`} hideHero>
+      {foundingArrival && (
+        <div
+          style={{
+            background: "#F7F4F0",
+            borderBottom: "1px solid #eae7e0",
+            padding: "10px 16px",
+            textAlign: "center",
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 13,
+            color: "#1A1714",
+          }}
+        >
+          <span style={{ color: "#2ED8A8", marginRight: 8 }}>✓</span>
+          Founding offer active — your price is applied at checkout. 30-day full refund, free EU shipping.
+        </div>
+      )}
       {/* ── HERO ── */}
       <section className="relative overflow-hidden bg-[#1A1714] text-[#F7F4F0]">
         <div className="pointer-events-none absolute inset-0 z-[1] opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: GRAIN, backgroundSize: "170px 170px" }} aria-hidden />

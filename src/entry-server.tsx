@@ -54,6 +54,7 @@ const InstrumentLanding = lazy(() => import("./pages/InstrumentLanding"));
 const TruthMovement    = lazy(() => import("./pages/TruthMovement"));
 const Storefront        = lazy(() => import("./pages/Storefront"));
 const Reveal            = lazy(() => import("./pages/reveal/Reveal"));
+const FunnelBridge = lazy(() => import("./pages/funnel/FunnelBridge"));
 
 function ServerApp() {
   return (
@@ -100,6 +101,7 @@ function ServerApp() {
         <Route path="/quiz/result"                              element={<QuizResult />} />
         <Route path="/founding-terms"                           element={<FoundingTerms />} />
         <Route path="/reveal"                                   element={<Reveal />} />
+        <Route path="/f/:slug"                                  element={<FunnelBridge />} />
         <Route path="/dashboard"                                element={<Dashboard />} />
         <Route path="*"                                         element={<NotFound />} />
       </Routes>
