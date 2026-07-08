@@ -88,7 +88,7 @@ function PinCard({ card }: { card: JournalCard }) {
     case "fact":
       return (
         <article className="jh-card jh-card--fact">
-          <SaveLink link={card.link} description={`${card.stat} — ${card.body}`} variant="fact" />
+          <SaveLink link={card.link} description={`${card.stat}. ${card.body}`} variant="fact" />
           <Link to={card.link} className="jh-body">
             <span className="jh-topic">{card.category}</span>
             <span className="jh-stat">{card.stat}</span>
@@ -130,7 +130,7 @@ export default function Journal() {
         <span className="jh-masthead-tag">The Journal · Save what you will actually use</span>
         <a
           className="jh-follow"
-          href={pinterestSaveHref("/journal", `Zential Pure — ${INTRO}`)}
+          href={pinterestSaveHref("/journal", `Zential Pure. ${INTRO}`)}
           target="_blank"
           rel="noopener noreferrer"
         >
