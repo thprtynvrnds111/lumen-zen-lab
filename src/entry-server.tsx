@@ -55,6 +55,7 @@ const TruthMovement    = lazy(() => import("./pages/TruthMovement"));
 const Storefront        = lazy(() => import("./pages/Storefront"));
 const Reveal            = lazy(() => import("./pages/reveal/Reveal"));
 const FunnelBridge = lazy(() => import("./pages/funnel/FunnelBridge"));
+const TheRitual = lazy(() => import("./pages/editorial/TheRitual"));
 
 function ServerApp() {
   return (
@@ -77,6 +78,7 @@ function ServerApp() {
         <Route path="/journal/lymphatic-drainage"               element={<JournalLymphatic />} />
         <Route path="/journal/ems-vs-microcurrent"              element={<JournalEMS />} />
         <Route path="/journal/ritual-that-lasts"                element={<JournalRitualLasts />} />
+        <Route path="/editorial/the-ritual"                     element={<TheRitual />} />
         <Route path="/support"                                  element={<Support />} />
         <Route path="/shipping"                                 element={<Shipping />} />
         <Route path="/returns"                                  element={<Returns />} />

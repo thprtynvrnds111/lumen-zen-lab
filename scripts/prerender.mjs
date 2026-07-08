@@ -77,6 +77,8 @@ const ROUTES = [
   '/f/face-introducer',
   '/f/restoration-belt',
   '/f/restoration-mat',
+  // Editorial (Pinterest destinations)
+  '/editorial/the-ritual',
   '/quiz',
   '/quiz/result',
   '/thank-you',

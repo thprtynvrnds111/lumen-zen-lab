@@ -58,6 +58,7 @@ export function EditorialLayout({
         ogType="article"
         ogImage={`https://zentialpure.com${ogImage}`}
         canonicalUrl={`/editorial/${slug}`}
+        publishedTime={publishedTime}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Article",

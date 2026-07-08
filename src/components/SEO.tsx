@@ -7,6 +7,8 @@ interface SEOProps {
   ogType?: string;
   canonicalUrl?: string;
   jsonLd?: Record<string, unknown>;
+  /** ISO date string. Emitted as article:published_time when ogType === "article". */
+  publishedTime?: string;
 }
 
 const SITE_URL = "https://zentialpure.com";
@@ -19,6 +21,7 @@ export function SEO({
   ogType = "website",
   canonicalUrl,
   jsonLd,
+  publishedTime,
 }: SEOProps) {
   const canonicalHref = canonicalUrl
     ? /^https?:\/\//i.test(canonicalUrl)
@@ -38,6 +41,9 @@ export function SEO({
       <meta property="og:image" content={ogImage} />
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={ogUrl} />
+      {ogType === "article" && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
