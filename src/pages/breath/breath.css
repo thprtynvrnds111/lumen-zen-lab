@@ -27,6 +27,11 @@
 .zb-pill:hover { border-color: rgba(46, 216, 168, 0.6); color: var(--ed-teal); }
 .zb-pill:active { transform: scale(0.97); }
 
+/* Act-accented chips — hover picks up the act's color (meditate gold,
+   restore teal, reset terra) so the three blocks read differently. */
+.zb-pill--meditate:hover { border-color: rgba(198, 160, 124, 0.65); color: #c6a07c; }
+.zb-pill--reset:hover { border-color: rgba(200, 123, 74, 0.65); color: #c87b4a; }
+
 /* Session / interlude END control. */
 .zb-end { color: rgba(247, 244, 240, 0.35); transition: color 0.3s ease; }
 .zb-end:hover { color: rgba(247, 244, 240, 0.7); }

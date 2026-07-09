@@ -433,6 +433,7 @@ export function useBreathEngine() {
     name: p.name,
     desc: p.desc,
     seqText: p.seq.map((g) => modeNames[g.mode].toUpperCase() + " " + g.mins).join(" · "),
+    segs: p.seq.map((g) => ({ mode: g.mode, mins: g.mins })),
     totalText: p.seq.reduce((a, g) => a + g.mins, 0) + " MIN TOTAL",
     begin: () => startProtocol(p),
   }));
@@ -462,6 +463,7 @@ export function useBreathEngine() {
       return {
         date: MONTHS[d.getMonth()] + " " + String(d.getDate()).padStart(2, "0"),
         name: modeNames[e.mode] || "Practice",
+        mode: e.mode,
         spec: mins + " MIN · " + e.breaths + " BR",
       };
     });
@@ -517,7 +519,12 @@ export function useBreathEngine() {
     remainingText: fmt(Math.max(0, st.remaining)),
     isRestore,
     terraWash: isRestore && sessEvening,
-    ambientRGBA: isRestore && sessEvening ? "rgba(155,90,46,0.16)" : "rgba(46,216,168,0.13)",
+    ambientRGBA:
+      isRestore && sessEvening
+        ? "rgba(155,90,46,0.16)"
+        : st.screen === "session" && st.mode === "reset"
+          ? "rgba(155,90,46,0.12)"
+          : "rgba(46,216,168,0.13)",
     ambientScale: 0.72 + 0.88 * st.frac,
     ambientOpacity: 0.35 + 0.65 * st.frac,
     ringOffset: RING_LEN * (1 - st.frac),

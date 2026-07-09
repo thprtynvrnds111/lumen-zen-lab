@@ -20,6 +20,30 @@ import "./breath.css";
 const SANS = "'DM Sans', system-ui, sans-serif";
 const SERIF = "'Lora', serif";
 
+// One color system across the whole app, so each act/mode is recognizable at
+// a glance on every screen: Meditate = gold, Restore = teal, Reset = terra.
+const MODE_COLOR: Record<string, string> = {
+  meditate: "#C6A07C",
+  restore: "#2ED8A8",
+  reset: "#C87B4A",
+};
+const MODE_GLOW: Record<string, string> = {
+  meditate: "rgba(198,160,124,0.6)",
+  restore: "rgba(46,216,168,0.7)",
+  reset: "rgba(200,123,74,0.6)",
+};
+const MODE_STROKE: Record<string, string> = {
+  meditate: "rgba(198,160,124,0.42)",
+  restore: "rgba(46,216,168,0.32)",
+  reset: "rgba(200,123,74,0.42)",
+};
+// Protocols carry a time-of-day accent: morning teal, midday gold, evening terra.
+const ROLE_COLOR: Record<string, string> = {
+  MORNING: "#2ED8A8",
+  MIDDAY: "#C6A07C",
+  EVENING: "#C87B4A",
+};
+
 const FACE_INTRODUCER_LINK =
   "/instruments/face-introducer?utm_source=breath&utm_medium=app&utm_campaign=the-system";
 
@@ -135,7 +159,7 @@ const logoWrap: CSSProperties = { width: "28px", height: "28px", animation: "zbH
 const riseAt = (delay: string): CSSProperties => ({
   animation: `zbRiseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${delay}both`,
 });
-const sigDot = (path: string, dur: string): CSSProperties => ({
+const sigDot = (path: string, dur: string, mode: string): CSSProperties => ({
   position: "absolute",
   top: 0,
   left: 0,
@@ -143,8 +167,8 @@ const sigDot = (path: string, dur: string): CSSProperties => ({
   height: "6px",
   margin: "-3px",
   borderRadius: "50%",
-  background: "var(--ed-teal)",
-  boxShadow: "0 0 8px 2px rgba(46,216,168,0.7)",
+  background: MODE_COLOR[mode],
+  boxShadow: `0 0 8px 2px ${MODE_GLOW[mode]}`,
   offsetPath: `path('${path}')`,
   animation: `zbTravel ${dur} linear infinite`,
 });
@@ -220,21 +244,21 @@ export default function Breath() {
                 {/* Act 01 — Meditate */}
                 <div data-rise style={{ borderTop: "1px solid rgba(247,244,240,0.10)", padding: "24px 0 28px", ...riseAt("0.15s ") }}>
                   <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
-                    <div style={roleLabel}>OBSERVE</div>
+                    <div style={{ ...roleLabel, color: MODE_COLOR.meditate }}>OBSERVE</div>
                     <div style={numLabel}>( 01 )</div>
                   </div>
                   <div style={actName}>Meditate</div>
                   <div style={{ position: "relative", width: "100%", maxWidth: "320px", height: "48px", marginTop: "12px" }}>
                     <svg width="100%" height="48" viewBox="0 0 320 48" preserveAspectRatio="none" style={{ display: "block" }}>
-                      <path d="M0 24 Q40 6 80 24 T160 24 Q200 10 240 24 T320 24" style={{ fill: "none", stroke: "rgba(46,216,168,0.32)", strokeWidth: 1.2 }} />
+                      <path d="M0 24 Q40 6 80 24 T160 24 Q200 10 240 24 T320 24" style={{ fill: "none", stroke: MODE_STROKE.meditate, strokeWidth: 1.2 }} />
                     </svg>
-                    <div data-sig style={sigDot("M0 24 Q40 6 80 24 T160 24 Q200 10 240 24 T320 24", "10.4s")} />
+                    <div data-sig style={sigDot("M0 24 Q40 6 80 24 T160 24 Q200 10 240 24 T320 24", "10.4s", "meditate")} />
                   </div>
                   <div style={actDesc}>No forced rhythm. Attend to the breath at the nostrils or the belly. Nothing to control.</div>
                   <div style={provenance}>Anapanasati — the breath-awareness practice at the root of Buddhist meditation.</div>
                   <div style={{ display: "flex", gap: "10px", marginTop: "16px" }}>
                     {v.medChips.map((c) => (
-                      <button key={c.label} className="zb-pill" onClick={c.start} style={chipStyle}>{c.label}</button>
+                      <button key={c.label} className="zb-pill zb-pill--meditate" onClick={c.start} style={chipStyle}>{c.label}</button>
                     ))}
                   </div>
                 </div>
@@ -242,15 +266,15 @@ export default function Breath() {
                 {/* Act 02 — Restore */}
                 <div data-rise style={{ borderTop: "1px solid rgba(247,244,240,0.10)", padding: "24px 0 28px", ...riseAt("0.3s ") }}>
                   <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
-                    <div style={roleLabel}>SYNCHRONIZE</div>
+                    <div style={{ ...roleLabel, color: MODE_COLOR.restore }}>SYNCHRONIZE</div>
                     <div style={numLabel}>( 02 )</div>
                   </div>
                   <div style={actName}>Restore</div>
                   <div style={{ position: "relative", width: "100%", maxWidth: "320px", height: "48px", marginTop: "12px" }}>
                     <svg width="100%" height="48" viewBox="0 0 320 48" preserveAspectRatio="none" style={{ display: "block" }}>
-                      <path d="M0 24 Q40 4 80 24 T160 24 Q200 4 240 24 T320 24" style={{ fill: "none", stroke: "rgba(46,216,168,0.32)", strokeWidth: 1.2 }} />
+                      <path d="M0 24 Q40 4 80 24 T160 24 Q200 4 240 24 T320 24" style={{ fill: "none", stroke: MODE_STROKE.restore, strokeWidth: 1.2 }} />
                     </svg>
-                    <div data-sig style={sigDot("M0 24 Q40 4 80 24 T160 24 Q200 4 240 24 T320 24", "11s")} />
+                    <div data-sig style={sigDot("M0 24 Q40 4 80 24 T160 24 Q200 4 240 24 T320 24", "11s", "restore")} />
                   </div>
                   <div style={actDesc}>{v.resDesc}</div>
                   <div style={provenance}>Coherent breathing — the rate at which heart rhythm and breath fall into phase.</div>
@@ -264,21 +288,21 @@ export default function Breath() {
                 {/* Act 03 — Reset */}
                 <div data-rise style={{ borderTop: "1px solid rgba(247,244,240,0.10)", padding: "24px 0 28px", ...riseAt("0.45s ") }}>
                   <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
-                    <div style={roleLabel}>RELEASE</div>
+                    <div style={{ ...roleLabel, color: MODE_COLOR.reset }}>RELEASE</div>
                     <div style={numLabel}>( 03 )</div>
                   </div>
                   <div style={actName}>Reset</div>
                   <div style={{ position: "relative", width: "100%", maxWidth: "320px", height: "48px", marginTop: "12px" }}>
                     <svg width="100%" height="48" viewBox="0 0 320 48" preserveAspectRatio="none" style={{ display: "block" }}>
-                      <path d="M0 40 Q14 22 26 26 Q34 29 44 12 Q54 4 66 14 Q120 36 320 40" style={{ fill: "none", stroke: "rgba(46,216,168,0.32)", strokeWidth: 1.2 }} />
+                      <path d="M0 40 Q14 22 26 26 Q34 29 44 12 Q54 4 66 14 Q120 36 320 40" style={{ fill: "none", stroke: MODE_STROKE.reset, strokeWidth: 1.2 }} />
                     </svg>
-                    <div data-sig style={sigDot("M0 40 Q14 22 26 26 Q34 29 44 12 Q54 4 66 14 Q120 36 320 40", "8.5s")} />
+                    <div data-sig style={sigDot("M0 40 Q14 22 26 26 Q34 29 44 12 Q54 4 66 14 Q120 36 320 40", "8.5s", "reset")} />
                   </div>
                   <div style={actDesc}>Two inhales through the nose, then one long release. The downshift between tasks.</div>
                   <div style={provenance}>The physiological sigh — the breath pattern the body already uses to reset itself. Commonly used for rapid downregulation.</div>
                   <div style={{ display: "flex", gap: "10px", marginTop: "16px" }}>
                     {v.rstChips.map((c) => (
-                      <button key={c.label} className="zb-pill" onClick={c.start} style={chipStyle}>{c.label}</button>
+                      <button key={c.label} className="zb-pill zb-pill--reset" onClick={c.start} style={chipStyle}>{c.label}</button>
                     ))}
                   </div>
                 </div>
@@ -297,9 +321,9 @@ export default function Breath() {
           {/* ─── PROTOCOLS ────────────────────────────────────────────────── */}
           {v.isProtocols && (
             <div data-screen-label="Protocols" className="zb-screen" style={screenPad}>
-              <div style={topGlow} />
+              <div style={{ ...topGlow, background: "radial-gradient(ellipse at 50% 0%, rgba(198,160,124,0.09) 0%, rgba(26,23,20,0) 62%)" }} />
               <div data-rise style={{ animation: "zbRiseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
-                <div style={kicker}>ZENTIAL PURE · BREATH</div>
+                <div style={kicker}>THE SEQUENCES · MORNING TO NIGHT</div>
                 <h1 style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 400, fontSize: "48px", lineHeight: 1.04, margin: "16px 0 0", letterSpacing: "-0.02em", color: "var(--ed-on-dark)" }}>Protocols</h1>
                 <div style={{ marginTop: "14px", fontWeight: 300, fontSize: "13px", lineHeight: 1.6, color: "rgba(247,244,240,0.55)", maxWidth: "300px" }}>One practice prepares the next. A protocol runs the acts in sequence.</div>
               </div>
@@ -307,11 +331,24 @@ export default function Breath() {
                 {v.protocols.map((p) => (
                   <div key={p.name} data-rise style={{ borderTop: "1px solid rgba(247,244,240,0.10)", padding: "24px 0 28px", ...riseAt("0.2s ") }}>
                     <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
-                      <div style={roleLabel}>{p.role}</div>
+                      <div style={{ ...roleLabel, color: ROLE_COLOR[p.role] ?? "var(--ed-gold)" }}>{p.role}</div>
                       <div style={numLabel}>{p.num}</div>
                     </div>
                     <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "34px", lineHeight: 1.1, marginTop: "9px", color: "var(--ed-on-dark)" }}>{p.name}</div>
-                    <div style={{ marginTop: "10px", fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.22em", color: "rgba(46,216,168,0.75)" }}>{p.seqText}</div>
+                    {/* Sequence as a timeline — segment width ∝ minutes, colored by act. */}
+                    <div aria-hidden style={{ display: "flex", gap: "4px", marginTop: "14px", maxWidth: "320px", height: "3px" }}>
+                      {p.segs.map((seg, i) => (
+                        <div key={i} style={{ flex: seg.mins, height: "3px", borderRadius: "2px", background: MODE_COLOR[seg.mode], opacity: 0.75 }} />
+                      ))}
+                    </div>
+                    <div style={{ marginTop: "10px", fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.22em", color: "rgba(247,244,240,0.5)" }}>
+                      {p.segs.map((seg, i) => (
+                        <span key={i}>
+                          {i > 0 && <span style={{ color: "rgba(247,244,240,0.3)" }}> · </span>}
+                          <span style={{ color: MODE_COLOR[seg.mode] }}>{seg.mode.toUpperCase()} {seg.mins}</span>
+                        </span>
+                      ))}
+                    </div>
                     <div style={actDesc}>{p.desc}</div>
                     <div style={{ display: "flex", alignItems: "center", gap: "14px", marginTop: "16px" }}>
                       <button className="zb-pill" onClick={p.begin} style={pillStyle}>BEGIN</button>
@@ -338,8 +375,9 @@ export default function Breath() {
                 <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "24px", lineHeight: 1.4, color: "rgba(247,244,240,0.85)", maxWidth: "300px" }}>The body remembers its frequency.</div>
               </div>
 
-              <div style={{ marginTop: "28px", display: "flex", flexDirection: "column" }}>
-                <div data-rise style={{ borderTop: "1px solid rgba(247,244,240,0.10)", padding: "24px 0 28px", ...riseAt("0.3s ") }}>
+              {/* The System reads as hardware — carded panels, not editorial rows. */}
+              <div style={{ marginTop: "28px", display: "flex", flexDirection: "column", gap: "14px" }}>
+                <div data-rise style={{ border: "1px solid rgba(247,244,240,0.12)", borderRadius: "20px", padding: "22px 20px 26px", background: "rgba(247,244,240,0.03)", ...riseAt("0.3s ") }}>
                   <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
                     <div style={roleLabel}>FROM THE OUTSIDE</div>
                     <div style={numLabel}>( 01 )</div>
@@ -354,9 +392,9 @@ export default function Breath() {
                   <a href={FACE_INTRODUCER_LINK} style={{ display: "inline-block", marginTop: "16px", fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.24em", color: "rgba(198,160,124,0.85)" }}>ORDER THE FACE INTRODUCER · €88. ONCE.</a>
                 </div>
 
-                <div data-rise style={{ borderTop: "1px solid rgba(247,244,240,0.10)", padding: "24px 0 28px", ...riseAt("0.45s ") }}>
+                <div data-rise style={{ border: "1px solid rgba(46,216,168,0.22)", borderRadius: "20px", padding: "22px 20px 26px", background: "rgba(46,216,168,0.035)", ...riseAt("0.45s ") }}>
                   <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
-                    <div style={roleLabel}>FROM WITHIN</div>
+                    <div style={{ ...roleLabel, color: "var(--ed-teal)" }}>FROM WITHIN</div>
                     <div style={numLabel}>( 02 )</div>
                   </div>
                   <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "34px", lineHeight: 1.1, marginTop: "9px", color: "var(--ed-on-dark)" }}>The Breath</div>
@@ -371,7 +409,7 @@ export default function Breath() {
           {v.isLedger && (
             <div data-screen-label="The Ledger" className="zb-screen" style={screenPad}>
               <div data-rise style={{ animation: "zbRiseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
-                <div style={kicker}>ZENTIAL PURE · BREATH</div>
+                <div style={kicker}>THE RECORD · EVERY SESSION KEPT</div>
                 <h1 style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 400, fontSize: "48px", lineHeight: 1.04, margin: "16px 0 0", letterSpacing: "-0.02em", color: "var(--ed-on-dark)" }}>The Ledger</h1>
               </div>
 
@@ -386,6 +424,7 @@ export default function Breath() {
                     {v.ledger.map((e, i) => (
                       <div key={i} style={{ borderTop: "1px solid rgba(247,244,240,0.10)", padding: "16px 0", display: "flex", alignItems: "baseline", gap: "14px" }}>
                         <div style={{ flex: "0 0 58px", fontWeight: 300, fontSize: "9.5px", letterSpacing: "0.18em", color: "rgba(198,160,124,0.7)" }}>{e.date}</div>
+                        <span aria-hidden style={{ flex: "0 0 5px", width: "5px", height: "5px", borderRadius: "50%", background: MODE_COLOR[e.mode] ?? "var(--ed-gold)", alignSelf: "center" }} />
                         <div style={{ flex: 1, fontFamily: SERIF, fontStyle: "italic", fontSize: "17px", color: "rgba(247,244,240,0.85)" }}>{e.name}</div>
                         <div style={{ fontWeight: 300, fontSize: "9.5px", letterSpacing: "0.18em", color: "rgba(247,244,240,0.4)" }}>{e.spec}</div>
                       </div>
@@ -498,7 +537,10 @@ export default function Breath() {
           <nav aria-label="Breath" style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, padding: "6px 8px 14px", borderTop: "1px solid rgba(247,244,240,0.10)", background: "var(--ed-dark)" }}>
             <div className="zb-nav-inner">
               {v.navItems.map((n) => (
-                <button key={n.label} onClick={n.go} aria-current={n.active ? "page" : undefined} style={{ background: "transparent", border: "none", cursor: "pointer", padding: "16px 8px", minHeight: "44px", fontFamily: SANS, fontWeight: 600, fontSize: "8.5px", letterSpacing: "0.22em", color: n.color, transition: "color 0.3s ease" }}>{n.label}</button>
+                <button key={n.label} onClick={n.go} aria-current={n.active ? "page" : undefined} style={{ position: "relative", background: "transparent", border: "none", cursor: "pointer", padding: "16px 8px", minHeight: "44px", fontFamily: SANS, fontWeight: 600, fontSize: "8.5px", letterSpacing: "0.22em", color: n.color, transition: "color 0.3s ease" }}>
+                  {n.active && <span aria-hidden style={{ position: "absolute", top: "7px", left: "50%", marginLeft: "-2px", width: "4px", height: "4px", borderRadius: "50%", background: "var(--ed-teal)", boxShadow: "0 0 6px 1px rgba(46,216,168,0.5)" }} />}
+                  {n.label}
+                </button>
               ))}
             </div>
           </nav>
