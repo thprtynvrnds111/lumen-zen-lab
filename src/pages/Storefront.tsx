@@ -82,43 +82,41 @@ export default function Storefront() {
       canonical="https://zentialpure.com/"
       hideHero
     >
-      {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-[#1A1714] text-[#F7F4F0]">
-        <div className="pointer-events-none absolute inset-0 z-[1] opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: GRAIN, backgroundSize: "170px 170px" }} aria-hidden />
-        <div className={`relative z-[3] ${WRAP}`}>
-          <div className="grid items-stretch md:grid-cols-[1.02fr_0.98fr] md:min-h-[660px]">
-            <div className="flex flex-col justify-center py-12 md:py-[84px] md:pr-14">
-              <p className="inline-flex items-center gap-3.5 font-sans text-[11px] tracking-[0.28em] uppercase text-[#2ED8A8]">
-                <span className="inline-block h-px w-[26px] bg-current opacity-40" /> Resonance Restoration
-              </p>
-              <h1 className="my-[18px] mt-[22px] max-w-[13ch] font-serif italic font-normal tracking-[-0.02em] leading-[1.02] text-[#F7F4F0] text-[clamp(40px,5.2vw,80px)]">
-                The Body Remembers its&nbsp;Frequency
-              </h1>
-              <p className="mb-[34px] max-w-[46ch] text-[clamp(16px,1.4vw,19px)] leading-[1.55] text-[#F7F4F0]/[0.82]">
-                Four clinic modalities <b className="font-medium text-[#F7F4F0]">EMS, microcurrent, thermal and cosmetic LED</b> in one twelve-minute instrument. <span className="font-sans font-semibold text-[#2ED8A8]">€88. Once.</span>
-              </p>
-              <div className="mb-[30px] flex flex-wrap border-y border-[rgba(247,244,240,0.10)]">
-                {[
-                  { v: <>4</>, l: "Clinic modalities" },
-                  { v: <>€88 <s className="font-light text-[0.7em] text-[#F7F4F0]/[0.34]">€1,440/yr</s></>, l: "vs clinic, per year" },
-                  { v: <>12 min</>, l: "Daily ritual" },
-                ].map((s, i) => (
-                  <div key={s.l} className={`min-w-[120px] flex-1 py-5 pr-6 ${i > 0 ? "border-l border-[rgba(247,244,240,0.10)] pl-6" : ""}`}>
-                    <div className="font-sans text-[clamp(22px,2vw,28px)] font-medium leading-none tabular-nums tracking-[-0.01em] text-[#F7F4F0]">{s.v}</div>
-                    <div className="mt-[9px] font-sans text-[10px] tracking-[0.2em] uppercase text-[#F7F4F0]/[0.46]">{s.l}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-wrap gap-3.5">
-                <Link to="/instruments/face-introducer" className={PILL_ACTION}>Order Face Introducer · €{priceOf(INSTRUMENTS[0])}</Link>
-                <Link to="/protocols" className={PILL_GHOST_DARK}>Find your protocol</Link>
-              </div>
+      {/* ── HERO — editorial grammar (journal hub 1a): fog wash, ink Lora, hairline stats ── */}
+      <section className="relative overflow-hidden border-b border-[rgba(26,23,20,0.12)] bg-[linear-gradient(165deg,#F1F5F3,#F7F4F0,#E9F3EE)] text-[#1A1714]">
+        <div className="grid items-stretch md:min-h-[640px] md:grid-cols-[1.1fr_1fr]">
+          <div className="flex flex-col justify-center px-6 py-14 md:py-[84px] md:pl-14 md:pr-14 lg:pl-[56px]">
+            <p className="font-sans text-[11px] tracking-[0.28em] uppercase text-[#6B5A4A]">
+              ( 01 ) · Resonance Restoration
+            </p>
+            <h1 className="my-[18px] mt-[22px] max-w-[13ch] font-serif italic font-normal tracking-[-0.02em] leading-[1.08] text-[#1A1714] text-[clamp(40px,4.6vw,64px)] [text-wrap:pretty]">
+              The Body Remembers its&nbsp;Frequency
+            </h1>
+            <p className="mb-[34px] max-w-[46ch] text-[clamp(16px,1.3vw,17px)] leading-[1.65] text-[#888480]">
+              Four clinic modalities <b className="font-medium text-[#1A1714]">EMS, microcurrent, thermal and cosmetic LED</b> in one twelve-minute instrument. <span className="font-sans font-semibold text-[#157A5C]">€88. Once.</span>
+            </p>
+            <div className="mb-[30px] flex flex-wrap border-y border-[rgba(26,23,20,0.12)]">
+              {[
+                { v: <>4</>, l: "Clinic modalities" },
+                { v: <>€88 <s className="font-light text-[0.7em] text-[rgba(26,23,20,0.34)]">€1,440/yr</s></>, l: "vs clinic, per year" },
+                { v: <>12 min</>, l: "Daily ritual" },
+              ].map((s, i) => (
+                <div key={s.l} className={`min-w-[120px] flex-1 py-5 pr-6 ${i > 0 ? "border-l border-[rgba(26,23,20,0.12)] pl-6" : ""}`}>
+                  <div className="font-sans text-[clamp(22px,2vw,28px)] font-medium leading-none tabular-nums tracking-[-0.01em] text-[#1A1714]">{s.v}</div>
+                  <div className="mt-[9px] font-sans text-[10px] tracking-[0.2em] uppercase text-[#6B5A4A]">{s.l}</div>
+                </div>
+              ))}
             </div>
-            <div className="relative order-first min-h-[54vh] overflow-hidden bg-[#0d0b09] md:order-none md:min-h-[660px]">
-              <img src={heroFace} alt="The Face Introducer held to the neck, cosmetic LED active" className="absolute inset-0 h-full w-full object-cover [object-position:62%_30%] [filter:saturate(0.96)_brightness(0.96)]" />
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,#1A1714_0%,rgba(26,23,20,0.2)_26%,transparent_46%),linear-gradient(180deg,transparent_60%,rgba(26,23,20,0.45)_100%)]" />
-              <div className="absolute bottom-6 left-6 z-[2] flex items-center gap-2.5 font-sans text-[10px] tracking-[0.26em] uppercase text-[#F7F4F0]/[0.72] before:block before:h-px before:w-[22px] before:bg-[#2ED8A8]">The Face Introducer · one instrument</div>
+            <div className="flex flex-wrap items-center gap-5">
+              <Link to="/instruments/face-introducer" className={PILL_ACTION}>Order Face Introducer · €{priceOf(INSTRUMENTS[0])}</Link>
+              <Link to="/protocols" className="font-sans text-[12px] tracking-[0.22em] uppercase text-[#157A5C] transition-colors hover:text-[#1BAF86]">Find your protocol</Link>
             </div>
+          </div>
+          <div className="relative order-first min-h-[54vh] overflow-hidden md:order-none md:min-h-[640px]">
+            <img src="/editorial/brand-story.webp" alt="Morning light on skin ritual" className="absolute inset-0 h-full w-full object-cover" />
+            <Link to="/editorial/the-ritual" className="absolute bottom-6 left-6 z-[2] rounded-xl bg-[rgba(26,23,20,0.72)] px-5 py-3.5 font-sans text-[12px] tracking-[0.22em] uppercase text-[#F7F4F0] backdrop-blur-[4px] transition-colors hover:bg-[rgba(26,23,20,0.9)] hover:text-[#F7F4F0]">
+              Featured · The 12-Minute Window
+            </Link>
           </div>
         </div>
       </section>
