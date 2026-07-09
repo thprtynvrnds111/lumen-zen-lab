@@ -97,6 +97,40 @@ export function EditorialLayout({
             <span className="masthead__tag">Journal</span>
           </header>
           {children}
+          {/* The Breath CTA — the free practice is the journey's next step after reading. */}
+          <aside
+            aria-label="The Breath practice"
+            style={{
+              background: "var(--ed-dark)",
+              padding: "56px 28px 60px",
+              textAlign: "center",
+            }}
+          >
+            <p className="meta-label" style={{ color: "#C6A07C", letterSpacing: "0.3em" }}>THE PRACTICE</p>
+            <p style={{ fontFamily: "'Lora', serif", fontStyle: "italic", fontSize: "clamp(26px, 4vw, 36px)", lineHeight: 1.25, margin: "14px auto 0", maxWidth: "520px", color: "#F7F4F0" }}>
+              The instruments return the energy. The breath returns the rhythm.
+            </p>
+            <a
+              href="/breath?utm_source=editorial&utm_medium=site&utm_campaign=breath-journey"
+              style={{
+                display: "inline-block",
+                marginTop: "28px",
+                border: "1px solid rgba(247,244,240,0.25)",
+                borderRadius: "9999px",
+                padding: "14px 30px",
+                fontSize: "11px",
+                fontWeight: 600,
+                letterSpacing: "0.2em",
+                color: "#F7F4F0",
+                textDecoration: "none",
+              }}
+            >
+              BEGIN THE BREATH — FREE
+            </a>
+            <p style={{ marginTop: "14px", fontSize: "11px", letterSpacing: "0.12em", color: "rgba(247,244,240,0.45)" }}>
+              Three practices · in the browser · no signup
+            </p>
+          </aside>
           <footer className="page-footer" style={{ borderTop: "1px solid var(--ed-line)" }}>
             <span className="meta-label">Zential Pure</span>
             <span className="folio">{folio}</span>

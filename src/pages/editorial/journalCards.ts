@@ -26,6 +26,7 @@ export type Filter = (typeof FILTERS)[number];
  * seven /journal/* article detail pages — the hub itself is excluded).
  */
 export const VALID_CARD_LINKS = [
+  "/breath",
   "/editorial/the-ritual",
   "/editorial/the-science",
   "/editorial/the-diagnosis",
@@ -117,6 +118,16 @@ export const JOURNAL_CARDS: JournalCard[] = [
     imgAlt: "Face Introducer instrument in warm light",
     imgH: H[0],
     link: "/editorial/the-diagnosis",
+  },
+  // 1b — the Breath practice (free interactive tool; the journey's habit loop)
+  {
+    kind: "text",
+    id: "breath-app",
+    category: "Ritual",
+    headline: "The Breath.",
+    body: "Three practices — observe, synchronize, release — calibrated to the same return. Free, in the browser. No signup.",
+    meta: "THE PRACTICE · INTERACTIVE",
+    link: "/breath",
   },
   // 2 — handoff fact: €3.40 (clinic economics → the clinic-dropout page)
   {
