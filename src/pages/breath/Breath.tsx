@@ -486,7 +486,7 @@ export default function Breath() {
                 <div key={i} style={{ fontWeight: 300, fontSize: "10.5px", letterSpacing: "0.22em", color: "rgba(247,244,240,0.6)", margin: "7px 0", textTransform: "uppercase" }}>{s.k} · {s.v}</div>
               ))}
               <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "19px", lineHeight: 1.5, color: "rgba(247,244,240,0.85)", marginTop: "42px", maxWidth: "280px" }}>Your skin responds to the same stillness.</div>
-              <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: "8.5px", letterSpacing: "0.26em", lineHeight: 2, color: "rgba(198,160,124,0.75)", marginTop: "20px", maxWidth: "300px" }}>PAIR WITH THE SYSTEM — THREE INSTRUMENTS, ONE RETURN</div>
+              <a href="/instruments?utm_source=breath&utm_medium=app&utm_campaign=session-complete" style={{ display: "inline-block", fontFamily: SANS, fontWeight: 600, fontSize: "8.5px", letterSpacing: "0.26em", lineHeight: 2, color: "rgba(198,160,124,0.75)", marginTop: "20px", maxWidth: "300px" }}>PAIR WITH THE SYSTEM — THREE INSTRUMENTS, ONE RETURN</a>
               <button className="zb-pill" onClick={v.returnHome} style={{ ...bigPill, marginTop: "44px" }}>RETURN</button>
             </div>
           )}
