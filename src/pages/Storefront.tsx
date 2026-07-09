@@ -17,7 +17,7 @@ import edBrandStory from "@/assets/editorial/morning-mug.webp";
  * Stripped per founder decision: fabricated Trustpilot rating + per-product
  * star ratings + named "verified" testimonials + unverified journal citations +
  * invented bundle prices removed (pre-launch, FTC). Founder note kept but
- * rewritten as the real founder (Miguel Young-On) with a truthful statement,
+ * rewritten as an unsigned brand statement (de-identified 2026-07-09),
  * not the design's invented clinician backstory. Real prices via Shopify.
  */
 
@@ -254,12 +254,12 @@ export default function Storefront() {
               <img src={edBrandStory} alt="Zential Pure, Rotterdam" className="h-full w-full object-cover" />
             </div>
             <div>
-              <p className="mb-4 font-sans text-[10px] tracking-[0.26em] uppercase text-[#6B5A4A]">From the founder</p>
+              <p className="mb-4 font-sans text-[10px] tracking-[0.26em] uppercase text-[#6B5A4A]">Why we exist</p>
               <p className="font-serif italic text-[19px] leading-[1.5] tracking-[-0.01em] text-[#1A1714]">Zential Pure started with one question: why does clinic-grade skin technology stay locked behind standing appointments and €120 sessions?</p>
-              <p className="mt-3.5 font-serif italic text-[17px] leading-[1.5] text-[#1A1714]">So I built the instrument I wanted on my own counter — clinic precision, calibrated to a daily ritual you actually keep.</p>
+              <p className="mt-3.5 font-serif italic text-[17px] leading-[1.5] text-[#1A1714]">So we built the instrument we wanted on our own counter — clinic precision, calibrated to a daily ritual you actually keep.</p>
               <div className="mt-5 flex items-baseline gap-2.5">
-                <span className="font-serif italic text-[18px] text-[#1A1714]">Miguel Young-On</span>
-                <span className="font-sans text-[10px] tracking-[0.16em] uppercase text-[#6B5A4A]">Founder · Rotterdam</span>
+                <span className="font-serif italic text-[18px] text-[#1A1714]">Zential Pure</span>
+                <span className="font-sans text-[10px] tracking-[0.16em] uppercase text-[#6B5A4A]">Rotterdam</span>
               </div>
             </div>
           </div>
