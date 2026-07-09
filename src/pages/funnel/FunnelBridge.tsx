@@ -142,14 +142,21 @@ export default function FunnelBridge() {
     const onScroll = () => setStickyVisible(window.scrollY > window.innerHeight * 1.1);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    const el = offerRef.current;
+    // Hide the sticky bar whenever ANY primary CTA is on screen — not only the
+    // offer section. On mobile the fixed bar otherwise covers inline CTAs
+    // (conversion-audit finding 2026-07-09: bar overlapped the hero CTA at 390px).
+    const ctas = Array.from(document.querySelectorAll(".zb-cta:not(.zb-cta--sticky)"));
+    const visible = new Set<Element>();
     let io: IntersectionObserver | undefined;
-    if (el) {
+    if (ctas.length) {
       io = new IntersectionObserver(
-        (entries) => entries.forEach((e) => setOfferOnScreen(e.isIntersecting)),
+        (entries) => {
+          entries.forEach((e) => (e.isIntersecting ? visible.add(e.target) : visible.delete(e.target)));
+          setOfferOnScreen(visible.size > 0);
+        },
         { threshold: 0.05 }
       );
-      io.observe(el);
+      ctas.forEach((c) => io!.observe(c));
     }
     return () => {
       window.removeEventListener("scroll", onScroll);
