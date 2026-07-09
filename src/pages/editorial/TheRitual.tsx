@@ -76,14 +76,14 @@ export default function TheRitual() {
         </p>
       </section>
 
-      {/* IMAGE SLOT ritual-inline · 390×240 · waking hand in soft diffuse morning light on bed
-          linen · warm, muted, calm · no product, no faces */}
+      {/* IMAGE SLOT ritual-inline · 390×240 · Restoration Belt worn in calm evening light ·
+          array inward — only edge glow + side control unit visible, never an outward panel */}
       <EditorialImageSlot
-        src="/editorial/waking-hand.webp"
-        alt="A hand in soft morning light"
+        src="/editorial/hero-redlight-belt.webp"
+        alt="Restoration Belt worn, edge glow visible"
         width={390}
         height={240}
-        artDirection="waking hand in soft diffuse morning light on bed linen; no product, no faces"
+        artDirection="Restoration Belt worn on lower back in calm evening light; array faces inward — only edge glow + side control unit visible"
         className="ed-inline-img"
       />
 
