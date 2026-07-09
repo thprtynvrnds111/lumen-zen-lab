@@ -81,6 +81,9 @@ const ROUTES = [
   '/editorial/the-ritual',
   '/editorial/the-science',
   '/editorial/the-diagnosis',
+  // Editorial hub — 1a index + 1b clinical issue (Journal.dc handoff)
+  '/editorial',
+  '/editorial/clinical-issue',
   // Breath — interactive breathwork app (port of Claude Design)
   '/breath',
   '/quiz',

@@ -58,6 +58,8 @@ const HomeLeadPrimer = lazy(() => import("./components/zential/HomeLeadPrimer"))
 const TheRitual = lazy(() => import("./pages/editorial/TheRitual"));
 const TheScience = lazy(() => import("./pages/editorial/TheScience"));
 const TheDiagnosis = lazy(() => import("./pages/editorial/TheDiagnosis"));
+const RitualJournal = lazy(() => import("./pages/editorial/hub/RitualJournal"));
+const ClinicalIssue = lazy(() => import("./pages/editorial/hub/ClinicalIssue"));
 const Breath = lazy(() => import("./pages/breath/Breath"));
 
 const queryClient = new QueryClient();
@@ -93,6 +95,8 @@ function AppContent() {
         <Route path="/editorial/the-ritual" element={<TheRitual />} />
         <Route path="/editorial/the-science" element={<TheScience />} />
         <Route path="/editorial/the-diagnosis" element={<TheDiagnosis />} />
+        <Route path="/editorial" element={<RitualJournal />} />
+        <Route path="/editorial/clinical-issue" element={<ClinicalIssue />} />
         <Route path="/breath" element={<Breath />} />
         <Route path="/support" element={<Support />} />
         <Route path="/shipping" element={<Shipping />} />
