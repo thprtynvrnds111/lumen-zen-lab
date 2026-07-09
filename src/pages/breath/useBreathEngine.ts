@@ -28,6 +28,7 @@ const BREATH_COUNTING = true;
 const GRAIN = true;
 
 const LEDGER_KEY = "zb_ledger";
+const CUES_KEY = "zb_cues";
 const RING_LEN = 741.4;
 
 type Screen =
@@ -108,6 +109,9 @@ export function useBreathEngine() {
   const autoTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lockRef = useRef<{ release: () => void } | null>(null);
   const audioRef = useRef<AudioContext | null>(null);
+  // Countdown anchored to a wall-clock deadline so background-tab timer
+  // throttling can't stretch a 5-minute session.
+  const endAtRef = useRef(0);
 
   const setState = useCallback((patch: Patch) => {
     const prev = stateRef.current;
@@ -172,6 +176,14 @@ export function useBreathEngine() {
   // refs (stateRef, timer refs), so callbacks captured by timers always see live
   // state — matching the class's `this.state` semantics.
 
+  // INVARIANT: Timer-chain closure safety
+  // All functions in the timer chain (runPhase → tick → finish → beginNext/toCredits/goScreen)
+  // are intentionally referentially frozen (useCallback([]) or hoisted plain functions).
+  // They MUST read mutable state ONLY through stateRef.current, MUST NOT capture
+  // render-scope variables, and MUST NOT add render-scope deps to their dependency lists.
+  // Any new dependency must go through a ref. This pattern is safe because these functions
+  // are only called from async timers and effects, never directly during render.
+
   const runPhase = useCallback((i: number) => {
     const st = stateRef.current;
     const pat = patterns(st.mode as BreathMode, st.sessionEvening);
@@ -194,7 +206,7 @@ export function useBreathEngine() {
   }, [setState, playTone]);
 
   const tick = useCallback(() => {
-    const r = stateRef.current.remaining - 1;
+    const r = Math.ceil((endAtRef.current - Date.now()) / 1000);
     if (r <= 0) {
       finish(true);
       return;
@@ -224,6 +236,7 @@ export function useBreathEngine() {
           frac: 0,
           fadeOut: false,
         });
+        endAtRef.current = Date.now() + minutes * 60 * 1000;
         lock();
         tickTimer.current = setInterval(() => tick(), 1000);
         phaseTimer.current = setTimeout(() => runPhase(0), 800);
@@ -252,7 +265,7 @@ export function useBreathEngine() {
     startSession(seg.mode, seg.mins, seg.evening);
   }, [startSession]);
 
-  function finish(completed: boolean) {
+  const finish = useCallback((completed: boolean) => {
     clearTimers();
     releaseLock();
     const st = stateRef.current;
@@ -285,7 +298,7 @@ export function useBreathEngine() {
     }
     setState({ accSecs, accBreaths });
     toCredits(completed);
-  }
+  }, []);
 
   const startProtocol = useCallback(
     (p: ProtocolDef) => {
@@ -317,17 +330,52 @@ export function useBreathEngine() {
 
   const goHome = useCallback(() => goScreen("home"), [goScreen]);
 
-  // Load saved ledger — client-only (SSR renders the empty-log state).
+  function endEarlyAction() {
+    const s = stateRef.current;
+    if (s.screen === "interlude") toCredits(false);
+    else if (s.screen === "session") finish(false);
+  }
+
+  const saveCues = (tone: boolean, pulse: boolean) => {
+    try {
+      localStorage.setItem(CUES_KEY, JSON.stringify({ tone, pulse }));
+    } catch {
+      /* ignore */
+    }
+  };
+
+  // Load saved ledger + cue prefs — client-only (SSR renders the empty-log state).
   useEffect(() => {
     mountedRef.current = true;
     try {
       const raw = localStorage.getItem(LEDGER_KEY);
       if (raw) setState({ log: JSON.parse(raw) });
+      const cues = localStorage.getItem(CUES_KEY);
+      if (cues) {
+        const c = JSON.parse(cues);
+        setState({ toneOn: !!c.tone, pulseOn: !!c.pulse });
+      }
     } catch {
       /* ignore */
     }
+    // Returning to a backgrounded session: the OS drops the wake lock and
+    // throttles timers — reacquire the lock and resync the countdown.
+    const onVisible = () => {
+      if (document.visibilityState !== "visible") return;
+      if (stateRef.current.screen === "session") {
+        lock();
+        tick();
+      }
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") endEarlyAction();
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    document.addEventListener("keydown", onKeyDown);
     return () => {
       mountedRef.current = false;
+      document.removeEventListener("visibilitychange", onVisible);
+      document.removeEventListener("keydown", onKeyDown);
       clearTimers();
       releaseLock();
     };
@@ -400,6 +448,7 @@ export function useBreathEngine() {
     go: () => {
       if (stateRef.current.screen !== key) goScreen(key);
     },
+    active: st.screen === key,
     color: st.screen === key ? "var(--ed-on-dark)" : "rgba(247,244,240,0.35)",
   }));
 
@@ -477,13 +526,20 @@ export function useBreathEngine() {
     countText: String(st.count),
     creditsMode,
     specs,
-    endEarly: () => {
-      if (stateRef.current.screen === "interlude") toCredits(false);
-      else finish(false);
-    },
+    endEarly: () => endEarlyAction(),
     returnHome: () => goHome(),
-    toggleTone: () => setState((s) => ({ toneOn: !s.toneOn })),
-    togglePulse: () => setState((s) => ({ pulseOn: !s.pulseOn })),
+    toggleTone: () => {
+      const s = stateRef.current;
+      saveCues(!s.toneOn, s.pulseOn);
+      setState({ toneOn: !s.toneOn });
+    },
+    togglePulse: () => {
+      const s = stateRef.current;
+      saveCues(s.toneOn, !s.pulseOn);
+      setState({ pulseOn: !s.pulseOn });
+    },
+    toneOn: st.toneOn,
+    pulseOn: st.pulseOn,
     toneState: st.toneOn ? "ON" : "OFF",
     pulseState: st.pulseOn ? "ON" : "OFF",
     toneColor: st.toneOn ? "var(--ed-teal)" : "rgba(247,244,240,0.35)",

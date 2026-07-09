@@ -11,6 +11,7 @@
  */
 
 import { useEffect, type CSSProperties } from "react";
+import { Helmet } from "react-helmet-async";
 import { SEO } from "@/components/SEO";
 import { pixelViewContent } from "@/pages/editorial/tracking";
 import { useBreathEngine } from "./useBreathEngine";
@@ -169,6 +170,12 @@ export default function Breath() {
     pixelViewContent("breath-app");
   }, []);
 
+  // Completion is the retargeting signal that matters — a finished session is
+  // a warm audience. ViewContent only, per editorial pixel hygiene.
+  useEffect(() => {
+    if (v.isCredits) pixelViewContent("breath-session-complete");
+  }, [v.isCredits]);
+
   return (
     <>
       <SEO
@@ -176,6 +183,9 @@ export default function Breath() {
         description="The instruments return the energy. The breath returns the rhythm. Three breathing practices, calibrated to the same return."
         canonicalUrl="/breath"
       />
+      <Helmet>
+        <meta name="theme-color" content="#1A1714" />
+      </Helmet>
       <div
         className="zb-root"
         data-screen-label="Zential Breath"
@@ -193,7 +203,7 @@ export default function Breath() {
 
           {/* ─── HOME ─────────────────────────────────────────────────────── */}
           {v.isHome && (
-            <div data-screen-label="Home" style={screenPad}>
+            <div data-screen-label="Home" className="zb-screen" style={screenPad}>
               <div style={topGlow} />
               <div data-rise style={{ animation: "zbRiseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
                 <Logo />
@@ -277,8 +287,8 @@ export default function Breath() {
               <div data-rise style={{ marginTop: "auto", paddingTop: "24px", borderTop: "1px solid rgba(247,244,240,0.10)", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", ...riseAt("0.6s ") }}>
                 <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.28em", color: "rgba(247,244,240,0.35)" }}>CUES</div>
                 <div style={{ display: "flex", gap: "10px" }}>
-                  <button onClick={v.toggleTone} style={{ background: "transparent", border: "none", padding: "12px 6px", cursor: "pointer", fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.24em", color: v.toneColor }}>TONE · {v.toneState}</button>
-                  <button onClick={v.togglePulse} style={{ background: "transparent", border: "none", padding: "12px 6px", cursor: "pointer", fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.24em", color: v.pulseColor }}>PULSE · {v.pulseState}</button>
+                  <button onClick={v.toggleTone} aria-pressed={v.toneOn} style={{ background: "transparent", border: "none", padding: "12px 6px", cursor: "pointer", fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.24em", color: v.toneColor }}>TONE · {v.toneState}</button>
+                  <button onClick={v.togglePulse} aria-pressed={v.pulseOn} style={{ background: "transparent", border: "none", padding: "12px 6px", cursor: "pointer", fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.24em", color: v.pulseColor }}>PULSE · {v.pulseState}</button>
                 </div>
               </div>
             </div>
@@ -286,7 +296,7 @@ export default function Breath() {
 
           {/* ─── PROTOCOLS ────────────────────────────────────────────────── */}
           {v.isProtocols && (
-            <div data-screen-label="Protocols" style={screenPad}>
+            <div data-screen-label="Protocols" className="zb-screen" style={screenPad}>
               <div style={topGlow} />
               <div data-rise style={{ animation: "zbRiseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
                 <div style={kicker}>ZENTIAL PURE · BREATH</div>
@@ -315,7 +325,7 @@ export default function Breath() {
 
           {/* ─── SYSTEM ───────────────────────────────────────────────────── */}
           {v.isSystem && (
-            <div data-screen-label="The System" style={screenPad}>
+            <div data-screen-label="The System" className="zb-screen" style={screenPad}>
               <div style={topGlow} />
               <div data-rise style={{ animation: "zbRiseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
                 <Logo />
@@ -359,7 +369,7 @@ export default function Breath() {
 
           {/* ─── LEDGER ───────────────────────────────────────────────────── */}
           {v.isLedger && (
-            <div data-screen-label="The Ledger" style={screenPad}>
+            <div data-screen-label="The Ledger" className="zb-screen" style={screenPad}>
               <div data-rise style={{ animation: "zbRiseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
                 <div style={kicker}>ZENTIAL PURE · BREATH</div>
                 <h1 style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 400, fontSize: "48px", lineHeight: 1.04, margin: "16px 0 0", letterSpacing: "-0.02em", color: "var(--ed-on-dark)" }}>The Ledger</h1>
@@ -433,7 +443,7 @@ export default function Breath() {
                 <div style={{ position: "absolute", top: "33px", right: "24px", fontFamily: SANS, fontWeight: 600, fontSize: "8.5px", letterSpacing: "0.24em", color: "rgba(198,160,124,0.6)" }}>{v.protoTag}</div>
               )}
 
-              <div style={{ position: "absolute", top: "17%", left: 0, right: 0, textAlign: "center", fontFamily: SANS, fontWeight: 700, fontSize: "11px", letterSpacing: "0.38em", color: "rgba(247,244,240,0.72)", paddingLeft: "0.38em" }}>{v.phaseWord}</div>
+              <div aria-live="polite" style={{ position: "absolute", top: "17%", left: 0, right: 0, textAlign: "center", fontFamily: SANS, fontWeight: 700, fontSize: "11px", letterSpacing: "0.38em", color: "rgba(247,244,240,0.72)", paddingLeft: "0.38em" }}>{v.phaseWord}</div>
 
               <div style={{ position: "relative", width: "264px", height: "264px", display: "flex", alignItems: "center", justifyContent: "center" }}>
 
@@ -485,11 +495,13 @@ export default function Breath() {
 
         {/* ─── FIXED NAV ──────────────────────────────────────────────────── */}
         {v.showNav && (
-          <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, display: "flex", justifyContent: "space-around", alignItems: "center", padding: "6px 8px 14px", borderTop: "1px solid rgba(247,244,240,0.10)", background: "var(--ed-dark)" }}>
-            {v.navItems.map((n) => (
-              <button key={n.label} onClick={n.go} style={{ background: "transparent", border: "none", cursor: "pointer", padding: "16px 8px", minHeight: "44px", fontFamily: SANS, fontWeight: 600, fontSize: "8.5px", letterSpacing: "0.22em", color: n.color, transition: "color 0.3s ease" }}>{n.label}</button>
-            ))}
-          </div>
+          <nav aria-label="Breath" style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, padding: "6px 8px 14px", borderTop: "1px solid rgba(247,244,240,0.10)", background: "var(--ed-dark)" }}>
+            <div className="zb-nav-inner">
+              {v.navItems.map((n) => (
+                <button key={n.label} onClick={n.go} aria-current={n.active ? "page" : undefined} style={{ background: "transparent", border: "none", cursor: "pointer", padding: "16px 8px", minHeight: "44px", fontFamily: SANS, fontWeight: 600, fontSize: "8.5px", letterSpacing: "0.22em", color: n.color, transition: "color 0.3s ease" }}>{n.label}</button>
+              ))}
+            </div>
+          </nav>
         )}
 
         {/* ─── GRAIN ──────────────────────────────────────────────────────── */}

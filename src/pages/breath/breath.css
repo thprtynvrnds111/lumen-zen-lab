@@ -31,6 +31,33 @@
 .zb-end { color: rgba(247, 244, 240, 0.35); transition: color 0.3s ease; }
 .zb-end:hover { color: rgba(247, 244, 240, 0.7); }
 
+/* Keyboard focus — teal ring, matches the storefront's a11y treatment. */
+.zb-root button:focus-visible,
+.zb-root a:focus-visible {
+  outline: 2px solid var(--ed-teal);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Desktop. The app is composed at 390px; above tablet width, hold the list
+   screens to a centered column so the type measure survives, and let the
+   ambient gradients keep filling the viewport. Session/interlude/credits
+   screens are already viewport-centered and need no clamp. */
+.zb-screen { width: 100%; }
+.zb-nav-inner {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+@media (min-width: 720px) {
+  .zb-screen {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .zb-nav-inner { max-width: 560px; margin: 0 auto; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .zb-root [data-orb] { transition: opacity 1.2s ease !important; transform: none !important; animation: none !important; }
   .zb-root [data-wave] { animation: none !important; }
