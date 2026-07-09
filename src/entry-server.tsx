@@ -58,6 +58,7 @@ const FunnelBridge = lazy(() => import("./pages/funnel/FunnelBridge"));
 const TheRitual = lazy(() => import("./pages/editorial/TheRitual"));
 const TheScience = lazy(() => import("./pages/editorial/TheScience"));
 const TheDiagnosis = lazy(() => import("./pages/editorial/TheDiagnosis"));
+const Breath = lazy(() => import("./pages/breath/Breath"));
 
 function ServerApp() {
   return (
@@ -83,6 +84,7 @@ function ServerApp() {
         <Route path="/editorial/the-ritual"                     element={<TheRitual />} />
         <Route path="/editorial/the-science"                    element={<TheScience />} />
         <Route path="/editorial/the-diagnosis"                  element={<TheDiagnosis />} />
+        <Route path="/breath"                                   element={<Breath />} />
         <Route path="/support"                                  element={<Support />} />
         <Route path="/shipping"                                 element={<Shipping />} />
         <Route path="/returns"                                  element={<Returns />} />

@@ -1,0 +1,41 @@
+/* Zential Breath — keyframes + interaction states.
+   Port of design-reference/editorial/zential-breath.dc.html <head> styles.
+   Everything else is ported as inline styles on the elements (1:1 with the
+   dc.html sc-if blocks); only the keyframes, the reduced-motion block, and the
+   :hover / :active states (which cannot be expressed inline) live here. */
+
+@keyframes zbWaveScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes zbGlowDrift { 0%, 100% { opacity: 1; } 50% { opacity: 0.96; } }
+@keyframes zbSpinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes zbRiseIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes zbTravel { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+@keyframes zbHomeBreathe { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
+
+/* Links inside the app inherit the design's teal-link treatment. */
+.zb-root a { color: var(--ed-teal); text-decoration: none; }
+.zb-root a:hover { color: var(--ed-teal-hover); }
+.zb-root button { -webkit-tap-highlight-color: transparent; }
+
+/* Pill buttons + duration chips share the outline → teal hover behavior.
+   Border/color live here (not inline) so :hover can override them. */
+.zb-pill {
+  background: transparent;
+  border: 1px solid rgba(247, 244, 240, 0.22);
+  color: var(--ed-on-dark);
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+.zb-pill:hover { border-color: rgba(46, 216, 168, 0.6); color: var(--ed-teal); }
+.zb-pill:active { transform: scale(0.97); }
+
+/* Session / interlude END control. */
+.zb-end { color: rgba(247, 244, 240, 0.35); transition: color 0.3s ease; }
+.zb-end:hover { color: rgba(247, 244, 240, 0.7); }
+
+@media (prefers-reduced-motion: reduce) {
+  .zb-root [data-orb] { transition: opacity 1.2s ease !important; transform: none !important; animation: none !important; }
+  .zb-root [data-wave] { animation: none !important; }
+  .zb-root [data-spin] { animation: none !important; }
+  .zb-root [data-sig] { animation: none !important; }
+  .zb-root [data-rise] { animation: none !important; opacity: 1 !important; }
+  .zb-root [data-ambient] { transition: opacity 1.2s ease !important; transform: none !important; }
+}

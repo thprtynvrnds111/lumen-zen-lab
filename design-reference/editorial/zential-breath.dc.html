@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/zential-pure-design-system-ff82fc7d-3818-4f0e-b39c-26297036b7e1/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/zential-pure-design-system-ff82fc7d-3818-4f0e-b39c-26297036b7e1/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/zential-pure-design-system-ff82fc7d-3818-4f0e-b39c-26297036b7e1/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/zential-pure-design-system-ff82fc7d-3818-4f0e-b39c-26297036b7e1/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/zential-pure-design-system-ff82fc7d-3818-4f0e-b39c-26297036b7e1/styles.css">
+  <script src="_ds/zential-pure-design-system-ff82fc7d-3818-4f0e-b39c-26297036b7e1/_ds_bundle.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap">
+  <style>
+    html, body { margin: 0; padding: 0; background: #1A1714; }
+    a { color: #2ED8A8; text-decoration: none; }
+    a:hover { color: #1BAF86; }
+    button { -webkit-tap-highlight-color: transparent; }
+    @keyframes waveScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes glowDrift { 0%, 100% { opacity: 1; } 50% { opacity: 0.96; } }
+    @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes riseIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    @keyframes travel { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+    @keyframes homeBreathe { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
+    @media (prefers-reduced-motion: reduce) {
+      [data-orb] { transition: opacity 1.2s ease !important; transform: none !important; animation: none !important; }
+      [data-wave] { animation: none !important; }
+      [data-spin] { animation: none !important; }
+      [data-sig] { animation: none !important; }
+      [data-rise] { animation: none !important; opacity: 1 !important; }
+      [data-ambient] { transition: opacity 1.2s ease !important; transform: none !important; }
+    }
+  </style>
+</helmet>
+<div data-screen-label="Zential Breath" style="position: relative; width: 100%; min-height: 100dvh; background: radial-gradient(ellipse 120% 90% at 50% 42%, #211D19 0%, #1A1714 64%); color: #F7F4F0; font-family: 'DM Sans', sans-serif; overflow: hidden;">
+
+  <div style="opacity: {{ rootOpacity }}; transition: opacity 0.65s ease; min-height: 100dvh; display: flex; flex-direction: column;">
+
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="Home" style="position: relative; display: flex; flex-direction: column; min-height: 100dvh; padding: 60px 28px 108px; box-sizing: border-box;">
+        <div style="position: absolute; left: -30%; right: -30%; top: -22%; height: 58%; background: radial-gradient(ellipse at 50% 0%, rgba(46,216,168,0.09) 0%, rgba(26,23,20,0) 62%); animation: homeBreathe 12s ease-in-out infinite; pointer-events: none;"></div>
+        <div data-rise style="animation: riseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;">
+          <div style="width: 28px; height: 28px; animation: homeBreathe 12s ease-in-out infinite;">
+            <x-import component-from-global-scope="ZentialPureDesignSystem_ff82fc.Logo" variant="mark" size="{{ 26 }}" mark-color="#2ED8A8" hint-size="26px,26px"></x-import>
+          </div>
+          <div style="margin-top: 22px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.32em; color: #C6A07C;">ZENTIAL PURE · BREATH</div>
+          <h1 style="font-family: 'Lora', serif; font-style: italic; font-weight: 400; font-size: 56px; line-height: 1.02; margin: 16px 0 0; letter-spacing: -0.02em; color: #F7F4F0;">The Breath</h1>
+          <div style="margin-top: 14px; font-weight: 300; font-size: 13px; line-height: 1.6; color: rgba(247,244,240,0.55); max-width: 290px;">The instruments return the energy. The breath returns the rhythm.</div>
+          <div style="margin-top: 28px; display: flex; align-items: center; gap: 12px;">
+            <div style="height: 1px; flex: 0 0 28px; background: rgba(198,160,124,0.5);"></div>
+            <div style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 8.5px; letter-spacing: 0.3em; color: rgba(198,160,124,0.7);">THE PROGRAM · THREE ACTS</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 34px; display: flex; flex-direction: column;">
+
+          <div data-rise style="border-top: 1px solid rgba(247,244,240,0.10); padding: 24px 0 28px; animation: riseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between;">
+              <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 0.3em; color: #C6A07C;">OBSERVE</div>
+              <div style="font-weight: 300; font-size: 10px; letter-spacing: 0.22em; color: rgba(198,160,124,0.55);">( 01 )</div>
+            </div>
+            <div style="font-family: 'Lora', serif; font-style: italic; font-size: 40px; line-height: 1.08; margin-top: 9px; color: #F7F4F0;">Meditate</div>
+            <div style="position: relative; width: 100%; max-width: 320px; height: 48px; margin-top: 12px;">
+              <svg width="100%" height="48" viewBox="0 0 320 48" preserveAspectRatio="none" style="display: block;">
+                <path d="M0 24 Q40 6 80 24 T160 24 Q200 10 240 24 T320 24" style="fill: none; stroke: rgba(46,216,168,0.32); stroke-width: 1.2;"></path>
+              </svg>
+              <div data-sig style="position: absolute; top: 0; left: 0; width: 6px; height: 6px; margin: -3px; border-radius: 50%; background: #2ED8A8; box-shadow: 0 0 8px 2px rgba(46,216,168,0.7); offset-path: path('M0 24 Q40 6 80 24 T160 24 Q200 10 240 24 T320 24'); animation: travel 10.4s linear infinite;"></div>
+            </div>
+            <div style="margin-top: 10px; font-weight: 300; font-size: 13px; line-height: 1.55; color: rgba(247,244,240,0.55); max-width: 310px;">No forced rhythm. Attend to the breath at the nostrils or the belly. Nothing to control.</div>
+            <div style="margin-top: 9px; font-weight: 300; font-size: 9.5px; letter-spacing: 0.13em; line-height: 1.75; color: rgba(198,160,124,0.7); text-transform: uppercase; max-width: 320px;">Anapanasati — the breath-awareness practice at the root of Buddhist meditation.</div>
+            <div style="display: flex; gap: 10px; margin-top: 16px;">
+              <sc-for list="{{ medChips }}" as="c" hint-placeholder-count="3">
+                <button onClick="{{ c.start }}" style="background: transparent; border: 1px solid rgba(247,244,240,0.22); color: #F7F4F0; border-radius: 9999px; padding: 0 18px; min-height: 44px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.18em; cursor: pointer; transition: border-color 0.3s ease, color 0.3s ease;" style-hover="border-color: rgba(46,216,168,0.6); color: #2ED8A8;" style-active="transform: scale(0.97);">{{ c.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <div data-rise style="border-top: 1px solid rgba(247,244,240,0.10); padding: 24px 0 28px; animation: riseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between;">
+              <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 0.3em; color: #C6A07C;">SYNCHRONIZE</div>
+              <div style="font-weight: 300; font-size: 10px; letter-spacing: 0.22em; color: rgba(198,160,124,0.55);">( 02 )</div>
+            </div>
+            <div style="font-family: 'Lora', serif; font-style: italic; font-size: 40px; line-height: 1.08; margin-top: 9px; color: #F7F4F0;">Restore</div>
+            <div style="position: relative; width: 100%; max-width: 320px; height: 48px; margin-top: 12px;">
+              <svg width="100%" height="48" viewBox="0 0 320 48" preserveAspectRatio="none" style="display: block;">
+                <path d="M0 24 Q40 4 80 24 T160 24 Q200 4 240 24 T320 24" style="fill: none; stroke: rgba(46,216,168,0.32); stroke-width: 1.2;"></path>
+              </svg>
+              <div data-sig style="position: absolute; top: 0; left: 0; width: 6px; height: 6px; margin: -3px; border-radius: 50%; background: #2ED8A8; box-shadow: 0 0 8px 2px rgba(46,216,168,0.7); offset-path: path('M0 24 Q40 4 80 24 T160 24 Q200 4 240 24 T320 24'); animation: travel 11s linear infinite;"></div>
+            </div>
+            <div style="margin-top: 10px; font-weight: 300; font-size: 13px; line-height: 1.55; color: rgba(247,244,240,0.55); max-width: 310px;">{{ resDesc }}</div>
+            <div style="margin-top: 9px; font-weight: 300; font-size: 9.5px; letter-spacing: 0.13em; line-height: 1.75; color: rgba(198,160,124,0.7); text-transform: uppercase; max-width: 320px;">Coherent breathing — the rate at which heart rhythm and breath fall into phase.</div>
+            <div style="display: flex; gap: 10px; margin-top: 16px;">
+              <sc-for list="{{ resChips }}" as="c" hint-placeholder-count="3">
+                <button onClick="{{ c.start }}" style="background: transparent; border: 1px solid rgba(247,244,240,0.22); color: #F7F4F0; border-radius: 9999px; padding: 0 18px; min-height: 44px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.18em; cursor: pointer; transition: border-color 0.3s ease, color 0.3s ease;" style-hover="border-color: rgba(46,216,168,0.6); color: #2ED8A8;" style-active="transform: scale(0.97);">{{ c.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <div data-rise style="border-top: 1px solid rgba(247,244,240,0.10); padding: 24px 0 28px; animation: riseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between;">
+              <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 0.3em; color: #C6A07C;">RELEASE</div>
+              <div style="font-weight: 300; font-size: 10px; letter-spacing: 0.22em; color: rgba(198,160,124,0.55);">( 03 )</div>
+            </div>
+            <div style="font-family: 'Lora', serif; font-style: italic; font-size: 40px; line-height: 1.08; margin-top: 9px; color: #F7F4F0;">Reset</div>
+            <div style="position: relative; width: 100%; max-width: 320px; height: 48px; margin-top: 12px;">
+              <svg width="100%" height="48" viewBox="0 0 320 48" preserveAspectRatio="none" style="display: block;">
+                <path d="M0 40 Q14 22 26 26 Q34 29 44 12 Q54 4 66 14 Q120 36 320 40" style="fill: none; stroke: rgba(46,216,168,0.32); stroke-width: 1.2;"></path>
+              </svg>
+              <div data-sig style="position: absolute; top: 0; left: 0; width: 6px; height: 6px; margin: -3px; border-radius: 50%; background: #2ED8A8; box-shadow: 0 0 8px 2px rgba(46,216,168,0.7); offset-path: path('M0 40 Q14 22 26 26 Q34 29 44 12 Q54 4 66 14 Q120 36 320 40'); animation: travel 8.5s linear infinite;"></div>
+            </div>
+            <div style="margin-top: 10px; font-weight: 300; font-size: 13px; line-height: 1.55; color: rgba(247,244,240,0.55); max-width: 310px;">Two inhales through the nose, then one long release. The downshift between tasks.</div>
+            <div style="margin-top: 9px; font-weight: 300; font-size: 9.5px; letter-spacing: 0.13em; line-height: 1.75; color: rgba(198,160,124,0.7); text-transform: uppercase; max-width: 320px;">The physiological sigh — the breath pattern the body already uses to reset itself. Commonly used for rapid downregulation.</div>
+            <div style="display: flex; gap: 10px; margin-top: 16px;">
+              <sc-for list="{{ rstChips }}" as="c" hint-placeholder-count="3">
+                <button onClick="{{ c.start }}" style="background: transparent; border: 1px solid rgba(247,244,240,0.22); color: #F7F4F0; border-radius: 9999px; padding: 0 18px; min-height: 44px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.18em; cursor: pointer; transition: border-color 0.3s ease, color 0.3s ease;" style-hover="border-color: rgba(46,216,168,0.6); color: #2ED8A8;" style-active="transform: scale(0.97);">{{ c.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <div data-rise style="margin-top: auto; padding-top: 24px; border-top: 1px solid rgba(247,244,240,0.10); display: flex; align-items: center; justify-content: space-between; gap: 12px; animation: riseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;">
+          <div style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.28em; color: rgba(247,244,240,0.35);">CUES</div>
+          <div style="display: flex; gap: 10px;">
+            <button onClick="{{ toggleTone }}" style="background: transparent; border: none; padding: 12px 6px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.24em; color: {{ toneColor }};">TONE · {{ toneState }}</button>
+            <button onClick="{{ togglePulse }}" style="background: transparent; border: none; padding: 12px 6px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.24em; color: {{ pulseColor }};">PULSE · {{ pulseState }}</button>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isProtocols }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Protocols" style="position: relative; display: flex; flex-direction: column; min-height: 100dvh; padding: 60px 28px 108px; box-sizing: border-box;">
+        <div style="position: absolute; left: -30%; right: -30%; top: -22%; height: 58%; background: radial-gradient(ellipse at 50% 0%, rgba(46,216,168,0.09) 0%, rgba(26,23,20,0) 62%); animation: homeBreathe 12s ease-in-out infinite; pointer-events: none;"></div>
+        <div data-rise style="animation: riseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;">
+          <div style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.32em; color: #C6A07C;">ZENTIAL PURE · BREATH</div>
+          <h1 style="font-family: 'Lora', serif; font-style: italic; font-weight: 400; font-size: 48px; line-height: 1.04; margin: 16px 0 0; letter-spacing: -0.02em; color: #F7F4F0;">Protocols</h1>
+          <div style="margin-top: 14px; font-weight: 300; font-size: 13px; line-height: 1.6; color: rgba(247,244,240,0.55); max-width: 300px;">One practice prepares the next. A protocol runs the acts in sequence.</div>
+        </div>
+        <div style="margin-top: 34px; display: flex; flex-direction: column;">
+          <sc-for list="{{ protocols }}" as="p" hint-placeholder-count="3">
+            <div data-rise style="border-top: 1px solid rgba(247,244,240,0.10); padding: 24px 0 28px; animation: riseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;">
+              <div style="display: flex; align-items: baseline; justify-content: space-between;">
+                <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 0.3em; color: #C6A07C;">{{ p.role }}</div>
+                <div style="font-weight: 300; font-size: 10px; letter-spacing: 0.22em; color: rgba(198,160,124,0.55);">{{ p.num }}</div>
+              </div>
+              <div style="font-family: 'Lora', serif; font-style: italic; font-size: 34px; line-height: 1.1; margin-top: 9px; color: #F7F4F0;">{{ p.name }}</div>
+              <div style="margin-top: 10px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.22em; color: rgba(46,216,168,0.75);">{{ p.seqText }}</div>
+              <div style="margin-top: 10px; font-weight: 300; font-size: 13px; line-height: 1.55; color: rgba(247,244,240,0.55); max-width: 310px;">{{ p.desc }}</div>
+              <div style="display: flex; align-items: center; gap: 14px; margin-top: 16px;">
+                <button onClick="{{ p.begin }}" style="background: transparent; border: 1px solid rgba(247,244,240,0.22); color: #F7F4F0; border-radius: 9999px; padding: 0 22px; min-height: 44px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.18em; cursor: pointer; transition: border-color 0.3s ease, color 0.3s ease;" style-hover="border-color: rgba(46,216,168,0.6); color: #2ED8A8;" style-active="transform: scale(0.97);">BEGIN</button>
+                <div style="font-weight: 300; font-size: 10px; letter-spacing: 0.22em; color: rgba(247,244,240,0.35);">{{ p.totalText }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isSystem }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="The System" style="position: relative; display: flex; flex-direction: column; min-height: 100dvh; padding: 60px 28px 108px; box-sizing: border-box;">
+        <div style="position: absolute; left: -30%; right: -30%; top: -22%; height: 58%; background: radial-gradient(ellipse at 50% 0%, rgba(46,216,168,0.09) 0%, rgba(26,23,20,0) 62%); animation: homeBreathe 12s ease-in-out infinite; pointer-events: none;"></div>
+        <div data-rise style="animation: riseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;">
+          <div style="width: 28px; height: 28px; animation: homeBreathe 12s ease-in-out infinite;">
+            <x-import component-from-global-scope="ZentialPureDesignSystem_ff82fc.Logo" variant="mark" size="{{ 26 }}" mark-color="#2ED8A8" hint-size="26px,26px"></x-import>
+          </div>
+          <div style="margin-top: 22px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.32em; color: #C6A07C;">RESONANCE RESTORATION</div>
+          <h1 style="font-family: 'Lora', serif; font-style: italic; font-weight: 400; font-size: 48px; line-height: 1.04; margin: 16px 0 0; letter-spacing: -0.02em; color: #F7F4F0;">The System</h1>
+          <div style="margin-top: 14px; font-weight: 300; font-size: 13px; line-height: 1.6; color: rgba(247,244,240,0.55); max-width: 300px;">Two channels. One return.</div>
+        </div>
+
+        <div data-rise style="margin: 40px 0 6px; animation: riseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;">
+          <div style="font-family: 'Lora', serif; font-style: italic; font-size: 24px; line-height: 1.4; color: rgba(247,244,240,0.85); max-width: 300px;">The body remembers its frequency.</div>
+        </div>
+
+        <div style="margin-top: 28px; display: flex; flex-direction: column;">
+          <div data-rise style="border-top: 1px solid rgba(247,244,240,0.10); padding: 24px 0 28px; animation: riseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between;">
+              <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 0.3em; color: #C6A07C;">FROM THE OUTSIDE</div>
+              <div style="font-weight: 300; font-size: 10px; letter-spacing: 0.22em; color: rgba(198,160,124,0.55);">( 01 )</div>
+            </div>
+            <div style="font-family: 'Lora', serif; font-style: italic; font-size: 34px; line-height: 1.1; margin-top: 9px; color: #F7F4F0;">The Instruments</div>
+            <div style="margin-top: 10px; font-weight: 300; font-size: 13px; line-height: 1.55; color: rgba(247,244,240,0.55); max-width: 310px;">Calibrated electrical pulses and lightwaves, returned to the tissue. The Face Introducer runs a 12 minute daily ritual.</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;">
+              <div style="border: 1px solid rgba(247,244,240,0.14); border-radius: 9999px; padding: 7px 12px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 8px; letter-spacing: 0.2em; color: rgba(247,244,240,0.55);">EMS</div>
+              <div style="border: 1px solid rgba(247,244,240,0.14); border-radius: 9999px; padding: 7px 12px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 8px; letter-spacing: 0.2em; color: rgba(247,244,240,0.55);">MICROCURRENT</div>
+              <div style="border: 1px solid rgba(247,244,240,0.14); border-radius: 9999px; padding: 7px 12px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 8px; letter-spacing: 0.2em; color: rgba(247,244,240,0.55);">THERMAL</div>
+              <div style="border: 1px solid rgba(247,244,240,0.14); border-radius: 9999px; padding: 7px 12px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 8px; letter-spacing: 0.2em; color: rgba(247,244,240,0.55);">LED 630–660NM</div>
+            </div>
+            <a href="https://zentialpure.com" target="_blank" rel="noreferrer" style="display: inline-block; margin-top: 16px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.24em; color: rgba(198,160,124,0.85);">ORDER THE FACE INTRODUCER · €88. ONCE.</a>
+          </div>
+
+          <div data-rise style="border-top: 1px solid rgba(247,244,240,0.10); padding: 24px 0 28px; animation: riseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between;">
+              <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 0.3em; color: #C6A07C;">FROM WITHIN</div>
+              <div style="font-weight: 300; font-size: 10px; letter-spacing: 0.22em; color: rgba(198,160,124,0.55);">( 02 )</div>
+            </div>
+            <div style="font-family: 'Lora', serif; font-style: italic; font-size: 34px; line-height: 1.1; margin-top: 9px; color: #F7F4F0;">The Breath</div>
+            <div style="margin-top: 10px; font-weight: 300; font-size: 13px; line-height: 1.55; color: rgba(247,244,240,0.55); max-width: 310px;">The body's own instrument. Three acts, calibrated to the same return.</div>
+            <button onClick="{{ goPractice }}" style="margin-top: 16px; background: transparent; border: 1px solid rgba(247,244,240,0.22); color: #F7F4F0; border-radius: 9999px; padding: 0 22px; min-height: 44px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.18em; cursor: pointer; transition: border-color 0.3s ease, color 0.3s ease;" style-hover="border-color: rgba(46,216,168,0.6); color: #2ED8A8;" style-active="transform: scale(0.97);">BEGIN THE PRACTICE</button>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isLedger }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="The Ledger" style="position: relative; display: flex; flex-direction: column; min-height: 100dvh; padding: 60px 28px 108px; box-sizing: border-box;">
+        <div data-rise style="animation: riseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;">
+          <div style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.32em; color: #C6A07C;">ZENTIAL PURE · BREATH</div>
+          <h1 style="font-family: 'Lora', serif; font-style: italic; font-weight: 400; font-size: 48px; line-height: 1.04; margin: 16px 0 0; letter-spacing: -0.02em; color: #F7F4F0;">The Ledger</h1>
+        </div>
+
+        <sc-if value="{{ hasLog }}" hint-placeholder-val="{{ false }}">
+          <div data-rise style="margin-top: 26px; display: flex; flex-direction: column; gap: 8px; animation: riseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;">
+            <div style="font-weight: 300; font-size: 10.5px; letter-spacing: 0.22em; color: rgba(198,160,124,0.85);">CONTINUITY · {{ continuityText }}</div>
+            <div style="font-weight: 300; font-size: 10.5px; letter-spacing: 0.22em; color: rgba(247,244,240,0.5);">THIS WEEK · {{ weekText }}</div>
+            <div style="font-weight: 300; font-size: 10.5px; letter-spacing: 0.22em; color: rgba(247,244,240,0.5);">SESSIONS · {{ sessionCount }}</div>
+          </div>
+          <div style="margin-top: 30px; display: flex; flex-direction: column;">
+            <sc-for list="{{ ledger }}" as="e" hint-placeholder-count="4">
+              <div style="border-top: 1px solid rgba(247,244,240,0.10); padding: 16px 0; display: flex; align-items: baseline; gap: 14px;">
+                <div style="flex: 0 0 58px; font-weight: 300; font-size: 9.5px; letter-spacing: 0.18em; color: rgba(198,160,124,0.7);">{{ e.date }}</div>
+                <div style="flex: 1; font-family: 'Lora', serif; font-style: italic; font-size: 17px; color: rgba(247,244,240,0.85);">{{ e.name }}</div>
+                <div style="font-weight: 300; font-size: 9.5px; letter-spacing: 0.18em; color: rgba(247,244,240,0.4);">{{ e.spec }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ noLog }}" hint-placeholder-val="{{ true }}">
+          <div data-rise style="margin-top: 80px; display: flex; flex-direction: column; align-items: flex-start; gap: 24px; animation: riseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;">
+            <div style="font-family: 'Lora', serif; font-style: italic; font-size: 26px; line-height: 1.4; color: rgba(247,244,240,0.85); max-width: 280px;">The record begins with the first breath.</div>
+            <button onClick="{{ goPractice }}" style="background: transparent; border: 1px solid rgba(247,244,240,0.22); color: #F7F4F0; border-radius: 9999px; padding: 0 22px; min-height: 44px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.18em; cursor: pointer; transition: border-color 0.3s ease, color 0.3s ease;" style-hover="border-color: rgba(46,216,168,0.6); color: #2ED8A8;">BEGIN THE PRACTICE</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isInterlude }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Interlude" style="position: relative; height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 32px; box-sizing: border-box;">
+        <div style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.3em; color: #C6A07C; padding-left: 0.3em;">PROTOCOL · {{ protoNameCaps }}</div>
+        <div style="margin-top: 34px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.3em; color: rgba(247,244,240,0.4); padding-left: 0.3em;">NEXT</div>
+        <div style="font-family: 'Lora', serif; font-style: italic; font-size: 44px; margin-top: 12px; color: #F7F4F0;">{{ nextName }}</div>
+        <div style="margin-top: 12px; font-weight: 300; font-size: 10.5px; letter-spacing: 0.22em; color: rgba(247,244,240,0.5);">{{ nextSpec }}</div>
+        <div style="width: 44px; height: 1px; background: #2ED8A8; margin: 30px 0 26px;"></div>
+        <div style="font-weight: 300; font-size: 12px; line-height: 1.6; color: rgba(247,244,240,0.45); max-width: 250px;">Continues in a moment. Or begin.</div>
+        <button onClick="{{ beginNext }}" style="margin-top: 34px; background: transparent; border: 1px solid rgba(247,244,240,0.22); color: #F7F4F0; border-radius: 9999px; padding: 0 32px; min-height: 46px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.22em; cursor: pointer; transition: border-color 0.3s ease, color 0.3s ease;" style-hover="border-color: rgba(46,216,168,0.6); color: #2ED8A8;">BEGIN</button>
+        <button onClick="{{ endEarly }}" style="position: absolute; top: 24px; left: 20px; background: transparent; border: none; padding: 12px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.3em; color: rgba(247,244,240,0.35);">END</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isSession }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Session" style="position: relative; height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+
+        <div data-ambient style="position: absolute; inset: -25%; background: radial-gradient(circle at 50% 50%, {{ ambientRGBA }} 0%, rgba(26,23,20,0) 60%); transform: scale({{ ambientScale }}); opacity: {{ ambientOpacity }}; transition: transform {{ phaseDur }}s cubic-bezier(0.45, 0, 0.55, 1), opacity {{ phaseDur }}s cubic-bezier(0.45, 0, 0.55, 1); pointer-events: none;"></div>
+
+        <sc-if value="{{ terraWash }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 100% 70% at 50% 72%, rgba(155,90,46,0.10) 0%, rgba(155,90,46,0) 62%); pointer-events: none;"></div>
+        </sc-if>
+
+        <sc-if value="{{ isRestore }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; left: 0; right: 0; top: 50%; height: 140px; margin-top: -70px; overflow: hidden; pointer-events: none; opacity: 0.45;">
+            <div data-wave style="width: 200%; height: 100%; animation: waveScroll {{ waveDur }}s linear infinite;">
+              <svg width="100%" height="100%" viewBox="0 0 1600 140" preserveAspectRatio="none" style="display: block;">
+                <path d="M0 70 Q200 14 400 70 T800 70 Q1000 14 1200 70 T1600 70" style="fill: none; stroke: #2ED8A8; stroke-width: 1.4; opacity: 0.75; filter: drop-shadow(0 0 6px rgba(46,216,168,0.8));"></path>
+              </svg>
+            </div>
+          </div>
+        </sc-if>
+
+        <button onClick="{{ endEarly }}" style="position: absolute; top: 24px; left: 20px; z-index: 5; background: transparent; border: none; padding: 12px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.3em; color: rgba(247,244,240,0.35); transition: color 0.3s ease;" style-hover="color: rgba(247,244,240,0.7);">END</button>
+
+        <sc-if value="{{ inProtocol }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; top: 33px; right: 24px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 8.5px; letter-spacing: 0.24em; color: rgba(198,160,124,0.6);">{{ protoTag }}</div>
+        </sc-if>
+
+        <div style="position: absolute; top: 17%; left: 0; right: 0; text-align: center; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.38em; color: rgba(247,244,240,0.72); padding-left: 0.38em;">{{ phaseWord }}</div>
+
+        <div style="position: relative; width: 264px; height: 264px; display: flex; align-items: center; justify-content: center;">
+
+          <div data-spin style="position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, rgba(46,216,168,0) 0%, rgba(46,216,168,0.55) 28%, rgba(198,160,124,0.35) 48%, rgba(46,216,168,0.10) 62%, rgba(46,216,168,0) 78%); -webkit-mask: radial-gradient(circle, transparent 55%, black 60%, black 63%, transparent 69%); mask: radial-gradient(circle, transparent 55%, black 60%, black 63%, transparent 69%); animation: spinSlow 34s linear infinite; opacity: 0.7;"></div>
+
+          <svg width="264" height="264" viewBox="0 0 264 264" style="position: absolute; inset: 0; transform: rotate(-90deg); overflow: visible;">
+            <defs>
+              <linearGradient id="breathGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color: #2ED8A8;"></stop>
+                <stop offset="70%" style="stop-color: #1BAF86;"></stop>
+                <stop offset="100%" style="stop-color: #C6A07C;"></stop>
+              </linearGradient>
+            </defs>
+            <circle cx="132" cy="132" r="118" style="fill: none; stroke: rgba(247,244,240,0.08); stroke-width: 1;"></circle>
+            <circle cx="132" cy="132" r="118" style="fill: none; stroke: url(#breathGrad); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 741.4; stroke-dashoffset: {{ ringOffset }}; transition: stroke-dashoffset {{ phaseDur }}s cubic-bezier(0.45, 0, 0.55, 1); filter: drop-shadow(0 0 5px rgba(46,216,168,0.6));"></circle>
+          </svg>
+
+          <div data-orb style="width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle at 50% 50%, rgba(46,216,168,0.95) 0%, rgba(46,216,168,0.45) 38%, rgba(46,216,168,0.10) 62%, rgba(46,216,168,0) 72%); box-shadow: 0 0 60px 24px rgba(46,216,168,0.22), 0 0 160px 70px rgba(46,216,168,0.10), 0 0 300px 150px rgba(46,216,168,0.045); transform: scale({{ orbScale }}); transition: transform {{ phaseDur }}s cubic-bezier(0.45, 0, 0.55, 1); animation: glowDrift 7s ease-in-out infinite;"></div>
+        </div>
+
+        <sc-if value="{{ showCounter }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; bottom: 24%; left: 0; right: 0; text-align: center; font-family: 'Lora', serif; font-style: italic; font-size: 28px; color: rgba(198,160,124,0.85);">{{ countText }}</div>
+        </sc-if>
+
+        <sc-if value="{{ isRestore }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; bottom: 15%; left: 0; right: 0; text-align: center; font-weight: 300; font-size: 9.5px; letter-spacing: 0.24em; color: rgba(198,160,124,0.7); padding-left: 0.24em;">0.09 HZ · THE RESONANCE RATE</div>
+        </sc-if>
+
+        <div style="position: absolute; bottom: 9%; left: 0; right: 0; text-align: center; font-weight: 300; font-size: 11px; letter-spacing: 0.24em; color: rgba(247,244,240,0.35); padding-left: 0.24em;">{{ remainingText }}</div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isCredits }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Post-session" style="position: relative; height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 32px; box-sizing: border-box;">
+        <div style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.34em; color: #C6A07C; padding-left: 0.34em;">{{ creditsKicker }}</div>
+        <div style="font-family: 'Lora', serif; font-style: italic; font-size: 42px; margin-top: 16px; color: #F7F4F0;">{{ creditsMode }}</div>
+        <div style="width: 44px; height: 1px; background: #2ED8A8; margin: 28px 0 24px;"></div>
+        <sc-for list="{{ specs }}" as="s" hint-placeholder-count="3">
+          <div style="font-weight: 300; font-size: 10.5px; letter-spacing: 0.22em; color: rgba(247,244,240,0.6); margin: 7px 0; text-transform: uppercase;">{{ s.k }} · {{ s.v }}</div>
+        </sc-for>
+        <div style="font-family: 'Lora', serif; font-style: italic; font-size: 19px; line-height: 1.5; color: rgba(247,244,240,0.85); margin-top: 42px; max-width: 280px;">Your skin responds to the same stillness.</div>
+        <div style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 8.5px; letter-spacing: 0.26em; line-height: 2; color: rgba(198,160,124,0.75); margin-top: 20px; max-width: 300px;">PAIR WITH THE SYSTEM — THREE INSTRUMENTS, ONE RETURN</div>
+        <button onClick="{{ returnHome }}" style="margin-top: 44px; background: transparent; border: 1px solid rgba(247,244,240,0.22); color: #F7F4F0; border-radius: 9999px; padding: 0 32px; min-height: 46px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.22em; cursor: pointer; transition: border-color 0.3s ease, color 0.3s ease;" style-hover="border-color: rgba(46,216,168,0.6); color: #2ED8A8;">RETURN</button>
+      </div>
+    </sc-if>
+
+  </div>
+
+  <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+    <div style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 40; display: flex; justify-content: space-around; align-items: center; padding: 6px 8px 14px; border-top: 1px solid rgba(247,244,240,0.10); background: #1A1714;">
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+        <button onClick="{{ n.go }}" style="background: transparent; border: none; cursor: pointer; padding: 16px 8px; min-height: 44px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 8.5px; letter-spacing: 0.22em; color: {{ n.color }}; transition: color 0.3s ease;">{{ n.label }}</button>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ grainOn }}" hint-placeholder-val="{{ true }}">
+    <div style="position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.035; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"></div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844},&quot;eveningRestore&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Ritual&quot;},&quot;breathCounting&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Ritual&quot;},&quot;grain&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Atmosphere&quot;}}">
+class Component extends DCLogic {
+  state = {
+    screen: 'home',
+    fadeOut: false,
+    mode: null,
+    phaseLabel: '',
+    orbScale: 0.62,
+    phaseDur: 0.01,
+    frac: 0,
+    remaining: 0,
+    total: 0,
+    breaths: 0,
+    count: 0,
+    completed: false,
+    toneOn: false,
+    pulseOn: false,
+    protocol: null,
+    protoIdx: 0,
+    accSecs: 0,
+    accBreaths: 0,
+    sessionEvening: false,
+    log: []
+  };
+
+  componentDidMount() {
+    try {
+      const raw = localStorage.getItem('zb_ledger');
+      if (raw) this.setState({ log: JSON.parse(raw) });
+    } catch (e) {}
+  }
+
+  componentWillUnmount() {
+    this.clearTimers();
+    this.releaseLock();
+  }
+
+  clearTimers() {
+    clearTimeout(this._phaseTimer);
+    clearInterval(this._tick);
+    clearTimeout(this._fadeTimer);
+    clearTimeout(this._autoTimer);
+  }
+
+  patterns(mode) {
+    const evening = this.state.sessionEvening;
+    if (mode === 'meditate') return [
+      { l: '', s: 1, d: 4.6, f: 1 },
+      { l: '', s: 0.66, d: 5.8, f: 0 }
+    ];
+    if (mode === 'restore') return evening ? [
+      { l: 'INHALE', s: 1, d: 4, f: 1 },
+      { l: 'EXHALE', s: 0.62, d: 6, f: 0 }
+    ] : [
+      { l: 'INHALE', s: 1, d: 5.5, f: 1 },
+      { l: 'EXHALE', s: 0.62, d: 5.5, f: 0 }
+    ];
+    return [
+      { l: 'INHALE', s: 0.82, d: 1.5, f: 0.55 },
+      { l: 'INHALE AGAIN', s: 1, d: 1, f: 1 },
+      { l: 'EXHALE', s: 0.58, d: 6, f: 0 }
+    ];
+  }
+
+  async lock() {
+    try { this._lock = await navigator.wakeLock?.request('screen'); } catch (e) {}
+  }
+
+  releaseLock() {
+    try { if (this._lock) { this._lock.release(); this._lock = null; } } catch (e) {}
+  }
+
+  playTone() {
+    try {
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      const ctx = this._audio || (this._audio = new Ctx());
+      if (ctx.state === 'suspended') ctx.resume();
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = 'sine';
+      o.frequency.value = 108;
+      const t = ctx.currentTime;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.07, t + 0.5);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 2.4);
+      o.connect(g);
+      g.connect(ctx.destination);
+      o.start(t);
+      o.stop(t + 2.5);
+    } catch (e) {}
+  }
+
+  startSession(mode, minutes, evening) {
+    this.clearTimers();
+    this.setState({ fadeOut: true });
+    this._fadeTimer = setTimeout(() => {
+      const startScale = mode === 'meditate' ? 0.66 : mode === 'restore' ? 0.62 : 0.58;
+      this.setState({
+        screen: 'session', mode,
+        sessionEvening: evening ?? (this.props.eveningRestore ?? false),
+        total: minutes * 60, remaining: minutes * 60,
+        breaths: 0, count: 0, completed: false,
+        orbScale: startScale, phaseDur: 0.01, phaseLabel: '', frac: 0, fadeOut: false
+      });
+      this.lock();
+      this._tick = setInterval(() => this.tick(), 1000);
+      this._phaseTimer = setTimeout(() => this.runPhase(0), 800);
+    }, 680);
+  }
+
+  runPhase(i) {
+    const pat = this.patterns(this.state.mode);
+    const p = pat[i % pat.length];
+    if (i > 0 && i % pat.length === 0) {
+      this.setState(s => ({ breaths: s.breaths + 1, count: s.count >= 10 ? 1 : s.count + 1 }));
+    } else if (i === 0) {
+      this.setState({ count: 1 });
+    }
+    this.setState({ phaseLabel: p.l, orbScale: p.s, phaseDur: p.d, frac: p.f });
+    if (this.state.pulseOn && navigator.vibrate) { try { navigator.vibrate(18); } catch (e) {} }
+    if (this.state.toneOn && p.l.indexOf('EXHALE') === 0) this.playTone();
+    this._phaseTimer = setTimeout(() => this.runPhase(i + 1), p.d * 1000);
+  }
+
+  tick() {
+    const r = this.state.remaining - 1;
+    if (r <= 0) { this.finish(true); return; }
+    this.setState({ remaining: r });
+  }
+
+  finish(completed) {
+    this.clearTimers();
+    this.releaseLock();
+    const st = this.state;
+    const elapsed = Math.max(0, st.total - st.remaining);
+    if (elapsed >= 30) {
+      const entry = { t: Date.now(), mode: st.mode, secs: elapsed, breaths: st.breaths, completed };
+      const log = [...st.log, entry];
+      this.setState({ log });
+      try { localStorage.setItem('zb_ledger', JSON.stringify(log)); } catch (e) {}
+    }
+    const accSecs = st.accSecs + elapsed;
+    const accBreaths = st.accBreaths + st.breaths;
+    if (st.protocol && completed && st.protoIdx < st.protocol.seq.length - 1) {
+      this.setState({ accSecs, accBreaths, protoIdx: st.protoIdx + 1, fadeOut: true });
+      this._fadeTimer = setTimeout(() => {
+        this.setState({ screen: 'interlude', fadeOut: false });
+        this._autoTimer = setTimeout(() => this.beginNext(), 6000);
+      }, 780);
+      return;
+    }
+    this.setState({ accSecs, accBreaths });
+    this.toCredits(completed);
+  }
+
+  toCredits(completed) {
+    this.clearTimers();
+    this.releaseLock();
+    this.setState({ completed, fadeOut: true });
+    this._fadeTimer = setTimeout(() => {
+      this.setState({ screen: 'credits', fadeOut: false });
+    }, 780);
+  }
+
+  protocolDefs() {
+    return [
+      { role: 'MORNING', num: '( 01 )', name: 'Morning Return',
+        desc: 'A short release, then the resonance rate. Before the day begins.',
+        seq: [{ mode: 'reset', mins: 2 }, { mode: 'restore', mins: 5 }] },
+      { role: 'MIDDAY', num: '( 02 )', name: 'The Interval',
+        desc: 'A downshift between tasks, then quiet observation.',
+        seq: [{ mode: 'reset', mins: 3 }, { mode: 'meditate', mins: 5 }] },
+      { role: 'EVENING', num: '( 03 )', name: 'The Descent',
+        desc: 'The evening rate, four counts in and six out, then stillness before sleep.',
+        seq: [{ mode: 'restore', mins: 10, evening: true }, { mode: 'meditate', mins: 10 }] }
+    ];
+  }
+
+  startProtocol(p) {
+    this.setState({ protocol: p, protoIdx: 0, accSecs: 0, accBreaths: 0 });
+    const seg = p.seq[0];
+    this.startSession(seg.mode, seg.mins, seg.evening);
+  }
+
+  beginNext() {
+    clearTimeout(this._autoTimer);
+    const st = this.state;
+    if (!st.protocol) return;
+    const seg = st.protocol.seq[st.protoIdx];
+    this.startSession(seg.mode, seg.mins, seg.evening);
+  }
+
+  goScreen(name) {
+    this.clearTimers();
+    this.setState({ fadeOut: true });
+    this._fadeTimer = setTimeout(() => {
+      this.setState({ screen: name, mode: null, protocol: null, protoIdx: 0, accSecs: 0, accBreaths: 0, fadeOut: false });
+    }, 650);
+  }
+
+  goHome() {
+    this.goScreen('home');
+  }
+
+  fmt(sec) {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  renderVals() {
+    const st = this.state;
+    const evening = this.props.eveningRestore ?? false;
+    const counting = this.props.breathCounting ?? true;
+
+    const mk = (key, mins) => ({
+      label: mins + ' MIN',
+      start: () => this.startSession(key, mins)
+    });
+
+    const modes = [
+      {
+        role: 'OBSERVE', name: 'Meditate',
+        desc: 'No forced rhythm. Attend to the breath at the nostrils or the belly. Nothing to control.',
+        provenance: 'Anapanasati — the breath-awareness practice at the root of Buddhist meditation.',
+        chips: [mk('meditate', 5), mk('meditate', 10), mk('meditate', 20)]
+      },
+      {
+        role: 'SYNCHRONIZE', name: 'Restore',
+        desc: evening
+          ? 'A four second inhale, a six second exhale. The evening variant. Synchronize with the wave.'
+          : 'A 5.5 second inhale, a 5.5 second exhale. 0.09 Hz — the resonance rate.',
+        provenance: 'Coherent breathing — the rate at which heart rhythm and breath fall into phase.',
+        chips: [mk('restore', 5), mk('restore', 10), mk('restore', 20)]
+      },
+      {
+        role: 'RELEASE', name: 'Reset',
+        desc: 'Two inhales through the nose, then one long release. The downshift between tasks.',
+        provenance: 'The physiological sigh — the breath pattern the body already uses to reset itself. Commonly used for rapid downregulation.',
+        chips: [mk('reset', 2), mk('reset', 3), mk('reset', 5)]
+      }
+    ];
+
+    const modeNames = { meditate: 'Meditate', restore: 'Restore', reset: 'Reset' };
+    const isRestore = st.screen === 'session' && st.mode === 'restore';
+    const sessEvening = st.sessionEvening;
+
+    const proto = st.protocol;
+    const elapsed = st.total - st.remaining;
+    const elapsedMin = Math.max(1, Math.round(elapsed / 60));
+    const specs = [];
+    let creditsMode = modeNames[st.mode] || '';
+    let creditsKicker = 'PRACTICE COMPLETE';
+    if (proto) {
+      creditsMode = proto.name;
+      creditsKicker = 'PROTOCOL COMPLETE';
+      const accMin = Math.max(1, Math.round(st.accSecs / 60));
+      specs.push({ k: 'RUNTIME', v: st.completed ? accMin + ' MINUTES COMPLETE' : accMin + (accMin === 1 ? ' MINUTE' : ' MINUTES') });
+      specs.push({ k: 'SEQUENCE', v: proto.seq.map(g => modeNames[g.mode].toUpperCase() + ' ' + g.mins).join(' · ') });
+      specs.push({ k: 'BREATHS', v: String(st.accBreaths) });
+    } else {
+      specs.push({ k: 'RUNTIME', v: st.completed ? (st.total / 60) + ' MINUTES COMPLETE' : elapsedMin + (elapsedMin === 1 ? ' MINUTE' : ' MINUTES') });
+      if (st.mode === 'restore') specs.push({ k: 'FREQUENCY', v: '0.09 HZ' });
+      specs.push({ k: 'BREATHS', v: String(st.breaths) });
+    }
+    specs.push({ k: 'CHANNEL', v: 'THE BREATH, FROM WITHIN' });
+
+    const protocols = this.protocolDefs().map(p => ({
+      role: p.role, num: p.num, name: p.name, desc: p.desc,
+      seqText: p.seq.map(g => modeNames[g.mode].toUpperCase() + ' ' + g.mins).join(' · '),
+      totalText: p.seq.reduce((a, g) => a + g.mins, 0) + ' MIN TOTAL',
+      begin: () => this.startProtocol(p)
+    }));
+
+    const tabs = [['PRACTICE', 'home'], ['PROTOCOLS', 'protocols'], ['SYSTEM', 'system'], ['LEDGER', 'ledger']];
+    const navItems = tabs.map(([label, key]) => ({
+      label,
+      go: () => { if (this.state.screen !== key) this.goScreen(key); },
+      color: st.screen === key ? '#F7F4F0' : 'rgba(247,244,240,0.35)'
+    }));
+
+    const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    const log = st.log || [];
+    const ledger = [...log].reverse().slice(0, 14).map(e => {
+      const d = new Date(e.t);
+      const mins = Math.max(1, Math.round(e.secs / 60));
+      return {
+        date: MONTHS[d.getMonth()] + ' ' + String(d.getDate()).padStart(2, '0'),
+        name: modeNames[e.mode] || 'Practice',
+        spec: mins + ' MIN · ' + e.breaths + ' BR'
+      };
+    });
+    const dayKeys = new Set(log.map(e => new Date(e.t).toDateString()));
+    let cont = 0;
+    {
+      const d = new Date();
+      if (!dayKeys.has(d.toDateString())) d.setDate(d.getDate() - 1);
+      while (dayKeys.has(d.toDateString())) { cont++; d.setDate(d.getDate() - 1); }
+    }
+    const weekAgo = Date.now() - 7 * 86400000;
+    const weekMin = Math.round(log.filter(e => e.t >= weekAgo).reduce((a, e) => a + e.secs, 0) / 60);
+
+    const nextSeg = proto ? proto.seq[st.protoIdx] : null;
+
+    return {
+      isHome: st.screen === 'home',
+      isSession: st.screen === 'session',
+      isCredits: st.screen === 'credits',
+      isProtocols: st.screen === 'protocols',
+      isSystem: st.screen === 'system',
+      isLedger: st.screen === 'ledger',
+      isInterlude: st.screen === 'interlude',
+      showNav: ['home', 'protocols', 'system', 'ledger'].indexOf(st.screen) >= 0,
+      navItems,
+      protocols,
+      goPractice: () => this.goScreen('home'),
+      inProtocol: !!proto && st.screen === 'session',
+      protoTag: proto ? proto.name.toUpperCase() + ' · ' + (st.protoIdx + 1) + ' / ' + proto.seq.length : '',
+      protoNameCaps: proto ? proto.name.toUpperCase() : '',
+      nextName: nextSeg ? modeNames[nextSeg.mode] : '',
+      nextSpec: nextSeg ? nextSeg.mins + ' MINUTES' + (nextSeg.evening ? ' · EVENING VARIANT' : '') : '',
+      beginNext: () => this.beginNext(),
+      hasLog: log.length > 0,
+      noLog: log.length === 0,
+      continuityText: cont + (cont === 1 ? ' DAY' : ' DAYS'),
+      weekText: weekMin + (weekMin === 1 ? ' MINUTE' : ' MINUTES'),
+      sessionCount: String(log.length),
+      ledger,
+      creditsKicker,
+      rootOpacity: st.fadeOut ? 0 : 1,
+      grainOn: this.props.grain ?? true,
+      modes,
+      medChips: modes[0].chips,
+      resChips: modes[1].chips,
+      rstChips: modes[2].chips,
+      resDesc: modes[1].desc,
+      phaseWord: st.mode === 'meditate' ? 'OBSERVE' : st.phaseLabel,
+      orbScale: st.orbScale,
+      phaseDur: st.phaseDur,
+      remainingText: this.fmt(Math.max(0, st.remaining)),
+      isRestore,
+      terraWash: isRestore && sessEvening,
+      ambientRGBA: (isRestore && sessEvening) ? 'rgba(155,90,46,0.16)' : 'rgba(46,216,168,0.13)',
+      ambientScale: 0.72 + 0.88 * st.frac,
+      ambientOpacity: 0.35 + 0.65 * st.frac,
+      ringOffset: 741.4 * (1 - st.frac),
+      waveDur: sessEvening ? 10 : 11,
+      showCounter: st.screen === 'session' && st.mode === 'meditate' && counting && st.count > 0,
+      countText: String(st.count),
+      creditsMode,
+      specs,
+      endEarly: () => { if (this.state.screen === 'interlude') this.toCredits(false); else this.finish(false); },
+      returnHome: () => this.goHome(),
+      toggleTone: () => this.setState(s => ({ toneOn: !s.toneOn })),
+      togglePulse: () => this.setState(s => ({ pulseOn: !s.pulseOn })),
+      toneState: st.toneOn ? 'ON' : 'OFF',
+      pulseState: st.pulseOn ? 'ON' : 'OFF',
+      toneColor: st.toneOn ? '#2ED8A8' : 'rgba(247,244,240,0.35)',
+      pulseColor: st.pulseOn ? '#2ED8A8' : 'rgba(247,244,240,0.35)'
+    };
+  }
+}
+</script>
+</body>
+</html>
