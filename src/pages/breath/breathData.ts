@@ -44,6 +44,13 @@ export const chipMins: Record<BreathMode, number[]> = {
   reset: [2, 3, 5],
 };
 
+/** Tone glide pitch range (Hz) — oscillator frequency at f=0 (exhale) vs f=1 (inhale). */
+export const FREQ_MIN = 96;
+export const FREQ_MAX = 144;
+/** Tone glide gain range (linear) — nonzero floor so ramps never cross zero and click. */
+export const GAIN_MIN = 0.015;
+export const GAIN_MAX = 0.055;
+
 export function patterns(mode: BreathMode, evening: boolean): Phase[] {
   if (mode === "meditate")
     return [

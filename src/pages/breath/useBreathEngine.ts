@@ -16,6 +16,10 @@
 import { useCallback, useEffect, useReducer, useRef } from "react";
 import {
   chipMins,
+  FREQ_MAX,
+  FREQ_MIN,
+  GAIN_MAX,
+  GAIN_MIN,
   modeNames,
   patterns,
   protocolDefs,
@@ -109,6 +113,9 @@ export function useBreathEngine() {
   const autoTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lockRef = useRef<{ release: () => void } | null>(null);
   const audioRef = useRef<AudioContext | null>(null);
+  // The live tone-glide graph (osc -> gain -> destination), or null when torn down.
+  const toneNodesRef = useRef<{ osc: OscillatorNode; gain: GainNode } | null>(null);
+  const toneFadeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   // Countdown anchored to a wall-clock deadline so background-tab timer
   // throttling can't stretch a 5-minute session.
   const endAtRef = useRef(0);
@@ -147,7 +154,9 @@ export function useBreathEngine() {
     }
   }, []);
 
-  const playTone = useCallback(() => {
+  // Lazily creates the continuous tone graph on first enable (session start
+  // with tone already on, or a mid-session toggle-on). No-op if already live.
+  const ensureToneGraph = useCallback((frac: number) => {
     try {
       const Ctx =
         window.AudioContext ||
@@ -155,21 +164,94 @@ export function useBreathEngine() {
       if (!Ctx) return;
       const ctx = audioRef.current || (audioRef.current = new Ctx());
       if (ctx.state === "suspended") ctx.resume();
-      const o = ctx.createOscillator();
-      const g = ctx.createGain();
-      o.type = "sine";
-      o.frequency.value = 108;
+      if (toneNodesRef.current) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
       const t = ctx.currentTime;
-      g.gain.setValueAtTime(0.0001, t);
-      g.gain.exponentialRampToValueAtTime(0.07, t + 0.5);
-      g.gain.exponentialRampToValueAtTime(0.0001, t + 2.4);
-      o.connect(g);
-      g.connect(ctx.destination);
-      o.start(t);
-      o.stop(t + 2.5);
+      osc.frequency.setValueAtTime(FREQ_MIN + (FREQ_MAX - FREQ_MIN) * frac, t);
+      gain.gain.setValueAtTime(0.0001, t);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(t);
+      toneNodesRef.current = { osc, gain };
     } catch {
       /* audio unsupported — ignore */
     }
+  }, []);
+
+  // Ramps the live graph's pitch + gain to the target breath fraction over
+  // durSecs, synced to the orb. Cancels any in-flight ramp first so phase
+  // changes never stack.
+  const rampTone = useCallback((frac: number, durSecs: number) => {
+    const ctx = audioRef.current;
+    const nodes = toneNodesRef.current;
+    if (!ctx || !nodes) return;
+    try {
+      const t = ctx.currentTime;
+      const freqTarget = FREQ_MIN + (FREQ_MAX - FREQ_MIN) * frac;
+      const gainTarget = GAIN_MIN + (GAIN_MAX - GAIN_MIN) * frac;
+      nodes.osc.frequency.cancelScheduledValues(t);
+      nodes.osc.frequency.setValueAtTime(nodes.osc.frequency.value, t);
+      nodes.osc.frequency.linearRampToValueAtTime(freqTarget, t + durSecs);
+      nodes.gain.gain.cancelScheduledValues(t);
+      nodes.gain.gain.setValueAtTime(nodes.gain.gain.value, t);
+      nodes.gain.gain.linearRampToValueAtTime(gainTarget, t + durSecs);
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
+  // Single entry point used both for per-phase glide and for the 0.5s
+  // toggle-on ramp — ensures the graph exists, then ramps to the target.
+  const updateToneForPhase = useCallback(
+    (frac: number, durSecs: number) => {
+      if (!stateRef.current.toneOn) return;
+      ensureToneGraph(frac);
+      rampTone(frac, durSecs);
+    },
+    [ensureToneGraph, rampTone],
+  );
+
+  // Fades gain to ~silent over fadeSecs, then stops/disconnects the osc.
+  // Safe to call repeatedly or with no live graph — no-ops.
+  const teardownTone = useCallback((fadeSecs: number) => {
+    const ctx = audioRef.current;
+    const nodes = toneNodesRef.current;
+    toneNodesRef.current = null;
+    if (toneFadeTimer.current) {
+      clearTimeout(toneFadeTimer.current);
+      toneFadeTimer.current = null;
+    }
+    if (!ctx || !nodes) return;
+    try {
+      const t = ctx.currentTime;
+      nodes.gain.gain.cancelScheduledValues(t);
+      nodes.gain.gain.setValueAtTime(nodes.gain.gain.value, t);
+      nodes.gain.gain.linearRampToValueAtTime(0.0001, t + fadeSecs);
+    } catch {
+      /* ignore */
+    }
+    toneFadeTimer.current = setTimeout(
+      () => {
+        try {
+          nodes.osc.stop();
+        } catch {
+          /* ignore */
+        }
+        try {
+          nodes.osc.disconnect();
+        } catch {
+          /* ignore */
+        }
+        try {
+          nodes.gain.disconnect();
+        } catch {
+          /* ignore */
+        }
+      },
+      Math.max(0, fadeSecs) * 1000,
+    );
   }, []);
 
   // NOTE: the engine methods below are recreated each render but only ever read
@@ -201,9 +283,9 @@ export function useBreathEngine() {
         /* ignore */
       }
     }
-    if (stateRef.current.toneOn && p.l.indexOf("EXHALE") === 0) playTone();
+    updateToneForPhase(p.f, p.d);
     phaseTimer.current = setTimeout(() => runPhase(i + 1), p.d * 1000);
-  }, [setState, playTone]);
+  }, [setState, updateToneForPhase]);
 
   const tick = useCallback(() => {
     const r = Math.ceil((endAtRef.current - Date.now()) / 1000);
@@ -249,12 +331,13 @@ export function useBreathEngine() {
     (completed: boolean) => {
       clearTimers();
       releaseLock();
+      teardownTone(0.3);
       setState({ completed, fadeOut: true });
       fadeTimer.current = setTimeout(() => {
         setState({ screen: "credits", fadeOut: false });
       }, 780);
     },
-    [clearTimers, releaseLock, setState],
+    [clearTimers, releaseLock, teardownTone, setState],
   );
 
   const beginNext = useCallback(() => {
@@ -268,6 +351,7 @@ export function useBreathEngine() {
   const finish = useCallback((completed: boolean) => {
     clearTimers();
     releaseLock();
+    teardownTone(0.3);
     const st = stateRef.current;
     const elapsed = Math.max(0, st.total - st.remaining);
     if (elapsed >= 30) {
@@ -378,6 +462,7 @@ export function useBreathEngine() {
       document.removeEventListener("keydown", onKeyDown);
       clearTimers();
       releaseLock();
+      teardownTone(0);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -537,8 +622,13 @@ export function useBreathEngine() {
     returnHome: () => goHome(),
     toggleTone: () => {
       const s = stateRef.current;
-      saveCues(!s.toneOn, s.pulseOn);
-      setState({ toneOn: !s.toneOn });
+      const turningOn = !s.toneOn;
+      saveCues(turningOn, s.pulseOn);
+      setState({ toneOn: turningOn });
+      if (s.screen === "session") {
+        if (turningOn) updateToneForPhase(s.frac, 0.5);
+        else teardownTone(0.3);
+      }
     },
     togglePulse: () => {
       const s = stateRef.current;

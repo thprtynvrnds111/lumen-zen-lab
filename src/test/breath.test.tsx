@@ -70,4 +70,72 @@ describe("Breath", () => {
     expect(screen.getByText(/CONTINUITY/)).toBeInTheDocument();
     expect(screen.getByText("Meditate")).toBeInTheDocument();
   });
+
+  describe("tone glide", () => {
+    /** Minimal AudioContext double: enough surface for the tone-glide graph. */
+    function mockAudioContext() {
+      const param = () => ({
+        value: 0,
+        setValueAtTime: vi.fn(),
+        linearRampToValueAtTime: vi.fn(),
+        cancelScheduledValues: vi.fn(),
+      });
+      const oscillators: ReturnType<typeof makeOsc>[] = [];
+      function makeOsc() {
+        return {
+          type: "sine",
+          frequency: param(),
+          start: vi.fn(),
+          stop: vi.fn(),
+          connect: vi.fn(),
+          disconnect: vi.fn(),
+        };
+      }
+      const ctor = vi.fn().mockImplementation(() => ({
+        state: "running",
+        currentTime: 0,
+        resume: vi.fn(),
+        createOscillator: vi.fn().mockImplementation(() => {
+          const o = makeOsc();
+          oscillators.push(o);
+          return o;
+        }),
+        createGain: vi.fn().mockImplementation(() => ({
+          gain: param(),
+          connect: vi.fn(),
+          disconnect: vi.fn(),
+        })),
+        destination: {},
+      }));
+      (window as unknown as { AudioContext: unknown }).AudioContext = ctor;
+      return { ctor, oscillators };
+    }
+
+    afterEach(() => {
+      delete (window as unknown as { AudioContext?: unknown }).AudioContext;
+    });
+
+    it("starting a session with tone OFF never constructs an AudioContext", async () => {
+      const { ctor } = mockAudioContext();
+      renderBreath();
+      fireEvent.click(screen.getAllByText("5 MIN")[0]);
+      await settle(700);
+      await settle(900); // past the 800ms first-phase timer
+      expect(ctor).not.toHaveBeenCalled();
+    });
+
+    it("session + toggle tone ON creates the graph and ramps frequency on the next phase", async () => {
+      const { ctor, oscillators } = mockAudioContext();
+      renderBreath();
+      // Tone toggle only renders on the home screen — enable it before starting.
+      fireEvent.click(screen.getByRole("button", { name: /TONE/ }));
+      fireEvent.click(screen.getAllByText("5 MIN")[0]);
+      await settle(700);
+      await settle(900); // past the 800ms first-phase timer — runPhase(0) fires
+
+      expect(ctor).toHaveBeenCalledTimes(1);
+      expect(oscillators).toHaveLength(1);
+      expect(oscillators[0].frequency.linearRampToValueAtTime).toHaveBeenCalled();
+    });
+  });
 });
