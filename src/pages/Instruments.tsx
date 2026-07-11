@@ -1,6 +1,9 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PageShell } from "@/components/zential/v2/PageShell";
 import { SystemBundle } from "@/components/zential/SystemBundle";
+import { fetchProductByHandle } from "@/lib/shopify";
+import { formatMoney } from "@/lib/market";
 import heroFace from "@/assets/hero-neck-device.webp";
 import heroBelt from "@/assets/storefront-belt-woman.png";
 import heroMat from "@/assets/hero-restore-mat.webp";
@@ -17,7 +20,7 @@ interface Instrument {
   protocol: string;
   name: string;
   blurb: string;
-  price: string;
+  handle: string;
   to: string;
   img: string;
   alt: string;
@@ -30,7 +33,7 @@ const INSTRUMENTS: Instrument[] = [
     name: "The Face Introducer",
     blurb:
       "Four clinic modalities — EMS, microcurrent, thermal and cosmetic LED — in a twelve-minute ritual for face and neck.",
-    price: "€88",
+    handle: "lifting-and-tightening-face-introducer",
     to: "/instruments/face-introducer",
     img: heroFace,
     alt: "The Face Introducer",
@@ -40,7 +43,7 @@ const INSTRUMENTS: Instrument[] = [
     name: "The Restoration Belt",
     blurb:
       "660nm red and 850nm near-infrared light, pressed to the muscle by a thermal wrap. Recovery, worn close. Fifteen minutes.",
-    price: "€180",
+    handle: "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
     to: "/instruments/restoration-belt",
     img: heroBelt,
     alt: "The Restoration Belt worn across the lower back, red light through the array",
@@ -51,7 +54,7 @@ const INSTRUMENTS: Instrument[] = [
     name: "The Restoration Mat",
     blurb:
       "A full-body bed of 660nm red light and far-infrared heat. You lie down, the array does the rest. Twenty horizontal minutes.",
-    price: "€200",
+    handle: "portable-home-use-charging-red-light-therapy-blanket-far-infrared",
     to: "/instruments/restoration-mat",
     img: heroMat,
     alt: "The Restoration Mat",
@@ -62,6 +65,29 @@ const GRAIN =
   "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 export default function Instruments() {
+  // Market-aware formatted price per instrument, held empty until the live
+  // Shopify (@inContext) price resolves so a US visitor never sees a euro symbol
+  // on a USD amount — an em-dash placeholder shows until then.
+  const [prices, setPrices] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    let active = true;
+    INSTRUMENTS.forEach((it) => {
+      fetchProductByHandle(it.handle)
+        .then((p) => {
+          const priceObj = p?.variants?.edges?.[0]?.node?.price;
+          const n = priceObj?.amount ? parseFloat(priceObj.amount) : NaN;
+          if (active && !isNaN(n)) {
+            setPrices((prev) => ({ ...prev, [it.handle]: formatMoney(Math.round(n), priceObj!.currencyCode) }));
+          }
+        })
+        .catch(() => {});
+    });
+    return () => { active = false; };
+  }, []);
+
+  const priceOf = (it: Instrument) => prices[it.handle] ?? "—";
+
   return (
     <PageShell
       title="The Instruments · Zential Pure"
@@ -124,7 +150,7 @@ export default function Instruments() {
                   </p>
                   <div className="mt-auto flex items-center justify-between gap-4 border-t border-[#2A2420] pt-5">
                     <span className="font-serif italic text-[26px] text-[#F7F4F0]">
-                      {item.price} <small className="text-sm text-[#C6A07C]">once</small>
+                      {priceOf(item)} <small className="text-sm text-[#C6A07C]">once</small>
                     </span>
                     <span className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.16em] uppercase text-[#2ED8A8]">
                       View instrument

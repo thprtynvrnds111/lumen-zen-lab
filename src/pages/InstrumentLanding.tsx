@@ -10,6 +10,7 @@ import { safeCheckoutUrl } from "@/lib/checkout";
 import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { formatMoney } from "@/lib/market";
+import { trackAddToCart } from "@/lib/google-tracking";
 
 import heroFace from "@/assets/hero-neck-device.webp";
 import heroBelt from "@/assets/belt-pdp-hero.png";
@@ -344,7 +345,11 @@ export default function InstrumentLanding() {
 
   if (!cfg) return <Navigate to="/instruments" replace />;
 
-  const priceLabel = livePrice ?? cfg.price;
+  // Show the live, market-formatted Shopify price once it resolves. Until then
+  // an em-dash placeholder — never the hardcoded €-config price, which would be
+  // the wrong currency for a US visitor. cfg.price stays as SSR/SEO metadata and
+  // as the cross-sell teaser price for the *other* instruments below.
+  const priceLabel = livePrice ?? "—";
   const founding = liveFounding ?? cfg.founding;
 
   async function order() {
@@ -365,6 +370,8 @@ export default function InstrumentLanding() {
       const w = window as unknown as { fbq?: (...a: unknown[]) => void; gtag?: (...a: unknown[]) => void };
       if (w.fbq) w.fbq("track", "AddToCart", { content_name: cfg.name, content_ids: [variant.id], content_type: "product" });
       if (w.gtag) w.gtag("event", "add_to_cart", { item_name: cfg.name, experiment_id: `hero_${cfg.slug}`, variant: heroVariant });
+      // Google Ads (dormant unless VITE_GOOGLE_ADS_ID is set)
+      trackAddToCart({ id: cfg.handle, name: cfg.name, price: parseFloat(variant.price.amount), currency: variant.price.currencyCode });
       let url = useCartStore.getState().getCheckoutUrl();
       if (url) {
         // Bridge-funnel continuity: forward ?discount= into Shopify checkout so

@@ -1,25 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { safeCheckoutUrl } from "@/lib/checkout";
+import { fetchProductByHandle } from "@/lib/shopify";
+import { formatMoney } from "@/lib/market";
+import { trackAddToCart } from "@/lib/google-tracking";
 
 /**
  * "The System" — all three instruments in one purchase. Backed by a real Shopify
- * bundle product (SKU ZP-SYSTEM-BUNDLE, €399) and sold through a Shopify cart
+ * bundle product (SKU ZP-SYSTEM-BUNDLE) and sold through a Shopify cart
  * permalink, so checkout works end-to-end without a discount-code scope.
+ *
+ * Prices are API-driven: the bundle price, the per-instrument line items, and
+ * the struck-through "sum of parts" all come from the live Shopify (@inContext)
+ * price so the card renders whatever Shopify says, in the visitor's own currency.
+ * No hardcoded euro amounts — an em-dash shows until the live price resolves.
  *
  * Fulfilment note: an order for this bundle is one line item — ship all three
  * instruments (Face Introducer + Restoration Belt + Restoration Mat) and adjust
  * component inventory manually. To change the price, edit the bundle product in
- * Shopify admin and update BUNDLE_PRICE here.
+ * Shopify admin; this component reflects it automatically.
  */
 
 const SYSTEM = [
-  { name: "The Face Introducer", price: 88, to: "/instruments/face-introducer" },
-  { name: "The Restoration Belt", price: 180, to: "/instruments/restoration-belt" },
-  { name: "The Restoration Mat", price: 200, to: "/instruments/restoration-mat" },
+  { name: "The Face Introducer", handle: "lifting-and-tightening-face-introducer", to: "/instruments/face-introducer" },
+  { name: "The Restoration Belt", handle: "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device", to: "/instruments/restoration-belt" },
+  { name: "The Restoration Mat", handle: "portable-home-use-charging-red-light-therapy-blanket-far-infrared", to: "/instruments/restoration-mat" },
 ];
 
-const FULL_PRICE = SYSTEM.reduce((s, i) => s + i.price, 0); // €468
-const BUNDLE_PRICE = 399;
+const BUNDLE_HANDLE = "the-system-founding-bundle";
 
 // Live Shopify bundle variant (product: the-system-founding-bundle).
 const BUNDLE_VARIANT_ID = "53870945567063";
@@ -30,13 +37,45 @@ const WRAP = "mx-auto w-[min(1180px,92vw)]";
 
 export function SystemBundle() {
   const [busy, setBusy] = useState(false);
+  // Live prices keyed by Shopify handle, plus the market currency they resolved in.
+  const [prices, setPrices] = useState<Record<string, number>>({});
+  const [currency, setCurrency] = useState("EUR");
+
+  useEffect(() => {
+    let active = true;
+    [...SYSTEM.map((s) => s.handle), BUNDLE_HANDLE].forEach((handle) => {
+      fetchProductByHandle(handle)
+        .then((p) => {
+          const priceObj = p?.variants?.edges?.[0]?.node?.price;
+          const n = priceObj?.amount ? parseFloat(priceObj.amount) : NaN;
+          if (active && !isNaN(n)) {
+            setPrices((prev) => ({ ...prev, [handle]: Math.round(n) }));
+            if (priceObj?.currencyCode) setCurrency(priceObj.currencyCode);
+          }
+        })
+        .catch(() => {});
+    });
+    return () => { active = false; };
+  }, []);
+
+  const bundleAmount = prices[BUNDLE_HANDLE];
+  const componentAmounts = SYSTEM.map((s) => prices[s.handle]);
+  const allComponentsKnown = componentAmounts.every((a) => typeof a === "number");
+  const fullAmount = allComponentsKnown ? componentAmounts.reduce((sum, a) => sum + a, 0) : undefined;
+  const savingsAmount =
+    typeof fullAmount === "number" && typeof bundleAmount === "number" ? fullAmount - bundleAmount : undefined;
+
+  const fmt = (n?: number) => (typeof n === "number" ? formatMoney(n, currency) : "—");
 
   function claimSystem() {
     if (busy) return;
     setBusy(true);
     const w = window as unknown as { fbq?: (...a: unknown[]) => void; gtag?: (...a: unknown[]) => void };
-    if (w.fbq) w.fbq("track", "AddToCart", { content_name: "The System Bundle", value: BUNDLE_PRICE, currency: "EUR" });
-    if (w.gtag) w.gtag("event", "add_to_cart", { item_name: "The System Bundle", value: BUNDLE_PRICE, currency: "EUR" });
+    const priced = typeof bundleAmount === "number";
+    if (w.fbq) w.fbq("track", "AddToCart", { content_name: "The System Bundle", ...(priced ? { value: bundleAmount, currency } : {}) });
+    if (w.gtag) w.gtag("event", "add_to_cart", { item_name: "The System Bundle", ...(priced ? { value: bundleAmount, currency } : {}) });
+    // Google Ads (dormant unless VITE_GOOGLE_ADS_ID is set)
+    if (priced) trackAddToCart({ id: BUNDLE_HANDLE, name: "The System Bundle", price: bundleAmount, currency });
     window.location.href = safeCheckoutUrl(BUNDLE_PERMALINK);
   }
 
@@ -58,7 +97,7 @@ export function SystemBundle() {
               {SYSTEM.map((i) => (
                 <li key={i.to} className="flex items-center justify-between border-b border-[rgba(247,244,240,0.08)] pb-2.5 font-sans text-[13px]">
                   <a href={i.to} className="text-[#F7F4F0]/80 hover:text-[#2ED8A8]">{i.name}</a>
-                  <span className="tabular-nums text-[#F7F4F0]/55">€{i.price}</span>
+                  <span className="tabular-nums text-[#F7F4F0]/55">{fmt(prices[i.handle])}</span>
                 </li>
               ))}
             </ul>
@@ -67,13 +106,13 @@ export function SystemBundle() {
           <div className="rounded-[14px] border border-[rgba(247,244,240,0.10)] bg-[#1A1714] p-[clamp(26px,3vw,40px)]">
             {hasFounding ? (
               <>
-                <div className="font-sans text-[12px] text-[#F7F4F0]/45 line-through">€{FULL_PRICE}</div>
-                <div className="mt-1 font-serif italic text-[56px] leading-none text-[#F7F4F0]">€{BUNDLE_PRICE}</div>
-                <div className="mt-1 font-serif italic text-[18px] text-[#C6A07C]">Founding bundle · save €{FULL_PRICE - (BUNDLE_PRICE as number)}</div>
+                <div className="font-sans text-[12px] text-[#F7F4F0]/45 line-through">{fmt(fullAmount)}</div>
+                <div className="mt-1 font-serif italic text-[56px] leading-none text-[#F7F4F0]">{fmt(bundleAmount)}</div>
+                <div className="mt-1 font-serif italic text-[18px] text-[#C6A07C]">Founding bundle · save {fmt(savingsAmount)}</div>
               </>
             ) : (
               <>
-                <div className="font-serif italic text-[56px] leading-none text-[#F7F4F0]">€{FULL_PRICE}</div>
+                <div className="font-serif italic text-[56px] leading-none text-[#F7F4F0]">{fmt(fullAmount)}</div>
                 <div className="mt-1 font-serif italic text-[18px] text-[#C6A07C]">All three · once</div>
               </>
             )}

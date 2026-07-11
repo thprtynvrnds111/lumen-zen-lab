@@ -5,6 +5,7 @@ import { ZenMascot } from "@/components/zential/ZenMascot";
 import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { formatMoney } from "@/lib/market";
+import { trackBeginCheckout } from "@/lib/google-tracking";
 import { prefetchCheckout } from "@/lib/prefetchCheckout";
 import { cartItemImageUrl, shopifyThumb } from "@/lib/cartImage";
 import { TrustpilotProof } from "@/components/zential/TrustpilotProof";
@@ -72,18 +73,21 @@ export function CartDrawer() {
    });
   }
   // GA4: begin_checkout
+  const checkoutItems = items.map(item => ({
+   item_id: item.product.node.handle,
+   item_name: item.product.node.title || item.variantTitle,
+   price: parseFloat(item.price.amount),
+   quantity: item.quantity,
+  }));
   if (w.gtag) {
    w.gtag('event', 'begin_checkout', {
     currency: 'EUR',
     value: totalPrice,
-    items: items.map(item => ({
-     item_id: item.product.node.handle,
-     item_name: item.product.node.title || item.variantTitle,
-     price: parseFloat(item.price.amount),
-     quantity: item.quantity,
-    })),
+    items: checkoutItems,
    });
   }
+  // Google Ads (dormant unless VITE_GOOGLE_ADS_ID is set)
+  trackBeginCheckout(totalPrice, 'EUR', checkoutItems);
   // Build permalink-style checkout URL using numeric variant IDs
   const lines = items.map(item => {
    // Extract numeric ID from GID format: gid://shopify/ProductVariant/123

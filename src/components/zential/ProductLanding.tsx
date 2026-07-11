@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { formatMoney } from "@/lib/market";
+import { trackViewItem, trackAddToCart } from "@/lib/google-tracking";
 import { useCartStore } from "@/stores/cartStore";
 import { prefetchCheckout } from "@/lib/prefetchCheckout";
 import { Button } from "@/components/ui/button";
@@ -137,6 +138,8 @@ export function ProductLanding({ config }: Props) {
     }],
    });
   }
+  // Google Ads (dormant unless VITE_GOOGLE_ADS_ID is set)
+  trackViewItem({ id: config.handle, name: config.name, price: basePrice, currency });
  // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [loading]);
 
@@ -232,6 +235,8 @@ export function ProductLanding({ config }: Props) {
     }],
    });
   }
+  // Google Ads (dormant unless VITE_GOOGLE_ADS_ID is set)
+  trackAddToCart({ id: config.handle, name: config.name, price: bundlePrice, currency });
 
   // Auto-add Collagen Face Gel for Ritual Set and Pro Set
   if (selectedBundle === "ritual-set" || selectedBundle === "pro-set") {
