@@ -25,7 +25,7 @@ const WRAP = "mx-auto max-w-[1180px] px-6 md:px-10";
 const GRAIN =
   "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 const PILL_ACTION =
-  "inline-flex items-center justify-center gap-2 rounded-full bg-[#F69251] px-7 py-4 font-sans text-[12px] font-semibold tracking-[0.16em] uppercase text-[#1A1714] transition-colors hover:bg-[#E87A38]";
+  "inline-flex items-center justify-center gap-2 rounded-full bg-[#2ED8A8] px-7 py-4 font-sans text-[12px] font-semibold tracking-[0.16em] uppercase text-[#1A1714] transition-colors hover:bg-[#1BAF86]";
 const PILL_GHOST_DARK =
   "inline-flex items-center justify-center rounded-full border border-[rgba(247,244,240,0.28)] px-7 py-4 font-sans text-[12px] font-semibold tracking-[0.16em] uppercase text-[#F7F4F0] transition-colors hover:border-[#2ED8A8] hover:text-[#2ED8A8]";
 
@@ -93,7 +93,7 @@ export default function Storefront() {
               The Body Remembers its&nbsp;Frequency
             </h1>
             <p className="mb-[34px] max-w-[46ch] text-[clamp(16px,1.3vw,17px)] leading-[1.65] text-[#888480]">
-              Four clinic modalities <b className="font-medium text-[#1A1714]">EMS, microcurrent, thermal and cosmetic LED</b> in one twelve-minute instrument. <span className="font-sans font-semibold text-[#157A5C]">€88. Once.</span>
+              Four clinic modalities <b className="font-medium text-[#1A1714]">EMS, microcurrent, thermal and cosmetic LED</b> in a one-minute ritual. <span className="font-sans font-semibold text-[#157A5C]">€88. Once.</span>
             </p>
             <div className="mb-[30px] flex flex-wrap border-y border-[rgba(26,23,20,0.12)]">
               {[

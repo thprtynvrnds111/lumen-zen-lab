@@ -16,7 +16,7 @@ import heroMat from "@/assets/hero-restore-mat.webp";
 import edWakingHand from "@/assets/editorial/waking-hand.webp";
 import edThreeVessels from "@/assets/editorial/three-vessels.webp";
 import edSeatedCalm from "@/assets/editorial/seated-calm.webp";
-import edThreshold from "@/assets/editorial/threshold.webp";
+import edMatBedGlow from "@/assets/editorial/mat-bed-glow.webp";
 import edBeltWorn from "@/assets/belt-who.png";
 
 /**
@@ -229,8 +229,8 @@ const CONFIGS: Record<string, InstrumentConfig> = {
         "The Restoration Mat is full-body by design. You lie down on a bed of red light and far-infrared warmth, and for twenty minutes the only instruction is horizontal. The dose is even, head to heel.",
       ],
       kicker: "Twenty horizontal minutes.",
-      img: edThreshold,
-      imgAlt: "Bare feet on a warm wooden threshold in morning light",
+      img: edMatBedGlow,
+      imgAlt: "The Restoration Mat unrolled on a bed at dusk, red light array glowing",
     },
     mech: {
       h2: "Settle. Saturate. Restore.",
