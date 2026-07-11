@@ -6,6 +6,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { prefetchCheckout } from "@/lib/prefetchCheckout";
 import { cartItemImageUrl, shopifyThumb } from "@/lib/cartImage";
+import { TrustpilotProof } from "@/components/zential/TrustpilotProof";
 
 const FREE_SHIPPING_THRESHOLD = 75;
 const GEL_HANDLE = "medicube-collagen-elastic-jelly-moisturizing-cream";
@@ -259,6 +260,9 @@ export function CartDrawer() {
         "CHECKOUT"
        )}
       </button>
+      <div className="flex justify-center pt-1">
+       <TrustpilotProof variant="cart" />
+      </div>
      </div>
     )}
    </SheetContent>

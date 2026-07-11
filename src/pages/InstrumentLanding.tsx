@@ -4,6 +4,7 @@ import { PageShell } from "@/components/zential/v2/PageShell";
 import { InlinePrimer, ExitIntentPrimer } from "@/components/zential/LeadCapture";
 import { RatingBadge, InstrumentProofSection } from "@/components/zential/InstrumentProof";
 import { TrustBadges } from "@/components/zential/TrustBadges";
+import { TrustpilotProof } from "@/components/zential/TrustpilotProof";
 import { useHeroVariant } from "@/lib/heroVariant";
 import { safeCheckoutUrl } from "@/lib/checkout";
 import { useCartStore } from "@/stores/cartStore";
@@ -550,6 +551,7 @@ export default function InstrumentLanding() {
               <p className="my-[22px] text-[13px] leading-[1.6] text-[#1A1714]/60">{cfg.orderNote}</p>
               <button onClick={order} disabled={ordering} className={`${PILL_ACTION} mb-3 w-full`}>{orderLabel}</button>
               <a href="#science" className={`${PILL_GHOST_LIGHT} w-full`}>Read the mechanism</a>
+              <div className="mt-[18px] flex justify-center"><TrustpilotProof variant="pdp" /></div>
               <p className="mt-[18px] border-t border-[rgba(26,23,20,0.12)] pt-[18px] text-xs leading-[1.6] text-[#1A1714]/60"><b className="font-medium text-[#1A1714]">30-day protocol guarantee.</b> {cfg.guarantee}</p>
             </div>
           </div>
