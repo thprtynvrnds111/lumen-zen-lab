@@ -7,6 +7,7 @@ import { Header } from "@/components/zential/Header";
 import { ZenMascot } from "@/components/zential/ZenMascot";
 import { getRecommendation, type QuizAnswers } from "@/data/quizData";
 import { fetchProductByHandle, type ShopifyProduct } from "@/lib/shopify";
+import { formatMoney } from "@/lib/market";
 import { useCartStore } from "@/stores/cartStore";
 
 const trustIcons = [Truck, ShieldCheck, Sparkles];
@@ -51,6 +52,7 @@ export default function QuizResult() {
  const compTotal = companions.reduce((sum, c) => sum + Number(c.node.priceRange.minVariantPrice.amount), 0);
  const ritualTotal = primaryPrice + compTotal;
  const ritualSave = Math.round(compTotal * 0.15);
+ const quizCurrency = primary?.node.priceRange.minVariantPrice.currencyCode || "EUR";
 
  const addRitual = async () => {
   if (!primary) return;
@@ -152,7 +154,7 @@ export default function QuizResult() {
 
        <div className="flex items-center gap-3 mb-6">
         {primaryPrice ? (
-         <span className="font-serif italic text-3xl text-foreground animate-fade-in">€{primaryPrice.toFixed(0)}</span>
+         <span className="font-serif italic text-3xl text-foreground animate-fade-in">{formatMoney(Math.round(primaryPrice), quizCurrency)}</span>
         ) : (
          <span className="inline-block h-8 w-20 rounded-md animate-pulse bg-foreground/10" />
         )}
@@ -203,8 +205,8 @@ export default function QuizResult() {
         <div>
          <p className="text-[10px] tracking-[0.2em] uppercase mb-1.5" style={{ opacity: 0.5 }}>{t('ritualPriceLabel')}</p>
          <div className="flex items-baseline gap-3">
-          <span className="font-serif italic text-4xl">€{(ritualTotal - ritualSave).toFixed(0)}</span>
-          <span className="text-base line-through" style={{ opacity: 0.4 }}>€{ritualTotal.toFixed(0)}</span>
+          <span className="font-serif italic text-4xl">{formatMoney(Math.round(ritualTotal - ritualSave), quizCurrency)}</span>
+          <span className="text-base line-through" style={{ opacity: 0.4 }}>{formatMoney(Math.round(ritualTotal), quizCurrency)}</span>
           <span className="text-[11px] px-2 py-1 rounded-full" style={{ backgroundColor: "#C6A07C", color: "#2A211A" }}>{t('save', { amount: ritualSave })}</span>
          </div>
         </div>

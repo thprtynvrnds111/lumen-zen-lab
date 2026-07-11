@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchProducts, type ShopifyProduct } from "@/lib/shopify";
+import { formatMoney } from "@/lib/market";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
@@ -147,7 +148,7 @@ export function DevicesSection() {
 
                   <div className="flex items-center justify-between pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
                     <span className="text-[16px] font-semibold" style={{ color: '#EAE7E0' }}>
-                      {price.currencyCode === "EUR" ? "€" : price.currencyCode}{Math.round(parseFloat(price.amount))}
+                      {formatMoney(price.amount, price.currencyCode)}
                     </span>
                     <button
                       onClick={(e) => handleAdd(e, product)}

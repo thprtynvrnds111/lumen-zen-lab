@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Check, X, Minus } from "lucide-react";
 import { fetchProducts, type ShopifyProduct } from "@/lib/shopify";
+import { formatMoney } from "@/lib/market";
 
 type RowIcon = "good" | "bad" | "neutral";
 
@@ -200,8 +201,7 @@ export function ComparisonSection() {
             )}
            </div>
            <span className="text-[9px] font-semibold" style={{ color: '#E87040' }}>
-            {price.currencyCode === "EUR" ? "€" : price.currencyCode}
-            {parseFloat(price.amount).toFixed(0)}
+            {formatMoney(Math.round(parseFloat(price.amount)), price.currencyCode)}
            </span>
            <span className="text-[8px] text-center leading-tight max-w-[52px]" style={{ color: 'rgba(234,231,224,0.45)' }}>{name}</span>
           </div>

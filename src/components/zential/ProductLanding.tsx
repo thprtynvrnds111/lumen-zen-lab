@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { fetchProductByHandle } from "@/lib/shopify";
+import { formatMoney } from "@/lib/market";
 import { useCartStore } from "@/stores/cartStore";
 import { prefetchCheckout } from "@/lib/prefetchCheckout";
 import { Button } from "@/components/ui/button";
@@ -167,7 +168,6 @@ export function ProductLanding({ config }: Props) {
  const variant = variants[selectedVariantIdx]?.node || variants[0]?.node;
  const basePrice = parseFloat(variant?.price?.amount || "88");
  const currency = variant?.price?.currencyCode || "EUR";
- const sym = currency === "EUR" ? "€" : currency;
  const problemImageSrc = REAL_ISSUE_IMAGE_OVERRIDES[config.handle] || config.problemImage || config.beforeAfter.before;
 
  // Color label mapping (Shopify uses "Pink" but we display "Rose")
@@ -443,12 +443,12 @@ export function ProductLanding({ config }: Props) {
       )}
 
       <div className="flex items-baseline gap-3 mb-1">
-       <span className="font-serif italic text-[34px] md:text-[40px] leading-none text-foreground">{sym}{bundlePrice.toFixed(2)}</span>
+       <span className="font-serif italic text-[34px] md:text-[40px] leading-none text-foreground">{formatMoney(bundlePrice, currency)}</span>
        {bundle.savePercent > 0 && (
         <span className="text-[10px] font-semibold tracking-[0.15em] uppercase text-emerald bg-emerald/10 px-2.5 py-1 rounded-full">Save {bundle.savePercent}%</span>
        )}
       </div>
-      {savings > 0 && <p className="text-sm text-emerald mb-6">You save {sym}{savings.toFixed(2)}</p>}
+      {savings > 0 && <p className="text-sm text-emerald mb-6">You save {formatMoney(savings, currency)}</p>}
       {savings === 0 && <div className="mb-6" />}
 
       {meta.trust_statement && (
@@ -1039,7 +1039,7 @@ export function ProductLanding({ config }: Props) {
        <div className="min-w-0">
         <p className="font-semibold text-foreground text-sm truncate">{config.name}</p>
         <p className="text-xs text-muted-foreground">
-         {sym}{bundlePrice.toFixed(2)}
+         {formatMoney(bundlePrice, currency)}
          {bundle.savePercent > 0 && <span className="ml-1.5 text-emerald">Save {bundle.savePercent}%</span>}
         </p>
        </div>

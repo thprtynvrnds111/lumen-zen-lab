@@ -9,6 +9,7 @@ import { useHeroVariant } from "@/lib/heroVariant";
 import { safeCheckoutUrl } from "@/lib/checkout";
 import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
+import { formatMoney } from "@/lib/market";
 
 import heroFace from "@/assets/hero-neck-device.webp";
 import heroBelt from "@/assets/belt-pdp-hero.png";
@@ -325,10 +326,11 @@ export default function InstrumentLanding() {
     fetchProductByHandle(cfg.handle)
       .then((p) => {
         if (!active) return;
-        const amt = p?.variants?.edges?.[0]?.node?.price?.amount;
+        const priceObj = p?.variants?.edges?.[0]?.node?.price;
+        const amt = priceObj?.amount;
         if (amt) {
           const n = parseFloat(amt);
-          if (!isNaN(n)) setLivePrice(`€${Math.round(n)}`);
+          if (!isNaN(n)) setLivePrice(formatMoney(Math.round(n), priceObj?.currencyCode || "EUR"));
         }
         const fc = p?.metafields?.find((m) => m?.key === "founding_claimed")?.value;
         if (fc) {

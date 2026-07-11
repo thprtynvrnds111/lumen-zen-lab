@@ -4,6 +4,7 @@ import { ShoppingBag, Minus, Plus, X, Loader2, Sparkles } from "lucide-react";
 import { ZenMascot } from "@/components/zential/ZenMascot";
 import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
+import { formatMoney } from "@/lib/market";
 import { prefetchCheckout } from "@/lib/prefetchCheckout";
 import { cartItemImageUrl, shopifyThumb } from "@/lib/cartImage";
 import { TrustpilotProof } from "@/components/zential/TrustpilotProof";
@@ -18,7 +19,8 @@ export function CartDrawer() {
  const totalPrice = items.reduce((sum, item) => sum + parseFloat(item.price.amount) * item.quantity, 0);
  const shippingProgress = Math.min((totalPrice / FREE_SHIPPING_THRESHOLD) * 100, 100);
  const freeShippingUnlocked = totalPrice >= FREE_SHIPPING_THRESHOLD;
- const amountToFreeShipping = (FREE_SHIPPING_THRESHOLD - totalPrice).toFixed(2);
+ const amountToFreeShipping = FREE_SHIPPING_THRESHOLD - totalPrice;
+ const cartCurrency = items[0]?.price?.currencyCode || "EUR";
 
  const [gelProduct, setGelProduct] = useState<any>(null);
  const [addingGel, setAddingGel] = useState(false);
@@ -130,7 +132,7 @@ export function CartDrawer() {
       <p className="text-xs text-center text-muted-foreground">
        {freeShippingUnlocked
         ? "Free standard shipping unlocked"
-        : `€${amountToFreeShipping} away from free shipping`}
+        : `${formatMoney(amountToFreeShipping, cartCurrency)} away from free shipping`}
       </p>
      </div>
     )}
@@ -178,7 +180,7 @@ export function CartDrawer() {
            <span className="text-sm font-semibold whitespace-nowrap">
             {parseFloat(item.price.amount) * item.quantity === 0
              ? <span className="text-xs text-accent font-medium">Included</span>
-             : `€${(parseFloat(item.price.amount) * item.quantity).toFixed(2)}`}
+             : formatMoney(parseFloat(item.price.amount) * item.quantity, item.price.currencyCode)}
            </span>
           </div>
 
@@ -228,7 +230,7 @@ export function CartDrawer() {
        disabled={addingGel}
        className="text-[10px] tracking-[0.12em] uppercase font-semibold px-3 py-1.5 rounded-full bg-accent text-white hover:bg-accent/90 transition-colors flex-shrink-0 disabled:opacity-50"
       >
-       {addingGel ? <Loader2 size={12} className="animate-spin" /> : `+€${gelProduct?.variants?.edges?.[0]?.node?.price?.amount ? parseFloat(gelProduct.variants.edges[0].node.price.amount).toFixed(0) : "25"}`}
+       {addingGel ? <Loader2 size={12} className="animate-spin" /> : (gelProduct?.variants?.edges?.[0]?.node?.price?.amount ? `+${formatMoney(parseFloat(gelProduct.variants.edges[0].node.price.amount), gelProduct.variants.edges[0].node.price.currencyCode)}` : "+€25")}
       </button>
      </div>
     )}
@@ -238,7 +240,7 @@ export function CartDrawer() {
      <div className="flex-shrink-0 border-t border-border/30 px-6 py-5 space-y-4">
       <div className="flex justify-between items-baseline">
        <span className="text-sm text-muted-foreground">Subtotal</span>
-       <span className="text-lg font-semibold">€{totalPrice.toFixed(2)}</span>
+       <span className="text-lg font-semibold">{formatMoney(totalPrice, cartCurrency)}</span>
       </div>
       <p className="text-[11px] text-muted-foreground/60 text-center">
        Shipping, taxes & discounts calculated at checkout

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchProducts, type ShopifyProduct } from "@/lib/shopify";
+import { formatMoney } from "@/lib/market";
 
 const ACCESSORY_HANDLES = ["medicube-collagen-elastic-jelly-moisturizing-cream", "collagen-eye-mask"];
 
@@ -34,7 +35,6 @@ export function RelatedProducts({ currentHandle }: Props) {
             const p = product.node;
             const img = p.images.edges[0]?.node;
             const price = p.priceRange.minVariantPrice;
-            const sym = price.currencyCode === "EUR" ? "€" : price.currencyCode;
             return (
               <Link
                 key={p.id}
@@ -56,7 +56,7 @@ export function RelatedProducts({ currentHandle }: Props) {
                 <div className="p-5 flex flex-col gap-3">
                   <h3 className="text-xs tracking-[0.15em] uppercase font-semibold text-foreground">{p.title}</h3>
                   <div className="flex items-center justify-between mt-auto pt-2">
-                    <span className="text-sm font-medium text-foreground">{sym}{parseFloat(price.amount).toFixed(2)}</span>
+                    <span className="text-sm font-medium text-foreground">{formatMoney(price.amount, price.currencyCode)}</span>
                     <span className="text-xs tracking-[0.12em] uppercase text-accent font-medium group-hover:underline underline-offset-2 transition-all">
                       View Device →
                     </span>

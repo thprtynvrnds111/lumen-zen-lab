@@ -1,4 +1,6 @@
 import { toast } from "sonner";
+import { getCountry } from "@/lib/market";
+import { LIVE_HANDLES } from "@/data/liveCatalog";
 
 const SHOPIFY_API_VERSION = '2025-07';
 const SHOPIFY_STORE_PERMANENT_DOMAIN = '0d1m9a-w7.myshopify.com';
@@ -67,7 +69,8 @@ export async function storefrontApiRequest(query: string, variables: Record<stri
 }
 
 const PRODUCTS_QUERY = `
-  query GetProducts($first: Int!, $query: String) {
+  query GetProducts($first: Int!, $query: String, $country: CountryCode)
+  @inContext(country: $country) {
     products(first: $first, query: $query) {
       edges {
         node {
@@ -101,7 +104,8 @@ const PRODUCTS_QUERY = `
 `;
 
 const PRODUCT_BY_HANDLE_QUERY = `
-  query GetProductByHandle($handle: String!) {
+  query GetProductByHandle($handle: String!, $country: CountryCode)
+  @inContext(country: $country) {
     product(handle: $handle) {
       id
       title
@@ -142,13 +146,26 @@ const PRODUCT_BY_HANDLE_QUERY = `
   }
 `;
 
-export async function fetchProducts(first = 20, query?: string): Promise<ShopifyProduct[]> {
-  const data = await storefrontApiRequest(PRODUCTS_QUERY, { first, query });
-  return data?.data?.products?.edges || [];
+export async function fetchProducts(
+  first = 20,
+  query?: string,
+  country?: string,
+): Promise<ShopifyProduct[]> {
+  const resolvedCountry = country ?? (await getCountry());
+  const data = await storefrontApiRequest(PRODUCTS_QUERY, { first, query, country: resolvedCountry });
+  const edges: ShopifyProduct[] = data?.data?.products?.edges || [];
+  // Only surface on-brand, sellable products — hide Shopify ghost SKUs.
+  return edges.filter((edge) => LIVE_HANDLES.has(edge?.node?.handle));
 }
 
-export async function fetchProductByHandle(handle: string): Promise<ShopifyProduct | null> {
-  const data = await storefrontApiRequest(PRODUCT_BY_HANDLE_QUERY, { handle });
+export async function fetchProductByHandle(
+  handle: string,
+  country?: string,
+): Promise<ShopifyProduct | null> {
+  // Non-allowlisted handles are treated as if they do not exist.
+  if (!LIVE_HANDLES.has(handle)) return null;
+  const resolvedCountry = country ?? (await getCountry());
+  const data = await storefrontApiRequest(PRODUCT_BY_HANDLE_QUERY, { handle, country: resolvedCountry });
   const product = data?.data?.product;
   // Spread node fields onto the wrapper so both flat (product.variants) and nested (product.node.variants) access work
   return product ? { ...product, node: product } : null;
@@ -228,6 +245,9 @@ export async function createShopifyCart(
 ) {
   const input: Record<string, unknown> = { lines: [{ quantity, merchandiseId: variantId }] };
   if (attributes.length > 0) input.attributes = attributes;
+  // Open checkout in the visitor's market so the currency matches the storefront.
+  const country = await getCountry();
+  input.buyerIdentity = { countryCode: country };
   const data = await storefrontApiRequest(CART_CREATE, { input });
   if (data?.data?.cartCreate?.userErrors?.length > 0) return null;
   const cart = data?.data?.cartCreate?.cart;

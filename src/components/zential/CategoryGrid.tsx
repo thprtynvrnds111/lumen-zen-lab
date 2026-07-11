@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchProducts, type ShopifyProduct } from "@/lib/shopify";
+import { formatMoney } from "@/lib/market";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
@@ -121,8 +122,7 @@ export function CategoryGrid({ handles }: { handles: string[] }) {
               </h3>
               <div className="mt-auto flex items-center justify-between pt-2">
                 <span className="text-[15px] font-semibold text-[#1A1714]">
-                  {price.currencyCode === "EUR" ? "€" : price.currencyCode}
-                  {Math.round(parseFloat(price.amount))}
+                  {formatMoney(price.amount, price.currencyCode)}
                 </span>
                 <button
                   onClick={(e) => handleAdd(e, product)}
