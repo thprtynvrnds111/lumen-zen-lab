@@ -52,6 +52,7 @@ const FoundingTerms    = lazy(() => import("./pages/FoundingTerms"));
 const Instruments      = lazy(() => import("./pages/Instruments"));
 const InstrumentLanding = lazy(() => import("./pages/InstrumentLanding"));
 const TruthMovement    = lazy(() => import("./pages/TruthMovement"));
+const Origin           = lazy(() => import("./pages/Origin"));
 const Storefront        = lazy(() => import("./pages/Storefront"));
 const Reveal            = lazy(() => import("./pages/reveal/Reveal"));
 const FunnelBridge = lazy(() => import("./pages/funnel/FunnelBridge"));
@@ -68,6 +69,7 @@ function ServerApp() {
       <Routes>
         <Route path="/"                                         element={<Storefront />} />
         <Route path="/movement"                                 element={<TruthMovement />} />
+        <Route path="/origin"                                   element={<Origin />} />
         <Route path="/protocols"                                element={<Protocols />} />
         <Route path="/instruments"                              element={<Instruments />} />
         <Route path="/instruments/:slug"                        element={<InstrumentLanding />} />

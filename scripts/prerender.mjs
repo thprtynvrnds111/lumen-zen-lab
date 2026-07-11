@@ -32,6 +32,7 @@ const ssrDir    = join(root, '.ssr');
 const ROUTES = [
   '/',
   '/movement',
+  '/origin',
   '/journal',
   '/journal/frequency-shift',
   '/journal/microcurrent-collagen',

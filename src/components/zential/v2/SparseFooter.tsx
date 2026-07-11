@@ -9,6 +9,7 @@ const sections = [
       { name: "Protocols", to: "/protocols" },
       { name: "All Devices", to: "/#devices" },
       { name: "Journal", to: "/journal" },
+      { name: "Our origin", to: "/origin" },
       { name: "The Breath", to: "/breath" },
     ],
   },
