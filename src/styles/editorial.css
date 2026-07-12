@@ -61,10 +61,26 @@
 .input { width: 100%; height: 48px; padding: 0 18px; border-radius: 12px; border: 1px solid var(--ed-line); background: #FFFFFF; font-family: var(--ed-font-sans); font-size: 14px; color: var(--ed-dark); outline: none; }
 .input:focus { border-color: var(--ed-teal); box-shadow: 0 0 0 3px rgba(46,216,168,0.25); }
 
-/* Expert quote */
+/* Citation block — a published paper, on the page, with its limit stated.
+   (`.portrait` is retained: other, non-editorial surfaces still use it.) */
 .expert-quote { font-family: var(--ed-font-serif); font-style: italic; font-size: 19px; line-height: 1.45; margin: 0; }
 .attribution { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-grey-warm); margin: 0; }
 .portrait { border-radius: 9999px; object-fit: cover; }
+/* Not uppercased — see .jh-cite-design: uppercasing mangles µA into MA. */
+.ed-citation__design { margin: 0 0 16px; font-size: 12px; letter-spacing: 0.04em; color: var(--ed-grey-warm); line-height: 1.6; }
+.ed-citation__limit {
+  margin: 0 0 14px; padding: 14px 16px; border-left: 2px solid var(--ed-teal);
+  background: rgba(0, 0, 0, 0.03); font-size: 13.5px; line-height: 1.65;
+  color: var(--ed-grey-warm); text-wrap: pretty; max-width: 62ch;
+}
+.ed-citation__limit strong { color: var(--ed-dark); font-weight: 600; }
+.ed-citation__note { margin: 0 0 14px; font-size: 12px; line-height: 1.6; color: var(--ed-grey-warm); max-width: 62ch; text-wrap: pretty; }
+.ed-citation__verify {
+  display: inline-block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ed-grey-warm); text-decoration: none; border-bottom: 1px solid var(--ed-line);
+  padding-bottom: 3px; transition: color 0.2s ease, border-color 0.2s ease;
+}
+.ed-citation__verify:hover { color: var(--ed-teal); border-color: var(--ed-teal); }
 
 /* Quote carousel section ground */
 .ed-carousel { background: #FFFFFF; }
@@ -295,17 +311,25 @@ html.js-reveal .reveal.reveal--visible { opacity: 1; transform: none; }
 .jh-stat { font-family: var(--ed-font-serif); font-style: italic; font-weight: 400; font-size: 52px; line-height: 1; letter-spacing: -0.02em; color: var(--ed-dark); }
 .jh-dek--fact { font-size: 14px; line-height: 1.6; color: var(--ed-grey-warm); }
 
-/* Quote pin — ink ground, teal accents */
+/* Citation pin — ink ground, teal accents. A published paper, not a persona:
+   verbatim line, plain-language takeaway, the study design, the stated limit,
+   and a PMID the reader can check. No portrait — we do not put a face next to a
+   researcher's name. */
 .jh-card--quote { background: var(--ed-dark); padding: 30px 26px; transition: transform 0.3s ease; }
 .jh-card--quote:hover { transform: translateY(-3px); }
 .jh-quotemark { display: block; font-family: var(--ed-font-serif); font-style: italic; font-size: 44px; line-height: 0.4; color: var(--ed-teal); margin: 6px 0 0; }
-.jh-quote-body { display: flex; flex-direction: column; gap: 18px; margin-top: 14px; }
-.jh-quote { margin: 0; font-family: var(--ed-font-serif); font-style: italic; font-size: 20px; line-height: 1.45; color: var(--ed-on-dark); text-wrap: pretty; }
-.jh-quote-attr { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--ed-line-dark); padding-top: 16px; }
-.jh-portrait { width: 40px; height: 40px; border-radius: 9999px; object-fit: cover; flex: none; }
-.jh-quote-who { display: flex; flex-direction: column; gap: 1px; }
-.jh-quote-name { font-size: 12.5px; font-weight: 600; color: var(--ed-teal); }
-.jh-quote-role { font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-on-dark-dim); }
+.jh-quote-body { display: flex; flex-direction: column; gap: 14px; margin-top: 14px; }
+.jh-quote { margin: 0; font-family: var(--ed-font-serif); font-style: italic; font-size: 19px; line-height: 1.45; color: var(--ed-on-dark); text-wrap: pretty; }
+.jh-cite-takeaway { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--ed-on-dark); opacity: 0.88; text-wrap: pretty; }
+.jh-cite-attr { display: flex; flex-direction: column; gap: 4px; border-top: 1px solid var(--ed-line-dark); padding-top: 14px; }
+.jh-cite-paper { font-size: 12.5px; font-weight: 600; color: var(--ed-teal); line-height: 1.4; }
+/* No text-transform here: the design line carries units (µA), and uppercasing
+   renders µA as "MA" — microamps shown as milliamps, off by 1000×. */
+.jh-cite-design { font-size: 11px; letter-spacing: 0.06em; color: var(--ed-on-dark-dim); line-height: 1.55; }
+.jh-cite-limit { margin: 16px 0 0; padding: 14px 16px; border-left: 2px solid var(--ed-teal); background: rgba(255, 255, 255, 0.04); font-size: 12.5px; line-height: 1.65; color: var(--ed-on-dark-dim); text-wrap: pretty; }
+.jh-cite-limit-label { display: block; margin-bottom: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-teal); }
+.jh-cite-verify { display: inline-block; margin-top: 14px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ed-on-dark-dim); text-decoration: none; border-bottom: 1px solid var(--ed-line-dark); padding-bottom: 3px; transition: color 0.2s ease, border-color 0.2s ease; }
+.jh-cite-verify:hover { color: var(--ed-teal); border-color: var(--ed-teal); }
 
 /* Inline subscribe pin — reuse EditorialNewsletter, stripped to sit flush in a card */
 .jh-card--nl { background: #FFFFFF; border: 1px solid var(--ed-line); }

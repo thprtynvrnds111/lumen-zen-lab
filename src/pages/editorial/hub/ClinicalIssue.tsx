@@ -4,7 +4,8 @@ import { SEO } from "@/components/SEO";
 import { pixelViewContent } from "../tracking";
 import { HubNewsletterForm } from "./HubNewsletterForm";
 import { useReveal } from "./useReveal";
-import { HUB_EXPERTS, HUB_MODALITIES, ISSUE_INDEX } from "./hubData";
+import { HUB_CITATIONS, HUB_MODALITIES, ISSUE_INDEX } from "./hubData";
+import { pubmedHref } from "../citations";
 import "@/styles/editorial.css";
 import "@/styles/editorial-hub.css";
 
@@ -16,7 +17,11 @@ const DESCRIPTION =
  * 1b — "The Clinical Issue" at /editorial/clinical-issue.
  * Design handoff: Zential Pure Journal, handoff-src/1b-clinical-issue.dc.html.
  * Dark dossier cover on near-black, spec-sheet mechanism table, full-bleed
- * pull-quote divider, three clinicians on record, split newsletter band.
+ * pull-quote divider, the evidence rail, split newsletter band.
+ *
+ * The "three clinicians on record" section held three invented people illustrated
+ * with stock portraits. Replaced 2026-07-12 with the three papers themselves — see
+ * ../citations.ts. The dossier framing was always the promise; now it is true.
  */
 export default function ClinicalIssue() {
   const rootRef = useReveal<HTMLDivElement>([]);
@@ -125,23 +130,36 @@ export default function ClinicalIssue() {
       <section className="issue-experts">
         <div className="issue-experts__head reveal">
           <div>
-            <span className="hub-eyebrow hub-eyebrow--on-dark">( 02 ) · Expert testimony</span>
+            <span className="hub-eyebrow hub-eyebrow--on-dark">( 02 ) · The evidence</span>
             <h2 className="issue-experts__title" style={{ marginTop: 14 }}>
-              Three clinicians, on record.
+              Three papers, and what they do not show.
             </h2>
           </div>
-          <span className="issue-experts__note">Statements, not endorsements</span>
+          <span className="issue-experts__note">Every claim carries a PMID</span>
         </div>
         <div className="issue-experts__grid">
-          {HUB_EXPERTS.map((ex) => (
-            <figure className="issue-expert reveal" key={ex.name}>
-              <img src={ex.img} alt={ex.name} loading="lazy" width={400} height={240} />
+          {HUB_CITATIONS.map((c) => (
+            <figure className="issue-expert reveal" key={c.id}>
               <figcaption>
-                <blockquote>"{ex.quote}"</blockquote>
+                <blockquote>"{c.quote}"</blockquote>
                 <div className="issue-expert__attr">
-                  <span className="issue-expert__name">{ex.name}</span>
-                  <span className="issue-expert__role">{ex.role}</span>
+                  <span className="issue-expert__name">
+                    {c.authors}, {c.journal}, {c.year}
+                  </span>
+                  <span className="issue-expert__role">{c.design}</span>
                 </div>
+                <p className="issue-expert__limit">
+                  <strong>What it does not show — </strong>
+                  {c.limit}
+                </p>
+                <a
+                  className="issue-expert__verify"
+                  href={pubmedHref(c.pmid)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Verify on PubMed · PMID {c.pmid} ↗
+                </a>
               </figcaption>
             </figure>
           ))}

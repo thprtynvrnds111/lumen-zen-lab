@@ -6,11 +6,12 @@ import { HubNewsletterForm } from "./HubNewsletterForm";
 import { useReveal } from "./useReveal";
 import {
   HUB_ARTICLES,
-  HUB_EXPERTS,
+  HUB_CITATIONS,
   HUB_FILTERS,
   HUB_MODALITIES,
   type HubFilter,
 } from "./hubData";
+import { pubmedHref } from "../citations";
 import "@/styles/editorial.css";
 import "@/styles/editorial-hub.css";
 
@@ -35,7 +36,7 @@ export default function RitualJournal() {
 
   const articles =
     filter === "All" ? HUB_ARTICLES.slice(0, 6) : HUB_ARTICLES.filter((a) => a.topic === filter);
-  const expert = HUB_EXPERTS[quote];
+  const paper = HUB_CITATIONS[quote];
 
   return (
     <div className="hub-root" ref={rootRef}>
@@ -166,31 +167,51 @@ export default function RitualJournal() {
 
       <section className="hub-experts">
         <div className="hub-experts__grid reveal">
-          <img className="hub-experts__portrait" src={expert.img} alt={expert.name} />
+          <div className="hub-experts__plate" aria-hidden>
+            <span className="hub-experts__plate-year">{paper.year}</span>
+            <span className="hub-experts__plate-journal">{paper.journal}</span>
+            <span className="hub-experts__plate-pmid">PMID {paper.pmid}</span>
+          </div>
           <div className="hub-experts__col" aria-live="polite">
-            <span className="hub-eyebrow hub-eyebrow--on-dark">( 03 ) · From the clinicians</span>
-            <blockquote className="hub-experts__quote">"{expert.quote}"</blockquote>
+            <span className="hub-eyebrow hub-eyebrow--on-dark">( 03 ) · From the literature</span>
+            <blockquote className="hub-experts__quote">"{paper.quote}"</blockquote>
             <div>
-              <div className="hub-experts__name">{expert.name}</div>
-              <div className="hub-experts__role">{expert.role}</div>
+              <div className="hub-experts__name">
+                {paper.authors}, {paper.journal}, {paper.year}
+              </div>
+              <div className="hub-experts__role">{paper.design}</div>
             </div>
+            <p className="hub-experts__limit">
+              <strong>What it does not show — </strong>
+              {paper.limit}
+            </p>
+            <a
+              className="hub-experts__verify"
+              href={pubmedHref(paper.pmid)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Verify on PubMed · PMID {paper.pmid} ↗
+            </a>
             <div className="hub-experts__nav">
               <button
                 className="hub-arrow"
-                aria-label="Previous quote"
-                onClick={() => setQuote((q) => (q + HUB_EXPERTS.length - 1) % HUB_EXPERTS.length)}
+                aria-label="Previous citation"
+                onClick={() =>
+                  setQuote((q) => (q + HUB_CITATIONS.length - 1) % HUB_CITATIONS.length)
+                }
               >
                 ←
               </button>
               <button
                 className="hub-arrow"
-                aria-label="Next quote"
-                onClick={() => setQuote((q) => (q + 1) % HUB_EXPERTS.length)}
+                aria-label="Next citation"
+                onClick={() => setQuote((q) => (q + 1) % HUB_CITATIONS.length)}
               >
                 →
               </button>
               <span className="hub-experts__count">
-                {quote + 1} / {HUB_EXPERTS.length}
+                {quote + 1} / {HUB_CITATIONS.length}
               </span>
             </div>
           </div>

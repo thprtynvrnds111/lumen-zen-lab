@@ -11,12 +11,19 @@
  *   3. The 7 existing /journal/* articles, rendered as text pins.
  *
  * No card links anywhere that is not a real route (see VALID_CARD_LINKS).
+ *
+ * 2026-07-12 — the three "expert" quote pins were fabricated personas illustrated
+ * with stock portraits (one of which was a photo of a man captioned with a woman's
+ * name). They are gone. Evidence pins now carry real published papers from
+ * ./citations.ts, each with its PMID and its stated limit. See that file's header.
  */
 
-export type CardCategory = "Mechanism" | "Ritual" | "Evidence" | "Experts" | "Skin";
+import { C_ADHERENCE, C_MICROCURRENT, C_REDLIGHT, type Citation } from "./citations";
+
+export type CardCategory = "Mechanism" | "Ritual" | "Evidence" | "Sources" | "Skin";
 
 /** Board filter chips, in display order. "All" shows every card. */
-export const FILTERS = ["All", "Mechanism", "Ritual", "Evidence", "Experts"] as const;
+export const FILTERS = ["All", "Mechanism", "Ritual", "Evidence", "Sources"] as const;
 export type Filter = (typeof FILTERS)[number];
 
 /**
@@ -64,12 +71,17 @@ export interface TextCard extends BaseCard {
   link: string;
 }
 
-export interface QuoteCard extends BaseCard {
-  kind: "quote";
-  quote: string;
-  name: string;
-  role: string;
-  image: string;
+/**
+ * A published paper, rendered as a pin. There is no `name`/`image` pair here on
+ * purpose: this site does not put a stock-photo face next to a researcher's name.
+ * The card carries the paper, the design, the honest limit, and a PMID the reader
+ * can check for themselves.
+ */
+export interface CitationCard extends BaseCard {
+  kind: "citation";
+  citation: Citation;
+  /** The one thing a reader should walk away knowing. */
+  takeaway: string;
   link: string;
 }
 
@@ -84,7 +96,7 @@ export interface NewsletterCard extends BaseCard {
   kind: "newsletter";
 }
 
-export type JournalCard = ImageCard | TextCard | QuoteCard | FactCard | NewsletterCard;
+export type JournalCard = ImageCard | TextCard | CitationCard | FactCard | NewsletterCard;
 
 /**
  * Pinterest save-intent for a card. Plain link — no SDK, no script.
@@ -129,13 +141,16 @@ export const JOURNAL_CARDS: JournalCard[] = [
     meta: "THE PRACTICE · INTERACTIVE",
     link: "/breath",
   },
-  // 2 — handoff fact: €3.40 (clinic economics → the clinic-dropout page)
+  // 2 — fact: clinic economics. Corrected 2026-07-12 — the old card said "€3.40 …
+  // over one year of daily use", which is €88÷26, not €88÷365. The honest number is
+  // stronger anyway. Clinic figure is the €90–€180 range from customer research, not
+  // an invented "€180 average".
   {
     kind: "fact",
-    id: "h-eur340",
+    id: "h-eur024",
     category: "Evidence",
-    stat: "€3.40",
-    body: "Cost per session over one year of daily use. A single clinic microcurrent visit averages €180.",
+    stat: "€0.24",
+    body: "The Face Introducer is €88, once. Used daily for a year, that is 24 cents a session. A single clinic microcurrent session runs €90–€180 — and you rebook it every month.",
     link: "/editorial/the-diagnosis",
     plannedPage: "/journal/the-clinic-dropouts-guide",
   },
@@ -151,18 +166,16 @@ export const JOURNAL_CARDS: JournalCard[] = [
     imgH: H[1],
     link: "/editorial/the-ritual",
   },
-  // 4 — handoff quote: Dr. Amara Osei
+  // 4 — citation: microcurrent → ATP (Cheng 1982). The industry's favourite paper,
+  // quoted with the half the industry leaves out.
   {
-    kind: "quote",
-    id: "h-osei",
-    category: "Experts",
-    quote:
-      "The honest claim for home microcurrent is frequency. Daily, correctly dosed stimulation is something no monthly clinic visit can replicate.",
-    name: "Dr. Amara Osei",
-    role: "Clinical dermatology, Berlin",
-    image: "/editorial/people/expert-1.webp",
-    link: "/editorial/the-diagnosis",
-    plannedPage: "/experts/amara-osei",
+    kind: "citation",
+    id: "c-microcurrent",
+    category: "Sources",
+    citation: C_MICROCURRENT,
+    takeaway:
+      "Every microcurrent brand cites this paper for “500% more ATP”. None of them quote the next finding: past 1000 µA the effect stops, and at 5000 µA it reverses. More current is not more result.",
+    link: "/journal/microcurrent-collagen",
   },
   // 5 — handoff image: 630 nanometres
   {
@@ -228,18 +241,15 @@ export const JOURNAL_CARDS: JournalCard[] = [
     link: "/editorial/the-ritual",
     plannedPage: "/journal/the-12-minute-window",
   },
-  // 11 — handoff quote: Dr. Elena Vasquez
+  // 11 — citation: red light → collagen density (Wunsch 2014), sponsor disclosure and all.
   {
-    kind: "quote",
-    id: "h-vasquez",
-    category: "Experts",
-    quote:
-      "At 630 to 660 nanometres the literature is genuinely strong. The variable that decides outcomes is not the device. It is adherence.",
-    name: "Dr. Elena Vasquez",
-    role: "Photobiomodulation researcher",
-    image: "/editorial/people/expert-2.webp",
+    kind: "citation",
+    id: "c-redlight",
+    category: "Sources",
+    citation: C_REDLIGHT,
+    takeaway:
+      "128 people, 30 sessions, red light in the same band the instruments use — and collagen density rose on the ultrasound, not just in the mirror. Then read the disclosure line. We publish that too.",
     link: "/editorial/the-science",
-    plannedPage: "/experts/elena-vasquez",
   },
   // 12 — handoff image: Microcurrent needs moisture
   {
@@ -310,18 +320,15 @@ export const JOURNAL_CARDS: JournalCard[] = [
     link: "/editorial/the-science",
     plannedPage: "/journal/read-a-label-like-a-chemist",
   },
-  // 18 — handoff quote: Maren Holt
+  // 18 — citation: adherence decides the outcome (Carroll 2004). The device is not the variable.
   {
-    kind: "quote",
-    id: "h-holt",
-    category: "Experts",
-    quote:
-      "I stopped selling single treatments. Tissue responds to sequence, not to events. Twelve minutes a day outperforms an hour a month.",
-    name: "Maren Holt",
-    role: "Medical aesthetician, 14 yrs clinical",
-    image: "/editorial/people/expert-3.webp",
+    kind: "citation",
+    id: "c-adherence",
+    category: "Sources",
+    citation: C_ADHERENCE,
+    takeaway:
+      "When researchers stopped asking people whether they used the treatment and put an electronic counter on the lid, the answer was blunt: every 10% of days skipped cost visible ground. Most people used about a third of the dose they thought they did.",
     link: "/editorial/the-ritual",
-    plannedPage: "/experts/maren-holt",
   },
   // 19 — legacy: EMS vs. Microcurrent
   {

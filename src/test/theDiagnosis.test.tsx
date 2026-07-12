@@ -40,9 +40,19 @@ describe("TheDiagnosis", () => {
   it("carousel wraps in both directions with zero-padded counter", () => {
     renderPage();
     expect(screen.getByText("01 / 03")).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: /previous quote/i }));
+    fireEvent.click(screen.getByRole("button", { name: /previous citation/i }));
     expect(screen.getByText("03 / 03")).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: /next quote/i }));
+    fireEvent.click(screen.getByRole("button", { name: /next citation/i }));
     expect(screen.getByText("01 / 03")).toBeInTheDocument();
+  });
+
+  it("carousel cites a real paper with a PubMed link, not an invented voice", () => {
+    renderPage();
+    expect(screen.getByText(/Cheng et al\./)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /PMID 7140077/ })).toHaveAttribute(
+      "href",
+      "https://pubmed.ncbi.nlm.nih.gov/7140077/",
+    );
+    expect(screen.getByText(/What it does not show/)).toBeInTheDocument();
   });
 });

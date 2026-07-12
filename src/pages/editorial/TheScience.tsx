@@ -1,6 +1,8 @@
 import { EditorialLayout } from "./EditorialLayout";
 import { EditorialImageSlot } from "./EditorialImageSlot";
 import { EditorialNewsletter } from "./EditorialNewsletter";
+import { CitationNote } from "./CitationNote";
+import { C_DOSE } from "./citations";
 
 const PDP = "/instruments/restoration-belt?utm_source=pinterest&utm_medium=pin&utm_campaign=the-science";
 
@@ -91,17 +93,8 @@ export default function TheScience() {
         <a className="soft-cta" style={{ color: "var(--ed-teal)" }} href={PDP}>Read about the instrument →</a>
       </section>
 
-      {/* EXPERT QUOTE */}
-      <section className="reveal ed-sec ed-expert" style={{ padding: "36px 24px", borderBottom: "1px solid var(--ed-line)", display: "grid", gridTemplateColumns: "56px 1fr", gap: "16px", alignItems: "start" }}>
-        <img className="portrait" src="/editorial/people/expert-2.webp" alt="Portrait" width={56} height={56} loading="lazy" />
-        <div>
-          <p className="expert-quote" style={{ fontSize: "18px", marginBottom: "10px" }}>
-            The literature is careful, and so should we be. What we can say is mechanistic. What the
-            skin does with it takes weeks of consistency.
-          </p>
-          <p className="attribution">Research Lead · Zential Pure</p>
-        </div>
-      </section>
+      {/* EVIDENCE — the dose ceiling. More light is not more result. */}
+      <CitationNote citation={C_DOSE} />
 
       {/* FOOTNOTES */}
       <section className="ed-sec ed-notes" style={{ padding: "28px 24px", borderBottom: "1px solid var(--ed-line)" }}>

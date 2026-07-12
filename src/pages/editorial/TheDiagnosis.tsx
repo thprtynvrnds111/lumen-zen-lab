@@ -2,26 +2,15 @@ import { EditorialLayout } from "./EditorialLayout";
 import { EditorialImageSlot } from "./EditorialImageSlot";
 import { EditorialNewsletter } from "./EditorialNewsletter";
 import { QuoteCarousel } from "./QuoteCarousel";
+import { C_ADHERENCE, C_EMS, C_MICROCURRENT } from "./citations";
 
 const PDP = "/instruments/face-introducer?utm_source=pinterest&utm_medium=pin&utm_campaign=the-diagnosis";
 
-const QUOTES = [
-  {
-    text: "Most home devices fail because they are single-modality. The clinic result comes from stacking signals in one session.",
-    role: "Clinical Advisor · Zential Pure",
-    img: "/editorial/people/expert-1.webp",
-  },
-  {
-    text: "I stopped recommending twelve-step routines years ago. One instrument, one ritual, held daily. That is the honest protocol.",
-    role: "Aesthetic Practitioner",
-    img: "/editorial/people/expert-2.webp",
-  },
-  {
-    text: "The research on microcurrent is older than most people think. What changed is that the output is now safe to hold at home.",
-    role: "Research Lead · Zential Pure",
-    img: "/editorial/people/expert-3.webp",
-  },
-];
+/**
+ * The three papers this page's argument actually rests on. This was three invented
+ * "voices" over stock portraits — a reader could not check a word of it.
+ */
+const CITATIONS = [C_MICROCURRENT, C_EMS, C_ADHERENCE];
 
 export default function TheDiagnosis() {
   return (
@@ -100,7 +89,7 @@ export default function TheDiagnosis() {
         <a className="soft-cta" href={PDP}>Read about the instrument →</a>
       </section>
 
-      <QuoteCarousel quotes={QUOTES} />
+      <QuoteCarousel citations={CITATIONS} />
 
       {/* END CTA */}
       <section className="ed-sec ed-cta" style={{ padding: "40px 24px", display: "flex", flexDirection: "column", gap: "16px" }}>

@@ -123,17 +123,44 @@ a.hub-hero__chip:hover { background: rgba(26, 23, 20, 0.9); color: var(--ed-on-d
 .hub-modality strong { color: var(--ed-dark); font-weight: 600; }
 .hub-science__folio { margin: 20px 0 0; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-grey-warm); }
 
-/* ---- 1a expert carousel ---- */
+/* ---- 1a citation carousel (was: expert carousel with stock portraits) ----
+   The portrait slot now holds a dossier plate — year, journal, PMID — because the
+   thing being cited is a paper, not a person we invented. */
 .hub-experts { padding: 56px 20px; background: var(--ed-dark); }
 .hub-experts__grid { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
-.hub-experts__portrait { width: 100%; max-width: 280px; height: 340px; object-fit: cover; border-radius: 24px; }
+.hub-experts__plate {
+  width: 100%; max-width: 280px; min-height: 240px; border-radius: 24px;
+  border: 1px solid var(--ed-line-dark); background: rgba(255, 255, 255, 0.03);
+  display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: 32px 28px;
+}
+.hub-experts__plate-year {
+  font-family: var(--ed-font-serif); font-style: italic; font-size: 52px; line-height: 1;
+  letter-spacing: -0.02em; color: var(--ed-teal);
+}
+.hub-experts__plate-journal { font-size: 13px; line-height: 1.5; color: var(--ed-on-dark); }
+.hub-experts__plate-pmid {
+  font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-on-dark-dim);
+}
 .hub-experts__col { display: flex; flex-direction: column; gap: 22px; }
 .hub-experts__quote {
   margin: 0; font-family: var(--ed-font-serif); font-style: italic; font-weight: 400;
   font-size: 26px; line-height: 1.35; letter-spacing: -0.02em; color: var(--ed-on-dark); text-wrap: pretty;
 }
 .hub-experts__name { font-size: 14px; font-weight: 600; color: var(--ed-teal); }
-.hub-experts__role { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-on-dark-dim); }
+/* Not uppercased: this line carries units (µA), and uppercase renders µA as "MA". */
+.hub-experts__role { font-size: 12.5px; letter-spacing: 0.04em; color: var(--ed-on-dark-dim); line-height: 1.6; }
+.hub-experts__limit {
+  margin: 0; padding: 16px 18px; border-left: 2px solid var(--ed-teal);
+  background: rgba(255, 255, 255, 0.04); font-size: 13.5px; line-height: 1.65;
+  color: var(--ed-on-dark-dim); text-wrap: pretty;
+}
+.hub-experts__limit strong { color: var(--ed-teal); font-weight: 600; }
+.hub-experts__verify {
+  align-self: flex-start; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ed-on-dark-dim); text-decoration: none; border-bottom: 1px solid var(--ed-line-dark);
+  padding-bottom: 3px; transition: color 0.2s ease, border-color 0.2s ease;
+}
+.hub-experts__verify:hover { color: var(--ed-teal); border-color: var(--ed-teal); }
 .hub-experts__nav { display: flex; gap: 10px; align-items: center; }
 .hub-arrow {
   cursor: pointer; width: 40px; height: 40px; border-radius: 9999px;
@@ -241,12 +268,24 @@ a.hub-hero__chip:hover { background: rgba(26, 23, 20, 0.9); color: var(--ed-on-d
   transition: transform 0.3s ease;
 }
 .issue-expert:hover { transform: translateY(-3px); }
-.issue-expert img { width: 100%; height: 240px; object-fit: cover; display: block; }
-.issue-expert figcaption { padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+.issue-expert figcaption { padding: 26px; display: flex; flex-direction: column; gap: 14px; }
 .issue-expert blockquote { margin: 0; font-family: var(--ed-font-serif); font-style: italic; font-size: 19px; line-height: 1.45; color: var(--ed-on-dark); text-wrap: pretty; }
-.issue-expert__attr { display: flex; flex-direction: column; gap: 2px; border-top: 1px solid var(--ed-line-dark); padding-top: 14px; }
-.issue-expert__name { font-size: 13px; font-weight: 600; color: var(--ed-teal); }
-.issue-expert__role { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-on-dark-dim); }
+.issue-expert__attr { display: flex; flex-direction: column; gap: 3px; border-top: 1px solid var(--ed-line-dark); padding-top: 14px; }
+.issue-expert__name { font-size: 13px; font-weight: 600; color: var(--ed-teal); line-height: 1.45; }
+/* Not uppercased: carries units (µA) — uppercase renders µA as "MA". */
+.issue-expert__role { font-size: 11.5px; letter-spacing: 0.04em; color: var(--ed-on-dark-dim); line-height: 1.6; }
+.issue-expert__limit {
+  margin: 0; padding: 14px 16px; border-left: 2px solid var(--ed-teal);
+  background: rgba(255, 255, 255, 0.04); font-size: 12.5px; line-height: 1.65;
+  color: var(--ed-on-dark-dim); text-wrap: pretty;
+}
+.issue-expert__limit strong { color: var(--ed-teal); font-weight: 600; }
+.issue-expert__verify {
+  align-self: flex-start; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ed-on-dark-dim); text-decoration: none; border-bottom: 1px solid var(--ed-line-dark);
+  padding-bottom: 3px; transition: color 0.2s ease, border-color 0.2s ease;
+}
+.issue-expert__verify:hover { color: var(--ed-teal); border-color: var(--ed-teal); }
 
 /* ---- 1b newsletter split band ---- */
 .issue-nl { padding: 56px 20px; background: var(--ed-bg); display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }

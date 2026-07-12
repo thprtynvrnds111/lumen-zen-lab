@@ -1,6 +1,8 @@
 import { EditorialLayout } from "./EditorialLayout";
 import { EditorialImageSlot } from "./EditorialImageSlot";
 import { EditorialNewsletter } from "./EditorialNewsletter";
+import { CitationNote } from "./CitationNote";
+import { C_ADHERENCE } from "./citations";
 
 const PDP = "/instruments/restoration-belt?utm_source=pinterest&utm_medium=pin&utm_campaign=the-ritual";
 
@@ -95,15 +97,8 @@ export default function TheRitual() {
         <a className="soft-cta" href={PDP}>Read about the instrument →</a>
       </section>
 
-      {/* EXPERT QUOTE */}
-      <section className="reveal ed-sec ed-expert" style={{ padding: "36px 24px", display: "flex", flexDirection: "column", gap: "18px" }}>
-        <img className="portrait" src="/editorial/people/expert-1.webp" alt="Portrait" width={56} height={56} loading="lazy" />
-        <p className="expert-quote">
-          Consistency beats intensity. A short daily session, held at the same hour, is where the
-          skin's own rhythm does the work.
-        </p>
-        <p className="attribution">Clinical Advisor · Zential Pure</p>
-      </section>
+      {/* EVIDENCE — the ritual page's whole argument, measured: adherence is the variable. */}
+      <CitationNote citation={C_ADHERENCE} />
 
       {/* END CTA (dark) */}
       <section className="ed-sec ed-cta ed-cta--dark" style={{ background: "var(--ed-dark)", padding: "44px 24px", display: "flex", flexDirection: "column", gap: "18px" }}>

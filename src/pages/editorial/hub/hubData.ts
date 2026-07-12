@@ -9,6 +9,8 @@
  * in `plannedPage` for when those articles ship.
  */
 
+import { C_ADHERENCE, C_MICROCURRENT, C_REDLIGHT, type Citation } from "../citations";
+
 export type HubTopic = "Mechanism" | "Ritual" | "Evidence" | "Skin";
 
 export const HUB_FILTERS = ["All", "Mechanism", "Ritual", "Evidence", "Skin"] as const;
@@ -132,36 +134,12 @@ export const HUB_MODALITIES: HubModality[] = [
   },
 ];
 
-export interface HubExpert {
-  img: string;
-  name: string;
-  role: string;
-  quote: string;
-}
-
-export const HUB_EXPERTS: HubExpert[] = [
-  {
-    img: "/editorial/people/expert-1.webp",
-    name: "Dr. Amara Osei",
-    role: "Clinical dermatology, Berlin",
-    quote:
-      "The honest claim for home microcurrent is frequency. Daily, correctly dosed stimulation is something no monthly clinic visit can replicate.",
-  },
-  {
-    img: "/editorial/people/expert-2.webp",
-    name: "Dr. Elena Vasquez",
-    role: "Photobiomodulation researcher",
-    quote:
-      "At 630 to 660 nanometres the literature is genuinely strong. The variable that decides outcomes is not the device. It is adherence.",
-  },
-  {
-    img: "/editorial/people/expert-3.webp",
-    name: "Maren Holt",
-    role: "Medical aesthetician, 14 yrs clinical",
-    quote:
-      "I stopped selling single treatments. Tissue responds to sequence, not to events. Twelve minutes a day outperforms an hour a month.",
-  },
-];
+/**
+ * The evidence rail. Formerly three invented "clinicians" with stock portraits —
+ * removed 2026-07-12. What a reader gets instead is the paper itself, what it
+ * found, and what it does not show. See ../citations.ts.
+ */
+export const HUB_CITATIONS: Citation[] = [C_REDLIGHT, C_MICROCURRENT, C_ADHERENCE];
 
 /** 1b cover index strip. */
 export const ISSUE_INDEX = [
