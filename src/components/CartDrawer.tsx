@@ -10,7 +10,9 @@ import { prefetchCheckout } from "@/lib/prefetchCheckout";
 import { cartItemImageUrl, shopifyThumb } from "@/lib/cartImage";
 import { TrustpilotProof } from "@/components/zential/TrustpilotProof";
 
-const FREE_SHIPPING_THRESHOLD = 75;
+// Per-market free-shipping thresholds (operator decision 2026-07-12): EUR 75 / USD 85.
+// Keyed by the cart's own currency so the bar always compares like-for-like.
+const FREE_SHIPPING_THRESHOLDS: Record<string, number> = { EUR: 75, USD: 85 };
 const GEL_HANDLE = "medicube-collagen-elastic-jelly-moisturizing-cream";
 const ACCESSORY_HANDLES = [GEL_HANDLE, "collagen-eye-mask"];
 
@@ -18,10 +20,11 @@ export function CartDrawer() {
  const { items, isLoading, isSyncing, isOpen, openCart, closeCart, updateQuantity, removeItem, syncCart, addItem } = useCartStore();
  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
  const totalPrice = items.reduce((sum, item) => sum + parseFloat(item.price.amount) * item.quantity, 0);
- const shippingProgress = Math.min((totalPrice / FREE_SHIPPING_THRESHOLD) * 100, 100);
- const freeShippingUnlocked = totalPrice >= FREE_SHIPPING_THRESHOLD;
- const amountToFreeShipping = FREE_SHIPPING_THRESHOLD - totalPrice;
  const cartCurrency = items[0]?.price?.currencyCode || "EUR";
+ const freeShippingThreshold = FREE_SHIPPING_THRESHOLDS[cartCurrency] ?? FREE_SHIPPING_THRESHOLDS.EUR;
+ const shippingProgress = Math.min((totalPrice / freeShippingThreshold) * 100, 100);
+ const freeShippingUnlocked = totalPrice >= freeShippingThreshold;
+ const amountToFreeShipping = freeShippingThreshold - totalPrice;
 
  const [gelProduct, setGelProduct] = useState<any>(null);
  const [addingGel, setAddingGel] = useState(false);
