@@ -55,6 +55,7 @@ const TruthMovement    = lazy(() => import("./pages/TruthMovement"));
 const Origin           = lazy(() => import("./pages/Origin"));
 const Storefront        = lazy(() => import("./pages/Storefront"));
 const Reveal            = lazy(() => import("./pages/reveal/Reveal"));
+const Pick              = lazy(() => import("./pages/pick/Pick"));
 const FunnelBridge = lazy(() => import("./pages/funnel/FunnelBridge"));
 const TheRitual = lazy(() => import("./pages/editorial/TheRitual"));
 const TheScience = lazy(() => import("./pages/editorial/TheScience"));
@@ -117,6 +118,7 @@ function ServerApp() {
         <Route path="/quiz/result"                              element={<QuizResult />} />
         <Route path="/founding-terms"                           element={<FoundingTerms />} />
         <Route path="/reveal"                                   element={<Reveal />} />
+        <Route path="/pick"                                     element={<Pick />} />
         <Route path="/f/:slug"                                  element={<FunnelBridge />} />
         <Route path="/dashboard"                                element={<Dashboard />} />
         <Route path="*"                                         element={<NotFound />} />

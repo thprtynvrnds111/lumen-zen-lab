@@ -53,6 +53,7 @@ const InstrumentLanding = lazy(() => import("./pages/InstrumentLanding"));
 const TruthMovement = lazy(() => import("./pages/TruthMovement"));
 const Origin = lazy(() => import("./pages/Origin"));
 const Reveal = lazy(() => import("./pages/reveal/Reveal"));
+const Pick = lazy(() => import("./pages/pick/Pick"));
 const FunnelBridge = lazy(() => import("./pages/funnel/FunnelBridge"));
 const RevealTakeover = lazy(() => import("./pages/reveal/RevealTakeover"));
 const HomeLeadPrimer = lazy(() => import("./components/zential/HomeLeadPrimer"));
@@ -127,6 +128,7 @@ function AppContent() {
         <Route path="/founding-terms" element={<FoundingTerms />} />
 
         <Route path="/reveal" element={<Reveal />} />
+        <Route path="/pick" element={<Pick />} />
 
         {/* Paid-traffic bridge funnel — isolated campaign routes, noindex */}
         <Route path="/f/:slug" element={<FunnelBridge />} />
