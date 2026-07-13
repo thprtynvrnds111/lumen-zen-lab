@@ -62,6 +62,7 @@ const TheDiagnosis = lazy(() => import("./pages/editorial/TheDiagnosis"));
 const RitualJournal = lazy(() => import("./pages/editorial/hub/RitualJournal"));
 const ClinicalIssue = lazy(() => import("./pages/editorial/hub/ClinicalIssue"));
 const Breath = lazy(() => import("./pages/breath/Breath"));
+const OneShelf = lazy(() => import("./pages/OneShelf"));
 
 function ServerApp() {
   return (
@@ -91,6 +92,7 @@ function ServerApp() {
         <Route path="/editorial"                                element={<RitualJournal />} />
         <Route path="/editorial/clinical-issue"                 element={<ClinicalIssue />} />
         <Route path="/breath"                                   element={<Breath />} />
+        <Route path="/one-shelf"                                element={<OneShelf />} />
         <Route path="/support"                                  element={<Support />} />
         <Route path="/shipping"                                 element={<Shipping />} />
         <Route path="/returns"                                  element={<Returns />} />

@@ -75,6 +75,7 @@ const ROUTES = [
   '/facial-muscle-training',
   // Funnel pages
   '/reveal',
+  '/one-shelf',
   '/f/face-introducer',
   '/f/restoration-belt',
   '/f/restoration-mat',
