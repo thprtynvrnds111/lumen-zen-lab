@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PageShell } from "@/components/zential/v2/PageShell";
+import { ReceiptsSection } from "@/components/zential/ReceiptsSection";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { formatMoney } from "@/lib/market";
 
@@ -228,6 +229,9 @@ export default function Storefront() {
           <div className="mt-[22px] font-sans text-[10px] tracking-[0.3em] uppercase text-[#F7F4F0]/55">The Clinic Dropout</div>
         </div>
       </section>
+
+      {/* ── RECEIPTS — tabbed per-instrument proof (tano-pattern, authenticity-floor content) ── */}
+      <ReceiptsSection />
 
       {/* ── PROTOCOLS ── */}
       <section className="bg-[#1A1714] py-[clamp(80px,11vw,128px)] text-[#F7F4F0]">
