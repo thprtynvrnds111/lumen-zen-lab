@@ -8,7 +8,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 const VIDEO_SRC = "/one-shelf/one-shelf-56s.mp4";
 const POSTER_SRC = "/one-shelf/poster.jpg";
-const CTA_HREF = "/product/the-system-founding-bundle";
+// Direct cart permalink — the System bundle is not published to the headless
+// Storefront-API channel, so the PDP route can't render it (same reason the
+// homepage SystemBundle section uses this permalink). Variant: live bundle.
+const CTA_HREF = "https://checkout.zentialpure.com/cart/53870945567063:1";
 const STORAGE_KEY = "zp-one-shelf-collected";
 
 const TEAL = "#2ed8a8";
@@ -290,7 +293,18 @@ export default function OneShelf() {
                   <span className="os-price-was">€468</span>
                 </p>
                 <p className="os-save">All three instruments · save €69</p>
-                <a className="os-cta" href={CTA_HREF}>
+                <a
+                  className="os-cta"
+                  href={CTA_HREF}
+                  onClick={() => {
+                    const w = window as unknown as { fbq?: (...a: unknown[]) => void };
+                    w.fbq?.("track", "AddToCart", {
+                      content_name: "The System Bundle (one-shelf)",
+                      value: 399,
+                      currency: "EUR",
+                    });
+                  }}
+                >
                   Build your shelf — €399
                 </a>
                 <p className="os-cta-note">
