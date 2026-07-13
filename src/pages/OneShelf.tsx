@@ -172,7 +172,7 @@ export default function OneShelf() {
         .os-h1 { font-family: "Lora", serif; font-size: 32px; font-weight: 700; line-height: 1.2; margin: 0 0 8px; }
         .os-sub { font-size: 14px; color: #8a7f74; margin: 0 0 16px; line-height: 1.5; }
         .os-video-box { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid #2a211a; }
-        .os-video { display: block; width: 100%; aspect-ratio: 9/16; max-height: 68vh; object-fit: cover; background: #070a0e; }
+        .os-video { display: block; width: 100%; aspect-ratio: 9/16; max-height: 68vh; object-fit: contain; background: #070a0e; }
         .os-unmute { position: absolute; right: 12px; bottom: 12px; z-index: 10; background: rgba(7,10,14,0.72); color: #f7f4f0; border: 1px solid ${TEAL}; border-radius: 9999px; padding: 8px 16px; font-size: 12px; font-weight: 500; cursor: pointer; }
         .os-progress { display: flex; align-items: center; gap: 8px; margin: 16px 0 8px; }
         .os-progress-label { font-size: 12px; color: #8a7f74; letter-spacing: 0.08em; text-transform: uppercase; }
