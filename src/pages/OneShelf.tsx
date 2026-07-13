@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { fetchProductByHandle } from "@/lib/shopify";
+import { formatMoney } from "@/lib/market";
 
 /* /one-shelf — gamified video lander for the "One Shelf" UGC film.
    Watch the day (or tap the cards): each ritual beat unlocks a card;
@@ -12,6 +14,7 @@ const POSTER_SRC = "/one-shelf/poster.jpg";
 // Storefront-API channel, so the PDP route can't render it (same reason the
 // homepage SystemBundle section uses this permalink). Variant: live bundle.
 const CTA_HREF = "https://checkout.zentialpure.com/cart/53870945567063:1";
+const BUNDLE_HANDLE = "the-system-founding-bundle";
 const STORAGE_KEY = "zp-one-shelf-collected";
 
 const TEAL = "#2ed8a8";
@@ -71,6 +74,31 @@ export default function OneShelf() {
   const [collected, setCollected] = useState<Record<string, boolean>>({});
   const [muted, setMuted] = useState(true);
   const [justUnlocked, setJustUnlocked] = useState<string | null>(null);
+  // Market-correct bundle pricing (US sees USD via Dynamic FX). EUR fallback.
+  const [price, setPrice] = useState("€399");
+  const [wasPrice, setWasPrice] = useState("€468");
+  const [priceValue, setPriceValue] = useState(399);
+  const [currency, setCurrency] = useState("EUR");
+
+  useEffect(() => {
+    let active = true;
+    fetchProductByHandle(BUNDLE_HANDLE)
+      .then((p) => {
+        const v = p?.variants?.edges?.[0]?.node;
+        const amount = v?.price?.amount ? parseFloat(v.price.amount) : NaN;
+        if (!active || isNaN(amount)) return;
+        const code = v?.price?.currencyCode || "EUR";
+        setPrice(formatMoney(amount, code));
+        setPriceValue(amount);
+        setCurrency(code);
+        const was = v?.compareAtPrice?.amount ? parseFloat(v.compareAtPrice.amount) : NaN;
+        if (!isNaN(was)) setWasPrice(formatMoney(was, code));
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
 
   useEffect(() => {
     setCollected(loadCollected());
@@ -289,10 +317,10 @@ export default function OneShelf() {
                 <h2 className="os-reveal-title">The System</h2>
                 <div className="os-reveal-bar" />
                 <p>
-                  <span className="os-price">€399</span>
-                  <span className="os-price-was">€468</span>
+                  <span className="os-price">{price}</span>
+                  <span className="os-price-was">{wasPrice}</span>
                 </p>
-                <p className="os-save">All three instruments · save €69</p>
+                <p className="os-save">All three instruments · one purchase</p>
                 <a
                   className="os-cta"
                   href={CTA_HREF}
@@ -300,12 +328,12 @@ export default function OneShelf() {
                     const w = window as unknown as { fbq?: (...a: unknown[]) => void };
                     w.fbq?.("track", "AddToCart", {
                       content_name: "The System Bundle (one-shelf)",
-                      value: 399,
-                      currency: "EUR",
+                      value: priceValue,
+                      currency,
                     });
                   }}
                 >
-                  Build your shelf — €399
+                  Build your shelf — {price}
                 </a>
                 <p className="os-cta-note">
                   30-day protocol guarantee · free EU shipping · 2-year warranty
@@ -325,7 +353,7 @@ export default function OneShelf() {
                   <strong>{r.label} · {r.minutes} min</strong> — {r.device}. {r.blurb}
                 </p>
               ))}
-              <a href={CTA_HREF}>The System — €399 (all three instruments, save €69)</a>
+              <a href={CTA_HREF}>The System — all three instruments, one purchase</a>
             </div>
           </noscript>
         </div>
