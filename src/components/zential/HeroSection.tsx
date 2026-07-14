@@ -219,7 +219,7 @@ export function HeroSection() {
       {[
        t('hero.trust.shipping', 'Free EU shipping'),
        t('hero.trust.guarantee', '30-Day Protocol Guarantee'),
-       t('hero.trust.rotterdam', 'Ships from Rotterdam'),
+       t('hero.trust.tracked', 'Tracked shipping'),
       ].map(label => (
        <span key={label} className="flex items-center gap-2" style={{ ...S.dm, fontWeight: 400, fontSize: 11, color: 'rgba(26,23,20,0.5)' }}>
         <span style={{ display: 'inline-block', width: 5, height: 5, backgroundColor: S.teal, borderRadius: '50%' }} aria-hidden />

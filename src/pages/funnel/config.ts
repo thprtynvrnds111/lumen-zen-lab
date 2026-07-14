@@ -161,8 +161,8 @@ const TRUST_ITEMS: TrustItem[] = [
     body: "Payment handled by Shopify Payments over encrypted SSL — Wero, major cards, PayPal, Apple Pay and Google Pay. We never see your card details.",
   },
   {
-    title: "Ships From The EU",
-    body: "Free EU shipping, dispatched from Rotterdam in two to four working days. No customs fees, no import charges, no surprises at the door.",
+    title: "Shipping & Duties",
+    body: "Free EU shipping, dispatched within two to three working days and tracked to your door. Import VAT is prepaid at checkout — no customs bill, no surprises on arrival.",
   },
 ];
 
@@ -193,7 +193,7 @@ const faceIntroducer: BridgeConfig = {
   discountCode: "RITUAL15",
   title: "The Face Introducer — Zential Pure",
   metaDescription:
-    "The instrument category behind clinic microcurrent, recalibrated for a twelve-minute evening ritual at home. CE marked. 30-day return. Free EU shipping from Rotterdam.",
+    "The instrument category behind clinic microcurrent, recalibrated for a twelve-minute evening ritual at home. CE marked. 30-day return. Free, tracked EU shipping.",
 
   hero: {
     eyebrow: "You watched her story · here is the rest of it",

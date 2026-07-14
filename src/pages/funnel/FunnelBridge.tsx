@@ -314,24 +314,30 @@ export default function FunnelBridge() {
         </Reveal>
       </section>
 
-      {/* 05 · Social proof narrative */}
-      <section className="zb-section zb-social">
-        <Reveal>
-          <SectionMark n="05" label={config.social.eyebrow} />
-          <h2 className="zb-display zb-display-sm">{config.social.headline}</h2>
-          <div className="zb-quote-grid">
-            {config.social.quotes.map((q) => (
-              <figure className="zb-quote" key={q.name}>
-                <blockquote>{q.text}</blockquote>
-                <figcaption>
-                  <span className="zb-quote-name">{q.name}</span>
-                  <span className="zb-quote-meta">{q.meta}</span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </Reveal>
-      </section>
+      {/* 05 · Social proof narrative — placeholder quotes are never shown to customers.
+          Fabricated testimonials are illegal (EU UCPD/Omnibus) and destroy the honesty
+          that is our actual conversion mechanism. Section hides itself until real ones exist. */}
+      {config.social.quotes.some((q) => !q.placeholder) && (
+        <section className="zb-section zb-social">
+          <Reveal>
+            <SectionMark n="05" label={config.social.eyebrow} />
+            <h2 className="zb-display zb-display-sm">{config.social.headline}</h2>
+            <div className="zb-quote-grid">
+              {config.social.quotes
+                .filter((q) => !q.placeholder)
+                .map((q) => (
+                  <figure className="zb-quote" key={q.name}>
+                    <blockquote>{q.text}</blockquote>
+                    <figcaption>
+                      <span className="zb-quote-name">{q.name}</span>
+                      <span className="zb-quote-meta">{q.meta}</span>
+                    </figcaption>
+                  </figure>
+                ))}
+            </div>
+          </Reveal>
+        </section>
+      )}
 
       {/* 06 · The ritual, shown */}
       <section className="zb-section zb-ritual">

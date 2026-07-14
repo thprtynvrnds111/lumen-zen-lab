@@ -190,7 +190,7 @@ export default function Journal() {
 
       <footer className="jh-footer">
         <span>Zential Pure · Clinic precision. Daily ritual.</span>
-        <span>Free EU shipping · Ships from Rotterdam</span>
+        <span>Free EU shipping · Tracked delivery</span>
       </footer>
     </div>
   );

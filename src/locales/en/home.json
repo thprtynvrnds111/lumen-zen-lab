@@ -13,7 +13,7 @@
    "shipping": "Free EU shipping",
    "guarantee": "30-Day Protocol Guarantee",
    "tagline": "Clinic precision. Daily ritual.",
-   "rotterdam": "Ships from Rotterdam"
+   "tracked": "Tracked shipping"
   },
   "proof": {
    "modalities": { "value": "4", "label": "Clinical\nmodalities" },
