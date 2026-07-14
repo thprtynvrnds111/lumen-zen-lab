@@ -27,14 +27,15 @@ export default function TheRitual() {
           </p>
         </section>
 
-        {/* IMAGE SLOT ritual-hero · 390×300 · ceramic mug in low warm morning window light, steam,
-            linen · quiet, unhurried, no people's faces · never show the belt LED panel */}
+        {/* IMAGE SLOT ritual-hero · 390×300 · aged hands cradling a warm ceramic mug in low morning
+            window light, linen, honest skin texture · quiet, unhurried, no people's faces · never
+            show the belt LED panel */}
         <EditorialImageSlot
-          src="/editorial/morning-mug.webp"
-          alt="Morning light on a ceramic mug"
+          src="/editorial/ritual-hands.webp"
+          alt="Aged hands cradling a warm ceramic mug in morning light"
           width={390}
           height={300}
-          artDirection="ceramic mug in low warm morning window light, steam, linen; no faces; never show the belt LED panel"
+          artDirection="aged hands cradling a warm ceramic mug in low morning window light, steam, linen, honest skin texture; no faces; never show the belt LED panel"
           className="ed-hero-img"
           eager
         />
