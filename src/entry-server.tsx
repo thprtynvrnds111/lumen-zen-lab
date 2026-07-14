@@ -25,6 +25,7 @@ const Support          = lazy(() => import("./pages/Support"));
 const Shipping         = lazy(() => import("./pages/Shipping"));
 const Returns          = lazy(() => import("./pages/Returns"));
 const FAQ              = lazy(() => import("./pages/FAQ"));
+const Track            = lazy(() => import("./pages/Track"));
 const PrivacyPolicy    = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService   = lazy(() => import("./pages/TermsOfService"));
 const TechRedLight     = lazy(() => import("./pages/TechRedLight"));
@@ -98,6 +99,7 @@ function ServerApp() {
         <Route path="/shipping"                                 element={<Shipping />} />
         <Route path="/returns"                                  element={<Returns />} />
         <Route path="/faq"                                      element={<FAQ />} />
+        <Route path="/track"                                    element={<Track />} />
         <Route path="/privacy"                                  element={<PrivacyPolicy />} />
         <Route path="/terms"                                    element={<TermsOfService />} />
         <Route path="/technology/red-light"                     element={<TechRedLight />} />

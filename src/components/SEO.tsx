@@ -9,6 +9,8 @@ interface SEOProps {
   jsonLd?: Record<string, unknown>;
   /** ISO date string. Emitted as article:published_time when ogType === "article". */
   publishedTime?: string;
+  /** Keep the page out of search results. For pages that show a customer their own data. */
+  noindex?: boolean;
 }
 
 const SITE_URL = "https://zentialpure.com";
@@ -22,6 +24,7 @@ export function SEO({
   canonicalUrl,
   jsonLd,
   publishedTime,
+  noindex = false,
 }: SEOProps) {
   const canonicalHref = canonicalUrl
     ? /^https?:\/\//i.test(canonicalUrl)
@@ -34,6 +37,7 @@ export function SEO({
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
 
       {/* Open Graph */}
       <meta property="og:title" content={title} />
