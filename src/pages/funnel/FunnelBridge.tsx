@@ -314,14 +314,30 @@ export default function FunnelBridge() {
         </Reveal>
       </section>
 
-      {/* 05 · Social proof narrative — placeholder quotes are never shown to customers.
-          Fabricated testimonials are illegal (EU UCPD/Omnibus) and destroy the honesty
-          that is our actual conversion mechanism. Section hides itself until real ones exist. */}
+      {/* 05 · Social proof — REAL reviews only, verbatim from our public Trustpilot profile.
+          Placeholder quotes are never rendered: fabricated testimonials are illegal
+          (EU UCPD/Omnibus) and destroy the honesty that is our actual conversion mechanism.
+          The low review count is stated plainly rather than hidden — our first real customer
+          bought *because of* "relentless honesty", having nearly walked over "limited reviews". */}
       {config.social.quotes.some((q) => !q.placeholder) && (
         <section className="zb-section zb-social">
           <Reveal>
             <SectionMark n="05" label={config.social.eyebrow} />
             <h2 className="zb-display zb-display-sm">{config.social.headline}</h2>
+
+            <div className="zb-honesty">
+              <p className="zb-honesty-head">{config.social.honesty.headline}</p>
+              <p className="zb-honesty-body">{config.social.honesty.body}</p>
+              <a
+                className="zb-honesty-link"
+                href={config.social.honesty.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {config.social.honesty.linkLabel}
+              </a>
+            </div>
+
             <div className="zb-quote-grid">
               {config.social.quotes
                 .filter((q) => !q.placeholder)
@@ -529,6 +545,10 @@ const CSS = `
 .zb-benchmark-tag{align-self:flex-start;background:var(--teal);color:var(--ink);font-weight:600;font-size:13px;padding:6px 12px;border-radius:20px;margin-top:4px;}
 
 /* social */
+.zb-honesty{margin-top:24px;padding:22px 24px;border-left:2px solid var(--accent,#C6A07C);background:rgba(198,160,124,0.06);border-radius:0 8px 8px 0;}
+.zb-honesty-head{margin:0;font-family:var(--font-serif);font-style:italic;font-size:19px;line-height:1.35;}
+.zb-honesty-body{margin:10px 0 0;font-size:14.5px;line-height:1.65;color:var(--muted);max-width:64ch;}
+.zb-honesty-link{display:inline-block;margin-top:14px;font-size:12.5px;letter-spacing:0.04em;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px;}
 .zb-quote-grid{display:grid;gap:16px;margin-top:28px;}
 @media(min-width:768px){.zb-quote-grid{grid-template-columns:repeat(3,1fr);}}
 .zb-quote{margin:0;background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:16px;}

@@ -1,5 +1,9 @@
-// Source: nl.trustpilot.com/review/zentialpure.com, verified reviews, 5★ each
-// TODO: automate via Trustpilot API once volume grows
+// Source: nl.trustpilot.com/review/zentialpure.com — VERIFIED VERBATIM 2026-07-14.
+// Profile: 6 reviews, 4.2 average. Quotes below are copied exactly from the live
+// profile (typos included — do not "improve" a customer's words).
+// HARD RULE: never add a reviewer who is not on the public profile. A previous
+// entry ("Rafi Rahadian") did not exist there and has been removed.
+// TODO: automate via Trustpilot API once volume grows.
 
 interface Review {
  name: string;
@@ -12,7 +16,7 @@ const reviews: Review[] = [
  {
   name: "Maria",
   location: "NL",
-  quote: "Bought this after doing a lot of research. The full-face coverage and the glow it gives after each session is unlike anything I've used before. Three weeks in and two people have asked if I changed my skincare routine.",
+  quote: "Bougth this after doing alot of research. The fullface coverage and the glow it gives after each session is unlike anything i've used before. Three weeks in an two people have asked if I changed my skincare routine!",
   rating: 5,
  },
  {
@@ -22,15 +26,15 @@ const reviews: Review[] = [
   rating: 5,
  },
  {
-  name: "Rafi Rahadian",
+  name: "Daan Mossel",
   location: "NL",
-  quote: "Really impressed with how this combines multiple functions without feeling overwhelming.",
+  quote: "first I was a bit sceptical, about improving my skin. Fortunately, the devices really worked well.",
   rating: 5,
  },
  {
-  name: "Daan Mossel",
-  location: "NL",
-  quote: "First I was a bit sceptical about improving my skin. Fortunately, the devices really worked well.",
+  name: "Miguel Lam",
+  location: "CW",
+  quote: "The instructions where clear and the customer service answered my questions within hours. will order the Eye Activator next.",
   rating: 5,
  },
 ];

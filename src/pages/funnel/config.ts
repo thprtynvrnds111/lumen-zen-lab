@@ -103,7 +103,14 @@ export interface BridgeConfig {
     benchmark: { title: string; body: string; tag: string };
   };
 
-  social: { eyebrow: string; headline: string; quotes: Quote[] };
+  social: {
+    eyebrow: string;
+    headline: string;
+    /** Honest low-count framing. Shown ABOVE the quotes. This is not a weakness —
+     *  our first real customer bought because of "relentless honesty". */
+    honesty: { headline: string; body: string; href: string; linkLabel: string };
+    quotes: Quote[];
+  };
 
   ritual: { eyebrow: string; headline: string; steps: RitualStep[]; closing: string };
 
@@ -256,12 +263,18 @@ const faceIntroducer: BridgeConfig = {
   },
 
   social: {
-    eyebrow: "In their own evenings",
+    eyebrow: "In their own words",
     headline: "Founding customers",
+    honesty: {
+      headline: "We are new. We have six reviews.",
+      body: "Not six hundred. We are not going to invent the difference. Below are the real ones, copied from our public Trustpilot profile — typos and all. Judge us on the methodology above, keep the instrument for thirty days, and send it back if we are wrong.",
+      href: "https://nl.trustpilot.com/review/zentialpure.com",
+      linkLabel: "Read them on Trustpilot →",
+    },
     quotes: [
-      { text: "Ten minutes with my evening tea, before I would have been scrolling. It has become the part of the night that is only mine.", name: "Marieke, 39", meta: "Utrecht · using it four months", placeholder: true },
-      { text: "I stopped my clinic facials two years ago. I wanted the feeling of doing something deliberate again. This gives me that, on a Tuesday, in my own bathroom.", name: "Claire, 47", meta: "Antwerp · using it seven months", placeholder: true },
-      { text: "I read the whole methodology note before I bought it. That is unusual for me. It was the first skin thing that spoke to me like I was capable of understanding it.", name: "Sofia, 33", meta: "Rotterdam · using it five months", placeholder: true },
+      { text: "Bougth this after doing alot of research. The fullface coverage and the glow it gives after each session is unlike anything i've used before. Three weeks in an two people have asked if I changed my skincare routine!", name: "Maria", meta: "Netherlands · Trustpilot, verified" },
+      { text: "The difference between other devices and this one is just huge. The quality is really there.", name: "Jennarosa", meta: "Netherlands · Trustpilot, verified" },
+      { text: "first I was a bit sceptical, about improving my skin. Fortunately, the devices really worked well.", name: "Daan Mossel", meta: "Netherlands · Trustpilot, verified" },
     ],
   },
 
@@ -376,12 +389,18 @@ const restorationBelt: BridgeConfig = {
   },
 
   social: {
-    eyebrow: "In their own evenings",
+    eyebrow: "In their own words",
     headline: "Founding customers",
+    honesty: {
+      headline: "We are new. We have six reviews.",
+      body: "Not six hundred, and none of them for this instrument yet. We are not going to invent them. Below is what founding customers have said about Zential instruments on our public Trustpilot profile — copied exactly. Judge us on the methodology above, keep it thirty days, and send it back if we are wrong.",
+      href: "https://nl.trustpilot.com/review/zentialpure.com",
+      linkLabel: "Read them on Trustpilot →",
+    },
     quotes: [
-      { text: "Fifteen minutes with the belt on after the kids are down. The lower back that used to greet me every morning has gone quiet.", name: "Lieke, 41", meta: "Eindhoven · using it three months", placeholder: true },
-      { text: "I train four times a week and I hate feeling stiff the next day. This became the last thing I do before bed, and it feels earned.", name: "Tom, 36", meta: "Ghent · using it five months", placeholder: true },
-      { text: "I wanted the warmth of a sauna without leaving the house. Wrapped up on the sofa, twenty minutes in, I finally stop bracing.", name: "Anne, 52", meta: "Haarlem · using it six months", placeholder: true },
+      { text: "The difference between other devices and this one is just huge. The quality is really there.", name: "Jennarosa", meta: "Netherlands · Trustpilot, verified" },
+      { text: "The instructions where clear and the customer service answered my questions within hours. will order the Eye Activator next.", name: "Miguel Lam", meta: "Cura\u00e7ao · Trustpilot, verified" },
+      { text: "first I was a bit sceptical, about improving my skin. Fortunately, the devices really worked well.", name: "Daan Mossel", meta: "Netherlands · Trustpilot, verified" },
     ],
   },
 
@@ -496,12 +515,18 @@ const restorationMat: BridgeConfig = {
   },
 
   social: {
-    eyebrow: "In their own evenings",
+    eyebrow: "In their own words",
     headline: "Founding customers",
+    honesty: {
+      headline: "We are new. We have six reviews.",
+      body: "Not six hundred, and none of them for this instrument yet. We are not going to invent them. Below is what founding customers have said about Zential instruments on our public Trustpilot profile — copied exactly. Judge us on the methodology above, keep it thirty days, and send it back if we are wrong.",
+      href: "https://nl.trustpilot.com/review/zentialpure.com",
+      linkLabel: "Read them on Trustpilot →",
+    },
     quotes: [
-      { text: "Twenty minutes on the mat before bed, the lights low. It is the first time in years I lie down and actually stop.", name: "Sanne, 44", meta: "Rotterdam · using it four months", placeholder: true },
-      { text: "I roll it out on the floor after a long shift on my feet. The warmth reaches everywhere at once — I never manage that with a wrap.", name: "Karim, 38", meta: "Rotterdam · using it three months", placeholder: true },
-      { text: "I wanted the sauna feeling without the sauna. Full-body warmth, in my own room, and I can put it away after.", name: "Elin, 49", meta: "Amsterdam · using it seven months", placeholder: true },
+      { text: "The difference between other devices and this one is just huge. The quality is really there.", name: "Jennarosa", meta: "Netherlands · Trustpilot, verified" },
+      { text: "The instructions where clear and the customer service answered my questions within hours. will order the Eye Activator next.", name: "Miguel Lam", meta: "Cura\u00e7ao · Trustpilot, verified" },
+      { text: "first I was a bit sceptical, about improving my skin. Fortunately, the devices really worked well.", name: "Daan Mossel", meta: "Netherlands · Trustpilot, verified" },
     ],
   },
 
