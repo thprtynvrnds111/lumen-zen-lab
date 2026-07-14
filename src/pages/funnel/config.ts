@@ -169,8 +169,8 @@ const TRUST_ITEMS: TrustItem[] = [
 const FOOTER = {
   echoes: [
     "30-day full refund, any reason",
-    "Verified reviews from founding customers",
-    "Ships from the EU, no customs",
+    "CE marked · tested to spec",
+    "Import VAT prepaid — no customs bill",
   ],
   legal: [
     { label: "Returns policy", href: "/returns" },
@@ -292,12 +292,12 @@ const faceIntroducer: BridgeConfig = {
     eyebrow: "Clinic precision. Daily ritual.",
     headline: "The Face Introducer",
     price: "€88",
-    priceNote: "Once, not per session. One clinic session costs €80 to €120. Free EU shipping from Rotterdam.",
+    priceNote: "Once, not per session. One clinic session costs €80 to €120. Free, tracked EU shipping.",
     inBoxTitle: "In the box",
     inBox: ["The Face Introducer instrument", "Conductive ritual gel, first supply", "Magnetic charging base and cable", "The twelve-minute protocol card"],
     guarantee: GUARANTEE,
     cta: "See the Face Introducer",
-    ctaNote: "Founding price carried to checkout · Free EU shipping from Rotterdam · 30-day full refund",
+    ctaNote: "Founding price carried to checkout · Free, tracked EU shipping · 30-day full refund",
     image: faceOffer,
     alt: "The Face Introducer in its open Zential Pure box on a kitchen table.",
   },
@@ -313,7 +313,7 @@ const restorationBelt: BridgeConfig = {
   discountCode: "RITUAL15",
   title: "The Restoration Belt — Zential Pure",
   metaDescription:
-    "The recovery-wrap category — 660nm red and 850nm near-infrared light held close by a thermal wrap — recalibrated for a fifteen-minute ritual at home. CE marked. 30-day return. Free EU shipping from Rotterdam.",
+    "The recovery-wrap category — 660nm red and 850nm near-infrared light held close by a thermal wrap — recalibrated for a fifteen-minute ritual at home. CE marked. 30-day return. Free, tracked EU shipping.",
 
   hero: {
     eyebrow: "You watched her routine · here is the rest of it",
@@ -412,12 +412,12 @@ const restorationBelt: BridgeConfig = {
     eyebrow: "Recovery, worn close.",
     headline: "The Restoration Belt",
     price: "€180",
-    priceNote: "Was €280. Once, not per session. Free EU shipping from Rotterdam.",
+    priceNote: "Was €280. Once, not per session. Free, tracked EU shipping.",
     inBoxTitle: "In the box",
     inBox: ["The Restoration Belt instrument", "Adjustable thermal wrap (fits waist 28–48in)", "Power adapter and cable", "The fifteen-minute protocol card"],
     guarantee: GUARANTEE,
     cta: "See the Restoration Belt",
-    ctaNote: "Founding price carried to checkout · Free EU shipping from Rotterdam · 30-day full refund",
+    ctaNote: "Founding price carried to checkout · Free, tracked EU shipping · 30-day full refund",
     image: beltOffer,
     alt: "The Restoration Belt, folded and arranged on a warm surface.",
   },
@@ -433,7 +433,7 @@ const restorationMat: BridgeConfig = {
   discountCode: "RITUAL15",
   title: "The Restoration Mat — Zential Pure",
   metaDescription:
-    "The full-body recovery-mat category — 660nm red light and far-infrared heat, edge to edge — recalibrated for a twenty-minute ritual you can roll out anywhere. CE marked. 30-day return. Free EU shipping from Rotterdam.",
+    "The full-body recovery-mat category — 660nm red light and far-infrared heat, edge to edge — recalibrated for a twenty-minute ritual you can roll out anywhere. CE marked. 30-day return. Free, tracked EU shipping.",
 
   hero: {
     eyebrow: "You watched her lie down · here is the rest of it",
@@ -532,12 +532,12 @@ const restorationMat: BridgeConfig = {
     eyebrow: "A full-body bed of red light and far-infrared heat.",
     headline: "The Restoration Mat",
     price: "from €200",
-    priceNote: "From €200. Once, not per session. Free EU shipping from Rotterdam.",
+    priceNote: "From €200. Once, not per session. Free, tracked EU shipping.",
     inBoxTitle: "In the box",
     inBox: ["The Restoration Mat (rolls flat to store)", "Optional remote control (select variants)", "Power adapter and cable", "The twenty-minute protocol card"],
     guarantee: GUARANTEE,
     cta: "See the Restoration Mat",
-    ctaNote: "Founding price carried to checkout · Free EU shipping from Rotterdam · 30-day full refund",
+    ctaNote: "Founding price carried to checkout · Free, tracked EU shipping · 30-day full refund",
     image: matOffer,
     alt: "The Restoration Mat, rolled and arranged on a warm surface.",
   },

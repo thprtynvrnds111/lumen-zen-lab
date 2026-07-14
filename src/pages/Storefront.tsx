@@ -133,11 +133,11 @@ export default function Storefront() {
       <section className="border-b border-[rgba(247,244,240,0.10)] bg-[#070A0E] text-[#F7F4F0]">
         <div className={WRAP}>
           <div className="flex flex-wrap items-stretch">
-            {[["30-Day", " Protocol Guarantee"], ["Free", " EU Shipping"], [null, "Ships from "], ["Secure", " checkout"]].map(([b, t], i) => (
+            {[["30-Day", " Protocol Guarantee"], ["Free", " EU Shipping"], ["Tracked", " shipping"], ["Secure", " checkout"]].map(([b, t], i) => (
               <div key={i} className={`flex min-w-[200px] flex-1 items-center gap-3 py-[22px] ${i > 0 ? "border-l border-[rgba(247,244,240,0.10)] pl-[34px]" : ""}`}>
                 <span className="h-1.5 w-1.5 flex-none rounded-full bg-[#2ED8A8]" />
                 <span className="font-sans text-[12px] text-[#F7F4F0]/[0.74]">
-                  {i === 2 ? <>Ships from <b className="font-medium text-[#F7F4F0]">Rotterdam</b></> : <><b className="font-medium text-[#F7F4F0]">{b}</b>{t}</>}
+                  <b className="font-medium text-[#F7F4F0]">{b}</b>{t}
                 </span>
               </div>
             ))}
