@@ -131,39 +131,42 @@ function throttled(ip: string): boolean {
   return rec.n > 10;
 }
 
-export default async function handler(req: Request): Promise<Response> {
+export default async function handler(req: any, res: any) {
+  // An order status page must never be cached or indexed.
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+
   if (req.method !== 'POST') {
-    return json({ error: 'Method not allowed' }, 405);
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+  const fwd = req.headers['x-forwarded-for'];
+  const ip = (Array.isArray(fwd) ? fwd[0] : fwd || '').split(',')[0].trim() || 'unknown';
   if (throttled(ip)) {
-    return json({ error: 'Too many attempts. Wait a minute and try again.' }, 429);
+    return res.status(429).json({ error: 'Too many attempts. Wait a minute and try again.' });
   }
 
   const token = process.env.SHOPIFY_ADMIN_TOKEN || process.env.SHOPIFY_ACCESS_TOKEN;
   if (!token) {
     console.error('[track] no Shopify admin token in env');
-    return json({ error: 'Tracking is temporarily unavailable.' }, 500);
+    return res.status(500).json({ error: 'Tracking is temporarily unavailable.' });
   }
 
-  let body: { order?: string; email?: string };
-  try {
-    body = await req.json();
-  } catch {
-    return json({ error: 'Invalid request.' }, 400);
-  }
+  const body = (typeof req.body === 'string' ? JSON.parse(req.body || '{}') : req.body || {}) as {
+    order?: string;
+    email?: string;
+  };
 
   const orderInput = (body.order || '').trim().replace(/^#/, '');
   const emailInput = (body.email || '').trim().toLowerCase();
   if (!orderInput || !emailInput) {
-    return json({ error: 'Enter your order number and the email you ordered with.' }, 400);
+    return res.status(400).json({ error: 'Enter your order number and the email you ordered with.' });
   }
 
   // A single generic failure for "no such order" AND "email doesn't match", so the
   // endpoint cannot be used to discover which order numbers exist.
   const notFound = () =>
-    json({ error: "We couldn't find an order with that number and email." }, 404);
+    res.status(404).json({ error: "We couldn't find an order with that number and email." });
 
   let order: ShopifyOrder | undefined;
   try {
@@ -171,13 +174,13 @@ export default async function handler(req: Request): Promise<Response> {
       `https://${SHOPIFY_STORE}/admin/api/${API_VERSION}/orders.json` +
       `?status=any&name=${encodeURIComponent('#' + orderInput)}` +
       `&fields=name,created_at,tags,email,customer,financial_status,fulfillment_status,line_items,fulfillments`;
-    const res = await fetch(url, { headers: { 'X-Shopify-Access-Token': token } });
-    if (!res.ok) throw new Error(`Shopify ${res.status}`);
-    const data = (await res.json()) as { orders?: ShopifyOrder[] };
+    const r = await fetch(url, { headers: { 'X-Shopify-Access-Token': token } });
+    if (!r.ok) throw new Error(`Shopify ${r.status}`);
+    const data = (await r.json()) as { orders?: ShopifyOrder[] };
     order = (data.orders || [])[0];
   } catch (err) {
     console.error('[track] Shopify lookup failed:', err);
-    return json({ error: 'Tracking is temporarily unavailable.' }, 500);
+    return res.status(500).json({ error: 'Tracking is temporarily unavailable.' });
   }
 
   if (!order) return notFound();
@@ -220,7 +223,7 @@ export default async function handler(req: Request): Promise<Response> {
         ? 'preparing'
         : 'received';
 
-  return json({
+  return res.status(200).json({
     order: order.name,
     firstName: order.customer?.first_name || null,
     placedAt: order.created_at,
@@ -230,17 +233,5 @@ export default async function handler(req: Request): Promise<Response> {
     splitShipment: expected > 1,
     parcels,
     awaiting,
-  });
-}
-
-function json(payload: unknown, status = 200): Response {
-  return new Response(JSON.stringify(payload), {
-    status,
-    headers: {
-      'Content-Type': 'application/json',
-      // An order status page must never be cached or indexed.
-      'Cache-Control': 'no-store',
-      'X-Robots-Tag': 'noindex, nofollow',
-    },
   });
 }
