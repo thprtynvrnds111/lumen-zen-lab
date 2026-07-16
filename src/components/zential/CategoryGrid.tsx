@@ -23,7 +23,7 @@ const MODALITY_BY_HANDLE: Record<string, string> = {
   "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": "Red Light Therapy · NIR",
   "pneumatic-air-wave-massager-pneumatic-circulation-leg-massager-pneumatic-massager": "Sequential Compression",
   "household-red-light-charging-vibrating-red-light-therapy-mat": "Red Light Therapy · Vibration",
-  "portable-home-use-charging-red-light-therapy-blanket-far-infrared": "Far-Infrared · Red Light Therapy",
+  "the-restoration-mat": "Far-Infrared · Red Light Therapy",
   "red-light-therapy-belt-infrared-hot-compress-phototherapy": "Red Light Therapy · Thermal",
   "led-beauty-lamp-red-light-therapy-lamp-desktop-stand": "Red Light Therapy · Desktop",
   "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow":

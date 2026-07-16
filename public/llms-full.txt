@@ -41,14 +41,14 @@ Session: 15 minutes. One-liner: "Recovery, worn close."
 URL: https://zentialpure.com/instruments/restoration-belt
 
 ### The Restoration Mat — from €200
-A full-body bed of 660nm red light and far-infrared heat. Rolls flat for storage.
+A bed of 660nm red light and far-infrared heat, sized 100×40cm or 120×40cm (covers the back of the torso, not head-to-toe). Rolls flat for storage.
 Variants: 100×40cm or 120×40cm, with remote (€220 / €249) or without (€200).
 Session: 20 minutes, lying down.
 URL: https://zentialpure.com/instruments/restoration-mat
 
 ### The System — €399 (regular €468, save €69)
 All three instruments as one protocol: face (12 min), targeted recovery (15 min),
-full-body (20 min). US price fixed at $399.
+mat wind-down (20 min). US price fixed at $399.
 URL: https://zentialpure.com/one-shelf
 
 ### Consumables
@@ -101,7 +101,7 @@ The Clinic Dropout (32–50):
 
 - One clinic red-light or microcurrent session: €80–120 (typical EU pricing).
 - The Restoration Belt (€180) costs roughly two clinic sessions, once.
-- The System (€399) costs roughly four clinic sessions and covers face + body + full-body.
+- The System (€399) costs roughly four clinic sessions and covers face + targeted recovery + mat wind-down.
 - Across one year of daily use: the Face Introducer works out to €0.24/day, the Restoration
   Belt to €0.49/day, The System to €1.09/day (€399 / 365).
 

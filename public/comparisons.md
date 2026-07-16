@@ -20,7 +20,7 @@ beauty routines, shipped from the EU with mechanism-cited (not "clinically prove
 | Face device price | €88 | $209–$339 | $209–$279+ | £295+ | $399 |
 | Modalities in face device | 4 (EMS + microcurrent + thermal + LED) | 1 (microcurrent) | 1–2 (T-Sonic, LED) | 1 (LED) | 3+ (percussive, LED, cleansing) |
 | Body / recovery line | Belt €180 · Mat from €200 | — | — | LED panels (separate, £300+) | percussive massagers |
-| Full-body red light option | Yes (Restoration Mat) | No | No | Partial | No |
+| Lie-down red light mat option | Yes (Restoration Mat, 100/120×40cm) | No | No | Partial | No |
 | Near-infrared (850nm) | Yes (Restoration Belt) | No | No | Some devices | No |
 | Positioning | biohacking protocol | beauty / anti-aging | smart skincare | clinical beauty | performance wellness |
 | Ships from EU | Yes (Rotterdam) | US | EU | UK | US |
@@ -66,7 +66,7 @@ TheraFace Pro ($399) is a strong performance-wellness face device. Therabody's c
 is percussive therapy.
 
 Zential Pure's equivalent spend (€399, The System) buys three instruments covering face,
-targeted muscle recovery (light + heat, worn) and full-body sessions. No percussion — the
+targeted muscle recovery (light + heat, worn) and lie-down mat sessions. No percussion — the
 Zential stack is light, current and heat.
 
 ## Zential Pure vs going to a clinic

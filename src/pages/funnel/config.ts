@@ -11,7 +11,7 @@
  * VERIFIED CATALOG (LIVE-CATALOG-TRUTH, 2026-07-08):
  *  - Face Introducer €88 · EMS·microcurrent·thermal·cosmetic LED (630–660nm) · 12 min
  *  - Restoration Belt €180 (compare-at €280) · 660nm red + 850nm NIR, thermal wrap, waist 28–48in · 15 min
- *  - Restoration Mat from €200 · 660nm red + far-infrared heat, full-body, rolls flat · 20 min
+ *  - Restoration Mat from €200 · 660nm red + far-infrared heat, 100/120×40cm panel, rolls flat · 20 min
  */
 
 /* Heroes — approved, do not change. */
@@ -452,12 +452,12 @@ const restorationMat: BridgeConfig = {
   discountCode: "RITUAL15",
   title: "The Restoration Mat — Zential Pure",
   metaDescription:
-    "The full-body recovery-mat category — 660nm red light and far-infrared heat, edge to edge — recalibrated for a twenty-minute ritual you can roll out anywhere. CE marked. 30-day return. Free, tracked EU shipping.",
+    "The lie-down recovery-mat category — 660nm red light and far-infrared heat, edge to edge across a 100 × 40 cm panel — recalibrated for a twenty-minute ritual you can roll out anywhere. CE marked. 30-day return. Free, tracked EU shipping.",
 
   hero: {
     eyebrow: "You watched her lie down · here is the rest of it",
     headline: "Your whole body carries the day. Give it twenty minutes of light and warmth to set it down.",
-    sub: "The full-body recovery-mat category — 660nm red light and far-infrared heat, edge to edge — recalibrated for a twenty-minute ritual you can roll out anywhere.",
+    sub: "The lie-down recovery-mat category — 660nm red light and far-infrared heat, edge to edge across a 100 × 40 cm panel — recalibrated for a twenty-minute ritual you can roll out anywhere.",
     image: matHero,
     alt: "The Restoration Mat rolled out, glowing softly in a calm, low-lit room.",
   },
@@ -471,12 +471,12 @@ const restorationMat: BridgeConfig = {
 
   mechanism: {
     eyebrow: "How the instrument works",
-    headline: "Full-body restoration",
+    headline: "Wide-field restoration",
     body: [
       "The body responds to specific wavelengths of light and to deep, even warmth. The Restoration Mat delivers 660nm red light and far-infrared heat across its whole surface, so you lie in it rather than aim it.",
       "That is the mechanism. Consistent users report a body that feels looser and a mind that slows down. The claim is deliberately narrow: this is light and warmth applied as a ritual, not a medical treatment.",
     ],
-    caption: "Red light and far-infrared, full-body, twenty minutes, rolled flat.",
+    caption: "Red light and far-infrared, a whole region at a time, twenty minutes, rolled flat.",
     image: matMechanism,
     alt: "A figure lying back on the mat in soft light during an evening ritual.",
     research: {
@@ -554,7 +554,7 @@ const restorationMat: BridgeConfig = {
   },
 
   offer: {
-    eyebrow: "A full-body bed of red light and far-infrared heat.",
+    eyebrow: "A lie-down bed of red light and far-infrared heat.",
     headline: "The Restoration Mat",
     price: "from €200",
     priceNote: "From €200. Once, not per session. Free, tracked EU shipping.",

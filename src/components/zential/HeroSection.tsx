@@ -246,7 +246,7 @@ export function HeroSection() {
      <img
       key={i}
       src={src}
-      alt={i === 0 ? 'Red light therapy mat full-body restoration ritual' : 'Zential Pure ritual'}
+      alt={i === 0 ? 'Red light therapy mat restoration ritual' : 'Zential Pure ritual'}
       className="absolute inset-0 w-full h-full object-cover"
       {...(i === 0 ? { fetchPriority: 'high' as any, loading: 'eager' as const } : { loading: 'lazy' as const })}
       style={{

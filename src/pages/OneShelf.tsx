@@ -54,7 +54,7 @@ const RITUALS: Ritual[] = [
     label: "Night",
     minutes: 20,
     device: "The Restoration Mat",
-    blurb: "Full-body red light and far-infrared warmth. Rolls flat under the bed.",
+    blurb: "A 100 × 40 cm field of red light and far-infrared warmth. Rolls flat under the bed.",
     href: "/instruments/restoration-mat",
     beat: 35,
   },

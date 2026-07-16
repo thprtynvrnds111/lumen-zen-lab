@@ -98,7 +98,7 @@ describe("LIVE_HANDLES allowlist", () => {
       LIVE_HANDLES.has("red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device"),
     ).toBe(true);
     expect(
-      LIVE_HANDLES.has("portable-home-use-charging-red-light-therapy-blanket-far-infrared"),
+      LIVE_HANDLES.has("the-restoration-mat"),
     ).toBe(true);
     expect(LIVE_HANDLES.has("the-system-founding-bundle")).toBe(true);
   });

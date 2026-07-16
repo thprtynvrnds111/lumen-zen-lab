@@ -35,7 +35,7 @@ interface Instrument { slug: string; title: string; desc: string; price: number;
 const INSTRUMENTS: Instrument[] = [
   { slug: "face-introducer", title: "The Face Introducer", desc: "Four modalities for face and neck, in a twelve-minute ritual.", price: 88, handle: "lifting-and-tightening-face-introducer", img: heroFace },
   { slug: "restoration-belt", title: "The Restoration Belt", desc: "660nm and 850nm light, pressed to the muscle by a thermal wrap.", price: 180, handle: "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device", img: heroBelt },
-  { slug: "restoration-mat", title: "The Restoration Mat", desc: "A full-body bed of 660nm red light and far-infrared heat. You lie down; the array works.", price: 200, handle: "portable-home-use-charging-red-light-therapy-blanket-far-infrared", img: heroMat },
+  { slug: "restoration-mat", title: "The Restoration Mat", desc: "A 100 × 40 cm bed of 660nm red light and far-infrared heat — 120 × 40 cm in the longer size. You lie down; the array works.", price: 200, handle: "the-restoration-mat", img: heroMat },
 ];
 
 // Cosmetic LED carries NO mechanism/nm/clinic claim (modality-naming-standard.md);
@@ -50,7 +50,7 @@ const MODALITIES: { n: string; verb: string; title: string; body: string; to: st
 const PROTOCOLS = [
   { n: "01", title: "The Face Protocol", body: "The Face Introducer, calibrated to a twelve-minute daily arc. Where most begin.", note: "€88" },
   { n: "02", title: "The Recovery Protocol", body: "Face Introducer paired with the Restoration Belt. Skin and body, the same standard.", note: "See the sequence →" },
-  { n: "03", title: "The Full System", body: "All three instruments, sequenced. Face, recovery and full-body restoration as one ritual.", note: "See the sequence →" },
+  { n: "03", title: "The Full System", body: "All three instruments, sequenced. Face, targeted recovery and wide-field restoration as one ritual.", note: "See the sequence →" },
 ];
 
 export default function Storefront() {

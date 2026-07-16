@@ -19,7 +19,7 @@ export const LIVE_HANDLES: ReadonlySet<string> = new Set([
   // Core catalog
   'lifting-and-tightening-face-introducer', // The Face Introducer — €88
   'red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device', // The Restoration Belt — €180
-  'portable-home-use-charging-red-light-therapy-blanket-far-infrared', // The Restoration Mat — from €200
+  'the-restoration-mat', // The Restoration Mat — from €200
   'the-system-founding-bundle', // The System bundle
   // Purchase-path add-ons (conductive gel + PDRN pads)
   'medicube-collagen-elastic-jelly-moisturizing-cream', // Restore Gel — €18

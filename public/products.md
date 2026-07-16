@@ -28,7 +28,7 @@
   - Without remote, 120×40cm — €200
   - With remote, 100×40cm — €220
   - With remote, 120×40cm — €249
-- **Modalities:** 660nm red light + far-infrared heat, full-body, rolls flat
+- **Modalities:** 660nm red light + far-infrared heat · 100×40cm or 120×40cm panel (back-of-torso coverage), rolls flat
 - **Session:** 20 minutes
 - **URL:** https://zentialpure.com/instruments/restoration-mat
 
@@ -37,7 +37,7 @@
 ### The System
 - **Price:** €399 (regular €468 — save €69) · US: $399
 - **Contents:** Face Introducer + Restoration Belt + Restoration Mat
-- **The protocol:** face 12 min · targeted recovery 15 min · full-body 20 min
+- **The protocol:** face 12 min · targeted recovery 15 min · mat wind-down 20 min
 - **URL:** https://zentialpure.com/one-shelf
 
 ## Consumables

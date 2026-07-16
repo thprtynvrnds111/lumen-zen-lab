@@ -23,7 +23,7 @@ import { trackAddToCart } from "@/lib/google-tracking";
 const SYSTEM = [
   { name: "The Face Introducer", handle: "lifting-and-tightening-face-introducer", to: "/instruments/face-introducer" },
   { name: "The Restoration Belt", handle: "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device", to: "/instruments/restoration-belt" },
-  { name: "The Restoration Mat", handle: "portable-home-use-charging-red-light-therapy-blanket-far-infrared", to: "/instruments/restoration-mat" },
+  { name: "The Restoration Mat", handle: "the-restoration-mat", to: "/instruments/restoration-mat" },
 ];
 
 const BUNDLE_HANDLE = "the-system-founding-bundle";

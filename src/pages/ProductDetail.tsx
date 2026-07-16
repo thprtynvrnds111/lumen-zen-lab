@@ -144,7 +144,7 @@ const PRODUCT_PRICES: Record<string, string> = {
  "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow": "34.00",
  "led-beauty-lamp-red-light-therapy-lamp-desktop-stand": "89.00",
  "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad": "59.00",
- "portable-home-use-charging-red-light-therapy-blanket-far-infrared": "200.00",
+ "the-restoration-mat": "200.00",
  "household-full-body-moisture-removing-infrared-sauna-blanket": "119.00",
  "null-1777641441133": "89.00",
  "red-light-therapy-belt-infrared-hot-compress-phototherapy": "69.00",

@@ -137,7 +137,7 @@ export const protocols: Protocol[] = [
    "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
    "pneumatic-air-wave-massager-pneumatic-circulation-leg-massager-pneumatic-massager",
    "household-red-light-charging-vibrating-red-light-therapy-mat",
-   "portable-home-use-charging-red-light-therapy-blanket-far-infrared",
+   "the-restoration-mat",
    "red-light-therapy-belt-infrared-hot-compress-phototherapy",
   ],
  },

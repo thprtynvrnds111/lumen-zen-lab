@@ -53,14 +53,14 @@ const RECEIPTS: Receipt[] = [
   {
     key: "restoration-mat",
     tab: "Restoration Mat",
-    headline: "A full-body array you lie down on.",
+    headline: "A wide array you lie down on.",
     stats: [
       { v: "660nm + FIR", l: "Red light + far-infrared heat" },
       { v: "20 min", l: "You lie down; the array works" },
       { v: "from €200", l: "Rolls flat when the session ends" },
     ],
     receipt:
-      "Full-body coverage is the difference between treating a spot and closing the day. Twenty minutes, lying still, before sleep.",
+      "A 100 × 40 cm field (or 120 × 40 cm) is the difference between treating a spot and closing the day. Twenty minutes, lying still, before sleep.",
     to: "/instruments/restoration-mat",
   },
 ];

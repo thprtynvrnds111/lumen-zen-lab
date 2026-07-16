@@ -53,8 +53,8 @@ const INSTRUMENTS: Instrument[] = [
     protocol: "Protocol 03",
     name: "The Restoration Mat",
     blurb:
-      "A full-body bed of 660nm red light and far-infrared heat. You lie down, the array does the rest. Twenty horizontal minutes.",
-    handle: "portable-home-use-charging-red-light-therapy-blanket-far-infrared",
+      "A 100 × 40 cm bed of 660nm red light and far-infrared heat — 120 × 40 cm in the longer size. You lie down, the array does the rest. Twenty horizontal minutes.",
+    handle: "the-restoration-mat",
     to: "/instruments/restoration-mat",
     img: heroMat,
     alt: "The Restoration Mat",

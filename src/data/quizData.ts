@@ -120,7 +120,7 @@ export function getRecommendation(a: QuizAnswers): Recommendation {
  // quiz result hanging with no price and a disabled Add-to-cart. Do not reintroduce them.
  const FACE = "lifting-and-tightening-face-introducer"; // The Face Introducer — €88
  const BELT = "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device"; // The Restoration Belt — €180
- const MAT = "portable-home-use-charging-red-light-therapy-blanket-far-infrared"; // The Restoration Mat — €200
+ const MAT = "the-restoration-mat"; // The Restoration Mat — €200
 
  // Primary device by concern. Face concerns → the Face Introducer (the only live face
  // instrument); body → the Restoration Belt.
