@@ -3,10 +3,10 @@ import { EditorialImageSlot } from "./EditorialImageSlot";
 import { EditorialNewsletter } from "./EditorialNewsletter";
 import { CitationNote } from "./CitationNote";
 import { C_ADHERENCE } from "./citations";
-
-const PDP = "/instruments/restoration-belt?utm_source=pinterest&utm_medium=pin&utm_campaign=the-ritual";
+import { usePdpLink } from "../../lib/pdpLink";
 
 export default function TheRitual() {
+  const PDP = usePdpLink("/instruments/restoration-belt", "the-ritual");
   return (
     <EditorialLayout
       slug="the-ritual"

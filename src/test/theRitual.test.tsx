@@ -26,7 +26,7 @@ describe("TheRitual", () => {
     const soft = screen.getByRole("link", { name: /read about the instrument/i });
     expect(soft).toHaveAttribute(
       "href",
-      "/instruments/restoration-belt?utm_source=pinterest&utm_medium=pin&utm_campaign=the-ritual",
+      "/instruments/restoration-belt?utm_campaign=the-ritual",
     );
     const order = screen.getByRole("link", { name: /order the restoration belt/i });
     expect(order.getAttribute("href")).toContain("utm_campaign=the-ritual");

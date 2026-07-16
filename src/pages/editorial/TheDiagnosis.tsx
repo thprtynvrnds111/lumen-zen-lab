@@ -3,8 +3,7 @@ import { EditorialImageSlot } from "./EditorialImageSlot";
 import { EditorialNewsletter } from "./EditorialNewsletter";
 import { QuoteCarousel } from "./QuoteCarousel";
 import { C_ADHERENCE, C_EMS, C_MICROCURRENT } from "./citations";
-
-const PDP = "/instruments/face-introducer?utm_source=pinterest&utm_medium=pin&utm_campaign=the-diagnosis";
+import { usePdpLink } from "../../lib/pdpLink";
 
 /**
  * The three papers this page's argument actually rests on. This was three invented
@@ -13,6 +12,7 @@ const PDP = "/instruments/face-introducer?utm_source=pinterest&utm_medium=pin&ut
 const CITATIONS = [C_MICROCURRENT, C_EMS, C_ADHERENCE];
 
 export default function TheDiagnosis() {
+  const PDP = usePdpLink("/instruments/face-introducer", "the-diagnosis");
   return (
     <EditorialLayout
       slug="the-diagnosis"

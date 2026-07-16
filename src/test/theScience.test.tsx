@@ -30,7 +30,7 @@ describe("TheScience", () => {
     const order = screen.getByRole("link", { name: /order the restoration belt/i });
     expect(order).toHaveAttribute(
       "href",
-      "/instruments/restoration-belt?utm_source=pinterest&utm_medium=pin&utm_campaign=the-science",
+      "/instruments/restoration-belt?utm_campaign=the-science",
     );
   });
 });

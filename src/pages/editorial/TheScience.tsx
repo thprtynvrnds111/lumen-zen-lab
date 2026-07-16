@@ -3,8 +3,7 @@ import { EditorialImageSlot } from "./EditorialImageSlot";
 import { EditorialNewsletter } from "./EditorialNewsletter";
 import { CitationNote } from "./CitationNote";
 import { C_DOSE } from "./citations";
-
-const PDP = "/instruments/restoration-belt?utm_source=pinterest&utm_medium=pin&utm_campaign=the-science";
+import { usePdpLink } from "../../lib/pdpLink";
 
 const MECHANISMS = [
   {
@@ -28,6 +27,7 @@ const MECHANISMS = [
 ];
 
 export default function TheScience() {
+  const PDP = usePdpLink("/instruments/restoration-belt", "the-science");
   return (
     <EditorialLayout
       slug="the-science"
