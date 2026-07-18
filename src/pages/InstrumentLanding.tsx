@@ -54,7 +54,6 @@ interface InstrumentConfig {
   heroConcrete?: string;
   lede: string;
   trust: string[];
-  founding: number;
   modLabel: string;
   badges: Badge[];
   who: { h2: string; paras: string[]; kicker: string; img: string; imgAlt: string };
@@ -84,7 +83,6 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     lede:
       "EMS, microcurrent, thermal and cosmetic LED — the four inputs a facialist charges you by the session, calibrated into a twelve-minute ritual you run yourself.",
     trust: ["30-day protocol guarantee", "Ships in 48 hours", "12-minute ritual"],
-    founding: 73,
     modLabel: "Four modalities",
     badges: [
       { label: "EMS" },
@@ -150,7 +148,6 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     lede:
       "A contoured thermal wrap that holds sustained warmth — and 660nm red and 850nm near-infrared light — against the working muscle. The recovery room, narrowed to the span of your lower back. Fifteen minutes.",
     trust: ["30-day protocol guarantee", "Cordless · ships in 48 hours", "15-minute ritual"],
-    founding: 61,
     modLabel: "Four mechanisms",
     badges: [
       { label: "Thermal", sub: "sustained" },
@@ -217,7 +214,6 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     lede:
       "A 100 × 40 cm bed of 660nm red light and far-infrared heat — 120 × 40 cm in the longer size. You lie down, the array does the rest, and the nervous system gets twenty minutes it does not usually get.",
     trust: ["30-day protocol guarantee", "Rolls flat · ships in 48 hours", "20-minute ritual"],
-    founding: 48,
     modLabel: "Four mechanisms",
     badges: [
       { label: "Red LED", sub: "660nm" },
@@ -295,17 +291,24 @@ export default function InstrumentLanding() {
   const navigate = useNavigate();
   const addItem = useCartStore((s) => s.addItem);
   const [livePrice, setLivePrice] = useState<string | null>(null);
-  const [liveFounding, setLiveFounding] = useState<number | null>(null);
   const [ordering, setOrdering] = useState(false);
   const [showSticky, setShowSticky] = useState(false);
   // Bridge-funnel continuity: arriving with ?discount= shows a quiet founding
   // strip so the promise made on the bridge is visibly kept. No param, no strip.
-  const [foundingArrival, setFoundingArrival] = useState(false);
+  const [arrivalCode, setArrivalCode] = useState<string | null>(null);
   useEffect(() => {
     try {
-      setFoundingArrival(new URLSearchParams(window.location.search).has("discount"));
+      setArrivalCode(new URLSearchParams(window.location.search).get("discount"));
     } catch { /* never break the PDP */ }
   }, []);
+  // Allowlist of campaign codes we render into the strip (URL param is
+  // user-controlled — never echo arbitrary text into brand UI). Deliberately NO
+  // percentage claims here: code validity/rate lives in Shopify and drifts.
+  // New campaign code → add it here or the arrival strip stays hidden.
+  const knownArrival =
+    arrivalCode && ["PROTOCOL10", "RITUAL15", "PRACTICE20"].includes(arrivalCode.toUpperCase())
+      ? arrivalCode.toUpperCase()
+      : null;
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -334,11 +337,6 @@ export default function InstrumentLanding() {
           const n = parseFloat(amt);
           if (!isNaN(n)) setLivePrice(formatMoney(Math.round(n), priceObj?.currencyCode || "EUR"));
         }
-        const fc = p?.metafields?.find((m) => m?.key === "founding_claimed")?.value;
-        if (fc) {
-          const c = parseInt(fc, 10);
-          if (!isNaN(c)) setLiveFounding(c);
-        }
       })
       .catch(() => {});
     return () => { active = false; };
@@ -351,7 +349,6 @@ export default function InstrumentLanding() {
   // the wrong currency for a US visitor. cfg.price stays as SSR/SEO metadata and
   // as the cross-sell teaser price for the *other* instruments below.
   const priceLabel = livePrice ?? "—";
-  const founding = liveFounding ?? cfg.founding;
 
   async function order() {
     if (!cfg || ordering) return;
@@ -397,7 +394,7 @@ export default function InstrumentLanding() {
 
   return (
     <PageShell title={cfg.seoTitle} description={cfg.seoDescription} canonical={`https://zentialpure.com/instruments/${cfg.slug}`} hideHero>
-      {foundingArrival && (
+      {knownArrival && (
         <div
           style={{
             background: "#F7F4F0",
@@ -410,7 +407,7 @@ export default function InstrumentLanding() {
           }}
         >
           <span style={{ color: "#2ED8A8", marginRight: 8 }}>✓</span>
-          Founding offer active — your price is applied at checkout. 30-day full refund, free EU shipping.
+          Founding code {knownArrival} active — applied automatically at checkout. 30-day full refund, free EU shipping.
         </div>
       )}
       {/* ── HERO ── */}
@@ -445,10 +442,6 @@ export default function InstrumentLanding() {
                 ))}
               </div>
               <div className="flex flex-wrap items-center gap-3">
-                <div className="inline-flex items-center gap-[14px] self-start rounded-full border border-[rgba(247,244,240,0.10)] bg-[#2ED8A8]/[0.05] px-[18px] py-[11px]">
-                  <span className="h-[7px] w-[7px] rounded-full bg-[#2ED8A8]" />
-                  <span className="font-sans text-[11px] text-[#F7F4F0]/[0.78]"><b className="font-semibold tabular-nums text-[#2ED8A8]">{founding}</b> of 100 founding places claimed</span>
-                </div>
                 <RatingBadge slug={cfg.slug} />
               </div>
             </div>
@@ -484,7 +477,7 @@ export default function InstrumentLanding() {
               "2-year warranty",
               "30-day protocol guarantee",
               "Ships in 48 hours",
-              `${founding} / 100 founding places claimed`,
+              "Registered EU company · Zential Pure B.V., Netherlands",
             ].map((t) => (
               <span key={t} className="inline-flex items-center gap-2 before:block before:h-[5px] before:w-[5px] before:rounded-full before:bg-[#157A5C]">{t}</span>
             ))}
@@ -602,18 +595,17 @@ export default function InstrumentLanding() {
         <div className={WRAP}>
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-14">
             <div>
-              <Eyebrow num="07">Founding 100</Eyebrow>
-              <h2 className="my-5 font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] text-[#F7F4F0]">The first hundred set the protocol.</h2>
-              <p className="text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">Founding members get the launch price held for life, first access to new instruments, and a direct line to the people calibrating the protocols. When the hundred are claimed, the price moves.</p>
+              <Eyebrow num="07">Founding cohort</Eyebrow>
+              <h2 className="my-5 font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] text-[#F7F4F0]">The first buyers set the protocol.</h2>
+              <p className="text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">Founding members buy at the launch price, get first access to new instruments, and a direct line to the people calibrating the protocols.</p>
             </div>
             <div className="relative overflow-hidden rounded-[14px] border border-[rgba(247,244,240,0.10)] bg-[#070A0E] p-10">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(420px_circle_at_80%_0%,rgba(46,216,168,0.12),transparent_65%)]" />
-              <div className="relative z-[2] flex flex-wrap items-end justify-between gap-3.5">
-                <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-[#F7F4F0]/50">Places claimed</span>
-                <span className="font-serif italic text-[40px] leading-none tabular-nums text-[#2ED8A8]">{founding}<small className="text-[20px] text-[#F7F4F0]/40"> / 100</small></span>
-              </div>
-              <div className="relative z-[2] mt-[22px] h-[6px] overflow-hidden rounded-[3px] bg-[rgba(247,244,240,0.08)]">
-                <i className="block h-full rounded-[3px] bg-[linear-gradient(90deg,#2ED8A8,#1BAF86)]" style={{ width: `${founding}%` }} />
+              <div className="relative z-[2] flex flex-col gap-2.5">
+                <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-[#F7F4F0]/50">What founding means</span>
+                {["Launch price, no subscription", "30-day full refund, any reason", "2-year warranty", "Direct line to the protocol team"].map((t) => (
+                  <span key={t} className="inline-flex items-center gap-2 font-sans text-[13px] text-[#F7F4F0]/[0.78] before:block before:h-[5px] before:w-[5px] before:rounded-full before:bg-[#2ED8A8]">{t}</span>
+                ))}
               </div>
               <button onClick={order} disabled={ordering} className={`${PILL_BRAND} relative z-[2] mt-7`}>Claim a founding place</button>
             </div>
@@ -627,7 +619,7 @@ export default function InstrumentLanding() {
           <Eyebrow num="08" tone="meta">Complete the system</Eyebrow>
           <div className="mt-5 flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
             <h2 className="max-w-[18ch] font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] leading-[1.1] text-[#1A1714]">Three instruments, one protocol.</h2>
-            <p className="max-w-[44ch] text-[15px] leading-[1.7] text-[#1A1714]/[0.66]">Face, body, full rest. Each instrument works alone — together they cover the whole day. The complete System runs €468.</p>
+            <p className="max-w-[44ch] text-[15px] leading-[1.7] text-[#1A1714]/[0.66]">Face, body, full rest. Each instrument works alone — together they cover the whole day. The complete System runs €399.</p>
           </div>
           <div className="mt-[44px] grid gap-px border border-[rgba(26,23,20,0.12)] bg-[rgba(26,23,20,0.12)] md:grid-cols-2">
             {others.map((o) => (

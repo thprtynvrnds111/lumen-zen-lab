@@ -10,6 +10,7 @@
  *
  * VERIFIED CATALOG (LIVE-CATALOG-TRUTH, 2026-07-08):
  *  - Face Introducer €88 · EMS·microcurrent·thermal·cosmetic LED (630–660nm) · 12 min
+ *    · with RITUAL15 (15%): €74.80 — cartCreate-verified 2026-07-18 (grep anchor: 74.80)
  *  - Restoration Belt €180 (compare-at €280) · 660nm red + 850nm NIR, thermal wrap, waist 28–48in · 15 min
  *  - Restoration Mat from €200 · 660nm red + far-infrared heat, 100/120×40cm panel, rolls flat · 20 min
  */
@@ -70,13 +71,38 @@ export interface RitualStep {
 
 export interface BridgeConfig {
   slug: string;
-  /** Where the single purchase-path CTA routes. Discount param appended at render. */
+  /** PDP route. When `checkout` is set, buy CTAs bypass this and go one-hop to
+   *  checkout; pdpPath then only feeds the "see the product page" softlink
+   *  (with ?discount= appended, which drives the PDP arrival strip). */
   pdpPath: string;
   discountCode: string;
+  /** Direct-to-checkout data. When set, buy CTAs render as a plain anchor to a
+   *  Shopify cart permalink derived from variantId + discountCode (works with
+   *  zero JS in weak in-app browsers), and fire click-bound AddToCart +
+   *  InitiateCheckout with these figures. Every figure here must be verified
+   *  against live Shopify (cartCreate) before shipping. */
+  checkout?: {
+    variantId: string;
+    name: string;
+    listValue: number;
+    /** Price after discountCode — must match a live cartCreate total. */
+    checkoutValue: number;
+    currency: string;
+  };
   title: string;
   metaDescription: string;
 
-  hero: { eyebrow: string; headline: string; sub: string; image: string; alt: string };
+  hero: {
+    eyebrow: string;
+    headline: string;
+    sub: string;
+    /** Price + risk-reversal line shown above the hero CTA. */
+    priceLine: string;
+    /** Hero CTA label — the same single purchase path as the offer block. */
+    cta: string;
+    image: string;
+    alt: string;
+  };
 
   credibility: {
     eyebrow: string;
@@ -127,6 +153,8 @@ export interface BridgeConfig {
     cta: string;
     /** Micro-reassurance rendered directly under the CTA button. */
     ctaNote: string;
+    /** One-line price+risk summary for the sticky bar. */
+    stickyLine: string;
     image: string;
     alt: string;
   };
@@ -198,14 +226,26 @@ const faceIntroducer: BridgeConfig = {
   slug: "face-introducer",
   pdpPath: "/instruments/face-introducer",
   discountCode: "RITUAL15",
+  // Verified 2026-07-18: variant 51731419922775 = Face Introducer €88.00 (live
+  // products.json); cart permalink 302s straight into checkout with
+  // discount_code=RITUAL15 applied; cartCreate with RITUAL15 totals €74.80.
+  checkout: {
+    variantId: "51731419922775",
+    name: "The Face Introducer",
+    listValue: 88.0,
+    checkoutValue: 74.8,
+    currency: "EUR",
+  },
   title: "The Face Introducer — Zential Pure",
   metaDescription:
     "The instrument category behind clinic microcurrent, recalibrated for a twelve-minute evening ritual at home. CE marked. 30-day return. Free, tracked EU shipping.",
 
   hero: {
-    eyebrow: "You watched her story · here is the rest of it",
+    eyebrow: "No miracle — a mechanism · here is the full story",
     headline: "Your skin already knows how to do this. It has simply stopped being reminded.",
-    sub: "The instrument category behind clinic microcurrent, recalibrated for a twelve-minute evening ritual at home.",
+    sub: "The instrument category behind clinic microcurrent — EMS, microcurrent, thermal and cosmetic LED (630–660nm) — recalibrated for a twelve-minute evening ritual at home.",
+    priceLine: "€88 once · 30-day full refund, any reason",
+    cta: "Claim the founding price",
     image: faceHero,
     alt: "The Face Introducer resting on a bathroom shelf in warm evening light.",
   },
@@ -223,17 +263,18 @@ const faceIntroducer: BridgeConfig = {
     body: [
       "Facial tissue produces its own low-level electrical signal. With age and fatigue that signal grows quieter. The Face Introducer delivers a calibrated microcurrent that reminds the tissue of a frequency it already produces naturally.",
       "That is the mechanism. The benefit reported by consistent users is firmer-looking contour and a more rested appearance. The claim we make is deliberately narrow: this is support, delivered daily, not a cure.",
+      "The cosmetic LED runs at 630–660nm — wavelengths absorbed in the upper layers of the skin, a process called photobiomodulation. Where the cosmetic LED literature is studied at all, the subject is the appearance of skin — and the timescale is weeks of consistent use, not days.",
     ],
     caption: "Four modalities — EMS, microcurrent, thermal and cosmetic LED (630–660nm) — one calibrated signal, twelve minutes.",
     image: faceMechanism,
     alt: "The Face Introducer standing on a marble shelf at dusk, red light glowing at its head, conductive gel beside it.",
     research: {
       intro:
-        "Peer-reviewed studies on this technology class report measurable short-term changes in muscle tone and skin firmness with repeated use. We link the category literature rather than claiming any single guaranteed outcome for you.",
+        "Peer-reviewed studies exist on this technology class — facial microcurrent, EMS and cosmetic LED. The evidence is early and modest, and two things we refuse to do: promise you a specific outcome, or decorate this page with citations we have not read ourselves. Here is the honest shape of it.",
       points: [
-        "Reviews on facial microcurrent and neuromuscular stimulation (category level).",
-        "Cosmetic LED literature on 630–660nm wavelengths.",
-        "Our own methodology note on session frequency and duration.",
+        "Facial microcurrent and neuromuscular stimulation: category-level reviews are studied for short-term changes in muscle tone with repeated use. The evidence is early and modest — we would rather say so than oversell it.",
+        "Cosmetic LED at 630–660nm: the wavelength range studied for the appearance of skin with repeated use. Studied means studied — not proven for you personally.",
+        "Frequency and duration follow the protocol card in the box: twelve minutes, most evenings. Consistency is the variable the literature keeps pointing at.",
       ],
       disclaimer:
         "Individual results vary with consistency. This instrument supports the appearance of skin; it does not treat any medical condition.",
@@ -305,12 +346,13 @@ const faceIntroducer: BridgeConfig = {
     eyebrow: "Clinic precision. Daily ritual.",
     headline: "The Face Introducer",
     price: "€88",
-    priceNote: "Once, not per session. One clinic session costs €80 to €120. Free, tracked EU shipping.",
+    priceNote: "Once, not per session. One clinic session costs €80 to €120. The founding code RITUAL15 is applied for you at checkout — €74.80, nothing to type. Free, tracked EU shipping.",
     inBoxTitle: "In the box",
     inBox: ["The Face Introducer instrument", "Conductive ritual gel, first supply", "Magnetic charging base and cable", "The twelve-minute protocol card"],
     guarantee: GUARANTEE,
-    cta: "See the Face Introducer",
-    ctaNote: "Founding price carried to checkout · Free, tracked EU shipping · 30-day full refund",
+    cta: "Claim the founding price",
+    ctaNote: "RITUAL15 applied automatically — €74.80 at checkout · Free, tracked EU shipping · 30-day full refund",
+    stickyLine: "€74.80 founding · 30-day return",
     image: faceOffer,
     alt: "The Face Introducer in its open Zential Pure box on a kitchen table.",
   },
@@ -332,6 +374,8 @@ const restorationBelt: BridgeConfig = {
     eyebrow: "You watched her routine · here is the rest of it",
     headline: "Your body already knows how to recover. Warmth and the right light simply give it somewhere to begin.",
     sub: "The recovery-wrap category — 660nm red and 850nm near-infrared, pressed close to muscle by a thermal wrap — recalibrated for a fifteen-minute ritual at home.",
+    priceLine: "€180 once · 30-day full refund, any reason",
+    cta: "See the Restoration Belt",
     image: beltHero,
     alt: "The Restoration Belt wrapped at the waist in warm, low evening light.",
   },
@@ -437,6 +481,7 @@ const restorationBelt: BridgeConfig = {
     guarantee: GUARANTEE,
     cta: "See the Restoration Belt",
     ctaNote: "Founding price carried to checkout · Free, tracked EU shipping · 30-day full refund",
+    stickyLine: "€180 · 30-day return",
     image: beltOffer,
     alt: "The Restoration Belt, folded and arranged on a warm surface.",
   },
@@ -458,6 +503,8 @@ const restorationMat: BridgeConfig = {
     eyebrow: "You watched her lie down · here is the rest of it",
     headline: "Your whole body carries the day. Give it twenty minutes of light and warmth to set it down.",
     sub: "The lie-down recovery-mat category — 660nm red light and far-infrared heat, edge to edge across a 100 × 40 cm panel — recalibrated for a twenty-minute ritual you can roll out anywhere.",
+    priceLine: "from €200 once · 30-day full refund, any reason",
+    cta: "See the Restoration Mat",
     image: matHero,
     alt: "The Restoration Mat rolled out, glowing softly in a calm, low-lit room.",
   },
@@ -563,6 +610,7 @@ const restorationMat: BridgeConfig = {
     guarantee: GUARANTEE,
     cta: "See the Restoration Mat",
     ctaNote: "Founding price carried to checkout · Free, tracked EU shipping · 30-day full refund",
+    stickyLine: "from €200 · 30-day return",
     image: matOffer,
     alt: "The Restoration Mat, rolled and arranged on a warm surface.",
   },

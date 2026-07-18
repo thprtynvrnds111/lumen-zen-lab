@@ -1,9 +1,9 @@
 import { Helmet } from "react-helmet-async";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Check, ChevronDown, ArrowRight, ShieldCheck, BadgeCheck, Truck, Lock, Star } from "lucide-react";
+import { Check, ChevronDown, ArrowRight, ShieldCheck, BadgeCheck, Truck, Lock } from "lucide-react";
 import { getBridgeConfig } from "./config";
-import { ga4Event, pixelBridgeEngaged, pixelViewContent } from "./tracking";
+import { ga4Event, pixelBridgeEngaged, pixelDirectCheckout, pixelViewContent } from "./tracking";
 
 /* ────────────────────────────────────────────────────────────────────────────
    Paid-traffic BRIDGE page (advertorial long-scroll) — the missing middle of the
@@ -49,55 +49,80 @@ function SectionMark({ n, label }: { n: string; label: string }) {
   );
 }
 
-/** Reveal-on-scroll wrapper. Honors prefers-reduced-motion (no transform, instant). */
-function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const reduce =
-      typeof window !== "undefined" &&
-      window.matchMedia &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      setShown(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setShown(true);
-            io.disconnect();
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-  return (
-    <div ref={ref} className={`zb-reveal ${shown ? "is-in" : ""} ${className}`}>
-      {children}
-    </div>
-  );
-}
-
 const TRUST_ICONS = [BadgeCheck, ShieldCheck, ShieldCheck, ShieldCheck, Lock, Truck];
 
 export default function FunnelBridge() {
   const { slug } = useParams();
   const config = getBridgeConfig(slug) ?? getBridgeConfig("face-introducer")!;
 
+  // window.location.search, captured after mount. Prerendered HTML has no
+  // params; the post-hydration re-render rewrites hrefs with the live search
+  // (attribute updates on re-render DO apply — only the initial hydration pass
+  // leaves server attributes alone).
+  const [liveSearch, setLiveSearch] = useState("");
+  useEffect(() => {
+    try {
+      setLiveSearch(window.location.search);
+    } catch { /* never break the lander */ }
+  }, []);
+
   // Preserve incoming params (fbclid etc.) and append the campaign discount.
   const ctaHref = useMemo(() => {
-    const search = typeof window !== "undefined" ? window.location.search : "";
-    const params = new URLSearchParams(search);
+    const params = new URLSearchParams(liveSearch);
     params.set("discount", config.discountCode);
     return `${config.pdpPath}?${params.toString()}`;
-  }, [config]);
+  }, [config, liveSearch]);
+
+  // One-hop purchase path: cart permalink straight into checkout (no PDP, no JS
+  // required — the prerendered anchor already carries the discount). Incoming
+  // attribution params (fbclid, utm_*) are forwarded once liveSearch resolves.
+  const buyHref = useMemo(() => {
+    if (!config.checkout) return ctaHref;
+    const params = new URLSearchParams(liveSearch);
+    params.set("discount", config.discountCode);
+    return `https://checkout.zentialpure.com/cart/${config.checkout.variantId}:1?${params.toString()}`;
+  }, [config, ctaHref, liveSearch]);
+
+  const onCtaClick = (placement: string) => () =>
+    ga4Event("bridge_cta_click", { slug: config.slug, discount: config.discountCode, placement });
+
+  // Buy-CTA click on the one-hop path: fire click-bound ATC/IC, give the pixel
+  // requests a beat to leave before the same-tab navigation unloads the page.
+  const onBuyClick = (placement: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    onCtaClick(placement)();
+    if (!config.checkout) return;
+    pixelDirectCheckout({
+      // Same gid namespace the PDP path uses for content_ids — one product,
+      // one id format, or Meta treats them as different products.
+      variantId: `gid://shopify/ProductVariant/${config.checkout.variantId}`,
+      name: config.checkout.name,
+      listValue: config.checkout.listValue,
+      checkoutValue: config.checkout.checkoutValue,
+      currency: config.checkout.currency,
+    });
+    if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    e.preventDefault();
+    const dest = buyHref;
+    window.setTimeout(() => { window.location.href = dest; }, 120);
+  };
+
+  // Single buy CTA element: plain anchor (works without JS) on the one-hop
+  // checkout path; SPA <Link> when the purchase path is still the PDP.
+  const BuyCta = ({ placement, className, tabIndex, children }: {
+    placement: string;
+    className: string;
+    tabIndex?: number;
+    children: React.ReactNode;
+  }) =>
+    config.checkout ? (
+      <a href={buyHref} className={className} onClick={onBuyClick(placement)} tabIndex={tabIndex}>
+        {children}
+      </a>
+    ) : (
+      <Link to={ctaHref} className={className} onClick={onCtaClick(placement)} tabIndex={tabIndex}>
+        {children}
+      </Link>
+    );
 
   // noindex for this campaign lander (flip the static tag too — matches /reveal).
   useEffect(() => {
@@ -129,9 +154,6 @@ export default function FunnelBridge() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [config.slug]);
 
-  const onCtaClick = (placement: string) => () =>
-    ga4Event("bridge_cta_click", { slug: config.slug, discount: config.discountCode, placement });
-
   // Sticky mini-CTA: appears once she has read past the hero + credibility stack,
   // hides while the real offer block (or footer) is on screen — one purchase path,
   // always within a thumb's reach.
@@ -139,7 +161,7 @@ export default function FunnelBridge() {
   const [stickyVisible, setStickyVisible] = useState(false);
   const [offerOnScreen, setOfferOnScreen] = useState(false);
   useEffect(() => {
-    const onScroll = () => setStickyVisible(window.scrollY > window.innerHeight * 1.1);
+    const onScroll = () => setStickyVisible(window.scrollY > window.innerHeight * 0.6);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     // Hide the sticky bar whenever ANY primary CTA is on screen — not only the
@@ -189,9 +211,15 @@ export default function FunnelBridge() {
           <p className="zb-hero-eyebrow">{config.hero.eyebrow}</p>
           <h1 className="zb-display">{config.hero.headline}</h1>
           <p className="zb-hero-sub">{config.hero.sub}</p>
-          <a href="#credibility" className="zb-scrollcue" aria-label="Read on">
-            Read on <ChevronDown size={16} />
-          </a>
+          <p className="zb-hero-price">{config.hero.priceLine}</p>
+          <div className="zb-hero-actions">
+            <BuyCta placement="hero" className="zb-cta">
+              {config.hero.cta} <ArrowRight size={18} />
+            </BuyCta>
+            <a href="#credibility" className="zb-scrollcue" aria-label="Read on">
+              Read on <ChevronDown size={16} />
+            </a>
+          </div>
         </div>
         <div className="zb-hero-media">
           <img src={config.hero.image} alt={config.hero.alt} loading="eager" />
@@ -200,7 +228,7 @@ export default function FunnelBridge() {
 
       {/* 02 · Credibility stack — the signature moment */}
       <section id="credibility" className="zb-section zb-credibility">
-        <Reveal>
+        <div>
           <SectionMark n="02" label={config.credibility.eyebrow} />
           <p className="zb-lead">{config.credibility.lead}</p>
 
@@ -211,11 +239,7 @@ export default function FunnelBridge() {
             target="_blank"
             rel="noreferrer"
           >
-            <span className="zb-trust-stars" aria-hidden="true">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <Star key={i} size={16} fill="#2ED8A8" stroke="#2ED8A8" />
-              ))}
-            </span>
+            <BadgeCheck size={20} strokeWidth={1.75} aria-hidden="true" className="zb-trust-badge" />
             <span className="zb-trust-text">
               <strong>{config.credibility.trustpilot.label}</strong>
               <span>{config.credibility.trustpilot.note}</span>
@@ -237,12 +261,12 @@ export default function FunnelBridge() {
               );
             })}
           </div>
-        </Reveal>
+        </div>
       </section>
 
       {/* 03 · Mechanism before benefit */}
       <section className="zb-section zb-mechanism">
-        <Reveal className="zb-mech-grid">
+        <div className="zb-mech-grid">
           <div className="zb-mech-copy">
             <SectionMark n="03" label={config.mechanism.eyebrow} />
             <h2 className="zb-display zb-display-sm">{config.mechanism.headline}</h2>
@@ -253,7 +277,7 @@ export default function FunnelBridge() {
 
             <details className="zb-research">
               <summary>
-                Read the research <ChevronDown size={16} />
+                How we handle the research <ChevronDown size={16} />
               </summary>
               <div className="zb-research-body">
                 <p>{config.mechanism.research.intro}</p>
@@ -269,12 +293,12 @@ export default function FunnelBridge() {
           <div className="zb-mech-media">
             <img src={config.mechanism.image} alt={config.mechanism.alt} loading="lazy" />
           </div>
-        </Reveal>
+        </div>
       </section>
 
       {/* 04 · The clinic math */}
       <section className="zb-section zb-math">
-        <Reveal>
+        <div>
           <SectionMark n="04" label={config.clinicMath.eyebrow} />
           <h2 className="zb-display zb-display-sm">{config.clinicMath.headline}</h2>
           <div className="zb-math-grid">
@@ -311,7 +335,7 @@ export default function FunnelBridge() {
           <a href="#offer" className="zb-softlink">
             See the founding offer <ChevronDown size={15} />
           </a>
-        </Reveal>
+        </div>
       </section>
 
       {/* 05 · Social proof — REAL reviews only, verbatim from our public Trustpilot profile.
@@ -321,7 +345,7 @@ export default function FunnelBridge() {
           bought *because of* "relentless honesty", having nearly walked over "limited reviews". */}
       {config.social.quotes.some((q) => !q.placeholder) && (
         <section className="zb-section zb-social">
-          <Reveal>
+          <div>
             <SectionMark n="05" label={config.social.eyebrow} />
             <h2 className="zb-display zb-display-sm">{config.social.headline}</h2>
 
@@ -351,13 +375,13 @@ export default function FunnelBridge() {
                   </figure>
                 ))}
             </div>
-          </Reveal>
+          </div>
         </section>
       )}
 
       {/* 06 · The ritual, shown */}
       <section className="zb-section zb-ritual">
-        <Reveal>
+        <div>
           <SectionMark n="06" label={config.ritual.eyebrow} />
           <h2 className="zb-display zb-display-sm">{config.ritual.headline}</h2>
           <div className="zb-ritual-grid">
@@ -374,12 +398,12 @@ export default function FunnelBridge() {
             ))}
           </div>
           <p className="zb-ritual-closing">{config.ritual.closing}</p>
-        </Reveal>
+        </div>
       </section>
 
       {/* 07 · Objection clearing */}
       <section className="zb-section zb-faq">
-        <Reveal>
+        <div>
           <SectionMark n="07" label={config.faq.eyebrow} />
           <h2 className="zb-display zb-display-sm">{config.faq.headline}</h2>
           <div className="zb-faq-list">
@@ -392,12 +416,12 @@ export default function FunnelBridge() {
               </details>
             ))}
           </div>
-        </Reveal>
+        </div>
       </section>
 
       {/* 08 · Single offer block — the one purchase-path CTA */}
       <section id="offer" ref={offerRef} className="zb-section zb-offer">
-        <Reveal className="zb-offer-grid">
+        <div className="zb-offer-grid">
           <div className="zb-offer-media">
             <img src={config.offer.image} alt={config.offer.alt} loading="lazy" />
           </div>
@@ -419,12 +443,15 @@ export default function FunnelBridge() {
               </ul>
             </div>
             <p className="zb-offer-guarantee">{config.offer.guarantee}</p>
-            <Link to={ctaHref} className="zb-cta" onClick={onCtaClick("offer")}>
+            <BuyCta placement="offer" className="zb-cta">
               {config.offer.cta} <ArrowRight size={18} />
-            </Link>
+            </BuyCta>
             <p className="zb-cta-note">{config.offer.ctaNote}</p>
+            <Link to={ctaHref} className="zb-softlink" onClick={onCtaClick("offer-pdp")}>
+              Prefer the full specification first? See the product page
+            </Link>
           </div>
-        </Reveal>
+        </div>
       </section>
 
       {/* Sticky mini-CTA — same single purchase path, thumb-reachable */}
@@ -434,16 +461,15 @@ export default function FunnelBridge() {
       >
         <div className="zb-sticky-info">
           <span className="zb-sticky-name">{config.offer.headline}</span>
-          <span className="zb-sticky-price">{config.offer.price} · 30-day return</span>
+          <span className="zb-sticky-price">{config.offer.stickyLine}</span>
         </div>
-        <Link
-          to={ctaHref}
+        <BuyCta
+          placement="sticky"
           className="zb-cta zb-cta--sticky"
-          onClick={onCtaClick("sticky")}
           tabIndex={stickyVisible && !offerOnScreen ? 0 : -1}
         >
           {config.offer.cta}
-        </Link>
+        </BuyCta>
       </div>
 
       {/* 09 · Footer trust echo */}
@@ -493,12 +519,14 @@ const CSS = `
 @media(min-width:768px){.zb-hero{grid-template-columns:1.05fr .95fr;align-items:center;padding:72px 32px 40px;gap:48px;}}
 .zb-hero-eyebrow{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin:0 0 20px;}
 .zb-hero-sub{font-size:17px;color:var(--muted);max-width:46ch;margin:20px 0 28px;}
+.zb-hero-price{font-size:14px;font-weight:600;letter-spacing:0.02em;color:var(--ink);margin:0 0 16px;}
+.zb-hero-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
 .zb-scrollcue{display:inline-flex;align-items:center;gap:6px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--teal);padding-bottom:4px;}
 .zb-hero-media img{width:100%;height:auto;border-radius:20px;display:block;aspect-ratio:4/5;object-fit:cover;}
 
 /* credibility */
 .zb-trust-strip{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:16px 20px;text-decoration:none;color:var(--ink);margin-bottom:24px;}
-.zb-trust-stars{display:inline-flex;gap:2px;}
+.zb-trust-badge{color:var(--teal);flex:none;}
 .zb-trust-text{display:flex;flex-direction:column;gap:2px;flex:1;min-width:220px;}
 .zb-trust-text strong{font-size:15px;}
 .zb-trust-text span{font-size:13px;color:var(--muted);}
@@ -619,8 +647,8 @@ const CSS = `
 .zb-footer-legal a:hover{color:var(--ink);}
 .zb-footer-smallprint{font-size:11.5px;color:var(--muted);max-width:70ch;margin:0 auto;line-height:1.6;}
 
-/* reveal motion — respects reduced motion via JS (Reveal shows instantly) */
-.zb-reveal{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.4,0,.2,1),transform .5s cubic-bezier(.4,0,.2,1);}
-.zb-reveal.is-in{opacity:1;transform:none;}
-@media(prefers-reduced-motion:reduce){.zb-reveal{opacity:1;transform:none;transition:none;}.zb-research summary svg,.zb-faq-item summary svg{transition:none;}}
+/* Paid lander rule: content is always visible — never JS-gate visibility on the
+   money page (a former reveal-on-scroll system hid sections at opacity:0 until
+   IntersectionObserver fired; slow in-app browsers saw blank sections). */
+@media(prefers-reduced-motion:reduce){.zb-research summary svg,.zb-faq-item summary svg{transition:none;}}
 `;
