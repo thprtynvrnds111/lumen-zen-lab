@@ -147,6 +147,22 @@ export interface BridgeConfig {
     eyebrow: string;
     headline: string;
     price: string;
+    /** Optional AOV add-on: one extra variant appended to the one-hop cart.
+     *  Figures must be cartCreate-verified before shipping. */
+    bundle?: {
+      addVariantId: string;
+      /** List price of the added item, EUR — for honest pixel values. */
+      addListValue: number;
+      text: string;
+      note: string;
+      cta: string;
+    };
+    /** Optional high-AOV bridge to the System lander. */
+    systemBridge?: {
+      text: string;
+      cta: string;
+      href: string;
+    };
     priceNote: string;
     inBoxTitle: string;
     inBox: string[];
@@ -354,6 +370,20 @@ const faceIntroducer: BridgeConfig = {
     cta: "Claim the founding price",
     ctaNote: "RITUAL15 applied automatically — €74.80 at checkout · Free, tracked EU shipping · 30-day full refund",
     stickyLine: "€74.80 founding · 30-day return",
+    // Verified 2026-07-19: variant 52413727506775 = Restore Gel €18 (live products.json);
+    // FI+Gel cartCreate with RITUAL15: €106 subtotal → €90.10 total; permalink 302s.
+    bundle: {
+      addVariantId: "52413727506775",
+      addListValue: 18.0,
+      text: "Add the Restore Gel — the conductive layer the ritual runs on.",
+      note: "Instrument + gel: €106 — €90.10 with RITUAL15 at checkout. Same 30-day return.",
+      cta: "Begin with the full ritual",
+    },
+    systemBridge: {
+      text: "Outfitting the whole shelf? Face, body and full rest — The System runs €399, was €468.",
+      cta: "See the System",
+      href: "/one-shelf",
+    },
     image: faceOffer,
     alt: "The Face Introducer in its open Zential Pure box on a kitchen table.",
   },

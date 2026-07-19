@@ -39,6 +39,19 @@ describe("bridge funnel config contract", () => {
     }
   });
 
+  it("bundle figures stay consistent with the 15% order-level code", () => {
+    for (const cfg of Object.values(BRIDGE_CONFIGS)) {
+      const b = cfg.offer.bundle;
+      if (!b || !cfg.checkout) continue;
+      expect(b.addVariantId, cfg.slug).toMatch(/^\d+$/);
+      const listTotal = cfg.checkout.listValue + b.addListValue;
+      const discounted = (listTotal * 0.85).toFixed(2);
+      // Copy must quote the exact verified bundle totals.
+      expect(b.note, cfg.slug).toContain(`€${listTotal}`);
+      expect(b.note, cfg.slug).toContain(`€${discounted}`);
+    }
+  });
+
   it("configs without checkout data still route buy CTAs to their PDP", () => {
     for (const cfg of Object.values(BRIDGE_CONFIGS)) {
       if (!cfg.checkout) {

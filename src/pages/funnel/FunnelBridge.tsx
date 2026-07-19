@@ -76,35 +76,52 @@ export default function FunnelBridge() {
   // One-hop purchase path: cart permalink straight into checkout (no PDP, no JS
   // required — the prerendered anchor already carries the discount). Incoming
   // attribution params (fbclid, utm_*) are forwarded once liveSearch resolves.
-  const buyHref = useMemo(() => {
-    if (!config.checkout) return ctaHref;
+  const permalinkFor = (variantIds: string[]) => {
     const params = new URLSearchParams(liveSearch);
     params.set("discount", config.discountCode);
-    return `https://checkout.zentialpure.com/cart/${config.checkout.variantId}:1?${params.toString()}`;
+    const items = variantIds.map((v) => `${v}:1`).join(",");
+    return `https://checkout.zentialpure.com/cart/${items}?${params.toString()}`;
+  };
+
+  const buyHref = useMemo(() => {
+    if (!config.checkout) return ctaHref;
+    return permalinkFor([config.checkout.variantId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [config, ctaHref, liveSearch]);
+
+  const bundleHref = useMemo(() => {
+    if (!config.checkout || !config.offer.bundle) return undefined;
+    return permalinkFor([config.checkout.variantId, config.offer.bundle.addVariantId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [config, liveSearch]);
 
   const onCtaClick = (placement: string) => () =>
     ga4Event("bridge_cta_click", { slug: config.slug, discount: config.discountCode, placement });
 
   // Buy-CTA click on the one-hop path: fire click-bound ATC/IC, give the pixel
   // requests a beat to leave before the same-tab navigation unloads the page.
-  const onBuyClick = (placement: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
-    onCtaClick(placement)();
-    if (!config.checkout) return;
-    pixelDirectCheckout({
-      // Same gid namespace the PDP path uses for content_ids — one product,
-      // one id format, or Meta treats them as different products.
-      variantId: `gid://shopify/ProductVariant/${config.checkout.variantId}`,
-      name: config.checkout.name,
-      listValue: config.checkout.listValue,
-      checkoutValue: config.checkout.checkoutValue,
-      currency: config.checkout.currency,
-    });
-    if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
-    e.preventDefault();
-    const dest = buyHref;
-    window.setTimeout(() => { window.location.href = dest; }, 120);
-  };
+  // `dest`/`extraList` override for multi-item bundle CTAs so the navigation
+  // target and pixel values stay honest per cart.
+  const onBuyClick = (placement: string, dest?: string, extraList = 0) =>
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      onCtaClick(placement)();
+      if (!config.checkout) return;
+      const listValue = config.checkout.listValue + extraList;
+      pixelDirectCheckout({
+        // Same gid namespace the PDP path uses for content_ids — one product,
+        // one id format, or Meta treats them as different products.
+        variantId: `gid://shopify/ProductVariant/${config.checkout.variantId}`,
+        name: config.checkout.name,
+        listValue,
+        // RITUAL15 is order-level 15% — verified per-cart via cartCreate.
+        checkoutValue: Math.round(listValue * 0.85 * 100) / 100,
+        currency: config.checkout.currency,
+      });
+      if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      const target = dest ?? buyHref;
+      window.setTimeout(() => { window.location.href = target; }, 120);
+    };
 
   // Single buy CTA element: plain anchor (works without JS) on the one-hop
   // checkout path; SPA <Link> when the purchase path is still the PDP.
@@ -447,9 +464,34 @@ export default function FunnelBridge() {
               {config.offer.cta} <ArrowRight size={18} />
             </BuyCta>
             <p className="zb-cta-note">{config.offer.ctaNote}</p>
+            {config.offer.bundle && bundleHref && (
+              <div className="zb-bundle">
+                <p className="zb-bundle-text">{config.offer.bundle.text}</p>
+                <a
+                  href={bundleHref}
+                  className="zb-softlink"
+                  onClick={onBuyClick("bundle", bundleHref, config.offer.bundle.addListValue)}
+                >
+                  {config.offer.bundle.cta}
+                </a>
+                <p className="zb-bundle-note">{config.offer.bundle.note}</p>
+              </div>
+            )}
             <Link to={ctaHref} className="zb-softlink" onClick={onCtaClick("offer-pdp")}>
               Prefer the full specification first? See the product page
             </Link>
+            {config.offer.systemBridge && (
+              <div className="zb-system-bridge">
+                <p>{config.offer.systemBridge.text}</p>
+                <Link
+                  to={config.offer.systemBridge.href}
+                  className="zb-softlink"
+                  onClick={onCtaClick("system-bridge")}
+                >
+                  {config.offer.systemBridge.cta}
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -624,6 +666,13 @@ const CSS = `
 
 /* under-CTA micro reassurance */
 .zb-cta-note{font-size:12.5px;color:var(--muted);margin:12px 0 0;max-width:48ch;line-height:1.6;}
+
+/* AOV bundle + System bridge — quiet blocks under the primary CTA */
+.zb-bundle{margin:20px 0 4px;padding:16px 18px;border:1px dashed var(--border);border-radius:10px;}
+.zb-bundle-text{font-size:14.5px;margin:0 0 10px;max-width:52ch;}
+.zb-bundle-note{font-size:12.5px;color:var(--muted);margin:10px 0 0;max-width:52ch;line-height:1.6;}
+.zb-system-bridge{margin-top:24px;padding-top:18px;border-top:1px solid var(--border);}
+.zb-system-bridge p{font-size:14px;color:var(--muted);margin:0 0 10px;max-width:56ch;}
 
 /* mid-page soft anchor — quiet, same-page, not a competing CTA */
 .zb-softlink{display:inline-flex;align-items:center;gap:6px;margin-top:20px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--terra);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:4px;}
