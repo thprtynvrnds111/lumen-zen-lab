@@ -12,6 +12,7 @@
  *  - Face Introducer €88 · EMS·microcurrent·thermal·cosmetic LED (630–660nm) · 12 min
  *    · with RITUAL15 (15%): €74.80 — cartCreate-verified 2026-07-18 (grep anchor: 74.80)
  *  - Restoration Belt €180 (compare-at €280) · 660nm red + 850nm NIR, thermal wrap, waist 28–48in · 15 min
+ *    · with RITUAL15 (15%): €153.00 — cartCreate-verified 2026-07-19 (grep anchor: 153.00)
  *  - Restoration Mat from €200 · 660nm red + far-infrared heat, 100/120×40cm panel, rolls flat · 20 min
  */
 
@@ -366,6 +367,16 @@ const restorationBelt: BridgeConfig = {
   slug: "restoration-belt",
   pdpPath: "/instruments/restoration-belt",
   discountCode: "RITUAL15",
+  // Verified 2026-07-19: variant 53502319755607 = Restoration Belt €180.00
+  // (compare-at €280, live products.json, single variant); permalink 302s into
+  // checkout with discount_code=RITUAL15; cartCreate with RITUAL15 totals €153.00.
+  checkout: {
+    variantId: "53502319755607",
+    name: "The Restoration Belt",
+    listValue: 180.0,
+    checkoutValue: 153.0,
+    currency: "EUR",
+  },
   title: "The Restoration Belt — Zential Pure",
   metaDescription:
     "The recovery-wrap category — 660nm red and 850nm near-infrared light held close by a thermal wrap — recalibrated for a fifteen-minute ritual at home. CE marked. 30-day return. Free, tracked EU shipping.",
@@ -375,7 +386,7 @@ const restorationBelt: BridgeConfig = {
     headline: "Your body already knows how to recover. Warmth and the right light simply give it somewhere to begin.",
     sub: "The recovery-wrap category — 660nm red and 850nm near-infrared, pressed close to muscle by a thermal wrap — recalibrated for a fifteen-minute ritual at home.",
     priceLine: "€180 once · 30-day full refund, any reason",
-    cta: "See the Restoration Belt",
+    cta: "Claim the founding price",
     image: beltHero,
     alt: "The Restoration Belt wrapped at the waist in warm, low evening light.",
   },
@@ -475,13 +486,13 @@ const restorationBelt: BridgeConfig = {
     eyebrow: "Recovery, worn close.",
     headline: "The Restoration Belt",
     price: "€180",
-    priceNote: "Was €280. Once, not per session. Free, tracked EU shipping.",
+    priceNote: "Was €280. Once, not per session. The founding code RITUAL15 is applied for you at checkout — €153.00, nothing to type. Free, tracked EU shipping.",
     inBoxTitle: "In the box",
     inBox: ["The Restoration Belt instrument", "Adjustable thermal wrap (fits waist 28–48in)", "Power adapter and cable", "The fifteen-minute protocol card"],
     guarantee: GUARANTEE,
-    cta: "See the Restoration Belt",
-    ctaNote: "Founding price carried to checkout · Free, tracked EU shipping · 30-day full refund",
-    stickyLine: "€180 · 30-day return",
+    cta: "Claim the founding price",
+    ctaNote: "RITUAL15 applied automatically — €153.00 at checkout · Free, tracked EU shipping · 30-day full refund",
+    stickyLine: "€153.00 founding · 30-day return",
     image: beltOffer,
     alt: "The Restoration Belt, folded and arranged on a warm surface.",
   },

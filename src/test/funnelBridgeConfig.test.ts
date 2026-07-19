@@ -15,23 +15,27 @@ describe("bridge funnel config contract", () => {
     }
   });
 
-  it("face-introducer checkout data is internally consistent", () => {
-    const fi = BRIDGE_CONFIGS["face-introducer"];
-    expect(fi.checkout).toBeDefined();
-    const c = fi.checkout!;
-    expect(c.variantId).toMatch(/^\d+$/);
-    expect(c.currency).toBe("EUR");
-    // RITUAL15 = 15% off list. If either figure changes, re-verify via a live
-    // cartCreate before updating this expectation.
-    expect(c.checkoutValue).toBeCloseTo(c.listValue * 0.85, 2);
+  it("every checkout block is internally consistent", () => {
+    const withCheckout = Object.values(BRIDGE_CONFIGS).filter((c) => c.checkout);
+    expect(withCheckout.length).toBeGreaterThan(0);
+    for (const cfg of withCheckout) {
+      const c = cfg.checkout!;
+      expect(c.variantId, cfg.slug).toMatch(/^\d+$/);
+      expect(c.currency, cfg.slug).toBe("EUR");
+      // RITUAL15 = 15% off list. If either figure changes, re-verify via a live
+      // cartCreate before updating this expectation.
+      expect(c.checkoutValue, cfg.slug).toBeCloseTo(c.listValue * 0.85, 2);
+    }
   });
 
   it("copy quoting the discounted price matches checkout.checkoutValue", () => {
-    const fi = BRIDGE_CONFIGS["face-introducer"];
-    const quoted = fi.checkout!.checkoutValue.toFixed(2).replace(".", ".");
-    for (const s of [fi.offer.priceNote, fi.offer.ctaNote, fi.offer.stickyLine]) {
-      expect(s).toContain(`€${quoted}`);
-      expect(s.includes("RITUAL15") || s.includes("founding")).toBe(true);
+    for (const cfg of Object.values(BRIDGE_CONFIGS)) {
+      if (!cfg.checkout) continue;
+      const quoted = cfg.checkout.checkoutValue.toFixed(2);
+      for (const s of [cfg.offer.priceNote, cfg.offer.ctaNote, cfg.offer.stickyLine]) {
+        expect(s, cfg.slug).toContain(`€${quoted}`);
+        expect(s.includes("RITUAL15") || s.includes("founding"), cfg.slug).toBe(true);
+      }
     }
   });
 
