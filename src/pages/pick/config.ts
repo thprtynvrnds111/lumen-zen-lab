@@ -16,10 +16,12 @@ export interface PickPrize {
 }
 
 /** Grounded in knowledge/products/LIVE-CATALOG-TRUTH.md (Belt €180, compare-at €280).
- *  PROTOCOL10 + RITUAL15 live in Shopify (RITUAL15 checkout-verified 2026-07-13).
- *  PRACTICE20 — LAUNCH GATE: create in Shopify admin (20%, once per customer,
- *  all products) before sending any traffic here; the API token lacks
- *  write_discounts so an operator creates it by hand. */
+ *  All three codes exist and are live in Shopify. RITUAL15 checkout-verified
+ *  2026-07-13; PRACTICE20 verified applying 2026-07-18 via live Storefront
+ *  cartCreate (FI cart €88 → €70.40, applicable:true). PROTOCOL10 exists but
+ *  returns applicable:false on anonymous carts — likely a once-per-customer
+ *  restriction (separate open question, not a launch blocker here).
+ *  Rates below MUST match the discount rates configured in Shopify admin. */
 export const PRIZES: PickPrize[] = [
   { code: "PROTOCOL10", percent: 10, detail: "The founding rate." },
   { code: "RITUAL15", percent: 15, detail: "The ritual rate." },
