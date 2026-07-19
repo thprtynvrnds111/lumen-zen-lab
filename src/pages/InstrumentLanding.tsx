@@ -54,6 +54,10 @@ interface InstrumentConfig {
   heroConcrete?: string;
   lede: string;
   trust: string[];
+  /** Single-variant instruments only: numeric Shopify variant id for the
+   *  no-JS fallback cart permalink. Buy CTAs prerender as working checkout
+   *  anchors; hydrated JS upgrades them to the market-currency cart flow. */
+  directVariantId?: string;
   modLabel: string;
   badges: Badge[];
   who: { h2: string; paras: string[]; kicker: string; img: string; imgAlt: string };
@@ -83,6 +87,8 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     lede:
       "EMS, microcurrent, thermal and cosmetic LED — the four inputs a facialist charges you by the session, calibrated into a twelve-minute ritual you run yourself.",
     trust: ["30-day protocol guarantee", "Ships in 48 hours", "12-minute ritual"],
+    // Verified 2026-07-18: variant 51731419922775 = Face Introducer €88 (live products.json).
+    directVariantId: "51731419922775",
     modLabel: "Four modalities",
     badges: [
       { label: "EMS" },
@@ -148,6 +154,8 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     lede:
       "A contoured thermal wrap that holds sustained warmth — and 660nm red and 850nm near-infrared light — against the working muscle. The recovery room, narrowed to the span of your lower back. Fifteen minutes.",
     trust: ["30-day protocol guarantee", "Cordless · ships in 48 hours", "15-minute ritual"],
+    // Verified 2026-07-19: variant 53502319755607 = Restoration Belt €180, single variant.
+    directVariantId: "53502319755607",
     modLabel: "Four mechanisms",
     badges: [
       { label: "Thermal", sub: "sustained" },
@@ -392,6 +400,33 @@ export default function InstrumentLanding() {
   const orderLabel = ordering ? "Adding…" : "Claim a founding place";
   const others = Object.values(CONFIGS).filter((c) => c.slug !== cfg.slug);
 
+  // No-JS fallback purchase path for single-variant instruments: the CTA is a
+  // real anchor into checkout (EUR permalink, discount forwarded) that works
+  // before hydration; with JS, onClick upgrades it to the market-currency cart
+  // flow via order(). Multi-variant instruments keep the plain button.
+  const fallbackHref = cfg.directVariantId
+    ? `https://checkout.zentialpure.com/cart/${cfg.directVariantId}:1${arrivalCode ? `?discount=${encodeURIComponent(arrivalCode)}` : ""}`
+    : undefined;
+  const OrderCta = ({ className, children }: { className: string; children: React.ReactNode }) =>
+    fallbackHref ? (
+      <a
+        href={fallbackHref}
+        className={className}
+        aria-disabled={ordering}
+        onClick={(e) => {
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+          e.preventDefault();
+          void order();
+        }}
+      >
+        {children}
+      </a>
+    ) : (
+      <button onClick={order} disabled={ordering} className={className}>
+        {children}
+      </button>
+    );
+
   return (
     <PageShell title={cfg.seoTitle} description={cfg.seoDescription} canonical={`https://zentialpure.com/instruments/${cfg.slug}`} hideHero>
       {knownArrival && (
@@ -431,9 +466,9 @@ export default function InstrumentLanding() {
               </h1>
               <p className="mb-8 max-w-[500px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">{cfg.lede}</p>
               <div className="mb-[30px] flex flex-wrap gap-[14px]">
-                <button onClick={order} disabled={ordering} className={PILL_ACTION}>
-                  Claim a founding place <span className="font-medium tabular-nums opacity-70">· {priceLabel}</span>
-                </button>
+                <OrderCta className={PILL_ACTION}>
+                  {orderLabel} <span className="font-medium tabular-nums opacity-70">· {priceLabel}</span>
+                </OrderCta>
                 <a href="#science" className={PILL_GHOST_DARK}>See the science</a>
               </div>
               <div className="mb-7 flex flex-wrap gap-x-[26px] gap-y-[10px]">
@@ -552,7 +587,7 @@ export default function InstrumentLanding() {
               <div className="font-serif italic text-[20px] text-[#C6A07C]">Once.</div>
               {cfg.priceAnchor && <p className="mt-3 text-[13px] leading-[1.55] text-[#157A5C]">{cfg.priceAnchor}</p>}
               <p className="my-[22px] text-[13px] leading-[1.6] text-[#1A1714]/60">{cfg.orderNote}</p>
-              <button onClick={order} disabled={ordering} className={`${PILL_ACTION} mb-3 w-full`}>{orderLabel}</button>
+              <OrderCta className={`${PILL_ACTION} mb-3 w-full`}>{orderLabel}</OrderCta>
               <a href="#science" className={`${PILL_GHOST_LIGHT} w-full`}>Read the mechanism</a>
               <div className="mt-[18px] flex justify-center"><TrustpilotProof variant="pdp" /></div>
               <p className="mt-[18px] border-t border-[rgba(26,23,20,0.12)] pt-[18px] text-xs leading-[1.6] text-[#1A1714]/60"><b className="font-medium text-[#1A1714]">30-day protocol guarantee.</b> {cfg.guarantee}</p>
@@ -607,7 +642,7 @@ export default function InstrumentLanding() {
                   <span key={t} className="inline-flex items-center gap-2 font-sans text-[13px] text-[#F7F4F0]/[0.78] before:block before:h-[5px] before:w-[5px] before:rounded-full before:bg-[#2ED8A8]">{t}</span>
                 ))}
               </div>
-              <button onClick={order} disabled={ordering} className={`${PILL_BRAND} relative z-[2] mt-7`}>Claim a founding place</button>
+              <OrderCta className={`${PILL_BRAND} relative z-[2] mt-7`}>{orderLabel}</OrderCta>
             </div>
           </div>
         </div>
@@ -651,7 +686,7 @@ export default function InstrumentLanding() {
           <div className="font-sans text-[11px] tracking-[0.18em] uppercase text-[#F7F4F0]/70">{cfg.name.replace("The ", "")}</div>
           <div className="font-serif italic text-[22px] leading-none text-[#F7F4F0]">{priceLabel}</div>
         </div>
-        <button onClick={order} disabled={ordering} className={`${PILL_ACTION} px-6 py-3.5`}>{ordering ? "Adding…" : "Claim place"}</button>
+        <OrderCta className={`${PILL_ACTION} px-6 py-3.5`}>{ordering ? "Adding…" : "Claim place"}</OrderCta>
       </div>
 
       <ExitIntentPrimer slug={cfg.slug} />
