@@ -121,7 +121,7 @@ export default function Storefront() {
             </div>
           </div>
           <div className="relative order-first min-h-[54vh] overflow-hidden md:order-none md:min-h-[640px]">
-            <img src="/editorial/hero-skin-thread.webp" alt="Morning light on skin ritual" className="absolute inset-0 h-full w-full object-cover" />
+            <img src="/editorial/hero-jawline-aged.webp" alt="Jawline and neck profile in morning light" className="absolute inset-0 h-full w-full object-cover" />
             <Link to="/editorial/the-ritual" className="absolute bottom-6 left-6 z-[2] rounded-xl bg-[rgba(26,23,20,0.72)] px-5 py-3.5 font-sans text-[12px] tracking-[0.22em] uppercase text-[#F7F4F0] backdrop-blur-[4px] transition-colors hover:bg-[rgba(26,23,20,0.9)] hover:text-[#F7F4F0]">
               Featured · The 12-Minute Window
             </Link>
