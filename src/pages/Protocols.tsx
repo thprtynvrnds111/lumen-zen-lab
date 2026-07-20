@@ -209,7 +209,7 @@ export default function Protocols() {
           </p>
           <h2 className="my-5 font-serif italic font-normal text-[clamp(28px,3.4vw,44px)] text-[#F7F4F0]">Start with one sequence. The system follows.</h2>
           <p className="mx-auto mb-[34px] max-w-[540px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">
-            Most people begin with the Face Protocol and add the others as the ritual settles. Every instrument carries the same 30-day protocol guarantee.
+            Most people begin with the Face Protocol and add the others as the ritual settles. Every instrument carries the same 30-day money-back guarantee.
           </p>
           <div className="flex flex-wrap justify-center gap-3.5">
             <Link to="/instruments/face-introducer" className={PILL_ACTION}>Begin with the Face · €88</Link>

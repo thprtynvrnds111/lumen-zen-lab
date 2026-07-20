@@ -86,7 +86,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     heroConcrete: "Four clinic modalities. One €88 device. Twelve minutes.",
     lede:
       "EMS, microcurrent, thermal and cosmetic LED — the four inputs a facialist charges you by the session, calibrated into a twelve-minute ritual you run yourself.",
-    trust: ["30-day protocol guarantee", "Ships in 48 hours", "12-minute ritual"],
+    trust: ["30-day money-back guarantee", "Ships in 48 hours", "12-minute ritual"],
     // Verified 2026-07-18: variant 51731419922775 = Face Introducer €88 (live products.json).
     directVariantId: "51731419922775",
     modLabel: "Four modalities",
@@ -134,7 +134,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
       { q: "How long until I see something?", a: "Most people notice firmness and a calmer tone within four to six weeks of the twelve-minute ritual, five days a week. We say visibly, with consistent use — never overnight, never guaranteed." },
       { q: "Is the €88 the whole cost?", a: "Yes. €88, once. There is no subscription and nothing to unlock. The only recurring item is the conductive gel, refillable for €12 when a tube runs out." },
       { q: "Can I use it with my serums?", a: "Use the conductive gel during the session for clean current transfer, then apply your own serums afterward onto primed skin. Avoid active acids in the same twelve minutes." },
-      { q: "What if it is not for me?", a: "The 30-day protocol guarantee covers exactly that. Run it for a month; if it does not earn its place, return it for a full refund." },
+      { q: "What if it is not for me?", a: "The 30-day money-back guarantee covers exactly that. Run it for a month; if it does not earn its place, return it for a full refund." },
     ],
   },
 
@@ -153,7 +153,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     hero: { l1: "Recovery,", l2pre: "worn ", accent: "close." },
     lede:
       "A contoured thermal wrap that holds sustained warmth — and 660nm red and 850nm near-infrared light — against the working muscle. The recovery room, narrowed to the span of your lower back. Fifteen minutes.",
-    trust: ["30-day protocol guarantee", "Cordless · ships in 48 hours", "15-minute ritual"],
+    trust: ["30-day money-back guarantee", "Cordless · ships in 48 hours", "15-minute ritual"],
     // Verified 2026-07-19: variant 53502319755607 = Restoration Belt €180, single variant.
     directVariantId: "53502319755607",
     modLabel: "Four mechanisms",
@@ -202,7 +202,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
       { q: "Should I use it before or after training?", a: "Both work, and before is the half most people skip. The light research in this band is most consistent when it is applied before exertion rather than after. Warm the tissue, then work." },
       { q: "Does it get hot?", a: "It runs warm by design — sustained thermal contact is the primary mechanism, not a comfort feature — never hot. The warmth holds steady through the fifteen-minute session and shuts off on its own." },
       { q: "Can I move while wearing it?", a: "Yes. It is cordless and strapped close, so you can cook, read or stretch through a session. Save anything high-impact for after." },
-      { q: "What if it is not for me?", a: "The 30-day protocol guarantee covers exactly that. Wear it for a month; if it does not earn its place, return it for a full refund." },
+      { q: "What if it is not for me?", a: "The 30-day money-back guarantee covers exactly that. Wear it for a month; if it does not earn its place, return it for a full refund." },
     ],
   },
 
@@ -221,7 +221,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     hero: { l1: "The whole system,", l2pre: "laid ", accent: "down." },
     lede:
       "A 100 × 40 cm bed of 660nm red light and far-infrared heat — 120 × 40 cm in the longer size. You lie down, the array does the rest, and the nervous system gets twenty minutes it does not usually get.",
-    trust: ["30-day protocol guarantee", "Rolls flat · ships in 48 hours", "20-minute ritual"],
+    trust: ["30-day money-back guarantee", "Rolls flat · ships in 48 hours", "20-minute ritual"],
     modLabel: "Four mechanisms",
     badges: [
       { label: "Red LED", sub: "660nm" },
@@ -267,7 +267,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
       { q: "Front of the body or back?", a: "You lie on it, so the array works the back of the body — where most tension is held. Turn over for the last few minutes if you want the front." },
       { q: "When in the day should I use it?", a: "Most people run it in the evening as a wind-down before sleep. It works any time you can give it twenty horizontal minutes." },
       { q: "Why does it cost what it does?", a: "It carries a dense array of red light and far-infrared heat in a format that rolls away between sessions. The Restoration Mat is from €200, once — the price reflects the panel, not a subscription." },
-      { q: "What if it is not for me?", a: "The 30-day protocol guarantee covers exactly that. Use it for a month; if it does not earn its place, return it for a full refund." },
+      { q: "What if it is not for me?", a: "The 30-day money-back guarantee covers exactly that. Use it for a month; if it does not earn its place, return it for a full refund." },
     ],
   },
 };
@@ -510,7 +510,7 @@ export default function InstrumentLanding() {
             {[
               "CE marked · Declaration of Conformity on file",
               "2-year warranty",
-              "30-day protocol guarantee",
+              "30-day money-back guarantee",
               "Ships in 48 hours",
               "Registered EU company · Zential Pure B.V., Netherlands",
             ].map((t) => (
@@ -590,7 +590,7 @@ export default function InstrumentLanding() {
               <OrderCta className={`${PILL_ACTION} mb-3 w-full`}>{orderLabel}</OrderCta>
               <a href="#science" className={`${PILL_GHOST_LIGHT} w-full`}>Read the mechanism</a>
               <div className="mt-[18px] flex justify-center"><TrustpilotProof variant="pdp" /></div>
-              <p className="mt-[18px] border-t border-[rgba(26,23,20,0.12)] pt-[18px] text-xs leading-[1.6] text-[#1A1714]/60"><b className="font-medium text-[#1A1714]">30-day protocol guarantee.</b> {cfg.guarantee}</p>
+              <p className="mt-[18px] border-t border-[rgba(26,23,20,0.12)] pt-[18px] text-xs leading-[1.6] text-[#1A1714]/60"><b className="font-medium text-[#1A1714]">30-day money-back guarantee.</b> {cfg.guarantee}</p>
             </div>
           </div>
           <TrustBadges cordless={cfg.slug !== "restoration-mat"} />

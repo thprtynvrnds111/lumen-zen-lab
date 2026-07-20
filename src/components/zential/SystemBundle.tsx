@@ -123,7 +123,7 @@ export function SystemBundle() {
             >
               {busy ? "Adding the System…" : "Claim the System"}
             </button>
-            <p className="mt-3 text-center font-sans text-[11px] text-[#F7F4F0]/45">30-day protocol guarantee on every instrument.</p>
+            <p className="mt-3 text-center font-sans text-[11px] text-[#F7F4F0]/45">30-day money-back guarantee on every instrument.</p>
           </div>
         </div>
       </div>

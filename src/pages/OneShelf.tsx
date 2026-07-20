@@ -339,7 +339,7 @@ export default function OneShelf() {
                   Build your shelf — {price}
                 </a>
                 <p className="os-cta-note">
-                  30-day protocol guarantee · free EU shipping · 2-year warranty · 3 instalments at checkout
+                  30-day money-back guarantee · free EU shipping · 2-year warranty · 3 instalments at checkout
                 </p>
               </div>
             ) : (

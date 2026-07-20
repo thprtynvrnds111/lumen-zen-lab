@@ -204,7 +204,7 @@ export default function ClinicVsHome() {
           </p>
           <h2 className="my-5 font-serif italic font-normal text-[clamp(28px,3.4vw,44px)] text-[#F7F4F0]">The mechanism is the same. The maths is yours.</h2>
           <p className="mx-auto mb-[34px] max-w-[560px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">
-            Four clinic modalities, a twelve-minute ritual, and a 30-day protocol guarantee. If it does not earn its place in a month, send it back for a full refund.
+            Four clinic modalities, a twelve-minute ritual, and a 30-day money-back guarantee. If it does not earn its place in a month, send it back for a full refund.
           </p>
           <div className="flex flex-wrap justify-center gap-3.5">
             <Link to="/instruments/face-introducer" className={PILL_ACTION}>Order the Face Introducer · €88</Link>
