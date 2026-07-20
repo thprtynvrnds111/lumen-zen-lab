@@ -70,6 +70,19 @@ export interface RitualStep {
   alt: string;
 }
 
+export interface ComparisonRow {
+  /** Device name, verbatim from the seller's own product page. */
+  name: string;
+  /** List price in the SELLER'S native currency — no FX conversion. */
+  price: string;
+  /** Modality descriptor, factual; competitor counts use the seller's own marketing count. */
+  modalities: string;
+  /** Price ÷ modality count, same currency as `price`. */
+  perModality: string;
+  /** true = our row, styled as the anchor. */
+  ours?: boolean;
+}
+
 export interface BridgeConfig {
   slug: string;
   /** PDP route. When `checkout` is set, buy CTAs bypass this and go one-hop to
@@ -130,6 +143,19 @@ export interface BridgeConfig {
     clinic: { title: string; price: string; unit: string; rows: string[] };
     instrument: { title: string; price: string; unit: string; rows: string[] };
     benchmark: { title: string; body: string; tag: string };
+  };
+
+  /** Optional price-per-modality comparison. Competitor prices are live-verified
+   *  on the seller's own product page (date + source in the code comment beside
+   *  the data) and printed in native currency. Factual price + modality-count
+   *  only — never a performance-equivalence or "better results" claim. */
+  comparison?: {
+    eyebrow: string;
+    headline: string;
+    intro: string;
+    rows: ComparisonRow[];
+    takeaway: string;
+    footnote: string;
   };
 
   social: {
@@ -321,6 +347,51 @@ const faceIntroducer: BridgeConfig = {
       body: "The best-known US microcurrent device retails around €349 for a single modality, with returns handled overseas. The Face Introducer runs four, ships free within the EU, and is returnable to Rotterdam.",
       tag: "€88 · EU support",
     },
+  },
+
+  // Competitor prices LIVE-VERIFIED 2026-07-20, each on the seller's own product page:
+  //  - NuFACE Trinity+ Complete Set $595.00 — mynuface.com/products/trinity-plus-complete-set-microcurrent-facial-toning-device-kit.json
+  //    (product page markets it "3-in-1 ... featuring microcurrent, red light, and targeted attachments")
+  //  - CurrentBody Skin LED Mask Series 2 £399.99 — currentbody.com/products/currentbody-skin-led-light-therapy-mask (LED light therapy)
+  //  - Solawave 4-in-1 Wand & Serum Kit $189.00 (compare $207) — solawave.co/products/radiant-renewal-skincare-wand-lightboost-set.json
+  //    (product title is "4-in-1 Red Light Therapy Wand"; wand modalities: red light, microcurrent, warmth, vibration)
+  // Native currency, no FX conversion. Factual price + modality-count only; compliance_gate PASS 2026-07-20.
+  comparison: {
+    eyebrow: "Four modalities, one price",
+    headline: "The price-per-modality picture.",
+    intro:
+      "The Face Introducer runs four modalities — EMS, microcurrent, thermal and cosmetic LED — for a list price of €88. Here it is beside three well-known face devices, compared on two facts only: list price, and how many modalities each one runs. Every figure is the seller's own list price on their product page, in their own currency.",
+    rows: [
+      {
+        name: "The Face Introducer",
+        price: "€88",
+        modalities: "EMS · microcurrent · thermal · cosmetic LED — 4 modalities",
+        perModality: "≈ €22 / modality",
+        ours: true,
+      },
+      {
+        name: "NuFACE Trinity+ Complete Set",
+        price: "$595",
+        modalities: "Microcurrent · red light — marketed 3-in-1",
+        perModality: "≈ $198 / modality",
+      },
+      {
+        name: "CurrentBody Skin LED Mask Series 2",
+        price: "£399.99",
+        modalities: "LED light therapy — 1 modality",
+        perModality: "£399.99 / modality",
+      },
+      {
+        name: "Solawave 4-in-1 Wand & Serum Kit",
+        price: "$189",
+        modalities: "Red light · microcurrent · warmth · vibration — marketed 4-in-1",
+        perModality: "≈ $47 / modality",
+      },
+    ],
+    takeaway:
+      "On both measures — total list price and price per modality — the Face Introducer is the lowest of the four. This is a comparison of price and modality count only; it is not a claim about results, which depend on the device, the person, and consistent use.",
+    footnote:
+      "Prices checked on each brand's own product page on 20 July 2026; sources on file. NuFACE, CurrentBody and Solawave are trademarks of their respective owners — Zential Pure is not affiliated with, endorsed by, or comparing clinical outcomes against any of them. Figures are list prices in each seller's native currency and are not currency-converted.",
   },
 
   social: {

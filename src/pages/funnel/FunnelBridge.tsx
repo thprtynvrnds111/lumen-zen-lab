@@ -286,6 +286,55 @@ export default function FunnelBridge() {
         </div>
       </section>
 
+      {/* 02b · Price-per-modality comparison — factual price + modality count only,
+          competitor figures live-verified on their own pages (see config comment).
+          No performance-equivalence claim; sober, sourced, dated. FI-only (optional). */}
+      {config.comparison && (
+        <section id="the-comparison" className="zb-section zb-compare">
+          <div>
+            <div className="zb-eyebrow">
+              <span>{config.comparison.eyebrow}</span>
+            </div>
+            <h2 className="zb-display zb-display-sm">{config.comparison.headline}</h2>
+            <p className="zb-lead">{config.comparison.intro}</p>
+            <div className="zb-compare-table" role="table" aria-label="Price per modality comparison">
+              <div className="zb-compare-head" role="row">
+                <span role="columnheader">Device</span>
+                <span role="columnheader">List price</span>
+                <span role="columnheader">Modalities</span>
+                <span role="columnheader">Price / modality</span>
+              </div>
+              {config.comparison.rows.map((r) => (
+                <div
+                  className={`zb-compare-row${r.ours ? " zb-compare-row--ours" : ""}`}
+                  role="row"
+                  key={r.name}
+                >
+                  <span className="zb-compare-name" role="cell">
+                    {r.ours && <Check size={15} strokeWidth={2.25} aria-hidden="true" />}
+                    {r.name}
+                  </span>
+                  <span className="zb-compare-price" role="cell">
+                    <span className="zb-compare-label">List price</span>
+                    {r.price}
+                  </span>
+                  <span className="zb-compare-mod" role="cell">
+                    <span className="zb-compare-label">Modalities</span>
+                    {r.modalities}
+                  </span>
+                  <span className="zb-compare-per" role="cell">
+                    <span className="zb-compare-label">Price / modality</span>
+                    {r.perModality}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p className="zb-compare-takeaway">{config.comparison.takeaway}</p>
+            <p className="zb-compare-footnote">{config.comparison.footnote}</p>
+          </div>
+        </section>
+      )}
+
       {/* 03 · Mechanism before benefit */}
       <section className="zb-section zb-mechanism">
         <div className="zb-mech-grid">
@@ -614,6 +663,30 @@ const CSS = `
 .zb-benchmark-title{font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);}
 .zb-benchmark p{font-size:15px;margin:0;max-width:60ch;}
 .zb-benchmark-tag{align-self:flex-start;background:var(--teal);color:var(--ink);font-weight:600;font-size:13px;padding:6px 12px;border-radius:20px;margin-top:4px;}
+
+/* price-per-modality comparison */
+.zb-compare-table{margin:28px 0 20px;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.zb-compare-head{display:none;}
+/* Column labels shown inline on mobile (stacked cards), hidden once the header row appears. */
+.zb-compare-label{display:block;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+.zb-compare-row{display:grid;gap:2px 16px;padding:20px;border-top:1px solid var(--border);background:var(--cream);}
+.zb-compare-row:first-child{border-top:none;}
+.zb-compare-row--ours{background:var(--bg);border-left:2px solid var(--teal);}
+.zb-compare-name{font-family:var(--font-serif);font-style:italic;font-size:18px;display:flex;align-items:center;gap:8px;}
+.zb-compare-row--ours .zb-compare-name svg{color:var(--teal);flex:none;}
+.zb-compare-price{font-weight:600;font-size:16px;}
+.zb-compare-mod{font-size:14px;color:var(--ink);}
+.zb-compare-per{font-size:14px;color:var(--muted);}
+.zb-compare-row--ours .zb-compare-per{color:var(--terra);font-weight:600;}
+@media(min-width:768px){
+  .zb-compare-head{display:grid;grid-template-columns:1.4fr .7fr 1.7fr 1fr;gap:16px;padding:14px 20px;background:var(--bg);}
+  .zb-compare-head span{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);}
+  .zb-compare-row{grid-template-columns:1.4fr .7fr 1.7fr 1fr;align-items:center;gap:16px;}
+  .zb-compare-label{display:none;}
+  .zb-compare-name{font-size:16px;}
+}
+.zb-compare-takeaway{font-size:15px;color:var(--ink);margin:0 0 16px;max-width:64ch;line-height:1.6;}
+.zb-compare-footnote{font-size:11.5px;color:var(--muted);font-style:italic;margin:0;max-width:72ch;line-height:1.6;}
 
 /* social */
 .zb-honesty{margin-top:24px;padding:22px 24px;border-left:2px solid var(--accent,#C6A07C);background:rgba(198,160,124,0.06);border-radius:0 8px 8px 0;}
