@@ -194,7 +194,7 @@ const TRUSTPILOT = {
 const TRUST_ITEMS: TrustItem[] = [
   {
     title: "CE Marked",
-    body: "Independently assessed against EU safety, health and environmental standards for consumer electronics. Not a self-declared marketing badge.",
+    body: "Meets the EU safety, health and environmental requirements for consumer electronics. The Declaration of Conformity is on file — ask and we will show it.",
   },
   {
     title: "EU Company · Netherlands",
@@ -354,7 +354,7 @@ const faceIntroducer: BridgeConfig = {
       { q: "Will I feel anything?", a: "A gentle warmth and a light tightening as the instrument passes over the skin — most people find it calming rather than sharp. If a setting feels too strong, step it down; the signal responds to consistency, not intensity." },
       { q: "How is this different from the cheaper devices on Amazon?", a: "Most inexpensive wands run a single modality and no independent safety assessment. The Face Introducer combines four — EMS, microcurrent, thermal and cosmetic LED — is CE marked against EU standards, and is backed by a two-year warranty and a company you can look up in the Dutch register." },
       { q: "What if it doesn't work for me?", a: "Keep it thirty days. If it is not for you, send it back to Rotterdam for a full refund — any reason, no forms and no photos. The risk of trying it is thirty days, not €88." },
-      { q: "Is it safe?", a: "It is CE marked, meaning independently assessed against EU safety, health and environmental standards for consumer electronics. Follow the protocol card for session length and frequency, and avoid use over broken skin or if you have an implanted electronic device without checking with your doctor first." },
+      { q: "Is it safe?", a: "It is CE marked — it meets the EU safety, health and environmental requirements for consumer electronics. Follow the protocol card for session length and frequency, and avoid use over broken skin or if you have an implanted electronic device without checking with your doctor first." },
       { q: "How long until I notice anything?", a: "Honestly, it depends on consistency. This is support delivered daily, not an overnight change. Users who keep to most evenings tend to report a firmer-looking contour and a more rested appearance over weeks — we make no promise of a fixed timeline, because that would not be true." },
     ],
   },
@@ -507,7 +507,7 @@ const restorationBelt: BridgeConfig = {
       { q: "Will I feel anything?", a: "A steady, spreading warmth and a soft glow of light against the skin — most people find it calming rather than intense. If the heat feels too strong, step it down." },
       { q: "How is this different from a cheap heat wrap?", a: "A heat wrap is only heat. The Restoration Belt adds 660nm red and 850nm near-infrared light under that warmth, is CE marked against EU standards, and is backed by a two-year warranty and a company you can look up in the Dutch register." },
       { q: "What if it doesn't work for me?", a: "Keep it thirty days. If it is not for you, send it back to Rotterdam for a full refund — any reason, no forms and no photos." },
-      { q: "Is it safe?", a: "It is CE marked, independently assessed against EU safety standards for consumer electronics. Follow the protocol card for session length, avoid use over broken skin, and check with your doctor first if you are pregnant or have an implanted electronic device." },
+      { q: "Is it safe?", a: "It is CE marked — it meets the EU safety requirements for consumer electronics. Follow the protocol card for session length, avoid use over broken skin, and check with your doctor first if you are pregnant or have an implanted electronic device." },
       { q: "How long until I notice anything?", a: "It depends on consistency. This is warmth and light applied as a ritual, not an overnight fix. Users who keep to most evenings tend to report feeling looser and readier over weeks — we promise no fixed timeline, because that would not be true." },
     ],
   },
@@ -636,7 +636,7 @@ const restorationMat: BridgeConfig = {
       { q: "Will I feel anything?", a: "A deep, even warmth across the whole body and a soft glow of red light — most people find it deeply calming. If the heat feels too strong, step it down." },
       { q: "How is this different from an electric blanket?", a: "A blanket is only heat. The Restoration Mat adds 660nm red light and far-infrared warmth across its whole surface, is CE marked against EU standards, and is backed by a two-year warranty and a company you can look up in the Dutch register." },
       { q: "What if it doesn't work for me?", a: "Keep it thirty days. If it is not for you, send it back to Rotterdam for a full refund — any reason, no forms and no photos." },
-      { q: "Is it safe?", a: "It is CE marked, independently assessed against EU safety standards for consumer electronics. Follow the protocol card for session length, and check with your doctor first if you are pregnant or have a condition affected by heat." },
+      { q: "Is it safe?", a: "It is CE marked — it meets the EU safety requirements for consumer electronics. Follow the protocol card for session length, and check with your doctor first if you are pregnant or have a condition affected by heat." },
       { q: "How long until I notice anything?", a: "It depends on consistency. This is light and warmth applied as a ritual, not an overnight fix. Users who keep to most evenings tend to report feeling looser and calmer over weeks — we promise no fixed timeline, because that would not be true." },
     ],
   },
