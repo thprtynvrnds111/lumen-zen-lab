@@ -321,6 +321,9 @@ export default function OneShelf() {
                   <span className="os-price-was">{wasPrice}</span>
                 </p>
                 <p className="os-save">All three instruments · one purchase</p>
+                <p className="os-save">
+                  3 instalments available at checkout — the full shelf, a third at a time
+                </p>
                 <a
                   className="os-cta"
                   href={CTA_HREF}
@@ -336,7 +339,7 @@ export default function OneShelf() {
                   Build your shelf — {price}
                 </a>
                 <p className="os-cta-note">
-                  30-day protocol guarantee · free EU shipping · 2-year warranty
+                  30-day protocol guarantee · free EU shipping · 2-year warranty · 3 instalments at checkout
                 </p>
               </div>
             ) : (
