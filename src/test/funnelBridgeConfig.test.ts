@@ -11,7 +11,13 @@ describe("bridge funnel config contract", () => {
     for (const cfg of Object.values(BRIDGE_CONFIGS)) {
       expect(cfg.hero.priceLine, cfg.slug).toMatch(/€\d/);
       expect(cfg.hero.cta, cfg.slug).not.toHaveLength(0);
-      expect(cfg.offer.stickyLine, cfg.slug).toMatch(/€\d/);
+      expect(cfg.offer.stickyLine, cfg.slug).not.toHaveLength(0);
+      if (cfg.checkout) {
+        // Price lives on the CTAs now — every tap point states action + exact number.
+        const quoted = `€${cfg.checkout.checkoutValue.toFixed(2)}`;
+        expect(cfg.hero.cta, cfg.slug).toContain(quoted);
+        expect(cfg.offer.cta, cfg.slug).toContain(quoted);
+      }
     }
   });
 
@@ -32,10 +38,14 @@ describe("bridge funnel config contract", () => {
     for (const cfg of Object.values(BRIDGE_CONFIGS)) {
       if (!cfg.checkout) continue;
       const quoted = cfg.checkout.checkoutValue.toFixed(2);
-      for (const s of [cfg.offer.priceNote, cfg.offer.ctaNote, cfg.offer.stickyLine]) {
-        expect(s, cfg.slug).toContain(`€${quoted}`);
+      // Offer price + hero priceLine carry the exact verified number; notes name the mechanic.
+      expect(cfg.offer.price, cfg.slug).toBe(`€${quoted}`);
+      expect(cfg.hero.priceLine, cfg.slug).toContain(`€${quoted}`);
+      expect(cfg.hero.priceLine, cfg.slug).toContain(`€${cfg.checkout.listValue}`);
+      for (const s of [cfg.offer.priceNote, cfg.offer.ctaNote]) {
         expect(s.includes("RITUAL15") || s.includes("founding"), cfg.slug).toBe(true);
       }
+      expect(cfg.offer.ctaNote, cfg.slug).toContain(`€${quoted}`);
     }
   });
 

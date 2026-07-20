@@ -178,7 +178,7 @@ export default function FunnelBridge() {
   const [stickyVisible, setStickyVisible] = useState(false);
   const [offerOnScreen, setOfferOnScreen] = useState(false);
   useEffect(() => {
-    const onScroll = () => setStickyVisible(window.scrollY > window.innerHeight * 0.6);
+    const onScroll = () => setStickyVisible(window.scrollY > window.innerHeight * 1.8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     // Hide the sticky bar whenever ANY primary CTA is on screen — not only the
@@ -233,90 +233,21 @@ export default function FunnelBridge() {
             <BuyCta placement="hero" className="zb-cta">
               {config.hero.cta} <ArrowRight size={18} />
             </BuyCta>
-            <a href="#credibility" className="zb-scrollcue" aria-label="Read on">
+            <a href="#the-maths" className="zb-scrollcue" aria-label="Read on">
               Read on <ChevronDown size={16} />
             </a>
           </div>
+          {config.hero.ctaNote && <p className="zb-cta-note">{config.hero.ctaNote}</p>}
         </div>
         <div className="zb-hero-media">
           <img src={config.hero.image} alt={config.hero.alt} loading="eager" />
         </div>
       </section>
 
-      {/* 02 · Credibility stack — the signature moment */}
-      <section id="credibility" className="zb-section zb-credibility">
+      {/* 02 · The clinic math — desire before trust */}
+      <section id="the-maths" className="zb-section zb-math">
         <div>
-          <SectionMark n="02" label={config.credibility.eyebrow} />
-          <p className="zb-lead">{config.credibility.lead}</p>
-
-          {/* Honest low-count Trustpilot signal — NO score, NO count. */}
-          <a
-            className="zb-trust-strip"
-            href={config.credibility.trustpilot.href}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <BadgeCheck size={20} strokeWidth={1.75} aria-hidden="true" className="zb-trust-badge" />
-            <span className="zb-trust-text">
-              <strong>{config.credibility.trustpilot.label}</strong>
-              <span>{config.credibility.trustpilot.note}</span>
-            </span>
-            <span className="zb-trust-link">
-              See the reviews <ArrowRight size={14} />
-            </span>
-          </a>
-
-          <div className="zb-trust-grid">
-            {config.credibility.items.map((item, i) => {
-              const Icon = TRUST_ICONS[i % TRUST_ICONS.length];
-              return (
-                <div className="zb-trust-card" key={item.title}>
-                  <Icon size={20} strokeWidth={1.75} className="zb-trust-icon" />
-                  <h3>{item.title}</h3>
-                  <p>{item.body}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* 03 · Mechanism before benefit */}
-      <section className="zb-section zb-mechanism">
-        <div className="zb-mech-grid">
-          <div className="zb-mech-copy">
-            <SectionMark n="03" label={config.mechanism.eyebrow} />
-            <h2 className="zb-display zb-display-sm">{config.mechanism.headline}</h2>
-            {config.mechanism.body.map((p, i) => (
-              <p className="zb-body" key={i}>{p}</p>
-            ))}
-            <p className="zb-mech-caption">{config.mechanism.caption}</p>
-
-            <details className="zb-research">
-              <summary>
-                How we handle the research <ChevronDown size={16} />
-              </summary>
-              <div className="zb-research-body">
-                <p>{config.mechanism.research.intro}</p>
-                <ul>
-                  {config.mechanism.research.points.map((pt) => (
-                    <li key={pt}>{pt}</li>
-                  ))}
-                </ul>
-                <p className="zb-fineprint">{config.mechanism.research.disclaimer}</p>
-              </div>
-            </details>
-          </div>
-          <div className="zb-mech-media">
-            <img src={config.mechanism.image} alt={config.mechanism.alt} loading="lazy" />
-          </div>
-        </div>
-      </section>
-
-      {/* 04 · The clinic math */}
-      <section className="zb-section zb-math">
-        <div>
-          <SectionMark n="04" label={config.clinicMath.eyebrow} />
+          <SectionMark n="02" label={config.clinicMath.eyebrow} />
           <h2 className="zb-display zb-display-sm">{config.clinicMath.headline}</h2>
           <div className="zb-math-grid">
             <div className="zb-math-card">
@@ -352,6 +283,76 @@ export default function FunnelBridge() {
           <a href="#offer" className="zb-softlink">
             See the founding offer <ChevronDown size={15} />
           </a>
+        </div>
+      </section>
+
+      {/* 03 · Mechanism before benefit */}
+      <section className="zb-section zb-mechanism">
+        <div className="zb-mech-grid">
+          <div className="zb-mech-copy">
+            <SectionMark n="03" label={config.mechanism.eyebrow} />
+            <h2 className="zb-display zb-display-sm">{config.mechanism.headline}</h2>
+            {config.mechanism.body.map((p, i) => (
+              <p className="zb-body" key={i}>{p}</p>
+            ))}
+            <p className="zb-mech-caption">{config.mechanism.caption}</p>
+
+            <details className="zb-research">
+              <summary>
+                How we handle the research <ChevronDown size={16} />
+              </summary>
+              <div className="zb-research-body">
+                <p>{config.mechanism.research.intro}</p>
+                <ul>
+                  {config.mechanism.research.points.map((pt) => (
+                    <li key={pt}>{pt}</li>
+                  ))}
+                </ul>
+                <p className="zb-fineprint">{config.mechanism.research.disclaimer}</p>
+              </div>
+            </details>
+          </div>
+          <div className="zb-mech-media">
+            <img src={config.mechanism.image} alt={config.mechanism.alt} loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      {/* 04 · Credibility stack */}
+      <section id="credibility" className="zb-section zb-credibility">
+        <div>
+          <SectionMark n="04" label={config.credibility.eyebrow} />
+          <p className="zb-lead">{config.credibility.lead}</p>
+
+          {/* Honest low-count Trustpilot signal — NO score, NO count. */}
+          <a
+            className="zb-trust-strip"
+            href={config.credibility.trustpilot.href}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <BadgeCheck size={20} strokeWidth={1.75} aria-hidden="true" className="zb-trust-badge" />
+            <span className="zb-trust-text">
+              <strong>{config.credibility.trustpilot.label}</strong>
+              <span>{config.credibility.trustpilot.note}</span>
+            </span>
+            <span className="zb-trust-link">
+              See the reviews <ArrowRight size={14} />
+            </span>
+          </a>
+
+          <div className="zb-trust-grid">
+            {config.credibility.items.map((item, i) => {
+              const Icon = TRUST_ICONS[i % TRUST_ICONS.length];
+              return (
+                <div className="zb-trust-card" key={item.title}>
+                  <Icon size={20} strokeWidth={1.75} className="zb-trust-icon" />
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 

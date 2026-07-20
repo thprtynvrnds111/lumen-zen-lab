@@ -101,6 +101,8 @@ export interface BridgeConfig {
     priceLine: string;
     /** Hero CTA label — the same single purchase path as the offer block. */
     cta: string;
+    /** Optional micro-reassurance under the hero CTA (what happens after the tap). */
+    ctaNote?: string;
     image: string;
     alt: string;
   };
@@ -187,34 +189,34 @@ export interface BridgeConfig {
 
 const TRUSTPILOT = {
   label: "Verified reviews, growing",
-  note: "We are early. Reviews come from founding customers on our public Trustpilot profile — real, and few, on purpose.",
+  note: "We are early. Six founding-customer reviews — every one real, every one on our public Trustpilot profile.",
   href: "https://nl.trustpilot.com/review/zentialpure.com",
 };
 
 const TRUST_ITEMS: TrustItem[] = [
   {
     title: "CE Marked",
-    body: "Meets the EU safety, health and environmental requirements for consumer electronics. The Declaration of Conformity is on file — ask and we will show it.",
+    body: "Meets the EU safety, health and environmental requirements for consumer electronics — Declaration of Conformity on file, ask and we will show it.",
   },
   {
     title: "EU Company · Netherlands",
-    body: "Zential Pure B.V., a registered company in the Netherlands, verifiable in the Dutch business register.",
+    body: "Zential Pure B.V. — look us up in the Dutch business register.",
   },
   {
     title: "30-Day Return",
-    body: "Thirty days to change your mind. Full refund, any reason, no forms and no photos. Stated here as a promise, not buried in a footnote.",
+    body: "Full refund, any reason. No forms, no photos.",
   },
   {
     title: "2-Year Warranty",
-    body: "Every instrument is covered for two years against manufacturing fault. A device meant to be kept, backed like one.",
+    body: "Covered for two years against manufacturing fault.",
   },
   {
     title: "Secure Checkout",
-    body: "Payment handled by Shopify Payments over encrypted SSL — Wero, major cards, PayPal, Apple Pay and Google Pay. We never see your card details.",
+    body: "Shopify Payments over encrypted SSL — Wero, major cards, PayPal, Apple Pay, Google Pay. We never see your card details.",
   },
   {
     title: "Shipping & Duties",
-    body: "Free EU shipping, dispatched within two to three working days and tracked to your door. Import VAT is prepaid at checkout — no customs bill, no surprises on arrival.",
+    body: "Ships to the US and across the EU, dispatched in 2–3 working days, tracked to your door. EU orders ship free with import VAT prepaid — no customs bill. US orders: your exact total, shipping included, is shown at checkout before you pay.",
   },
 ];
 
@@ -259,17 +261,18 @@ const faceIntroducer: BridgeConfig = {
 
   hero: {
     eyebrow: "No miracle — a mechanism · here is the full story",
-    headline: "Your skin already knows how to do this. It has simply stopped being reminded.",
-    sub: "The instrument category behind clinic microcurrent — EMS, microcurrent, thermal and cosmetic LED (630–660nm) — recalibrated for a twelve-minute evening ritual at home.",
-    priceLine: "€88 once · 30-day full refund, any reason",
-    cta: "Claim the founding price",
+    headline: "Microcurrent at the clinic runs €80–120 a session, and the chair is never yours. The Face Introducer is €74.80, once.",
+    sub: "EMS, microcurrent, thermal and cosmetic LED (630–660nm) — the instrument category behind clinic microcurrent, recalibrated for a twelve-minute evening ritual at home. No booking, no per-session bill, nothing to give back.",
+    priceLine: "€74.80 with founding code RITUAL15 · list price €88 · 30-day full refund, any reason",
+    cta: "Start the order — €74.80",
+    ctaNote: "RITUAL15 is already in the link — nothing to type. You will see the full total before anything is charged. 30-day full refund, any reason.",
     image: faceHero,
     alt: "The Face Introducer resting on a bathroom shelf in warm evening light.",
   },
 
   credibility: {
     eyebrow: "Who you are ordering from",
-    lead: "Before we say a word about your skin, here is who stands behind the instrument. A registered EU company, independently safety-assessed, returnable for any reason — everything you would check before spending real money, in one place.",
+    lead: "Who stands behind the instrument — everything you would check before spending real money, in one place.",
     trustpilot: TRUSTPILOT,
     items: TRUST_ITEMS,
   },
@@ -300,18 +303,18 @@ const faceIntroducer: BridgeConfig = {
 
   clinicMath: {
     eyebrow: "If you have sat in the chair before",
-    headline: "The maths of doing it at home.",
+    headline: "The chair was never yours. This is.",
     clinic: {
       title: "A course in the clinic",
       price: "€720",
       unit: "per year",
-      rows: ["Six to ten sessions at €80–120 each", "Travel and time booked around them", "Results fade between appointments"],
+      rows: ["€80–120 handed over at the desk, every single visit", "Booked weeks ahead, driven to, waited for", "Whatever you walked out with fades while you wait for the next opening"],
     },
     instrument: {
       title: "The Face Introducer",
       price: "€88",
       unit: "once",
-      rows: ["Yours to keep, no subscription", "Twelve minutes, at home, on your schedule", "Used daily, so the signal never lapses"],
+      rows: ["Yours the moment it arrives — no desk, no booking, no bill after this one", "Twelve minutes at home, on your schedule", "Session two hundred costs what session two cost: nothing"],
     },
     benchmark: {
       title: "Versus the premium US benchmark",
@@ -322,10 +325,10 @@ const faceIntroducer: BridgeConfig = {
 
   social: {
     eyebrow: "In their own words",
-    headline: "Founding customers",
+    headline: "The careful ones bought first.",
     honesty: {
-      headline: "We are new. We have six reviews.",
-      body: "Not six hundred. We are not going to invent the difference. Below are the real ones, copied from our public Trustpilot profile — typos and all. Judge us on the methodology above, keep the instrument for thirty days, and send it back if we are wrong.",
+      headline: "Six reviews. Every one real, every one public.",
+      body: "Not six hundred — we are weeks old, not years, and we will not invent the difference. Below are the real ones, copied from our public Trustpilot profile, typos and all. Notice who they are: people who did their research, compared devices, and stayed sceptical until the instrument arrived. If that is how you buy, you are reading the right page. Judge us on the mechanism above, keep it thirty days, and send it back if we are wrong.",
       href: "https://nl.trustpilot.com/review/zentialpure.com",
       linkLabel: "Read them on Trustpilot →",
     },
@@ -362,14 +365,14 @@ const faceIntroducer: BridgeConfig = {
   offer: {
     eyebrow: "Clinic precision. Daily ritual.",
     headline: "The Face Introducer",
-    price: "€88",
-    priceNote: "Once, not per session. One clinic session costs €80 to €120. The founding code RITUAL15 is applied for you at checkout — €74.80, nothing to type. Free, tracked EU shipping.",
+    price: "€74.80",
+    priceNote: "Founding price — list €88, the code RITUAL15 is applied for you at checkout, nothing to type. Less than a single €80–120 clinic session, and this one you keep. Free, tracked EU shipping.",
     inBoxTitle: "In the box",
     inBox: ["The Face Introducer instrument", "Conductive ritual gel, first supply", "Magnetic charging base and cable", "The twelve-minute protocol card"],
     guarantee: GUARANTEE,
-    cta: "Claim the founding price",
-    ctaNote: "RITUAL15 applied automatically — €74.80 at checkout · Free, tracked EU shipping · 30-day full refund",
-    stickyLine: "€74.80 founding · 30-day return",
+    cta: "Start the order — €74.80",
+    ctaNote: "RITUAL15 applied automatically — €74.80 at checkout, nothing to type. You will see the full total before anything is charged — Wero, cards, PayPal, Apple Pay or Google Pay. 30-day full refund.",
+    stickyLine: "30-day full refund, any reason",
     // Verified 2026-07-19: variant 52413727506775 = Restore Gel €18 (live products.json);
     // FI+Gel cartCreate with RITUAL15: €106 subtotal → €90.10 total; permalink 302s.
     bundle: {
@@ -377,7 +380,7 @@ const faceIntroducer: BridgeConfig = {
       addListValue: 18.0,
       text: "Add the Restore Gel — the conductive layer the ritual runs on.",
       note: "Instrument + gel: €106 — €90.10 with RITUAL15 at checkout. Same 30-day return.",
-      cta: "Begin with the full ritual",
+      cta: "Start the order with gel — €90.10",
     },
     systemBridge: {
       text: "Outfitting the whole shelf? Face, body and full rest — The System runs €399, was €468.",
@@ -415,15 +418,16 @@ const restorationBelt: BridgeConfig = {
     eyebrow: "You watched her routine · here is the rest of it",
     headline: "Your body already knows how to recover. Warmth and the right light simply give it somewhere to begin.",
     sub: "The recovery-wrap category — 660nm red and 850nm near-infrared, pressed close to muscle by a thermal wrap — recalibrated for a fifteen-minute ritual at home.",
-    priceLine: "€180 once · 30-day full refund, any reason",
-    cta: "Claim the founding price",
+    priceLine: "€153.00 with founding code RITUAL15 · list price €180 · 30-day full refund, any reason",
+    cta: "Start the order — €153.00",
+    ctaNote: "RITUAL15 is already in the link — nothing to type. You will see the full total before anything is charged. 30-day full refund, any reason.",
     image: beltHero,
     alt: "The Restoration Belt wrapped at the waist in warm, low evening light.",
   },
 
   credibility: {
     eyebrow: "Who you are ordering from",
-    lead: "Before we say a word about recovery, here is who stands behind the instrument. A registered EU company, independently safety-assessed, returnable for any reason — everything you would check before spending real money, in one place.",
+    lead: "Who stands behind the instrument — everything you would check before spending real money, in one place.",
     trustpilot: TRUSTPILOT,
     items: TRUST_ITEMS,
   },
@@ -477,8 +481,8 @@ const restorationBelt: BridgeConfig = {
     eyebrow: "In their own words",
     headline: "Founding customers",
     honesty: {
-      headline: "We are new. We have six reviews.",
-      body: "Not six hundred, and none of them for this instrument yet. We are not going to invent them. Below is what founding customers have said about Zential instruments on our public Trustpilot profile — copied exactly. Judge us on the methodology above, keep it thirty days, and send it back if we are wrong.",
+      headline: "Six reviews. Every one real, every one public.",
+      body: "Not six hundred — we are weeks old, not years — and none of them for this instrument yet. We will not invent them. Below is what founding customers have said about Zential instruments on our public Trustpilot profile, copied exactly. Judge us on the mechanism above, keep it thirty days, and send it back if we are wrong.",
       href: "https://nl.trustpilot.com/review/zentialpure.com",
       linkLabel: "Read them on Trustpilot →",
     },
@@ -515,14 +519,14 @@ const restorationBelt: BridgeConfig = {
   offer: {
     eyebrow: "Recovery, worn close.",
     headline: "The Restoration Belt",
-    price: "€180",
-    priceNote: "Was €280. Once, not per session. The founding code RITUAL15 is applied for you at checkout — €153.00, nothing to type. Free, tracked EU shipping.",
+    price: "€153.00",
+    priceNote: "Founding price — list €180, was €280. The code RITUAL15 is applied for you at checkout, nothing to type. Free, tracked EU shipping.",
     inBoxTitle: "In the box",
     inBox: ["The Restoration Belt instrument", "Adjustable thermal wrap (fits waist 28–48in)", "Power adapter and cable", "The fifteen-minute protocol card"],
     guarantee: GUARANTEE,
-    cta: "Claim the founding price",
-    ctaNote: "RITUAL15 applied automatically — €153.00 at checkout · Free, tracked EU shipping · 30-day full refund",
-    stickyLine: "€153.00 founding · 30-day return",
+    cta: "Start the order — €153.00",
+    ctaNote: "RITUAL15 applied automatically — €153.00 at checkout, nothing to type. You will see the full total before anything is charged. 30-day full refund.",
+    stickyLine: "30-day full refund, any reason",
     image: beltOffer,
     alt: "The Restoration Belt, folded and arranged on a warm surface.",
   },
@@ -552,7 +556,7 @@ const restorationMat: BridgeConfig = {
 
   credibility: {
     eyebrow: "Who you are ordering from",
-    lead: "Before we say a word about recovery, here is who stands behind the instrument. A registered EU company, independently safety-assessed, returnable for any reason — everything you would check before spending real money, in one place.",
+    lead: "Who stands behind the instrument — everything you would check before spending real money, in one place.",
     trustpilot: TRUSTPILOT,
     items: TRUST_ITEMS,
   },
@@ -606,8 +610,8 @@ const restorationMat: BridgeConfig = {
     eyebrow: "In their own words",
     headline: "Founding customers",
     honesty: {
-      headline: "We are new. We have six reviews.",
-      body: "Not six hundred, and none of them for this instrument yet. We are not going to invent them. Below is what founding customers have said about Zential instruments on our public Trustpilot profile — copied exactly. Judge us on the methodology above, keep it thirty days, and send it back if we are wrong.",
+      headline: "Six reviews. Every one real, every one public.",
+      body: "Not six hundred — we are weeks old, not years — and none of them for this instrument yet. We will not invent them. Below is what founding customers have said about Zential instruments on our public Trustpilot profile, copied exactly. Judge us on the mechanism above, keep it thirty days, and send it back if we are wrong.",
       href: "https://nl.trustpilot.com/review/zentialpure.com",
       linkLabel: "Read them on Trustpilot →",
     },
