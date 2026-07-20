@@ -103,6 +103,31 @@ export interface BridgeConfig {
     checkoutValue: number;
     currency: string;
   };
+  /** Multi-variant one-hop block. Set INSTEAD of `checkout` when the product has
+   *  several buyable variants (e.g. the Mat: two sizes × remote optional). The
+   *  offer section renders a "choose your size" grid; each option is its own
+   *  cart permalink (variantId + discountCode) with honest per-variant pixel
+   *  values, and the hero/offer/sticky CTAs scroll here rather than to one cart.
+   *  Every `checkoutValue` MUST equal a live cartCreate total with discountCode. */
+  variantChoices?: {
+    eyebrow: string;
+    headline: string;
+    /** Reassurance under the grid (code auto-applied, full total before charge). */
+    note: string;
+    options: {
+      variantId: string;
+      /** Human size/spec label, e.g. "Without remote · 100 × 40 cm". */
+      label: string;
+      listValue: number;
+      /** Price after discountCode — must match a live cartCreate total. */
+      checkoutValue: number;
+      currency: string;
+      /** Per-option price line, e.g. "€170.00 with RITUAL15 · list €200". */
+      priceLine: string;
+      /** Per-option CTA label — states action + exact number. */
+      cta: string;
+    }[];
+  };
   title: string;
   metaDescription: string;
 
@@ -611,6 +636,13 @@ const restorationMat: BridgeConfig = {
   slug: "restoration-mat",
   pdpPath: "/instruments/restoration-mat",
   discountCode: "RITUAL15",
+  // Four buyable variants — no single `checkout`; see `variantChoices` below.
+  // Live cartCreate with RITUAL15 (2026-07-20, grep anchors 170.00 / 187.00 / 211.65):
+  //  Without remote / 100×40 (53525385019735) €200 → €170.00
+  //  Without remote / 120×40 (53525385052503) €200 → €170.00
+  //  With remote / 100×40    (53525384954199) €220 → €187.00
+  //  With remote / 120×40    (53525384986967) €249 → €211.65
+  // Each permalink 302s into checkout with discount_code=RITUAL15 applied.
   title: "The Restoration Mat — Zential Pure",
   metaDescription:
     "The lie-down recovery-mat category — 660nm red light and far-infrared heat, edge to edge across a 100 × 40 cm panel — recalibrated for a twenty-minute ritual you can roll out anywhere. CE marked. 30-day return. Free, tracked EU shipping.",
@@ -619,8 +651,9 @@ const restorationMat: BridgeConfig = {
     eyebrow: "You watched her lie down · here is the rest of it",
     headline: "Your whole body carries the day. Give it twenty minutes of light and warmth to set it down.",
     sub: "The lie-down recovery-mat category — 660nm red light and far-infrared heat, edge to edge across a 100 × 40 cm panel — recalibrated for a twenty-minute ritual you can roll out anywhere.",
-    priceLine: "from €200 once · 30-day full refund, any reason",
-    cta: "See the Restoration Mat",
+    priceLine: "from €170.00 with founding code RITUAL15 · list from €200 · 30-day full refund, any reason",
+    cta: "Choose your size — from €170.00",
+    ctaNote: "Two sizes, remote optional. RITUAL15 is already in each link — nothing to type. You will see the full total before anything is charged. 30-day full refund, any reason.",
     image: matHero,
     alt: "The Restoration Mat rolled out, glowing softly in a calm, low-lit room.",
   },
@@ -716,17 +749,30 @@ const restorationMat: BridgeConfig = {
     ],
   },
 
+  variantChoices: {
+    eyebrow: "Choose your size",
+    headline: "Two sizes, remote optional",
+    note: "RITUAL15 is already in each link — nothing to type. You will see the full total before anything is charged. Free, tracked EU shipping · 30-day full refund, any reason.",
+    options: [
+      // cartCreate-verified with RITUAL15, 2026-07-20 (see block comment above).
+      { variantId: "53525385019735", label: "Without remote · 100 × 40 cm", listValue: 200, checkoutValue: 170.0, currency: "EUR", priceLine: "€170.00 with RITUAL15 · list €200", cta: "Choose this — €170.00" },
+      { variantId: "53525385052503", label: "Without remote · 120 × 40 cm", listValue: 200, checkoutValue: 170.0, currency: "EUR", priceLine: "€170.00 with RITUAL15 · list €200", cta: "Choose this — €170.00" },
+      { variantId: "53525384954199", label: "With remote · 100 × 40 cm", listValue: 220, checkoutValue: 187.0, currency: "EUR", priceLine: "€187.00 with RITUAL15 · list €220", cta: "Choose this — €187.00" },
+      { variantId: "53525384986967", label: "With remote · 120 × 40 cm", listValue: 249, checkoutValue: 211.65, currency: "EUR", priceLine: "€211.65 with RITUAL15 · list €249", cta: "Choose this — €211.65" },
+    ],
+  },
+
   offer: {
     eyebrow: "A lie-down bed of red light and far-infrared heat.",
     headline: "The Restoration Mat",
-    price: "from €200",
-    priceNote: "From €200. Once, not per session. Free, tracked EU shipping.",
+    price: "from €170.00",
+    priceNote: "From €170.00 with founding code RITUAL15 (list from €200). Once, not per session. Free, tracked EU shipping.",
     inBoxTitle: "In the box",
     inBox: ["The Restoration Mat (rolls flat to store)", "Optional remote control (select variants)", "Power adapter and cable", "The twenty-minute protocol card"],
     guarantee: GUARANTEE,
-    cta: "See the Restoration Mat",
+    cta: "Choose your size — from €170.00",
     ctaNote: "Founding price carried to checkout · Free, tracked EU shipping · 30-day full refund",
-    stickyLine: "from €200 · 30-day return",
+    stickyLine: "from €170.00 with RITUAL15 · 30-day return",
     image: matOffer,
     alt: "The Restoration Mat, rolled and arranged on a warm surface.",
   },

@@ -123,8 +123,28 @@ export default function FunnelBridge() {
       window.setTimeout(() => { window.location.href = target; }, 120);
     };
 
+  // Multi-variant one-hop path (the Mat): each size is its own cart permalink.
+  // Fires click-bound ATC/IC with this variant's OWN honest, cartCreate-verified
+  // figures (never the config-wide list), then navigates to its permalink.
+  const onChoiceClick = (opt: NonNullable<typeof config.variantChoices>["options"][number]) =>
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      onCtaClick("choose-size")();
+      pixelDirectCheckout({
+        variantId: `gid://shopify/ProductVariant/${opt.variantId}`,
+        name: `${config.offer.headline} — ${opt.label}`,
+        listValue: opt.listValue,
+        checkoutValue: opt.checkoutValue,
+        currency: opt.currency,
+      });
+      if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      const dest = permalinkFor([opt.variantId]);
+      window.setTimeout(() => { window.location.href = dest; }, 120);
+    };
+
   // Single buy CTA element: plain anchor (works without JS) on the one-hop
-  // checkout path; SPA <Link> when the purchase path is still the PDP.
+  // checkout path; an in-page scroll to the size grid when the product has
+  // several variants (Mat); SPA <Link> when the purchase path is still the PDP.
   const BuyCta = ({ placement, className, tabIndex, children }: {
     placement: string;
     className: string;
@@ -133,6 +153,10 @@ export default function FunnelBridge() {
   }) =>
     config.checkout ? (
       <a href={buyHref} className={className} onClick={onBuyClick(placement)} tabIndex={tabIndex}>
+        {children}
+      </a>
+    ) : config.variantChoices ? (
+      <a href="#choose-size" className={className} onClick={onCtaClick(placement)} tabIndex={tabIndex}>
         {children}
       </a>
     ) : (
@@ -184,7 +208,11 @@ export default function FunnelBridge() {
     // Hide the sticky bar whenever ANY primary CTA is on screen — not only the
     // offer section. On mobile the fixed bar otherwise covers inline CTAs
     // (conversion-audit finding 2026-07-09: bar overlapped the hero CTA at 390px).
-    const ctas = Array.from(document.querySelectorAll(".zb-cta:not(.zb-cta--sticky)"));
+    // Includes the Mat's per-size choice cards (.zb-choice) — they are the real
+    // purchase path there, so the bar must clear them too.
+    const ctas = Array.from(
+      document.querySelectorAll(".zb-cta:not(.zb-cta--sticky), .zb-choice")
+    );
     const visible = new Set<Element>();
     let io: IntersectionObserver | undefined;
     if (ctas.length) {
@@ -510,10 +538,35 @@ export default function FunnelBridge() {
               </ul>
             </div>
             <p className="zb-offer-guarantee">{config.offer.guarantee}</p>
-            <BuyCta placement="offer" className="zb-cta">
-              {config.offer.cta} <ArrowRight size={18} />
-            </BuyCta>
-            <p className="zb-cta-note">{config.offer.ctaNote}</p>
+            {config.variantChoices ? (
+              <div className="zb-choices" id="choose-size">
+                <p className="zb-choices-eyebrow">{config.variantChoices.eyebrow}</p>
+                <div className="zb-choices-grid">
+                  {config.variantChoices.options.map((o) => (
+                    <a
+                      key={o.variantId}
+                      href={permalinkFor([o.variantId])}
+                      className="zb-choice"
+                      onClick={onChoiceClick(o)}
+                    >
+                      <span className="zb-choice-label">{o.label}</span>
+                      <span className="zb-choice-price">{o.priceLine}</span>
+                      <span className="zb-choice-action">
+                        {o.cta} <ArrowRight size={16} />
+                      </span>
+                    </a>
+                  ))}
+                </div>
+                <p className="zb-cta-note">{config.variantChoices.note}</p>
+              </div>
+            ) : (
+              <>
+                <BuyCta placement="offer" className="zb-cta">
+                  {config.offer.cta} <ArrowRight size={18} />
+                </BuyCta>
+                <p className="zb-cta-note">{config.offer.ctaNote}</p>
+              </>
+            )}
             {config.offer.bundle && bundleHref && (
               <div className="zb-bundle">
                 <p className="zb-bundle-text">{config.offer.bundle.text}</p>
@@ -740,6 +793,19 @@ const CSS = `
 
 /* under-CTA micro reassurance */
 .zb-cta-note{font-size:12.5px;color:var(--muted);margin:12px 0 0;max-width:48ch;line-height:1.6;}
+
+/* multi-variant "choose your size" one-hop grid (Mat) — outlined cards, each an
+   own cart permalink; turquoise stays the single action colour (border + action). */
+.zb-choices{margin:8px 0 4px;}
+.zb-choices-eyebrow{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;}
+.zb-choices-grid{display:grid;gap:12px;grid-template-columns:1fr;}
+@media(min-width:560px){.zb-choices-grid{grid-template-columns:1fr 1fr;}}
+.zb-choice{display:flex;flex-direction:column;gap:6px;background:var(--bg);border:1px solid var(--teal);border-radius:12px;padding:18px 20px;text-decoration:none;color:var(--ink);min-height:44px;transition:opacity .15s cubic-bezier(.4,0,.2,1);}
+.zb-choice:hover{opacity:.9;}
+.zb-choice:focus-visible{outline:3px solid var(--teal);outline-offset:3px;}
+.zb-choice-label{font-family:var(--font-serif);font-style:italic;font-size:18px;}
+.zb-choice-price{font-size:13px;color:var(--muted);}
+.zb-choice-action{display:inline-flex;align-items:center;gap:8px;margin-top:4px;color:var(--teal);font-weight:600;font-size:14px;letter-spacing:0.01em;}
 
 /* AOV bundle + System bridge — quiet blocks under the primary CTA */
 .zb-bundle{margin:20px 0 4px;padding:16px 18px;border:1px dashed var(--border);border-radius:10px;}

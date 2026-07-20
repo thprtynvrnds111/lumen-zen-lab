@@ -62,6 +62,34 @@ describe("bridge funnel config contract", () => {
     }
   });
 
+  it("variantChoices, where present, quote cartCreate-verified per-variant math", () => {
+    for (const cfg of Object.values(BRIDGE_CONFIGS)) {
+      const vc = cfg.variantChoices;
+      if (!vc) continue;
+      // A multi-variant product picks the choice grid, never a single checkout block.
+      expect(cfg.checkout, cfg.slug).toBeUndefined();
+      expect(vc.options.length, cfg.slug).toBeGreaterThanOrEqual(2);
+      for (const o of vc.options) {
+        expect(o.variantId, cfg.slug).toMatch(/^\d+$/);
+        expect(o.currency, cfg.slug).toBe("EUR");
+        // RITUAL15 = 15% order-level. Re-verify via a live cartCreate before
+        // changing either figure.
+        expect(o.checkoutValue, `${cfg.slug} ${o.label}`).toBeCloseTo(o.listValue * 0.85, 2);
+        // Every tap point states action + exact number; the line names the list price.
+        const quoted = `€${o.checkoutValue.toFixed(2)}`;
+        expect(o.cta, `${cfg.slug} ${o.label}`).toContain(quoted);
+        expect(o.priceLine, `${cfg.slug} ${o.label}`).toContain(quoted);
+        expect(o.priceLine, `${cfg.slug} ${o.label}`).toContain(`€${o.listValue}`);
+      }
+      // Hero + sticky anchor the cheapest verified "from €X" number.
+      const fromQuote = `€${Math.min(...vc.options.map((o) => o.checkoutValue)).toFixed(2)}`;
+      expect(cfg.hero.priceLine, cfg.slug).toContain(fromQuote);
+      expect(cfg.hero.cta, cfg.slug).toContain(fromQuote);
+      expect(cfg.offer.price, cfg.slug).toContain(fromQuote);
+      expect(cfg.offer.stickyLine, cfg.slug).toContain(fromQuote);
+    }
+  });
+
   it("price-per-modality comparison, where present, is well-formed and sober", () => {
     for (const cfg of Object.values(BRIDGE_CONFIGS)) {
       const cmp = cfg.comparison;
