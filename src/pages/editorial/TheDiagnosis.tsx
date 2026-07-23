@@ -97,9 +97,17 @@ export default function TheDiagnosis() {
           Speak the skin's language.
         </p>
         <p style={{ fontSize: "14px", lineHeight: 1.6, color: "var(--ed-grey)", margin: 0 }}>
-          Face Introducer · €88. Once.
+          Face Introducer · €88 — €74.80 with the ritual code, applied for you.
         </p>
-        <a className="btn btn--primary" href={PDP}>Order the Face Introducer</a>
+        <a
+          className="btn btn--primary"
+          href="/f/face-introducer?utm_source=editorial&utm_medium=site&utm_campaign=the-diagnosis"
+        >
+          Order the Face Introducer — €74.80
+        </a>
+        <a style={{ fontSize: "13px", color: "var(--ed-grey)" }} href={PDP}>
+          Prefer the full specification? See the product page
+        </a>
       </section>
 
       <EditorialNewsletter slug="the-diagnosis" copy="One letter a week. Mechanism before benefit, always." variant="dark" />

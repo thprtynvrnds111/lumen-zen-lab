@@ -33,7 +33,7 @@ describe("TheDiagnosis", () => {
     const order = screen.getByRole("link", { name: /order the face introducer/i });
     expect(order).toHaveAttribute(
       "href",
-      "/instruments/face-introducer?utm_campaign=the-diagnosis",
+      "/f/face-introducer?utm_source=editorial&utm_medium=site&utm_campaign=the-diagnosis",
     );
   });
 

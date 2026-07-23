@@ -559,6 +559,26 @@ export default function FunnelBridge() {
                 </div>
                 <p className="zb-cta-note">{config.variantChoices.note}</p>
               </div>
+            ) : config.offer.bundle && bundleHref ? (
+              <>
+                {/* Bundle-first offer: the complete-ritual order is the primary
+                    action; the instrument-only order stays one click below. */}
+                <div className="zb-bundle zb-bundle--primary">
+                  <p className="zb-bundle-text">{config.offer.bundle.text}</p>
+                  <a
+                    href={bundleHref}
+                    className="zb-cta"
+                    onClick={onBuyClick("bundle", bundleHref, config.offer.bundle.addListValue)}
+                  >
+                    {config.offer.bundle.cta} <ArrowRight size={18} />
+                  </a>
+                  <p className="zb-bundle-note">{config.offer.bundle.note}</p>
+                </div>
+                <BuyCta placement="offer" className="zb-softlink">
+                  {config.offer.cta}
+                </BuyCta>
+                <p className="zb-cta-note">{config.offer.ctaNote}</p>
+              </>
             ) : (
               <>
                 <BuyCta placement="offer" className="zb-cta">
@@ -566,19 +586,6 @@ export default function FunnelBridge() {
                 </BuyCta>
                 <p className="zb-cta-note">{config.offer.ctaNote}</p>
               </>
-            )}
-            {config.offer.bundle && bundleHref && (
-              <div className="zb-bundle">
-                <p className="zb-bundle-text">{config.offer.bundle.text}</p>
-                <a
-                  href={bundleHref}
-                  className="zb-softlink"
-                  onClick={onBuyClick("bundle", bundleHref, config.offer.bundle.addListValue)}
-                >
-                  {config.offer.bundle.cta}
-                </a>
-                <p className="zb-bundle-note">{config.offer.bundle.note}</p>
-              </div>
             )}
             <Link to={ctaHref} className="zb-softlink" onClick={onCtaClick("offer-pdp")}>
               Prefer the full specification first? See the product page

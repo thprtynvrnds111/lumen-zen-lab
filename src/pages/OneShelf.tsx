@@ -202,6 +202,10 @@ export default function OneShelf() {
         .os-cta { display: block; background: ${TEAL}; color: #1a1714; font-weight: 700; font-size: 16px; border-radius: 9999px; padding: 14px 24px; text-decoration: none; }
         .os-cta-note { font-size: 12px; color: #8a7f74; margin-top: 12px; line-height: 1.5; }
         .os-locked-note { margin-top: 24px; text-align: center; font-size: 13px; color: #8a7f74; }
+        .os-topoffer { margin-top: 20px; padding: 16px 20px; border: 1px solid rgba(46,216,168,0.35); border-radius: 16px; text-align: center; }
+        .os-topoffer-line { font-size: 15px; margin: 0 0 12px; }
+        .os-topoffer-price { font-weight: 700; color: ${TEAL}; margin-left: 6px; }
+        .os-topoffer-cta { max-width: 320px; margin: 0 auto; text-align: center; }
         @keyframes os-rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
         @keyframes os-sweep { from { transform: scaleX(0); } to { transform: scaleX(1); } }
         @media (prefers-reduced-motion: reduce) {
@@ -223,6 +227,20 @@ export default function OneShelf() {
             <p className="os-sub">
               Watch her day — or tap a ritual to skip ahead. Collect all three.
             </p>
+            <div className="os-topoffer">
+              <p className="os-topoffer-line">
+                The System — all three instruments
+                <span className="os-topoffer-price"> €399</span>
+                <span className="os-price-was">€468</span>
+              </p>
+              <a className="os-cta os-topoffer-cta" href={CTA_HREF}>
+                Start the order — €399
+              </a>
+              <p className="os-cta-note">
+                Full total shown before anything is charged · 3 instalments available at checkout ·
+                30-day money-back guarantee · free EU shipping
+              </p>
+            </div>
           </header>
 
           <div className="os-video-col">
