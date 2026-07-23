@@ -126,14 +126,6 @@
       "status": 301
     },
     {
-      "src": "/quiz",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/quiz/result",
-      "dest": "/index.html"
-    },
-    {
       "src": "/at-home-face-lifting-device",
       "dest": "/at-home-face-lifting-device.html"
     },
@@ -201,26 +193,6 @@
         "Location": "/product/lifting-and-tightening-face-introducer"
       },
       "status": 301
-    },
-    {
-      "src": "/compare/foreo-bear-vs-zential-pure",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/technology/electroporation",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/clinic-vs-home-facial-device",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/facial-muscle-training",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/technology/iontophoresis",
-      "dest": "/index.html"
     },
     {
       "src": "/nufacealternative",
