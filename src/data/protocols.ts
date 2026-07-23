@@ -1,6 +1,37 @@
 import protocolFaceImg from "@/assets/editorial/protocol-face.webp";
 import protocolBodyImg from "@/assets/editorial/protocol-body.webp";
 import protocolRecoveryImg from "@/assets/editorial/protocol-recovery.webp";
+import beltHero from "@/assets/belt-pdp-hero.png";
+import matHero from "@/assets/hero-restore-mat.webp";
+
+/**
+ * The three protocols, rebuilt on the LIVE catalog 2026-07-24.
+ *
+ * Until this rewrite each protocol sold a multi-device "sequence" assembled from
+ * products that do not exist: Eye Activator, Gua Sha Frequency, Pressure Shell,
+ * Ritual Light Pro, Restore Mat, Pulse Roller — eight discontinued names across
+ * the three pages, at invented prices, under invented bundle discounts.
+ * knowledge/products/LIVE-CATALOG-TRUTH.md lists every one of them as
+ * discontinued and forbids them in customer copy.
+ *
+ * The store sells three instruments and one bundle. So each protocol now names
+ * exactly one live instrument, and the bundle CTA on every protocol is the real
+ * System (€399 against €468 bought separately — a €69 saving, not a made-up one).
+ *
+ * Prices, modalities and session lengths below are copied from LIVE-CATALOG-TRUTH.md
+ * (re-verified against the live Storefront API 2026-07-08). Do not add a device
+ * here that is not in src/data/liveCatalog.ts LIVE_HANDLES.
+ */
+
+/** The System bundle — the single purchase path offered on every protocol page. */
+export const SYSTEM = {
+  /** All three instruments bought together. */
+  price: 399,
+  /** €88 + €180 + €200 bought separately. */
+  separatePrice: 468,
+  href: "/one-shelf",
+  name: "The System",
+} as const;
 
 export interface Protocol {
  slug: string;
@@ -14,6 +45,8 @@ export interface Protocol {
   role: string;
   minutes: number;
   handle: string;
+  /** Route of the instrument's own page. Never a /product/<handle> PDP. */
+  href: string;
   price: number;
   imageUrl: string;
  }[];
@@ -23,15 +56,18 @@ export interface Protocol {
  imageQuote?: string;
  /** Outcome-led label shown on the entry square (e.g. "Skin & Face"). */
  outcomeLabel: string;
- /** Hero product image for the entry square (Shopify CDN). */
+ /** Hero product image for the entry square. */
  squareImageUrl: string;
  /** "from €X" price shown on the square. */
  fromPrice: number;
- /** All Shopify handles in this category, drives the full category grid on the hub page. */
+ /** Live handles in this protocol's family, drives the category grid. */
  categoryHandles: string[];
- /** Discounted price for the 3-device sequence bought as one protocol. */
+ /** Price of the System bundle, which every protocol upgrades into. */
  bundlePrice: number;
 }
+
+const FACE_INTRODUCER_IMG =
+ "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/94d36d02-390a-462a-8749-64007fa10d18.png?v=1777502654";
 
 export const protocols: Protocol[] = [
  {
@@ -39,164 +75,90 @@ export const protocols: Protocol[] = [
   number: "01",
   title: "Face",
   modalities: "EMS · Microcurrent · Thermal · Cosmetic LED",
-  sessionMinutes: 10,
+  sessionMinutes: 12,
   description:
-   "Three devices. One ten-minute sequence. Designed for the buyer who already does the work and wants the order set.",
+   "One instrument, four modalities, twelve minutes. The inputs a facialist charges you by the session, calibrated into a ritual you run yourself.",
   devices: [
    {
-    name: "Eye Activator",
-    role: "Open · 2 min",
-    minutes: 2,
-    handle:
-     "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
-    price: 88,
-    imageUrl:
-     "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/b41f3ea5-5070-4b21-89de-7dc2b927d54f.jpg?v=1779030443",
-   },
-   {
-    name: "Face Introducer",
-    role: "Stack · 6 min",
-    minutes: 6,
+    name: "The Face Introducer",
+    role: "Face · 12 min",
+    minutes: 12,
     handle: "lifting-and-tightening-face-introducer",
+    href: "/instruments/face-introducer",
     price: 88,
-    imageUrl:
-     "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/94d36d02-390a-462a-8749-64007fa10d18.png?v=1777502654",
-   },
-   {
-    name: "Gua Sha Frequency",
-    role: "Close · 2 min",
-    minutes: 2,
-    handle: "electric-guasha-massager",
-    price: 88,
-    imageUrl:
-     "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/hf_20260411_230258_97a218c2-8973-4ac1-8a65-6d1459a5b051.png?v=1775948700",
+    imageUrl: FACE_INTRODUCER_IMG,
    },
   ],
-  totalPrice: 264,
+  totalPrice: 88,
   cardBg: "#F7F4F0",
   image: protocolFaceImg,
   imageQuote: "The face is the first instrument. Touch it as such.",
   outcomeLabel: "Skin & Face",
-  squareImageUrl:
-   "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/94d36d02-390a-462a-8749-64007fa10d18.png?v=1777502654",
+  squareImageUrl: FACE_INTRODUCER_IMG,
   fromPrice: 88,
-  bundlePrice: 238,
-  categoryHandles: [
-   "lifting-and-tightening-face-introducer",
-   "eye-massage",
-   "electric-guasha-massager",
-   "electric-micro-current",
-   "facial-beauty-tools-and-ems-beauty-equipment",
-   "color-light-import-micro-current-vibration-massager",
-   "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
-   "portable-ems-microcurrent-facial-beauty-device",
-   "medicube-collagen-elastic-jelly-moisturizing-cream",
-   "collagen-eye-mask",
-  ],
+  bundlePrice: SYSTEM.price,
+  categoryHandles: ["lifting-and-tightening-face-introducer"],
  },
  {
   slug: "02-body",
   number: "02",
   title: "Body",
-  modalities: "Red Light Therapy · Compression",
-  sessionMinutes: 30,
+  modalities: "660nm Red Light · 850nm Near-Infrared · Thermal",
+  sessionMinutes: 15,
   description:
-   "Body protocol. Mitochondrial light, then sequential pressure. The same precision, scaled to the limbs and torso.",
+   "Recovery, worn close. 660nm red and 850nm near-infrared pressed to the muscle by a thermal wrap, sized to the waist.",
   devices: [
    {
-    name: "Restoration Belt",
-    role: "Open · 10 min",
-    minutes: 10,
+    name: "The Restoration Belt",
+    role: "Body · 15 min",
+    minutes: 15,
     handle:
      "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
+    href: "/instruments/restoration-belt",
     price: 180,
-    imageUrl:
-     "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/a42f0fa0-65aa-4eb3-a705-ba9058044e17.jpg?v=1778533310",
-   },
-   {
-    name: "Pressure Shell",
-    role: "Close · 20 min",
-    minutes: 20,
-    handle:
-     "pneumatic-air-wave-massager-pneumatic-circulation-leg-massager-pneumatic-massager",
-    price: 159,
-    imageUrl:
-     "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/hf_20260509_004926_d0888809-c17d-4123-b1a2-a9cc01b1525e.png?v=1778289993",
+    imageUrl: beltHero,
    },
   ],
-  totalPrice: 339,
+  totalPrice: 180,
   cardBg: "#1A1714",
   image: protocolBodyImg,
   imageQuote: "Scaled to the limbs. Same precision.",
-  outcomeLabel: "Body & Circulation",
-  squareImageUrl:
-   "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/a42f0fa0-65aa-4eb3-a705-ba9058044e17.jpg?v=1778533310",
-  fromPrice: 120,
-  bundlePrice: 223,
+  outcomeLabel: "Body & Recovery",
+  squareImageUrl: beltHero,
+  fromPrice: 180,
+  bundlePrice: SYSTEM.price,
   categoryHandles: [
    "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
-   "pneumatic-air-wave-massager-pneumatic-circulation-leg-massager-pneumatic-massager",
-   "household-red-light-charging-vibrating-red-light-therapy-mat",
-   "the-restoration-mat",
-   "red-light-therapy-belt-infrared-hot-compress-phototherapy",
   ],
  },
  {
   slug: "03-recovery",
   number: "03",
   title: "Recovery",
-  modalities: "Red Light Therapy · Acupressure · Vibration",
-  sessionMinutes: 28,
+  modalities: "660nm Red Light · Far-Infrared Heat",
+  sessionMinutes: 20,
   description:
-   "For the nervous system that never clocks out. A screen day keeps you switched on, shallow breath, shoulders up, wired past bedtime. This sequence is the off-switch: red light at the desk, deep-pressure on the mat, then targeted vibration to close.",
+   "A bed of 660nm red light and far-infrared heat, sized to the back of the body. Lie down, twenty minutes, and let the day come off the spine.",
   devices: [
    {
-    name: "Ritual Light Pro",
-    role: "Open · 10 min",
-    minutes: 10,
-    handle: "led-beauty-lamp-red-light-therapy-lamp-desktop-stand",
-    price: 89,
-    imageUrl:
-     "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/e224de39-dd41-4759-babc-dc96bc27db14.jpg?v=1778951696",
-   },
-   {
-    name: "Restore Mat",
-    role: "Stack · 15 min",
-    minutes: 15,
-    handle:
-     "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow",
-    price: 34,
-    imageUrl:
-     "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/Gemini_Generated_Image_lz4og3lz4og3lz4o_1.png?v=1778370884",
-   },
-   {
-    name: "Pulse Roller",
-    role: "Close · 3 min",
-    minutes: 3,
-    handle: "electric-foam-roller-muscle-relaxation-fitness-yoga-column",
-    price: 109,
-    imageUrl:
-     "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/eb1c4f0b-c064-4c98-b8ae-b83c23f76b63.jpg?v=1778511630",
+    name: "The Restoration Mat",
+    role: "Recovery · 20 min",
+    minutes: 20,
+    handle: "the-restoration-mat",
+    href: "/instruments/restoration-mat",
+    price: 200,
+    imageUrl: matHero,
    },
   ],
-  totalPrice: 232,
+  totalPrice: 200,
   cardBg: "#C6A07C",
   image: protocolRecoveryImg,
   imageQuote: "Closing the day is also a protocol.",
   outcomeLabel: "Sleep & Recovery",
-  squareImageUrl:
-   "https://cdn.shopify.com/s/files/1/0890/2813/3207/files/Gemini_Generated_Image_lz4og3lz4og3lz4o_1.png?v=1778370884",
-  fromPrice: 29,
-  bundlePrice: 209,
-  categoryHandles: [
-   "led-beauty-lamp-red-light-therapy-lamp-desktop-stand",
-   "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow",
-   "electric-foam-roller-muscle-relaxation-fitness-yoga-column",
-   "gravity-quilt-cotton-weighted-blanket",
-   "blackout-eye-mask-3d-deep-contoured-sleep-mask-lash-extensions-no-pressure-blindfold-sleeping-eye-mask-women-men-side-sleepers",
-   "white-noise-sleep-aid-machine",
-   "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad",
-  ],
+  squareImageUrl: matHero,
+  fromPrice: 200,
+  bundlePrice: SYSTEM.price,
+  categoryHandles: ["the-restoration-mat"],
  },
 ];
 

@@ -4,10 +4,17 @@ import { SparseFooter } from "@/components/zential/v2/SparseFooter";
 import { ImageDivider } from "@/components/zential/ImageDivider";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { SEO } from "@/components/SEO";
-import { getProtocol, protocols } from "@/data/protocols";
+import { getProtocol, protocols, SYSTEM } from "@/data/protocols";
 import { ProtocolSpecCard } from "@/components/zential/ProtocolSpecCard";
 import { CategoryGrid } from "@/components/zential/CategoryGrid";
 import { useEffect, useState } from "react";
+
+/**
+ * Shopify's CDN resizes via query params; a bundled local asset does not. The
+ * protocol images are now a mix of both, so only the Shopify URLs get sized.
+ */
+const shopifyWidth = (url: string, width: number) =>
+ url.includes("cdn.shopify.com") ? `${url}&width=${width}` : url;
 
 const ProtocolDetail = () => {
  const { slug } = useParams<{ slug: string }>();
@@ -149,14 +156,14 @@ const ProtocolDetail = () => {
      {protocol.devices.map((device, idx) => (
       <Link
        key={device.handle}
-       to={`/product/${device.handle}`}
+       to={device.href}
        className="group flex items-center gap-5 md:gap-10 border-b border-[#1A1714]/15 pb-10 md:pb-12 hover:border-[#2ED8A8] transition-colors"
       >
        {/* Device thumbnail, fast visual grasp */}
        <div className="shrink-0 w-24 h-24 md:w-36 md:h-36 rounded-2xl bg-white border border-[#1A1714]/8 overflow-hidden grid place-items-center">
         <img
-         src={`${device.imageUrl}&width=320`}
-         srcSet={`${device.imageUrl}&width=160 160w, ${device.imageUrl}&width=320 320w`}
+         src={shopifyWidth(device.imageUrl, 320)}
+         srcSet={`${shopifyWidth(device.imageUrl, 160)} 160w, ${shopifyWidth(device.imageUrl, 320)} 320w`}
          sizes="(max-width: 768px) 96px, 144px"
          alt={device.name}
          loading="lazy"
@@ -289,6 +296,23 @@ const ProtocolDetail = () => {
       </li>
      </ul>
 
+     {/* Upgrade path: the real bundle, not a per-protocol discount */}
+     <div className="mt-10 border-t border-[#1A1714]/10 pt-8">
+      <p className="font-mono text-xs tracking-[0.18em] uppercase text-[#6B5A4A] mb-3">
+       Or take all three
+      </p>
+      <p className="text-base md:text-lg text-[#1A1714]/75 mb-5">
+       {SYSTEM.name} is every instrument — face, body and recovery — for €
+       {SYSTEM.price} instead of €{SYSTEM.separatePrice} bought separately.
+      </p>
+      <Link
+       to={SYSTEM.href}
+       className="font-mono text-xs tracking-[0.16em] uppercase text-[#1A1714] underline underline-offset-4 hover:text-[#2ED8A8] transition-colors"
+      >
+       See {SYSTEM.name} · €{SYSTEM.price} →
+      </Link>
+     </div>
+
      <div className="mt-5 flex justify-center">
       <span className="font-mono text-[11px] tracking-[0.16em] uppercase px-4 py-2 border border-[#1A1714]/20 rounded-full text-[#6B5A4A]">
        One price · no codes · no countdowns
@@ -296,14 +320,14 @@ const ProtocolDetail = () => {
      </div>
 
      <div className="mt-10 flex flex-col items-center gap-3">
-      <a
-       href="mailto:hello@zentialpure.com?subject=Protocol Reservation"
+      <Link
+       to={protocol.devices[0].href}
        className="inline-block bg-[#1A1714] text-[#F7F4F0] px-12 py-5 text-xs tracking-[0.18em] uppercase hover:bg-[#2ED8A8] hover:text-[#1A1714] transition-colors"
       >
-       Reserve Protocol ( {protocol.number} )
-      </a>
+       Take Protocol ( {protocol.number} ) · €{protocol.totalPrice}
+      </Link>
       <p className="text-center text-[10px] tracking-[0.15em] uppercase text-[#6B5A4A] font-mono">
-       Three devices, one order · ships with the printed Protocol Card
+       Ships with the printed Protocol Card
       </p>
      </div>
     </div>
