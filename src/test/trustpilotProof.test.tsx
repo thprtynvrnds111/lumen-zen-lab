@@ -12,7 +12,7 @@ describe("TrustpilotProof", () => {
   it("renders the verified score, count, and profile link (pdp)", () => {
     render(<TrustpilotProof variant="pdp" />);
     const link = screen.getByRole("link");
-    expect(link).toHaveTextContent("4.4");
+    expect(link).toHaveTextContent("4.2");
     expect(link).toHaveTextContent(/on Trustpilot/i);
     expect(link).toHaveTextContent(/7 reviews/i);
     expect(link).toHaveAttribute("href", "https://www.trustpilot.com/review/zentialpure.com");
@@ -23,7 +23,7 @@ describe("TrustpilotProof", () => {
   it("renders the compact variant with the same link and copy (cart)", () => {
     render(<TrustpilotProof variant="cart" />);
     const link = screen.getByRole("link");
-    expect(link).toHaveTextContent("4.4");
+    expect(link).toHaveTextContent("4.2");
     expect(link).toHaveTextContent(/7 reviews/i);
     expect(link).toHaveAttribute("href", "https://www.trustpilot.com/review/zentialpure.com");
   });

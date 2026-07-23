@@ -10,12 +10,13 @@
  * Single file by design: the whole widget (both placements) is removable in one
  * commit if the 30-day kill criteria fire (action1-human-reality-checklist.md §1a).
  *
- * Count verified 2026-07-24 (7th review landed); score last verified 2026-07-11
- * from https://www.trustpilot.com/review/zentialpure.com.
+ * Values verified 2026-07-24 by the operator on
+ * https://www.trustpilot.com/review/zentialpure.com (7th review landed, average
+ * settled to 4.2). Trustpilot 403s automated fetches — these are read by hand.
  * UPDATE these two numbers on review milestones — they are the only source here.
  */
 const TRUSTPILOT = {
-  score: "4.4",
+  score: "4.2",
   reviewCount: 7,
   url: "https://www.trustpilot.com/review/zentialpure.com",
 } as const;

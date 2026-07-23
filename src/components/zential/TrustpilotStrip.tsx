@@ -1,5 +1,5 @@
 // Source: nl.trustpilot.com/review/zentialpure.com — VERIFIED VERBATIM 2026-07-14.
-// Profile: 7 reviews (count updated 2026-07-24), 4.2 average as of 2026-07-14.
+// Profile: 7 reviews, 4.2 average — operator-verified 2026-07-24.
 // Quotes below are copied exactly from the live
 // profile (typos included — do not "improve" a customer's words).
 // HARD RULE: never add a reviewer who is not on the public profile. A previous
