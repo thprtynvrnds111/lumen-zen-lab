@@ -195,6 +195,18 @@
       "status": 301
     },
     {
+      "src": "/technology/electroporation",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/facial-muscle-training",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/compare/foreo-bear-vs-zential-pure",
+      "dest": "/index.html"
+    },
+    {
       "src": "/nufacealternative",
       "headers": {
         "Location": "/nuface-alternative"
