@@ -34,8 +34,8 @@ const TechThermal = () => (
    { title: "Heat shock proteins and skin ageing: molecular mechanisms", source: "Experimental Dermatology", year: "2016", url: "#" },
    { title: "Mild hyperthermia increases dermal microcirculation", source: "Microvascular Research", year: "2008", url: "#" },
   ]}
-  deviceHandle="lifting-and-tightening-face-introducer"
-  deviceName="Zential Pure"
+  deviceHref="/instruments/face-introducer"
+  deviceName="the Face Introducer · €88"
  />
 );
 

@@ -30,13 +30,19 @@ interface TechnologyPageProps {
   biology: TechSection;
   usage: { heading: string; points: string[] };
   studies: Study[];
-  deviceHandle: string;
+  /**
+   * Route of the LIVE instrument this technology ships in — a full path, e.g.
+   * "/instruments/face-introducer". These CTAs used to be built from a Shopify
+   * product handle, which pointed every technology page at a discontinued SKU's
+   * PDP (LIVE-CATALOG-TRUTH.md). Only ever point this at a live instrument.
+   */
+  deviceHref: string;
   deviceName: string;
 }
 
 export function TechnologyPage({
   title, metaDescription, canonicalUrl, tagline, headline, paramLabel, paramValue,
-  intro, mechanism, biology, usage, studies, deviceHandle, deviceName,
+  intro, mechanism, biology, usage, studies, deviceHref, deviceName,
 }: TechnologyPageProps) {
   return (
     <div className="min-h-screen bg-background">
@@ -116,7 +122,7 @@ export function TechnologyPage({
             30-day return. No questions. The technology works or you get your money back.
           </p>
           <Link
-            to={`/product/${deviceHandle}`}
+            to={deviceHref}
             className="inline-block px-8 py-3 text-sm font-medium text-white rounded-md transition-opacity hover:opacity-90"
             style={{ backgroundColor: '#C6A07C' }}
           >

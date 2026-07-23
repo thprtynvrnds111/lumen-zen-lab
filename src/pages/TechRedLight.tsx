@@ -33,8 +33,8 @@ const TechRedLight = () => (
    { title: "Photobiomodulation with 633nm LED improves collagen density", source: "Photomedicine and Laser Surgery", year: "2009", url: "#" },
    { title: "Effect of red light on mitochondrial function and ATP production", source: "Lasers in Surgery and Medicine", year: "2011", url: "#" },
   ]}
-  deviceHandle="lifting-and-tightening-face-introducer"
-  deviceName="Zential Pure"
+  deviceHref="/instruments/face-introducer"
+  deviceName="the Face Introducer · €88"
  />
 );
 

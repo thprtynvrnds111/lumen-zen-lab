@@ -34,8 +34,8 @@ const TechEMS = () => (
    { title: "Neuromuscular electrical stimulation and facial rejuvenation outcomes", source: "Aesthetic Surgery Journal", year: "2018", url: "#" },
    { title: "EMS pulse parameters and motor unit recruitment in superficial muscles", source: "Journal of Electromyography and Kinesiology", year: "2010", url: "#" },
   ]}
-  deviceHandle="facial-beauty-tools-and-ems-beauty-equipment"
-  deviceName="Sculpt Wand"
+  deviceHref="/instruments/face-introducer"
+  deviceName="the Face Introducer · €88"
  />
 );
 

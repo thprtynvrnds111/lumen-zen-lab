@@ -34,8 +34,8 @@ const TechMicrocurrent = () => (
    { title: "Effects of microcurrent on facial muscle tone and wrinkle reduction", source: "Journal of Clinical and Aesthetic Dermatology", year: "2012", url: "#" },
    { title: "Bio-electrical stimulation and amino acid uptake in human skin cells", source: "Journal of Bodywork and Movement Therapies", year: "2002", url: "#" },
   ]}
-  deviceHandle="electric-micro-current"
-  deviceName="Zential Pure"
+  deviceHref="/instruments/face-introducer"
+  deviceName="the Face Introducer · €88"
  />
 );
 

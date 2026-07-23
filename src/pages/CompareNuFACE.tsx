@@ -210,7 +210,7 @@ export default function CompareNuFACE() {
        Microcurrent delivers low-level electrical current at 200–400 microamperes, close to the body's own bioelectric signals. At this level, it stimulates fibroblast activity, increases ATP production, and supports the re-education of facial muscles over time. Both the Face Introducer and the NuFACE Trinity deliver this mechanism.
       </p>
       <p className="text-sm md:text-base leading-relaxed mb-6" style={{ color: MUTED }}>
-       What differentiates the Face Introducer is the additional modalities. EMS delivers deeper muscle stimulation via electrical pulses, a distinct mechanism, not a variation of microcurrent. 45°C thermal supports ingredient absorption throughout the protocol. Cosmetic LED adds the visible-light component of the daily ritual. For confirmed clinical red light, see Frame Pulse or the Restoration Belt.
+       What differentiates the Face Introducer is the additional modalities. EMS delivers deeper muscle stimulation via electrical pulses, a distinct mechanism, not a variation of microcurrent. 45°C thermal supports ingredient absorption throughout the protocol. Cosmetic LED adds the visible-light component of the daily ritual. For confirmed clinical red light, see the Restoration Belt or the Restoration Mat.
       </p>
       <p className="text-sm md:text-base leading-relaxed" style={{ color: MUTED }}>
        NuFACE's strength is its decade-long brand authority and review base. The technology it delivers, standard microcurrent, is matched by the Face Introducer at a lower price point, with three additional modalities included.
