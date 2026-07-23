@@ -221,8 +221,8 @@ export default function Storefront() {
       </section>
 
       {/* ── EDITORIAL DIVIDER ── */}
-      <section className="relative flex min-h-[clamp(360px,46vw,520px)] items-center overflow-hidden bg-[#1A1714]">
-        <img src={edThreshold} alt="" className="absolute inset-0 h-full w-full object-cover" />
+      <section className="relative flex min-h-[clamp(300px,37vw,420px)] items-center overflow-hidden bg-[#1A1714]">
+        <img src={edThreshold} alt="" className="absolute inset-0 h-full w-full object-cover object-[50%_38%]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,10,14,0.7)_0%,rgba(7,10,14,0.32)_50%,rgba(7,10,14,0.55)_100%)]" />
         <div className={`relative z-[2] ${WRAP}`}>
           <p className="max-w-[16ch] font-serif italic text-[clamp(26px,3.6vw,46px)] leading-[1.16] text-[#F7F4F0]">Built for the woman who left the clinic but kept the standard.</p>
