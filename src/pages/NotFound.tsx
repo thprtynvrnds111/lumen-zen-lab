@@ -5,11 +5,14 @@ import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { SEO } from "@/components/SEO";
 import { ZenMascot } from "@/components/zential/ZenMascot";
 
+// The three live instruments (LIVE-CATALOG-TRUTH.md). This list used to offer
+// Sculpt Wand, Eye Activator and Gua Sha Frequency — all discontinued — so the
+// 404 page recovered a lost visitor onto three products that no longer exist.
 const devices = [
- { name: "Face Introducer", handle: "lifting-and-tightening-face-introducer" },
- { name: "Sculpt Wand", handle: "facial-beauty-tools-and-ems-beauty-equipment" },
- { name: "Eye Activator", handle: "eye-massage" },
- { name: "Gua Sha Frequency", handle: "electric-guasha-massager" },
+ { name: "Face Introducer", href: "/instruments/face-introducer" },
+ { name: "Restoration Belt", href: "/instruments/restoration-belt" },
+ { name: "Restoration Mat", href: "/instruments/restoration-mat" },
+ { name: "The System", href: "/one-shelf" },
 ];
 
 const NotFound = () => {
@@ -30,8 +33,8 @@ const NotFound = () => {
      <div className="grid grid-cols-2 gap-3 mb-10 max-w-sm mx-auto">
       {devices.map(d => (
        <Link
-        key={d.handle}
-        to={`/product/${d.handle}`}
+        key={d.href}
+        to={d.href}
         className="text-xs tracking-[0.15em] uppercase font-medium px-4 py-3 rounded-xl border border-border/40 text-foreground hover:border-primary hover:text-primary transition-all duration-200"
        >
         {d.name}

@@ -119,6 +119,55 @@
       "status": 301
     },
     {
+      "src": "/product/facial-beauty-tools-and-ems-beauty-equipment",
+      "headers": {
+        "Location": "/instruments/face-introducer"
+      },
+      "status": 301
+    },
+    {
+      "src": "/product/eye-massage",
+      "headers": {
+        "Location": "/instruments/face-introducer"
+      },
+      "status": 301
+    },
+    {
+      "src": "/product/electric-guasha-massager",
+      "headers": {
+        "Location": "/instruments/face-introducer"
+      },
+      "status": 301
+    },
+    {
+      "src": "/product/electric-micro-current",
+      "headers": {
+        "Location": "/instruments/face-introducer"
+      },
+      "status": 301
+    },
+    {
+      "src": "/product/color-light-import-micro-current-vibration-massager",
+      "headers": {
+        "Location": "/instruments/face-introducer"
+      },
+      "status": 301
+    },
+    {
+      "src": "/product/3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
+      "headers": {
+        "Location": "/instruments/face-introducer"
+      },
+      "status": 301
+    },
+    {
+      "src": "/product/portable-ems-microcurrent-facial-beauty-device",
+      "headers": {
+        "Location": "/instruments/face-introducer"
+      },
+      "status": 301
+    },
+    {
       "src": "/ritual-guide/(.*)",
       "headers": {
         "Location": "/ritual-guide"
