@@ -3,6 +3,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Check, ChevronDown, ArrowRight, ShieldCheck, BadgeCheck, Truck, Lock } from "lucide-react";
 import { getBridgeConfig } from "./config";
+import { localizeToUSD } from "./usd";
+import { getCountry } from "@/lib/market";
 import { ga4Event, pixelBridgeEngaged, pixelDirectCheckout, pixelViewContent } from "./tracking";
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -53,7 +55,26 @@ const TRUST_ICONS = [BadgeCheck, ShieldCheck, ShieldCheck, ShieldCheck, Lock, Tr
 
 export default function FunnelBridge() {
   const { slug } = useParams();
-  const config = getBridgeConfig(slug) ?? getBridgeConfig("face-introducer")!;
+  const baseConfig = getBridgeConfig(slug) ?? getBridgeConfig("face-introducer")!;
+
+  // Market localization. Every ACTIVE Meta ad set targets the US, and this page
+  // is their only destination — a US visitor must never read a euro price the
+  // Shopify checkout will not charge. Resolved after mount (?country=XX →
+  // sessionStorage → /api/geo → "NL"), so the prerendered HTML stays home-market
+  // EUR and hydration swaps in US truth.
+  const [country, setCountry] = useState("");
+  useEffect(() => {
+    let live = true;
+    getCountry()
+      .then((c) => { if (live) setCountry(c); })
+      .catch(() => { /* never break the lander — EUR default stands */ });
+    return () => { live = false; };
+  }, []);
+
+  const config = useMemo(
+    () => (country === "US" ? localizeToUSD(baseConfig) : baseConfig),
+    [baseConfig, country],
+  );
 
   // window.location.search, captured after mount. Prerendered HTML has no
   // params; the post-hydration re-render rewrites hrefs with the live search
