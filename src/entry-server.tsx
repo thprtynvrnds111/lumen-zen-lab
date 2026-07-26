@@ -21,6 +21,7 @@ const JournalRedLight  = lazy(() => import("./pages/JournalRedLight"));
 const JournalLymphatic = lazy(() => import("./pages/JournalLymphatic"));
 const JournalEMS       = lazy(() => import("./pages/JournalEMS"));
 const JournalRitualLasts = lazy(() => import("./pages/JournalRitualLasts"));
+const JournalStackAudit  = lazy(() => import("./pages/JournalStackAudit"));
 const Support          = lazy(() => import("./pages/Support"));
 const Shipping         = lazy(() => import("./pages/Shipping"));
 const Returns          = lazy(() => import("./pages/Returns"));
@@ -88,6 +89,7 @@ function ServerApp() {
         <Route path="/journal/lymphatic-drainage"               element={<JournalLymphatic />} />
         <Route path="/journal/ems-vs-microcurrent"              element={<JournalEMS />} />
         <Route path="/journal/ritual-that-lasts"                element={<JournalRitualLasts />} />
+        <Route path="/journal/the-stack-audit"                  element={<JournalStackAudit />} />
         <Route path="/editorial/the-ritual"                     element={<TheRitual />} />
         <Route path="/editorial/the-science"                    element={<TheScience />} />
         <Route path="/editorial/the-diagnosis"                  element={<TheDiagnosis />} />

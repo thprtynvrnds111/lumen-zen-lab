@@ -41,6 +41,7 @@ const ROUTES = [
   '/journal/lymphatic-drainage',
   '/journal/ems-vs-microcurrent',
   '/journal/ritual-that-lasts',
+  '/journal/the-stack-audit',
   '/support',
   '/shipping',
   '/returns',
