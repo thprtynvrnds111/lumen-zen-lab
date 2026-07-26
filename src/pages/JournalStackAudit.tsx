@@ -265,13 +265,13 @@ const JournalStackAudit = () => {
 
                   <div className="flex flex-wrap gap-3 pt-2">
                     <Link
-                      to="/instruments"
+                      to="/instruments#system"
                       className="px-8 py-4 rounded-full bg-primary text-primary-foreground text-sm tracking-[0.15em] uppercase hover:opacity-90 transition-opacity"
                     >
                       See The System →
                     </Link>
                     <Link
-                      to="/instruments"
+                      to="/instruments#system"
                       className="px-8 py-4 rounded-full border border-border/50 text-foreground text-sm tracking-[0.15em] uppercase hover:border-primary/60 transition-colors"
                     >
                       Three Zones. Seven Inputs. One Price.
