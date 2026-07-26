@@ -77,7 +77,7 @@ export const TILES = [
     // past the lazy-route boot; see that hook.
     href: "/instruments#system",
     img: "/link/t-system.webp",
-    alt: "The three instruments side by side.",
+    alt: "Triptych of the three instruments in use — face, belt, mat — titled The System.",
   },
   {
     id: "science",
