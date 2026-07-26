@@ -89,7 +89,7 @@ export const TILES = [
     sub: "Free ritual app",
     href: "/breath",
     img: "/link/t-breath.webp",
-    alt: "A woman seated at a bright window with a cup.",
+    alt: "The Breath app's resonance visualisation — a glowing teal orb inside an expanding ring.",
     accent: true,
   },
 ];

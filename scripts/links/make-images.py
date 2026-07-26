@@ -36,7 +36,13 @@ JOBS = [
     ("device-hero.webp",                  "t-instruments.webp", (288, 288), 0.42),
     ("editorial/hero-jawline-aged.webp",  "t-quiz.webp",        (288, 288), 0.30),
     ("editorial/red-630-skin.webp",       "t-science.webp",     (288, 288), 0.45),
-    ("editorial/seated-calm.webp",        "t-breath.webp",      (288, 288), 0.62),
+    # The Breath tile is the app's own Restore visualisation, not stock calm.
+    # Captured 2026-07-26 from a live 5-minute Restore session on
+    # zentialpure.com/breath (act 02, 0.09 Hz) and cropped to the ring's measured
+    # bounding box + 28% — the glowing teal orb IS the product, so a woman with a
+    # mug was describing the app instead of showing it. Replaces
+    # editorial/seated-calm.webp.
+    ("@src/breath-orb.webp",              "t-breath.webp",      (288, 288), 0.50),
 ]
 
 # The hero is the LCP element, so it gets its own budget. At 960px wide (2x of a
