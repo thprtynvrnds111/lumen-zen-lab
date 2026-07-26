@@ -166,7 +166,11 @@ export default function Instruments() {
         </div>
       </section>
 
-      <SystemBundle />
+      {/* #system is the deep-link target for the link-in-bio System tile
+          (scripts/links/tiles.mjs). scroll-mt clears the fixed header. */}
+      <div id="system" className="scroll-mt-24">
+        <SystemBundle />
+      </div>
     </PageShell>
   );
 }

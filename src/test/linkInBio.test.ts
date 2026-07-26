@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { TILES, FOOT_LINKS, PLATFORMS, BRAND, ENTRY_PRICE_EUR } from "../../scripts/links/tiles.mjs";
@@ -64,6 +64,18 @@ describe("tile data", () => {
 
   it("gives every tile alt text", () => {
     for (const t of TILES) expect(t.alt.length).toBeGreaterThan(8);
+  });
+
+  it("only deep-links to anchors that exist in the target page", () => {
+    // /product/the-system-founding-bundle looked correct and rendered "Product
+    // not found" in production — the handle is allowlisted but has no entry in
+    // productConfigs.ts. Fragments are the other way to ship a link that
+    // resolves to nothing visible, so pin the one we rely on.
+    const withHash = TILES.filter((t) => t.href.includes("#"));
+    expect(withHash.map((t) => t.href)).toEqual(["/instruments#system"]);
+
+    const src = readFileSync(join(__dirname, "..", "pages", "Instruments.tsx"), "utf8");
+    expect(src).toContain('id="system"');
   });
 
   it("quotes exactly one price, the entry anchor", () => {

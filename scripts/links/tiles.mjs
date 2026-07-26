@@ -61,13 +61,17 @@ export const TILES = [
     id: "system",
     title: "The System",
     sub: "All three, one price",
-    // The bundle PDP, not /instruments#system: useHashScroll fires 100ms after
-    // AppContent mounts, while /instruments is still inside Suspense, so the
-    // anchor target does not exist yet and the deep link silently lands at the
-    // top of the page. The PDP also renders the live, market-aware price, which
-    // is why no euro amount appears on this tile.
-    // Handle allowlisted in src/data/liveCatalog.ts.
-    href: "/product/the-system-founding-bundle",
+    // /instruments#system, deliberately, after two dead ends found by loading
+    // the live page rather than reasoning about it:
+    //   - /product/the-system-founding-bundle renders "Product not found". The
+    //     handle is allowlisted in liveCatalog.ts but has no entry in
+    //     productConfigs.ts, and ProductDetail requires one. The bundle has no
+    //     PDP; nothing else on the site links to it either.
+    //   - /protocols does not surface the bundle at all (no €399 on the page).
+    // <SystemBundle /> on /instruments is the only rendering of the System
+    // offer, hence the anchor. The deep link depends on useHashScroll retrying
+    // past the lazy-route boot; see that hook.
+    href: "/instruments#system",
     img: "/link/t-system.webp",
     alt: "The three instruments side by side.",
   },
