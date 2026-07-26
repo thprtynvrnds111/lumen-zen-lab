@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { TILES, FOOT_LINKS, PLATFORMS, BRAND, ENTRY_PRICE_EUR } from "../../scripts/links/tiles.mjs";
+import { TILES, FOOT_LINKS, PLATFORMS, BRAND, ENTRY_PRICE_EUR, SYSTEM_PRICE_EUR } from "../../scripts/links/tiles.mjs";
 import { renderPage, withUtm } from "../../scripts/links/template.mjs";
 
 /**
@@ -78,16 +78,25 @@ describe("tile data", () => {
     expect(src).toContain('id="system"');
   });
 
-  it("quotes exactly one price, the entry anchor", () => {
+  it("quotes exactly two prices as text, the entry and the System anchor", () => {
     const priced = TILES.filter((t) => /[€$£]/.test(t.sub));
-    expect(priced.map((t) => t.id)).toEqual(["instruments"]);
-    expect(priced[0].sub).toContain(String(ENTRY_PRICE_EUR));
+    expect(priced.map((t) => t.id)).toEqual(["instruments", "system"]);
+    expect(priced.find((t) => t.id === "instruments").sub).toContain(String(ENTRY_PRICE_EUR));
+    expect(priced.find((t) => t.id === "system").sub).toContain(String(SYSTEM_PRICE_EUR));
   });
 
-  it("keeps the entry price in step with the live catalog", () => {
-    // Verified 2026-07-26 via the Storefront API, handle
-    // lifting-and-tightening-face-introducer. Bump both together, never one.
+  it("carries no price in any tile image (the €499 incident)", () => {
+    // Price lives in the sub text only; images stay priceless so they cannot go
+    // stale. See knowledge/products/LIVE-CATALOG-TRUTH.md.
+    for (const t of TILES) expect(t.img, t.id).not.toMatch(/[€$£]|\d{2,}/);
+  });
+
+  it("keeps both prices in step with the live catalog", () => {
+    // Verified 2026-07-26. Entry: Storefront API, handle
+    // lifting-and-tightening-face-introducer. System: products/the-system-founding-bundle.json
+    // → 399.00 (compare-at 468.00). Bump each with its live source, never guess.
     expect(ENTRY_PRICE_EUR).toBe(88);
+    expect(SYSTEM_PRICE_EUR).toBe(399);
   });
 });
 

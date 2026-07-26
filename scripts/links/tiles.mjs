@@ -10,18 +10,22 @@
  *    social traffic and is not gated by the compliance reviewer at request time,
  *    so the copy has to be safe by construction. Factual price and logistics
  *    only. See knowledge/compliance/prohibited-claims.md.
- *  - Prices are HARDCODED here, which the React app deliberately never does
- *    (SystemBundle.tsx renders whatever Shopify returns, in the visitor's own
- *    currency). A zero-JS page cannot do that. The trade is accepted for the
- *    single entry anchor below and nowhere else: every other tile is priceless,
- *    so there is exactly one number on this page to keep true.
- *    €88 verified live 2026-07-26 via the Storefront API.
+ *  - Prices are HARDCODED here as TEXT, which the React app deliberately never
+ *    does (SystemBundle.tsx renders whatever Shopify returns, in the visitor's
+ *    own currency). A zero-JS page cannot do that. The trade is accepted for two
+ *    anchors and nowhere else — the €88 entry and the €399 System — and never as
+ *    pixels: no price may be typeset into a tile image (that is the €499
+ *    incident; see knowledge/products/LIVE-CATALOG-TRUTH.md). Two numbers on
+ *    this page to keep true; both are verified below.
  */
 
 export const SITE = "https://zentialpure.com";
 
 /** Verified live 2026-07-26, Storefront API, handle lifting-and-tightening-face-introducer. */
 export const ENTRY_PRICE_EUR = 88;
+
+/** Verified live 2026-07-26, 0d1m9a-w7.myshopify.com/products/the-system-founding-bundle.json → 399.00 (compare-at 468.00). */
+export const SYSTEM_PRICE_EUR = 399;
 
 export const BRAND = {
   wordmark: "Zential Pure",
@@ -60,7 +64,7 @@ export const TILES = [
   {
     id: "system",
     title: "The System",
-    sub: "All three, one price",
+    sub: `All three · €${SYSTEM_PRICE_EUR}`,
     // /instruments#system, deliberately, after two dead ends found by loading
     // the live page rather than reasoning about it:
     //   - /product/the-system-founding-bundle renders "Product not found". The
