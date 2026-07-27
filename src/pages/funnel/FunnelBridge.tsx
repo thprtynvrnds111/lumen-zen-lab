@@ -174,7 +174,15 @@ export default function FunnelBridge() {
     children: React.ReactNode;
   }) =>
     config.checkout ? (
-      <a href={buyHref} className={className} onClick={onBuyClick(placement)} tabIndex={tabIndex}>
+      <a
+        href={buyHref}
+        className={className}
+        onClick={onBuyClick(placement)}
+        tabIndex={tabIndex}
+        data-atc-beacon=""
+        data-beacon-slug={config.slug}
+        data-beacon-placement={placement}
+      >
         {children}
       </a>
     ) : config.variantChoices ? (
@@ -566,6 +574,9 @@ export default function FunnelBridge() {
                       href={permalinkFor([o.variantId])}
                       className="zb-choice"
                       onClick={onChoiceClick(o)}
+                      data-atc-beacon=""
+                      data-beacon-slug={config.slug}
+                      data-beacon-placement="choose-size"
                     >
                       <span className="zb-choice-label">{o.label}</span>
                       <span className="zb-choice-price">{o.priceLine}</span>
@@ -587,6 +598,9 @@ export default function FunnelBridge() {
                     href={bundleHref}
                     className="zb-cta"
                     onClick={onBuyClick("bundle", bundleHref, config.offer.bundle.addListValue)}
+                    data-atc-beacon=""
+                    data-beacon-slug={config.slug}
+                    data-beacon-placement="bundle"
                   >
                     {config.offer.bundle.cta} <ArrowRight size={18} />
                   </a>

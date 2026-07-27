@@ -146,21 +146,21 @@ export default function Storefront() {
         </div>
       </section>
 
-      {/* ── FOUR TECHNOLOGIES ── */}
+      {/* ── THREE TECHNOLOGIES ── */}
       <section className="relative overflow-hidden bg-[#070A0E] py-[clamp(80px,11vw,128px)] text-[#F7F4F0]">
         <div className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: GRAIN, backgroundSize: "170px 170px" }} aria-hidden />
         <div className={`relative ${WRAP}`}>
-          <p className="inline-flex items-center gap-3.5 font-sans text-[11px] tracking-[0.28em] uppercase text-[#C6A07C]"><span className="inline-block h-px w-[26px] bg-current opacity-40" /> Four Technologies</p>
+          <p className="inline-flex items-center gap-3.5 font-sans text-[11px] tracking-[0.28em] uppercase text-[#C6A07C]"><span className="inline-block h-px w-[26px] bg-current opacity-40" /> Three Technologies</p>
           <div className="mb-3.5 mt-5 flex flex-wrap items-end justify-between gap-6">
-            <h2 className="max-w-[16ch] font-serif italic font-normal text-[clamp(30px,4vw,52px)] leading-[1.04] text-[#F7F4F0]">One instrument.<br />Four clinic technologies.</h2>
-            <p className="max-w-[30ch] text-right font-sans text-[12px] leading-[1.6] text-[#F7F4F0]/50">Each modality resolves into a single twelve-minute arc <b className="font-medium text-[#2ED8A8]">Lift, Contour, Prime, Renew</b> in sequence.</p>
+            <h2 className="max-w-[16ch] font-serif italic font-normal text-[clamp(30px,4vw,52px)] leading-[1.04] text-[#F7F4F0]">One instrument.<br />Three clinic technologies.</h2>
+            <p className="max-w-[30ch] text-right font-sans text-[12px] leading-[1.6] text-[#F7F4F0]/50">Each modality resolves into a single twelve-minute arc <b className="font-medium text-[#2ED8A8]">Lift, Contour, Prime</b> in sequence.</p>
           </div>
           <svg className="mt-12 block h-10 w-full overflow-visible" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden>
             <line x1="0" y1="20" x2="1000" y2="20" stroke="rgba(247,244,240,0.12)" strokeWidth="1" />
-            <path d="M0,20 L110,20 Q125,20 125,8 Q125,20 140,20 L360,20 Q375,20 375,32 Q375,20 390,20 L610,20 Q625,20 625,8 Q625,20 640,20 L860,20 Q875,20 875,32 Q875,20 890,20 L1000,20" stroke="#2ED8A8" strokeWidth="1.5" fill="none" style={{ filter: "drop-shadow(0 0 5px rgba(46,216,168,.55))" }} />
-            {[125, 375, 625, 875].map((cx) => <circle key={cx} cx={cx} cy="20" r="5" fill="#2ED8A8" stroke="#2ED8A8" />)}
+            <path d="M0,20 L152,20 Q167,20 167,8 Q167,20 182,20 L485,20 Q500,20 500,32 Q500,20 515,20 L818,20 Q833,20 833,8 Q833,20 848,20 L1000,20" stroke="#2ED8A8" strokeWidth="1.5" fill="none" style={{ filter: "drop-shadow(0 0 5px rgba(46,216,168,.55))" }} />
+            {[167, 500, 833].map((cx) => <circle key={cx} cx={cx} cy="20" r="5" fill="#2ED8A8" stroke="#2ED8A8" />)}
           </svg>
-          <div className="grid gap-px border border-t-0 border-[rgba(247,244,240,0.10)] bg-[rgba(247,244,240,0.10)] sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-px border border-t-0 border-[rgba(247,244,240,0.10)] bg-[rgba(247,244,240,0.10)] sm:grid-cols-2 lg:grid-cols-3">
             {MODALITIES.map((m) => (
               <div key={m.title} className="flex flex-col bg-[#070A0E] px-7 pb-[30px] pt-[34px]">
                 <div className="mb-6 flex items-center gap-3">

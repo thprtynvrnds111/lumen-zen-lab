@@ -141,7 +141,7 @@ export function HeroSection() {
       }}
      >
       {[
-       { n: t('hero.proof.modalities.value', '4'), lbl: t('hero.proof.modalities.label', 'Clinical\nmodalities') },
+       { n: t('hero.proof.modalities.value', '3'), lbl: t('hero.proof.modalities.label', 'Clinical\nmodalities') },
        { n: t('hero.proof.price.value', '€88'), lbl: t('hero.proof.price.label', 'vs €1,440 / yr\nclinic average') },
        { n: t('hero.proof.guarantee.value', '30 days'), lbl: t('hero.proof.guarantee.label', 'Protocol\nguarantee') },
       ].map((row, i, arr) => (

@@ -119,6 +119,9 @@ export function SystemBundle() {
             <button
               onClick={claimSystem}
               disabled={busy}
+              data-atc-beacon=""
+              data-beacon-slug="the-system"
+              data-beacon-placement="system-bundle"
               className="mt-6 w-full rounded-full bg-[#2ED8A8] px-7 py-4 font-sans text-[13px] font-medium tracking-[0.04em] text-[#070A0E] transition-opacity hover:opacity-90 disabled:opacity-60"
             >
               {busy ? "Adding the System…" : "Claim the System"}

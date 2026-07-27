@@ -212,7 +212,7 @@ export default function CompareNuFACE() {
        What differentiates the Face Introducer is the additional modalities. EMS delivers deeper muscle stimulation via electrical pulses, a distinct mechanism, not a variation of microcurrent. 45°C thermal supports ingredient absorption throughout the protocol. For red light, see the Restoration Belt or the Restoration Mat.
       </p>
       <p className="text-sm md:text-base leading-relaxed" style={{ color: MUTED }}>
-       NuFACE's strength is its decade-long brand authority and review base. The technology it delivers, standard microcurrent, is matched by the Face Introducer at a lower price point, with three additional modalities included.
+       NuFACE's strength is its decade-long brand authority and review base. The technology it delivers, standard microcurrent, is matched by the Face Introducer at a lower price point, with two additional modalities included.
       </p>
      </div>
     </section>

@@ -18,7 +18,7 @@ const TECH_TAGS: Record<string, string[]> = {
   "eye-massage": ["Red Light", "Thermal"],
   "color-light-import-micro-current-vibration-massager": ["LED", "Freq"],
   "facial-beauty-tools-and-ems-beauty-equipment": ["EMS", "Contour"],
-  "lifting-and-tightening-face-introducer": ["Red Light", "EMS", "Thermal"],
+  "lifting-and-tightening-face-introducer": ["Microcurrent", "EMS", "Thermal"],
   "portable-ems-microcurrent-facial-beauty-device": ["EMS", "Microcurrent"],
 };
 

@@ -337,7 +337,7 @@ const faceIntroducer: BridgeConfig = {
     ],
     caption: "Three modalities — EMS, microcurrent and thermal — one calibrated signal, twelve minutes.",
     image: faceMechanism,
-    alt: "The Face Introducer standing on a marble shelf at dusk, red light glowing at its head, conductive gel beside it.",
+    alt: "The Face Introducer standing on a marble shelf at dusk, its mode indicator light glowing at the head, conductive gel beside it.",
     research: {
       intro:
         "Peer-reviewed studies exist on this technology class — facial microcurrent and EMS. The evidence is early and modest, and two things we refuse to do: promise you a specific outcome, or decorate this page with citations we have not read ourselves. Here is the honest shape of it.",

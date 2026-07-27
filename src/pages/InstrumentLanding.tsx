@@ -411,6 +411,9 @@ export default function InstrumentLanding() {
         href={fallbackHref}
         className={className}
         aria-disabled={ordering}
+        data-atc-beacon=""
+        data-beacon-slug={cfg.slug}
+        data-beacon-placement="instrument-landing"
         onClick={(e) => {
           if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
           e.preventDefault();
@@ -420,7 +423,14 @@ export default function InstrumentLanding() {
         {children}
       </a>
     ) : (
-      <button onClick={order} disabled={ordering} className={className}>
+      <button
+        onClick={order}
+        disabled={ordering}
+        className={className}
+        data-atc-beacon=""
+        data-beacon-slug={cfg.slug}
+        data-beacon-placement="instrument-landing"
+      >
         {children}
       </button>
     );

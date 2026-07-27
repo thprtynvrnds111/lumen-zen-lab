@@ -18,7 +18,7 @@ const pressQuotes = [
   context: "The Future of Beauty",
  },
  {
-  quote: "Four clinical technologies. One device. Zero excuses.",
+  quote: "Three clinical technologies. One device. Zero excuses.",
   source: "COSMOPOLITAN",
   context: "Editor's Pick",
  },

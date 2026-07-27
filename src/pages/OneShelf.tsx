@@ -345,6 +345,9 @@ export default function OneShelf() {
                 <a
                   className="os-cta"
                   href={CTA_HREF}
+                  data-atc-beacon=""
+                  data-beacon-slug="the-system"
+                  data-beacon-placement="one-shelf"
                   onClick={() => {
                     const w = window as unknown as { fbq?: (...a: unknown[]) => void };
                     w.fbq?.("track", "AddToCart", {

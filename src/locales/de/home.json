@@ -2,7 +2,7 @@
  "hero": {
   "eyebrow": "Resonanz-Wiederherstellung",
   "headline": "Optimiere deine Biologie.",
-  "subline": "Vier Technologien. Ein tägliches Protokoll. Messbare Ergebnisse.",
+  "subline": "Drei Technologien. Ein tägliches Protokoll. Messbare Ergebnisse.",
   "body": "Ein Editorial über die Rückkehr. Über Haut nicht als Oberfläche, sondern als Instrument. Über die Wissenschaft hinter dem Ritual und das Ritual in der Wissenschaft.",
   "rating": "4.9 / 5, bewertet von unserer Community",
   "ctaPrimary": "Face Introducer bestellen",
@@ -13,11 +13,7 @@
    "tagline": "Klinische Präzision. Tägliches Ritual."
   },
   "modalities": {
-   "label": "Vier Protokolle. Ein Stack.",
-   "redLight": {
-    "label": "Rotlicht",
-    "sub": "Photobiomodulation"
-   },
+   "label": "Drei Protokolle. Ein Stack.",
    "microcurrent": {
     "label": "Mikrostrom",
     "sub": "bioelektrisch"
@@ -38,7 +34,7 @@
   "items": [
    {
     "q": "Funktioniert das wirklich?",
-    "a": "Ja. Unsere Geräte verwenden klinisch erforschten Mikrostrom, EMS und Rotlichttherapie, die gleichen Technologien, die in professionellen Kliniken eingesetzt werden. Die meisten Nutzerinnen bemerken eine verbesserte Hauttextur innerhalb von 2 Wochen und einen sichtbaren Lifteffekt nach 3–4 Wochen täglichem Gebrauch."
+    "a": "Der Face Introducer kombiniert EMS, Mikrostrom und 45°C Thermik in einem täglichen Protokoll, dieselben Mechanismen wie in professionellen Kliniken. Es ist kein Lichttherapiegerät: die LED ist eine Modusanzeige. Nutze ihn 14 Tage täglich, bevor du ein Urteil bildest. Ergebnisse entstehen durch Konstanz und fallen individuell aus."
    },
    {
     "q": "Woher weiß ich, dass dies ein authentisches Gerät ist?",
@@ -143,7 +139,7 @@
    "priceZiip": "€350+, einmalig",
    "priceGeneric": "€60–100, einmalig",
    "priceStudio": "€80–200 / Sitzung",
-   "techZential": "4 Modalitäten",
+   "techZential": "3 Modalitäten",
    "techZiip": "1–2 Modalitäten",
    "techGeneric": "1 Modalität",
    "techStudio": "1 Behandlungsart",

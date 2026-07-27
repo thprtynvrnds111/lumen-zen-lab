@@ -36,7 +36,7 @@ export function EditorialBreak() {
             Your skin remembers<br />what you repeat.
           </h2>
           <p className="text-sm leading-relaxed max-w-sm" style={{ color: '#FAF7F3', opacity: 0.5 }}>
-            Five minutes a day. Four clinical technologies. One system that works with your biology, not against it.
+            Five minutes a day. Three clinical technologies. One system that works with your biology, not against it.
           </p>
         </div>
       </div>

@@ -6,8 +6,8 @@
 
     <!-- Primary Meta -->
     <title>Zential Pure</title>
-    <meta name="description" content="Four clinical protocols in one instrument. Red light, microcurrent, EMS, thermal — engineered for skin performance. Zential Pure: Clinic Precision. Daily Ritual.">
-    <meta name="keywords" content="biohacking skin device, red light therapy face, microcurrent device, EMS facial recovery, skin performance protocol, at-home clinical device, self-optimization skincare">
+    <meta name="description" content="Three clinical protocols in one instrument. Microcurrent, EMS, thermal — engineered for skin performance. Zential Pure: Clinic Precision. Daily Ritual.">
+    <meta name="keywords" content="biohacking skin device, microcurrent facial device, EMS facial recovery, skin performance protocol, at-home clinical device, self-optimization skincare">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://zentialpure.com">
     <meta name="google-site-verification" content="IpfdaFRxhHjfiGqMbLtY79rZEkDs8YqPuQi5gFRXFvo" />
@@ -65,7 +65,7 @@
       "@context": "https://schema.org",
       "@type": "Product",
       "name": "Zential Pure Microcurrent Facial Device",
-      "description": "Clinic-grade microcurrent, EMS, red light and thermal technology in one daily-use device. Designed to lift, sculpt and restore your skin's natural tone and frequency.",
+      "description": "Clinic-grade microcurrent, EMS and thermal technology in one daily-use device. Designed to lift, sculpt and restore your skin's natural tone and frequency.",
       "brand": {
         "@type": "Brand",
         "name": "Zential Pure"
@@ -115,7 +115,7 @@
           "name": "What does the Zential Pure device do?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Zential Pure combines microcurrent, EMS, red light therapy and thermal technology to lift facial contours, improve skin tone and restore your skin's natural biological frequency — all in a daily home ritual."
+            "text": "Zential Pure combines microcurrent, EMS and thermal technology to lift facial contours, improve skin tone and restore your skin's natural biological frequency — all in a daily home ritual."
           }
         },
         {
@@ -123,7 +123,7 @@
           "name": "How is Zential Pure different from NuFACE or FOREO?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Zential Pure is built as a self-optimization system, not just a beauty device. It combines four technologies (microcurrent, EMS, red light, thermal) that work synergistically, positioning it closer to Whoop or Eight Sleep than traditional skincare tools."
+            "text": "Zential Pure is built as a self-optimization system, not just a beauty device. It combines three technologies (microcurrent, EMS, thermal) that work synergistically, positioning it closer to Whoop or Eight Sleep than traditional skincare tools."
           }
         },
         {
@@ -212,6 +212,39 @@
       fbq('init','915864761310220');
       fbq('init','2204643330063300');
       fbq('track','PageView');
+    </script>
+
+    <!-- ATC beacon — server-side count of buy-CTA clicks, for the pixel loss-rate
+         measurement. Registered in <head> on the capture phase with plain DOM, so
+         it sees clicks that happen before React hydrates or fbevents.js loads —
+         exactly the clicks the pixel's image beacon loses. POSTs own-origin with
+         fetch keepalive (survives page unload by spec, unlike an image beacon).
+         Sink: /api/atc-beacon → engine box. Guarded by src/test/atcBeacon.test.ts. -->
+    <script>
+      (function () {
+        document.addEventListener('click', function (ev) {
+          try {
+            var t = ev.target;
+            var el = t && t.closest ? t.closest('[data-atc-beacon]') : null;
+            if (!el) return;
+            var eid = 'atc-' + (window.crypto && crypto.randomUUID
+              ? crypto.randomUUID()
+              : Date.now() + '-' + Math.random().toString(36).slice(2));
+            // Future server-side AddToCart mirror reuses this as the fbq eventID.
+            window.__zpAtcEventId = eid;
+            fetch('/api/atc-beacon', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              keepalive: true,
+              body: JSON.stringify({
+                event_id: eid,
+                slug: el.getAttribute('data-beacon-slug') || '',
+                placement: el.getAttribute('data-beacon-placement') || ''
+              })
+            }).catch(function () {});
+          } catch (e) { /* tracking never breaks the page */ }
+        }, true);
+      })();
     </script>
 
     <!-- Favicon -->

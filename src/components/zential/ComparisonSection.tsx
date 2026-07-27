@@ -29,7 +29,7 @@ const rows: CompRow[] = [
  },
  {
   feature: "Tech stack",
-  zential: "4 modalities",
+  zential: "3 modalities",
   nuface: "1–2 modalities",
   nuface_icon: "neutral",
   amiro: "1 modality",

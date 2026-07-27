@@ -63,6 +63,13 @@ export function CartDrawer() {
 
  const [redirecting, setRedirecting] = useState(false);
 
+ // ATC-beacon attrs only when the click will actually fire AddToCart
+ // (handleCheckout no-ops on an empty cart) — conditional keeps the count honest.
+ const atcBeaconAttrs =
+  items.length > 0
+   ? { "data-atc-beacon": "", "data-beacon-slug": "cart", "data-beacon-placement": "cart-drawer" }
+   : {};
+
  const handleCheckout = () => {
   if (items.length === 0) return;
   setRedirecting(true);
@@ -271,6 +278,7 @@ export function CartDrawer() {
        onFocus={prefetchCheckout}
        onTouchStart={prefetchCheckout}
        disabled={isLoading || isSyncing || redirecting}
+       {...atcBeaconAttrs}
        className="w-full bg-foreground text-background py-3.5 rounded-full text-sm font-semibold tracking-[0.15em] uppercase hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
       >
        {isLoading || isSyncing || redirecting ? (

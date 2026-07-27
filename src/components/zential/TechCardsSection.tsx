@@ -29,7 +29,7 @@ export function TechCardsSection() {
     <section ref={ref} id="technology" className="relative px-6 md:px-12 lg:px-20 py-12 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
       <div className="max-w-5xl mx-auto">
         <h2 className="font-serif italic text-3xl md:text-4xl mb-8 md:mb-14 text-center" style={{ color: '#1A1714' }}>
-          The four technologies
+          The three technologies
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {cards.map((c) => (

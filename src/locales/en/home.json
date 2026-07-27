@@ -2,7 +2,7 @@
  "hero": {
   "eyebrow": "Resonance Restoration",
   "headline": "Optimize Your Biology.",
-  "subline": "Four technologies. One daily protocol. Measurable output.",
+  "subline": "Three technologies. One daily protocol. Measurable output.",
   "body": "An editorial on returning. On skin not as surface but as instrument. On the science beneath the ritual, and the ritual within the science.",
   "rating": "",
   "subhead": "A three-modality at-home instrument calibrated to clinic protocols. EMS, Microcurrent and Thermal in a single 12-minute ritual. Built for the woman who left the clinic but kept the standard.",
@@ -16,7 +16,7 @@
    "tracked": "Tracked shipping"
   },
   "proof": {
-   "modalities": { "value": "4", "label": "Clinical\nmodalities" },
+   "modalities": { "value": "3", "label": "Clinical\nmodalities" },
    "price": { "value": "€88", "label": "vs €1,440 / yr\nclinic average" },
    "guarantee": { "value": "30 days", "label": "Protocol\nguarantee" }
   },
@@ -147,7 +147,7 @@
    "priceZiip": "€350+, once",
    "priceGeneric": "€60–100, once",
    "priceStudio": "€80–200 / session",
-   "techZential": "4 modalities",
+   "techZential": "3 modalities",
    "techZiip": "1–2 modalities",
    "techGeneric": "1 modality",
    "techStudio": "1 treatment type",

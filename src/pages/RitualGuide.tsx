@@ -36,14 +36,6 @@ const steps = [
  },
  {
   num: "02",
-  mode: "Red Light",
-  param: "630–660nm wavelength",
-  duration: "90 seconds",
-  what: "Stimulates fibroblast activity to support collagen synthesis at the cellular level.",
-  sensation: "Subtle warmth and light. Fully comfortable throughout.",
- },
- {
-  num: "03",
   mode: "Microcurrent",
   param: "Low-frequency electrical current, sub-sensory threshold",
   duration: "60 seconds per zone (forehead, cheeks, jawline)",
@@ -51,7 +43,7 @@ const steps = [
   sensation: "A faint tingling or nothing at all. If it feels uncomfortable, reduce contact pressure.",
  },
  {
-  num: "04",
+  num: "03",
   mode: "EMS Finish",
   param: "Electrical muscle stimulation",
   duration: "60 seconds",
@@ -63,14 +55,14 @@ const steps = [
 const afterItems = [
  { title: "Rinse", desc: "Remove any remaining gel with warm water." },
  { title: "Serum", desc: "Apply your preferred serum immediately. Absorption is highest right after treatment." },
- { title: "SPF", desc: "Always finish your morning ritual with SPF. Red light increases photosensitivity slightly." },
+ { title: "SPF", desc: "Always finish your morning ritual with SPF. Warmed skin and fresh serum are no substitute for sun protection." },
 ];
 
 const contraindications = [
  "Active skin infections or open wounds in treatment area",
  "Pregnancy",
  "Implanted electronic devices (pacemakers, cochlear implants)",
- "Epilepsy (due to light pulses)",
+ "Epilepsy (due to electrical stimulation)",
  "Metal implants in the face",
 ];
 
@@ -79,7 +71,7 @@ export default function RitualGuide() {
   <div className="min-h-screen" style={{ backgroundColor: bg, color: textPrimary, fontFamily: "'Inter', system-ui, sans-serif" }}>
    <SEO
     title="Ritual Guide, Face Introducer | Zential Pure"
-    description="Step-by-step ritual guide for the Zential Pure Face Introducer. Four technologies. One sequence. Five minutes."
+    description="Step-by-step ritual guide for the Zential Pure Face Introducer. Three technologies. One sequence. Five minutes."
     canonicalUrl="/ritual-guide"
    />
 
@@ -102,7 +94,7 @@ export default function RitualGuide() {
      Your Face Introducer.<br className="hidden md:block" /> How to use it.
     </h1>
     <p className="text-sm md:text-base max-w-md mx-auto" style={{ color: textMuted }}>
-     Four technologies. One sequence. Five minutes.
+     Three technologies. One sequence. Five minutes.
     </p>
     <div className="mt-10 mx-auto max-w-xs h-px" style={{ backgroundColor: divider }} />
 

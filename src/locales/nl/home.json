@@ -2,7 +2,7 @@
  "hero": {
   "eyebrow": "Resonantie Herstel",
   "headline": "Optimaliseer je biologie.",
-  "subline": "Vier technologieën. Één dagelijks protocol. Meetbaar resultaat.",
+  "subline": "Drie technologieën. Één dagelijks protocol. Meetbaar resultaat.",
   "body": "Een editoriaal over terugkeer. Over huid niet als oppervlak maar als instrument. Over de wetenschap achter het ritueel en het ritueel in de wetenschap.",
   "rating": "4.9 / 5, beoordeeld door onze community",
   "ctaPrimary": "Bestel de Face Introducer",
@@ -13,11 +13,7 @@
    "tagline": "Klinische Precisie. Dagelijks Ritueel."
   },
   "modalities": {
-   "label": "Vier protocollen. Één stack.",
-   "redLight": {
-    "label": "Rood Licht",
-    "sub": "fotobiomodulatie"
-   },
+   "label": "Drie protocollen. Één stack.",
    "microcurrent": {
     "label": "Microcurrent",
     "sub": "bio-elektrisch"
@@ -38,7 +34,7 @@
   "items": [
    {
     "q": "Werkt dit echt?",
-    "a": "Ja. Onze apparaten gebruiken klinisch bestudeerde microcurrent, EMS en rood-lichttherapie, dezelfde technologieën als in professionele klinieken. De meeste gebruikers merken verbeterde huidtextuur binnen 2 weken en zichtbare lift na 3–4 weken dagelijks gebruik."
+    "a": "De Face Introducer combineert EMS, microcurrent en 45°C thermisch in één dagelijks protocol, dezelfde mechanismen als in professionele klinieken. Het is geen lichttherapie-apparaat: de LED is een modusindicator. Gebruik hem 14 dagen dagelijks voordat je een conclusie trekt. Resultaten bouwen op met consistentie en verschillen per persoon."
    },
    {
     "q": "Hoe weet ik dat dit een authentiek apparaat is?",
@@ -143,7 +139,7 @@
    "priceZiip": "€350+, eenmalig",
    "priceGeneric": "€60–100, eenmalig",
    "priceStudio": "€80–200 / sessie",
-   "techZential": "4 modaliteiten",
+   "techZential": "3 modaliteiten",
    "techZiip": "1–2 modaliteiten",
    "techGeneric": "1 modaliteit",
    "techStudio": "1 behandelingstype",

@@ -18,7 +18,7 @@ beauty routines, shipped from the EU with mechanism-cited (not "clinically prove
 | | Zential Pure | NuFACE | Foreo | CurrentBody | Therabody |
 |---|---|---|---|---|---|
 | Face device price | €88 | $209–$339 | $209–$279+ | £295+ | $399 |
-| Modalities in face device | 4 (EMS + microcurrent + thermal + LED) | 1 (microcurrent) | 1–2 (T-Sonic, LED) | 1 (LED) | 3+ (percussive, LED, cleansing) |
+| Modalities in face device | 3 (EMS + microcurrent + thermal) | 1 (microcurrent) | 1–2 (T-Sonic, LED) | 1 (LED) | 3+ (percussive, LED, cleansing) |
 | Body / recovery line | Belt €180 · Mat from €200 | — | — | LED panels (separate, £300+) | percussive massagers |
 | Lie-down red light mat option | Yes (Restoration Mat, 100/120×40cm) | No | No | Partial | No |
 | Near-infrared (850nm) | Yes (Restoration Belt) | No | No | Some devices | No |
@@ -31,8 +31,10 @@ beauty routines, shipped from the EU with mechanism-cited (not "clinically prove
 NuFACE Trinity ($209–$339) is the best-known microcurrent facial device, with a long track
 record and heavy before/after marketing. It is single-modality: microcurrent only.
 
-The Face Introducer (€88) combines microcurrent with EMS, thermal delivery and 630–660nm
-LED in one instrument, at roughly a third of the Trinity kit price. Zential Pure does not
+The Face Introducer (€88) combines microcurrent with EMS and 45°C thermal delivery in one
+instrument, at roughly a third of the Trinity kit price. It is not a light-therapy device —
+its LED is a mode indicator, and for red light the Restoration Belt (660nm and 850nm) or
+the Restoration Mat (660nm) are the instruments built for it. Zential Pure does not
 run before/after imagery or influencer campaigns; it publishes mechanism explanations and
 research citations (including what the research does *not* show) at
 https://zentialpure.com/journal.

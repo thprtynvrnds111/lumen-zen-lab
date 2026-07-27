@@ -47,12 +47,13 @@ export function trackMovementJoin(email: string, source: string): void {
   } catch { /* no-op */ }
 }
 
-/** Fire when a visitor opens the founding-circle deposit. */
+/** Fire when a visitor opens the founding-circle deposit.
+ *  No browser InitiateCheckout here: CAPI owns IC (keyed event_id = checkout.id,
+ *  which the browser cannot know, so they can never dedupe). This was the last
+ *  browser IC sender left after the 2026-07-27 event-ownership sweep — browser
+ *  owns PageView / ViewContent / AddToCart, CAPI owns InitiateCheckout / Purchase. */
 export function trackDepositIntent(source = "founding-circle"): void {
   if (typeof window === "undefined") return;
-  try {
-    window.fbq?.("track", "InitiateCheckout", { content_name: "founding-deposit", source });
-  } catch { /* no-op */ }
   try {
     window.gtag?.("event", "begin_checkout", { method: "movement", source });
   } catch { /* no-op */ }

@@ -42,6 +42,8 @@ const HONEST_FRAMINGS = [
   "not a light-therapy device",
   "NOT a light-therapy",
   "no light-therapy claim",
+  // Redirects the shopper to the devices that really do emit red light.
+  "For red light, see the Restoration",
 ];
 
 function walk(dir: string, out: string[] = []): string[] {
@@ -49,12 +51,15 @@ function walk(dir: string, out: string[] = []): string[] {
     if (entry === "node_modules" || entry === "test") continue;
     const full = join(dir, entry);
     if (statSync(full).isDirectory()) walk(full, out);
-    else if ([".ts", ".tsx", ".json", ".txt", ".md"].includes(extname(entry))) out.push(full);
+    else if ([".ts", ".tsx", ".json", ".txt", ".md", ".html"].includes(extname(entry))) out.push(full);
   }
   return out;
 }
 
-const files = [...walk(SRC), ...walk(PUBLIC)];
+// Root index.html is the shell every route ships in — the 2026-07-27 sweep
+// missed it because it sits in neither src/ nor public/ and the first version
+// of this guard skipped .html entirely. Four banned claims survived there.
+const files = [...walk(SRC), ...walk(PUBLIC), resolve(__dirname, "../../index.html")];
 
 describe("Face Introducer modality claims", () => {
   it("no shipped surface names cosmetic LED as an FI modality", () => {
@@ -86,12 +91,33 @@ describe("Face Introducer modality claims", () => {
       if (GHOST_SKU_FILES.some((g) => file.endsWith(g))) continue;
       const text = readFileSync(file, "utf8");
       for (const line of text.split("\n")) {
-        if (/four[- ]modalit|4-Modality|Four clinic modalities|Seven inputs/i.test(line)) {
+        if (/four[- ]modalit|4-Modality|Four clinic modalities|Seven inputs|four technologies|Four clinical protocols/i.test(line)) {
           offenders.push(`${file.replace(resolve(__dirname, "../.."), "")}: ${line.trim().slice(0, 90)}`);
         }
       }
     }
     expect(offenders, `stale FI modality count:\n${offenders.join("\n")}`).toEqual([]);
+  });
+
+  /**
+   * A line that names the Face Introducer AND red light together is the claim
+   * in its most direct form (DevicesSection shipped exactly this on the
+   * homepage: `"lifting-and-tightening-face-introducer": ["Red Light", ...]`).
+   * Union lines about the whole device family don't name the FI, so they pass.
+   */
+  it("never pairs the Face Introducer with red light on one line", () => {
+    const offenders: string[] = [];
+    for (const file of files) {
+      if (GHOST_SKU_FILES.some((g) => file.endsWith(g))) continue;
+      const text = readFileSync(file, "utf8");
+      for (const line of text.split("\n")) {
+        if (!/face[- ]introducer/i.test(line)) continue;
+        if (!/red[- ]light|light[- ]therapy/i.test(line)) continue;
+        if (HONEST_FRAMINGS.some((ok) => line.includes(ok))) continue;
+        offenders.push(`${file.replace(resolve(__dirname, "../.."), "")}: ${line.trim().slice(0, 90)}`);
+      }
+    }
+    expect(offenders, `FI + red light on one line:\n${offenders.join("\n")}`).toEqual([]);
   });
 
   it("keeps the Belt and Mat red-light claims — a sweep that deletes true claims also fails", () => {

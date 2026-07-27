@@ -2,7 +2,7 @@
  "hero": {
   "eyebrow": "Restauration de Résonance",
   "headline": "Optimisez votre biologie.",
-  "subline": "Quatre technologies. Un protocole quotidien. Des résultats mesurables.",
+  "subline": "Trois technologies. Un protocole quotidien. Des résultats mesurables.",
   "body": "Un éditorial sur le retour. Sur la peau non comme surface mais comme instrument. Sur la science derrière le rituel et le rituel dans la science.",
   "rating": "4,9 / 5, noté par notre communauté",
   "ctaPrimary": "Commander le Face Introducer",
@@ -13,11 +13,7 @@
    "tagline": "Précision clinique. Rituel quotidien."
   },
   "modalities": {
-   "label": "Quatre protocoles. Une stack.",
-   "redLight": {
-    "label": "Lumière rouge",
-    "sub": "photobiomodulation"
-   },
+   "label": "Trois protocoles. Une stack.",
    "microcurrent": {
     "label": "Microcourant",
     "sub": "bioélectrique"
@@ -38,7 +34,7 @@
   "items": [
    {
     "q": "Est-ce que ça fonctionne vraiment ?",
-    "a": "Oui. Nos appareils utilisent le microcourant, l'EMS et la luminothérapie rouge, les mêmes technologies que dans les cliniques professionnelles. La plupart des utilisatrices remarquent une texture de peau améliorée en 2 semaines et un effet lift visible après 3–4 semaines d'utilisation quotidienne."
+    "a": "Le Face Introducer combine EMS, microcourant et thermique à 45°C dans un protocole quotidien, les mêmes mécanismes que dans les cliniques professionnelles. Ce n'est pas un appareil de luminothérapie : sa LED est un indicateur de mode. Utilisez-le quotidiennement pendant 14 jours avant de conclure. Les résultats se construisent avec la régularité et varient selon les personnes."
    },
    {
     "q": "Comment savoir que c'est un appareil authentique ?",
@@ -143,7 +139,7 @@
    "priceZiip": "€350+, une fois",
    "priceGeneric": "€60–100, une fois",
    "priceStudio": "€80–200 / séance",
-   "techZential": "4 modalités",
+   "techZential": "3 modalités",
    "techZiip": "1–2 modalités",
    "techGeneric": "1 modalité",
    "techStudio": "1 type de traitement",

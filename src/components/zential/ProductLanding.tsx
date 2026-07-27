@@ -65,6 +65,17 @@ function buildBundles(gelPrice: number, maskPrice: number) {
  ];
 }
 
+const NUMERAL = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven"];
+
+// Derived from the cards themselves so the headline can never outrun the modalities
+// the device actually has.
+function techSectionTitle(config: ProductConfig) {
+ if (config.techSectionTitle) return config.techSectionTitle;
+ const n = config.techCards.length;
+ const count = NUMERAL[n] ?? String(n);
+ return `${count} ${n === 1 ? "technology" : "technologies"}. One device.`;
+}
+
 interface Props {
  config: ProductConfig;
 }
@@ -604,7 +615,7 @@ export function ProductLanding({ config }: Props) {
 
      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
       {[
-       { eyebrow: "Evidence", title: "Peer-reviewed studies", body: "Every modality on this device, red light, microcurrent, EMS, thermal, is referenced to published clinical research. We link the actual papers below.", cta: "See studies →" },
+       { eyebrow: "Evidence", title: "Peer-reviewed studies", body: "Every modality on this device, microcurrent, EMS, thermal, is referenced to published clinical research. We link the actual papers below.", cta: "See studies →" },
        { eyebrow: "Guarantee", title: "30 days. No conditions.", body: "Use it nightly for 30 days. If your skin doesn't show change, we refund you in full. No restocking fee, no questionnaire, no friction.", cta: "Read policy →" },
        { eyebrow: "Manufacturing", title: "Medical-grade build", body: "FDA-cleared modalities, CE-marked construction, 2-year hardware warranty. The device itself is the proof, not borrowed credibility.", cta: "Learn more →" },
       ].map((card, i) => (
@@ -704,7 +715,7 @@ export function ProductLanding({ config }: Props) {
     <div className="max-w-[1200px] mx-auto">
      <div className="text-center mb-14">
       <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-4"> Technology </p>
-      <h2 className="font-serif italic text-[32px] md:text-[44px] leading-[1.05] text-foreground tracking-tight">{config.techSectionTitle || "Four technologies. One device."}</h2>
+      <h2 className="font-serif italic text-[32px] md:text-[44px] leading-[1.05] text-foreground tracking-tight">{techSectionTitle(config)}</h2>
      </div>
      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       {config.techCards.map((card, i) => (
