@@ -74,13 +74,19 @@ describe("Face Introducer modality claims", () => {
     expect(offenders, `FI LED modality claim found:\n${offenders.join("\n")}`).toEqual([]);
   });
 
-  it("does not describe the FI as a four-modality instrument", () => {
+  /**
+   * Counts drift independently of the words. When the FI went 4 -> 3 the System
+   * page still read "Seven inputs" (the true union is six: EMS, microcurrent,
+   * thermal, red light, near-infrared, far-infrared) and shipped to production
+   * that way, because the first version of this guard only looked for "four".
+   */
+  it("does not carry a stale modality or input count", () => {
     const offenders: string[] = [];
     for (const file of files) {
       if (GHOST_SKU_FILES.some((g) => file.endsWith(g))) continue;
       const text = readFileSync(file, "utf8");
       for (const line of text.split("\n")) {
-        if (/four[- ]modalit|4-Modality|Four clinic modalities/i.test(line)) {
+        if (/four[- ]modalit|4-Modality|Four clinic modalities|Seven inputs/i.test(line)) {
           offenders.push(`${file.replace(resolve(__dirname, "../.."), "")}: ${line.trim().slice(0, 90)}`);
         }
       }

@@ -201,7 +201,7 @@ export default function InstrumentSystem() {
             What's included
           </p>
           <h2 className="mt-5 font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] leading-[1.1] text-[#1A1714]">
-            Three instruments. Seven inputs.
+            Three instruments. Six inputs.
           </h2>
           <p className="mt-4 max-w-[520px] text-[15px] leading-[1.7] text-[#1A1714]/[0.66]">
             Each instrument works alone — together they cover the whole day. EMS,

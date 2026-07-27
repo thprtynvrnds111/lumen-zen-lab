@@ -75,7 +75,7 @@ const JournalStackAudit = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="The Stack Audit: What You Spend on Optimization, Zential Pure Journal"
-        description="Add up your yearly spend on subscriptions, supplements, and trackers. Then compare it to a one-time device stack that covers three zones and seven inputs."
+        description="Add up your yearly spend on subscriptions, supplements, and trackers. Then compare it to a one-time device stack that covers three zones and six inputs."
         canonicalUrl="/journal/the-stack-audit"
         jsonLd={{
           "@context": "https://schema.org",
@@ -114,7 +114,7 @@ const JournalStackAudit = () => {
             <p className="text-lg text-foreground/90 leading-relaxed">
               Most people spend €1,000 to €3,000 a year on subscriptions,
               supplements, and trackers. Add it up once. Then compare it to a
-              one-time device stack that covers three zones and seven inputs.
+              one-time device stack that covers three zones and six inputs.
             </p>
             <div className="w-16 h-px bg-primary/30 mt-8" />
           </div>
@@ -244,7 +244,7 @@ const JournalStackAudit = () => {
                       </li>
                     </ul>
                     <p className="text-foreground font-medium mt-5">
-                      Seven inputs across three zones. One price. No subscription.
+                      Six inputs across three zones. One price. No subscription.
                     </p>
                   </div>
 
@@ -255,7 +255,7 @@ const JournalStackAudit = () => {
                           1,
                           Math.round(monthsToSystem)
                         )} months on subscriptions and supplements than The System costs once. After that, every month is money you could redirect toward something you own outright.`
-                      : "Your annual spend is below €399. The System is a larger upfront commitment, but it is a one-time cost that covers three zones with seven inputs. No monthly renewal. No annual increase."}
+                      : "Your annual spend is below €399. The System is a larger upfront commitment, but it is a one-time cost that covers three zones with six inputs. No monthly renewal. No annual increase."}
                   </p>
 
                   <p className="text-xl font-bold text-foreground">
@@ -274,7 +274,7 @@ const JournalStackAudit = () => {
                       to="/instruments#system"
                       className="px-8 py-4 rounded-full border border-border/50 text-foreground text-sm tracking-[0.15em] uppercase hover:border-primary/60 transition-colors"
                     >
-                      Three Zones. Seven Inputs. One Price.
+                      Three Zones. Six Inputs. One Price.
                     </Link>
                   </div>
                 </>
