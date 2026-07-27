@@ -52,6 +52,7 @@ const ProtocolFaceIntroducer = lazy(() => import("./pages/ProtocolFaceIntroducer
 const FoundingTerms = lazy(() => import("./pages/FoundingTerms"));
 const Instruments = lazy(() => import("./pages/Instruments"));
 const InstrumentLanding = lazy(() => import("./pages/InstrumentLanding"));
+const InstrumentSystem = lazy(() => import("./pages/InstrumentSystem"));
 const TruthMovement = lazy(() => import("./pages/TruthMovement"));
 const Origin = lazy(() => import("./pages/Origin"));
 const Reveal = lazy(() => import("./pages/reveal/Reveal"));
@@ -85,6 +86,7 @@ function AppContent() {
         <Route path="/origin" element={<Origin />} />
         <Route path="/protocols" element={<Protocols />} />
         <Route path="/instruments" element={<Instruments />} />
+        <Route path="/instruments/the-system" element={<InstrumentSystem />} />
         <Route path="/instruments/:slug" element={<InstrumentLanding />} />
         <Route path="/protocols/:slug" element={<ProtocolDetail />} />
         <Route path="/protocol/face-introducer" element={<ProtocolFaceIntroducer />} />

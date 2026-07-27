@@ -66,6 +66,7 @@ const RitualJournal = lazy(() => import("./pages/editorial/hub/RitualJournal"));
 const ClinicalIssue = lazy(() => import("./pages/editorial/hub/ClinicalIssue"));
 const Breath = lazy(() => import("./pages/breath/Breath"));
 const OneShelf = lazy(() => import("./pages/OneShelf"));
+const InstrumentSystem = lazy(() => import("./pages/InstrumentSystem"));
 
 function ServerApp() {
   return (
@@ -76,6 +77,7 @@ function ServerApp() {
         <Route path="/origin"                                   element={<Origin />} />
         <Route path="/protocols"                                element={<Protocols />} />
         <Route path="/instruments"                              element={<Instruments />} />
+        <Route path="/instruments/the-system"                  element={<InstrumentSystem />} />
         <Route path="/instruments/:slug"                        element={<InstrumentLanding />} />
         <Route path="/protocols/:slug"                          element={<ProtocolDetail />} />
         <Route path="/protocol/face-introducer"                 element={<ProtocolFaceIntroducer />} />
