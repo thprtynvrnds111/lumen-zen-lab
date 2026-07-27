@@ -67,9 +67,21 @@ export function CartDrawer() {
   setRedirecting(true);
 
   const w = window as any;
-  // Meta Pixel: InitiateCheckout
+  // Meta Pixel: AddToCart. NOT InitiateCheckout — CAPI owns that event.
+  //
+  // This fired InitiateCheckout until 2026-07-27. CAPI already sends IC from the
+  // Shopify `checkouts/create` webhook keyed on `event_id = checkout.id`
+  // (zential-agent-engine/scripts/meta-capi/capi-sender.js), and the browser cannot
+  // know that id — the checkout does not exist until after the redirect — so the two
+  // can never deduplicate and Meta counts both. Harmless while the browser fired into
+  // pixel 915… alone, which no US ad set read; an active double-count the moment
+  // index.html also initialised 2204…, the pixel the budget optimises against.
+  //
+  // Same correction already applied to the one-hop funnel path in
+  // src/pages/funnel/tracking.ts. Event ownership: browser owns PageView /
+  // ViewContent / AddToCart, CAPI owns InitiateCheckout / Purchase.
   if (w.fbq) {
-   w.fbq('track', 'InitiateCheckout', {
+   w.fbq('track', 'AddToCart', {
     num_items: totalItems,
     value: totalPrice,
     currency: 'EUR',
