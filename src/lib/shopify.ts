@@ -220,7 +220,24 @@ const CART_LINES_REMOVE = `
   }
 `;
 
-export const CART_QUERY = `query cart($id: ID!) { cart(id: $id) { id checkoutUrl totalQuantity } }`;
+export const CART_QUERY = `query cart($id: ID!) {
+  cart(id: $id) {
+    id
+    checkoutUrl
+    totalQuantity
+    lines(first: 100) {
+      edges {
+        node {
+          id
+          quantity
+          merchandise {
+            ... on ProductVariant { id price { amount currencyCode } }
+          }
+        }
+      }
+    }
+  }
+}`;
 
 export const formatCheckoutUrl = (url: string): string => {
   try {

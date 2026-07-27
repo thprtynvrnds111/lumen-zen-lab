@@ -133,6 +133,22 @@ export const useCartStore = create<CartStore>()(
           if (cart.checkoutUrl) {
             set({ checkoutUrl: formatCheckoutUrl(cart.checkoutUrl) });
           }
+          // Reconcile persisted line snapshots against the live cart. Prices are
+          // frozen at add-time and survive in localStorage across price changes
+          // (Belt €280 → €180, 2026-07-08) — the live cart is the truth for
+          // price, quantity, and which lines still exist.
+          type LiveLine = { node: { id: string; quantity: number; merchandise: { id: string; price: { amount: string; currencyCode: string } } } };
+          const liveLines: LiveLine[] = cart.lines?.edges ?? [];
+          if (liveLines.length > 0) {
+            const byVariant = new Map(liveLines.map(l => [l.node.merchandise.id, l.node]));
+            const reconciled = get().items
+              .filter(i => byVariant.has(i.variantId))
+              .map(i => {
+                const live = byVariant.get(i.variantId)!;
+                return { ...i, lineId: live.id, quantity: live.quantity, price: live.merchandise.price };
+              });
+            set({ items: reconciled });
+          }
         } catch (e) { console.error(e); }
         finally { set({ isSyncing: false }); }
       },
