@@ -36,7 +36,7 @@ export const BRAND = {
     height: 600,
     alt: "The Restoration Mat lit red, in use at home.",
   },
-  footNote: "Ships free in the EU from Rotterdam · 30-day protocol guarantee · CE marked",
+  footNote: "Ships free in the EU · 30-Day Money-Back Guarantee · CE marked",
 };
 
 /**

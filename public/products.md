@@ -51,8 +51,8 @@
 
 ## Store policies
 
-- Free EU shipping on orders over €75 (US: over $85). Ships from Rotterdam, Netherlands.
-- 30-day protocol guarantee — full refund window.
+- Free EU shipping on orders over €75 (US: over $85).
+- 30-Day Money-Back Guarantee — full refund window.
 - 2-year warranty. CE marked.
 - Reviews: https://www.trustpilot.com/review/zentialpure.com
 

@@ -117,9 +117,8 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     },
     divider: { img: edThreeVessels, imgAlt: "Three vessels in warm light", quote: "Bring the appointment home.", src: "Protocol 01 · The Face Introducer" },
     specs: [
-      { k: "Modalities", v: "EMS · Microcurrent · Thermal · LED" },
+      { k: "Modalities", v: "EMS · Microcurrent · Thermal" },
       { k: "Session", v: "12 minutes" },
-      { k: "LED wavelength", v: "630–660 nm" },
       { k: "Power", v: "Cordless · USB-C · ~14-day charge" },
       { k: "In the box", v: "Device · Conductive gel · Protocol Card" },
       { k: "Warranty", v: "2 years" },

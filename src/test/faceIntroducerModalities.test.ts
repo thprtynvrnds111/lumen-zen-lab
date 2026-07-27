@@ -107,11 +107,17 @@ describe("Face Introducer modality claims", () => {
    */
   it("never pairs the Face Introducer with red light on one line", () => {
     const offenders: string[] = [];
+    // The 2026-07-27 prod check found the claim surviving in lines that never
+    // say "Face Introducer" — JSON-LD names it "Zential Pure Microcurrent
+    // Facial Device", SEO pages say "facial device" or "face device". Any FI
+    // alias next to a light claim is the same violation wearing a wig.
+    const FI_ALIAS =
+      /face[- ]introducer|facial device|face device|facial toning system|microcurrent face/i;
     for (const file of files) {
       if (GHOST_SKU_FILES.some((g) => file.endsWith(g))) continue;
       const text = readFileSync(file, "utf8");
       for (const line of text.split("\n")) {
-        if (!/face[- ]introducer/i.test(line)) continue;
+        if (!FI_ALIAS.test(line)) continue;
         if (!/red[- ]light|light[- ]therapy/i.test(line)) continue;
         if (HONEST_FRAMINGS.some((ok) => line.includes(ok))) continue;
         offenders.push(`${file.replace(resolve(__dirname, "../.."), "")}: ${line.trim().slice(0, 90)}`);

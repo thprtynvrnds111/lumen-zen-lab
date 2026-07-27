@@ -97,7 +97,7 @@ const defaultDeviceFaqs = [
  { q: "Is it safe for all skin types?", a: "Yes, it's designed for all skin types. If you have sensitive skin, start at the lowest setting. If irritation persists, reduce frequency and consult your dermatologist." },
  { q: "Who should not use this device?", a: "Do not use if you have a pacemaker, are pregnant, have active skin infections, epilepsy, or metal implants in the treatment area. Always consult your physician if you have a medical condition." },
  { q: "What serum works best?", a: "Any water-based conductive serum or gel works well. Avoid oil-based products as they can interfere with conductivity. Our Collagen Face Gel is specially formulated for optimal results." },
- { q: "What is your guarantee?", a: "30 days, daily use. If you see no visible improvement, email us. Full refund, no form, no questionnaire, no restocking fee. That is the 30-Day Protocol Guarantee." },
+ { q: "What is your guarantee?", a: "30 days, daily use. If you see no visible improvement, email us. Full refund, no form, no questionnaire, no restocking fee. That is the 30-Day Money-Back Guarantee." },
 ];
 
 const accessoryComparison = [
@@ -219,7 +219,7 @@ export const productConfigs: Record<string, ProductConfig> = {
    { q: "Does this actually work?", a: "The mechanisms in this device, EMS microcurrent, galvanic ion cleansing, iontophoretic delivery and 45°C thermal, are each supported by peer-reviewed research where applicable. We link the actual studies on this page. What we cannot promise is the consistency you bring to it. Use it daily for 14 days before forming a conclusion." },
    { q: "How long until I see results?", a: "Improved skin absorption is measurable from the first session, the galvanic ion delivery changes how actives penetrate. Skin clarity and texture typically respond within 7 to 10 days. Firming becomes visible at 3 to 4 weeks of consistent daily use." },
    { q: "Is it safe for daily use?", a: "Yes. The Face Introducer is designed for a daily 12-minute protocol. The 45°C thermal stays within safe tissue temperature. Galvanic cleansing is non-abrasive. EMS is calibrated at home-device intensity. Start on the lowest of the four speed settings and increase over the first week." },
-   { q: "What if it doesn't work for me?", a: "30 days, daily use. If you see no visible change in skin tone, firmness, or definition, email us. Full refund, no form, no questionnaire, no restocking fee. That is the 30-Day Protocol Guarantee. We print it on the box." },
+   { q: "What if it doesn't work for me?", a: "30 days, daily use. If you see no visible change in skin tone, firmness, or definition, email us. Full refund, no form, no questionnaire, no restocking fee. That is the 30-Day Money-Back Guarantee. We print it on the box." },
    { q: "How is this different from a clinic?", a: "One professional microcurrent session: €90–€180. Monthly clinic protocol: €220+/month, €2,640+/year. The Face Introducer uses the same class of technology, ion cleansing, EMS microcurrent and thermal, for a one-time €88 purchase. The mechanism is the same. The math is not." },
    { q: "Which mode should I use first?", a: "Start with ion cleansing (negative ion mode) every session, it clears the follicle so subsequent modes work on clean tissue. Then select EMS for firming, or microcurrent for finer muscle re-education, based on the protocol you want." },
    { q: "Is this a red light therapy device?", a: "No. The Face Introducer is an EMS, microcurrent and thermal instrument. It shows a coloured LED while running, but that is a mode indicator, not a treatment modality, and we make no light-therapy claim for it. For red light, see the Restoration Belt or the Restoration Mat." },
@@ -244,7 +244,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   ],
   sessionInfo: "Session time: 12 minutes · Frequency: 3–5× per week · Four intensity levels · Stop if: burning, unusual pain, or redness persisting over 30 min",
   valueAnchor: "One professional microcurrent session: €90–€180. The Face Introducer: €88. Once.",
-  guaranteeName: "30-Day Protocol Guarantee",
+  guaranteeName: "30-Day Money-Back Guarantee",
   guaranteeDesc: "Use it daily for 30 days. If you see no visible change in skin tone, firmness, or definition, full refund. No form, no questions, no restocking fee.",
   bonusStack: [
    { title: "The Face Protocol Guide", desc: "Step-by-step ritual breakdown for all four modes. Which order. Which serum. Which frequency.", value: "€19" },
@@ -323,7 +323,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   ],
   sessionInfo: "Session time: 3 minutes per eye · Frequency: daily · Stop if: burning sensation, unusual pain, or persistent redness",
   valueAnchor: "Eye-zone clinic treatments: €80–€150 per session. Eye Activator: €88. Once.",
-  guaranteeName: "30-Day Protocol Guarantee",
+  guaranteeName: "30-Day Money-Back Guarantee",
   guaranteeDesc: "Use it daily for 30 days. If you see no visible change in puffiness, dark circles, or fine lines, full refund. No questions.",
   bonusStack: [
    { title: "The Eye Zone Protocol Guide", desc: "Morning depuff routine vs. evening repair routine, exactly which movements, which order.", value: "€17" },
@@ -393,7 +393,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   ],
   sessionInfo: "Session time: 3–5 min per mode · Frequency: 3–5× per week · IPX3 waterproof · Stop if: burning sensation, unusual pain, or persistent redness",
   valueAnchor: "Five modes. Five clinical mechanisms. One €147 device vs. €150+ per multi-modality clinic session.",
-  guaranteeName: "30-Day Protocol Guarantee",
+  guaranteeName: "30-Day Money-Back Guarantee",
   guaranteeDesc: "30 days daily use. No visible improvement, full refund, no friction.",
   bonusStack: [
    { title: "The 5-Mode Prescription Guide", desc: "Which mode for which concern. Glow, Line, Contour, Pore, Acne, prescribed not randomised.", value: "€22" },
@@ -462,7 +462,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   ],
   sessionInfo: "Session time: 5–7 minutes · Frequency: daily, every morning · Stop if: burning sensation, unusual pain, or persistent redness",
   valueAnchor: "Traditional gua sha facial: €60–€90 per session. Gua Sha Frequency: €88. Once.",
-  guaranteeName: "30-Day Protocol Guarantee",
+  guaranteeName: "30-Day Money-Back Guarantee",
   guaranteeDesc: "30 days daily practice. No visible change in tension, definition, or drainage, full refund, no friction.",
   bonusStack: [
    { title: "The Gua Sha Ritual Map", desc: "Stroke-by-stroke guide following facial anatomy. Exactly which direction, which pressure, which zones in which order.", value: "€17" },
@@ -531,7 +531,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   ],
   sessionInfo: "Session time: 5–8 minutes · Frequency: 4–5× per week · Stop if: burning sensation, unusual pain, or persistent redness",
   valueAnchor: "Microcurrent clinic sessions: €90–€150 each. Skin Pulse: €88. Once.",
-  guaranteeName: "30-Day Protocol Guarantee",
+  guaranteeName: "30-Day Money-Back Guarantee",
   guaranteeDesc: "30 days, 5× per week. No visible change in texture, tone, or firmness, full refund, no form.",
   bonusStack: [
    { title: "The Circuit Protocol Guide", desc: "Zone-by-zone sequence, which area, how long, what order. The dual-ball circuit breaks without both balls in contact.", value: "€19" },
@@ -600,7 +600,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   ],
   sessionInfo: "Session time: 8–12 minutes · Frequency: 3–5× per week · Stop if: burning sensation, unusual pain, or persistent redness",
   valueAnchor: "Clinical EMS facial sessions: €80–€150/session. Sculpt Wand: €88. Once.",
-  guaranteeName: "30-Day Protocol Guarantee",
+  guaranteeName: "30-Day Money-Back Guarantee",
   guaranteeDesc: "30 days of consistent EMS training. No visible change in definition or drainage, full refund, no friction.",
   bonusStack: [
    { title: "The EMS Training Schedule", desc: "Week-by-week intensity progression map. Same progressive overload logic as athletic training, applied to facial muscle.", value: "€19" },
@@ -670,7 +670,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   ],
   sessionInfo: "Session time: 8 minutes · Frequency: daily · Stop if: burning sensation, unusual pain, or persistent redness",
   valueAnchor: "Eye-zone clinic red light session: €80–€150. Frame Pulse: €149. Once.",
-  guaranteeName: "30-Day Clinical Protocol Guarantee",
+  guaranteeName: "30-Day Money-Back Guarantee",
   guaranteeDesc: "30 days daily use. No visible response in tone, firmness, or upper-face definition, full refund. We cover return shipping.",
   bonusStack: [
    { title: "The Frame Pulse Protocol Guide", desc: "Daily timing, intensity progression, serum pairing. The clinical wavelength is half the protocol, the discipline is the other half.", value: "€19" },
@@ -1136,7 +1136,7 @@ const fluxPanelConfig: ProductConfig = {
  ],
  techSectionTitle: "Two wavelengths. One panel.",
  valueAnchor: "Clinic red light + NIR session: €60–€90 per 10-minute exposure. Flux Panel: €280. Daily.",
- guaranteeName: "30-Day Protocol Guarantee",
+ guaranteeName: "30-Day Money-Back Guarantee",
  guaranteeDesc: "Use the Flux Panel daily for 30 days. If it has not earned its place in your morning, return it. Full refund. We cover return shipping.",
  bonusStack: [
   { title: "The Photon Protocol Guide", desc: "Distance, duration, frequency, calibration for skin, recovery, and combined sessions.", value: "€19" },
@@ -1223,7 +1223,7 @@ const frequencyMatPlusConfig: ProductConfig = {
  ],
  techSectionTitle: "Two mechanisms. One mat.",
  valueAnchor: "Clinic recovery mat session: €40–€80 each. Frequency Mat +: €220. Daily.",
- guaranteeName: "30-Day Protocol Guarantee",
+ guaranteeName: "30-Day Money-Back Guarantee",
  guaranteeDesc: "Use the Frequency Mat + daily for 30 days. If recovery has not noticeably shifted, return it. Full refund. We cover return shipping.",
  bonusStack: [
   { title: "The Full-Body Protocol Guide", desc: "Position, timing, frequency. How to layer the mat with training, sleep, or stress recovery.", value: "€19" },
@@ -1312,7 +1312,7 @@ const pressureShellConfig: ProductConfig = {
  techSectionTitle: "Four chambers. One protocol.",
  problemImage: problemPressureShell,
  valueAnchor: "Clinic pneumatic compression session: €50–€90 each. Pressure Shell: €148. Daily.",
- guaranteeName: "30-Day Protocol Guarantee",
+ guaranteeName: "30-Day Money-Back Guarantee",
  guaranteeDesc: "Use the Pressure Shell daily for 30 days. If recovery has not noticeably shifted, return it. Full refund. We cover return shipping.",
  bonusStack: [
   { title: "The Sequential Protocol Guide", desc: "Sequence, intensity, duration. How to layer pneumatic compression with training, sleep, or stress recovery.", value: "€19" },
@@ -1399,7 +1399,7 @@ const pulseRollerConfig: ProductConfig = {
  techSectionTitle: "One tool. Three protocols.",
  problemImage: problemPulseRoller,
  valueAnchor: "Clinic percussion massage session: €30–€60 each. Pulse Roller: €128. Daily.",
- guaranteeName: "30-Day Protocol Guarantee",
+ guaranteeName: "30-Day Money-Back Guarantee",
  guaranteeDesc: "Use the Pulse Roller daily for 30 days. If soreness and recovery have not noticeably shifted, return it. Full refund. We cover return shipping.",
  bonusStack: [
   { title: "The Percussion Protocol Guide", desc: "Intensity, duration, target zones. Three preset protocols for warm-up, recovery, and fascia release.", value: "€19" },
@@ -1564,7 +1564,7 @@ const restoreMatConfig: ProductConfig = {
  techSectionTitle: "6,210 points. One protocol.",
  problemImage: problemRestoreMat,
  valueAnchor: "Clinic red light + NIR session: €60–€90 per 10-minute exposure. Flux Panel: €280. Daily.",
- guaranteeName: "30-Day Protocol Guarantee",
+ guaranteeName: "30-Day Money-Back Guarantee",
  guaranteeDesc: "Use the Flux Panel daily for 30 days. If it has not earned its place in your morning, return it. Full refund. We cover return shipping.",
  bonusStack: [
   { title: "The Photon Protocol Guide", desc: "Distance, duration, frequency, calibration for skin, recovery, and combined sessions.", value: "€19" },
@@ -1650,7 +1650,7 @@ const ritualLightProConfig: ProductConfig = {
  ],
  techSectionTitle: "One wavelength. Daily dose.",
  valueAnchor: "Clinic desktop red light session: €40–€80 each. Ritual Light Pro: €225. Daily.",
- guaranteeName: "30-Day Protocol Guarantee",
+ guaranteeName: "30-Day Money-Back Guarantee",
  guaranteeDesc: "Use the Ritual Light Pro daily for 30 days. If skin response or rhythm has not shifted, return it. Full refund. We cover return shipping.",
  bonusStack: [
   { title: "The Desktop Protocol Guide", desc: "Distance, duration, frequency. How to integrate the panel into morning and workday rituals without adding time.", value: "€19" },
@@ -1737,7 +1737,7 @@ const thermalPadConfig: ProductConfig = {
  ],
  techSectionTitle: "Heat + vibration. One joint.",
  valueAnchor: "Clinic targeted heat session: €25–€60 each. Thermal Pad: €158. Daily.",
- guaranteeName: "30-Day Protocol Guarantee",
+ guaranteeName: "30-Day Money-Back Guarantee",
  guaranteeDesc: "Use the Thermal Pad daily for 30 days. If joint comfort or baseline mobility has not shifted, return it. Full refund. We cover return shipping.",
  bonusStack: [
   { title: "The Targeted Heat Protocol Guide", desc: "Position, duration, temperature settings for specific joint and muscle zones.", value: "€19" },
@@ -1791,7 +1791,7 @@ const thermalShellConfig: ProductConfig = {
   { q: "Should I wear anything inside?", a: "Light cotton is recommended for comfort and sweat absorption. Direct contact with the neoprene lining is also fine. Avoid synthetic fabrics, they trap heat unevenly and are less comfortable for extended sessions." },
   { q: "When should I use it relative to training?", a: "Post-training: wait 2 hours after intense sessions before heat exposure. The HSP and recovery benefit is strongest when the body has begun initial repair. Pre-sleep: 60–90 minutes before bed for sleep architecture benefit. Morning sessions work well for metabolic activation without affecting sleep timing." },
   { q: "How is this different from a traditional sauna?", a: "Traditional sauna heats ambient air to 80–100°C; you heat by convection. Far-infrared heats tissue directly via radiant wavelengths at much lower ambient temperature. The core temperature response is similar. The Thermal Shell runs at a fraction of the power and requires no facility." },
-  { q: "What is your guarantee?", a: "30-Day Protocol Guarantee. If you run consistent sessions and don't notice measurable improvement in recovery or sleep within 30 days, full refund, no process required." },
+  { q: "What is your guarantee?", a: "30-Day Money-Back Guarantee. If you run consistent sessions and don't notice measurable improvement in recovery or sleep within 30 days, full refund, no process required." },
  ],
  studyCards: [
   { technology: "Far-Infrared · Recovery", studyTitle: "Far-Infrared Sauna as a Novel Therapeutic Modality for Cardiovascular Health", journal: "Journal of Human Hypertension, 2004", url: "https://scholar.google.com/scholar?q=far+infrared+sauna+cardiovascular+recovery+heat+shock+protein" },
@@ -1983,7 +1983,7 @@ const thermalZoneConfig: ProductConfig = {
  ],
  techSectionTitle: "360 LEDs. Two mechanisms.",
  valueAnchor: "Clinic red light + heat session: €50–€90 each. Thermal Zone: €198. Daily.",
- guaranteeName: "30-Day Protocol Guarantee",
+ guaranteeName: "30-Day Money-Back Guarantee",
  guaranteeDesc: "Use the Thermal Zone daily for 30 days. If recovery or tissue comfort has not noticeably shifted, return it. Full refund. We cover return shipping.",
  bonusStack: [
   { title: "The Combination Protocol Guide", desc: "When thermal alone, when red light alone, when both. Calibration for specific recovery scenarios.", value: "€19" },

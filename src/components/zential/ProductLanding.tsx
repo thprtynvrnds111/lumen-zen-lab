@@ -997,7 +997,7 @@ export function ProductLanding({ config }: Props) {
     <div className="max-w-[1200px] mx-auto text-center">
      <p className="text-[10px] tracking-[0.3em] uppercase text-white/50 mb-5"> The Promise </p>
      <h2 className="font-serif italic text-[36px] md:text-[56px] leading-[1.05] text-white mb-6 tracking-tight">30 days. Full refund.<br/>No questions.</h2>
-     <p className="text-white/60 text-base md:text-lg mb-10 max-w-lg mx-auto leading-relaxed">Email info@zentialpure.com. We refund. No forms, no photos, no return required.</p>
+     <p className="text-white/60 text-base md:text-lg mb-10 max-w-lg mx-auto leading-relaxed">Email info@zentialpure.com. We refund. No forms, no photos, no hassle.</p>
      <button
       onClick={handleAdd}
       onFocus={prefetchCheckout}

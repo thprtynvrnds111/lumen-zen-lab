@@ -25,7 +25,7 @@ export const GIFTS: Gift[] = [
   },
   {
     num: "03",
-    title: "The 30 Day Protocol Guarantee",
+    title: "The 30-Day Money-Back Guarantee",
     detail: "A full month with the instrument. Not yours, full refund.",
   },
 ];

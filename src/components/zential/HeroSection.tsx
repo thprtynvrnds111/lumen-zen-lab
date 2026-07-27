@@ -218,7 +218,7 @@ export function HeroSection() {
      <div className="flex flex-wrap gap-x-6 gap-y-2 mb-10">
       {[
        t('hero.trust.shipping', 'Free EU shipping'),
-       t('hero.trust.guarantee', '30-Day Protocol Guarantee'),
+       t('hero.trust.guarantee', '30-Day Money-Back Guarantee'),
        t('hero.trust.tracked', 'Tracked shipping'),
       ].map(label => (
        <span key={label} className="flex items-center gap-2" style={{ ...S.dm, fontWeight: 400, fontSize: 11, color: 'rgba(26,23,20,0.5)' }}>
