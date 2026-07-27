@@ -21,7 +21,7 @@ const PILL_GHOST_DARK =
 const STATS = [
   { v: "€1,440", k: "Clinic facials\nyear one, average", warm: true },
   { v: "€88", k: "The Face Introducer\nonce, then nothing", warm: false },
-  { v: "4 → 1", k: "Four modalities\none 12-min ritual", warm: false },
+  { v: "3 → 1", k: "Three modalities\none 12-min ritual", warm: false },
 ];
 
 const ROWS: { rl: string; clinic: string; zp: string; win?: boolean }[] = [
@@ -43,7 +43,7 @@ const CLINIC_WINS = [
 const HOME_WINS = [
   "Frequency. The mechanisms we use reward consistency over occasional intensity.",
   "No calendar, no commute, no €120 deciding whether you go this month.",
-  "The same four modalities, in the order tissue responds to them, every day.",
+  "The same three modalities, in the order tissue responds to them, every day.",
   "A cost that ends. €88 once, and the maths stops working against you.",
 ];
 const MATH = [
@@ -67,7 +67,7 @@ export default function ClinicVsHome() {
   return (
     <PageShell
       title="Clinic vs. Home · The Method | Zential Pure"
-      description="A clinic facial costs about €1,440 a year. The Face Introducer is €88, once. The same four modalities — the difference is the calendar, not the mechanism. The honest comparison."
+      description="A clinic facial costs about €1,440 a year. The Face Introducer is €88, once. The same three modalities — the difference is the calendar, not the mechanism. The honest comparison."
       canonical="https://zentialpure.com/clinic-vs-home-facial-device"
       hideHero
     >
@@ -80,7 +80,7 @@ export default function ClinicVsHome() {
             You didn't quit the results.<br />You quit the <span className="text-[#2ED8A8]">commute.</span>
           </h1>
           <p className="mb-[38px] max-w-[560px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">
-            The clinic facial works. So does the cost, the booking, the drive across town. The Face Introducer takes the same four modalities and removes everything that wasn't the treatment. Here is the honest comparison — including what the clinic still does better.
+            The clinic facial works. So does the cost, the booking, the drive across town. The Face Introducer takes the same three modalities and removes everything that wasn't the treatment. Here is the honest comparison — including what the clinic still does better.
           </p>
           <div className="grid max-w-[640px] grid-cols-1 gap-px border border-[rgba(247,244,240,0.10)] bg-[rgba(247,244,240,0.10)] sm:grid-cols-3">
             {STATS.map((s) => (
@@ -204,7 +204,7 @@ export default function ClinicVsHome() {
           </p>
           <h2 className="my-5 font-serif italic font-normal text-[clamp(28px,3.4vw,44px)] text-[#F7F4F0]">The mechanism is the same. The maths is yours.</h2>
           <p className="mx-auto mb-[34px] max-w-[560px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">
-            Four clinic modalities, a twelve-minute ritual, and a 30-day money-back guarantee. If it does not earn its place in a month, send it back for a full refund.
+            Three clinic modalities, a twelve-minute ritual, and a 30-day money-back guarantee. If it does not earn its place in a month, send it back for a full refund.
           </p>
           <div className="flex flex-wrap justify-center gap-3.5">
             <Link to="/instruments/face-introducer" className={PILL_ACTION}>Order the Face Introducer · €88</Link>

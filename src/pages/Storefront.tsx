@@ -33,18 +33,19 @@ const PILL_GHOST_DARK =
 
 interface Instrument { slug: string; title: string; desc: string; price: number; handle: string; img: string; }
 const INSTRUMENTS: Instrument[] = [
-  { slug: "face-introducer", title: "The Face Introducer", desc: "Four modalities for face and neck, in a twelve-minute ritual.", price: 88, handle: "lifting-and-tightening-face-introducer", img: heroFace },
+  { slug: "face-introducer", title: "The Face Introducer", desc: "Three modalities for face and neck, in a twelve-minute ritual.", price: 88, handle: "lifting-and-tightening-face-introducer", img: heroFace },
   { slug: "restoration-belt", title: "The Restoration Belt", desc: "660nm and 850nm light, pressed to the muscle by a thermal wrap.", price: 180, handle: "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device", img: heroBelt },
   { slug: "restoration-mat", title: "The Restoration Mat", desc: "A 100 × 40 cm bed of 660nm red light and far-infrared heat — 120 × 40 cm in the longer size. You lie down; the array works.", price: 200, handle: "the-restoration-mat", img: heroMat },
 ];
 
-// Cosmetic LED carries NO mechanism/nm/clinic claim (modality-naming-standard.md);
+// FI modalities are EMS, microcurrent and thermal only. The device's LED is a mode
+// indicator, not a treatment modality (operator-verified on the physical device 2026-07-27).
+// Never name LED/light therapy as an FI modality (modality-naming-standard.md);
 // clinical wavelength claims are reserved for the Red Light products.
 const MODALITIES: { n: string; verb: string; title: string; body: string; to: string | null }[] = [
   { n: "01", verb: "Lift", title: "EMS", body: "Pulsed electrical stimulation engages the facial muscle, training tone the way resistance trains the body.", to: "/technology/ems" },
   { n: "02", verb: "Contour", title: "Microcurrent", body: "Sub-sensory current mirrors the body's own bioelectric signal rather than overriding it.", to: "/technology/microcurrent" },
   { n: "03", verb: "Prime", title: "Thermal", body: "Gentle, even warmth opens the tissue and primes circulation so the modalities that follow reach deeper.", to: "/technology/thermal" },
-  { n: "04", verb: "Renew", title: "Cosmetic LED", body: "A soft visible-light component that closes the session. Part of the daily ritual, calm on the skin.", to: null },
 ];
 
 const PROTOCOLS = [
@@ -86,7 +87,7 @@ export default function Storefront() {
   return (
     <PageShell
       title="Zential Pure — Clinic precision, daily ritual"
-      description="Four clinic modalities — EMS, microcurrent, thermal and cosmetic LED — in one 12-minute instrument. Clinic precision, calibrated to a daily ritual. €88."
+      description="Three clinic modalities — EMS, microcurrent and thermal — in one 12-minute instrument. Clinic precision, calibrated to a daily ritual. €88."
       canonical="https://zentialpure.com/"
       hideHero
     >
@@ -101,7 +102,7 @@ export default function Storefront() {
               The Body Remembers its&nbsp;Frequency
             </h1>
             <p className="mb-[34px] max-w-[46ch] text-[clamp(16px,1.3vw,17px)] leading-[1.65] text-[#888480]">
-              Four clinic modalities <b className="font-medium text-[#1A1714]">EMS, microcurrent, thermal and cosmetic LED</b> in a one-minute ritual. <span className="font-sans font-semibold text-[#157A5C]">€88. Once.</span>
+              Three clinic modalities <b className="font-medium text-[#1A1714]">EMS, microcurrent and thermal</b> in a one-minute ritual. <span className="font-sans font-semibold text-[#157A5C]">€88. Once.</span>
             </p>
             <div className="mb-[30px] flex flex-wrap border-y border-[rgba(26,23,20,0.12)]">
               {[

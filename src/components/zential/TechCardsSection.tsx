@@ -20,12 +20,6 @@ const cards = [
     mechanism: "Gentle heat opens microcirculation and primes the skin to take in what follows.",
     href: "/technology/thermal",
   },
-  {
-    name: "Cosmetic LED",
-    param: "Visible spectrum",
-    mechanism: "A soft light step to close the ritual. Visual, not clinical.",
-    href: "/technology/red-light",
-  },
 ];
 
 export function TechCardsSection() {

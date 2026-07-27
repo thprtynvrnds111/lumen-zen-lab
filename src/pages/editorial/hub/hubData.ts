@@ -54,7 +54,7 @@ export const HUB_ARTICLES: HubArticle[] = [
     topic: "Mechanism",
     read: "7 min",
     title: "What happens at 630 nanometres",
-    dek: "Cosmetic LED explained at the level of the mitochondrion. The wavelength, the dose, the study.",
+    dek: "Red light explained at the level of the mitochondrion. The wavelength, the dose, the study.",
     link: "/editorial/the-science",
     plannedPage: "/journal/what-happens-at-630-nanometres",
   },

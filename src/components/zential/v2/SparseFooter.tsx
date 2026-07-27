@@ -118,7 +118,7 @@ export function SparseFooter() {
           <div className="mt-10 flex flex-wrap items-baseline gap-x-8 gap-y-3 font-mono text-[10px] tracking-[0.22em] uppercase text-[#F7F4F0]/40">
             <span>Edition ( {year} )</span>
             <span>·</span>
-            <span>EMS  ·  Microcurrent  ·  Thermal  ·  Cosmetic LED</span>
+            <span>EMS  ·  Microcurrent  ·  Thermal</span>
             <span>·</span>
             <span>Free EU shipping</span>
           </div>

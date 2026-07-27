@@ -69,7 +69,10 @@ describe("bridge funnel — US localization", () => {
     const us = localizeToUSD(BRIDGE_CONFIGS["face-introducer"]);
     const ours = us.comparison!.rows.find((r) => r.ours)!;
     expect(ours.price).toBe("$103");
-    expect(ours.perModality).toBe("≈ $26 / modality");
+    // per-modality framing was dropped 2026-07-27 with the FI LED correction:
+    // the count changed 4 -> 3 and a number that has already been wrong once
+    // is not worth carrying. The table compares on list price alone.
+    expect(ours).not.toHaveProperty("perModality");
   });
 
   it("swaps checkout numerics to cartCreate-verified USD", () => {

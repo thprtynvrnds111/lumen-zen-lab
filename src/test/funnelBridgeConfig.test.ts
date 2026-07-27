@@ -90,7 +90,7 @@ describe("bridge funnel config contract", () => {
     }
   });
 
-  it("price-per-modality comparison, where present, is well-formed and sober", () => {
+  it("price comparison, where present, is well-formed and sober", () => {
     for (const cfg of Object.values(BRIDGE_CONFIGS)) {
       const cmp = cfg.comparison;
       if (!cmp) continue;
@@ -98,13 +98,15 @@ describe("bridge funnel config contract", () => {
       expect(cmp.rows.length, cfg.slug).toBeGreaterThanOrEqual(2);
       expect(cmp.rows.filter((r) => r.ours).length, cfg.slug).toBe(1);
       const ours = cmp.rows.find((r) => r.ours)!;
-      // Our row carries the €88 list anchor + a 4-modality count.
+      // Our row carries the €88 list anchor. It must NOT carry a modality count:
+      // per-modality framing was dropped 2026-07-27 when the Face Introducer went
+      // from four claimed modalities to three (its LED is a mode indicator, not a
+      // treatment modality). The table compares on list price alone now.
       expect(ours.price, cfg.slug).toContain("€88");
-      expect(ours.modalities, cfg.slug).toMatch(/4 modalities/);
+      expect(ours.modalities, cfg.slug).not.toMatch(/\d+ modalities/);
       for (const r of cmp.rows) {
         expect(r.name, cfg.slug).not.toHaveLength(0);
         expect(r.price, cfg.slug).toMatch(/[€$£]/);
-        expect(r.perModality, cfg.slug).toMatch(/[€$£]/);
       }
       // Sober footnote: dated + trademark disclaimer, no affiliation.
       expect(cmp.footnote, cfg.slug).toMatch(/2026/);

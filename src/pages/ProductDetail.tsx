@@ -11,7 +11,7 @@ import { SEO } from "@/components/SEO";
 const PRODUCT_SEO: Record<string, { title: string; description: string }> = {
  "lifting-and-tightening-face-introducer": {
   title: "Microcurrent Face Device, Face Introducer | Zential Pure",
-  description: "EMS, microcurrent, 45°C thermal, and cosmetic LED. Four modalities in one daily ritual at clinic precision. €88.",
+  description: "EMS, microcurrent and 45°C thermal. Three modalities in one daily ritual at clinic precision. €88.",
  },
  "body-lift": {
   title: "Body Lift, Microcurrent Body Sculpting Device | Zential Pure",

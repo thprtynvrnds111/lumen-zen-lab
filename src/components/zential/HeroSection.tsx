@@ -128,7 +128,7 @@ export function HeroSection() {
      </h1>
 
      <p style={{ ...S.dm, fontWeight: 400, fontSize: 15, lineHeight: 1.7, color: 'rgba(26,23,20,0.66)', maxWidth: 460, letterSpacing: '0.005em', marginBottom: 32 }}>
-      {t('hero.subhead', 'A four-modality at-home instrument calibrated to clinic protocols. EMS, Microcurrent, Thermal and Cosmetic LED in a single 12-minute ritual. Built for the woman who left the clinic but kept the standard.')}
+      {t('hero.subhead', 'A three-modality at-home instrument calibrated to clinic protocols. EMS, Microcurrent and Thermal in a single 12-minute ritual. Built for the woman who left the clinic but kept the standard.')}
      </p>
 
      {/* Proof strip, 3 numeric anchors */}

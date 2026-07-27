@@ -74,10 +74,10 @@ export const protocols: Protocol[] = [
   slug: "01-face",
   number: "01",
   title: "Face",
-  modalities: "EMS · Microcurrent · Thermal · Cosmetic LED",
+  modalities: "EMS · Microcurrent · Thermal",
   sessionMinutes: 12,
   description:
-   "One instrument, four modalities, twelve minutes. The inputs a facialist charges you by the session, calibrated into a ritual you run yourself.",
+   "One instrument, three modalities, twelve minutes. The inputs a facialist charges you by the session, calibrated into a ritual you run yourself.",
   devices: [
    {
     name: "The Face Introducer",

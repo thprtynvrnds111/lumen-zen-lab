@@ -29,7 +29,7 @@ const INSTRUMENTS = [
     handle: "lifting-and-tightening-face-introducer",
     href: "/instruments/face-introducer",
     time: "12 min · morning",
-    desc: "EMS, microcurrent, thermal and cosmetic LED. Face and neck.",
+    desc: "EMS, microcurrent and thermal. Face and neck.",
   },
   {
     name: "The Restoration Belt",
@@ -205,7 +205,7 @@ export default function InstrumentSystem() {
           </h2>
           <p className="mt-4 max-w-[520px] text-[15px] leading-[1.7] text-[#1A1714]/[0.66]">
             Each instrument works alone — together they cover the whole day. EMS,
-            microcurrent, thermal, cosmetic LED, red light, near-infrared, and
+            microcurrent, thermal, red light, near-infrared, and
             far-infrared. The complete protocol, in one purchase.
           </p>
           <div className="mt-10 space-y-6">
@@ -252,7 +252,7 @@ export default function InstrumentSystem() {
                 n: "Morning",
                 time: "12 minutes",
                 with: "The Face Introducer",
-                body: "EMS and microcurrent lift while the coffee brews. Thermal and cosmetic LED follow — a clinic-grade facial, your own hands, before you even leave the house.",
+                body: "EMS and microcurrent lift while the coffee brews, thermal follows — twelve minutes, your own hands, before you even leave the house.",
               },
               {
                 n: "Evening",

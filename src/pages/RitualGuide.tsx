@@ -55,7 +55,7 @@ const steps = [
   mode: "EMS Finish",
   param: "Electrical muscle stimulation",
   duration: "60 seconds",
-  what: "Produces gentle muscle contractions to tone and firm. Completes the four-modality cycle.",
+  what: "Produces gentle muscle contractions to tone and firm. Completes the three-modality cycle.",
   sensation: "A light pulse. Normal. Adjust intensity with the side button.",
  },
 ];

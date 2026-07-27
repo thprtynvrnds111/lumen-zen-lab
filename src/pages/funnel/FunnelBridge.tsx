@@ -371,10 +371,6 @@ export default function FunnelBridge() {
                     <span className="zb-compare-label">Modalities</span>
                     {r.modalities}
                   </span>
-                  <span className="zb-compare-per" role="cell">
-                    <span className="zb-compare-label">Price / modality</span>
-                    {r.perModality}
-                  </span>
                 </div>
               ))}
             </div>

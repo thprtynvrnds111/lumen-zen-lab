@@ -9,7 +9,7 @@
  * claims only; no medical/treatment claims; no before/after; no urgency theater.
  *
  * VERIFIED CATALOG (LIVE-CATALOG-TRUTH, 2026-07-08):
- *  - Face Introducer €88 · EMS·microcurrent·thermal·cosmetic LED (630–660nm) · 12 min
+ *  - Face Introducer €88 · EMS·microcurrent·thermal · 12 min
  *    · with RITUAL15 (15%): €74.80 — cartCreate-verified 2026-07-18 (grep anchor: 74.80)
  *  - Restoration Belt €180 (compare-at €280) · 660nm red + 850nm NIR, thermal wrap, waist 28–48in · 15 min
  *    · with RITUAL15 (15%): €153.00 — cartCreate-verified 2026-07-19 (grep anchor: 153.00)
@@ -78,7 +78,6 @@ export interface ComparisonRow {
   /** Modality descriptor, factual; competitor counts use the seller's own marketing count. */
   modalities: string;
   /** Price ÷ modality count, same currency as `price`. */
-  perModality: string;
   /** true = our row, styled as the anchor. */
   ours?: boolean;
 }
@@ -313,7 +312,7 @@ const faceIntroducer: BridgeConfig = {
   hero: {
     eyebrow: "No miracle — a mechanism · here is the full story",
     headline: "Microcurrent at the clinic runs €80–120 a session, and the chair is never yours. The Face Introducer is €74.80, once.",
-    sub: "EMS, microcurrent, thermal and cosmetic LED (630–660nm) — the instrument category behind clinic microcurrent, recalibrated for a twelve-minute evening ritual at home. No booking, no per-session bill, nothing to give back.",
+    sub: "EMS, microcurrent and thermal — the instrument category behind clinic microcurrent, recalibrated for a twelve-minute evening ritual at home. No booking, no per-session bill, nothing to give back.",
     priceLine: "€74.80 with founding code RITUAL15 · list price €88 · 3 instalments available at checkout · 30-day full refund, any reason",
     cta: "Start the order — €74.80",
     ctaNote: "RITUAL15 is already in the link — nothing to type. You will see the full total before anything is charged. 30-day full refund, any reason.",
@@ -334,17 +333,16 @@ const faceIntroducer: BridgeConfig = {
     body: [
       "Facial tissue produces its own low-level electrical signal. With age and fatigue that signal grows quieter. The Face Introducer delivers a calibrated microcurrent that reminds the tissue of a frequency it already produces naturally.",
       "That is the mechanism. The benefit reported by consistent users is firmer-looking contour and a more rested appearance. The claim we make is deliberately narrow: this is support, delivered daily, not a cure.",
-      "The cosmetic LED runs at 630–660nm — wavelengths absorbed in the upper layers of the skin, a process called photobiomodulation. Where the cosmetic LED literature is studied at all, the subject is the appearance of skin — and the timescale is weeks of consistent use, not days.",
+      "The device does emit some LED light while it runs. That is a mode indicator, not a treatment modality — we are not selling you light therapy here. If that is what you are after, the Restoration Belt and Mat are the instruments built for it.",
     ],
-    caption: "Four modalities — EMS, microcurrent, thermal and cosmetic LED (630–660nm) — one calibrated signal, twelve minutes.",
+    caption: "Three modalities — EMS, microcurrent and thermal — one calibrated signal, twelve minutes.",
     image: faceMechanism,
     alt: "The Face Introducer standing on a marble shelf at dusk, red light glowing at its head, conductive gel beside it.",
     research: {
       intro:
-        "Peer-reviewed studies exist on this technology class — facial microcurrent, EMS and cosmetic LED. The evidence is early and modest, and two things we refuse to do: promise you a specific outcome, or decorate this page with citations we have not read ourselves. Here is the honest shape of it.",
+        "Peer-reviewed studies exist on this technology class — facial microcurrent and EMS. The evidence is early and modest, and two things we refuse to do: promise you a specific outcome, or decorate this page with citations we have not read ourselves. Here is the honest shape of it.",
       points: [
         "Facial microcurrent and neuromuscular stimulation: category-level reviews are studied for short-term changes in muscle tone with repeated use. The evidence is early and modest — we would rather say so than oversell it.",
-        "Cosmetic LED at 630–660nm: the wavelength range studied for the appearance of skin with repeated use. Studied means studied — not proven for you personally.",
         "Frequency and duration follow the protocol card in the box: twelve minutes, most evenings. Consistency is the variable the literature keeps pointing at.",
       ],
       disclaimer:
@@ -382,39 +380,35 @@ const faceIntroducer: BridgeConfig = {
   //    (product title is "4-in-1 Red Light Therapy Wand"; wand modalities: red light, microcurrent, warmth, vibration)
   // Native currency, no FX conversion. Factual price + modality-count only; compliance_gate PASS 2026-07-20.
   comparison: {
-    eyebrow: "Four modalities, one price",
+    eyebrow: "Three modalities, one price",
     headline: "The price-per-modality picture.",
     intro:
-      "The Face Introducer runs four modalities — EMS, microcurrent, thermal and cosmetic LED — for a list price of €88. Here it is beside three well-known face devices, compared on two facts only: list price, and how many modalities each one runs. Every figure is the seller's own list price on their product page, in their own currency.",
+      "The Face Introducer lists at €88. Here it is beside three well-known face devices, compared on one fact only: list price. Every figure is the seller's own list price on their product page, in their own currency.",
     rows: [
       {
         name: "The Face Introducer",
         price: "€88",
-        modalities: "EMS · microcurrent · thermal · cosmetic LED — 4 modalities",
-        perModality: "≈ €22 / modality",
+        modalities: "EMS · microcurrent · thermal",
         ours: true,
       },
       {
         name: "NuFACE Trinity+ Complete Set",
         price: "$595",
         modalities: "Microcurrent · red light — marketed 3-in-1",
-        perModality: "≈ $198 / modality",
       },
       {
         name: "CurrentBody Skin LED Mask Series 2",
         price: "£399.99",
         modalities: "LED light therapy — 1 modality",
-        perModality: "£399.99 / modality",
       },
       {
         name: "Solawave 4-in-1 Wand & Serum Kit",
         price: "$189",
         modalities: "Red light · microcurrent · warmth · vibration — marketed 4-in-1",
-        perModality: "≈ $47 / modality",
       },
     ],
     takeaway:
-      "On both measures — total list price and price per modality — the Face Introducer is the lowest of the four. This is a comparison of price and modality count only; it is not a claim about results, which depend on the device, the person, and consistent use.",
+      "On list price, the Face Introducer is the lowest of the four. This is a comparison of price only; it is not a claim about results, which depend on the device, the person, and consistent use.",
     footnote:
       "Prices checked on each brand's own product page on 20 July 2026; sources on file. NuFACE, CurrentBody and Solawave are trademarks of their respective owners — Zential Pure is not affiliated with, endorsed by, or comparing clinical outcomes against any of them. Figures are list prices in each seller's native currency and are not currency-converted.",
   },
@@ -451,7 +445,7 @@ const faceIntroducer: BridgeConfig = {
     headline: "Answered plainly.",
     items: [
       { q: "Will I feel anything?", a: "A gentle warmth and a light tightening as the instrument passes over the skin — most people find it calming rather than sharp. If a setting feels too strong, step it down; the signal responds to consistency, not intensity." },
-      { q: "How is this different from the cheaper devices on Amazon?", a: "Most inexpensive wands run a single modality and no independent safety assessment. The Face Introducer combines four — EMS, microcurrent, thermal and cosmetic LED — is CE marked against EU standards, and is backed by a two-year warranty and a company you can look up in the Dutch register." },
+      { q: "How is this different from the cheaper devices on Amazon?", a: "Most inexpensive wands run a single modality and no independent safety assessment. The Face Introducer combines three — EMS, microcurrent and thermal — is CE marked against EU standards, and is backed by a two-year warranty and a company you can look up in the Dutch register." },
       { q: "What if it doesn't work for me?", a: "Keep it thirty days. If it is not for you, send it back to Rotterdam for a full refund — any reason, no forms and no photos. The risk of trying it is thirty days, not €88." },
       { q: "Is it safe?", a: "It is CE marked — it meets the EU safety, health and environmental requirements for consumer electronics. Follow the protocol card for session length and frequency, and avoid use over broken skin or if you have an implanted electronic device without checking with your doctor first." },
       { q: "How long until I notice anything?", a: "Honestly, it depends on consistency. This is support delivered daily, not an overnight change. Users who keep to most evenings tend to report a firmer-looking contour and a more rested appearance over weeks — we make no promise of a fixed timeline, because that would not be true." },

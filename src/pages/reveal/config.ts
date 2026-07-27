@@ -11,7 +11,7 @@ export interface Gift {
 }
 
 /** Grounded in knowledge/products/LIVE-CATALOG-TRUTH.md (verified 2026-06-29).
- *  The Face Introducer, €88 — EMS, microcurrent, thermal, cosmetic LED. */
+ *  The Face Introducer, €88 — EMS, microcurrent, thermal. */
 export const GIFTS: Gift[] = [
   {
     num: "01",

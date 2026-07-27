@@ -32,7 +32,7 @@ const INSTRUMENTS: Instrument[] = [
     protocol: "Protocol 01",
     name: "The Face Introducer",
     blurb:
-      "Four clinic modalities — EMS, microcurrent, thermal and cosmetic LED — in a twelve-minute ritual for face and neck.",
+      "Three clinic modalities — EMS, microcurrent and thermal — in a twelve-minute ritual for face and neck.",
     handle: "lifting-and-tightening-face-introducer",
     to: "/instruments/face-introducer",
     img: heroFace,

@@ -56,7 +56,6 @@ export const USD_MONEY: Record<string, string> = {
   "€90.10": "$105.40",
   "€106": "$124",
   "€88": "$103",
-  "€22": "$26", // per-modality: $103 ÷ 4 modalities
   "€18": "$21",
   // Restoration Belt
   "€153.00": "$177.65",

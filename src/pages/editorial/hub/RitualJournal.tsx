@@ -22,7 +22,7 @@ const DESCRIPTION =
 /**
  * 1a — "The Ritual Journal": the editorial index at /editorial.
  * Design handoff: Zential Pure Journal, handoff-src/1a-ritual-journal.dc.html.
- * Warm fog ground, filterable article grid, four-modality science strip,
+ * Warm fog ground, filterable article grid, three-modality science strip,
  * dark expert-quote carousel, newsletter band.
  */
 export default function RitualJournal() {
@@ -142,7 +142,7 @@ export default function RitualJournal() {
       <section className="hub-science">
         <div className="hub-science__intro reveal">
           <span className="hub-eyebrow hub-eyebrow--teal">( 02 ) · The Science</span>
-          <h2 className="hub-science__head">Four modalities. One instrument.</h2>
+          <h2 className="hub-science__head">Three modalities. One instrument.</h2>
           <p className="hub-science__dek">
             Each modality acts on a different layer of tissue. Together they are calibrated to a
             12-minute daily ritual. Mechanism first, then the claim.

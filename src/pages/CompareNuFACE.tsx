@@ -13,7 +13,7 @@ const faqJsonLd = {
    name: "Is the Zential Pure Face Introducer as effective as NuFACE?",
    acceptedAnswer: {
     "@type": "Answer",
-    text: "Both devices deliver microcurrent technology for facial toning. The Face Introducer adds EMS, 45°C thermal, and cosmetic LED, modalities NuFACE Trinity does not include. Effectiveness depends on consistent use with either device. The mechanisms are comparable; the protocol stack is broader with Zential.",
+    text: "Both devices deliver microcurrent technology for facial toning. The Face Introducer adds EMS and 45°C thermal, modalities NuFACE Trinity does not include. Effectiveness depends on consistent use with either device. The mechanisms are comparable; the protocol stack is broader with Zential.",
    },
   },
   {
@@ -29,7 +29,7 @@ const faqJsonLd = {
    name: "Does the Face Introducer work without a gel?",
    acceptedAnswer: {
     "@type": "Answer",
-    text: "A conductive gel or water-based serum is required for the microcurrent and EMS modes to deliver current effectively. Cosmetic LED modes do not require gel.",
+    text: "A conductive gel or water-based serum is required for the microcurrent and EMS modes to deliver current effectively.",
    },
   },
   {
@@ -37,7 +37,7 @@ const faqJsonLd = {
    name: "How long do sessions take with the Face Introducer vs NuFACE?",
    acceptedAnswer: {
     "@type": "Answer",
-    text: "Both devices are designed for 5–10 minute daily sessions. The Face Introducer's four modalities can be used sequentially in a single session or on a rotating protocol.",
+    text: "Both devices are designed for 5–10 minute daily sessions. The Face Introducer's three modalities can be used sequentially in a single session or on a rotating protocol.",
    },
   },
   {
@@ -62,7 +62,7 @@ export default function CompareNuFACE() {
   <div className="min-h-screen" style={{ backgroundColor: BG, color: FACE_COLOR }}>
    <SEO
     title="NuFACE Alternative, Face Introducer vs NuFACE Trinity | Zential Pure"
-    description="Comparing the Zential Pure Face Introducer (€88) and the NuFACE Trinity (€339). Four modalities vs one. An honest breakdown for the informed buyer."
+    description="Comparing the Zential Pure Face Introducer (€88) and the NuFACE Trinity (€339). Three modalities vs one. An honest breakdown for the informed buyer."
     canonicalUrl="/compare/nuface-vs-zential-pure"
     jsonLd={faqJsonLd}
    />
@@ -89,7 +89,7 @@ export default function CompareNuFACE() {
        NuFACE vs Zential Pure
       </h1>
       <p className="text-base md:text-lg leading-relaxed" style={{ color: MUTED }}>
-       NuFACE is the best-known microcurrent brand. The Zential Pure Face Introducer is €251 cheaper and delivers four modalities. Here is what actually differs, and what doesn't.
+       NuFACE is the best-known microcurrent brand. The Zential Pure Face Introducer is €251 cheaper and delivers three modalities. Here is what actually differs, and what doesn't.
       </p>
      </div>
     </section>
@@ -124,7 +124,6 @@ export default function CompareNuFACE() {
          {[
           { feature: "Price", zential: "€88", nuface: "€339" },
           { feature: "Microcurrent", zential: "✓", nuface: "✓" },
-          { feature: "Cosmetic LED", zential: "✓", nuface: "✗" },
           { feature: "EMS", zential: "✓", nuface: "✗" },
           { feature: "Thermal (45°C)", zential: "✓", nuface: "✗" },
           { feature: "Total modalities", zential: "4", nuface: "1 (2 with attachment)" },
@@ -164,7 +163,7 @@ export default function CompareNuFACE() {
        <ul className="space-y-3 text-sm leading-relaxed" style={{ color: FACE_COLOR }}>
         {[
          "Price is a meaningful factor in your decision",
-         "You want EMS, thermal, and cosmetic LED alongside microcurrent in a single daily ritual",
+         "You want EMS and thermal alongside microcurrent in a single daily ritual",
          "You prefer multi-modality protocols over a single-technology approach",
          "You're entering the category for the first time and want maximum coverage",
          "You're replacing repeated clinic sessions and want the cost argument to work in your favour",
@@ -210,7 +209,7 @@ export default function CompareNuFACE() {
        Microcurrent delivers low-level electrical current at 200–400 microamperes, close to the body's own bioelectric signals. At this level, it stimulates fibroblast activity, increases ATP production, and supports the re-education of facial muscles over time. Both the Face Introducer and the NuFACE Trinity deliver this mechanism.
       </p>
       <p className="text-sm md:text-base leading-relaxed mb-6" style={{ color: MUTED }}>
-       What differentiates the Face Introducer is the additional modalities. EMS delivers deeper muscle stimulation via electrical pulses, a distinct mechanism, not a variation of microcurrent. 45°C thermal supports ingredient absorption throughout the protocol. Cosmetic LED adds the visible-light component of the daily ritual. For confirmed clinical red light, see the Restoration Belt or the Restoration Mat.
+       What differentiates the Face Introducer is the additional modalities. EMS delivers deeper muscle stimulation via electrical pulses, a distinct mechanism, not a variation of microcurrent. 45°C thermal supports ingredient absorption throughout the protocol. For red light, see the Restoration Belt or the Restoration Mat.
       </p>
       <p className="text-sm md:text-base leading-relaxed" style={{ color: MUTED }}>
        NuFACE's strength is its decade-long brand authority and review base. The technology it delivers, standard microcurrent, is matched by the Face Introducer at a lower price point, with three additional modalities included.
@@ -256,7 +255,7 @@ export default function CompareNuFACE() {
        {[
         {
          q: "Is the Zential Pure Face Introducer as effective as NuFACE?",
-         a: "Both deliver microcurrent at clinical amplitudes. The Face Introducer adds EMS, 45°C thermal, and cosmetic LED, modalities the NuFACE Trinity does not include. Effectiveness depends on consistent daily use with either device.",
+         a: "Both deliver microcurrent at clinical amplitudes. The Face Introducer adds EMS and 45°C thermal, modalities the NuFACE Trinity does not include. Effectiveness depends on consistent daily use with either device.",
         },
         {
          q: "What is the price difference?",
@@ -264,7 +263,7 @@ export default function CompareNuFACE() {
         },
         {
          q: "Do I need a gel for the Face Introducer?",
-         a: "A conductive gel or water-based serum is required for microcurrent and EMS modes. Cosmetic LED modes do not require gel.",
+         a: "A conductive gel or water-based serum is required for microcurrent and EMS modes.",
         },
         {
          q: "NuFACE has thousands of reviews. Does Zential Pure?",

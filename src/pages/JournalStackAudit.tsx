@@ -41,7 +41,7 @@ const FIELDS = [
     label: "LED masks, microcurrent wands, facial devices (monthly, amortized)",
     help: "Total spent on at-home devices divided by 24 months. These get replaced.",
     reframe:
-      "Most single-wavelength at-home devices cover one modality. The Face Introducer runs four in sequence: EMS, microcurrent, thermal, cosmetic LED.",
+      "Most single-wavelength at-home devices cover one modality. The Face Introducer runs three in sequence: EMS, microcurrent, thermal.",
   },
 ] as const;
 
@@ -232,7 +232,7 @@ const JournalStackAudit = () => {
                     </div>
                     <ul className="space-y-2 text-sm text-foreground/80">
                       <li>
-                        Face Introducer. EMS, microcurrent, thermal, cosmetic LED.
+                        Face Introducer. EMS, microcurrent, thermal.
                         12 min.
                       </li>
                       <li>

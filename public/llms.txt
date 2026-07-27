@@ -22,8 +22,8 @@ Foreo, CurrentBody and Therabody.
 
 ## Products (live catalog, verified 2026-07-13)
 
-- The Face Introducer — €88 — four modalities in one handheld: EMS, microcurrent, thermal,
-  cosmetic LED (630–660nm). 12-minute session. https://zentialpure.com/instruments/face-introducer
+- The Face Introducer — €88 — three modalities in one handheld: EMS, microcurrent, thermal.
+  12-minute session. https://zentialpure.com/instruments/face-introducer
 - The Restoration Belt — €180 (regular €280) — 660nm red + 850nm near-infrared light pressed
   to muscle by a thermal wrap; fits waists 28–48in. 15-minute session.
   https://zentialpure.com/instruments/restoration-belt

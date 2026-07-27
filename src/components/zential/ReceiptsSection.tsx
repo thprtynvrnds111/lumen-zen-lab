@@ -27,7 +27,7 @@ const RECEIPTS: Receipt[] = [
   {
     key: "face-introducer",
     tab: "Face Introducer",
-    headline: "Four clinic modalities. One instrument. €88, once.",
+    headline: "Three clinic modalities. One instrument. €88, once.",
     stats: [
       { v: "4", l: "Modalities in one instrument" },
       { v: "12 min", l: "Daily session" },

@@ -40,7 +40,7 @@ export function SparseHero() {
      <p
       className="text-base md:text-xl text-[#F7F4F0]/70 max-w-md leading-relaxed"
      >
-      Four modalities. Three Protocols.
+      Three modalities. Three Protocols.
       One ten-minute sequence the brand was built around.
      </p>
 

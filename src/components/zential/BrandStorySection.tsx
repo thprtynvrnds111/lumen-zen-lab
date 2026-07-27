@@ -26,7 +26,7 @@ export function BrandStorySection() {
      </p>
 
      <p className="text-sm leading-relaxed text-foreground/60 mb-8 max-w-md">
-      That question became Zential Pure, a system built around the same four modalities 
+      That question became Zential Pure, a system built around the same three modalities 
       clinics use (red light, microcurrent, EMS, thermal), engineered into devices 
       designed for a five-minute daily ritual. Because transformation doesn't come 
       from one appointment. It comes from what you repeat.

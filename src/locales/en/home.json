@@ -5,7 +5,7 @@
   "subline": "Four technologies. One daily protocol. Measurable output.",
   "body": "An editorial on returning. On skin not as surface but as instrument. On the science beneath the ritual, and the ritual within the science.",
   "rating": "",
-  "subhead": "A four-modality at-home instrument calibrated to clinic protocols. EMS, Microcurrent, Thermal and Cosmetic LED in a single 12-minute ritual. Built for the woman who left the clinic but kept the standard.",
+  "subhead": "A three-modality at-home instrument calibrated to clinic protocols. EMS, Microcurrent and Thermal in a single 12-minute ritual. Built for the woman who left the clinic but kept the standard.",
   "ctaPrimary": "Order the Face Introducer",
   "ctaPrimaryWithPrice": "Order Face Introducer · €88",
   "ctaSecondary": "Find Your Protocol",
@@ -21,11 +21,7 @@
    "guarantee": { "value": "30 days", "label": "Protocol\nguarantee" }
   },
   "modalities": {
-   "label": "Four protocols. One stack.",
-   "cosmeticLed": {
-    "label": "Cosmetic LED",
-    "sub": "visible-light ritual"
-   },
+   "label": "Three protocols. One stack.",
    "microcurrent": {
     "label": "Microcurrent",
     "sub": "bioelectrical"
@@ -46,7 +42,7 @@
   "items": [
    {
     "q": "Does this actually work?",
-    "a": "The Face Introducer combines EMS, microcurrent, 45°C thermal and cosmetic LED in one daily protocol — each mechanism supported by peer-reviewed research where applicable. What it can't do is work without you. Use it daily for 14 days before forming a conclusion. Results build with consistency and vary by individual."
+    "a": "The Face Introducer combines EMS, microcurrent and 45°C thermal in one daily protocol — each mechanism supported by peer-reviewed research where applicable. What it can't do is work without you. Use it daily for 14 days before forming a conclusion. Results build with consistency and vary by individual."
    },
    {
     "q": "How do I know this is an authentic device?",

@@ -79,28 +79,27 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     priceAnchor: "A single clinic facial runs about €120. This is €88, once.",
     seoTitle: "The Face Introducer · Clinic current, your own hands | Zential Pure",
     seoDescription:
-      "EMS, microcurrent, thermal and cosmetic LED — four clinic modalities calibrated into a twelve-minute ritual you run yourself. €88. Once.",
+      "EMS, microcurrent and thermal — three clinic modalities calibrated into a twelve-minute ritual you run yourself. €88. Once.",
     heroImg: heroFace,
     heroAlt: "The Face Introducer held to the jaw, warm light along the neck",
     hero: { l1: "The clinic, in your", l2pre: "", accent: "own hands." },
-    heroConcrete: "Four clinic modalities. One €88 device. Twelve minutes.",
+    heroConcrete: "Three clinic modalities. One €88 device. Twelve minutes.",
     lede:
-      "EMS, microcurrent, thermal and cosmetic LED — the four inputs a facialist charges you by the session, calibrated into a twelve-minute ritual you run yourself.",
+      "EMS, microcurrent and thermal — the three inputs a facialist charges you by the session, calibrated into a twelve-minute ritual you run yourself.",
     trust: ["30-day money-back guarantee", "Ships in 48 hours", "12-minute ritual"],
     // Verified 2026-07-18: variant 51731419922775 = Face Introducer €88 (live products.json).
     directVariantId: "51731419922775",
-    modLabel: "Four modalities",
+    modLabel: "Three modalities",
     badges: [
       { label: "EMS" },
       { label: "Microcurrent" },
       { label: "Thermal" },
-      { label: "Cosmetic LED", sub: "630–660nm" },
     ],
     who: {
       h2: "You stopped booking clinic facials.",
       paras: [
         "Not because they stopped working. Because €120 a session, every three weeks, indefinitely, is a math that never closes.",
-        "The Face Introducer runs four modalities in one device. EMS for the muscle. Microcurrent for tone. Thermal for absorption. Cosmetic LED to close the ritual. Twelve minutes. €88, once.",
+        "The Face Introducer runs three modalities in one device. EMS for the muscle. Microcurrent for tone. Thermal for absorption. Twelve minutes. €88, once.",
       ],
       kicker: "Clinic precision. Daily ritual.",
       img: edWakingHand,
@@ -112,7 +111,6 @@ const CONFIGS: Record<string, InstrumentConfig> = {
       stages: [
         { n: "01", title: "Prime", body: "Gentle thermal warmth raises surface temperature and relaxes the muscle, opening the field before any current is introduced." },
         { n: "02", title: "Stimulate", body: "EMS engages the larger muscle; microcurrent works the fine fibres beneath the skin. Together they support tone and lift with consistent use." },
-        { n: "03", title: "Renew", body: "Cosmetic LED at 630–660nm closes the session, the wavelength range studied for supporting skin's own repair signalling." },
       ],
       disclaimer:
         "Zential Pure instruments support the skin's own processes. They are not medical devices and do not diagnose, treat or cure any condition. Results build with consistent use and vary between people.",
@@ -130,7 +128,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     guarantee:
       "Run the ritual for a month. If it is not part of your evenings, send it back for a full refund. No friction. No questions.",
     faq: [
-      { q: "How is this different from the clinic device I used?", a: "It uses the same four modality families, dosed for unsupervised daily use rather than a single high-intensity appointment. You trade peak intensity for consistency — which is where the skin actually responds." },
+      { q: "How is this different from the clinic device I used?", a: "It uses the same modality families, dosed for unsupervised daily use rather than a single high-intensity appointment. You trade peak intensity for consistency — which is where the skin actually responds." },
       { q: "How long until I see something?", a: "Most people notice firmness and a calmer tone within four to six weeks of the twelve-minute ritual, five days a week. We say visibly, with consistent use — never overnight, never guaranteed." },
       { q: "Is the €88 the whole cost?", a: "Yes. €88, once. There is no subscription and nothing to unlock. The only recurring item is the conductive gel, refillable for €12 when a tube runs out." },
       { q: "Can I use it with my serums?", a: "Use the conductive gel during the session for clean current transfer, then apply your own serums afterward onto primed skin. Avoid active acids in the same twelve minutes." },

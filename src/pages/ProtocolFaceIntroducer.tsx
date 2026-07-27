@@ -55,13 +55,6 @@ const modalities: ModalityBlock[] = [
   body:
    "Microcurrent operates at sub-sensory amperage, below the threshold of conscious sensation. These gentle currents mirror the body's own bioelectric signals, supporting ATP production and muscle re-education at a finer level than EMS. Microcurrent follows EMS in the sequence because muscles are already engaged and responsive.",
  },
- {
-  number: "04",
-  name: "Cosmetic LED",
-  param: "630–660nm wavelength",
-  body:
-   "Cosmetic LED closes the sequence. The 630–660nm wavelength range sits in the visible red spectrum and is the closing modality by design, skin is already warmed, muscles worked, and circulation elevated. LED light at this wavelength is a low-energy finishing input that complements the work already done.",
- },
 ];
 
 const ProtocolFaceIntroducer = () => (
@@ -70,8 +63,8 @@ const ProtocolFaceIntroducer = () => (
   style={{ backgroundColor: bg, color: textPrimary }}
  >
   <SEO
-   title="Face Introducer Protocol, Four Modalities, One Sequence | Zential Pure"
-   description="The Face Introducer protocol: EMS, Microcurrent, Thermal, and Cosmetic LED in a ten-minute daily sequence. Understand each modality and why sequence order matters."
+   title="Face Introducer Protocol, Three Modalities, One Sequence | Zential Pure"
+   description="The Face Introducer protocol: Thermal, EMS and Microcurrent in a ten-minute daily sequence. Understand each modality and why sequence order matters."
    canonical="https://zentialpure.com/protocol/face-introducer"
   />
   <AnnouncementBar />
@@ -99,7 +92,7 @@ const ProtocolFaceIntroducer = () => (
      className="text-lg md:text-xl font-light leading-relaxed"
      style={{ color: textMuted }}
     >
-     Four modalities. One sequence. Ten minutes.
+     Three modalities. One sequence. Ten minutes.
     </p>
     <p
      className="mt-4 text-base font-light leading-relaxed max-w-xl"
@@ -166,8 +159,7 @@ const ProtocolFaceIntroducer = () => (
      className="text-base font-light leading-relaxed max-w-xl mb-8"
      style={{ color: textMuted }}
     >
-     The recommended order is: Thermal, then EMS, then Microcurrent, then
-     Cosmetic LED.
+     The recommended order is: Thermal, then EMS, then Microcurrent.
     </p>
     <div className="flex flex-col gap-4 max-w-xl">
      {[
@@ -185,11 +177,6 @@ const ProtocolFaceIntroducer = () => (
        step: "Microcurrent third",
        reason:
         "Microcurrent works at a finer, sub-sensory level. Placing it after EMS takes advantage of already-activated muscle tissue. The muscles are engaged; microcurrent refines that engagement.",
-      },
-      {
-       step: "Cosmetic LED last",
-       reason:
-        "LED is a passive finishing input, no movement, no current. It closes the session when skin is already warmed and circulation is elevated, making it the natural endpoint of the sequence.",
       },
      ].map((item) => (
       <div

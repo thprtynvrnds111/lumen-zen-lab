@@ -7,14 +7,13 @@ import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
 // Canonical modality strings per handle (modality-naming-standard.md).
-// Cosmetic LED for visible-spectrum face devices; Red Light Therapy only for clinical RLT.
+// Red Light Therapy only for the Belt/Mat. The Face Introducer is NOT a light-therapy
+// device — its LED is a mode indicator, not a modality (operator-verified 2026-07-27).
 const MODALITY_BY_HANDLE: Record<string, string> = {
-  "lifting-and-tightening-face-introducer": "EMS · Microcurrent · Thermal · Cosmetic LED",
-  "eye-massage": "Microcurrent · Cosmetic LED",
+  "lifting-and-tightening-face-introducer": "EMS · Microcurrent · Thermal",
   "electric-guasha-massager": "Microcurrent · Gua Sha",
   "electric-micro-current": "Daily Microcurrent",
   "facial-beauty-tools-and-ems-beauty-equipment": "Jaw Toning EMS",
-  "color-light-import-micro-current-vibration-massager": "Full-Face EMS · Cosmetic LED",
   "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool":
     "Red Light Therapy · Microcurrent",
   "portable-ems-microcurrent-facial-beauty-device": "EMS · Microcurrent",

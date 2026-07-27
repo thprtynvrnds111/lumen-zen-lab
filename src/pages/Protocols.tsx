@@ -42,7 +42,6 @@ const PROTOCOLS: Protocol[] = [
       { n: "01", verb: "Prime", mod: "Thermal", min: "2 min", body: "Controlled warmth raises surface temperature and relaxes the muscle — opening the field before any current is introduced." },
       { n: "02", verb: "Lift", mod: "Microcurrent", min: "4 min", body: "Sub-sensory current works the fine facial fibres and supports the skin's own energy production, where tone begins." },
       { n: "03", verb: "Contour", mod: "EMS", min: "3 min", body: "Electrical muscle stimulation engages the larger muscle beneath, training deeper contour over consistent use." },
-      { n: "04", verb: "Renew", mod: "Cosmetic LED · 630–660nm", min: "3 min", body: "The session closes with the wavelength range studied for supporting the skin's natural renewal cycle." },
     ],
     img: heroFace,
     imgAlt: "The Face Introducer in use",

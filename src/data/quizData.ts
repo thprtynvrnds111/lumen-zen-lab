@@ -128,12 +128,12 @@ export function getRecommendation(a: QuizAnswers): Recommendation {
   lift: {
    handle: FACE,
    name: "The Face Introducer",
-   reason: "EMS and microcurrent work facial muscle tone and definition, while 45°C thermal and cosmetic LED round out the ritual — four modalities for lift and contour in one twelve-minute daily protocol.",
+   reason: "EMS and microcurrent work facial muscle tone and definition, while 45°C thermal rounds out the ritual — three modalities for lift and contour in one twelve-minute daily protocol.",
   },
   tone: {
    handle: FACE,
    name: "The Face Introducer",
-   reason: "Galvanic ion cleansing, cosmetic LED and microcurrent target dull tone and uneven surface texture — the full four-modality face protocol in a single instrument.",
+   reason: "Galvanic ion cleansing, thermal and microcurrent target dull tone and uneven surface texture — the full three-modality face protocol in a single instrument.",
   },
   eyes: {
    handle: FACE,

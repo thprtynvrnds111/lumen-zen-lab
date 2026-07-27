@@ -57,7 +57,7 @@ export default function TheDiagnosis() {
           frequency or warmth. That is the gap.
         </p>
         <p className="body-copy">
-          Clinics have known this for decades. Microcurrent, EMS, thermal work and cosmetic LED are
+          Clinics have known this for decades. Microcurrent, EMS and thermal work are
           the standard toolkit of a professional facial. The Face Introducer folds all four into one
           instrument.
         </p>
@@ -84,7 +84,7 @@ export default function TheDiagnosis() {
           className="ed-figure-img"
         />
         <p className="body-copy" style={{ fontSize: "15px", lineHeight: 1.7, margin: "18px 0 14px" }}>
-          Four modalities, calibrated to a twelve-minute daily ritual. €88. Once.
+          Three modalities, calibrated to a twelve-minute daily ritual. €88. Once.
         </p>
         <a className="soft-cta" href={PDP}>Read about the instrument →</a>
       </section>

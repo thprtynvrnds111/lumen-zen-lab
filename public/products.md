@@ -8,7 +8,9 @@
 
 ### The Face Introducer
 - **Price:** €88
-- **Modalities:** EMS · microcurrent · thermal · cosmetic LED (630–660nm)
+- **Modalities:** EMS · microcurrent · thermal
+- **Not a light-therapy device:** the LED on the unit is a mode indicator, not a treatment
+  modality. For red light, see the Restoration Belt or the Restoration Mat.
 - **Session:** 12 minutes
 - **One-liner:** "The clinic, in your own hands."
 - **URL:** https://zentialpure.com/instruments/face-introducer
