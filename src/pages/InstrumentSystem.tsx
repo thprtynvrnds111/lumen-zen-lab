@@ -52,11 +52,39 @@ const GRAIN =
 
 const WRAP = "mx-auto max-w-[1180px] px-6 md:px-10";
 
+/**
+ * Home-market list prices, used ONLY as the server-rendered seed.
+ *
+ * Prices come from the Storefront API so US visitors resolve to USD, but that
+ * fetch cannot run during prerender — so seeding `null` meant the prerendered
+ * HTML shipped an em-dash everywhere and the hero CTA read "Claim the System —"
+ * with no amount. On the highest-value SKU in the catalog, on the one page a
+ * buyer with purchase intent lands on. Nobody clicks a buy button that will not
+ * say what it costs.
+ *
+ * Seeding real numbers means the page always renders a price; hydration then
+ * overwrites with the live, market-correct figure. Same pattern the bridge
+ * funnel uses (prerender home market, hydrate to the visitor's).
+ *
+ * Source of truth: knowledge/products/LIVE-CATALOG-TRUTH.md (engine repo).
+ * Verified 2026-07-27: System €399 (compare-at €468) · FI €88 · Belt €180 ·
+ * Mat from €200. If the catalog changes, change these too — a stale seed shows
+ * a wrong price for one paint frame before hydration corrects it.
+ */
+const SEED_CURRENCY = "EUR";
+const SEED_BUNDLE_PRICE = 399;
+const SEED_INSTRUMENT_PRICES: Record<string, number> = {
+  "lifting-and-tightening-face-introducer": 88,
+  "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": 180,
+  "the-restoration-mat": 200,
+};
+
 export default function InstrumentSystem() {
   const [busy, setBusy] = useState(false);
-  const [currency, setCurrency] = useState("EUR");
-  const [bundlePrice, setBundlePrice] = useState<number | null>(null);
-  const [instrumentPrices, setInstrumentPrices] = useState<Record<string, number>>({});
+  const [currency, setCurrency] = useState(SEED_CURRENCY);
+  const [bundlePrice, setBundlePrice] = useState<number | null>(SEED_BUNDLE_PRICE);
+  const [instrumentPrices, setInstrumentPrices] =
+    useState<Record<string, number>>(SEED_INSTRUMENT_PRICES);
 
   // Fetch live Shopify prices for the bundle and each instrument
   useEffect(() => {

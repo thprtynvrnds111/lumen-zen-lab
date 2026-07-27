@@ -202,23 +202,7 @@
     </style>
 
     <!-- Meta Pixel stub — defined immediately so React component events (ViewContent, AddToCart) queue correctly -->
-    <!--
-      BOTH pixels are initialised on purpose. fbq dispatches every subsequent track()
-      call to every initialised pixel, so one init here is what routes the whole app's
-      instrumentation to a given ad set.
-
-        915864761310220   "Zential Pure"             — the NL-BE ad set optimises ADD_TO_CART on this
-        2204643330063300  "Zential Pure - Main Store Pixel" — CAPI (META_PIXEL_ID) and BOTH US ad
-                                                        sets (broad-us-purchase,
-                                                        warm-atc-14d-purchase) read this one
-
-      Until 2026-07-27 only 915… was initialised, so every browser ViewContent and
-      AddToCart was invisible to the US ad sets spending the budget — they saw only
-      CAPI's Purchase/InitiateCheckout. US add-to-cart read zero from 2026-07-12 through
-      ~€280 of spend for that reason alone. If you ever drop a line here, that failure
-      returns silently: nothing errors, the number just goes quiet.
-      Guarded by src/test/pixelInit.test.ts.
-    -->
+    <!-- Both pixels are initialised deliberately. Do not remove either — see src/test/pixelInit.test.ts -->
     <script>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?

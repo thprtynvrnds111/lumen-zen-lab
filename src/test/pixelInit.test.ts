@@ -6,20 +6,17 @@ import { resolve } from "node:path";
  * Guard: index.html must initialise BOTH Meta pixels.
  *
  * fbq dispatches every track() call to every initialised pixel, so the init
- * lines in index.html are what decide which ad sets can see the app's events.
+ * lines in index.html decide which ad sets can see the app's events. Each pixel
+ * is read by a different set of campaigns; initialising only one makes every
+ * browser ViewContent and AddToCart invisible to the campaigns on the other,
+ * and that failure is SILENT — nothing errors, the number just goes quiet.
  *
- *   915864761310220  — the NL-BE ad set optimises ADD_TO_CART on this
- *   2204643330063300 — CAPI (META_PIXEL_ID) and BOTH US ad sets
- *                      (broad-us-purchase, warm-atc-14d-purchase) read this
+ * The rationale, the incident it came from, and the per-pixel campaign mapping
+ * live in the engine repo (docs/decisions/2026-07-27-atc-optimisation-on-the-
+ * pixel-that-sees-it.md) — deliberately NOT in index.html, which ships to every
+ * visitor as page source.
  *
- * Between 2026-07-12 and 2026-07-27 only 915… was initialised. Every browser
- * ViewContent and AddToCart went to a pixel the US ad sets do not read, so
- * their add-to-cart count read zero across ~€280 of spend while the funnel
- * itself worked. Nothing errored — the number just went quiet, which is why it
- * survived two weeks and several investigations.
- *
- * Verified live 2026-07-27 via Graph API /adsets promoted_object.pixel_id.
- * If an ad set is ever repointed at a new pixel, add it here too.
+ * If a campaign is ever repointed at a new pixel, add that pixel here too.
  */
 const BROWSER_PIXEL = "915864761310220";
 const US_ADSET_PIXEL = "2204643330063300";
