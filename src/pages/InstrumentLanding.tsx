@@ -6,7 +6,7 @@ import { RatingBadge, InstrumentProofSection } from "@/components/zential/Instru
 import { TrustBadges } from "@/components/zential/TrustBadges";
 import { TrustpilotProof } from "@/components/zential/TrustpilotProof";
 import { useHeroVariant } from "@/lib/heroVariant";
-import { safeCheckoutUrl } from "@/lib/checkout";
+import { buyUrl } from "@/lib/checkout";
 import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { formatMoney } from "@/lib/market";
@@ -384,7 +384,7 @@ export default function InstrumentLanding() {
           const disc = new URLSearchParams(window.location.search).get("discount");
           if (disc) url += (url.includes("?") ? "&" : "?") + "discount=" + encodeURIComponent(disc);
         } catch { /* never block checkout */ }
-        window.location.href = safeCheckoutUrl(url);
+        window.location.href = buyUrl(url);
         return;
       }
       navigate(`/product/${cfg.handle}`);

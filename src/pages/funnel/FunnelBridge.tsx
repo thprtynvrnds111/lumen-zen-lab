@@ -5,6 +5,7 @@ import { Check, ChevronDown, ArrowRight, ShieldCheck, BadgeCheck, Truck, Lock } 
 import { getBridgeConfig } from "./config";
 import { localizeToUSD } from "./usd";
 import { getCountry } from "@/lib/market";
+import { buyUrl } from "@/lib/checkout";
 import { ga4Event, pixelBridgeEngaged, pixelDirectCheckout, pixelViewContent } from "./tracking";
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -101,7 +102,7 @@ export default function FunnelBridge() {
     const params = new URLSearchParams(liveSearch);
     params.set("discount", config.discountCode);
     const items = variantIds.map((v) => `${v}:1`).join(",");
-    return `https://checkout.zentialpure.com/cart/${items}?${params.toString()}`;
+    return buyUrl(`https://checkout.zentialpure.com/cart/${items}?${params.toString()}`);
   };
 
   const buyHref = useMemo(() => {

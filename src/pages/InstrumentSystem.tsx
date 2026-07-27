@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { PageShell } from "@/components/zential/v2/PageShell";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { formatMoney } from "@/lib/market";
-import { safeCheckoutUrl } from "@/lib/checkout";
+import { buyUrl } from "@/lib/checkout";
 import { trackAddToCart } from "@/lib/google-tracking";
 
 /**
@@ -133,7 +133,7 @@ export default function InstrumentSystem() {
         currency,
       });
     }
-    window.location.href = safeCheckoutUrl(CHECKOUT_PERMALINK);
+    window.location.href = buyUrl(CHECKOUT_PERMALINK);
   }
 
   return (

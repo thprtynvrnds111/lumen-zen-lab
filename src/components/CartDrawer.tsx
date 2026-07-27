@@ -7,6 +7,7 @@ import { fetchProductByHandle } from "@/lib/shopify";
 import { formatMoney } from "@/lib/market";
 import { trackBeginCheckout } from "@/lib/google-tracking";
 import { prefetchCheckout } from "@/lib/prefetchCheckout";
+import { buyUrl } from "@/lib/checkout";
 import { cartItemImageUrl, shopifyThumb } from "@/lib/cartImage";
 import { TrustpilotProof } from "@/components/zential/TrustpilotProof";
 
@@ -109,7 +110,7 @@ export function CartDrawer() {
    const numericId = item.variantId.split('/').pop();
    return `${numericId}:${item.quantity}`;
   }).join(',');
-  window.location.href = `https://checkout.zentialpure.com/cart/${lines}`;
+  window.location.href = buyUrl(`https://checkout.zentialpure.com/cart/${lines}`);
  };
 
  return (

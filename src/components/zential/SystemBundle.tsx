@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { safeCheckoutUrl } from "@/lib/checkout";
+import { buyUrl } from "@/lib/checkout";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { formatMoney } from "@/lib/market";
 import { trackAddToCart } from "@/lib/google-tracking";
@@ -76,7 +76,7 @@ export function SystemBundle() {
     if (w.gtag) w.gtag("event", "add_to_cart", { item_name: "The System Bundle", ...(priced ? { value: bundleAmount, currency } : {}) });
     // Google Ads (dormant unless VITE_GOOGLE_ADS_ID is set)
     if (priced) trackAddToCart({ id: BUNDLE_HANDLE, name: "The System Bundle", price: bundleAmount, currency });
-    window.location.href = safeCheckoutUrl(BUNDLE_PERMALINK);
+    window.location.href = buyUrl(BUNDLE_PERMALINK);
   }
 
   const hasFounding = true;
