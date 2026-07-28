@@ -88,6 +88,17 @@ export const TILES = [
     alt: "660nm red light falling across a forearm.",
   },
   {
+    // Restoration Wrap waitlist test (Gate 1, zero inventory). Thumb is
+    // typographic-only, rendered by the wrap-ship session 2026-07-28 — the
+    // product does not exist, so there is no honest photo of it.
+    id: "wrap",
+    title: "The Restoration Wrap",
+    sub: "Proposed — built only if you vote",
+    href: "/wrap",
+    img: "/link/t-wrap.webp",
+    alt: "Typographic card reading Wrap? — proposed, you decide.",
+  },
+  {
     id: "breath",
     title: "Breath",
     sub: "Free ritual app",
