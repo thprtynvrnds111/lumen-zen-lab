@@ -65,6 +65,8 @@ const TheDiagnosis = lazy(() => import("./pages/editorial/TheDiagnosis"));
 const RitualJournal = lazy(() => import("./pages/editorial/hub/RitualJournal"));
 const ClinicalIssue = lazy(() => import("./pages/editorial/hub/ClinicalIssue"));
 const Breath = lazy(() => import("./pages/breath/Breath"));
+const BreathTechniques = lazy(() => import("./pages/breath/BreathTechniques"));
+const BreathDaily = lazy(() => import("./pages/breath/BreathDaily"));
 const OneShelf = lazy(() => import("./pages/OneShelf"));
 const InstrumentSystem = lazy(() => import("./pages/InstrumentSystem"));
 const Wrap = lazy(() => import("./pages/Wrap"));
@@ -103,6 +105,8 @@ function ServerApp() {
         <Route path="/editorial"                                element={<RitualJournal />} />
         <Route path="/editorial/clinical-issue"                 element={<ClinicalIssue />} />
         <Route path="/breath"                                   element={<Breath />} />
+        <Route path="/breath/techniques"                        element={<BreathTechniques />} />
+        <Route path="/breath/daily"                             element={<BreathDaily />} />
         <Route path="/one-shelf"                                element={<OneShelf />} />
         <Route path="/wrap"                                     element={<Wrap />} />
         <Route path="/support"                                  element={<Support />} />

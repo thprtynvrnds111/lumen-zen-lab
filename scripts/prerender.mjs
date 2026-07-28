@@ -94,6 +94,8 @@ const ROUTES = [
   '/editorial/clinical-issue',
   // Breath — interactive breathwork app (port of Claude Design)
   '/breath',
+  '/breath/techniques',
+  '/breath/daily',
   '/quiz',
   '/quiz/result',
   '/thank-you',
