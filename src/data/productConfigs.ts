@@ -97,7 +97,7 @@ const defaultDeviceFaqs = [
  { q: "Is it safe for all skin types?", a: "Yes, it's designed for all skin types. If you have sensitive skin, start at the lowest setting. If irritation persists, reduce frequency and consult your dermatologist." },
  { q: "Who should not use this device?", a: "Do not use if you have a pacemaker, are pregnant, have active skin infections, epilepsy, or metal implants in the treatment area. Always consult your physician if you have a medical condition." },
  { q: "What serum works best?", a: "Any water-based conductive serum or gel works well. Avoid oil-based products as they can interfere with conductivity. Our Collagen Face Gel is specially formulated for optimal results." },
- { q: "What is your guarantee?", a: "30 days, any reason. If it has not earned its place in your ritual, email us. Full refund, no form, no questionnaire, no restocking fee. That is the 30-Day Money-Back Guarantee." },
+ { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
 ];
 
 const accessoryComparison = [
@@ -302,7 +302,7 @@ export const productConfigs: Record<string, ProductConfig> = {
    { q: "Is it safe around the eyes?", a: "Yes. The device is specifically designed for the periorbital zone with calibrated intensity levels. Avoid direct contact with the eyeball. Always use on closed-eye areas." },
    { q: "Who should not use this device?", a: "Do not use if you have a pacemaker, are pregnant, have eye infections, recent eye surgery, or metal implants near the eye area. Consult your physician with any concerns." },
    { q: "Do I need a special serum?", a: "Any lightweight, water-based eye serum works well. Avoid heavy oils. Our Collagen Face Gel can also be used around the eye area." },
-   { q: "What is your guarantee?", a: "We offer a 30-Day Money-Back Guarantee. Not convinced after 30 days, for any reason? Contact us for a full refund." },
+   { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
   ],
   studyCards: [
    { technology: "Microcurrent · ATP", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://scholar.google.com/scholar?q=cheng+1982+electric+currents+ATP+generation" },
@@ -784,7 +784,7 @@ export const productConfigs: Record<string, ProductConfig> = {
    { q: "Is it suitable for sensitive skin?", a: "Yes. The formula is free from parabens, sulfates, and artificial fragrance. It's been reviewed by dermatologists for sensitive skin compatibility." },
    { q: "Can I use it around my eyes?", a: "Yes. The gentle formula is safe for the periorbital area. Use a thin layer when pairing with the Eye Activator." },
    { q: "Does it work with all ZENTIAL devices?", a: "Yes. Collagen Face Gel is compatible with all ZENTIAL PURE devices including Body Lift, Eye Activator, Sculpt Wand, and Gua Sha Frequency." },
-   { q: "What is your guarantee?", a: "We offer a 30-Day Ritual Guarantee on all products. If you're not satisfied, contact us for a full refund." },
+   { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
   ],
  },
 
@@ -833,7 +833,7 @@ export const productConfigs: Record<string, ProductConfig> = {
    { q: "How many pads are in each pack?", a: "Each pack contains multiple pairs of pads designed for a full month of regular use (3 to 4 times per week)." },
    { q: "Are they suitable for sensitive skin?", a: "Yes. The hydrogel formula is fragrance-free and dermatologist reviewed. If you experience irritation, reduce frequency of use." },
    { q: "Do I rinse after use?", a: "No. After removing the pads, gently pat the remaining essence into the skin. This allows continued absorption of active ingredients." },
-   { q: "What is your guarantee?", a: "We offer a 30-Day Ritual Guarantee on all products. If you're not satisfied, contact us for a full refund." },
+   { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
   ],
  },
 
@@ -948,7 +948,7 @@ const breathSealConfig: ProductConfig = {
   { q: "Can I use it if I snore?", a: "Yes. Nasal breathing reduces snoring in most cases. Snoring is predominantly a mouth-breathing phenomenon, vibration in the soft tissue caused by turbulent oral airflow. This does not address anatomical causes of snoring (deviated septum, sleep apnea)." },
   { q: "Will it pull off my lip skin?", a: "No. The adhesive is hypoallergenic and calibrated for skin contact. Remove slowly from the corner rather than pulling from the centre." },
   { q: "How many strips per pack?", a: "Each pack contains 30 strips, one per night for a month." },
-  { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. If you don't notice a change in your sleep quality within 30 days of consistent use, contact us for a full refund." },
+  { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
  ],
  studyCards: [
   { technology: "Nasal Breathing · Nitric Oxide", studyTitle: "Nasal Nitric Oxide and Its Role in the Regulation of Airway Function", journal: "Chest, 2006", url: "https://scholar.google.com/scholar?q=nasal+nitric+oxide+airway+function+regulation+breathing" },
@@ -1025,7 +1025,7 @@ const depthMaskConfig: ProductConfig = {
   { q: "Can I wash it?", a: "Yes. Machine washable on a gentle cycle. Air dry to maintain the contour structure." },
   { q: "Does it get hot during sleep?", a: "The breathable outer fabric reduces heat buildup. If you run hot, the open contour design reduces direct contact with the eye area." },
   { q: "Will the strap tighten overnight?", a: "No. The buckle adjusts and holds position. For first use, adjust while lying flat in your normal sleep position." },
-  { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. If you don't notice a difference in your sleep quality within 30 days of consistent use, contact us for a full refund." },
+  { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
  ],
  studyCards: [
   { technology: "Light Suppression · Melatonin", studyTitle: "Light at Night as an Exposure Factor in Metabolic Syndrome and Obesity", journal: "Environmental Health Perspectives, 2011", url: "https://scholar.google.com/scholar?q=light+at+night+melatonin+suppression+sleep+disruption" },
@@ -1102,7 +1102,7 @@ const fluxPanelConfig: ProductConfig = {
   { q: "How long per session?", a: "10–15 minutes for most protocols. Near-infrared research shows diminishing returns beyond 20 minutes at therapeutic intensities. Consistent shorter sessions outperform irregular longer ones." },
   { q: "Does it work through clothing?", a: "850nm penetrates most thin fabrics. 660nm is absorbed by most materials. For optimal results with red light, direct skin exposure is preferred. For NIR-only sessions, thin clothing is acceptable." },
   { q: "When should I use it, before or after training?", a: "Either. Pre-training sessions warm tissue and enhance mitochondrial output. Post-training sessions reduce inflammatory load and accelerate repair. Both are supported by research. Choose based on your schedule consistency." },
-  { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. If you don't see measurable change in recovery or skin within 30 days of consistent use, contact us for a full refund." },
+  { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
  ],
  studyCards: [
   { technology: "Red Light 660nm · Mitochondria", studyTitle: "Low-Level Laser (Light) Therapy (LLLT) in Skin: Stimulating, Healing, Restoring", journal: "Seminars in Cutaneous Medicine and Surgery, 2013", url: "https://pubmed.ncbi.nlm.nih.gov/24049929/" },
@@ -1189,7 +1189,7 @@ const frequencyMatPlusConfig: ProductConfig = {
   { q: "Can I use it on my lower back?", a: "Yes. Fold the mat and sit on it or place it behind your lower back against a chair. The heat and light work regardless of body orientation." },
   { q: "How hot does it get?", a: "Operating temperature is 38–45°C, therapeutic heat range. Not burning temperature. If the mat feels too warm, add a thin cloth layer between skin and mat surface." },
   { q: "How long before I notice results?", a: "Circulation and muscle tension respond within the first few sessions. Structural tissue changes, fascia quality, reduced chronic tension, develop over 3–6 weeks of consistent use." },
-  { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. Full refund if you don't notice measurable change within 30 days of consistent use." },
+  { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
  ],
  studyCards: [
   { technology: "Red Light · Tissue Recovery", studyTitle: "Low-Level Laser Therapy in Exercise-Induced Muscle Fatigue in Humans", journal: "European Journal of Applied Physiology, 2009", url: "https://scholar.google.com/scholar?q=low+level+laser+therapy+muscle+recovery+exercise+fatigue" },
@@ -1276,7 +1276,7 @@ const pressureShellConfig: ProductConfig = {
   { q: "Can I use it every day?", a: "Yes. Daily use is safe and produces cumulative benefit for chronic venous and lymphatic issues. For acute recovery, use immediately post-training." },
   { q: "What pressure setting should I start at?", a: "Start at level 1 (20–40 mmHg range). It should feel like a firm massage, not uncomfortable. Increase gradually over the first week of use." },
   { q: "Can I use it if I have varicose veins?", a: "Generally yes, but consult your physician first. Sequential compression can be beneficial for mild venous insufficiency but is contraindicated in acute thrombophlebitis or deep vein thrombosis." },
-  { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. Contact us for a full refund if you don't notice measurable recovery improvement within 30 days of consistent use." },
+  { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
  ],
  studyCards: [
   { technology: "Sequential Compression · Recovery", studyTitle: "The Effect of Intermittent Pneumatic Compression on Delayed Onset Muscle Soreness", journal: "Journal of Strength and Conditioning Research, 2014", url: "https://scholar.google.com/scholar?q=pneumatic+compression+sequential+DOMS+muscle+recovery+exercise" },
@@ -1365,7 +1365,7 @@ const pulseRollerConfig: ProductConfig = {
   { q: "Can I use it on my back?", a: "Yes. For the thoracic spine: roll along the paraspinal muscles, not on the vertebrae directly. Avoid rolling directly on the lumbar spine." },
   { q: "Should I use it before or after training?", a: "Both. Low-speed pre-training for activation and mobility prep. High-speed post-training for recovery and clearing metabolic waste from the tissue." },
   { q: "How long does the battery last?", a: "2400mAh battery provides approximately 2–2.5 hours at medium speed. USB-C charging to full in 90 minutes." },
-  { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. Full refund if you don't notice improvement in recovery or range of motion within 30 days of consistent use." },
+  { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
  ],
  studyCards: [
   { technology: "Percussion · Fascia", studyTitle: "Effects of Vibration Therapy on Muscle Tone and Function", journal: "Journal of Sports Science and Medicine, 2015", url: "https://scholar.google.com/scholar?q=vibration+therapy+fascia+muscle+tone+percussion+recovery" },
@@ -1452,7 +1452,7 @@ const restShellConfig: ProductConfig = {
   { q: "How long until I notice results?", a: "Many users notice reduced sleep onset time in the first week. Sustained improvement in sleep depth and overnight waking typically becomes consistent by week 2–3 of nightly use." },
   { q: "Can I wash it?", a: "Yes. Machine washable at 30°C on a gentle cycle. Tumble dry at low heat. The weight comes from fill distributed in individual pockets, this maintains even distribution after washing." },
   { q: "Is the size right for my bed?", a: "The Rest Shell is sized for a standard double bed (205 × 230cm). For a single bed: the blanket will overhang; pull it flat across the sleeping area." },
-  { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. Full refund if you don't notice measurable improvement in sleep quality within 30 days of consistent nightly use." },
+  { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
  ],
  studyCards: [
   { technology: "Deep Pressure Stimulation · Sleep", studyTitle: "The Effect of Weighted Blankets on Sleep Quality and Insomnia", journal: "Journal of Sleep Research, 2020", url: "https://scholar.google.com/scholar?q=weighted+blanket+sleep+quality+deep+pressure+stimulation+cortisol" },
@@ -1530,7 +1530,7 @@ const restoreMatConfig: ProductConfig = {
   { q: "How long per session?", a: "Start with 10 minutes. Build to 20 minutes over 2 weeks. The physiological response plateaus around 20–25 minutes, longer does not produce proportionally more benefit." },
   { q: "Can I use it on my feet?", a: "Yes. Stand on the mat for 5 minutes per foot for a plantar fascia protocol. Use near a wall for balance." },
   { q: "How often should I use it?", a: "Daily is optimal. The effects of acupressure are cumulative, each session builds on baseline changes from previous sessions." },
-  { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. Full refund if you don't notice measurable improvement in tension and relaxation within 30 days of consistent use." },
+  { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
  ],
  studyCards: [
   { technology: "Acupressure · Fascia", studyTitle: "Mechanical Stimulation of Acupressure Points and Its Effects on Myofascial Tissue", journal: "Journal of Alternative and Complementary Medicine, 2011", url: "https://scholar.google.com/scholar?q=acupressure+mat+myofascial+tissue+fascia+stimulation+mechanism" },
@@ -1617,7 +1617,7 @@ const ritualLightProConfig: ProductConfig = {
   { q: "How many sessions per week?", a: "Daily is optimal. The photobiomodulation mechanism responds to consistent dosing, the cumulative effect of daily 10-minute sessions outperforms sporadic 20-minute sessions." },
   { q: "Is this the same as a facial LED mask?", a: "Similar mechanism, different format. LED masks cover the full face in contact. The Ritual Light Pro delivers at-distance irradiance without contact. Research shows both formats produce cellular response, the distinction is convenience and coverage area." },
   { q: "Does the light work through a moisturiser or serum?", a: "Yes. Topical products don't meaningfully block red light wavelengths. You can run the lamp session after applying serum." },
-  { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. Full refund if you don't notice measurable skin change within 30 days of consistent daily use." },
+  { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
  ],
  studyCards: [
   { technology: "Red Light 660nm · Collagen", studyTitle: "Low-Level Laser (Light) Therapy (LLLT) in Skin: Stimulating, Healing, Restoring", journal: "Seminars in Cutaneous Medicine and Surgery, 2013", url: "https://pubmed.ncbi.nlm.nih.gov/24049929/" },
@@ -1703,7 +1703,7 @@ const thermalPadConfig: ProductConfig = {
   { q: "Can I use it while working?", a: "Yes. The compact format and USB power make it suitable for desk use. Position the pad on a knee or lower back while seated." },
   { q: "Can I sleep with it on?", a: "Not recommended. The pad has no auto-shutoff for extended sessions. Use it as a 15–20 minute active protocol, not overnight." },
   { q: "Can I use it on my lower back?", a: "Yes. Position against the lumbar region while seated or lying. The thermal and vibration inputs address the paraspinal muscles and surrounding connective tissue." },
-  { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. Full refund if you don't notice measurable improvement in joint stiffness or recovery within 30 days of consistent use." },
+  { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
  ],
  studyCards: [
   { technology: "Heat Therapy · Joints", studyTitle: "Superficial Heat or Cold for Low Back Pain", journal: "Cochrane Review, 2006", url: "https://scholar.google.com/scholar?q=heat+therapy+joint+stiffness+circulation+blood+flow+connective+tissue" },
@@ -1791,7 +1791,7 @@ const thermalShellConfig: ProductConfig = {
   { q: "Should I wear anything inside?", a: "Light cotton is recommended for comfort and sweat absorption. Direct contact with the neoprene lining is also fine. Avoid synthetic fabrics, they trap heat unevenly and are less comfortable for extended sessions." },
   { q: "When should I use it relative to training?", a: "Post-training: wait 2 hours after intense sessions before heat exposure. The HSP and recovery benefit is strongest when the body has begun initial repair. Pre-sleep: 60–90 minutes before bed for sleep architecture benefit. Morning sessions work well for metabolic activation without affecting sleep timing." },
   { q: "How is this different from a traditional sauna?", a: "Traditional sauna heats ambient air to 80–100°C; you heat by convection. Far-infrared heats tissue directly via radiant wavelengths at much lower ambient temperature. The core temperature response is similar. The Thermal Shell runs at a fraction of the power and requires no facility." },
-  { q: "What is your guarantee?", a: "30-Day Money-Back Guarantee. If you run consistent sessions and don't notice measurable improvement in recovery or sleep within 30 days, full refund, no process required." },
+  { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
  ],
  studyCards: [
   { technology: "Far-Infrared · Recovery", studyTitle: "Far-Infrared Sauna as a Novel Therapeutic Modality for Cardiovascular Health", journal: "Journal of Human Hypertension, 2004", url: "https://scholar.google.com/scholar?q=far+infrared+sauna+cardiovascular+recovery+heat+shock+protein" },
@@ -1870,7 +1870,7 @@ const thermalShellLiteConfig: ProductConfig = {
   { q: "When should I use it?", a: "Post-training for recovery, or 60–90 minutes before bed for sleep benefit. Morning sessions support metabolic activation." },
   { q: "Do I need to hydrate?", a: "Yes. Hydrate with 500ml before a session. Electrolytes are useful for regular use." },
   { q: "Can I use it while sitting?", a: "Not designed for seated use, optimised for supine (lying flat) position. For seated thermal protocols, consider the Thermal Zone or Thermal Pad." },
-  { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. Full refund if you don't notice measurable recovery or sleep improvement within 30 days of consistent use." },
+  { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
  ],
  studyCards: [
   { technology: "Far-Infrared · Recovery", studyTitle: "Far-Infrared Sauna as a Novel Therapeutic Modality for Cardiovascular Health", journal: "Journal of Human Hypertension, 2004", url: "https://scholar.google.com/scholar?q=far+infrared+sauna+cardiovascular+recovery+heat+shock+protein" },
@@ -1949,7 +1949,7 @@ const thermalZoneConfig: ProductConfig = {
   { q: "Should I use thermal or thermal + LED?", a: "For pre-training preparation: thermal only. For recovery and tissue work: thermal + LED. The LED mode adds the photobiomodulation mechanism to the thermal input." },
   { q: "How long per session?", a: "20–30 minutes is the standard protocol. The thermal and photobiomodulation effects are cumulative, consistent sessions produce the observable change." },
   { q: "Can I use it on my lower back for chronic pain?", a: "Yes. Thermal input and photobiomodulation both have evidence for reducing musculoskeletal pain. This should be used as a supportive tool, not a replacement for medical assessment of underlying causes." },
-  { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. Full refund if you don't notice measurable improvement within 30 days of consistent use." },
+  { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
  ],
  studyCards: [
   { technology: "Red Light · Tissue", studyTitle: "Low-Level Laser Therapy in Exercise-Induced Muscle Fatigue", journal: "European Journal of Applied Physiology, 2009", url: "https://scholar.google.com/scholar?q=low+level+laser+red+light+muscle+recovery+fatigue+exercise" },
@@ -2035,7 +2035,7 @@ const thermalZoneLiteConfig: ProductConfig = {
   { q: "Is 55°C safe on a joint?", a: "Yes, at appropriate application time. The thermal wrap applies heat through the skin surface; joint capsule temperature rises less dramatically than surface temperature. If 55°C feels too warm, reduce to 45°C." },
   { q: "Can I use it at my desk?", a: "Yes. USB power and lightweight construction make it practical for desk use on knees, wrists, or elbows during work." },
   { q: "How is this different from a hot water bottle?", a: "Consistent calibrated temperature (not cooling progressively like a water bottle), USB reusability, targeted wrap format for specific joints, and portability. Hot water bottles drop temperature within 20 minutes; the Thermal Zone Lite maintains set temperature for the full session." },
-  { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. Full refund if you don't notice measurable improvement in joint stiffness or recovery within 30 days of consistent use." },
+  { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
  ],
  studyCards: [
   { technology: "Heat · Joints", studyTitle: "Superficial Heat or Cold for Low Back Pain", journal: "Cochrane Review, 2006", url: "https://scholar.google.com/scholar?q=heat+therapy+joint+stiffness+connective+tissue+blood+flow" },
@@ -2124,7 +2124,7 @@ const frequencyRestConfig: ProductConfig = {
   { q: "Will I become dependent on it?", a: "Acoustic conditioning is not dependency in a neurological sense, your nervous system learns to associate consistent inputs with sleep, which is the mechanism behind any good sleep ritual. If you travel without it, re-adaptation takes 2–3 nights. Most people consider this a worthwhile trade for the consistent sleep quality they gain." },
   { q: "My partner doesn't like it, what do I do?", a: "Start with pink or brown noise, both are more universally accepted than white noise due to their warmer, less 'static' character. Lower volume than you think necessary. Most people who resist white noise are convinced after 5–7 nights." },
   { q: "Can I use it for babies or children?", a: "White noise for infant sleep is one of the most well-documented acoustic interventions in sleep science. For infants, keep the unit further from the cot and volume below 50 dB. Consult your paediatrician if you have specific questions about your child's needs." },
-  { q: "What is your guarantee?", a: "30-Day Ritual Guarantee. Track your sleep for 30 nights with consistent use. If you don't see measurable improvement in sleep onset or continuity, full refund, no conditions." },
+  { q: "What is your guarantee?", a: "A 30-day money-back guarantee, counted from delivery. If it has not earned its place, contact us for a full refund — any reason. Opening the box does not void it." },
  ],
  studyCards: [
   { technology: "White Noise · Sleep Onset", studyTitle: "White Noise and Sleep Induction", journal: "A & A Case Reports, 2016", url: "https://scholar.google.com/scholar?q=white+noise+sleep+onset+latency+reduction" },

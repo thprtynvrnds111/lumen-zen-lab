@@ -6,7 +6,7 @@
  },
  "quickCards": [
   { "title": "Suivre Ta Commande", "desc": "Vérifie le statut de ton expédition et le délai de livraison." },
-  { "title": "Retours & Garantie", "desc": "Garantie Rituel 30 Jours, sans friction, sans pression." },
+  { "title": "Retours & Garantie", "desc": "Garantie satisfait ou remboursé 30 jours, sans friction, sans pression." },
   { "title": "Sécurité Produit", "desc": "Consignes d'utilisation et informations de sécurité importantes." },
   { "title": "Contacter le Support", "desc": "Nous rejoindre directement, réponse dans les 24 à 48 heures." }
  ],
@@ -36,22 +36,22 @@
   {
    "label": "Prix & Valeur",
    "items": [
-    { "q": "L'investissement en vaut-il la peine ?", "a": "Un appareil remplace des centaines d'euros de visites mensuelles en clinique. Avec des rituels quotidiens de 5 minutes, tu obtiens des résultats professionnels chez toi, soutenus par notre Garantie Rituel 30 Jours." },
+    { "q": "L'investissement en vaut-il la peine ?", "a": "Un appareil remplace des centaines d'euros de visites mensuelles en clinique. Avec des rituels quotidiens de 5 minutes, tu obtiens des résultats professionnels chez toi, soutenus par notre garantie satisfait ou remboursé 30 jours." },
     { "q": "Proposez-vous des plans de paiement ?", "a": "Oui, Klarna est disponible lors du paiement, te permettant de diviser ton achat en versements sans intérêts." }
    ]
   },
   {
    "label": "Après-Vente",
    "items": [
-    { "q": "Que faire si j'ai besoin d'aide après mon achat ?", "a": "Notre équipe de support répond dans les 24 heures. Tu bénéficies d'une Garantie Rituel 30 Jours, de retours faciles et d'un accès à vie aux guides rituels et conseils." },
-    { "q": "Qu'est-ce que la Garantie Rituel 30 Jours ?", "a": "Si tu ne ressens pas d'amélioration visible dans les 30 jours d'utilisation quotidienne régulière, contacte-nous pour un remboursement complet. Aucune procédure longue, aucune pression." }
+    { "q": "Que faire si j'ai besoin d'aide après mon achat ?", "a": "Notre équipe de support répond dans les 24 heures. Tu bénéficies d'une garantie satisfait ou remboursé 30 jours, de retours faciles et d'un accès à vie aux guides rituels et conseils." },
+    { "q": "Qu'est-ce que la garantie satisfait ou remboursé 30 jours ?", "a": "Utilise l'appareil 30 jours à partir de la livraison. S'il n'a pas mérité sa place, contacte-nous pour un remboursement complet — pour n'importe quelle raison. Aucune procédure longue, aucune pression." }
    ]
   }
  ],
  "guarantee": {
   "eyebrow": "Notre Promesse",
   "headline": "Ressens Le Changement, Ou C'est Pour Nous.",
-  "sub": "Si tu ne ressens pas d'amélioration visible dans les 30 jours d'utilisation régulière, contacte-nous. Sans friction. Sans pression.",
+  "sub": "Il n'a pas mérité sa place ? Contacte-nous dans les 30 jours suivant la livraison pour un remboursement complet. Sans friction. Sans pression.",
   "badges": ["Garantie 30 Jours", "Livraison Rapide", "Retours Faciles", "Paiement Sécurisé"]
  },
  "contact": {

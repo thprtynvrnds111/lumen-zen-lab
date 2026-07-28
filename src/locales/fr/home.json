@@ -9,7 +9,7 @@
   "ctaSecondary": "Trouver Votre Protocole",
   "trust": {
    "shipping": "Livraison UE gratuite",
-   "guarantee": "Garantie Protocole 30 Jours",
+   "guarantee": "Garantie Satisfait ou Remboursé 30 Jours",
    "tagline": "Précision clinique. Rituel quotidien."
   },
   "modalities": {
@@ -50,11 +50,11 @@
    },
    {
     "q": "L'investissement en vaut-il la peine ?",
-    "a": "Un seul appareil remplace des centaines d'euros de visites mensuelles en clinique. Avec des rituels quotidiens de 5 minutes, vous obtenez des résultats de qualité professionnelle chez vous, garantis par notre Garantie Rituel 30 jours."
+    "a": "Un seul appareil remplace des centaines d'euros de visites mensuelles en clinique. Avec des rituels quotidiens de 5 minutes, vous obtenez des résultats de qualité professionnelle chez vous, garantis par notre garantie satisfait ou remboursé 30 jours."
    },
    {
     "q": "Et si j'ai besoin d'aide après mon achat ?",
-    "a": "Notre équipe support répond dans les 24 heures. Vous bénéficiez d'une Garantie Rituel 30 jours, de retours faciles et d'un accès à vie aux guides de rituel et aux conseils."
+    "a": "Notre équipe support répond dans les 24 heures. Vous bénéficiez d'une garantie satisfait ou remboursé 30 jours, de retours faciles et d'un accès à vie aux guides de rituel et aux conseils."
    }
   ]
  },

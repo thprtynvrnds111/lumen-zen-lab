@@ -16,7 +16,7 @@ const Returns = () => {
 
  return (
   <div className="min-h-screen bg-background">
-   <SEO title="Returns & 30-Day Guarantee, Zential Pure" description="Not feeling the results? Our 30-Day Ritual Guarantee means a full refund, no friction, no pressure. Return any device within 30 days." canonicalUrl="/returns" />
+   <SEO title="Returns & 30-Day Money-Back Guarantee, Zential Pure" description="30-day money-back guarantee, counted from delivery — any reason. EU orders get a prepaid return label; US orders are refunded without a return. No friction, no pressure." canonicalUrl="/returns" />
    <AnnouncementBar />
    <Header />
    <main>

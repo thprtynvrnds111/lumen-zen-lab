@@ -6,7 +6,7 @@
  },
  "quickCards": [
   { "title": "Track Your Order", "desc": "Check your shipment status and delivery timeline." },
-  { "title": "Returns & Guarantee", "desc": "30-Day Ritual Guarantee, no friction, no pressure." },
+  { "title": "Returns & Guarantee", "desc": "30-day money-back guarantee, no friction, no pressure." },
   { "title": "Product Safety", "desc": "Usage guidelines and important safety information." },
   { "title": "Contact Support", "desc": "Reach us directly, response within 24 to 48 hours." }
  ],
@@ -36,22 +36,22 @@
   {
    "label": "Price & Value",
    "items": [
-    { "q": "Is it worth the investment?", "a": "One device replaces hundreds of euros in monthly clinic visits. With daily 5-minute rituals, you get professional-grade results at home, backed by our 30-Day Ritual Guarantee." },
+    { "q": "Is it worth the investment?", "a": "One device replaces hundreds of euros in monthly clinic visits. With daily 5-minute rituals you run the same modality families at home, backed by our 30-day money-back guarantee." },
     { "q": "Do you offer payment plans?", "a": "Yes, Klarna is available at checkout, allowing you to split your purchase into interest-free installments." }
    ]
   },
   {
    "label": "After-Sales",
    "items": [
-    { "q": "What if I need help after my purchase?", "a": "Our support team responds within 24 hours. You're covered by a 30-Day Ritual Guarantee, easy returns, and lifetime access to ritual guides and tips." },
-    { "q": "What is the 30-Day Ritual Guarantee?", "a": "If you don't feel visible improvement within 30 days of consistent daily use, contact us for a full refund. No lengthy process, no pressure." }
+    { "q": "What if I need help after my purchase?", "a": "Our support team responds within 24 hours. You're covered by a 30-day money-back guarantee, easy returns, and lifetime access to ritual guides and tips." },
+    { "q": "What is the 30-day money-back guarantee?", "a": "Run the ritual for 30 days from delivery. If it has not earned its place, contact us for a full refund — any reason, including no reason. No lengthy process, no pressure." }
    ]
   }
  ],
  "guarantee": {
   "eyebrow": "Our Promise",
   "headline": "Feel The Shift, Or It's On Us.",
-  "sub": "If you don't feel visible improvement within 30 days of consistent use, contact us. No friction. No pressure.",
+  "sub": "Not earning its place? Contact us within 30 days of delivery for a full refund. No friction. No pressure.",
   "badges": ["30-Day Guarantee", "Fast Shipping", "Easy Returns", "Secure Checkout"]
  },
  "contact": {

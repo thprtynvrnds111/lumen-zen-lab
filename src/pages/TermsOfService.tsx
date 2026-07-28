@@ -23,7 +23,7 @@ const sections = [
  },
  {
   title: "5. Returns & Refunds",
-  content: `We offer a 30-Day Ritual Guarantee on all devices. To initiate a return, contact support within 30 days of delivery. Devices must be returned in original packaging. Opened consumables (gels, pads) are non-returnable for hygiene reasons. Refunds are processed within 5–7 business days after receipt.`,
+  content: `We offer a 30-day money-back guarantee on all devices, counted from the day of delivery. To initiate a return, contact support within 30 days of delivery — any reason. Opening the box and using the device does not void the guarantee. EU orders: we provide a prepaid return label. US orders: we refund without requiring a return. Opened consumables (gels, pads) are non-returnable for hygiene reasons. Refunds are processed within 5–7 business days.`,
  },
  {
   title: "6. Warranty & Liability",

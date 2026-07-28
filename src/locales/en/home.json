@@ -18,7 +18,7 @@
   "proof": {
    "modalities": { "value": "3", "label": "Clinical\nmodalities" },
    "price": { "value": "€88", "label": "vs €1,440 / yr\nclinic average" },
-   "guarantee": { "value": "30 days", "label": "Protocol\nguarantee" }
+   "guarantee": { "value": "30 days", "label": "Money-back\nguarantee" }
   },
   "modalities": {
    "label": "Three protocols. One stack.",
@@ -62,7 +62,7 @@
    },
    {
     "q": "What if I need help after my purchase?",
-    "a": "Our support team responds within 24 hours. You're covered by a 30-Day Ritual Guarantee, easy returns, and lifetime access to ritual guides and tips."
+    "a": "Our support team responds within 24 hours. You're covered by a 30-day money-back guarantee, easy returns, and lifetime access to ritual guides and tips."
    }
   ]
  },

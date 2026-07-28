@@ -2,7 +2,7 @@
  "hero": {
   "badge": "Rücksendungen & Garantie",
   "headline": "Kein Aufwand.\nKein Druck.",
-  "sub": "Wir stehen hinter jedem Gerät mit unserer 30-Tage-Ritualgarantie. Wenn es für dich nicht funktioniert, übernehmen wir die Kosten."
+  "sub": "Jedes Gerät trägt eine 30-Tage-Geld-zurück-Garantie, gezählt ab dem Tag der Lieferung. Hat es seinen Platz nicht verdient, geht es zurück — auf unsere Kosten."
  },
  "steps": {
   "eyebrow": "So Funktioniert Es",
@@ -10,7 +10,7 @@
   "items": [
    { "title": "Rücksendung Beantragen", "desc": "Schreib uns an info@zentialpure.com innerhalb von 30 Tagen nach der Lieferung mit deiner Bestellnummer." },
    { "title": "Genehmigung Erhalten", "desc": "Wir prüfen und genehmigen deinen Antrag innerhalb von 24 Stunden, keine langen Fragebögen." },
-   { "title": "Zurücksenden", "desc": "Wir stellen ein vorausbezahltes Rücksendeetikett bereit. Verpacke das Gerät in der Originalverpackung." },
+   { "title": "Zurücksenden (EU)", "desc": "EU-Bestellungen: wir senden ein vorausbezahltes Rücksendeetikett. US-Bestellungen: behalte das Gerät — wir erstatten ohne Rücksendung." },
    { "title": "Erstattung Erhalten", "desc": "Nach Eingang und Prüfung wird deine Rückerstattung innerhalb von 5 bis 7 Werktagen bearbeitet." }
   ]
  },
@@ -18,8 +18,8 @@
   "eyebrow": "Richtliniendetails",
   "title": "Was Du Wissen Solltest.",
   "items": [
-   { "title": "30-Tage-Ritualgarantie", "desc": "Wenn du innerhalb von 30 Tagen konsequenter täglicher Anwendung keine sichtbare Verbesserung siehst, kontaktiere uns für eine vollständige Rückerstattung. Wir glauben an die Technologie und an deine Erfahrung." },
-   { "title": "Zustandsanforderungen", "desc": "Geräte müssen in Originalverpackung und funktionstüchtigem Zustand zurückgesandt werden. Zubehör (Gele, Pads) ist nach dem Öffnen aus Hygienegründen nicht rückgabefähig." },
+   { "title": "30-Tage-Geld-zurück-Garantie", "desc": "Dreißig Tage, gezählt ab Lieferung — nicht ab Kauf. Ob das Gerät seinen Platz verdient hat, entscheidest du: keine Ergebnisklausel, keine Prüfkommission." },
+   { "title": "Geöffnet Ist In Ordnung", "desc": "Das Öffnen der Verpackung und die Nutzung des Geräts machen die Garantie nicht ungültig — eine Garantie, die nur für eine ungeöffnete Verpackung gilt, ist keine. Geöffnete Verbrauchsartikel (Gele, Pads) sind aus Hygienegründen nicht rückgabefähig." },
    { "title": "Beschädigte oder Defekte Artikel", "desc": "Wenn dein Produkt beschädigt oder defekt ankommt, kontaktiere uns sofort. Wir senden einen Ersatz kostenlos, keine Rücksendung erforderlich." },
    { "title": "Umtausch", "desc": "Möchtest du eine andere Farbe oder Variante? Kontaktiere uns innerhalb von 30 Tagen und wir arrangieren einen Umtausch, vorbehaltlich der Verfügbarkeit." }
   ]
