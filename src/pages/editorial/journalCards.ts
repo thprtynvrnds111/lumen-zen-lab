@@ -44,6 +44,8 @@ export const VALID_CARD_LINKS = [
   "/journal/lymphatic-drainage",
   "/journal/ems-vs-microcurrent",
   "/journal/ritual-that-lasts",
+  "/journal/kill-list",
+  "/journal/grade-our-honesty",
 ] as const;
 
 interface BaseCard {
@@ -296,6 +298,26 @@ export const JOURNAL_CARDS: JournalCard[] = [
     body: "The full three-modality sequence. Calibrated so it survives contact with a real morning.",
     link: "/editorial/the-ritual",
     plannedPage: "/journal/the-12-minute-window",
+  },
+  // 15a — honesty record: The Kill List (published 2026-07-28)
+  {
+    kind: "text",
+    id: "t-kill-list",
+    category: "Evidence",
+    headline: "The Kill List",
+    body: "What we stopped selling, stopped saying, or stopped showing — a public record of retired claims, deleted imagery, and two retired product generations. Updated as decisions are made.",
+    meta: "Record · 5 min read",
+    link: "/journal/kill-list",
+  },
+  // 15b — honesty file: Grade Our Honesty (published 2026-07-28)
+  {
+    kind: "text",
+    id: "t-grade-honesty",
+    category: "Evidence",
+    headline: "Grade Our Honesty",
+    body: "A public honesty file on the Face Introducer: what it does, what it does not do, and an open invitation to tell us where we got it wrong. You are the judge.",
+    meta: "Honesty file · 6 min read",
+    link: "/journal/grade-our-honesty",
   },
   // 16 — legacy: The Night My Frequency Shifted
   {

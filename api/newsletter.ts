@@ -16,7 +16,7 @@
  * sends the 10-Minute Face Protocol email immediately. Deterministic trigger —
  * does not depend on Shopify→Klaviyo sync. Non-fatal: never blocks signup.
  */
-async function fireKlaviyoEvent(email: string, source: string): Promise<void> {
+async function fireKlaviyoEvent(email: string, source: string, metricName: string): Promise<void> {
   const key = process.env.KLAVIYO_API_KEY;
   if (!key) {
     console.warn('[newsletter] KLAVIYO_API_KEY missing — skipping flow trigger event');
@@ -36,7 +36,7 @@ async function fireKlaviyoEvent(email: string, source: string): Promise<void> {
           type: 'event',
           attributes: {
             properties: { source: source || 'unknown' },
-            metric: { data: { type: 'metric', attributes: { name: 'Requested Face Protocol' } } },
+            metric: { data: { type: 'metric', attributes: { name: metricName } } },
             profile: { data: { type: 'profile', attributes: { email } } },
           },
         },
@@ -77,11 +77,26 @@ export default async function handler(req: any, res: any) {
       return res.status(500).json({ error: 'Server is not configured' });
     }
 
-    // Fire the lead-magnet flow trigger first — independent of Shopify success.
-    await fireKlaviyoEvent(email, source);
+    // The Restoration Wrap waitlist is NOT a newsletter signup. The /wrap page
+    // promises "no newsletter, at most two emails" — so this branch must never
+    // set marketing consent (the consent change triggers the Shopify welcome
+    // automation), never apply the `newsletter` tag, and never fire the
+    // "Requested Face Protocol" metric (it triggers the lead-magnet flow).
+    // Waitlist members are countable via the Shopify tag and the distinct
+    // Klaviyo metric, which has no flow attached.
+    const isWrapWaitlist = source === 'wrap-waitlist';
+
+    // Fire the flow-trigger / counting event first — independent of Shopify success.
+    await fireKlaviyoEvent(
+      email,
+      source,
+      isWrapWaitlist ? 'Joined Wrap Waitlist' : 'Requested Face Protocol'
+    );
 
     const shopBase = 'https://0d1m9a-w7.myshopify.com/admin/api/2024-01';
-    const tags = source ? `newsletter, source-${source.replace(/[^a-z0-9-]/g, '-')}` : 'newsletter';
+    const tags = isWrapWaitlist
+      ? 'wrap-waitlist'
+      : source ? `newsletter, source-${source.replace(/[^a-z0-9-]/g, '-')}` : 'newsletter';
 
     console.log(`[newsletter] signup attempt email=${email} source=${source || 'unknown'}`);
 
@@ -96,10 +111,17 @@ export default async function handler(req: any, res: any) {
         customer: {
           email,
           tags,
-          email_marketing_consent: {
-            state: 'subscribed',
-            opt_in_level: 'single_opt_in',
-          },
+          // Wrap waitlist: no marketing consent — consent here is scoped to the
+          // two waitlist emails, not marketing, and setting `subscribed` would
+          // fire the welcome automation the /wrap page promises not to send.
+          ...(isWrapWaitlist
+            ? {}
+            : {
+                email_marketing_consent: {
+                  state: 'subscribed',
+                  opt_in_level: 'single_opt_in',
+                },
+              }),
         },
       }),
     });
@@ -144,10 +166,16 @@ export default async function handler(req: any, res: any) {
             customer: {
               id: existing.id,
               tags: mergedTags,
-              email_marketing_consent: {
-                state: 'subscribed',
-                opt_in_level: 'single_opt_in',
-              },
+              // Same rule as create: a wrap-waitlist join must never flip an
+              // existing customer's marketing consent.
+              ...(isWrapWaitlist
+                ? {}
+                : {
+                    email_marketing_consent: {
+                      state: 'subscribed',
+                      opt_in_level: 'single_opt_in',
+                    },
+                  }),
             },
           }),
         });

@@ -67,6 +67,9 @@ const ClinicalIssue = lazy(() => import("./pages/editorial/hub/ClinicalIssue"));
 const Breath = lazy(() => import("./pages/breath/Breath"));
 const OneShelf = lazy(() => import("./pages/OneShelf"));
 const InstrumentSystem = lazy(() => import("./pages/InstrumentSystem"));
+const Wrap = lazy(() => import("./pages/Wrap"));
+const JournalKillList = lazy(() => import("./pages/JournalKillList"));
+const JournalGradeOurHonesty = lazy(() => import("./pages/JournalGradeOurHonesty"));
 
 function ServerApp() {
   return (
@@ -92,6 +95,8 @@ function ServerApp() {
         <Route path="/journal/ems-vs-microcurrent"              element={<JournalEMS />} />
         <Route path="/journal/ritual-that-lasts"                element={<JournalRitualLasts />} />
         <Route path="/journal/the-stack-audit"                  element={<JournalStackAudit />} />
+        <Route path="/journal/kill-list"                        element={<JournalKillList />} />
+        <Route path="/journal/grade-our-honesty"                element={<JournalGradeOurHonesty />} />
         <Route path="/editorial/the-ritual"                     element={<TheRitual />} />
         <Route path="/editorial/the-science"                    element={<TheScience />} />
         <Route path="/editorial/the-diagnosis"                  element={<TheDiagnosis />} />
@@ -99,6 +104,7 @@ function ServerApp() {
         <Route path="/editorial/clinical-issue"                 element={<ClinicalIssue />} />
         <Route path="/breath"                                   element={<Breath />} />
         <Route path="/one-shelf"                                element={<OneShelf />} />
+        <Route path="/wrap"                                     element={<Wrap />} />
         <Route path="/support"                                  element={<Support />} />
         <Route path="/shipping"                                 element={<Shipping />} />
         <Route path="/returns"                                  element={<Returns />} />

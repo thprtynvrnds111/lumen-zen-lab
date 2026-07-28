@@ -42,6 +42,8 @@ const ROUTES = [
   '/journal/ems-vs-microcurrent',
   '/journal/ritual-that-lasts',
   '/journal/the-stack-audit',
+  '/journal/kill-list',
+  '/journal/grade-our-honesty',
   '/support',
   '/shipping',
   '/returns',
@@ -78,6 +80,8 @@ const ROUTES = [
   '/reveal',
   '/pick',
   '/one-shelf',
+  // Restoration Wrap waitlist test (Gate 1 — proposed product, zero inventory)
+  '/wrap',
   '/f/face-introducer',
   '/f/restoration-belt',
   '/f/restoration-mat',

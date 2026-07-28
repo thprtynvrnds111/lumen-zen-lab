@@ -35,6 +35,8 @@
   <url><loc>https://zentialpure.com/journal/lymphatic-drainage</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://zentialpure.com/journal/ems-vs-microcurrent</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://zentialpure.com/journal/ritual-that-lasts</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/journal/kill-list</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zentialpure.com/journal/grade-our-honesty</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Technology explainers -->
   <url><loc>https://zentialpure.com/technology/red-light</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
@@ -74,5 +76,8 @@
 
   <!-- Breath — interactive breathwork app -->
   <url><loc>https://zentialpure.com/breath</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Restoration Wrap — proposed-product waitlist test -->
+  <url><loc>https://zentialpure.com/wrap</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
 
 </urlset>
