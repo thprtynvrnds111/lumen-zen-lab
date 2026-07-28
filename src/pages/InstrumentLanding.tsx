@@ -38,6 +38,41 @@ interface Stage { n: string; title: string; body: string; }
 interface Spec { k: string; v: string; }
 interface Faq { q: string; a: string; }
 
+/**
+ * Graded evidence module — "What the evidence says".
+ * Copy source (verbatim, compliance-gated PASS 2026-07-28 overnight batch):
+ * engine repo knowledge/offers/pdp-evidence-module-drafts.md. Design rules that
+ * are load-bearing (from that file §1): strongest row first; the grade word sits
+ * in the SAME size as the claim, never fine print; every row carries a limits
+ * line including the Strong ones; one declined row; one empty row printed as
+ * empty; no comparative framing; every graded row links to the paper. The only
+ * numbers allowed in this block are facts about published papers and measured
+ * hardware — never price, stock, ratings or reviews.
+ */
+interface EvidenceRow {
+  claim: string;
+  /** One of: Strong · Modest · Adjacent · Nothing on file · an explanation, not a result · declined (free text by design) */
+  grade: string;
+  body: React.ReactNode;
+  /** The limits line, prefix included ("What Strong does not cover: …"). */
+  limits: React.ReactNode;
+  citation?: { label: string; href: string };
+}
+interface EvidenceConfig { standfirst: string; rows: EvidenceRow[]; closing: string }
+
+/** Rendered once per page, identically on all three instruments — it is a scale,
+ *  and a scale that varies per page stops being one. Verbatim from the gated draft §3. */
+const EVIDENCE_KEY = {
+  title: "How to read the grades.",
+  body:
+    "Strong means many trials, pooled together, pointing the same way. Modest means real trials " +
+    "exist and the researchers who pooled them graded the quality low to moderate — worth " +
+    "something, not worth certainty. Adjacent means the study is real, and it tested something " +
+    "next to this rather than this. Nothing on file means we hold no graded review, and the row " +
+    "stays empty instead of being filled with someone else's study.",
+  coda: "Only one row on this page is Strong. We are showing you the rest anyway.",
+};
+
 interface InstrumentConfig {
   slug: string;
   num: string;
@@ -67,6 +102,7 @@ interface InstrumentConfig {
   orderNote: string;
   guarantee: string;
   faq: Faq[];
+  evidence: EvidenceConfig;
 }
 
 const CONFIGS: Record<string, InstrumentConfig> = {
@@ -126,9 +162,58 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     orderNote: "No subscription. No cartridge to refill. The conductive gel refill is €12 when you need it.",
     guarantee:
       "Run the ritual for a month. If it is not part of your evenings, send it back for a full refund. No friction. No questions.",
+    evidence: {
+      standfirst:
+        "This is the shortest evidence block on the site, and the emptiest. We are showing it to you anyway.",
+      rows: [
+        {
+          claim: "EMS",
+          grade: "an explanation, not a result",
+          body: "Electrical impulses that engage the muscles of the face. The physical effect is not in question; you feel it in the first minute.",
+          limits: "What this does not cover: what repeated facial EMS does to the appearance of a face over time. We hold no graded review of that.",
+        },
+        {
+          claim: "Microcurrent",
+          grade: "an explanation, not a result",
+          body: "Low-level electrical current, below the threshold where you would feel a contraction.",
+          limits: "What this does not cover: the same gap. Devices in this class sit in general wellness, and everything defensible about them concerns the appearance of the face rather than physiology.",
+        },
+        {
+          claim: "Thermal",
+          grade: "an explanation, not a result",
+          body: "Controlled warmth at the head of the device during the session. Verifiable by you, immediately.",
+          limits: "What this does not cover: anything past “it is warm” would be a claim we have not graded.",
+        },
+        {
+          claim: "The light you can see",
+          grade: "not a modality",
+          body: "The glow is a mode indicator showing which of the three inputs is running. It is not a fourth input. Our own product pages said otherwise until 27 July 2026, when the operator checked a physical unit. The claim was live in 82 places. We removed all of them and wrote a test that fails the build if the phrasing comes back.",
+          limits: "",
+        },
+        {
+          claim: "The number we are not printing",
+          grade: "declined",
+          body: "Devices in this class are commonly sold on a figure like “94% of users reported firmer-feeling skin”. We have one of those from our manufacturer. We are not printing it, because we cannot re-run the survey, cannot see its method, and hold ourselves to publishing only numbers we can pull again on request.",
+          limits: "",
+        },
+        {
+          claim: "Any change in the appearance of your face",
+          grade: "Nothing on file",
+          body: "We hold graded evidence reviews for muscle recovery and for the nervous system. We do not hold one for the face. Until we do, this row stays empty, and we will not fill it with the phrasing everyone else uses.",
+          limits: "",
+        },
+      ],
+      closing:
+        "Three real inputs, a twelve-minute session, and a device that is warm and carries a current you can feel — so you know inside a minute whether anything is happening at all. That is a fairer test than a grade we do not have, and it is why the money-back guarantee is the honest part of this page.",
+    },
     faq: [
       { q: "How is this different from the clinic device I used?", a: "It uses the same modality families, dosed for unsupervised daily use rather than a single high-intensity appointment. You trade peak intensity for consistency — which is where the skin actually responds." },
-      { q: "How long until I see something?", a: "Most people notice firmness and a calmer tone within four to six weeks of the twelve-minute ritual, five days a week. We say visibly, with consistent use — never overnight, never guaranteed." },
+      // 2026-07-28: the old "within four to six weeks" answer was removed. The
+      // evidence module on this page deliberately prints no outcome timeframe
+      // (Nothing on file for facial outcomes), and a FAQ promising one two
+      // scrolls above it was a visible self-contradiction — the exact
+      // inconsistency the module drafts flagged as a blocking item.
+      { q: "How long until I see something?", a: "We are not going to print a number of weeks — we hold no graded review of facial outcomes, and the evidence block below says so plainly. What we can tell you: the device is warm and carries a current you can feel, so you know within the first session that it is doing what it says mechanically. Whether it earns its place is what the 30-day money-back guarantee exists to let you test." },
       { q: "Is the €88 the whole cost?", a: "Yes. €88, once. There is no subscription and nothing to unlock. The only recurring item is the conductive gel, refillable for €12 when a tube runs out." },
       { q: "Can I use it with my serums?", a: "Use the conductive gel during the session for clean current transfer, then apply your own serums afterward onto primed skin. Avoid active acids in the same twelve minutes." },
       { q: "What if it is not for me?", a: "The 30-day money-back guarantee covers exactly that. Run it for a month; if it does not earn its place, return it for a full refund." },
@@ -193,6 +278,52 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     orderNote: "No subscription. Cordless, so the only thing it needs from you is fifteen minutes.",
     guarantee:
       "Wear it for a month. If it does not become part of how you recover, send it back for a full refund. No friction. No questions.",
+    evidence: {
+      standfirst:
+        "The light is the specification that sounds impressive. The warmth is the part with 59 randomized trials behind it. Here is each one graded, in the terms the researchers used.",
+      rows: [
+        {
+          claim: "Warmth applied to muscle after exertion",
+          grade: "Strong",
+          body: "A network meta-analysis of 59 randomized trials across 1,367 patients compared ten recovery interventions. Hot packs ranked first for pain relief within 24 hours of exercise-induced soreness. Wang et al., Journal of Rehabilitation Medicine, 2022.",
+          limits: "What Strong does not cover here: the authors ask that their own results be “treated with caution” because of limited study quality, and write that “further well-designed research is needed to draw firm conclusions”. The trials used hot packs. The Belt is a powered heating element held against you by a wrap — conductive warmth, closely adjacent to what was tested, and not the identical thing.",
+          citation: { label: "J Rehabil Med, 2022", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8862647/" },
+        },
+        {
+          claim: "Why warmth would do that",
+          grade: "an explanation, not a result",
+          body: "The same authors propose that heat “can resist the loss of heat after exercise, keep tissue warm, increase blood flow speed and metabolism, and speed up clearance of inflammatory factors, thus reducing pain.”",
+          limits: "What this does not cover: a proposed explanation is not a measured outcome. It accounts for the finding above; it adds nothing to it. We are keeping the two separate on purpose, because collapsing them is how a clean diagram turns into a claim nobody tested.",
+        },
+        {
+          claim: "660nm and 850nm for muscle fatigue and exertion recovery",
+          grade: "Modest",
+          body: "A systematic review and meta-analysis of 39 trials across 861 participants found positive results using laser and LED, across a 655–950nm band that contains both of our wavelengths. Vanin et al., Lasers in Medical Science, 2018.",
+          limits: "What Modest does not cover: the authors grade the whole body of evidence “very low to moderate”, citing methodological quality, small samples, and wide variation in protocols. The subject is exertion recovery and muscle fatigue. It is not chronic pain, and it is not knots. This is the one place our exact hardware sits inside a real evidence band, which is why we chose these two numbers — and a real band graded low to moderate is still low to moderate.",
+          citation: { label: "Lasers Med Sci, 2018", href: "https://pubmed.ncbi.nlm.nih.gov/29090398/" },
+        },
+        {
+          claim: "Light applied before training rather than after",
+          grade: "Modest",
+          body: "Same 2018 analysis: effects are reported most consistently when light is applied before exercise. Most of this category sells light purely as an after-the-fact recovery item.",
+          limits: "What Modest does not cover: this is a pattern across lab conditions, not a tested habit. We find it the more interesting half and we cannot tell you it does more for you.",
+        },
+        {
+          claim: "The study we are not using",
+          grade: "declined",
+          body: "There is a body of trial evidence showing phototherapy doing something useful for muscle knots. It is real, it is peer-reviewed, and every positive trial in it used a clinic laser — coherent light, a different instrument with a different evidence base. Our device is LED. We do not get to cite those results, so we do not. Any evidence block in this category that shows you a knot diagram is quietly citing them.",
+          limits: "",
+        },
+        {
+          claim: "Anything about trigger points or knots",
+          grade: "Nothing on file",
+          body: "This row is empty on purpose. See the row above for why.",
+          limits: "",
+        },
+      ],
+      closing:
+        "Warmth you feel in the first minute, a light dose sitting inside a band its own researchers call very low to moderate, and a habit that is easier to keep than an appointment. That is the offer, and it is the whole of it.",
+    },
     faq: [
       { q: "Where can I wear it?", a: "The contoured wrap is built for the lower back and core, and adjusts to wrap a shoulder, thigh or calf. Anywhere you can hold the panel flat against the muscle." },
       { q: "Why both 660nm and 850nm?", a: "They sit at different points in the 655–950nm band that has been studied for muscle fatigue and exertion recovery. We are not going to claim our LEDs work at muscle depth — that belongs to clinical lasers, a different instrument with a different evidence base. The warmth is what works the muscle. The light is the layer underneath it." },
@@ -259,6 +390,52 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     orderNote: "No subscription. Rolls flat between sessions and asks for nothing but the twenty minutes.",
     guarantee:
       "Lie down for a month of evenings. If it does not earn its place, send it back for a full refund. No friction. No questions.",
+    evidence: {
+      standfirst:
+        "Same grading, one grade lower in one place — and we are going to show you exactly where, because the trials behind our strongest row tested a different kind of heat from ours.",
+      rows: [
+        {
+          claim: "Warmth applied to muscle after exertion",
+          grade: "Strong",
+          body: "A network meta-analysis of 59 randomized trials across 1,367 patients compared ten recovery interventions. Hot packs ranked first for pain relief within 24 hours of exercise-induced soreness. Wang et al., Journal of Rehabilitation Medicine, 2022.",
+          limits: "What Strong does not cover: the authors ask that the results be treated with caution, citing limited study quality. And the grade belongs to warmth as a category, not to this panel — see the next row, which is the honest one.",
+          citation: { label: "J Rehabil Med, 2022", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8862647/" },
+        },
+        {
+          claim: "Far-infrared warmth specifically, in a panel",
+          grade: "Adjacent",
+          body: "The trials behind the row above used hot packs, which warm by contact. The Mat is far-infrared. We treat those as adjacent rather than equivalent, and that sits in our own research file as an open question rather than as something we resolved in our favour.",
+          limits: "What Adjacent does not cover: everything the difference might turn out to matter for. We do not know whether far-infrared and contact heat behave the same way in this evidence, and neither does anyone else yet.",
+        },
+        {
+          claim: "The study we are not using",
+          grade: "declined",
+          body: "There is a 2025 randomized trial reporting that repeated post-exercise infrared sauna improved recovery of neuromuscular performance and muscle soreness. It is a genuine result. It is also a cabin that heats your entire body, and this is a 40cm panel you lie on. We are not going to let the word “infrared” carry a study across that gap, which is why it appears here as a refusal instead of above as support.",
+          limits: "",
+        },
+        {
+          claim: "660nm for muscle fatigue and exertion recovery",
+          grade: "Modest",
+          body: "39 trials, 861 participants, laser and LED, across 655–950nm — a band that contains our wavelength. Vanin et al., Lasers in Medical Science, 2018.",
+          limits: "What Modest does not cover: graded “very low to moderate” by its own authors, on methodological quality and small samples. The subject is exertion recovery, not pain conditions.",
+          citation: { label: "Lasers Med Sci, 2018", href: "https://pubmed.ncbi.nlm.nih.gov/29090398/" },
+        },
+        {
+          claim: "Coverage of the whole body",
+          grade: "no such claim, and there was one",
+          body: "The panel is 100 × 40 cm or 120 × 40 cm. Measured, not estimated. Until 16 July 2026 our own copy said “full-body” and “head to heel”. Our first paying customer held the wording against the dimensions, was right, and nearly returned it. We removed the claim from the product page, the storefront, the translations, the Shopify listing and the machine-readable files the same day. The panel did not change. Our description of it did.",
+          limits: "",
+        },
+        {
+          claim: "Anything about trigger points or knots",
+          grade: "Nothing on file",
+          body: "The positive trials used clinic lasers. Different instrument, different evidence base, not ours to cite. Empty on purpose.",
+          limits: "",
+        },
+      ],
+      closing:
+        "Twenty minutes of warmth across the back of the body, most days. That is a smaller promise than this category usually makes, and it is the one we can support.",
+    },
     faq: [
       { q: "How big is it, and where does it live?", a: "Two sizes: 100 × 40 cm, or 120 × 40 cm in the longer version — a panel sized to the back of the torso, not a head-to-toe bed. It rolls flat: unroll it on a bed, a sofa or the floor for the session, then roll it away. It does not need a dedicated corner." },
       { q: "Front of the body or back?", a: "You lie on it, so the array works the back of the body — where most tension is held. Turn over for the last few minutes if you want the front." },
@@ -565,6 +742,61 @@ export default function InstrumentLanding() {
         </div>
       </section>
 
+      {/* ── EVIDENCE — "What the evidence says" ──
+          Sits between the mechanism (which makes the claim) and the order block
+          (which asks for the money): anyone scrolling to buy passes the grades
+          on the way. Copy is compliance-gated verbatim; see EvidenceRow docs. */}
+      <section id="evidence" className="bg-[#F7F4F0] py-[clamp(76px,10vw,120px)] text-[#1A1714]">
+        <div className={WRAP}>
+          <Eyebrow num="04" tone="meta">What the evidence says</Eyebrow>
+          <p className="my-6 max-w-[640px] font-serif italic text-[clamp(20px,2.4vw,28px)] leading-[1.35] text-[#1A1714]">
+            {cfg.evidence.standfirst}
+          </p>
+          {/* The grade key — rendered identically on all three instruments. */}
+          <div className="mb-10 max-w-[720px] border-l-2 border-[#1A1714]/20 pl-6">
+            <p className="text-[14px] leading-[1.7] text-[#1A1714]/[0.66]">
+              <b className="font-medium text-[#1A1714]">{EVIDENCE_KEY.title}</b> {EVIDENCE_KEY.body}
+            </p>
+            <p className="mt-3 text-[14px] leading-[1.7] text-[#1A1714]">{EVIDENCE_KEY.coda}</p>
+          </div>
+          <div className="max-w-[820px]">
+            {cfg.evidence.rows.map((r, i) => (
+              <div key={i} className={`border-b border-[rgba(26,23,20,0.12)] py-7 ${i === 0 ? "border-t" : ""}`}>
+                {/* Rule 2: the grade sits in the same size as the claim, on the
+                    same line, never in fine print. */}
+                <p className="text-[18px] leading-[1.5] text-[#1A1714]">
+                  <span className="font-serif italic">{r.claim}</span>
+                  <span className="text-[#1A1714]/40"> — </span>
+                  <span className="font-sans font-semibold tracking-[0.04em] text-[#157A5C]">{r.grade}</span>
+                </p>
+                <p className="mt-3 text-[15px] leading-[1.75] text-[#1A1714]/[0.78]">
+                  {r.body}
+                  {r.citation && (
+                    <>
+                      {" "}
+                      <a
+                        href={r.citation.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="whitespace-nowrap font-sans text-[13px] tracking-[0.04em] text-[#157A5C] underline underline-offset-4 hover:text-[#1A1714]"
+                      >
+                        Read the paper · {r.citation.label} ↗
+                      </a>
+                    </>
+                  )}
+                </p>
+                {r.limits && (
+                  <p className="mt-3 text-[14px] leading-[1.7] text-[#1A1714]/[0.6]">{r.limits}</p>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="mt-9 max-w-[640px] font-serif italic text-[17px] leading-[1.6] text-[#1A1714]/[0.78]">
+            {cfg.evidence.closing}
+          </p>
+        </div>
+      </section>
+
       {/* ── DIVIDER ── */}
       <section className="relative flex min-h-[clamp(360px,46vw,520px)] items-center overflow-hidden bg-[#1A1714]">
         <img src={cfg.divider.img} alt={cfg.divider.imgAlt} className="absolute inset-0 h-full w-full object-cover" />
@@ -578,7 +810,7 @@ export default function InstrumentLanding() {
       {/* ── SPECS + ORDER ── */}
       <section id="order" className="bg-[#EDEAE6] py-[clamp(76px,10vw,120px)] text-[#1A1714]">
         <div className={WRAP}>
-          <Eyebrow num="04" tone="meta">The instrument</Eyebrow>
+          <Eyebrow num="05" tone="meta">The instrument</Eyebrow>
           <div className="mt-[34px] grid items-start gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-14">
             <ul className="list-none">
               {cfg.specs.map((s, i) => (
@@ -607,7 +839,7 @@ export default function InstrumentLanding() {
       {/* ── FAQ ── */}
       <section className="bg-[#F7F4F0] py-[clamp(76px,10vw,120px)] text-[#1A1714]">
         <div className={WRAP}>
-          <Eyebrow num="05" tone="meta">Before you order</Eyebrow>
+          <Eyebrow num="06" tone="meta">Before you order</Eyebrow>
           <h2 className="mb-[34px] mt-5 font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] text-[#1A1714]">Questions, answered plainly.</h2>
           <div className="max-w-[780px]">
             {cfg.faq.map((f, i) => (
@@ -627,7 +859,7 @@ export default function InstrumentLanding() {
       </section>
 
       {/* ── PROOF ── */}
-      <InstrumentProofSection slug={cfg.slug} num="06" />
+      <InstrumentProofSection slug={cfg.slug} num="07" />
 
       {/* ── LEAD PRIMER (inline) ── */}
       <InlinePrimer slug={cfg.slug} />
@@ -637,7 +869,7 @@ export default function InstrumentLanding() {
         <div className={WRAP}>
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-14">
             <div>
-              <Eyebrow num="07">Founding cohort</Eyebrow>
+              <Eyebrow num="08">Founding cohort</Eyebrow>
               <h2 className="my-5 font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] text-[#F7F4F0]">The first buyers set the protocol.</h2>
               <p className="text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">Founding members buy at the launch price, get first access to new instruments, and a direct line to the people calibrating the protocols.</p>
             </div>
@@ -658,7 +890,7 @@ export default function InstrumentLanding() {
       {/* ── COMPLETE THE SYSTEM ── */}
       <section className="bg-[#EDEAE6] py-[clamp(76px,10vw,120px)] text-[#1A1714]">
         <div className={WRAP}>
-          <Eyebrow num="08" tone="meta">Complete the system</Eyebrow>
+          <Eyebrow num="09" tone="meta">Complete the system</Eyebrow>
           <div className="mt-5 flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
             <h2 className="max-w-[18ch] font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] leading-[1.1] text-[#1A1714]">Three instruments, one protocol.</h2>
             <p className="max-w-[44ch] text-[15px] leading-[1.7] text-[#1A1714]/[0.66]">Face, body, full rest. Each instrument works alone — together they cover the whole day. The complete System runs €399.</p>
