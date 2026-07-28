@@ -44,10 +44,11 @@ describe("withUtm", () => {
 });
 
 describe("tile data", () => {
-  it("has five tiles with unique ids and destinations", () => {
-    expect(TILES).toHaveLength(5);
-    expect(new Set(TILES.map((t) => t.id)).size).toBe(5);
-    expect(new Set(TILES.map((t) => t.href)).size).toBe(5);
+  it("has six tiles with unique ids and destinations", () => {
+    // 6th tile added 2026-07-28: the Restoration Wrap waitlist test (/wrap).
+    expect(TILES).toHaveLength(6);
+    expect(new Set(TILES.map((t) => t.id)).size).toBe(6);
+    expect(new Set(TILES.map((t) => t.href)).size).toBe(6);
   });
 
   it("points every link at a site-relative path", () => {
