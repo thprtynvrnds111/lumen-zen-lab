@@ -97,7 +97,7 @@ const defaultDeviceFaqs = [
  { q: "Is it safe for all skin types?", a: "Yes, it's designed for all skin types. If you have sensitive skin, start at the lowest setting. If irritation persists, reduce frequency and consult your dermatologist." },
  { q: "Who should not use this device?", a: "Do not use if you have a pacemaker, are pregnant, have active skin infections, epilepsy, or metal implants in the treatment area. Always consult your physician if you have a medical condition." },
  { q: "What serum works best?", a: "Any water-based conductive serum or gel works well. Avoid oil-based products as they can interfere with conductivity. Our Collagen Face Gel is specially formulated for optimal results." },
- { q: "What is your guarantee?", a: "30 days, daily use. If you see no visible improvement, email us. Full refund, no form, no questionnaire, no restocking fee. That is the 30-Day Money-Back Guarantee." },
+ { q: "What is your guarantee?", a: "30 days, any reason. If it has not earned its place in your ritual, email us. Full refund, no form, no questionnaire, no restocking fee. That is the 30-Day Money-Back Guarantee." },
 ];
 
 const accessoryComparison = [
@@ -219,7 +219,7 @@ export const productConfigs: Record<string, ProductConfig> = {
    { q: "Does this actually work?", a: "The mechanisms in this device, EMS microcurrent, galvanic ion cleansing, iontophoretic delivery and 45°C thermal, are each supported by peer-reviewed research where applicable. We link the actual studies on this page. What we cannot promise is the consistency you bring to it. Use it daily for 14 days before forming a conclusion." },
    { q: "How long until I see results?", a: "Improved skin absorption is measurable from the first session, the galvanic ion delivery changes how actives penetrate. Skin clarity and texture typically respond within 7 to 10 days. Firming becomes visible at 3 to 4 weeks of consistent daily use." },
    { q: "Is it safe for daily use?", a: "Yes. The Face Introducer is designed for a daily 12-minute protocol. The 45°C thermal stays within safe tissue temperature. Galvanic cleansing is non-abrasive. EMS is calibrated at home-device intensity. Start on the lowest of the four speed settings and increase over the first week." },
-   { q: "What if it doesn't work for me?", a: "30 days, daily use. If you see no visible change in skin tone, firmness, or definition, email us. Full refund, no form, no questionnaire, no restocking fee. That is the 30-Day Money-Back Guarantee. We print it on the box." },
+   { q: "What if it doesn't work for me?", a: "30 days, any reason. If it has not earned its place, email us. Full refund, no form, no questionnaire, no restocking fee. That is the 30-Day Money-Back Guarantee. We print it on the box." },
    { q: "How is this different from a clinic?", a: "One professional microcurrent session: €90–€180. Monthly clinic protocol: €220+/month, €2,640+/year. The Face Introducer uses the same class of technology, ion cleansing, EMS microcurrent and thermal, for a one-time €88 purchase. The mechanism is the same. The math is not." },
    { q: "Which mode should I use first?", a: "Start with ion cleansing (negative ion mode) every session, it clears the follicle so subsequent modes work on clean tissue. Then select EMS for firming, or microcurrent for finer muscle re-education, based on the protocol you want." },
    { q: "Is this a red light therapy device?", a: "No. The Face Introducer is an EMS, microcurrent and thermal instrument. It shows a coloured LED while running, but that is a mode indicator, not a treatment modality, and we make no light-therapy claim for it. For red light, see the Restoration Belt or the Restoration Mat." },
@@ -245,7 +245,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   sessionInfo: "Session time: 12 minutes · Frequency: 3–5× per week · Four intensity levels · Stop if: burning, unusual pain, or redness persisting over 30 min",
   valueAnchor: "One professional microcurrent session: €90–€180. The Face Introducer: €88. Once.",
   guaranteeName: "30-Day Money-Back Guarantee",
-  guaranteeDesc: "Use it daily for 30 days. If you see no visible change in skin tone, firmness, or definition, full refund. No form, no questions, no restocking fee.",
+  guaranteeDesc: "Try it for 30 days. Not convinced, for any reason? Full refund. No form, no questions, no restocking fee.",
   bonusStack: [
    { title: "The Face Protocol Guide", desc: "Step-by-step ritual breakdown for all four modes. Which order. Which serum. Which frequency.", value: "€19" },
    { title: "Modality Masterclass PDF", desc: "Mechanism explanation for each technology, so you know exactly what's happening at the cellular level.", value: "€27" },
@@ -302,7 +302,7 @@ export const productConfigs: Record<string, ProductConfig> = {
    { q: "Is it safe around the eyes?", a: "Yes. The device is specifically designed for the periorbital zone with calibrated intensity levels. Avoid direct contact with the eyeball. Always use on closed-eye areas." },
    { q: "Who should not use this device?", a: "Do not use if you have a pacemaker, are pregnant, have eye infections, recent eye surgery, or metal implants near the eye area. Consult your physician with any concerns." },
    { q: "Do I need a special serum?", a: "Any lightweight, water-based eye serum works well. Avoid heavy oils. Our Collagen Face Gel can also be used around the eye area." },
-   { q: "What is your guarantee?", a: "We offer a 30-Day Ritual Guarantee. If you don't see visible improvement within 30 days of consistent daily use, contact us for a full refund." },
+   { q: "What is your guarantee?", a: "We offer a 30-Day Money-Back Guarantee. Not convinced after 30 days, for any reason? Contact us for a full refund." },
   ],
   studyCards: [
    { technology: "Microcurrent · ATP", studyTitle: "The Effects of Electric Currents on ATP Generation, Protein Synthesis, and Membrane Transport in Rat Skin", journal: "Clinical Orthopaedics and Related Research, 1982", url: "https://scholar.google.com/scholar?q=cheng+1982+electric+currents+ATP+generation" },
@@ -324,7 +324,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   sessionInfo: "Session time: 3 minutes per eye · Frequency: daily · Stop if: burning sensation, unusual pain, or persistent redness",
   valueAnchor: "Eye-zone clinic treatments: €80–€150 per session. Eye Activator: €88. Once.",
   guaranteeName: "30-Day Money-Back Guarantee",
-  guaranteeDesc: "Use it daily for 30 days. If you see no visible change in puffiness, dark circles, or fine lines, full refund. No questions.",
+  guaranteeDesc: "Try it for 30 days. Not convinced, for any reason? Full refund. No questions.",
   bonusStack: [
    { title: "The Eye Zone Protocol Guide", desc: "Morning depuff routine vs. evening repair routine, exactly which movements, which order.", value: "€17" },
    { title: "Serum Pairing Guide", desc: "Which eye actives (peptides, caffeine, retinol) work with sonic delivery vs. heat mode.", value: "€14" },
@@ -394,7 +394,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   sessionInfo: "Session time: 3–5 min per mode · Frequency: 3–5× per week · IPX3 waterproof · Stop if: burning sensation, unusual pain, or persistent redness",
   valueAnchor: "Five modes. Five clinical mechanisms. One €147 device vs. €150+ per multi-modality clinic session.",
   guaranteeName: "30-Day Money-Back Guarantee",
-  guaranteeDesc: "30 days daily use. No visible improvement, full refund, no friction.",
+  guaranteeDesc: "30 days, any reason. Full refund, no friction.",
   bonusStack: [
    { title: "The 5-Mode Prescription Guide", desc: "Which mode for which concern. Glow, Line, Contour, Pore, Acne, prescribed not randomised.", value: "€22" },
    { title: "Electroporation Serum Guide", desc: "Which active molecules benefit from electroporation delivery vs. standard application.", value: "€17" },
@@ -463,7 +463,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   sessionInfo: "Session time: 5–7 minutes · Frequency: daily, every morning · Stop if: burning sensation, unusual pain, or persistent redness",
   valueAnchor: "Traditional gua sha facial: €60–€90 per session. Gua Sha Frequency: €88. Once.",
   guaranteeName: "30-Day Money-Back Guarantee",
-  guaranteeDesc: "30 days daily practice. No visible change in tension, definition, or drainage, full refund, no friction.",
+  guaranteeDesc: "30 days, any reason. Full refund, no friction.",
   bonusStack: [
    { title: "The Gua Sha Ritual Map", desc: "Stroke-by-stroke guide following facial anatomy. Exactly which direction, which pressure, which zones in which order.", value: "€17" },
    { title: "Facial Oil Pairing Guide", desc: "Which oils conduct best with microcurrent. Which actives to layer after each stroke sequence.", value: "€14" },
@@ -532,7 +532,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   sessionInfo: "Session time: 5–8 minutes · Frequency: 4–5× per week · Stop if: burning sensation, unusual pain, or persistent redness",
   valueAnchor: "Microcurrent clinic sessions: €90–€150 each. Skin Pulse: €88. Once.",
   guaranteeName: "30-Day Money-Back Guarantee",
-  guaranteeDesc: "30 days, 5× per week. No visible change in texture, tone, or firmness, full refund, no form.",
+  guaranteeDesc: "30 days, any reason. Full refund, no form.",
   bonusStack: [
    { title: "The Circuit Protocol Guide", desc: "Zone-by-zone sequence, which area, how long, what order. The dual-ball circuit breaks without both balls in contact.", value: "€19" },
    { title: "Serum Compatibility Guide", desc: "Which conductors work best. Why oil-based products break the circuit and which water-based actives to use instead.", value: "€14" },
@@ -601,7 +601,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   sessionInfo: "Session time: 8–12 minutes · Frequency: 3–5× per week · Stop if: burning sensation, unusual pain, or persistent redness",
   valueAnchor: "Clinical EMS facial sessions: €80–€150/session. Sculpt Wand: €88. Once.",
   guaranteeName: "30-Day Money-Back Guarantee",
-  guaranteeDesc: "30 days of consistent EMS training. No visible change in definition or drainage, full refund, no friction.",
+  guaranteeDesc: "30 days, any reason. Full refund, no friction.",
   bonusStack: [
    { title: "The EMS Training Schedule", desc: "Week-by-week intensity progression map. Same progressive overload logic as athletic training, applied to facial muscle.", value: "€19" },
    { title: "Zone Targeting Guide", desc: "Which areas to hold, how long, in which sequence. Chin, jaw, cheekbones, forehead, each zone has a protocol.", value: "€17" },
@@ -671,7 +671,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   sessionInfo: "Session time: 8 minutes · Frequency: daily · Stop if: burning sensation, unusual pain, or persistent redness",
   valueAnchor: "Eye-zone clinic red light session: €80–€150. Frame Pulse: €149. Once.",
   guaranteeName: "30-Day Money-Back Guarantee",
-  guaranteeDesc: "30 days daily use. No visible response in tone, firmness, or upper-face definition, full refund. We cover return shipping.",
+  guaranteeDesc: "30 days, any reason. Full refund. We cover return shipping.",
   bonusStack: [
    { title: "The Frame Pulse Protocol Guide", desc: "Daily timing, intensity progression, serum pairing. The clinical wavelength is half the protocol, the discipline is the other half.", value: "€19" },
    { title: "Photobiomodulation Science Primer", desc: "What the 630–660nm wavelength actually does at the cellular level. PubMed citations, mechanism diagrams.", value: "€27" },
