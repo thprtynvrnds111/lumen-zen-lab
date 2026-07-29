@@ -92,15 +92,20 @@ describe("Breath", () => {
         cancelScheduledValues: vi.fn(),
       });
       const oscillators: ReturnType<typeof makeOsc>[] = [];
+      const gains: ReturnType<typeof makeGain>[] = [];
       function makeOsc() {
         return {
           type: "sine",
           frequency: param(),
+          detune: param(),
           start: vi.fn(),
           stop: vi.fn(),
           connect: vi.fn(),
           disconnect: vi.fn(),
         };
+      }
+      function makeGain() {
+        return { gain: param(), connect: vi.fn(), disconnect: vi.fn() };
       }
       const ctor = vi.fn().mockImplementation(() => ({
         state: "running",
@@ -111,15 +116,15 @@ describe("Breath", () => {
           oscillators.push(o);
           return o;
         }),
-        createGain: vi.fn().mockImplementation(() => ({
-          gain: param(),
-          connect: vi.fn(),
-          disconnect: vi.fn(),
-        })),
+        createGain: vi.fn().mockImplementation(() => {
+          const g = makeGain();
+          gains.push(g);
+          return g;
+        }),
         destination: {},
       }));
       (window as unknown as { AudioContext: unknown }).AudioContext = ctor;
-      return { ctor, oscillators };
+      return { ctor, oscillators, gains };
     }
 
     afterEach(() => {
@@ -143,6 +148,40 @@ describe("Breath", () => {
       await settle(700);
       await settle(900); // runPhase(0) fires
       expect(ctor).toHaveBeenCalledTimes(1);
+    });
+
+    it("meditate session builds a 3-oscillator 528 Hz drone (two detuned + octave-down sub)", async () => {
+      const { oscillators } = mockAudioContext();
+      renderBreath();
+      fireEvent.click(screen.getAllByText("5 MIN")[0]); // meditate
+      await settle(700);
+      await settle(900);
+      expect(oscillators).toHaveLength(3);
+      const freqs = oscillators.map((o) => o.frequency.setValueAtTime.mock.calls[0][0]);
+      expect(freqs).toEqual([528, 528, 264]);
+      expect(oscillators[0].detune.setValueAtTime.mock.calls[0][0]).toBe(2);
+      expect(oscillators[1].detune.setValueAtTime.mock.calls[0][0]).toBe(-2);
+    });
+
+    it("reset session drones at 396 Hz", async () => {
+      const { oscillators } = mockAudioContext();
+      renderBreath();
+      fireEvent.click(screen.getAllByText("2 MIN")[0]); // reset chip
+      await settle(700);
+      await settle(900);
+      expect(oscillators.map((o) => o.frequency.setValueAtTime.mock.calls[0][0])).toEqual([396, 396, 198]);
+    });
+
+    it("phase changes ramp gain, never frequency", async () => {
+      const { oscillators, gains } = mockAudioContext();
+      renderBreath();
+      fireEvent.click(screen.getAllByText("5 MIN")[0]);
+      await settle(700);
+      await settle(900); // phase 0 — graph created + first ramp
+      for (const o of oscillators) {
+        expect(o.frequency.linearRampToValueAtTime).not.toHaveBeenCalled();
+      }
+      expect(gains.some((g) => g.gain.linearRampToValueAtTime.mock.calls.length > 0)).toBe(true);
     });
   });
 });

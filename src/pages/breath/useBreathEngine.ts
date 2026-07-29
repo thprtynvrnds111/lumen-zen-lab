@@ -16,13 +16,14 @@
 import { useCallback, useEffect, useReducer, useRef } from "react";
 import {
   chipMins,
-  FREQ_MAX,
-  FREQ_MIN,
+  DETUNE_CENTS,
+  droneHz,
   GAIN_MAX,
   GAIN_MIN,
   modeNames,
   patterns,
   protocolDefs,
+  SUB_GAIN_RATIO,
   type BreathMode,
   type ProtocolDef,
 } from "./breathData";
@@ -113,8 +114,8 @@ export function useBreathEngine() {
   const autoTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lockRef = useRef<{ release: () => void } | null>(null);
   const audioRef = useRef<AudioContext | null>(null);
-  // The live tone-glide graph (osc -> gain -> destination), or null when torn down.
-  const toneNodesRef = useRef<{ osc: OscillatorNode; gain: GainNode } | null>(null);
+  // The live drone graph (3 oscs -> [subGain] -> master -> destination), or null when torn down.
+  const toneNodesRef = useRef<{ oscs: OscillatorNode[]; gains: GainNode[]; master: GainNode } | null>(null);
   const toneFadeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   // Countdown anchored to a wall-clock deadline so background-tab timer
   // throttling can't stretch a 5-minute session.
@@ -154,8 +155,10 @@ export function useBreathEngine() {
     }
   }, []);
 
-  // Lazily creates the continuous tone graph on first enable (session start
-  // with tone already on, or a mid-session toggle-on). No-op if already live.
+  // Lazily creates the drone graph on first enable (session start with tone on,
+  // or a mid-session toggle-on). Three sines at the mode's healing frequency:
+  // two detuned ±DETUNE_CENTS for a soft chorus, one an octave down for body.
+  // Pitch is fixed for the session; only gain moves with the breath.
   const ensureToneGraph = useCallback((frac: number) => {
     try {
       const Ctx =
@@ -165,38 +168,48 @@ export function useBreathEngine() {
       const ctx = audioRef.current || (audioRef.current = new Ctx());
       if (ctx.state === "suspended") ctx.resume();
       if (toneNodesRef.current) return;
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = "sine";
+      const mode = stateRef.current.mode;
+      if (!mode) return;
+      const base = droneHz[mode];
       const t = ctx.currentTime;
-      osc.frequency.setValueAtTime(FREQ_MIN + (FREQ_MAX - FREQ_MIN) * frac, t);
-      gain.gain.setValueAtTime(0.0001, t);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start(t);
-      toneNodesRef.current = { osc, gain };
+      const master = ctx.createGain();
+      master.gain.setValueAtTime(GAIN_MIN + (GAIN_MAX - GAIN_MIN) * frac, t);
+      master.connect(ctx.destination);
+      const sub = ctx.createGain();
+      sub.gain.setValueAtTime(SUB_GAIN_RATIO, t);
+      sub.connect(master);
+      const mk = (freq: number, cents: number, dest: AudioNode) => {
+        const osc = ctx.createOscillator();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(freq, t);
+        osc.detune.setValueAtTime(cents, t);
+        osc.connect(dest);
+        osc.start(t);
+        return osc;
+      };
+      const oscs = [
+        mk(base, DETUNE_CENTS, master),
+        mk(base, -DETUNE_CENTS, master),
+        mk(base / 2, 0, sub),
+      ];
+      toneNodesRef.current = { oscs, gains: [master, sub], master };
     } catch {
       /* audio unsupported — ignore */
     }
   }, []);
 
-  // Ramps the live graph's pitch + gain to the target breath fraction over
-  // durSecs, synced to the orb. Cancels any in-flight ramp first so phase
-  // changes never stack.
+  // Ramps the master gain to the target breath fraction over durSecs, synced to
+  // the orb. Pitch never moves. Cancels any in-flight ramp so phases never stack.
   const rampTone = useCallback((frac: number, durSecs: number) => {
     const ctx = audioRef.current;
     const nodes = toneNodesRef.current;
     if (!ctx || !nodes) return;
     try {
       const t = ctx.currentTime;
-      const freqTarget = FREQ_MIN + (FREQ_MAX - FREQ_MIN) * frac;
       const gainTarget = GAIN_MIN + (GAIN_MAX - GAIN_MIN) * frac;
-      nodes.osc.frequency.cancelScheduledValues(t);
-      nodes.osc.frequency.setValueAtTime(nodes.osc.frequency.value, t);
-      nodes.osc.frequency.linearRampToValueAtTime(freqTarget, t + durSecs);
-      nodes.gain.gain.cancelScheduledValues(t);
-      nodes.gain.gain.setValueAtTime(nodes.gain.gain.value, t);
-      nodes.gain.gain.linearRampToValueAtTime(gainTarget, t + durSecs);
+      nodes.master.gain.cancelScheduledValues(t);
+      nodes.master.gain.setValueAtTime(nodes.master.gain.value, t);
+      nodes.master.gain.linearRampToValueAtTime(gainTarget, t + durSecs);
     } catch {
       /* ignore */
     }
@@ -226,28 +239,32 @@ export function useBreathEngine() {
     if (!ctx || !nodes) return;
     try {
       const t = ctx.currentTime;
-      nodes.gain.gain.cancelScheduledValues(t);
-      nodes.gain.gain.setValueAtTime(nodes.gain.gain.value, t);
-      nodes.gain.gain.linearRampToValueAtTime(0.0001, t + fadeSecs);
+      nodes.master.gain.cancelScheduledValues(t);
+      nodes.master.gain.setValueAtTime(nodes.master.gain.value, t);
+      nodes.master.gain.linearRampToValueAtTime(0.0001, t + fadeSecs);
     } catch {
       /* ignore */
     }
     toneFadeTimer.current = setTimeout(
       () => {
-        try {
-          nodes.osc.stop();
-        } catch {
-          /* ignore */
+        for (const osc of nodes.oscs) {
+          try {
+            osc.stop();
+          } catch {
+            /* ignore */
+          }
+          try {
+            osc.disconnect();
+          } catch {
+            /* ignore */
+          }
         }
-        try {
-          nodes.osc.disconnect();
-        } catch {
-          /* ignore */
-        }
-        try {
-          nodes.gain.disconnect();
-        } catch {
-          /* ignore */
+        for (const g of nodes.gains) {
+          try {
+            g.disconnect();
+          } catch {
+            /* ignore */
+          }
         }
       },
       Math.max(0, fadeSecs) * 1000,

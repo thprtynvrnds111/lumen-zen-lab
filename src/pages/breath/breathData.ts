@@ -44,12 +44,19 @@ export const chipMins: Record<BreathMode, number[]> = {
   reset: [2, 3, 5],
 };
 
-/** Tone glide pitch range (Hz) — oscillator frequency at f=0 (exhale) vs f=1 (inhale). */
-export const FREQ_MIN = 96;
-export const FREQ_MAX = 144;
-/** Tone glide gain range (linear) — nonzero floor so ramps never cross zero and click. */
-export const GAIN_MIN = 0.015;
-export const GAIN_MAX = 0.055;
+/** Per-mode drone frequency (Hz). Fixed for the whole session — the named frequency IS the feature. */
+export const droneHz: Record<BreathMode, number> = {
+  meditate: 528,
+  restore: 432,
+  reset: 396,
+};
+/** Breath-swell master gain range (linear) — exhale floor / inhale peak. Nonzero floor so ramps never click. */
+export const GAIN_MIN = 0.03;
+export const GAIN_MAX = 0.1;
+/** Octave-down sub oscillator gain, as a fraction of master. */
+export const SUB_GAIN_RATIO = 0.35;
+/** Chorus detune (± cents) for the two unison oscillators. */
+export const DETUNE_CENTS = 2;
 
 export function patterns(mode: BreathMode, evening: boolean): Phase[] {
   if (mode === "meditate")
