@@ -653,6 +653,7 @@ export function useBreathEngine() {
       setState({ pulseOn: !s.pulseOn });
     },
     toneOn: st.toneOn,
+    droneText: st.mode && st.toneOn ? droneHz[st.mode] + " HZ · THE TONE" : "",
     pulseOn: st.pulseOn,
     toneState: st.toneOn ? "ON" : "OFF",
     pulseState: st.pulseOn ? "ON" : "OFF",

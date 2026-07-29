@@ -183,5 +183,21 @@ describe("Breath", () => {
       }
       expect(gains.some((g) => g.gain.linearRampToValueAtTime.mock.calls.length > 0)).toBe(true);
     });
+
+    it("session shows the mode's drone label when tone is on", async () => {
+      mockAudioContext();
+      renderBreath();
+      fireEvent.click(screen.getAllByText("5 MIN")[0]); // meditate
+      await settle(700);
+      expect(screen.getByText("528 HZ · THE TONE")).toBeInTheDocument();
+    });
+
+    it("no drone label when tone preference is off", async () => {
+      localStorage.setItem("zb_cues", JSON.stringify({ tone: false, pulse: false }));
+      renderBreath();
+      fireEvent.click(screen.getAllByText("2 MIN")[0]); // reset
+      await settle(700);
+      expect(screen.queryByText(/HZ · THE TONE/)).not.toBeInTheDocument();
+    });
   });
 });

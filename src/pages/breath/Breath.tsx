@@ -511,6 +511,10 @@ export default function Breath() {
                 <div style={{ position: "absolute", bottom: "15%", left: 0, right: 0, textAlign: "center", fontWeight: 300, fontSize: "9.5px", letterSpacing: "0.24em", color: "rgba(198,160,124,0.7)", paddingLeft: "0.24em" }}>0.09 HZ · THE RESONANCE RATE</div>
               )}
 
+              {v.droneText && (
+                <div style={{ position: "absolute", bottom: "12.5%", left: 0, right: 0, textAlign: "center", fontWeight: 300, fontSize: "9.5px", letterSpacing: "0.24em", color: "rgba(46,216,168,0.55)", paddingLeft: "0.24em" }}>{v.droneText}</div>
+              )}
+
               <div style={{ position: "absolute", bottom: "9%", left: 0, right: 0, textAlign: "center", fontWeight: 300, fontSize: "11px", letterSpacing: "0.24em", color: "rgba(247,244,240,0.35)", paddingLeft: "0.24em" }}>{v.remainingText}</div>
             </div>
           )}
