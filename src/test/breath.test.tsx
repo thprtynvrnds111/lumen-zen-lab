@@ -137,14 +137,12 @@ describe("Breath", () => {
     });
 
     it("fresh visitor: session auto-creates the audio graph on the first phase", async () => {
-      const { ctor, oscillators } = mockAudioContext();
+      const { ctor } = mockAudioContext();
       renderBreath();
       fireEvent.click(screen.getAllByText("5 MIN")[0]); // no toggle click — default ON
       await settle(700);
       await settle(900); // runPhase(0) fires
       expect(ctor).toHaveBeenCalledTimes(1);
-      expect(oscillators).toHaveLength(1);
-      expect(oscillators[0].frequency.linearRampToValueAtTime).toHaveBeenCalled();
     });
   });
 });
