@@ -231,12 +231,15 @@ export function useBreathEngine() {
   const teardownTone = useCallback((fadeSecs: number) => {
     const ctx = audioRef.current;
     const nodes = toneNodesRef.current;
+    // No live graph → nothing to do. Must NOT clear toneFadeTimer here: a
+    // second teardown call (finish → toCredits both tear down) would cancel
+    // the first call's pending stop and orphan its oscillators forever.
+    if (!ctx || !nodes) return;
     toneNodesRef.current = null;
     if (toneFadeTimer.current) {
       clearTimeout(toneFadeTimer.current);
       toneFadeTimer.current = null;
     }
-    if (!ctx || !nodes) return;
     try {
       const t = ctx.currentTime;
       nodes.master.gain.cancelScheduledValues(t);

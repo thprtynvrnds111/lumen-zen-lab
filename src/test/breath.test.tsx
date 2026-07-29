@@ -158,6 +158,21 @@ describe("Breath", () => {
       expect(ctor).toHaveBeenCalledTimes(1);
     });
 
+    it("ending a session stops every oscillator (END → finish + toCredits double-teardown must not orphan the graph)", async () => {
+      const { oscillators } = mockAudioContext();
+      renderBreath();
+      fireEvent.click(screen.getAllByText("5 MIN")[0]);
+      await settle(700);
+      await settle(900); // graph live
+      expect(oscillators).toHaveLength(3);
+      fireEvent.click(screen.getByText("END"));
+      await settle(1200); // past the 300ms fade-stop timer and the credits fade
+      for (const o of oscillators) {
+        expect(o.stop).toHaveBeenCalled();
+        expect(o.disconnect).toHaveBeenCalled();
+      }
+    });
+
     it("saved zb_cues tone:false: AudioContext is NOT constructed on click", () => {
       localStorage.setItem("zb_cues", JSON.stringify({ tone: false, pulse: false }));
       const { ctor } = mockAudioContext();
