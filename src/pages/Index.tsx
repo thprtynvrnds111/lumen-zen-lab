@@ -1,4 +1,5 @@
 import { SEO } from "@/components/SEO";
+import { SOCIAL_SAME_AS } from "@/lib/socials";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { HeroSection } from "@/components/zential/HeroSection";
@@ -40,15 +41,23 @@ const PriceGuaranteeSection = lazy(() =>
  }))
 );
 
+// NOTE: this page is not routed. "/" renders Storefront (App.tsx:89,
+// entry-server.tsx:80); Index is only lazily imported and never mounted, so
+// nothing below reaches a crawler today. Fixed anyway so re-routing it can't
+// reintroduce the bug: sameAs was `[]`, which asserts "this brand has no other
+// profiles" — the opposite of what the profiles are for. The @id matches the
+// Organization in index.html so the two blocks merge into one entity instead of
+// reading as two companies on one page.
 const homepageJsonLd = {
  "@context": "https://schema.org",
  "@type": "Organization",
+ "@id": "https://zentialpure.com/#organization",
  name: "Zential Pure",
  url: "https://zentialpure.com",
  logo: "https://zentialpure.com/og-image.jpg",
  description:
   "Three Protocols. One system. EMS · Microcurrent · Thermal, engineered for daily home use.",
- sameAs: [],
+ sameAs: SOCIAL_SAME_AS,
  contactPoint: {
   "@type": "ContactPoint",
   contactType: "customer service",

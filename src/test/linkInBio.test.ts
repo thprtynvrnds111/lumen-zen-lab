@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { TILES, FOOT_LINKS, PLATFORMS, BRAND, ENTRY_PRICE_EUR, SYSTEM_PRICE_EUR } from "../../scripts/links/tiles.mjs";
+import { TILES, FOOT_LINKS, PLATFORMS, SOCIALS, BRAND, ENTRY_PRICE_EUR, SYSTEM_PRICE_EUR } from "../../scripts/links/tiles.mjs";
 import { renderPage, withUtm } from "../../scripts/links/template.mjs";
 
 /**
@@ -106,9 +106,11 @@ describe("rendered page", () => {
 
   /** Anchor hrefs only — <link rel=preload> hrefs are not navigation. */
   const anchors = (doc: string) => [...doc.matchAll(/<a [^>]*href="([^"]+)"/g)].map((m) => m[1]);
+  /** Site navigation. The social row points off-site and carries no utm. */
+  const siteAnchors = (doc: string) => anchors(doc).filter((h) => h.startsWith("/"));
 
   it("stamps the platform utm on every outbound link", () => {
-    const hrefs = anchors(html);
+    const hrefs = siteAnchors(html);
     expect(hrefs.length).toBe(1 + TILES.length + FOOT_LINKS.length); // hero + tiles + foot
     for (const h of hrefs) {
       expect(h, h).toContain("utm_source=instagram");
@@ -124,9 +126,52 @@ describe("rendered page", () => {
 
     // Compare the navigation, not the whole document: the inlined CSS carries a
     // comment naming both platforms, so a blanket string swap is not a fair diff.
+    // Social links are excluded here and covered by their own block below — they
+    // legitimately differ per platform (each page hides its own network).
     const normalise = (hrefs: string[], source: string) =>
       hrefs.map((h) => h.replace(`utm_source=${source}`, "utm_source=X"));
-    expect(normalise(anchors(ttHtml), "tiktok")).toEqual(normalise(anchors(html), "instagram"));
+    expect(normalise(siteAnchors(ttHtml), "tiktok")).toEqual(
+      normalise(siteAnchors(html), "instagram")
+    );
+  });
+
+  describe("social row", () => {
+    const ttHtml = renderPage({ platform: tt });
+    const external = (doc: string) => anchors(doc).filter((h) => h.startsWith("http"));
+
+    it("offers every network except the one the visitor came from", () => {
+      // A link from /ig back to Instagram is a round trip, not a transfer.
+      expect(external(html)).toEqual(
+        SOCIALS.filter((s) => s.platform !== "ig").map((s) => s.href)
+      );
+      expect(external(ttHtml)).toEqual(
+        SOCIALS.filter((s) => s.platform !== "tt").map((s) => s.href)
+      );
+    });
+
+    it("always carries Pinterest, the network neither bio page belongs to", () => {
+      for (const doc of [html, ttHtml]) {
+        expect(doc).toContain("https://www.pinterest.com/zentialpure/");
+      }
+    });
+
+    it("marks profile links rel=me so they bind to the brand entity", () => {
+      const rels = [...html.matchAll(/<a href="https:[^"]+"([^>]*)>/g)].map((m) => m[1]);
+      expect(rels.length).toBeGreaterThan(0);
+      for (const attrs of rels) {
+        expect(attrs).toContain('rel="me noopener"');
+        expect(attrs).toContain("aria-label=");
+      }
+    });
+
+    it("draws each mark as an inline path — no external asset, no icon font", () => {
+      for (const s of SOCIALS) {
+        if (s.platform === "ig") continue; // hidden on the Instagram page
+        expect(html, s.label).toContain(`<path d="${s.path}"/>`);
+      }
+      // The single render-blocking subresource stays the font, and nothing else.
+      expect(html).not.toMatch(/<img [^>]*src="https?:/i);
+    });
   });
 
   it("ships no JavaScript", () => {

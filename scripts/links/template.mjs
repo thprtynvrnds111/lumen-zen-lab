@@ -9,7 +9,7 @@
  *     is only ever opened from a phone's in-app browser.
  */
 
-import { BRAND, TILES, FOOT_LINKS, SITE } from "./tiles.mjs";
+import { BRAND, TILES, FOOT_LINKS, SOCIALS, SITE } from "./tiles.mjs";
 
 const escapeHtml = (s) =>
   String(s)
@@ -111,6 +111,18 @@ main{max-width:480px;margin:0 auto}
 }
 
 .foot{margin:20px 0 0;text-align:center}
+
+/* Social row. 44px targets (the iOS minimum) but visually 20px marks, so the
+   row reads as small type rather than as a second tile rank. */
+.socials{
+  display:flex;justify-content:center;gap:4px;
+  margin:0 0 14px;padding:0;list-style:none;
+}
+.socials a{
+  display:flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:14px;color:#8a8a8e;
+}
+.socials svg{width:20px;height:20px;display:block;fill:currentColor}
 .foot-links{
   display:flex;justify-content:center;gap:6px;
   margin:0 0 10px;padding:0;list-style:none;
@@ -131,6 +143,7 @@ main{max-width:480px;margin:0 auto}
   .tile-sub{color:#a1a1a6}
   .chev{border-color:#6a6a70}
   .foot a{color:#a1a1a6}
+  .socials a{color:#8a8a8e}
 }
 `.trim();
 
@@ -151,6 +164,18 @@ export function renderPage({ platform }) {
         </a>
       </li>`;
   }).join("\n");
+
+  // Drop the platform the visitor arrived from — a link from /ig back to
+  // Instagram is a round trip, not a transfer.
+  const socials = SOCIALS.filter((s) => s.platform !== platform.slug)
+    .map(
+      (s) => `        <li><a href="${escapeHtml(s.href)}" rel="me noopener" target="_blank" aria-label="${escapeHtml(
+        `${BRAND.wordmark} on ${s.label} — ${s.handle}`
+      )}">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="${s.path}"/></svg>
+        </a></li>`
+    )
+    .join("\n");
 
   const footLinks = FOOT_LINKS.map(
     (l) => `        <li><a href="${escapeHtml(withUtm(l.href, utm))}">${escapeHtml(l.label)}</a></li>`
@@ -197,6 +222,9 @@ ${tiles}
   </ul>
 
   <div class="foot">
+    <ul class="socials">
+${socials}
+    </ul>
     <ul class="foot-links">
 ${footLinks}
     </ul>

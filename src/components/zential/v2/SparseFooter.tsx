@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ZenMascot } from "@/components/zential/ZenMascot";
+import { SOCIALS } from "@/lib/socials";
 
 const sections = [
   {
@@ -201,6 +202,28 @@ export function SparseFooter() {
               Edition {year}  ·  zentialpure.com
             </p>
           </div>
+          {/* Profile links. rel="me" is the machine-readable half of the same
+              claim the Organization JSON-LD makes with sameAs — both are needed
+              for search and AI answer engines to bind these accounts to the
+              brand entity rather than treat them as unrelated pages. */}
+          <ul className="flex items-center gap-1 order-first md:order-none">
+            {SOCIALS.map((s) => (
+              <li key={s.platform}>
+                <a
+                  href={s.href}
+                  rel="me noopener noreferrer"
+                  target="_blank"
+                  aria-label={`Zential Pure on ${s.label} — ${s.handle}`}
+                  className="flex h-11 w-11 items-center justify-center rounded-xl text-[#F7F4F0]/40 hover:text-[#2ED8A8] transition-colors"
+                >
+                  <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-current" aria-hidden>
+                    <path d={s.path} />
+                  </svg>
+                </a>
+              </li>
+            ))}
+          </ul>
+
           <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#F7F4F0]/30 text-right">
             Designed in Rotterdam.
             <br className="md:hidden" />
