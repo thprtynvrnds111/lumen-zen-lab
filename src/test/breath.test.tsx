@@ -71,6 +71,17 @@ describe("Breath", () => {
     expect(screen.getByText("Meditate")).toBeInTheDocument();
   });
 
+  it("TONE cue reads ON for a fresh visitor", () => {
+    renderBreath();
+    expect(screen.getByRole("button", { name: "TONE · ON" })).toBeInTheDocument();
+  });
+
+  it("a saved zb_cues tone:false loads as OFF", () => {
+    localStorage.setItem("zb_cues", JSON.stringify({ tone: false, pulse: false }));
+    renderBreath();
+    expect(screen.getByRole("button", { name: "TONE · OFF" })).toBeInTheDocument();
+  });
+
   describe("tone glide", () => {
     /** Minimal AudioContext double: enough surface for the tone-glide graph. */
     function mockAudioContext() {
@@ -115,7 +126,8 @@ describe("Breath", () => {
       delete (window as unknown as { AudioContext?: unknown }).AudioContext;
     });
 
-    it("starting a session with tone OFF never constructs an AudioContext", async () => {
+    it("a saved tone:false preference: session never constructs an AudioContext", async () => {
+      localStorage.setItem("zb_cues", JSON.stringify({ tone: false, pulse: false }));
       const { ctor } = mockAudioContext();
       renderBreath();
       fireEvent.click(screen.getAllByText("5 MIN")[0]);
@@ -124,15 +136,12 @@ describe("Breath", () => {
       expect(ctor).not.toHaveBeenCalled();
     });
 
-    it("session + toggle tone ON creates the graph and ramps frequency on the next phase", async () => {
+    it("fresh visitor: session auto-creates the audio graph on the first phase", async () => {
       const { ctor, oscillators } = mockAudioContext();
       renderBreath();
-      // Tone toggle only renders on the home screen — enable it before starting.
-      fireEvent.click(screen.getByRole("button", { name: /TONE/ }));
-      fireEvent.click(screen.getAllByText("5 MIN")[0]);
+      fireEvent.click(screen.getAllByText("5 MIN")[0]); // no toggle click — default ON
       await settle(700);
-      await settle(900); // past the 800ms first-phase timer — runPhase(0) fires
-
+      await settle(900); // runPhase(0) fires
       expect(ctor).toHaveBeenCalledTimes(1);
       expect(oscillators).toHaveLength(1);
       expect(oscillators[0].frequency.linearRampToValueAtTime).toHaveBeenCalled();

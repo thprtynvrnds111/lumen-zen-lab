@@ -88,7 +88,7 @@ const INITIAL: EngineState = {
   breaths: 0,
   count: 0,
   completed: false,
-  toneOn: false,
+  toneOn: true,
   pulseOn: false,
   protocol: null,
   protoIdx: 0,
