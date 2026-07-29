@@ -156,7 +156,7 @@ export function useBreathEngine() {
   }, []);
 
   // Lazily creates the drone graph on first enable (session start with tone on,
-  // or a mid-session toggle-on). Three sines at the mode's healing frequency:
+  // or a mid-session toggle-on). Three sines at the mode's named frequency:
   // two detuned ±DETUNE_CENTS for a soft chorus, one an octave down for body.
   // Pitch is fixed for the session; only gain moves with the breath.
   const ensureToneGraph = useCallback((frac: number) => {
@@ -318,6 +318,24 @@ export function useBreathEngine() {
     (mode: BreathMode, minutes: number, evening?: boolean) => {
       clearTimers();
       setState({ fadeOut: true });
+      // iOS Safari only unlocks an AudioContext when it's created/resumed
+      // synchronously inside a user-gesture call stack. Everything else below
+      // runs inside setTimeout (fade/phase timers), which is outside that
+      // stack — so do this here, before scheduling anything, not in
+      // ensureToneGraph (which builds the oscillator graph later).
+      if (stateRef.current.toneOn) {
+        try {
+          const Ctx =
+            window.AudioContext ||
+            (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+          if (Ctx) {
+            const ctx = audioRef.current || (audioRef.current = new Ctx());
+            if (ctx.state === "suspended") ctx.resume();
+          }
+        } catch {
+          /* audio unsupported — ignore */
+        }
+      }
       fadeTimer.current = setTimeout(() => {
         const startScale = mode === "meditate" ? 0.66 : mode === "restore" ? 0.62 : 0.58;
         setState({

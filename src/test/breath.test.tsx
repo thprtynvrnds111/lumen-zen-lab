@@ -150,6 +150,22 @@ describe("Breath", () => {
       expect(ctor).toHaveBeenCalledTimes(1);
     });
 
+    it("fresh visitor: AudioContext is constructed synchronously in the click stack (iOS gesture rule), before any timer fires", () => {
+      const { ctor } = mockAudioContext();
+      renderBreath();
+      fireEvent.click(screen.getAllByText("5 MIN")[0]);
+      // No settle() — assert immediately after the click, before the fade/phase timers run.
+      expect(ctor).toHaveBeenCalledTimes(1);
+    });
+
+    it("saved zb_cues tone:false: AudioContext is NOT constructed on click", () => {
+      localStorage.setItem("zb_cues", JSON.stringify({ tone: false, pulse: false }));
+      const { ctor } = mockAudioContext();
+      renderBreath();
+      fireEvent.click(screen.getAllByText("5 MIN")[0]);
+      expect(ctor).not.toHaveBeenCalled();
+    });
+
     it("meditate session builds a 3-oscillator 528 Hz drone (two detuned + octave-down sub)", async () => {
       const { oscillators } = mockAudioContext();
       renderBreath();
@@ -198,6 +214,29 @@ describe("Breath", () => {
       fireEvent.click(screen.getAllByText("2 MIN")[0]); // reset
       await settle(700);
       expect(screen.queryByText(/HZ · THE TONE/)).not.toBeInTheDocument();
+    });
+
+    it("Morning Return protocol: segment 1 (reset) drones at 396 Hz, segment 2 (restore) at 432 Hz — fresh graph per segment", async () => {
+      const { oscillators } = mockAudioContext();
+      renderBreath();
+      fireEvent.click(screen.getByRole("button", { name: "PROTOCOLS" }));
+      await settle(700); // goScreen fade
+      // Morning Return is protocol ( 01 ) — first BEGIN button on the screen.
+      fireEvent.click(screen.getAllByRole("button", { name: "BEGIN" })[0]);
+      await settle(700); // startSession fade -> session screen (reset, 2 min)
+      await settle(900); // runPhase(0) -> ensureToneGraph builds segment-1 drone
+      expect(oscillators).toHaveLength(3);
+      expect(oscillators.map((o) => o.frequency.setValueAtTime.mock.calls[0][0])).toEqual([396, 396, 198]);
+
+      // Drive the rest of the 2-minute reset segment via fake timers (the
+      // countdown is wall-clock-anchored, so this must cover the full 120s),
+      // then the finish->interlude fade (780ms), the 6s auto-advance into
+      // segment 2, and segment 2's own fade (680ms) + first-phase (800ms).
+      await settle(140000);
+
+      expect(oscillators).toHaveLength(6); // segment 1 torn down, segment 2 is a fresh graph
+      const seg2 = oscillators.slice(3);
+      expect(seg2.map((o) => o.frequency.setValueAtTime.mock.calls[0][0])).toEqual([432, 432, 216]);
     });
   });
 });
