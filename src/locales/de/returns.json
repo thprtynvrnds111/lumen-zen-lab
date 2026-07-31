@@ -9,7 +9,7 @@
   "title": "Einfach. Ehrlich. Schnell.",
   "items": [
    { "title": "Rücksendung Beantragen", "desc": "Schreib uns an info@zentialpure.com innerhalb von 30 Tagen nach der Lieferung mit deiner Bestellnummer." },
-   { "title": "Genehmigung Erhalten", "desc": "Wir prüfen und genehmigen deinen Antrag innerhalb von 24 Stunden, keine langen Fragebögen." },
+   { "title": "Genehmigung Erhalten", "desc": "Wir prüfen und genehmigen deinen Antrag innerhalb von 24–48 Stunden, keine langen Fragebögen." },
    { "title": "Zurücksenden (EU)", "desc": "EU-Bestellungen: wir senden ein vorausbezahltes Rücksendeetikett. US-Bestellungen: behalte das Gerät — wir erstatten ohne Rücksendung." },
    { "title": "Erstattung Erhalten", "desc": "Nach Eingang und Prüfung wird deine Rückerstattung innerhalb von 5 bis 7 Werktagen bearbeitet." }
   ]
@@ -26,7 +26,7 @@
  },
  "cta": {
   "headline": "Möchtest du zurücksenden oder brauchst du Hilfe?",
-  "sub": "Unser Team bearbeitet jede Anfrage innerhalb von 24 Stunden.",
+  "sub": "Unser Team bearbeitet jede Anfrage innerhalb von 24–48 Stunden.",
   "button": "Support Kontaktieren"
  }
 }

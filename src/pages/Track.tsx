@@ -149,8 +149,8 @@ const Track = () => {
                 <p>{error}</p>
                 <p className="text-sm mt-1">
                   Still stuck? Write to{" "}
-                  <a href="mailto:hello@zentialpure.com" className="text-accent underline">
-                    hello@zentialpure.com
+                  <a href="mailto:info@zentialpure.com" className="text-accent underline">
+                    info@zentialpure.com
                   </a>{" "}
                   and we'll find it for you.
                 </p>
@@ -287,8 +287,8 @@ const Track = () => {
 
               <p className="text-sm text-muted-foreground text-center font-light">
                 Something not right?{" "}
-                <a href="mailto:hello@zentialpure.com" className="text-accent underline">
-                  hello@zentialpure.com
+                <a href="mailto:info@zentialpure.com" className="text-accent underline">
+                  info@zentialpure.com
                 </a>
                 . A person answers.
               </p>

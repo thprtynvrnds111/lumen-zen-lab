@@ -9,7 +9,7 @@
     "title": "Simple. Honnête. Rapide.",
     "items": [
       { "title": "Demander un Retour", "desc": "Envoie-nous un e-mail à info@zentialpure.com dans les 30 jours suivant la livraison avec ton numéro de commande." },
-      { "title": "Obtenir l'Approbation", "desc": "Nous examinerons et approuverons ta demande dans les 24 heures, sans longs questionnaires." },
+      { "title": "Obtenir l'Approbation", "desc": "Nous examinerons et approuverons ta demande dans les 24–48 heures, sans longs questionnaires." },
       { "title": "Renvoyer l'Article (UE)", "desc": "Commandes UE : nous envoyons une étiquette de retour prépayée. Commandes US : garde l'appareil — nous remboursons sans retour." },
       { "title": "Être Remboursé", "desc": "Ton remboursement est traité dans les 5 à 7 jours ouvrables. Aucune inspection, aucun frais." }
     ]
@@ -26,7 +26,7 @@
   },
   "cta": {
     "headline": "Prêt à retourner ou besoin d'aide ?",
-    "sub": "Notre équipe traite chaque demande dans les 24 heures.",
+    "sub": "Notre équipe traite chaque demande dans les 24–48 heures.",
     "button": "Contacter le Support"
   }
 }

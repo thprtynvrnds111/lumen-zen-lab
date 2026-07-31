@@ -2,7 +2,7 @@
  "hero": {
   "badge": "Support & Care",
   "headline": "We're Here\nFor Your Ritual.",
-  "sub": "Questions, returns, or guidance, our team responds within 24 hours."
+  "sub": "Questions, returns, or guidance, our team responds within 24–48 hours."
  },
  "quickCards": [
   { "title": "Track Your Order", "desc": "Check your shipment status and delivery timeline." },
@@ -15,7 +15,7 @@
   {
    "label": "Efficacy & Authenticity",
    "items": [
-    { "q": "Does this actually work?", "a": "Yes. Our devices use clinically-studied microcurrent, EMS, and red light therapy, the same technologies found in professional clinics. Most users notice improved skin texture within 2 weeks and visible lift after 3–4 weeks of daily use." },
+    { "q": "Does this actually work?", "a": "Our instruments use EMS, microcurrent, thermal and — on the Restoration line — red light: the same mechanism categories used in professional clinics, each supported by peer-reviewed research where applicable. What they cannot do is work without you. Results build with daily consistency and vary by individual; use yours daily for 14 days before forming a conclusion." },
     { "q": "How do I know this is an authentic device?", "a": "Every Zential device ships with a unique serial number and authenticity seal. We sell exclusively through our official store, no third-party resellers, so you always receive a genuine product with full warranty." }
    ]
   },
@@ -43,7 +43,7 @@
   {
    "label": "After-Sales",
    "items": [
-    { "q": "What if I need help after my purchase?", "a": "Our support team responds within 24 hours. You're covered by a 30-day money-back guarantee, easy returns, and lifetime access to ritual guides and tips." },
+    { "q": "What if I need help after my purchase?", "a": "Our support team responds within 24–48 hours. You're covered by a 30-day money-back guarantee, easy returns, and lifetime access to ritual guides and tips." },
     { "q": "What is the 30-day money-back guarantee?", "a": "Run the ritual for 30 days from delivery. If it has not earned its place, contact us for a full refund — any reason, including no reason. No lengthy process, no pressure." }
    ]
   }

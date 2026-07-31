@@ -236,8 +236,8 @@ export function SparseFooter() {
             not placeholder them. */}
         <p className="mt-6 font-mono text-[10px] tracking-[0.18em] uppercase text-[#F7F4F0]/30">
           Zential Pure B.V.  ·  Rotterdam, the Netherlands  ·{" "}
-          <a href="mailto:hello@zentialpure.com" className="hover:text-[#2ED8A8] transition-colors normal-case tracking-normal">
-            hello@zentialpure.com
+          <a href="mailto:info@zentialpure.com" className="hover:text-[#2ED8A8] transition-colors normal-case tracking-normal">
+            info@zentialpure.com
           </a>
         </p>
       </div>

@@ -2,7 +2,7 @@
  "hero": {
   "badge": "Support & Betreuung",
   "headline": "Wir Sind Für\nDein Ritual Da.",
-  "sub": "Fragen, Rücksendungen oder Beratung, unser Team antwortet innerhalb von 24 Stunden."
+  "sub": "Fragen, Rücksendungen oder Beratung, unser Team antwortet innerhalb von 24–48 Stunden."
  },
  "quickCards": [
   { "title": "Bestellung Verfolgen", "desc": "Überprüfe deinen Versandstatus und die Lieferzeit." },
@@ -15,7 +15,7 @@
   {
    "label": "Wirksamkeit & Echtheit",
    "items": [
-    { "q": "Funktioniert das wirklich?", "a": "Ja. Unsere Geräte nutzen klinisch erforschten Mikrostrom, EMS und Rotlichttherapie, dieselben Technologien wie in professionellen Kliniken. Die meisten Anwenderinnen bemerken eine verbesserte Hauttextur innerhalb von 2 Wochen und einen sichtbaren Lift nach 3–4 Wochen täglicher Anwendung." },
+    { "q": "Funktioniert das wirklich?", "a": "Unsere Instrumente nutzen EMS, Mikrostrom, Wärme und — bei der Restoration-Linie — Rotlicht: dieselben Mechanismus-Kategorien wie in professionellen Kliniken, jeweils durch begutachtete Forschung gestützt, wo anwendbar. Was sie nicht können: ohne dich arbeiten. Ergebnisse entstehen durch tägliche Konsequenz und variieren individuell; nutze dein Gerät 14 Tage täglich, bevor du ein Urteil fällst." },
     { "q": "Wie weiß ich, dass es ein echtes Gerät ist?", "a": "Jedes Zential-Gerät wird mit einer eindeutigen Seriennummer und einem Echtheitssiegel geliefert. Wir verkaufen ausschließlich über unseren offiziellen Shop, keine Drittanbieter, sodass du immer ein echtes Produkt mit voller Garantie erhältst." }
    ]
   },
@@ -43,7 +43,7 @@
   {
    "label": "After-Sales",
    "items": [
-    { "q": "Was wenn ich nach dem Kauf Hilfe brauche?", "a": "Unser Support-Team antwortet innerhalb von 24 Stunden. Du bist durch eine 30-Tage-Geld-zurück-Garantie, einfache Rücksendungen und lebenslangen Zugang zu Ritual-Leitfäden und Tipps abgesichert." },
+    { "q": "Was wenn ich nach dem Kauf Hilfe brauche?", "a": "Unser Support-Team antwortet innerhalb von 24–48 Stunden. Du bist durch eine 30-Tage-Geld-zurück-Garantie, einfache Rücksendungen und lebenslangen Zugang zu Ritual-Leitfäden und Tipps abgesichert." },
     { "q": "Was ist die 30-Tage-Geld-zurück-Garantie?", "a": "Nutze das Gerät 30 Tage ab Lieferung. Hat es seinen Platz nicht verdient, kontaktiere uns für eine vollständige Rückerstattung — aus jedem Grund. Kein langer Prozess, kein Druck." }
    ]
   }

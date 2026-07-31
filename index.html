@@ -105,55 +105,9 @@
     }
     </script>
 
-    <!-- Schema.org: FAQPage -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What does the Zential Pure device do?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Zential Pure combines microcurrent, EMS and thermal technology to lift facial contours, improve skin tone and restore your skin's natural biological frequency — all in a daily home ritual."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How is Zential Pure different from NuFACE or FOREO?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Zential Pure is built as a self-optimization system, not just a beauty device. It combines three technologies (microcurrent, EMS, thermal) that work synergistically, positioning it closer to Whoop or Eight Sleep than traditional skincare tools."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How often should I use it?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "For best results, use Zential Pure daily as part of your morning or evening ritual. Consistent use over 4–8 weeks delivers the most visible lifting and toning results."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is it safe for all skin types?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Zential Pure is designed for all skin types. If you have active skin conditions, implanted devices, or are pregnant, consult your doctor before use."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the return policy?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Zential Pure offers a 30-day satisfaction guarantee. If you are not satisfied with your results, contact our support team within 30 days of delivery."
-          }
-        }
-      ]
-    }
-    </script>
+    <!-- FAQPage schema intentionally NOT in this shell: it would ship on every
+         route, and Google only allows FAQ markup where the FAQ is visible.
+         Pages with a visible FAQ emit their own FAQPage via <SEO jsonLd>. -->
 
     <!-- Preconnects (Shopify storefront + checkout) -->
     <link rel="preconnect" href="https://0d1m9a-w7.myshopify.com" crossorigin />

@@ -26,6 +26,21 @@ const Support = () => {
  const safetyItems = t('safety.items', { returnObjects: true }) as string[];
  const badges = t('guarantee.badges', { returnObjects: true }) as string[];
 
+ // The accordion is Radix — closed answers are not in the DOM, so crawlers
+ // only see the questions. FAQPage JSON-LD ships every answer in the served
+ // HTML regardless of accordion state (same pattern as the compare pages).
+ const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: categories.flatMap((cat) =>
+   cat.items.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+   })),
+  ),
+ };
+
  const handleSubmit = (e: React.FormEvent) => {
   e.preventDefault();
   if (!formState.name.trim() || !formState.email.trim() || !formState.message.trim()) {
@@ -48,7 +63,7 @@ const Support = () => {
 
  return (
   <div className="min-h-screen bg-background">
-   <SEO title="Support, Zential Pure" description="Track orders, start a return, or get help with your device. Zential Pure support responds within 24–48 hours." canonicalUrl="/support" />
+   <SEO title="Support, Zential Pure" description="Track orders, start a return, or get help with your device. Zential Pure support responds within 24–48 hours." canonicalUrl="/support" jsonLd={faqJsonLd} />
    <AnnouncementBar />
    <Header />
    <main>

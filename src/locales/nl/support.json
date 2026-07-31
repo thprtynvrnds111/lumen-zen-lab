@@ -2,7 +2,7 @@
  "hero": {
   "badge": "Support & Zorg",
   "headline": "Wij staan\nKlaar Voor Jou.",
-  "sub": "Vragen, retourzendingen of begeleiding, ons team reageert binnen 24 uur."
+  "sub": "Vragen, retourzendingen of begeleiding, ons team reageert binnen 24–48 uur."
  },
  "quickCards": [
   { "title": "Bestelling Volgen", "desc": "Controleer je verzendstatus en leveringstermijn." },
@@ -15,7 +15,7 @@
   {
    "label": "Werkzaamheid & Authenticiteit",
    "items": [
-    { "q": "Werkt dit echt?", "a": "Ja. Onze apparaten gebruiken klinisch bestudeerde microcurrent, EMS en rood-lichttherapie, dezelfde technologieën als in professionele klinieken. De meeste gebruikers merken verbeterde huidtextuur binnen 2 weken en zichtbare lift na 3–4 weken dagelijks gebruik." },
+    { "q": "Werkt dit echt?", "a": "Onze instrumenten gebruiken EMS, microcurrent, warmte en — bij de Restoration-lijn — rood licht: dezelfde mechanisme-categorieën als in professionele klinieken, elk onderbouwd door peer-reviewed onderzoek waar van toepassing. Wat ze niet kunnen: werken zonder jou. Resultaten bouwen op met dagelijkse consistentie en verschillen per persoon; gebruik het 14 dagen dagelijks voordat je een conclusie trekt." },
     { "q": "Hoe weet ik dat dit een authentiek apparaat is?", "a": "Elk Zential-apparaat wordt geleverd met een uniek serienummer en authenticiteitssleutel. We verkopen uitsluitend via onze officiële winkel, geen externe verkopers, zodat je altijd een origineel product met volledige garantie ontvangt." }
    ]
   },
@@ -43,7 +43,7 @@
   {
    "label": "Na de Verkoop",
    "items": [
-    { "q": "Wat als ik na mijn aankoop hulp nodig heb?", "a": "Ons supportteam reageert binnen 24 uur. Je bent gedekt door een 30 dagen geld-terug-garantie, eenvoudig retourneren en levenslange toegang tot rituele handleidingen en tips." },
+    { "q": "Wat als ik na mijn aankoop hulp nodig heb?", "a": "Ons supportteam reageert binnen 24–48 uur. Je bent gedekt door een 30 dagen geld-terug-garantie, eenvoudig retourneren en levenslange toegang tot rituele handleidingen en tips." },
     { "q": "Wat is de 30 dagen geld-terug-garantie?", "a": "Gebruik het apparaat 30 dagen vanaf levering. Verdient het zijn plek niet, neem dan contact op voor een volledige terugbetaling — om welke reden dan ook. Geen langdurig proces, geen druk." }
    ]
   }

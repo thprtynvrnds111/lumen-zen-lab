@@ -9,7 +9,7 @@
     "title": "Eenvoudig. Eerlijk. Snel.",
     "items": [
       { "title": "Retournering Aanvragen", "desc": "Mail naar info@zentialpure.com binnen 30 dagen na levering met je bestelnummer." },
-      { "title": "Goedkeuring Ontvangen", "desc": "We beoordelen en keuren je verzoek binnen 24 uur goed, geen lange vragenlijsten." },
+      { "title": "Goedkeuring Ontvangen", "desc": "We beoordelen en keuren je verzoek binnen 24–48 uur goed, geen lange vragenlijsten." },
       { "title": "Terugsturen (EU)", "desc": "EU-bestellingen: we sturen een voorbetaald retourlabel. VS-bestellingen: houd het apparaat — we betalen terug zonder retour." },
       { "title": "Terugbetaling Ontvangen", "desc": "Je terugbetaling wordt verwerkt binnen 5 tot 7 werkdagen. Geen inspectie, geen kosten." }
     ]
@@ -26,7 +26,7 @@
   },
   "cta": {
     "headline": "Klaar om te retourneren of heb je hulp nodig?",
-    "sub": "Ons team behandelt elk verzoek binnen 24 uur.",
+    "sub": "Ons team behandelt elk verzoek binnen 24–48 uur.",
     "button": "Contact Support"
   }
 }

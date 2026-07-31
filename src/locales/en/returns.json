@@ -9,7 +9,7 @@
     "title": "Simple. Honest. Fast.",
     "items": [
       { "title": "Request a Return", "desc": "Email us at info@zentialpure.com within 30 days of delivery with your order number. Any reason — including no reason." },
-      { "title": "A Human Replies", "desc": "A real person replies within 24 hours. No questionnaires, and no email loop designed to time out your window." },
+      { "title": "A Human Replies", "desc": "A real person replies within 24–48 hours. No questionnaires, and no email loop designed to time out your window." },
       { "title": "Ship It Back (EU) — or Don't (US)", "desc": "EU orders: we send a prepaid return label. US orders: keep the device — we refund without a return." },
       { "title": "Get Refunded", "desc": "Your refund is processed within 5 to 7 business days. No inspection gate, no restocking fee." }
     ]
@@ -26,7 +26,7 @@
   },
   "cta": {
     "headline": "Ready to return or need help?",
-    "sub": "Our team handles every request within 24 hours.",
+    "sub": "Our team handles every request within 24–48 hours.",
     "button": "Contact Support"
   }
 }

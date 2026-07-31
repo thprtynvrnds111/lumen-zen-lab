@@ -41,7 +41,7 @@ export function CommunitySection() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
           <div className="rounded-xl p-7 transition-all duration-500 hover:shadow-lg" style={{ backgroundColor: '#111820', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <p className="font-serif text-lg font-bold mb-2" style={{ color: '#EAE7E0' }}>Response within 24 hours</p>
+            <p className="font-serif text-lg font-bold mb-2" style={{ color: '#EAE7E0' }}>Response within 24–48 hours</p>
             <a href="mailto:info@zentialpure.com" className="text-sm font-medium hover:underline" style={{ color: '#E87040' }}>
               info@zentialpure.com
             </a>

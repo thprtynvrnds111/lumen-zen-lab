@@ -49,6 +49,8 @@ const MODALITIES: { n: string; verb: string; title: string; body: string; to: st
   { n: "03", verb: "Prime", title: "Thermal", body: "Gentle, even warmth opens the tissue and primes circulation so the modalities that follow reach deeper.", to: "/technology/thermal" },
 ];
 
+const CLOCK_FMT = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false, timeZone: "Europe/Amsterdam" });
+
 const PROTOCOLS = [
   { n: "01", title: "The Face Protocol", body: "The Face Introducer, calibrated to a twelve-minute daily arc. Where most begin.", note: "€88" },
   { n: "02", title: "The Recovery Protocol", body: "Face Introducer paired with the Restoration Belt. Skin and body, the same standard.", note: "See the sequence →" },
@@ -62,7 +64,8 @@ export default function Storefront() {
   // Do NOT seed this with the EUR list price: market.ts serves USD to the US,
   // so a seed renders €88 to a US visitor, permanently if the fetch fails.
   const [prices, setPrices] = useState<Record<string, string>>({});
-  const [clock, setClock] = useState("");
+  // Seeded with the real time so the badge never paints "--:--:--".
+  const [clock, setClock] = useState(() => CLOCK_FMT.format(new Date()));
 
   useEffect(() => {
     let active = true;
@@ -82,10 +85,7 @@ export default function Storefront() {
       };
       load(0);
     });
-    const fmt = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false, timeZone: "Europe/Amsterdam" });
-    const tick = () => setClock(fmt.format(new Date()));
-    tick();
-    const id = setInterval(tick, 1000);
+    const id = setInterval(() => setClock(CLOCK_FMT.format(new Date())), 1000);
     return () => { active = false; clearInterval(id); };
   }, []);
 
@@ -294,7 +294,7 @@ export default function Storefront() {
         <div className={`relative ${WRAP}`}>
           <div className="mb-[34px] inline-flex items-center gap-3 rounded-full border border-[rgba(247,244,240,0.10)] bg-[#2ED8A8]/5 px-5 py-[11px]">
             <span className="h-[7px] w-[7px] rounded-full bg-[#2ED8A8]" />
-            <span className="font-sans text-[13px] font-medium tracking-[0.14em] tabular-nums text-[#2ED8A8]">{clock || "--:--:--"}</span>
+            <span className="font-sans text-[13px] font-medium tracking-[0.14em] tabular-nums text-[#2ED8A8]">{clock}</span>
             <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-[#F7F4F0]/50">· CET · live</span>
           </div>
           <h2 className="mx-auto mb-[34px] max-w-[18ch] font-serif italic font-normal text-[clamp(34px,5vw,68px)] leading-[1.08] tracking-[-0.015em] text-[#F7F4F0]">Clinic precision,<br />daily ritual.</h2>

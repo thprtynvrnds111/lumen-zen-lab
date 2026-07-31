@@ -14,9 +14,23 @@ const FAQ = () => {
  const categories = t('categories', { returnObjects: true }) as Array<{ label: string; items: Array<{ q: string; a: string }> }>;
  const headline = t('hero.headline').split('\n');
 
+ // Closed Radix accordion items are not in the DOM; FAQPage JSON-LD ships
+ // every answer in the served HTML (same pattern as /support).
+ const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: categories.flatMap((cat) =>
+   cat.items.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+   })),
+  ),
+ };
+
  return (
   <div className="min-h-screen bg-background">
-   <SEO title="FAQ, Zential Pure" description="Answers to common questions about Zential Pure devices, shipping, returns, safety, and how to get the most from your daily ritual." canonicalUrl="/faq" />
+   <SEO title="FAQ, Zential Pure" description="Answers to common questions about Zential Pure devices, shipping, returns, safety, and how to get the most from your daily ritual." canonicalUrl="/faq" jsonLd={faqJsonLd} />
    <AnnouncementBar />
    <Header />
    <main>

@@ -2,7 +2,7 @@
  "hero": {
   "badge": "Support & Assistance",
   "headline": "Nous Sommes Là\nPour Ton Rituel.",
-  "sub": "Questions, retours ou conseils, notre équipe répond dans les 24 heures."
+  "sub": "Questions, retours ou conseils, notre équipe répond dans les 24–48 heures."
  },
  "quickCards": [
   { "title": "Suivre Ta Commande", "desc": "Vérifie le statut de ton expédition et le délai de livraison." },
@@ -15,7 +15,7 @@
   {
    "label": "Efficacité & Authenticité",
    "items": [
-    { "q": "Est-ce que ça fonctionne vraiment ?", "a": "Oui. Nos appareils utilisent un microcourant, un EMS et une luminothérapie rouge cliniquement étudiés, les mêmes technologies que dans les cliniques professionnelles. La plupart des utilisatrices remarquent une amélioration de la texture de la peau dans les 2 semaines et un lift visible après 3–4 semaines d'utilisation quotidienne." },
+    { "q": "Est-ce que ça fonctionne vraiment ?", "a": "Nos instruments utilisent l'EMS, le microcourant, le thermique et — sur la ligne Restoration — la lumière rouge : les mêmes catégories de mécanismes que dans les cliniques professionnelles, chacune étayée par des recherches évaluées par des pairs lorsque c'est applicable. Ce qu'ils ne peuvent pas faire : fonctionner sans toi. Les résultats se construisent avec une régularité quotidienne et varient selon les individus ; utilise le tien chaque jour pendant 14 jours avant de te faire un avis." },
     { "q": "Comment savoir si c'est un appareil authentique ?", "a": "Chaque appareil Zential est livré avec un numéro de série unique et un sceau d'authenticité. Nous vendons exclusivement via notre boutique officielle, pas de revendeurs tiers, tu reçois donc toujours un produit authentique avec garantie complète." }
    ]
   },
@@ -43,7 +43,7 @@
   {
    "label": "Après-Vente",
    "items": [
-    { "q": "Que faire si j'ai besoin d'aide après mon achat ?", "a": "Notre équipe de support répond dans les 24 heures. Tu bénéficies d'une garantie satisfait ou remboursé 30 jours, de retours faciles et d'un accès à vie aux guides rituels et conseils." },
+    { "q": "Que faire si j'ai besoin d'aide après mon achat ?", "a": "Notre équipe de support répond dans les 24–48 heures. Tu bénéficies d'une garantie satisfait ou remboursé 30 jours, de retours faciles et d'un accès à vie aux guides rituels et conseils." },
     { "q": "Qu'est-ce que la garantie satisfait ou remboursé 30 jours ?", "a": "Utilise l'appareil 30 jours à partir de la livraison. S'il n'a pas mérité sa place, contacte-nous pour un remboursement complet — pour n'importe quelle raison. Aucune procédure longue, aucune pression." }
    ]
   }
