@@ -1,7 +1,58 @@
+# Zential Pure — robots.txt
+# AI/LLM crawlers are explicitly permitted; this brand invests in being cited
+# as a source by generative search and answer engines.
+
+# === Default: everything is open ===
 User-agent: *
 Allow: /
 Disallow: /checkout
 Disallow: /thank-you
 Disallow: /cart
 
+# === Generative AI crawlers — explicitly allowed ===
+# OpenAI (ChatGPT, SearchGPT)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude, Claude Code)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google (AI Overviews / Gemini training)
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# Common Crawl (feeds many open datasets that train LLMs)
+User-agent: CCBot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# === Indexable content surface ===
+# llms.txt, llms-full.txt, products.md, comparisons.md are all under /public and served at root.
+# Sitemaps
 Sitemap: https://zentialpure.com/sitemap.xml

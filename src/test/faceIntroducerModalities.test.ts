@@ -32,8 +32,18 @@ import { resolve, join, extname } from "node:path";
 const SRC = resolve(__dirname, "..");
 const PUBLIC = resolve(__dirname, "../../public");
 
-/** Ghost SKUs — archived, not sold, not worth churn. */
-const GHOST_SKU_FILES = ["productConfigs.ts", "ProductDetail.tsx"];
+/**
+ * The Eye Activator (handle `eye-massage`) is a separate archived SKU with its
+ * own optics; its cosmetic-LED copy is not a Face Introducer claim.
+ *
+ * This used to be a whole-file exclusion of productConfigs.ts + ProductDetail.tsx,
+ * which is what let the 2026-07-31 breach ship: those files ALSO hold the live
+ * Face Introducer config, so the guard was blind to "addresses four mechanisms",
+ * the "Four modes" testimonial, and Body Lift's "Cosmetic LED" benefit — on a
+ * product whose purchaseHandle is the Face Introducer's. Scope by the zone the
+ * copy names, never by the file it lives in.
+ */
+const NON_FI_SKU_CONTEXT = /periorbital|eye activator|eye contour/i;
 
 /** Phrasing that denies the therapeutic claim rather than making it. */
 const HONEST_FRAMINGS = [
@@ -66,13 +76,24 @@ describe("Face Introducer modality claims", () => {
     const offenders: string[] = [];
 
     for (const file of files) {
-      if (GHOST_SKU_FILES.some((g) => file.endsWith(g))) continue;
       const text = readFileSync(file, "utf8");
+      const rel = file.replace(resolve(__dirname, "../.."), "");
 
       for (const line of text.split("\n")) {
         if (!/cosmetic LED/i.test(line)) continue;
+        if (NON_FI_SKU_CONTEXT.test(line)) continue;
         if (HONEST_FRAMINGS.some((ok) => line.includes(ok))) continue;
-        offenders.push(`${file.replace(resolve(__dirname, "../.."), "")}: ${line.trim().slice(0, 90)}`);
+        offenders.push(`${rel}: ${line.trim().slice(0, 90)}`);
+      }
+
+      // JSX wraps prose mid-sentence, so "…and Cosmetic\n     LED into…" looks
+      // like two innocent lines to a line-by-line scan. That is precisely how
+      // the claim survived on ProtocolFaceIntroducer.tsx until 2026-07-31.
+      // Count hits with whitespace collapsed; any excess was split across lines.
+      const flatHits = (text.replace(/\s+/g, " ").match(/cosmetic LED/gi) ?? []).length;
+      const lineHits = text.split("\n").filter((l) => /cosmetic LED/i.test(l)).length;
+      if (flatHits > lineHits) {
+        offenders.push(`${rel}: "cosmetic LED" split across a line break (${flatHits - lineHits}x)`);
       }
     }
 
@@ -88,10 +109,16 @@ describe("Face Introducer modality claims", () => {
   it("does not carry a stale modality or input count", () => {
     const offenders: string[] = [];
     for (const file of files) {
-      if (GHOST_SKU_FILES.some((g) => file.endsWith(g))) continue;
       const text = readFileSync(file, "utf8");
       for (const line of text.split("\n")) {
-        if (/four[- ]modalit|4-Modality|Four clinic modalities|Seven inputs|four technologies|Four clinical protocols/i.test(line)) {
+        if (NON_FI_SKU_CONTEXT.test(line)) continue;
+        // Deliberately NOT here: "four mechanisms", "four modes", "4-in-1".
+        // Each is legitimately true somewhere — the Belt and Mat really do carry
+        // four mechanisms (four badges each), and "4-in-1" is a category term we
+        // rank for plus a competitor spec. Banning them globally flags honest
+        // copy. The FI-specific version of that drift is caught block-scoped, in
+        // the "own config block" test below.
+        if (/four[- ]modalit|4-Modality|3-Modality|Four clinic modalities|Seven inputs|four technologies|Four clinical protocols/i.test(line)) {
           offenders.push(`${file.replace(resolve(__dirname, "../.."), "")}: ${line.trim().slice(0, 90)}`);
         }
       }
@@ -114,16 +141,43 @@ describe("Face Introducer modality claims", () => {
     const FI_ALIAS =
       /face[- ]introducer|facial device|face device|facial toning system|microcurrent face/i;
     for (const file of files) {
-      if (GHOST_SKU_FILES.some((g) => file.endsWith(g))) continue;
       const text = readFileSync(file, "utf8");
       for (const line of text.split("\n")) {
         if (!FI_ALIAS.test(line)) continue;
+        if (NON_FI_SKU_CONTEXT.test(line)) continue;
         if (!/red[- ]light|light[- ]therapy/i.test(line)) continue;
         if (HONEST_FRAMINGS.some((ok) => line.includes(ok))) continue;
         offenders.push(`${file.replace(resolve(__dirname, "../.."), "")}: ${line.trim().slice(0, 90)}`);
       }
     }
     expect(offenders, `FI + red light on one line:\n${offenders.join("\n")}`).toEqual([]);
+  });
+
+  /**
+   * Block-scoped count check. The word "four" is legitimately true elsewhere in
+   * these same files, so it cannot be banned globally — but inside the Face
+   * Introducer's OWN config block it is always drift. This is the check that
+   * would have caught the 2026-07-31 breach: the headline was patched 4 -> 3
+   * while "addresses four mechanisms", the "Four modes." testimonial and
+   * "all four modes" survived three lines away.
+   */
+  it("the Face Introducer's own config block claims no count above three", () => {
+    const cfg = readFileSync(resolve(SRC, "data/productConfigs.ts"), "utf8");
+    const start = cfg.indexOf('"lifting-and-tightening-face-introducer": {');
+    expect(start, "FI config block not found — did the handle change?").toBeGreaterThan(-1);
+
+    // Top-level handles sit at one space of indent; the next one ends this block.
+    const rest = cfg.slice(start + 1);
+    const nextKey = rest.search(/\n "[a-z0-9-]+": \{/);
+    const block = nextKey === -1 ? rest : rest.slice(0, nextKey);
+
+    const offenders = block
+      .split("\n")
+      // "four speed settings" is an intensity control, not a modality count.
+      .filter((l) => /\bfour\b/i.test(l) && !/speed setting|intensit/i.test(l))
+      .map((l) => l.trim().slice(0, 90));
+
+    expect(offenders, `FI config block still claims four:\n${offenders.join("\n")}`).toEqual([]);
   });
 
   it("keeps the Belt and Mat red-light claims — a sweep that deletes true claims also fails", () => {

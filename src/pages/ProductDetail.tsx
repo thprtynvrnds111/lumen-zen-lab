@@ -15,7 +15,7 @@ const PRODUCT_SEO: Record<string, { title: string; description: string }> = {
  },
  "body-lift": {
   title: "Body Lift, Microcurrent Body Sculpting Device | Zential Pure",
-  description: "Microcurrent, cosmetic LED, and sonic pulse for the body. Stimulates tissue, supports visible firming with consistent daily use.",
+  description: "Microcurrent, EMS, and sonic pulse for the body. Stimulates tissue, supports visible firming with consistent daily use.",
  },
  "eye-massage": {
   title: "Eye Activator, Microcurrent Eye Contour Device | Zential Pure",

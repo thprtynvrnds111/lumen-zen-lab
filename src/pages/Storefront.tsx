@@ -4,6 +4,7 @@ import { PageShell } from "@/components/zential/v2/PageShell";
 import { ReceiptsSection } from "@/components/zential/ReceiptsSection";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { formatMoney } from "@/lib/market";
+import { FI_MODALITY_COUNT, FI_SESSION_MINUTES } from "@/data/instrumentFacts";
 
 import heroFace from "@/assets/hero-neck-device.webp";
 import heroBelt from "@/assets/storefront-belt-woman.png";
@@ -58,6 +59,8 @@ export default function Storefront() {
   // Market-aware formatted price string per instrument. Held empty until the
   // live Shopify (@inContext) price resolves so a US visitor never sees a euro
   // symbol on an amount that is actually USD — the placeholder shows instead.
+  // Do NOT seed this with the EUR list price: market.ts serves USD to the US,
+  // so a seed renders €88 to a US visitor, permanently if the fetch fails.
   const [prices, setPrices] = useState<Record<string, string>>({});
   const [clock, setClock] = useState("");
 
@@ -102,13 +105,13 @@ export default function Storefront() {
               The Body Remembers its&nbsp;Frequency
             </h1>
             <p className="mb-[34px] max-w-[46ch] text-[clamp(16px,1.3vw,17px)] leading-[1.65] text-[#888480]">
-              Three clinic modalities <b className="font-medium text-[#1A1714]">EMS, microcurrent and thermal</b> in a one-minute ritual. <span className="font-sans font-semibold text-[#157A5C]">€88. Once.</span>
+              Three clinic modalities <b className="font-medium text-[#1A1714]">EMS, microcurrent and thermal</b> in a twelve-minute ritual. <span className="font-sans font-semibold text-[#157A5C]">€88. Once.</span>
             </p>
             <div className="mb-[30px] flex flex-wrap border-y border-[rgba(26,23,20,0.12)]">
               {[
-                { v: <>4</>, l: "Clinic modalities" },
+                { v: <>{FI_MODALITY_COUNT}</>, l: "Clinic modalities" },
                 { v: <>€88 <s className="font-light text-[0.7em] text-[rgba(26,23,20,0.34)]">€1,440/yr</s></>, l: "vs clinic, per year" },
-                { v: <>12 min</>, l: "Daily ritual" },
+                { v: <>{FI_SESSION_MINUTES} min</>, l: "Daily ritual" },
               ].map((s, i) => (
                 <div key={s.l} className={`min-w-[120px] flex-1 py-5 pr-6 ${i > 0 ? "border-l border-[rgba(26,23,20,0.12)] pl-6" : ""}`}>
                   <div className="font-sans text-[clamp(22px,2vw,28px)] font-medium leading-none tabular-nums tracking-[-0.01em] text-[#1A1714]">{s.v}</div>

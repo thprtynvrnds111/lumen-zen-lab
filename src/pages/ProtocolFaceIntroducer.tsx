@@ -98,10 +98,9 @@ const ProtocolFaceIntroducer = () => (
      className="mt-4 text-base font-light leading-relaxed max-w-xl"
      style={{ color: textMuted }}
     >
-     The Face Introducer combines EMS, Microcurrent, Thermal, and Cosmetic
-     LED into a single daily session. Each modality has a defined role. The
-     order is not arbitrary, each step conditions tissue for the one that
-     follows.
+     The Face Introducer combines EMS, Microcurrent and Thermal into a single
+     daily session. Each modality has a defined role. The order is not
+     arbitrary, each step conditions tissue for the one that follows.
     </p>
    </div>
   </Section>

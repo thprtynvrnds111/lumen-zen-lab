@@ -120,7 +120,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   subheadline: "Microcurrent Facial Lift, Built for Daily Structure",
   benefits: [
    { icon: Sparkles, label: "Microcurrent Lift" },
-   { icon: Sun, label: "Cosmetic LED Visible-Light Support" },
+   { icon: Zap, label: "EMS Muscle Stimulation" },
    { icon: Heart, label: "Lymphatic Activation" },
    { icon: Brain, label: "Built for Long-Term Tone" },
   ],
@@ -134,12 +134,12 @@ export const productConfigs: Record<string, ProductConfig> = {
    paragraphs: [
     "After 25, facial muscles lose tone. Collagen production slows. Lymphatic flow stagnates. The result isn't just aging, it's a loss of structural definition that no cream can restore.",
     "Topical products hydrate the surface. But lift, tone, and definition come from deeper layers: the muscles, the fascia, the circulatory system beneath the skin.",
-    "Body Lift targets these layers directly. Through microcurrent, cosmetic LED, and sonic pulse, it works with your body's own systems to rebuild what time slowly softens.",
+    "Body Lift targets these layers directly. Through microcurrent, EMS, and sonic pulse, it works with your body's own systems to rebuild what time slowly softens.",
    ],
    closing: "This is about daily frequency, not emergency fixes.",
   },
   techCards: [
-   { icon: Sun, title: "Cosmetic LED", desc: "Visible-spectrum LED pairs with microcurrent and thermal to support your daily ritual. Soft, non-clinical light delivery." },
+   { icon: Zap, title: "EMS", desc: "Intermittent pulses engage the underlying muscle, training tone the way resistance trains the body. Current only, no light component." },
    { icon: Zap, title: "Microcurrent", desc: "Activates facial muscle tone through gentle electrical stimulation, encouraging natural lift and definition." },
    { icon: ThermometerSun, title: "Thermal Support", desc: "Enhances circulation and nutrient delivery, warming tissue for optimal absorption and recovery." },
    { icon: Waves, title: "Sonic Pulse", desc: "Encourages lymphatic drainage and reduces fluid retention for a sculpted, depuffed appearance." },
@@ -177,7 +177,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   handle: "lifting-and-tightening-face-introducer",
   fallbackImage: productFaceIntroducer,
   name: "Face Introducer",
-  subheadline: "3-Modality Daily Protocol: EMS · Microcurrent · Thermal (45°C) · Ion Cleansing",
+  subheadline: "Three-Modality Daily Protocol: EMS · Microcurrent · Thermal (45°C), with ion cleansing",
   benefits: [
    { icon: Zap, label: "EMS Microcurrent, ATP + Muscle" },
    { icon: ThermometerSun, label: "45°C Constant Thermal + Sonic" },
@@ -185,13 +185,13 @@ export const productConfigs: Record<string, ProductConfig> = {
   ],
   testimonials: [
    { name: "Lina, 29", text: "My skin absorbs everything differently now. The serum actually goes in. I can feel it." },
-   { name: "Diane, 41", text: "Four modes. Ten minutes. My morning ritual is clear and my skin is firmer than it's been in years." },
+   { name: "Diane, 41", text: "Three modes. Ten minutes. My morning ritual is clear and my skin is firmer than it's been in years." },
    { name: "Priya, 35", text: "I was spending €90 a session on professional facials. This is the same galvanic mechanism. Once." },
   ],
   problemReframe: {
-   headline: "Four Modalities. One Instrument. One Daily Ritual.",
+   headline: "Three Modalities. One Instrument. One Daily Ritual.",
    paragraphs: [
-    "Most skincare works on the surface. The Face Introducer addresses four mechanisms in one sequential protocol, each with a specific role, each building on the last.",
+    "Most skincare works on the surface. The Face Introducer runs three modalities in one sequential protocol, each with a specific role, each building on the last.",
     "EMS (Mode 4) releases intermittent microcurrent pulses that stimulate ATP production and support facial muscle fiber elasticity. 45°C constant thermal softens tissue and supports absorption throughout every mode. Positive and negative ions cleanse the follicle and then drive actives past the skin barrier, the same galvanic mechanism used in professional facials.",
     "The device shows a coloured LED while it runs. That is a mode indicator, not a treatment modality — the Face Introducer is not a light-therapy device. For red light, see the Restoration Belt or the Restoration Mat.",
    ],
@@ -247,7 +247,7 @@ export const productConfigs: Record<string, ProductConfig> = {
   guaranteeName: "30-Day Money-Back Guarantee",
   guaranteeDesc: "Try it for 30 days. Not convinced, for any reason? Full refund. No form, no questions, no restocking fee.",
   bonusStack: [
-   { title: "The Face Protocol Guide", desc: "Step-by-step ritual breakdown for all four modes. Which order. Which serum. Which frequency.", value: "€19" },
+   { title: "The Face Protocol Guide", desc: "Step-by-step ritual breakdown for every mode. Which order. Which serum. Which frequency.", value: "€19" },
    { title: "Modality Masterclass PDF", desc: "Mechanism explanation for each technology, so you know exactly what's happening at the cellular level.", value: "€27" },
    { title: "21-Day Progress Tracker", desc: "Week-by-week photo + observation template. The protocol without tracking is just hope.", value: "€17" },
    { title: "Serum Pairing Guide", desc: "Which actives work with each mode. What to apply before ion cleansing vs. before iontophoresis.", value: "€14" },
@@ -265,7 +265,7 @@ export const productConfigs: Record<string, ProductConfig> = {
    { icon: Eye, label: "Under-Eye Depuffing" },
    { icon: Zap, label: "Microcurrent (Periorbital Zone)" },
    { icon: Waves, label: "Sonic Lymphatic Drainage" },
-   { icon: Sun, label: "Cosmetic LED Component" },
+   { icon: Sun, label: "Cosmetic LED for the Eye Contour" },
   ],
   testimonials: [
    { name: "Rachel, 33", text: "The puffiness under my eyes is gone by morning. I actually look rested." },
