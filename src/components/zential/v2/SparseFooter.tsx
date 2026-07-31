@@ -230,6 +230,16 @@ export function SparseFooter() {
             <span className="md:ml-2">Shipped EU-wide.</span>
           </p>
         </div>
+
+        {/* Legal identity. KvK + VAT numbers and the registered street address
+            are pending from the operator — append them here when supplied, do
+            not placeholder them. */}
+        <p className="mt-6 font-mono text-[10px] tracking-[0.18em] uppercase text-[#F7F4F0]/30">
+          Zential Pure B.V.  ·  Rotterdam, the Netherlands  ·{" "}
+          <a href="mailto:hello@zentialpure.com" className="hover:text-[#2ED8A8] transition-colors normal-case tracking-normal">
+            hello@zentialpure.com
+          </a>
+        </p>
       </div>
 
       {/* Zen easter egg: peeks up from the bottom edge, clipped by the footer's overflow-hidden */}
