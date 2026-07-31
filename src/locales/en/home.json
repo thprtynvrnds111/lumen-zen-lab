@@ -17,7 +17,7 @@
   },
   "proof": {
    "modalities": { "value": "3", "label": "Clinical\nmodalities" },
-   "price": { "value": "€88", "label": "vs €1,440 / yr\nclinic average" },
+   "price": { "value": "€88", "label": "about one clinic\nsession, once" },
    "guarantee": { "value": "30 days", "label": "Money-back\nguarantee" }
   },
   "modalities": {

@@ -117,7 +117,7 @@ export default function Storefront() {
             <div className="mb-[30px] flex flex-wrap border-y border-[rgba(26,23,20,0.12)]">
               {[
                 { v: <>{FI_MODALITY_COUNT}</>, l: "Clinic modalities" },
-                { v: <>€88 <s className="font-light text-[0.7em] text-[rgba(26,23,20,0.34)]">€1,440/yr</s></>, l: "vs clinic, per year" },
+                { v: <>€88</>, l: "About one clinic session, once" },
                 { v: <>{FI_SESSION_MINUTES} min</>, l: "Daily ritual" },
               ].map((s, i) => (
                 <div key={s.l} className={`min-w-[120px] flex-1 py-5 pr-6 ${i > 0 ? "border-l border-[rgba(26,23,20,0.12)] pl-6" : ""}`}>
