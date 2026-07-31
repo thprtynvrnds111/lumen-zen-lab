@@ -37,8 +37,17 @@ const WRAP = "mx-auto w-[min(1180px,92vw)]";
 
 export function SystemBundle() {
   const [busy, setBusy] = useState(false);
-  // Live prices keyed by Shopify handle, plus the market currency they resolved in.
-  const [prices, setPrices] = useState<Record<string, number>>({});
+  // Live prices keyed by Shopify handle, plus the market currency they resolved
+  // in. Seeded with the home-market list prices (LIVE-CATALOG-TRUTH.md, verified
+  // 2026-07-27: System €399 · FI €88 · Belt €180 · Mat from €200) so the price
+  // card never renders an em-dash; hydration overwrites with the live,
+  // market-correct figures — the same seed pattern as InstrumentSystem.
+  const [prices, setPrices] = useState<Record<string, number>>({
+    "lifting-and-tightening-face-introducer": 88,
+    "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": 180,
+    "the-restoration-mat": 200,
+    [BUNDLE_HANDLE]: 399,
+  });
   const [currency, setCurrency] = useState("EUR");
 
   useEffect(() => {

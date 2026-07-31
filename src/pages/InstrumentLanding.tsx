@@ -510,27 +510,33 @@ export default function InstrumentLanding() {
   useEffect(() => {
     if (!cfg) return;
     let active = true;
-    fetchProductByHandle(cfg.handle)
-      .then((p) => {
-        if (!active) return;
-        const priceObj = p?.variants?.edges?.[0]?.node?.price;
-        const amt = priceObj?.amount;
-        if (amt) {
-          const n = parseFloat(amt);
-          if (!isNaN(n)) setLivePrice(formatMoney(Math.round(n), priceObj?.currencyCode || "EUR"));
-        }
-      })
-      .catch(() => {});
+    const load = (attempt: number) => {
+      fetchProductByHandle(cfg.handle)
+        .then((p) => {
+          if (!active) return;
+          const priceObj = p?.variants?.edges?.[0]?.node?.price;
+          const amt = priceObj?.amount;
+          const n = amt ? parseFloat(amt) : NaN;
+          if (!isNaN(n)) {
+            setLivePrice(formatMoney(Math.round(n), priceObj?.currencyCode || "EUR"));
+          } else if (attempt === 0) {
+            load(1);
+          }
+        })
+        .catch(() => { if (active && attempt === 0) load(1); });
+    };
+    load(0);
     return () => { active = false; };
   }, [cfg]);
 
   if (!cfg) return <Navigate to="/instruments" replace />;
 
   // Show the live, market-formatted Shopify price once it resolves. Until then
-  // an em-dash placeholder — never the hardcoded €-config price, which would be
-  // the wrong currency for a US visitor. cfg.price stays as SSR/SEO metadata and
-  // as the cross-sell teaser price for the *other* instruments below.
-  const priceLabel = livePrice ?? "—";
+  // null, and callers omit the whole price element — never an "—" token beside
+  // a CTA, and never the hardcoded €-config price, which would be the wrong
+  // currency for a US visitor. cfg.price stays as SSR/SEO metadata and as the
+  // cross-sell teaser price for the *other* instruments below.
+  const priceLabel: string | null = livePrice ?? null;
 
   async function order() {
     if (!cfg || ordering) return;
@@ -651,7 +657,7 @@ export default function InstrumentLanding() {
               <p className="mb-8 max-w-[500px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">{cfg.lede}</p>
               <div className="mb-[30px] flex flex-wrap gap-[14px]">
                 <OrderCta className={PILL_ACTION}>
-                  {orderLabel} <span className="font-medium tabular-nums opacity-70">· {priceLabel}</span>
+                  {orderLabel}{priceLabel && <span className="font-medium tabular-nums opacity-70"> · {priceLabel}</span>}
                 </OrderCta>
                 <a href="#science" className={PILL_GHOST_DARK}>See the science</a>
               </div>
@@ -822,8 +828,12 @@ export default function InstrumentLanding() {
             </ul>
             <div className="rounded-[14px] border border-[rgba(26,23,20,0.12)] bg-white p-[38px] shadow-[0_18px_50px_rgba(26,23,20,0.08)] md:sticky md:top-[88px]">
               <div className="font-sans text-[11px] tracking-[0.16em] uppercase text-[#6B5A4A]">{cfg.name}</div>
-              <div className="mb-0.5 mt-2 font-serif italic text-[60px] leading-none text-[#1A1714]">{priceLabel}</div>
-              <div className="font-serif italic text-[20px] text-[#C6A07C]">Once.</div>
+              {priceLabel && (
+                <>
+                  <div className="mb-0.5 mt-2 font-serif italic text-[60px] leading-none text-[#1A1714]">{priceLabel}</div>
+                  <div className="font-serif italic text-[20px] text-[#C6A07C]">Once.</div>
+                </>
+              )}
               {cfg.priceAnchor && <p className="mt-3 text-[13px] leading-[1.55] text-[#157A5C]">{cfg.priceAnchor}</p>}
               <p className="my-[22px] text-[13px] leading-[1.6] text-[#1A1714]/60">{cfg.orderNote}</p>
               <OrderCta className={`${PILL_ACTION} mb-3 w-full`}>{orderLabel}</OrderCta>
@@ -923,7 +933,7 @@ export default function InstrumentLanding() {
       <div className={`fixed inset-x-0 bottom-0 z-[90] flex items-center justify-between gap-4 border-t border-[rgba(247,244,240,0.10)] bg-[rgba(7,10,14,0.92)] px-5 py-3 backdrop-blur-md transition-transform duration-300 md:hidden ${showSticky ? "translate-y-0" : "translate-y-full"} [padding-bottom:max(0.75rem,env(safe-area-inset-bottom))]`}>
         <div>
           <div className="font-sans text-[11px] tracking-[0.18em] uppercase text-[#F7F4F0]/70">{cfg.name.replace("The ", "")}</div>
-          <div className="font-serif italic text-[22px] leading-none text-[#F7F4F0]">{priceLabel}</div>
+          {priceLabel && <div className="font-serif italic text-[22px] leading-none text-[#F7F4F0]">{priceLabel}</div>}
         </div>
         <OrderCta className={`${PILL_ACTION} px-6 py-3.5`}>{ordering ? "Adding…" : "Claim place"}</OrderCta>
       </div>

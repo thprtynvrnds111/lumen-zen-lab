@@ -180,6 +180,32 @@ describe("Face Introducer modality claims", () => {
     expect(offenders, `FI config block still claims four:\n${offenders.join("\n")}`).toEqual([]);
   });
 
+  /**
+   * Stat-tile drift. The homepage hero shipped `{ v: <>4</>, l: "Clinic
+   * modalities" }` until 2026-08-01: the numeral and its "modalities" label sit
+   * on different lines (or different JSX props), so every line-scoped check
+   * above was blind to it. Scan whitespace-collapsed text for a v/l stat pair
+   * whose label says "modalit…" and whose value is a numeric literal — anything
+   * other than 3 is drift. A `{FI_MODALITY_COUNT}` reference has no numeric
+   * literal and passes, which is the preferred spelling.
+   */
+  it("no stat tile pairs a count other than three with a modalities label", () => {
+    const offenders: string[] = [];
+    const STAT_PAIR = /v:\s*(?:<>\s*)?(?:\{[A-Za-z_.]+\}|"?(\d+)"?)\s*(?:<\/>)?\s*,\s*l:\s*"([^"]*modalit[^"]*)"/gi;
+    for (const file of files) {
+      const flat = readFileSync(file, "utf8").replace(/\s+/g, " ");
+      const rel = file.replace(resolve(__dirname, "../.."), "");
+      for (const m of flat.matchAll(STAT_PAIR)) {
+        const [, count, label] = m;
+        if (NON_FI_SKU_CONTEXT.test(label)) continue;
+        if (count !== undefined && count !== "3") {
+          offenders.push(`${rel}: v: ${count}, l: "${label}"`);
+        }
+      }
+    }
+    expect(offenders, `stat tile modality-count drift:\n${offenders.join("\n")}`).toEqual([]);
+  });
+
   it("keeps the Belt and Mat red-light claims — a sweep that deletes true claims also fails", () => {
     const funnelConfig = readFileSync(resolve(SRC, "pages/funnel/config.ts"), "utf8");
     expect(funnelConfig).toMatch(/660\s*nm/);

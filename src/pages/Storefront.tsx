@@ -67,15 +67,20 @@ export default function Storefront() {
   useEffect(() => {
     let active = true;
     INSTRUMENTS.forEach((it) => {
-      fetchProductByHandle(it.handle)
-        .then((p) => {
-          const priceObj = p?.variants?.edges?.[0]?.node?.price;
-          const n = priceObj?.amount ? parseFloat(priceObj.amount) : NaN;
-          if (active && !isNaN(n)) {
-            setPrices((prev) => ({ ...prev, [it.slug]: formatMoney(Math.round(n), priceObj!.currencyCode) }));
-          }
-        })
-        .catch(() => {});
+      const load = (attempt: number) => {
+        fetchProductByHandle(it.handle)
+          .then((p) => {
+            const priceObj = p?.variants?.edges?.[0]?.node?.price;
+            const n = priceObj?.amount ? parseFloat(priceObj.amount) : NaN;
+            if (active && !isNaN(n)) {
+              setPrices((prev) => ({ ...prev, [it.slug]: formatMoney(Math.round(n), priceObj!.currencyCode) }));
+            } else if (active && isNaN(n) && attempt === 0) {
+              load(1);
+            }
+          })
+          .catch(() => { if (active && attempt === 0) load(1); });
+      };
+      load(0);
     });
     const fmt = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false, timeZone: "Europe/Amsterdam" });
     const tick = () => setClock(fmt.format(new Date()));
@@ -84,8 +89,10 @@ export default function Storefront() {
     return () => { active = false; clearInterval(id); };
   }, []);
 
-  // Formatted, market-correct price once resolved; em-dash placeholder until then.
-  const priceOf = (it: Instrument) => prices[it.slug] ?? "—";
+  // Formatted, market-correct price once resolved; null until then. Callers
+  // must omit the whole price segment while null — a CTA never renders a
+  // dangling "· —" or any other empty price token.
+  const priceOf = (it: Instrument): string | null => prices[it.slug] ?? null;
 
   return (
     <PageShell
@@ -120,7 +127,7 @@ export default function Storefront() {
               ))}
             </div>
             <div className="flex flex-wrap items-center gap-5">
-              <Link to="/instruments/face-introducer" className={PILL_ACTION}>Order Face Introducer · {priceOf(INSTRUMENTS[0])}</Link>
+              <Link to="/instruments/face-introducer" className={PILL_ACTION}>Order Face Introducer{priceOf(INSTRUMENTS[0]) && <> · {priceOf(INSTRUMENTS[0])}</>}</Link>
               <Link to="/protocols" className="font-sans text-[12px] tracking-[0.22em] uppercase text-[#157A5C] transition-colors hover:text-[#1BAF86]">Find your protocol</Link>
             </div>
           </div>
@@ -214,7 +221,7 @@ export default function Storefront() {
                   <h3 className="mb-2.5 font-serif italic font-normal text-[25px] tracking-[-0.01em] text-[#1A1714]">{p.title}</h3>
                   <p className="mb-[18px] text-[13.5px] leading-[1.6] text-[#1A1714]/60">{p.desc}</p>
                   <div className="mt-auto flex items-center justify-between gap-4 border-t border-[rgba(26,23,20,0.12)] pt-[18px]">
-                    <span className="font-sans text-[18px] font-semibold tabular-nums text-[#1A1714]">{priceOf(p)} <small className="ml-1.5 font-sans text-[11px] font-normal tracking-[0.16em] uppercase text-[#C6A07C]">once</small></span>
+                    <span className="font-sans text-[18px] font-semibold tabular-nums text-[#1A1714]">{priceOf(p) && <>{priceOf(p)} <small className="ml-1.5 font-sans text-[11px] font-normal tracking-[0.16em] uppercase text-[#C6A07C]">once</small></>}</span>
                     <span className="inline-flex items-center gap-1.5 font-sans text-[11px] tracking-[0.16em] uppercase text-[#157A5C]">View <span className="transition-transform group-hover:translate-x-1">→</span></span>
                   </div>
                 </div>
@@ -292,7 +299,7 @@ export default function Storefront() {
           </div>
           <h2 className="mx-auto mb-[34px] max-w-[18ch] font-serif italic font-normal text-[clamp(34px,5vw,68px)] leading-[1.08] tracking-[-0.015em] text-[#F7F4F0]">Clinic precision,<br />daily ritual.</h2>
           <div className="flex flex-wrap justify-center gap-3.5">
-            <Link to="/instruments/face-introducer" className={PILL_ACTION}>Order Face Introducer · {priceOf(INSTRUMENTS[0])}</Link>
+            <Link to="/instruments/face-introducer" className={PILL_ACTION}>Order Face Introducer{priceOf(INSTRUMENTS[0]) && <> · {priceOf(INSTRUMENTS[0])}</>}</Link>
             <Link to="/protocols" className={PILL_GHOST_DARK}>Find your protocol</Link>
           </div>
         </div>

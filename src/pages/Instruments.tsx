@@ -73,20 +73,27 @@ export default function Instruments() {
   useEffect(() => {
     let active = true;
     INSTRUMENTS.forEach((it) => {
-      fetchProductByHandle(it.handle)
-        .then((p) => {
-          const priceObj = p?.variants?.edges?.[0]?.node?.price;
-          const n = priceObj?.amount ? parseFloat(priceObj.amount) : NaN;
-          if (active && !isNaN(n)) {
-            setPrices((prev) => ({ ...prev, [it.handle]: formatMoney(Math.round(n), priceObj!.currencyCode) }));
-          }
-        })
-        .catch(() => {});
+      const load = (attempt: number) => {
+        fetchProductByHandle(it.handle)
+          .then((p) => {
+            const priceObj = p?.variants?.edges?.[0]?.node?.price;
+            const n = priceObj?.amount ? parseFloat(priceObj.amount) : NaN;
+            if (active && !isNaN(n)) {
+              setPrices((prev) => ({ ...prev, [it.handle]: formatMoney(Math.round(n), priceObj!.currencyCode) }));
+            } else if (active && isNaN(n) && attempt === 0) {
+              load(1);
+            }
+          })
+          .catch(() => { if (active && attempt === 0) load(1); });
+      };
+      load(0);
     });
     return () => { active = false; };
   }, []);
 
-  const priceOf = (it: Instrument) => prices[it.handle] ?? "—";
+  // Market-correct price once resolved; null until then — callers omit the
+  // price segment while null so a card never shows an empty price token.
+  const priceOf = (it: Instrument): string | null => prices[it.handle] ?? null;
 
   return (
     <PageShell
@@ -150,7 +157,7 @@ export default function Instruments() {
                   </p>
                   <div className="mt-auto flex items-center justify-between gap-4 border-t border-[#2A2420] pt-5">
                     <span className="font-serif italic text-[26px] text-[#F7F4F0]">
-                      {priceOf(item)} <small className="text-sm text-[#C6A07C]">once</small>
+                      {priceOf(item) && <>{priceOf(item)} <small className="text-sm text-[#C6A07C]">once</small></>}
                     </span>
                     <span className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.16em] uppercase text-[#2ED8A8]">
                       View instrument
