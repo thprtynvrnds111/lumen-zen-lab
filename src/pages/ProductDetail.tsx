@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import { getProductConfig } from "@/data/productConfigs";
+import { INSTRUMENT_REDIRECTS } from "@/data/instrumentRedirects";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { ProductLanding } from "@/components/zential/ProductLanding";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
@@ -173,16 +174,8 @@ function getProductJsonLd(handle: string, seo: { title: string; description: str
 
 const SITE = "https://zentialpure.com";
 
-/**
- * Recovery SKUs whose generic /product config still carries legacy copy
- * (the belt was authored as an "80W full-body panel", the mat as a "full-back
- * mat"). Their accurate, on-brand landing pages live at /instruments/<slug>,
- * so route these handles there instead of rendering the stale duplicate.
- */
-const INSTRUMENT_REDIRECTS: Record<string, string> = {
- "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": "restoration-belt",
- "household-red-light-charging-vibrating-red-light-therapy-mat": "restoration-mat",
-};
+// Handles that route to /instruments/<slug> instead of a generic /product page.
+// See src/data/instrumentRedirects.ts for why each one is there.
 
 export default function ProductDetail() {
  const { handle } = useParams<{ handle: string }>();

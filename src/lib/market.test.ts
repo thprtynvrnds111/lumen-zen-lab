@@ -1,6 +1,10 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { getCountry, formatMoney, _resetCountryCache } from "@/lib/market";
 import { LIVE_HANDLES } from "@/data/liveCatalog";
+import { getProductConfig } from "@/data/productConfigs";
+import { INSTRUMENT_REDIRECTS } from "@/data/instrumentRedirects";
 
 function mockFetch(impl: () => Promise<any>) {
   const fn = vi.fn(impl);
@@ -117,6 +121,40 @@ describe("LIVE_HANDLES allowlist", () => {
       "infrared-light-therapy-joint-knee-shoulder-electric-heating-knee-pad",
     ]) {
       expect(LIVE_HANDLES.has(ghost)).toBe(false);
+    }
+  });
+});
+
+/**
+ * An allowlisted handle is a handle the browse grids will link to. CategoryGrid,
+ * DevicesSection, SearchOverlay, RelatedProducts, ShopByConcern and QuizResult all
+ * build `/product/${handle}` from whatever the catalog returns, so a LIVE_HANDLES
+ * entry with no productConfig and no redirect is a dead link on a real shopping
+ * path — which is exactly how `the-restoration-mat` and `the-system-founding-bundle`
+ * shipped "Product not found" on /collection and /protocols/03-recovery (found on
+ * an iPhone viewport, 2026-08-01, reported from the Instagram bio).
+ */
+describe("every allowlisted handle resolves to a page", () => {
+  const ROOT = join(__dirname, "..", "..");
+
+  it("has a productConfig or an instrument redirect for each LIVE_HANDLES entry", () => {
+    const dead = [...LIVE_HANDLES].filter(
+      (h) => !getProductConfig(h) && !INSTRUMENT_REDIRECTS[h],
+    );
+    expect(dead).toEqual([]);
+  });
+
+  it("points every redirect at a slug that has a real /instruments route", () => {
+    const landing = readFileSync(join(ROOT, "src", "pages", "InstrumentLanding.tsx"), "utf8");
+    const app = readFileSync(join(ROOT, "src", "App.tsx"), "utf8");
+
+    for (const slug of new Set(Object.values(INSTRUMENT_REDIRECTS))) {
+      const hasLandingConfig = new RegExp(`slug:\\s*"${slug}"`).test(landing);
+      const hasExplicitRoute = app.includes(`path="/instruments/${slug}"`);
+      expect(
+        hasLandingConfig || hasExplicitRoute,
+        `/instruments/${slug} has neither an InstrumentLanding config nor an explicit route`,
+      ).toBe(true);
     }
   });
 });
