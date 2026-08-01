@@ -53,38 +53,29 @@ const GRAIN =
 const WRAP = "mx-auto max-w-[1180px] px-6 md:px-10";
 
 /**
- * Home-market list prices, used ONLY as the server-rendered seed.
+ * Prices come from the Storefront API so US visitors resolve to USD, and that
+ * fetch cannot run during prerender.
  *
- * Prices come from the Storefront API so US visitors resolve to USD, but that
- * fetch cannot run during prerender — so seeding `null` meant the prerendered
- * HTML shipped an em-dash everywhere and the hero CTA read "Claim the System —"
- * with no amount. On the highest-value SKU in the catalog, on the one page a
- * buyer with purchase intent lands on. Nobody clicks a buy button that will not
- * say what it costs.
+ * This file used to seed the EUR home-market list prices so the prerendered
+ * HTML always carried an amount. That was reverted on 2026-08-01 (operator
+ * decision): market.ts serves USD to the US, so a seed shows €399 to a US
+ * visitor — and permanently, not for one paint frame, whenever the fetch fails.
+ * Never showing a wrong currency wins over always showing a number.
  *
- * Seeding real numbers means the page always renders a price; hydration then
- * overwrites with the live, market-correct figure. Same pattern the bridge
- * funnel uses (prerender home market, hydrate to the visitor's).
+ * The original objection to seeding `null` was that the hero CTA degraded to
+ * "Claim the System — " with no amount. That is fixed properly here: callers
+ * omit the whole price segment while it is null, so the button reads a clean
+ * "Claim the System" and gains "— $399" once the live figure lands.
  *
- * Source of truth: knowledge/products/LIVE-CATALOG-TRUTH.md (engine repo).
- * Verified 2026-07-27: System €399 (compare-at €468) · FI €88 · Belt €180 ·
- * Mat from €200. If the catalog changes, change these too — a stale seed shows
- * a wrong price for one paint frame before hydration corrects it.
+ * Trade-off accepted: the prerendered HTML carries no price, so crawlers read
+ * the catalog from llms.txt / products.md instead of this page.
  */
-const SEED_CURRENCY = "EUR";
-const SEED_BUNDLE_PRICE = 399;
-const SEED_INSTRUMENT_PRICES: Record<string, number> = {
-  "lifting-and-tightening-face-introducer": 88,
-  "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": 180,
-  "the-restoration-mat": 200,
-};
 
 export default function InstrumentSystem() {
   const [busy, setBusy] = useState(false);
-  const [currency, setCurrency] = useState(SEED_CURRENCY);
-  const [bundlePrice, setBundlePrice] = useState<number | null>(SEED_BUNDLE_PRICE);
-  const [instrumentPrices, setInstrumentPrices] =
-    useState<Record<string, number>>(SEED_INSTRUMENT_PRICES);
+  const [currency, setCurrency] = useState("EUR");
+  const [bundlePrice, setBundlePrice] = useState<number | null>(null);
+  const [instrumentPrices, setInstrumentPrices] = useState<Record<string, number>>({});
 
   // Fetch live Shopify prices for the bundle and each instrument
   useEffect(() => {
@@ -111,7 +102,9 @@ export default function InstrumentSystem() {
     return () => { active = false; };
   }, []);
 
-  const fmt = (n?: number) => (typeof n === "number" ? formatMoney(n, currency) : "—");
+  // null until the live, market-correct figure resolves; every caller omits its
+  // element while null so nothing renders a dangling "—" or a bare "save ".
+  const fmt = (n?: number): string | null => (typeof n === "number" ? formatMoney(n, currency) : null);
 
   const componentSum = INSTRUMENTS.reduce(
     (sum, i) => sum + (instrumentPrices[i.handle] ?? 0),
@@ -169,14 +162,18 @@ export default function InstrumentSystem() {
 
           {/* ── PRICE CARD ── */}
           <div className="mt-[42px] max-w-[480px] rounded-[16px] border border-[rgba(247,244,240,0.10)] bg-[#070A0E] p-[clamp(28px,3vw,44px)]">
-            <div className="font-sans text-[12px] text-[#F7F4F0]/45 line-through">
-              {fmt(componentSum || undefined)}
-            </div>
-            <div className="mt-1 font-serif italic text-[56px] leading-none text-[#F7F4F0]">
-              {fmt(bundlePrice ?? undefined)}
-            </div>
+            {fmt(componentSum || undefined) && (
+              <div className="font-sans text-[12px] text-[#F7F4F0]/45 line-through">
+                {fmt(componentSum || undefined)}
+              </div>
+            )}
+            {fmt(bundlePrice ?? undefined) && (
+              <div className="mt-1 font-serif italic text-[56px] leading-none text-[#F7F4F0]">
+                {fmt(bundlePrice ?? undefined)}
+              </div>
+            )}
             <div className="mt-1 font-serif italic text-[18px] text-[#C6A07C]">
-              Founding bundle · save {fmt(savings ?? undefined)}
+              Founding bundle{fmt(savings ?? undefined) && <> · save {fmt(savings ?? undefined)}</>}
             </div>
             <button
               onClick={claim}
@@ -349,7 +346,9 @@ export default function InstrumentSystem() {
               disabled={busy}
               className="rounded-full bg-[#2ED8A8] px-10 py-5 font-sans text-[14px] font-medium tracking-[0.04em] text-[#070A0E] transition-opacity hover:opacity-90 disabled:opacity-60"
             >
-              {busy ? "Adding the System…" : "Claim the System — " + fmt(bundlePrice ?? undefined)}
+              {busy
+                ? "Adding the System…"
+                : "Claim the System" + (fmt(bundlePrice ?? undefined) ? ` — ${fmt(bundlePrice ?? undefined)}` : "")}
             </button>
           </div>
           <p className="mt-4 text-center font-sans text-[11px] text-[#F7F4F0]/40">

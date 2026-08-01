@@ -38,16 +38,12 @@ const WRAP = "mx-auto w-[min(1180px,92vw)]";
 export function SystemBundle() {
   const [busy, setBusy] = useState(false);
   // Live prices keyed by Shopify handle, plus the market currency they resolved
-  // in. Seeded with the home-market list prices (LIVE-CATALOG-TRUTH.md, verified
-  // 2026-07-27: System €399 · FI €88 · Belt €180 · Mat from €200) so the price
-  // card never renders an em-dash; hydration overwrites with the live,
-  // market-correct figures — the same seed pattern as InstrumentSystem.
-  const [prices, setPrices] = useState<Record<string, number>>({
-    "lifting-and-tightening-face-introducer": 88,
-    "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": 180,
-    "the-restoration-mat": 200,
-    [BUNDLE_HANDLE]: 399,
-  });
+  // in. Deliberately NOT seeded with the EUR list prices: market.ts serves USD
+  // to the US, so a seed renders €399 to a US visitor — and permanently if the
+  // fetch fails. Operator decision 2026-08-01: never show a wrong currency, and
+  // accept that the prerendered HTML carries no price. Callers omit the whole
+  // price element until the live, market-correct figure resolves.
+  const [prices, setPrices] = useState<Record<string, number>>({});
   const [currency, setCurrency] = useState("EUR");
 
   useEffect(() => {
@@ -74,7 +70,9 @@ export function SystemBundle() {
   const savingsAmount =
     typeof fullAmount === "number" && typeof bundleAmount === "number" ? fullAmount - bundleAmount : undefined;
 
-  const fmt = (n?: number) => (typeof n === "number" ? formatMoney(n, currency) : "—");
+  // null until the market-correct figure lands; every caller omits its element
+  // while null so nothing renders a dangling "—" or a bare "save ".
+  const fmt = (n?: number): string | null => (typeof n === "number" ? formatMoney(n, currency) : null);
 
   function claimSystem() {
     if (busy) return;
@@ -115,13 +113,13 @@ export function SystemBundle() {
           <div className="rounded-[14px] border border-[rgba(247,244,240,0.10)] bg-[#1A1714] p-[clamp(26px,3vw,40px)]">
             {hasFounding ? (
               <>
-                <div className="font-sans text-[12px] text-[#F7F4F0]/45 line-through">{fmt(fullAmount)}</div>
-                <div className="mt-1 font-serif italic text-[56px] leading-none text-[#F7F4F0]">{fmt(bundleAmount)}</div>
-                <div className="mt-1 font-serif italic text-[18px] text-[#C6A07C]">Founding bundle · save {fmt(savingsAmount)}</div>
+                {fmt(fullAmount) && <div className="font-sans text-[12px] text-[#F7F4F0]/45 line-through">{fmt(fullAmount)}</div>}
+                {fmt(bundleAmount) && <div className="mt-1 font-serif italic text-[56px] leading-none text-[#F7F4F0]">{fmt(bundleAmount)}</div>}
+                <div className="mt-1 font-serif italic text-[18px] text-[#C6A07C]">Founding bundle{fmt(savingsAmount) && <> · save {fmt(savingsAmount)}</>}</div>
               </>
             ) : (
               <>
-                <div className="font-serif italic text-[56px] leading-none text-[#F7F4F0]">{fmt(fullAmount)}</div>
+                {fmt(fullAmount) && <div className="font-serif italic text-[56px] leading-none text-[#F7F4F0]">{fmt(fullAmount)}</div>}
                 <div className="mt-1 font-serif italic text-[18px] text-[#C6A07C]">All three · once</div>
               </>
             )}
