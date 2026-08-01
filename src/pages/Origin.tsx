@@ -50,8 +50,8 @@ export default function Origin() {
             The market offers a false binary: pay for a clinic session every three weeks,
             indefinitely, or do nothing meaningful at all. Results that fade on schedule are not
             results. They are a subscription. We refused the binary. So we put the instrument we
-            wanted on our own counter — specified and calibrated in Rotterdam, clinic precision
-            tuned to a daily ritual you actually keep.
+            wanted on our own counter — chosen against a clinic standard, precision tuned to a
+            daily ritual you actually keep.
           </p>
         </section>
 

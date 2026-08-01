@@ -224,10 +224,14 @@ export function SparseFooter() {
             ))}
           </ul>
 
+          {/* No geographic provenance claim. LIVE-CATALOG-TRUTH.md:146-148:
+              "Never state a Rotterdam origin in copy" — the origin claim was
+              falsified 2026-07-14. The instruments are supplier SKUs shipped
+              from China and a US warehouse; nothing is designed, specified or
+              calibrated in Rotterdam. Rotterdam belongs only to the registered
+              company line below, which is a company fact, not a product one. */}
           <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#F7F4F0]/30 text-right">
-            Designed in Rotterdam.
-            <br className="md:hidden" />
-            <span className="md:ml-2">Shipped EU-wide.</span>
+            Shipped EU-wide.
           </p>
         </div>
 

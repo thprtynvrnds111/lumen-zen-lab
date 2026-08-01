@@ -278,7 +278,10 @@ export default function Storefront() {
             <div>
               <p className="mb-4 font-sans text-[10px] tracking-[0.26em] uppercase text-[#6B5A4A]">Why we exist</p>
               <p className="font-serif italic text-[19px] leading-[1.5] tracking-[-0.01em] text-[#1A1714]">Zential Pure started with one question: why does clinic-grade skin technology stay locked behind standing appointments and €120 sessions?</p>
-              <p className="mt-3.5 font-serif italic text-[17px] leading-[1.5] text-[#1A1714]">So we put the instrument we wanted on our own counter — specified and calibrated in Rotterdam, clinic precision tuned to a daily ritual you actually keep.</p>
+              {/* No "designed/specified/calibrated in Rotterdam" — see
+                  LIVE-CATALOG-TRUTH.md:146-148. We select and standardise
+                  instruments; we do not engineer or manufacture them. */}
+              <p className="mt-3.5 font-serif italic text-[17px] leading-[1.5] text-[#1A1714]">So we put the instrument we wanted on our own counter — chosen against a clinic standard, tuned to a daily ritual you actually keep.</p>
               <div className="mt-5 flex items-baseline gap-2.5">
                 <span className="font-serif italic text-[18px] text-[#1A1714]">Zential Pure</span>
                 <span className="font-sans text-[10px] tracking-[0.16em] uppercase text-[#6B5A4A]">Rotterdam</span>
