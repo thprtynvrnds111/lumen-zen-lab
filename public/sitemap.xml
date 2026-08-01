@@ -80,4 +80,7 @@
   <!-- Restoration Wrap — proposed-product waitlist test -->
   <url><loc>https://zentialpure.com/wrap</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
 
+  <!-- Entity anchor — static, JS-free Organization + catalog reference for crawlers -->
+  <url><loc>https://zentialpure.com/entity.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
 </urlset>

@@ -702,7 +702,9 @@ export default function InstrumentLanding() {
               "2-year warranty",
               "30-day money-back guarantee",
               "Ships in 48 hours",
-              "Registered EU company · Zential Pure B.V., Netherlands",
+              // "B.V." removed 2026-08-01 — see the note in InstrumentSystem.tsx.
+              // Rechtsvorm is an eenmanszaak (KvK 96597569, Handelsregister-verified).
+              "Registered Dutch business · Zential Pure, KvK 96597569",
             ].map((t) => (
               <span key={t} className="inline-flex items-center gap-2 before:block before:h-[5px] before:w-[5px] before:rounded-full before:bg-[#157A5C]">{t}</span>
             ))}

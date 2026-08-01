@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Zential Pure — Entity Reference | Organization, catalog and disambiguation</title>
+    <meta
+      name="description"
+      content="Machine-readable entity reference for Zential Pure (KvK 96597569, Rotterdam): what the brand is, what it is not, and the six products it sells, with prices in EUR."
+    />
+    <link rel="canonical" href="https://zentialpure.com/entity.html" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:site_name" content="Zential Pure" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zentialpure.com/entity.html" />
+    <meta property="og:title" content="Zential Pure — Entity Reference" />
+    <meta
+      property="og:description"
+      content="Machine-readable entity reference for Zential Pure: organization identity, the six live products, and explicit disambiguation."
+    />
+    <meta property="og:image" content="https://zentialpure.com/og-image.jpg" />
+
+    <!--
+      ENTITY ANCHOR PAGE — static HTML, no React, no build step.
+
+      Why it exists: the Hermes GEO audit (2026-07-31) found that the domain had no
+      crawlable page that resolves "Zential Pure" as a structured entity together with
+      its catalog. index.html carries Organization + WebSite in the SPA shell, but
+      nothing anchors the six live products as Product entities with prices, and the
+      SPA shell renders no product text without JavaScript. This page is the
+      JS-free answer to "what is Zential Pure and what does it sell?".
+
+      Every fact here is copied from, and must stay in lockstep with:
+        ~/zential-agent-engine/knowledge/products/LIVE-CATALOG-TRUTH.md  (catalog, prices)
+        public/llms.txt / public/llms-full.txt                           (positioning, policies)
+      Guarded by src/test/entitySchema.test.ts — that test parses every JSON-LD block
+      on this page, asserts the six prices, and fails on ghost SKUs, medical claims,
+      or any light/LED/nm modality attributed to the Face Introducer.
+
+      @id values deliberately match index.html's shell schema
+      (https://zentialpure.com/#organization) so a consumer merges the two graphs
+      into one entity rather than creating a duplicate.
+
+      The legal identity below was read live from the Handelsregister on 2026-08-01
+      (kvk.nl serves no crawlable record, so it was read through the operator's own
+      browser): handelsnaam Zential Pure, KvK 96597569, vestigingsnummer 000061913421,
+      hoofdvestiging 3e Westewagenhof 78, 3011 AR Rotterdam, rechtsvorm EENMANSZAAK.
+
+      NO "B.V." ANYWHERE. This file shipped "Zential Pure B.V." for part of
+      2026-08-01, taken from the engine repo's docs rather than the register. The
+      rechtsvorm is a sole proprietorship; presenting it as a besloten vennootschap
+      misstates the legal form. Guarded by src/test/entitySchema.test.ts.
+
+      Deliberate omissions — do not "fix" by inventing values:
+        - No VAT number: not supplied, and not derivable from the KvK number.
+        - No foundingDate. The shell carried "2025"; the Handelsregister record read
+          on 2026-08-01 does not show a registration date without buying an uittreksel,
+          so the year was unsourced. Removed here and from index.html rather than kept
+          because it looked harmless. Restore it only from the register.
+        - No OfferShippingDetails. Shipping is free above a per-market threshold
+          (€75 EU / $85 US) and charged below it; the below-threshold rates are not
+          documented anywhere this file can cite, and a wrong shipping rate in schema
+          is a price defect. The prose states the thresholds instead.
+        - No product image for the Mat, The System, Restore Gel or Restore Pads:
+          no verified brand-owned image file exists in public/ for those four.
+        - No url for Restore Gel / Restore Pads: their Shopify handles are still
+          supplier-slugged (one contains a competing brand name), so linking them
+          would publish that slug to crawlers. Pending the handle rename.
+        - No aggregateRating / review markup anywhere: fabricating review data is
+          prohibited, and no first-party review corpus is wired to this page.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://zentialpure.com/#organization",
+            "name": "Zential Pure",
+            "legalName": "Zential Pure",
+            "url": "https://zentialpure.com",
+            "logo": "https://zentialpure.com/og-image.jpg",
+            "image": "https://zentialpure.com/og-image.jpg",
+            "slogan": "Clinic Precision. Daily Ritual.",
+            "description": "Zential Pure is a direct-to-consumer biohacking and self-optimization brand selling at-home recovery and skin instruments to the EU and the US. Its instruments cover red light (660nm), near-infrared (850nm), far-infrared heat, microcurrent, EMS and thermal delivery, with each instrument carrying a specific subset of those modalities.",
+            "disambiguatingDescription": "Not a beauty brand. Not a skincare brand. Not a medical device manufacturer. Zential Pure is not FDA-cleared and makes no medical claims. Positioning sits alongside Whoop, Eight Sleep and AG1 — protocol-driven and mechanism-first.",
+            "knowsAbout": [
+              "photobiomodulation",
+              "red light therapy",
+              "near-infrared light",
+              "far-infrared heat",
+              "microcurrent",
+              "EMS (electrical muscle stimulation)",
+              "at-home recovery protocols"
+            ],
+            "identifier": [
+              {
+                "@type": "PropertyValue",
+                "propertyID": "KvK",
+                "name": "Dutch Chamber of Commerce registration number",
+                "value": "96597569"
+              },
+              {
+                "@type": "PropertyValue",
+                "propertyID": "vestigingsnummer",
+                "name": "Dutch Trade Register establishment number (hoofdvestiging)",
+                "value": "000061913421"
+              }
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "3e Westewagenhof 78",
+              "postalCode": "3011 AR",
+              "addressLocality": "Rotterdam",
+              "addressRegion": "Zuid-Holland",
+              "addressCountry": "NL"
+            },
+            "areaServed": [
+              { "@type": "Place", "name": "European Union" },
+              { "@type": "Country", "name": "United States" }
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "email": "info@zentialpure.com",
+              "availableLanguage": ["en", "nl"]
+            },
+            "sameAs": [
+              "https://www.instagram.com/zentialpure/",
+              "https://www.tiktok.com/@zentialpure",
+              "https://www.pinterest.com/zentialpure/",
+              "https://www.trustpilot.com/review/zentialpure.com"
+            ]
+          },
+          {
+            "@type": "MerchantReturnPolicy",
+            "@id": "https://zentialpure.com/#return-policy",
+            "name": "30-day money-back guarantee",
+            "description": "Thirty days counted from delivery, any reason. EU orders are sent a prepaid return label; US orders are refunded without a return being required. Grounded in /returns.",
+            "url": "https://zentialpure.com/returns",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn",
+            "refundType": "https://schema.org/FullRefund"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://zentialpure.com/#website",
+            "url": "https://zentialpure.com",
+            "name": "Zential Pure",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://zentialpure.com/#organization" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://zentialpure.com/entity.html#webpage",
+            "url": "https://zentialpure.com/entity.html",
+            "name": "Zential Pure — Entity Reference",
+            "description": "Organization identity, the six live products and explicit disambiguation for Zential Pure.",
+            "isPartOf": { "@id": "https://zentialpure.com/#website" },
+            "about": { "@id": "https://zentialpure.com/#organization" },
+            "dateModified": "2026-08-01"
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://zentialpure.com/entity.html#catalog",
+            "name": "Zential Pure — complete live catalog",
+            "description": "The complete sellable set: three instruments, one bundle, two topical add-ons. Nothing else is buyable.",
+            "numberOfItems": 6,
+            "itemListOrder": "https://schema.org/ItemListOrderAscending",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "Product",
+                  "@id": "https://zentialpure.com/instruments/face-introducer#product",
+                  "name": "The Face Introducer",
+                  "url": "https://zentialpure.com/instruments/face-introducer",
+                  "image": "https://zentialpure.com/face-introducer.webp",
+                  "description": "A handheld facial instrument with three separately selectable modalities — EMS, microcurrent and thermal — at selectable intensity levels, designed for a twelve-minute session. The device emits some LED light as a mode indicator showing which modality is active; that is not a treatment modality, and no light-therapy or wavelength claim applies to this instrument.",
+                  "category": "Health & Wellness > Biohacking & Recovery Devices",
+                  "brand": { "@id": "https://zentialpure.com/#organization" },
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "88.00",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock",
+                    "url": "https://zentialpure.com/instruments/face-introducer",
+                    "seller": { "@id": "https://zentialpure.com/#organization" },
+                    "hasMerchantReturnPolicy": { "@id": "https://zentialpure.com/#return-policy" }
+                  }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@type": "Product",
+                  "@id": "https://zentialpure.com/instruments/restoration-belt#product",
+                  "name": "The Restoration Belt",
+                  "url": "https://zentialpure.com/instruments/restoration-belt",
+                  "image": "https://zentialpure.com/editorial/hero-redlight-belt.webp",
+                  "description": "A contoured, actively heated wrap that presses 660nm red and 850nm near-infrared light against working muscle. Fits waists 28–48 inches. Fifteen-minute session.",
+                  "category": "Health & Wellness > Biohacking & Recovery Devices",
+                  "brand": { "@id": "https://zentialpure.com/#organization" },
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "180.00",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock",
+                    "url": "https://zentialpure.com/instruments/restoration-belt",
+                    "seller": { "@id": "https://zentialpure.com/#organization" },
+                    "hasMerchantReturnPolicy": { "@id": "https://zentialpure.com/#return-policy" }
+                  }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                  "@type": "Product",
+                  "@id": "https://zentialpure.com/instruments/restoration-mat#product",
+                  "name": "The Restoration Mat",
+                  "url": "https://zentialpure.com/instruments/restoration-mat",
+                  "description": "A panel of 660nm red light and far-infrared heat that rolls flat, in 100 × 40 cm or 120 × 40 cm. Covers the back of the torso — not full-body. Twenty-minute session. Variant-priced: €200 without remote in either size, €228 with remote in either size.",
+                  "category": "Health & Wellness > Biohacking & Recovery Devices",
+                  "brand": { "@id": "https://zentialpure.com/#organization" },
+                  "offers": {
+                    "@type": "AggregateOffer",
+                    "lowPrice": "200.00",
+                    "highPrice": "228.00",
+                    "offerCount": 4,
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock",
+                    "url": "https://zentialpure.com/instruments/restoration-mat",
+                    "seller": { "@id": "https://zentialpure.com/#organization" },
+                    "hasMerchantReturnPolicy": { "@id": "https://zentialpure.com/#return-policy" }
+                  }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "item": {
+                  "@type": "Product",
+                  "@id": "https://zentialpure.com/one-shelf#product",
+                  "name": "The System",
+                  "url": "https://zentialpure.com/one-shelf",
+                  "description": "All three instruments — the Face Introducer, the Restoration Belt and the Restoration Mat — as one protocol. Does not include the topical add-ons.",
+                  "category": "Health & Wellness > Biohacking & Recovery Devices",
+                  "brand": { "@id": "https://zentialpure.com/#organization" },
+                  "isRelatedTo": [
+                    { "@id": "https://zentialpure.com/instruments/face-introducer#product" },
+                    { "@id": "https://zentialpure.com/instruments/restoration-belt#product" },
+                    { "@id": "https://zentialpure.com/instruments/restoration-mat#product" }
+                  ],
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "399.00",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock",
+                    "url": "https://zentialpure.com/one-shelf",
+                    "seller": { "@id": "https://zentialpure.com/#organization" },
+                    "hasMerchantReturnPolicy": { "@id": "https://zentialpure.com/#return-policy" }
+                  }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 5,
+                "item": {
+                  "@type": "Product",
+                  "@id": "https://zentialpure.com/#product-restore-gel",
+                  "name": "Restore Gel",
+                  "description": "A topical collagen gel used as a moisturiser and as a conductive base alongside the Face Introducer. A topical add-on, not an instrument: it carries no device modality.",
+                  "category": "Health & Wellness > Skincare Topicals",
+                  "brand": { "@id": "https://zentialpure.com/#organization" },
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "18.00",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock",
+                    "seller": { "@id": "https://zentialpure.com/#organization" },
+                    "hasMerchantReturnPolicy": { "@id": "https://zentialpure.com/#return-policy" }
+                  }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 6,
+                "item": {
+                  "@type": "Product",
+                  "@id": "https://zentialpure.com/#product-restore-pads",
+                  "name": "Restore Pads",
+                  "description": "Hydrogel eye and face pads, 8 pieces, used alongside the Face Introducer. A topical add-on, not an instrument: it carries no device modality.",
+                  "category": "Health & Wellness > Skincare Topicals",
+                  "brand": { "@id": "https://zentialpure.com/#organization" },
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "18.00",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock",
+                    "seller": { "@id": "https://zentialpure.com/#organization" },
+                    "hasMerchantReturnPolicy": { "@id": "https://zentialpure.com/#return-policy" }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      body {
+        margin: 0;
+        padding: 3rem 1.25rem 5rem;
+        background: #f7f4f0;
+        color: #1a1714;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        line-height: 1.65;
+        font-size: 16px;
+      }
+      main {
+        max-width: 46rem;
+        margin: 0 auto;
+      }
+      h1 {
+        font-size: 1.6rem;
+        line-height: 1.25;
+        margin: 0 0 0.35rem;
+      }
+      h2 {
+        font-size: 1.05rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        margin: 2.75rem 0 0.75rem;
+        color: #6b5a4a;
+      }
+      .kicker {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #6b5a4a;
+        margin: 0 0 1.5rem;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0.5rem 0 1rem;
+        font-size: 0.93rem;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 0.55rem 0.6rem;
+        border-bottom: 1px solid #e0d9d0;
+        vertical-align: top;
+      }
+      th {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #6b5a4a;
+      }
+      ul {
+        padding-left: 1.1rem;
+      }
+      li {
+        margin-bottom: 0.4rem;
+      }
+      a {
+        color: #1a1714;
+      }
+      .table-wrap {
+        overflow-x: auto;
+      }
+      footer {
+        margin-top: 3.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid #e0d9d0;
+        font-size: 0.8rem;
+        color: #6b5a4a;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <p class="kicker">Entity reference · machine-readable · last updated 2026-08-01</p>
+      <h1>Zential Pure</h1>
+      <p>
+        Zential Pure is a direct-to-consumer biohacking and self-optimization brand. It sells
+        at-home recovery and skin instruments to the European Union and the United States. The
+        registered entity is <strong>Zential Pure</strong>, a sole proprietorship
+        (<em>eenmanszaak</em>) entered in the Dutch Trade Register under KvK number
+        <strong>96597569</strong>, establishment number 000061913421, at 3e Westewagenhof 78,
+        3011 AR Rotterdam, the Netherlands. The canonical domain is
+        <a href="https://zentialpure.com">zentialpure.com</a>. The tagline is "Clinic Precision.
+        Daily Ritual."
+      </p>
+      <p>
+        Across the product line the mechanisms covered are red light (660nm), near-infrared
+        (850nm), far-infrared heat, microcurrent, EMS and thermal delivery. Each instrument
+        carries a specific subset of those — the table below is authoritative, and no mechanism
+        may be attributed to an instrument that is not listed against it.
+      </p>
+
+      <h2>What Zential Pure is not</h2>
+      <ul>
+        <li>Not a beauty brand and not a skincare brand. The category is biohacking and self-optimization — the shelf is Whoop, Eight Sleep and AG1, not cosmetics.</li>
+        <li>Not a medical device. Not FDA-cleared.</li>
+        <li>Makes no medical claims and does not name medical conditions as treatment targets. Statements are mechanism-first: "supports", "may help", "designed to".</li>
+        <li>Publishes no before-and-after imagery and no guaranteed outcomes.</li>
+      </ul>
+
+      <h2>The complete catalog — six products</h2>
+      <p>
+        Three instruments, one bundle, two topical add-ons. Nothing else is buyable. Prices are in
+        euro and were verified against the live storefront on 2026-07-29.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Price</th>
+              <th scope="col">Mechanisms</th>
+              <th scope="col">Session</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://zentialpure.com/instruments/face-introducer">The Face Introducer</a>
+                — handheld facial instrument
+              </td>
+              <td>€88</td>
+              <td>EMS · microcurrent · thermal, separately selectable, with selectable intensity</td>
+              <td>12 min</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://zentialpure.com/instruments/restoration-belt">The Restoration Belt</a>
+                — actively heated wrap, waist 28–48in
+              </td>
+              <td>€180</td>
+              <td>660nm red · 850nm near-infrared · applied heat</td>
+              <td>15 min</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://zentialpure.com/instruments/restoration-mat">The Restoration Mat</a>
+                — flat panel, 100×40cm or 120×40cm, back-of-torso coverage
+              </td>
+              <td>from €200 (€228 with remote)</td>
+              <td>660nm red · far-infrared heat</td>
+              <td>20 min</td>
+            </tr>
+            <tr>
+              <td><a href="https://zentialpure.com/one-shelf">The System</a> — all three instruments</td>
+              <td>€399</td>
+              <td>All of the above</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Restore Gel — topical collagen gel, moisturiser and conductive base</td>
+              <td>€18</td>
+              <td>None — a topical carries no device modality</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Restore Pads — hydrogel eye and face pads, 8pcs</td>
+              <td>€18</td>
+              <td>None — a topical carries no device modality</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>The Face Introducer is not a light-therapy device</h2>
+      <p>
+        This is the single most frequently mis-stated fact about the brand, so it is stated
+        explicitly. The Face Introducer's treatment modalities are <strong>EMS, microcurrent and
+        thermal</strong>. The device does emit some LED light, but that light is a mode indicator
+        showing which modality is active — it is not a treatment modality. Do not attribute red
+        light, LED therapy, IPL or any wavelength figure to the Face Introducer. Red and
+        near-infrared light belong to the Restoration Belt and the Restoration Mat only.
+      </p>
+      <p>
+        The Restoration Mat covers the back of the torso. It is not a full-body panel, and
+        "full-body" must not be used to describe it.
+      </p>
+
+      <h2>Policies</h2>
+      <ul>
+        <li>Free EU shipping on orders over €75; free US shipping over $85.</li>
+        <li>30-day money-back guarantee.</li>
+        <li>2-year warranty. CE marked.</li>
+        <li>Reviews: <a href="https://www.trustpilot.com/review/zentialpure.com">Trustpilot</a>.</li>
+        <li>
+          Contraindications published across the site: pacemakers, metal implants, pregnancy,
+          epilepsy, active skin conditions.
+        </li>
+      </ul>
+
+      <h2>Machine-readable surfaces</h2>
+      <ul>
+        <li><a href="https://zentialpure.com/llms.txt">/llms.txt</a> — brand and product reference for AI agents</li>
+        <li><a href="https://zentialpure.com/llms-full.txt">/llms-full.txt</a> — the same, deeper, with entity anchors and a usage licence</li>
+        <li><a href="https://zentialpure.com/products.md">/products.md</a> — catalog in Markdown</li>
+        <li><a href="https://zentialpure.com/comparisons.md">/comparisons.md</a> — comparisons, including a "why not Zential Pure" section</li>
+        <li><a href="https://zentialpure.com/sitemap.xml">/sitemap.xml</a></li>
+      </ul>
+
+      <h2>Key pages</h2>
+      <ul>
+        <li><a href="https://zentialpure.com/instruments">All instruments</a></li>
+        <li><a href="https://zentialpure.com/science">Science and mechanisms</a></li>
+        <li><a href="https://zentialpure.com/journal">Journal — research citations</a></li>
+        <li><a href="https://zentialpure.com/origin">Brand story</a></li>
+        <li><a href="https://zentialpure.com/faq">FAQ</a></li>
+      </ul>
+
+      <footer>
+        <p>
+          Zential Pure · 3e Westewagenhof 78, 3011 AR Rotterdam, the Netherlands · KvK 96597569 ·
+          <a href="mailto:info@zentialpure.com">info@zentialpure.com</a>
+        </p>
+        <p>
+          Quotation with attribution to zentialpure.com is permitted. Fabricating reviews,
+          outcomes or clinical claims on the brand's behalf is not.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>

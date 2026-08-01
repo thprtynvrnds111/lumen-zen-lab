@@ -41,9 +41,10 @@
       "name": "Zential Pure",
       "url": "https://zentialpure.com",
       "logo": "https://zentialpure.com/og-image.jpg",
-      "foundingDate": "2025",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "3e Westewagenhof 78",
+        "postalCode": "3011 AR",
         "addressLocality": "Rotterdam",
         "addressCountry": "NL"
       },
@@ -60,43 +61,37 @@
     }
     </script>
 
-    <!-- Schema.org: Product -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Zential Pure Microcurrent Facial Device",
-      "description": "Clinic-grade microcurrent, EMS and thermal technology in one daily-use device. Designed to lift, sculpt and restore your skin's natural tone and frequency.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Zential Pure"
-      },
-      "url": "https://zentialpure.com",
-      "image": "https://zentialpure.com/og-image.jpg",
-      "offers": {
-        "@type": "AggregateOffer",
-        "lowPrice": "70",
-        "highPrice": "147",
-        "offerCount": "9",
-        "priceCurrency": "EUR",
-        "availability": "https://schema.org/InStock",
-        "url": "https://zentialpure.com",
-        "seller": {
-          "@type": "Organization",
-          "name": "Zential Pure"
-        }
-      },
-      "category": "Health & Wellness > Biohacking & Recovery Devices"
-    }
-    </script>
+    <!-- Schema.org: Product — REMOVED 2026-08-01, do not reinstate.
+
+         This shell carried a composite Product called "Zential Pure Microcurrent
+         Facial Device" with an AggregateOffer of lowPrice 70 / highPrice 147 /
+         offerCount 9. All three numbers described the discontinued 8-SKU face and
+         wand line (Skin Pulse €70, Sculpt Wand €75, Frequency Wand Pro €147), which
+         has been unbuyable since the 2026-07-12 ghost cleanup. The live catalog is
+         six products at €18–€399. So every route on the domain was publishing a
+         price range that was wrong at both ends and a product count that did not
+         exist — to exactly the crawlers this markup is for.
+
+         It was also structurally wrong: a single Product with a site-wide
+         AggregateOffer is not one product, and Product markup on a non-product page
+         is a rich-results violation. Correct product markup now lives where the
+         products are — public/entity.html (all six, as an ItemList of Product
+         entities) and the PDP routes' own per-route JSON-LD.
+
+         If a catalog-level Product block is ever wanted back in the shell, it must
+         read prices from LIVE-CATALOG-TRUTH.md, not from a hand-typed literal.
+         Guarded by src/test/entitySchema.test.ts. -->
+
 
     <!-- Schema.org: WebSite + Sitelinks Searchbox -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": "https://zentialpure.com/#website",
       "name": "Zential Pure",
       "url": "https://zentialpure.com",
+      "publisher": { "@id": "https://zentialpure.com/#organization" },
       "potentialAction": {
         "@type": "SearchAction",
         "target": "https://zentialpure.com/?q={search_term_string}",

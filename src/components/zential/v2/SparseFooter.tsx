@@ -235,11 +235,21 @@ export function SparseFooter() {
           </p>
         </div>
 
-        {/* Legal identity. KvK + VAT numbers and the registered street address
-            are pending from the operator — append them here when supplied, do
-            not placeholder them. */}
+        {/* Legal identity, read live from the Handelsregister 2026-08-01:
+            handelsnaam Zential Pure, KvK 96597569, vestigingsnummer 000061913421,
+            3e Westewagenhof 78, 3011 AR Rotterdam.
+
+            NO "B.V." — the rechtsvorm is an EENMANSZAAK. This line said
+            "Zential Pure B.V." from 2026-08-01 until the register was actually
+            read the same day; the name had been taken from the engine repo's
+            docs rather than from the register, and four other surfaces repeated
+            it, one of them inviting customers to look us up. Do not reintroduce
+            it. Guarded by src/test/entitySchema.test.ts.
+
+            Still pending and deliberately NOT placeholdered: the VAT number.
+            Mirrored in public/entity.html's Organization schema — change both. */}
         <p className="mt-6 font-mono text-[10px] tracking-[0.18em] uppercase text-[#F7F4F0]/30">
-          Zential Pure B.V.  ·  Rotterdam, the Netherlands  ·{" "}
+          Zential Pure  ·  3e Westewagenhof 78, 3011 AR Rotterdam, the Netherlands  ·  KvK 96597569  ·{" "}
           <a href="mailto:info@zentialpure.com" className="hover:text-[#2ED8A8] transition-colors normal-case tracking-normal">
             info@zentialpure.com
           </a>

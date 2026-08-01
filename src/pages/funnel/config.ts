@@ -249,8 +249,10 @@ const TRUST_ITEMS: TrustItem[] = [
     body: "Meets the EU safety, health and environmental requirements for consumer electronics — Declaration of Conformity on file, ask and we will show it.",
   },
   {
-    title: "EU Company · Netherlands",
-    body: "Zential Pure B.V. — look us up in the Dutch business register.",
+    // "B.V." removed 2026-08-01 — see the note in InstrumentSystem.tsx. Rechtsvorm
+    // is an eenmanszaak (KvK 96597569, Handelsregister-verified), not a B.V.
+    title: "Registered Dutch business",
+    body: "Zential Pure, KvK 96597569 — look us up in the Dutch business register.",
   },
   {
     title: "30-Day Return",
@@ -283,7 +285,7 @@ const FOOTER = {
     { label: "Contact", href: "/support" },
   ],
   smallprint:
-    "Zential Pure B.V. · Registered in the Netherlands. This instrument is designed to support the appearance of skin and everyday recovery with consistent use. It does not diagnose, treat or cure any medical condition. Individual experiences vary.",
+    "Zential Pure · KvK 96597569, Rotterdam, the Netherlands. This instrument is designed to support the appearance of skin and everyday recovery with consistent use. It does not diagnose, treat or cure any medical condition. Individual experiences vary.",
 };
 
 const GUARANTEE =

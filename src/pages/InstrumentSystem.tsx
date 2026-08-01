@@ -309,8 +309,13 @@ export default function InstrumentSystem() {
                 body: "Meets EU safety, health and environmental requirements for consumer electronics — Declaration of Conformity on file.",
               },
               {
-                title: "EU Company · Netherlands",
-                body: "Zential Pure B.V. — look us up in the Dutch business register. Real company, real address, real support.",
+                // "B.V." removed 2026-08-01: the Handelsregister record (KvK 96597569,
+                // read live) shows the rechtsvorm is an eenmanszaak, not a besloten
+                // vennootschap. Inviting customers to look us up while stating a legal
+                // form we do not hold is the worst version of that error. The KvK
+                // number is the verifiable fact and does the same trust work.
+                title: "Registered Dutch business",
+                body: "Zential Pure, KvK 96597569 — look us up in the Dutch business register. Real business, real address, real support.",
               },
               {
                 title: "2-Year Warranty",

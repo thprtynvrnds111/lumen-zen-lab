@@ -5,6 +5,7 @@
 # Full documentation: https://zentialpure.com/llms-full.txt
 # Product catalog: https://zentialpure.com/products.md
 # Comparisons: https://zentialpure.com/comparisons.md
+# Entity reference (Organization + full catalog as JSON-LD): https://zentialpure.com/entity.html
 
 ## What Zential Pure Is
 
