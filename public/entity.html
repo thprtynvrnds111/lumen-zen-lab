@@ -54,8 +54,23 @@
       rechtsvorm is a sole proprietorship; presenting it as a besloten vennootschap
       misstates the legal form. Guarded by src/test/entitySchema.test.ts.
 
+      VAT: NL004192654B60, supplied by the operator 2026-08-01 and confirmed valid against
+      the EU VIES service the same day (isValid true, registered to M G YOUNG ON). This is
+      the btw-identificatienummer — the number a Dutch sole trader publishes. The older
+      omzetbelastingnummer is derived from the BSN and must NEVER appear on any surface.
+
+      The trader's name (M.G. Young-On) appears here on the operator's explicit instruction
+      2026-08-01, reversing the 2026-07-11 brand-only decision. Art. 3:15d BW expects a sole
+      proprietorship to disclose the natural person behind the trade name; the initials form
+      is the one registered with the Belastingdienst. The founder note on the storefront signs
+      "Miguel" — a signature, not the legal identity, and the two are not interchangeable.
+
       Deliberate omissions — do not "fix" by inventing values:
-        - No VAT number: not supplied, and not derivable from the KvK number.
+        - The VAT registration is held at a different address, in a different town, from the
+          trade-register one. It is deliberately not recorded here, not even in a comment:
+          comments in this file ship to anyone who views source, and that address looks
+          private. The KvK establishment address is the business one and the only one
+          published. Guarded by src/test/entitySchema.test.ts.
         - No foundingDate. The shell carried "2025"; the Handelsregister record read
           on 2026-08-01 does not show a registration date without buying an uittreksel,
           so the year was unsourced. Removed here and from index.html rather than kept
@@ -96,12 +111,23 @@
               "EMS (electrical muscle stimulation)",
               "at-home recovery protocols"
             ],
+            "vatID": "NL004192654B60",
+            "founder": {
+              "@type": "Person",
+              "name": "M.G. Young-On"
+            },
             "identifier": [
               {
                 "@type": "PropertyValue",
                 "propertyID": "KvK",
                 "name": "Dutch Chamber of Commerce registration number",
                 "value": "96597569"
+              },
+              {
+                "@type": "PropertyValue",
+                "propertyID": "BTW-identificatienummer",
+                "name": "Dutch VAT identification number",
+                "value": "NL004192654B60"
               },
               {
                 "@type": "PropertyValue",
@@ -401,8 +427,9 @@
         Zential Pure is a direct-to-consumer biohacking and self-optimization brand. It sells
         at-home recovery and skin instruments to the European Union and the United States. The
         registered entity is <strong>Zential Pure</strong>, a sole proprietorship
-        (<em>eenmanszaak</em>) entered in the Dutch Trade Register under KvK number
-        <strong>96597569</strong>, establishment number 000061913421, at 3e Westewagenhof 78,
+        (<em>eenmanszaak</em>) of <strong>M.G. Young-On</strong>, entered in the Dutch Trade
+        Register under KvK number <strong>96597569</strong>, establishment number 000061913421,
+        VAT identification number <strong>NL004192654B60</strong>, at 3e Westewagenhof 78,
         3011 AR Rotterdam, the Netherlands. The canonical domain is
         <a href="https://zentialpure.com">zentialpure.com</a>. The tagline is "Clinic Precision.
         Daily Ritual."
@@ -533,7 +560,8 @@
 
       <footer>
         <p>
-          Zential Pure · 3e Westewagenhof 78, 3011 AR Rotterdam, the Netherlands · KvK 96597569 ·
+          Zential Pure · M.G. Young-On · 3e Westewagenhof 78, 3011 AR Rotterdam, the Netherlands ·
+          KvK 96597569 · BTW NL004192654B60 ·
           <a href="mailto:info@zentialpure.com">info@zentialpure.com</a>
         </p>
         <p>

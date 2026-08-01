@@ -101,8 +101,9 @@ export default function Origin() {
 
         {/* SIGN-OFF + single quiet CTA */}
         <section className="mx-auto max-w-[680px] px-6 pb-28 md:pb-36">
+          {/* Signed by name from 2026-08-01 — see the note in Storefront.tsx. */}
           <p className="font-serif italic text-[20px] md:text-[22px] text-[#F7F4F0]/80">
-            Zential Pure · Rotterdam
+            Miguel · Founder, Zential Pure · Rotterdam
           </p>
           <div className="mt-12">
             <Link

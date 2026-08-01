@@ -282,9 +282,13 @@ export default function Storefront() {
                   LIVE-CATALOG-TRUTH.md:146-148. We select and standardise
                   instruments; we do not engineer or manufacture them. */}
               <p className="mt-3.5 font-serif italic text-[17px] leading-[1.5] text-[#1A1714]">So we put the instrument we wanted on our own counter — chosen against a clinic standard, tuned to a daily ritual you actually keep.</p>
+              {/* Signed by name from 2026-08-01 on the operator's instruction, reversing the
+                  2026-07-11 brand-only signature decision. "Miguel" is a signature; the legal
+                  identity (M.G. Young-On, KvK, BTW) lives in the footer and entity.html and
+                  the two are not interchangeable. */}
               <div className="mt-5 flex items-baseline gap-2.5">
-                <span className="font-serif italic text-[18px] text-[#1A1714]">Zential Pure</span>
-                <span className="font-sans text-[10px] tracking-[0.16em] uppercase text-[#6B5A4A]">Rotterdam</span>
+                <span className="font-serif italic text-[18px] text-[#1A1714]">Miguel</span>
+                <span className="font-sans text-[10px] tracking-[0.16em] uppercase text-[#6B5A4A]">Founder, Zential Pure · Rotterdam</span>
               </div>
             </div>
           </div>

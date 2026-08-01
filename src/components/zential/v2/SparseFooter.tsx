@@ -246,10 +246,17 @@ export function SparseFooter() {
             it, one of them inviting customers to look us up. Do not reintroduce
             it. Guarded by src/test/entitySchema.test.ts.
 
-            Still pending and deliberately NOT placeholdered: the VAT number.
+            The trader's name is here on the operator's instruction 2026-08-01, reversing
+            the 2026-07-11 brand-only decision: Art. 3:15d BW expects a sole proprietorship
+            to name the natural person behind the trade name. Initials form, as registered
+            with the Belastingdienst. BTW NL004192654B60 is the btw-identificatienummer
+            (VIES-confirmed valid 2026-08-01) — never publish the BSN-derived
+            omzetbelastingnummer, and never the VAT registration's own address, which
+            is in a different town and looks private.
+
             Mirrored in public/entity.html's Organization schema — change both. */}
         <p className="mt-6 font-mono text-[10px] tracking-[0.18em] uppercase text-[#F7F4F0]/30">
-          Zential Pure  ·  3e Westewagenhof 78, 3011 AR Rotterdam, the Netherlands  ·  KvK 96597569  ·{" "}
+          Zential Pure  ·  M.G. Young-On  ·  3e Westewagenhof 78, 3011 AR Rotterdam, the Netherlands  ·  KvK 96597569  ·  BTW NL004192654B60  ·{" "}
           <a href="mailto:info@zentialpure.com" className="hover:text-[#2ED8A8] transition-colors normal-case tracking-normal">
             info@zentialpure.com
           </a>

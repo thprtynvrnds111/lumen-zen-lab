@@ -75,6 +75,28 @@ const STREET = "3e Westewagenhof 78";
 const POSTCODE = "3011 AR";
 const VESTIGING = "000061913421";
 
+/**
+ * VAT + trader name, supplied by the operator 2026-08-01. The number was confirmed
+ * against the EU VIES service the same day (isValid true, registered to M G YOUNG ON)
+ * — so it is the btw-identificatienummer, the one a Dutch sole trader publishes.
+ */
+const VAT = "NL004192654B60";
+const TRADER = "M.G. Young-On";
+
+/**
+ * Two values that must never reach a shipped surface:
+ *
+ *  - the omzetbelastingnummer, the sole trader's OTHER VAT number, which is derived
+ *    from the BSN. Publishing it exposes a national identity number. Any NL VAT-shaped
+ *    string that is not the btw-id above is treated as that number until proven otherwise.
+ *  - the VIES tax-registration address in Zwijndrecht. It is not the business address —
+ *    the trade register has Rotterdam — and it looks like a private one.
+ */
+const FORBIDDEN_IDENTITY = [
+  { label: "a second, non-btw-id NL VAT number", re: /\bNL\d{9}B\d{2}\b/g, allow: VAT },
+  { label: "the VIES tax address (Zwijndrecht)", re: /Zwijndrecht|Rotterdamseweg/gi },
+];
+
 /** The six live products, LIVE-CATALOG-TRUTH.md (verified 2026-07-29). */
 const CATALOG = [
   { name: "The Face Introducer", price: "88.00" },
@@ -176,10 +198,14 @@ describe("entity.html — entity anchor page", () => {
     const org = byType("Organization")[0];
     expect(org.legalName).toBe("Zential Pure");
 
+    expect(org.vatID).toBe(VAT);
+    expect((org.founder as Record<string, unknown>).name).toBe(TRADER);
+
     const ids = org.identifier as Record<string, unknown>[];
     const byProp = (p: string) => ids.find((i) => i.propertyID === p);
     expect(byProp("KvK")?.value).toBe(KVK);
     expect(byProp("vestigingsnummer")?.value).toBe(VESTIGING);
+    expect(byProp("BTW-identificatienummer")?.value).toBe(VAT);
 
     const addr = org.address as Record<string, unknown>;
     expect(addr.streetAddress).toBe(STREET);
@@ -191,6 +217,8 @@ describe("entity.html — entity anchor page", () => {
     // is corrected and the other is not, the site publishes two legal identities.
     const footer = read(join(ROOT, "src/components/zential/v2/SparseFooter.tsx"));
     expect(footer).toContain(`KvK ${KVK}`);
+    expect(footer).toContain(`BTW ${VAT}`);
+    expect(footer).toContain(TRADER);
     expect(footer).toContain(STREET);
     expect(footer).toContain(POSTCODE);
     expect(footer, "the true registered-company line must keep shipping").toMatch(
@@ -315,6 +343,29 @@ describe("legal form — Zential Pure is an eenmanszaak, never a B.V.", () => {
     expect(
       offenders,
       `Zential Pure is an eenmanszaak (KvK ${KVK}) — "B.V." found:\n${offenders.join("\n")}`,
+    ).toEqual([]);
+  });
+
+  it("leaks neither the BSN-derived VAT number nor the private tax address", () => {
+    const offenders: string[] = [];
+    for (const file of files) {
+      // This file has to spell the forbidden tokens out in order to detect them —
+      // a detector cannot describe what it looks for without naming it. Everything
+      // else, including comments, is in scope: public/entity.html is a served file,
+      // so an HTML comment in it is readable by anyone doing view-source. That is
+      // not hypothetical; this guard caught exactly that leak when it was added.
+      if (file.endsWith("entitySchema.test.ts")) continue;
+      const body = readFileSync(file, "utf-8");
+      for (const { label, re, allow } of FORBIDDEN_IDENTITY) {
+        for (const m of body.match(new RegExp(re.source, re.flags)) ?? []) {
+          if (allow && m === allow) continue;
+          offenders.push(`${file.replace(ROOT, "")}: ${label} — "${m}"`);
+        }
+      }
+    }
+    expect(
+      offenders,
+      `identity data that must never ship:\n${offenders.join("\n")}`,
     ).toEqual([]);
   });
 
