@@ -8,20 +8,48 @@
   "eyebrow": "So Funktioniert Es",
   "title": "Einfach. Ehrlich. Schnell.",
   "items": [
-   { "title": "Rücksendung Beantragen", "desc": "Schreib uns an info@zentialpure.com innerhalb von 30 Tagen nach der Lieferung mit deiner Bestellnummer." },
-   { "title": "Genehmigung Erhalten", "desc": "Wir prüfen und genehmigen deinen Antrag innerhalb von 24–48 Stunden, keine langen Fragebögen." },
-   { "title": "Zurücksenden (EU)", "desc": "EU-Bestellungen: wir senden ein vorausbezahltes Rücksendeetikett. US-Bestellungen: behalte das Gerät — wir erstatten ohne Rücksendung." },
-   { "title": "Erstattung Erhalten", "desc": "Nach Eingang und Prüfung wird deine Rückerstattung innerhalb von 5 bis 7 Werktagen bearbeitet." }
+   {
+    "title": "Rücksendung Beantragen",
+    "desc": "Schreib uns an info@zentialpure.com innerhalb von 30 Tagen nach der Lieferung mit deiner Bestellnummer."
+   },
+   {
+    "title": "Genehmigung Erhalten",
+    "desc": "Wir prüfen und genehmigen deinen Antrag innerhalb von 24–48 Stunden, keine langen Fragebögen."
+   },
+   {
+    "title": "Zurücksenden (EU)",
+    "desc": "EU-Bestellungen: wir senden ein vorausbezahltes Rücksendeetikett. US-Bestellungen: behalte das Gerät — wir erstatten ohne Rücksendung."
+   },
+   {
+    "title": "Erstattung Erhalten",
+    "desc": "Nach Eingang und Prüfung wird deine Rückerstattung innerhalb von 5 bis 7 Werktagen bearbeitet."
+   }
   ]
  },
  "policy": {
   "eyebrow": "Richtliniendetails",
   "title": "Was Du Wissen Solltest.",
   "items": [
-   { "title": "30-Tage-Geld-zurück-Garantie", "desc": "Dreißig Tage, gezählt ab Lieferung — nicht ab Kauf. Ob das Gerät seinen Platz verdient hat, entscheidest du: keine Ergebnisklausel, keine Prüfkommission." },
-   { "title": "Geöffnet Ist In Ordnung", "desc": "Das Öffnen der Verpackung und die Nutzung des Geräts machen die Garantie nicht ungültig — eine Garantie, die nur für eine ungeöffnete Verpackung gilt, ist keine. Geöffnete Verbrauchsartikel (Gele, Pads) sind aus Hygienegründen nicht rückgabefähig." },
-   { "title": "Beschädigte oder Defekte Artikel", "desc": "Wenn dein Produkt beschädigt oder defekt ankommt, kontaktiere uns sofort. Wir senden einen Ersatz kostenlos, keine Rücksendung erforderlich." },
-   { "title": "Umtausch", "desc": "Möchtest du eine andere Farbe oder Variante? Kontaktiere uns innerhalb von 30 Tagen und wir arrangieren einen Umtausch, vorbehaltlich der Verfügbarkeit." }
+   {
+    "title": "30-Tage-Geld-zurück-Garantie",
+    "desc": "Dreißig Tage, gezählt ab Lieferung — nicht ab Kauf. Ob das Gerät seinen Platz verdient hat, entscheidest du: keine Ergebnisklausel, keine Prüfkommission."
+   },
+   {
+    "title": "1 Jahr Garantie Auf Die Instrumente",
+    "desc": "Zwölf Monate ab Lieferung auf Herstellungsfehler und Ausfälle bei normalem Gebrauch, für den Face Introducer, den Restoration Belt und die Restoration Mat. Funktioniert das Gerät nicht mehr wie vorgesehen, reparieren oder ersetzen wir es — den Versand übernehmen wir in beide Richtungen. Dies ist unabhängig von der 30-tägigen Geld-zurück-Garantie und schließt daran an. Nicht abgedeckt sind Unfallschäden, Wasserschäden sowie Gele und Pads, die Verbrauchsmaterial sind."
+   },
+   {
+    "title": "Geöffnet Ist In Ordnung",
+    "desc": "Das Öffnen der Verpackung und die Nutzung des Geräts machen die Garantie nicht ungültig — eine Garantie, die nur für eine ungeöffnete Verpackung gilt, ist keine. Geöffnete Verbrauchsartikel (Gele, Pads) sind aus Hygienegründen nicht rückgabefähig."
+   },
+   {
+    "title": "Beschädigte oder Defekte Artikel",
+    "desc": "Wenn dein Produkt beschädigt oder defekt ankommt, kontaktiere uns sofort. Wir senden einen Ersatz kostenlos, keine Rücksendung erforderlich."
+   },
+   {
+    "title": "Umtausch",
+    "desc": "Möchtest du eine andere Farbe oder Variante? Kontaktiere uns innerhalb von 30 Tagen und wir arrangieren einen Umtausch, vorbehaltlich der Verfügbarkeit."
+   }
   ]
  },
  "cta": {

@@ -122,7 +122,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     heroConcrete: "Three clinic modalities. One €88 device. Twelve minutes.",
     lede:
       "EMS, microcurrent and thermal — the three inputs a facialist charges you by the session, calibrated into a twelve-minute ritual you run yourself.",
-    trust: ["30-day money-back guarantee", "Ships in 48 hours", "12-minute ritual"],
+    trust: ["30-day money-back guarantee", "1-year warranty", "12-minute ritual"],
     // Verified 2026-07-18: variant 51731419922775 = Face Introducer €88 (live products.json).
     directVariantId: "51731419922775",
     modLabel: "Three modalities",
@@ -235,7 +235,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     hero: { l1: "Recovery,", l2pre: "worn ", accent: "close." },
     lede:
       "A contoured thermal wrap that holds sustained warmth — and 660nm red and 850nm near-infrared light — against the working muscle. The recovery room, narrowed to the span of your lower back. Fifteen minutes.",
-    trust: ["30-day money-back guarantee", "Cordless · ships in 48 hours", "15-minute ritual"],
+    trust: ["30-day money-back guarantee", "1-year warranty", "15-minute ritual"],
     // Verified 2026-07-19: variant 53502319755607 = Restoration Belt €180, single variant.
     directVariantId: "53502319755607",
     modLabel: "Four mechanisms",
@@ -349,7 +349,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
     hero: { l1: "The whole system,", l2pre: "laid ", accent: "down." },
     lede:
       "A 100 × 40 cm bed of 660nm red light and far-infrared heat — 120 × 40 cm in the longer size. You lie down, the array does the rest, and the nervous system gets twenty minutes it does not usually get.",
-    trust: ["30-day money-back guarantee", "Rolls flat · ships in 48 hours", "20-minute ritual"],
+    trust: ["30-day money-back guarantee", "1-year warranty", "20-minute ritual"],
     modLabel: "Four mechanisms",
     badges: [
       { label: "Red LED", sub: "660nm" },
@@ -699,8 +699,9 @@ export default function InstrumentLanding() {
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3 py-[18px] font-sans text-[12px] text-[#1A1714]/70">
             {[
               "CE marked · Declaration of Conformity on file",
-              "2-year warranty",
+              "1-year warranty",
               "30-day money-back guarantee",
+              "1-year warranty on the instrument",
               "Ships in 48 hours",
               // "B.V." removed 2026-08-01 — see the note in InstrumentSystem.tsx.
               // Rechtsvorm is an eenmanszaak (KvK 96597569, Handelsregister-verified).
@@ -841,7 +842,7 @@ export default function InstrumentLanding() {
               <OrderCta className={`${PILL_ACTION} mb-3 w-full`}>{orderLabel}</OrderCta>
               <a href="#science" className={`${PILL_GHOST_LIGHT} w-full`}>Read the mechanism</a>
               <div className="mt-[18px] flex justify-center"><TrustpilotProof variant="pdp" /></div>
-              <p className="mt-[18px] border-t border-[rgba(26,23,20,0.12)] pt-[18px] text-xs leading-[1.6] text-[#1A1714]/60"><b className="font-medium text-[#1A1714]">30-day money-back guarantee.</b> {cfg.guarantee}</p>
+              <p className="mt-[18px] border-t border-[rgba(26,23,20,0.12)] pt-[18px] text-xs leading-[1.6] text-[#1A1714]/60"><b className="font-medium text-[#1A1714]">30-day money-back guarantee.</b> {cfg.guarantee} <b className="font-medium text-[#1A1714]">Then a 1-year warranty</b> against manufacturing defects and failure in normal use — we cover shipping both ways. <a href="/returns" className="underline">Full terms</a>.</p>
             </div>
           </div>
           <TrustBadges cordless={cfg.slug !== "restoration-mat"} />
@@ -889,7 +890,7 @@ export default function InstrumentLanding() {
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(420px_circle_at_80%_0%,rgba(46,216,168,0.12),transparent_65%)]" />
               <div className="relative z-[2] flex flex-col gap-2.5">
                 <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-[#F7F4F0]/50">What founding means</span>
-                {["Launch price, no subscription", "30-day full refund, any reason", "2-year warranty", "Direct line to the protocol team"].map((t) => (
+                {["Launch price, no subscription", "30-day full refund, any reason", "1-year warranty", "Direct line to the protocol team"].map((t) => (
                   <span key={t} className="inline-flex items-center gap-2 font-sans text-[13px] text-[#F7F4F0]/[0.78] before:block before:h-[5px] before:w-[5px] before:rounded-full before:bg-[#2ED8A8]">{t}</span>
                 ))}
               </div>

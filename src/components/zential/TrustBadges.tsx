@@ -45,7 +45,7 @@ export interface TrustBadgesProps {
 export function TrustBadges({ cordless = false, certifications = [] }: TrustBadgesProps) {
   const badges: Badge[] = [
     { label: "CE marked", sub: "Declaration of Conformity on file", icon: "ce" },
-    { label: "2-year warranty", icon: "shield" },
+    { label: "1-year warranty", icon: "shield" },
     { label: "EU shipping", sub: "in 48 hours", icon: "truck" },
     ...(cordless ? [{ label: "Cordless · USB-C", icon: "plug" as const }] : []),
     ...certifications.map((c) => ({ label: c, icon: "shield" as const })),

@@ -70,3 +70,41 @@ describe("/one-shelf — price elements omit rather than degrade", () => {
     expect(code).toMatch(/value:\s*priceValue\s*\?\?\s*undefined/);
   });
 });
+
+/**
+ * The warranty number must be ONE number, everywhere.
+ *
+ * Until 2026-08-03 the site promised a "2-year warranty" in ten places — PDP trust
+ * chips, TrustBadges, the funnel FAQ, comparison tables, entity.html and the AEO
+ * surfaces — while the business stated no warranty at all in its own returns policy
+ * and had never decided one. The operator set it at 1 year on 2026-08-02/03. A single
+ * surviving "2-year" is worse than none: it is a promise the policy page contradicts.
+ */
+describe("warranty — one number, site-wide", () => {
+  const FILES = [
+    "../pages/InstrumentLanding.tsx",
+    "../pages/InstrumentSystem.tsx",
+    "../pages/funnel/config.ts",
+    "../components/zential/TrustBadges.tsx",
+    "../../public/products.md",
+    "../../public/comparisons.md",
+    "../../public/llms.txt",
+    "../../public/llms-full.txt",
+  ];
+
+  it("no file claims a 2-year or two-year warranty", () => {
+    const offenders: string[] = [];
+    for (const f of FILES) {
+      const body = readFileSync(resolve(__dirname, f), "utf8");
+      if (/2-year warranty|2-yr warranty|two-year warranty/i.test(body)) offenders.push(f);
+    }
+    expect(offenders, `stale 2-year warranty claim in: ${offenders.join(", ")}`).toEqual([]);
+  });
+
+  it("the returns policy actually states the warranty in every locale", () => {
+    for (const loc of ["en", "nl", "de", "fr"]) {
+      const json = readFileSync(resolve(__dirname, `../locales/${loc}/returns.json`), "utf8");
+      expect(json, `${loc}/returns.json has no warranty entry`).toMatch(/1[- ](Year|Jaar|Jahr|An)/i);
+    }
+  });
+});

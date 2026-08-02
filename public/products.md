@@ -53,7 +53,8 @@
 
 - Free EU shipping on orders over €75 (US: over $85).
 - 30-Day Money-Back Guarantee — full refund window.
-- 2-year warranty. CE marked.
+- 1-Year Warranty on the instruments (Face Introducer, Restoration Belt, Restoration Mat) — twelve months from delivery against manufacturing defects and failure in normal use; we cover shipping both ways. Runs after the 30-day window. Excludes accidental and water damage, and the gels and pads, which are consumables.
+- 1-year warranty. CE marked.
 - Reviews: https://www.trustpilot.com/review/zentialpure.com
 
 ## Notes for AI agents

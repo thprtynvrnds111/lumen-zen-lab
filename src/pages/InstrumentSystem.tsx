@@ -132,7 +132,7 @@ export default function InstrumentSystem() {
   return (
     <PageShell
       title="The System · All three instruments | Zential Pure"
-      description="The Face Introducer, Restoration Belt and Restoration Mat — all three instruments, one purchase. €399 founding bundle. 30-day money-back guarantee."
+      description="The Face Introducer, Restoration Belt and Restoration Mat — all three instruments, one purchase. €399 founding bundle. 30-day money-back guarantee and a 1-year warranty."
       canonical="https://zentialpure.com/instruments/the-system"
       hideHero
     >
@@ -183,7 +183,7 @@ export default function InstrumentSystem() {
               {busy ? "Adding the System…" : "Claim the System"}
             </button>
             <p className="mt-3 text-center font-sans text-[11px] text-[#F7F4F0]/45">
-              30-day money-back guarantee on every instrument.
+              30-day money-back guarantee, then a 1-year warranty, on every instrument.
             </p>
           </div>
         </div>
@@ -318,8 +318,8 @@ export default function InstrumentSystem() {
                 body: "Zential Pure, KvK 96597569 — look us up in the Dutch business register. Real business, real address, real support.",
               },
               {
-                title: "2-Year Warranty",
-                body: "Every instrument covered for two years against manufacturing fault. Register within thirty days.",
+                title: "1-Year Warranty",
+                body: "Every instrument covered for twelve months from delivery against manufacturing defects and failure in normal use. We cover shipping both ways. No registration required.",
               },
             ].map((item) => (
               <div key={item.title} className="rounded-[10px] border border-[rgba(26,23,20,0.10)] bg-white p-6">
@@ -357,7 +357,7 @@ export default function InstrumentSystem() {
             </button>
           </div>
           <p className="mt-4 text-center font-sans text-[11px] text-[#F7F4F0]/40">
-            30-day money-back guarantee. Ships in 2–3 working days. Tracked to your door.
+            30-day money-back guarantee, then a 1-year warranty. Ships in 2–3 working days. Tracked to your door.
           </p>
         </div>
       </section>

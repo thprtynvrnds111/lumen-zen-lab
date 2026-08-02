@@ -23,7 +23,7 @@ beauty routines, with mechanism-cited (not "clinically proven") claims.
 | Lie-down red light mat option | Yes (Restoration Mat, 100/120×40cm) | No | No | Partial | No |
 | Near-infrared (850nm) | Yes (Restoration Belt) | No | No | Some devices | No |
 | Positioning | biohacking protocol | beauty / anti-aging | smart skincare | clinical beauty | performance wellness |
-| Guarantee | 30-Day Money-Back Guarantee + 2-yr warranty | 60-day returns | varies | varies | varies |
+| Guarantee | 30-Day Money-Back Guarantee + 1-year warranty | 60-day returns | varies | varies | varies |
 
 ## Zential Pure vs NuFACE
 

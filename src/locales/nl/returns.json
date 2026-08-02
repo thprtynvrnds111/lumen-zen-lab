@@ -1,32 +1,60 @@
 {
-  "hero": {
-    "badge": "Retourneren & Garantie",
-    "headline": "Geen Gedoe.\nGeen Druk.",
-    "sub": "Elk apparaat heeft een 30 dagen geld-terug-garantie, geteld vanaf de dag van levering. Verdient het zijn plek niet, dan gaat het terug — op onze kosten."
-  },
-  "steps": {
-    "eyebrow": "Hoe het Werkt",
-    "title": "Eenvoudig. Eerlijk. Snel.",
-    "items": [
-      { "title": "Retournering Aanvragen", "desc": "Mail naar info@zentialpure.com binnen 30 dagen na levering met je bestelnummer." },
-      { "title": "Goedkeuring Ontvangen", "desc": "We beoordelen en keuren je verzoek binnen 24–48 uur goed, geen lange vragenlijsten." },
-      { "title": "Terugsturen (EU)", "desc": "EU-bestellingen: we sturen een voorbetaald retourlabel. VS-bestellingen: houd het apparaat — we betalen terug zonder retour." },
-      { "title": "Terugbetaling Ontvangen", "desc": "Je terugbetaling wordt verwerkt binnen 5 tot 7 werkdagen. Geen inspectie, geen kosten." }
-    ]
-  },
-  "policy": {
-    "eyebrow": "Beleidsdetails",
-    "title": "Wat Je Moet Weten.",
-    "items": [
-      { "title": "30 Dagen Geld-Terug-Garantie", "desc": "Dertig dagen, geteld vanaf levering — niet vanaf aankoop. Of het apparaat zijn plek verdient, bepaal jij: geen resultaatclausule, geen beoordelingscommissie." },
-      { "title": "Geopend Is Prima", "desc": "De doos openen en het apparaat gebruiken maakt de garantie niet ongeldig — een garantie die alleen geldt voor een ongeopende doos is er geen. Geopende verbruiksartikelen (gels, pads) zijn om hygiënische redenen niet retourneerbaar." },
-      { "title": "Beschadigde of Defecte Artikelen", "desc": "Als je product beschadigd of defect aankomt, neem dan onmiddellijk contact op. We sturen een vervanging zonder kosten, geen retournering nodig." },
-      { "title": "Ruilingen", "desc": "Wil je een andere kleur of variant? Neem contact op binnen 30 dagen en we regelen een ruiling, afhankelijk van beschikbaarheid." }
-    ]
-  },
-  "cta": {
-    "headline": "Klaar om te retourneren of heb je hulp nodig?",
-    "sub": "Ons team behandelt elk verzoek binnen 24–48 uur.",
-    "button": "Contact Support"
-  }
+ "hero": {
+  "badge": "Retourneren & Garantie",
+  "headline": "Geen Gedoe.\nGeen Druk.",
+  "sub": "Elk apparaat heeft een 30 dagen geld-terug-garantie, geteld vanaf de dag van levering. Verdient het zijn plek niet, dan gaat het terug — op onze kosten."
+ },
+ "steps": {
+  "eyebrow": "Hoe het Werkt",
+  "title": "Eenvoudig. Eerlijk. Snel.",
+  "items": [
+   {
+    "title": "Retournering Aanvragen",
+    "desc": "Mail naar info@zentialpure.com binnen 30 dagen na levering met je bestelnummer."
+   },
+   {
+    "title": "Goedkeuring Ontvangen",
+    "desc": "We beoordelen en keuren je verzoek binnen 24–48 uur goed, geen lange vragenlijsten."
+   },
+   {
+    "title": "Terugsturen (EU)",
+    "desc": "EU-bestellingen: we sturen een voorbetaald retourlabel. VS-bestellingen: houd het apparaat — we betalen terug zonder retour."
+   },
+   {
+    "title": "Terugbetaling Ontvangen",
+    "desc": "Je terugbetaling wordt verwerkt binnen 5 tot 7 werkdagen. Geen inspectie, geen kosten."
+   }
+  ]
+ },
+ "policy": {
+  "eyebrow": "Beleidsdetails",
+  "title": "Wat Je Moet Weten.",
+  "items": [
+   {
+    "title": "30 Dagen Geld-Terug-Garantie",
+    "desc": "Dertig dagen, geteld vanaf levering — niet vanaf aankoop. Of het apparaat zijn plek verdient, bepaal jij: geen resultaatclausule, geen beoordelingscommissie."
+   },
+   {
+    "title": "1 Jaar Garantie Op De Instrumenten",
+    "desc": "Twaalf maanden vanaf levering op fabricagefouten en defecten bij normaal gebruik, voor de Face Introducer, de Restoration Belt en de Restoration Mat. Werkt het niet meer zoals het hoort, dan repareren of vervangen we het — verzendkosten zijn in beide richtingen voor ons. Dit staat los van de niet-goed-geld-teruggarantie van 30 dagen en gaat daarna in. Niet gedekt: schade door ongelukken, waterschade, en de gels en pads, die verbruiksartikelen zijn."
+   },
+   {
+    "title": "Geopend Is Prima",
+    "desc": "De doos openen en het apparaat gebruiken maakt de garantie niet ongeldig — een garantie die alleen geldt voor een ongeopende doos is er geen. Geopende verbruiksartikelen (gels, pads) zijn om hygiënische redenen niet retourneerbaar."
+   },
+   {
+    "title": "Beschadigde of Defecte Artikelen",
+    "desc": "Als je product beschadigd of defect aankomt, neem dan onmiddellijk contact op. We sturen een vervanging zonder kosten, geen retournering nodig."
+   },
+   {
+    "title": "Ruilingen",
+    "desc": "Wil je een andere kleur of variant? Neem contact op binnen 30 dagen en we regelen een ruiling, afhankelijk van beschikbaarheid."
+   }
+  ]
+ },
+ "cta": {
+  "headline": "Klaar om te retourneren of heb je hulp nodig?",
+  "sub": "Ons team behandelt elk verzoek binnen 24–48 uur.",
+  "button": "Contact Support"
+ }
 }

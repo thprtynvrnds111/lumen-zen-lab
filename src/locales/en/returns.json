@@ -1,32 +1,60 @@
 {
-  "hero": {
-    "badge": "Returns & Guarantee",
-    "headline": "No Friction.\nNo Pressure.",
-    "sub": "Every device carries a 30-day money-back guarantee, counted from the day it arrives. If it has not earned its place, it goes back — on us."
-  },
-  "steps": {
-    "eyebrow": "How It Works",
-    "title": "Simple. Honest. Fast.",
-    "items": [
-      { "title": "Request a Return", "desc": "Email us at info@zentialpure.com within 30 days of delivery with your order number. Any reason — including no reason." },
-      { "title": "A Human Replies", "desc": "A real person replies within 24–48 hours. No questionnaires, and no email loop designed to time out your window." },
-      { "title": "Ship It Back (EU) — or Don't (US)", "desc": "EU orders: we send a prepaid return label. US orders: keep the device — we refund without a return." },
-      { "title": "Get Refunded", "desc": "Your refund is processed within 5 to 7 business days. No inspection gate, no restocking fee." }
-    ]
-  },
-  "policy": {
-    "eyebrow": "Policy Details",
-    "title": "What You Should Know.",
-    "items": [
-      { "title": "30-Day Money-Back Guarantee", "desc": "Thirty days, counted from delivery — not from purchase. Whether the device earned its place is your call, not ours: no result clause, no judging panel." },
-      { "title": "Opened Is Fine", "desc": "Opening the box and using the device does not void the guarantee — a guarantee you can only use on an unopened box is not one. Opened consumables (gels, pads) are non-returnable for hygiene reasons." },
-      { "title": "Damaged or Defective Items", "desc": "If your product arrives damaged or defective, contact us immediately. We'll send a replacement at no cost, no return needed." },
-      { "title": "Exchanges", "desc": "Want a different color or variant? Contact us within 30 days and we'll arrange an exchange, subject to availability." }
-    ]
-  },
-  "cta": {
-    "headline": "Ready to return or need help?",
-    "sub": "Our team handles every request within 24–48 hours.",
-    "button": "Contact Support"
-  }
+ "hero": {
+  "badge": "Returns & Guarantee",
+  "headline": "No Friction.\nNo Pressure.",
+  "sub": "Every device carries a 30-day money-back guarantee, counted from the day it arrives. If it has not earned its place, it goes back — on us."
+ },
+ "steps": {
+  "eyebrow": "How It Works",
+  "title": "Simple. Honest. Fast.",
+  "items": [
+   {
+    "title": "Request a Return",
+    "desc": "Email us at info@zentialpure.com within 30 days of delivery with your order number. Any reason — including no reason."
+   },
+   {
+    "title": "A Human Replies",
+    "desc": "A real person replies within 24–48 hours. No questionnaires, and no email loop designed to time out your window."
+   },
+   {
+    "title": "Ship It Back (EU) — or Don't (US)",
+    "desc": "EU orders: we send a prepaid return label. US orders: keep the device — we refund without a return."
+   },
+   {
+    "title": "Get Refunded",
+    "desc": "Your refund is processed within 5 to 7 business days. No inspection gate, no restocking fee."
+   }
+  ]
+ },
+ "policy": {
+  "eyebrow": "Policy Details",
+  "title": "What You Should Know.",
+  "items": [
+   {
+    "title": "30-Day Money-Back Guarantee",
+    "desc": "Thirty days, counted from delivery — not from purchase. Whether the device earned its place is your call, not ours: no result clause, no judging panel."
+   },
+   {
+    "title": "1-Year Warranty on the Instruments",
+    "desc": "Twelve months from delivery against manufacturing defects and failure in normal use, on the Face Introducer, the Restoration Belt and the Restoration Mat. If it stops working as it should, we repair or replace it — you do not pay shipping either way. This is separate from, and runs after, the 30-day money-back guarantee. It does not cover accidental damage, water damage, or the gels and pads, which are consumables."
+   },
+   {
+    "title": "Opened Is Fine",
+    "desc": "Opening the box and using the device does not void the guarantee — a guarantee you can only use on an unopened box is not one. Opened consumables (gels, pads) are non-returnable for hygiene reasons."
+   },
+   {
+    "title": "Damaged or Defective Items",
+    "desc": "If your product arrives damaged or defective, contact us immediately. We'll send a replacement at no cost, no return needed."
+   },
+   {
+    "title": "Exchanges",
+    "desc": "Want a different color or variant? Contact us within 30 days and we'll arrange an exchange, subject to availability."
+   }
+  ]
+ },
+ "cta": {
+  "headline": "Ready to return or need help?",
+  "sub": "Our team handles every request within 24–48 hours.",
+  "button": "Contact Support"
+ }
 }
