@@ -74,10 +74,14 @@ export default function OneShelf() {
   const [collected, setCollected] = useState<Record<string, boolean>>({});
   const [muted, setMuted] = useState(true);
   const [justUnlocked, setJustUnlocked] = useState<string | null>(null);
-  // Market-correct bundle pricing (US sees USD via Dynamic FX). EUR fallback.
-  const [price, setPrice] = useState("€399");
-  const [wasPrice, setWasPrice] = useState("€468");
-  const [priceValue, setPriceValue] = useState(399);
+  // Market-correct bundle pricing (US sees USD via Dynamic FX).
+  // NO EUR SEED. Operator rule 2026-08-01: never show EUR to a US visitor. A seeded
+  // "€399" renders before the Storefront fetch resolves — and permanently if it fails —
+  // which is the exact currency mismatch that killed the July funnel on /f/*. Price
+  // elements omit while null instead.
+  const [price, setPrice] = useState<string | null>(null);
+  const [wasPrice, setWasPrice] = useState<string | null>(null);
+  const [priceValue, setPriceValue] = useState<number | null>(null);
   const [currency, setCurrency] = useState("EUR");
 
   useEffect(() => {
@@ -230,15 +234,14 @@ export default function OneShelf() {
             <div className="os-topoffer">
               <p className="os-topoffer-line">
                 The System — all three instruments
-                <span className="os-topoffer-price"> €399</span>
-                <span className="os-price-was">€468</span>
+                {price && <span className="os-topoffer-price"> {price}</span>}
+                {wasPrice && <span className="os-price-was">{wasPrice}</span>}
               </p>
               <a className="os-cta os-topoffer-cta" href={CTA_HREF}>
-                Start the order — €399
+                {price ? `Start the order — ${price}` : "Start the order"}
               </a>
               <p className="os-cta-note">
-                Full total shown before anything is charged · 3 instalments available at checkout ·
-                30-day money-back guarantee · free EU shipping
+                Full total shown before anything is charged · 30-day money-back guarantee
               </p>
             </div>
           </header>
@@ -335,13 +338,10 @@ export default function OneShelf() {
                 <h2 className="os-reveal-title">The System</h2>
                 <div className="os-reveal-bar" />
                 <p>
-                  <span className="os-price">{price}</span>
-                  <span className="os-price-was">{wasPrice}</span>
+                  {price && <span className="os-price">{price}</span>}
+                  {wasPrice && <span className="os-price-was">{wasPrice}</span>}
                 </p>
                 <p className="os-save">All three instruments · one purchase</p>
-                <p className="os-save">
-                  3 instalments available at checkout — the full shelf, a third at a time
-                </p>
                 <a
                   className="os-cta"
                   href={CTA_HREF}
@@ -352,15 +352,15 @@ export default function OneShelf() {
                     const w = window as unknown as { fbq?: (...a: unknown[]) => void };
                     w.fbq?.("track", "AddToCart", {
                       content_name: "The System Bundle (one-shelf)",
-                      value: priceValue,
+                      value: priceValue ?? undefined,
                       currency,
                     });
                   }}
                 >
-                  Build your shelf — {price}
+                  {price ? `Build your shelf — ${price}` : "Build your shelf"}
                 </a>
                 <p className="os-cta-note">
-                  30-day money-back guarantee · free EU shipping · 2-year warranty · 3 instalments at checkout
+                  30-day money-back guarantee · we cover return shipping
                 </p>
               </div>
             ) : (
