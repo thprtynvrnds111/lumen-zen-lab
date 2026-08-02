@@ -17,7 +17,7 @@ const FREE_SHIPPING_THRESHOLDS: Record<string, number> = { EUR: 75, USD: 85 };
 // Both spellings during the 2026-08-03 handle rename. GEL_HANDLE is the one we
 // ADD to cart, so it must be the handle Shopify actually serves — flipped to the
 // new value once the rename lands.
-const GEL_HANDLE = "medicube-collagen-elastic-jelly-moisturizing-cream";
+const GEL_HANDLE = "restore-gel";
 const ACCESSORY_HANDLES = [GEL_HANDLE, "restore-gel", "collagen-eye-mask", "restore-pads"];
 
 export function CartDrawer() {

@@ -129,7 +129,7 @@ describe("Face Introducer modality claims", () => {
   /**
    * A line that names the Face Introducer AND red light together is the claim
    * in its most direct form (DevicesSection shipped exactly this on the
-   * homepage: `"lifting-and-tightening-face-introducer": ["Red Light", ...]`).
+   * homepage: `"face-introducer": ["Red Light", ...]`; renamed 2026-08-03).
    * Union lines about the whole device family don't name the FI, so they pass.
    */
   it("never pairs the Face Introducer with red light on one line", () => {
@@ -163,7 +163,7 @@ describe("Face Introducer modality claims", () => {
    */
   it("the Face Introducer's own config block claims no count above three", () => {
     const cfg = readFileSync(resolve(SRC, "data/productConfigs.ts"), "utf8");
-    const start = cfg.indexOf('"lifting-and-tightening-face-introducer": {');
+    const start = cfg.indexOf('"face-introducer": {');  // renamed from lifting-and-tightening-… 2026-08-03
     expect(start, "FI config block not found — did the handle change?").toBeGreaterThan(-1);
 
     // Top-level handles sit at one space of indent; the next one ends this block.

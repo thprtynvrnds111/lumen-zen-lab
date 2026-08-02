@@ -114,7 +114,7 @@ export const productConfigs: Record<string, ProductConfig> = {
  // ─── BODY LIFT ───
  "body-lift": {
   handle: "body-lift",
-  purchaseHandle: "lifting-and-tightening-face-introducer",
+  purchaseHandle: "face-introducer",
   name: "Body Lift",
   fallbackImage: productBodyLift,
   subheadline: "Microcurrent Facial Lift, Built for Daily Structure",
@@ -173,8 +173,8 @@ export const productConfigs: Record<string, ProductConfig> = {
  },
 
  // ─── LIFTING & TIGHTENING FACE INTRODUCER ───
- "lifting-and-tightening-face-introducer": {
-  handle: "lifting-and-tightening-face-introducer",
+ "face-introducer": {
+  handle: "face-introducer",
   fallbackImage: productFaceIntroducer,
   name: "Face Introducer",
   subheadline: "Three-Modality Daily Protocol: EMS · Microcurrent · Thermal (45°C), with ion cleansing",
@@ -740,8 +740,8 @@ export const productConfigs: Record<string, ProductConfig> = {
  },
 
  // ─── COLLAGEN FACE GEL ───
- "medicube-collagen-elastic-jelly-moisturizing-cream": {
-  handle: "medicube-collagen-elastic-jelly-moisturizing-cream",
+ "restore-gel": {
+  handle: "restore-gel",
   name: "Collagen Face Gel",
   subheadline: "Device-Optimized Conductive Gel with Collagen Complex",
   isAccessory: true,
@@ -789,8 +789,8 @@ export const productConfigs: Record<string, ProductConfig> = {
  },
 
  // ─── COLLAGEN PDRN PADS ───
- "collagen-eye-mask": {
-  handle: "collagen-eye-mask",
+ "restore-pads": {
+  handle: "restore-pads",
   name: "Collagen PDRN Pads",
   subheadline: "Concentrated Collagen Eye Patches with PDRN Technology",
   isAccessory: true,
@@ -1060,7 +1060,7 @@ const depthMaskConfig: ProductConfig = {
 
 // ─── FLUX PANEL ───
 const fluxPanelConfig: ProductConfig = {
- handle: "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
+ handle: "restoration-belt",
  name: "Flux Panel",
  subheadline: "Full-Body Photon Protocol. 660nm + 850nm. 80W.",
  benefits: [
@@ -2162,7 +2162,7 @@ const frequencyRestConfig: ProductConfig = {
 Object.assign(productConfigs, {
  "breath-seal": breathSealConfig,
  "blackout-eye-mask-3d-deep-contoured-sleep-mask-lash-extensions-no-pressure-blindfold-sleeping-eye-mask-women-men-side-sleepers": depthMaskConfig,
- "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": fluxPanelConfig,
+ "restoration-belt": fluxPanelConfig,
  "household-red-light-charging-vibrating-red-light-therapy-mat": frequencyMatPlusConfig,
  "pneumatic-air-wave-massager-pneumatic-circulation-leg-massager-pneumatic-massager": pressureShellConfig,
  "electric-foam-roller-muscle-relaxation-fitness-yoga-column": pulseRollerConfig,
@@ -2185,9 +2185,12 @@ Object.assign(productConfigs, {
  * only once the rename is verified live.
  */
 const RENAMED_HANDLE_ALIASES: Record<string, string> = {
- "restore-gel": "medicube-collagen-elastic-jelly-moisturizing-cream",
- "restore-pads": "collagen-eye-mask",
- "face-introducer": "lifting-and-tightening-face-introducer",
+ // Shopify renamed 2026-08-03; these are the retired spellings, kept so any cached
+ // page, bookmarked link or stale ad lander still resolves.
+ 'medicube-collagen-elastic-jelly-moisturizing-cream': 'restore-gel',
+ 'collagen-eye-mask': 'restore-pads',
+ 'red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device': 'restoration-belt',
+ 'lifting-and-tightening-face-introducer': 'face-introducer',
 };
 
 export function getProductConfig(handle: string): ProductConfig | null {
