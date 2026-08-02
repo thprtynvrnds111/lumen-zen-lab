@@ -14,8 +14,11 @@ import { TrustpilotProof } from "@/components/zential/TrustpilotProof";
 // Per-market free-shipping thresholds (operator decision 2026-07-12): EUR 75 / USD 85.
 // Keyed by the cart's own currency so the bar always compares like-for-like.
 const FREE_SHIPPING_THRESHOLDS: Record<string, number> = { EUR: 75, USD: 85 };
+// Both spellings during the 2026-08-03 handle rename. GEL_HANDLE is the one we
+// ADD to cart, so it must be the handle Shopify actually serves — flipped to the
+// new value once the rename lands.
 const GEL_HANDLE = "medicube-collagen-elastic-jelly-moisturizing-cream";
-const ACCESSORY_HANDLES = [GEL_HANDLE, "collagen-eye-mask"];
+const ACCESSORY_HANDLES = [GEL_HANDLE, "restore-gel", "collagen-eye-mask", "restore-pads"];
 
 export function CartDrawer() {
  const { items, isLoading, isSyncing, isOpen, openCart, closeCart, updateQuantity, removeItem, syncCart, addItem } = useCartStore();

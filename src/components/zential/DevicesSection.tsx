@@ -9,7 +9,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { BubbleBackground } from "@/components/zential/BubbleBackground";
 import { useTranslation } from "react-i18next";
 
-const HIDDEN_HANDLES = ["medicube-collagen-elastic-jelly-moisturizing-cream", "collagen-eye-mask"];
+const HIDDEN_HANDLES = ["medicube-collagen-elastic-jelly-moisturizing-cream", "restore-gel", "collagen-eye-mask", "restore-pads"];
 
 const TECH_TAGS: Record<string, string[]> = {
   "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": ["LED", "Pulse"],
@@ -19,12 +19,14 @@ const TECH_TAGS: Record<string, string[]> = {
   "color-light-import-micro-current-vibration-massager": ["LED", "Freq"],
   "facial-beauty-tools-and-ems-beauty-equipment": ["EMS", "Contour"],
   "lifting-and-tightening-face-introducer": ["Microcurrent", "EMS", "Thermal"],
+  "face-introducer": ["Microcurrent", "EMS", "Thermal"],
   "portable-ems-microcurrent-facial-beauty-device": ["EMS", "Microcurrent"],
 };
 
 const SORT_ORDER = [
   "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
   "lifting-and-tightening-face-introducer",
+  "face-introducer",
   "portable-ems-microcurrent-facial-beauty-device",
   "facial-beauty-tools-and-ems-beauty-equipment",
   "electric-guasha-massager",

@@ -28,4 +28,6 @@ export const INSTRUMENT_REDIRECTS: Record<string, string> = {
   "household-red-light-charging-vibrating-red-light-therapy-mat": "restoration-mat",
   "the-restoration-mat": "restoration-mat",
   "the-system-founding-bundle": "the-system",
+  // Post-rename belt handle (2026-08-03); the legacy productConfig is still wrong for it.
+  "restoration-belt": "restoration-belt",
 };

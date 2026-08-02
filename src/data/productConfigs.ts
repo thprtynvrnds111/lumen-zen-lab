@@ -2177,6 +2177,27 @@ Object.assign(productConfigs, {
  "white-noise-sleep-aid-machine": frequencyRestConfig,
 });
 
+/**
+ * Handle rename, 2026-08-03. Shopify handles carrying dropship residue — above all
+ * `medicube-…`, which is a COMPETITOR TRADEMARK sitting in a live product URL — are
+ * being renamed. Both spellings resolve to the same config for the duration, so the
+ * storefront works before, during and after the Shopify flip. Old keys are removed
+ * only once the rename is verified live.
+ */
+const RENAMED_HANDLE_ALIASES: Record<string, string> = {
+ "restore-gel": "medicube-collagen-elastic-jelly-moisturizing-cream",
+ "restore-pads": "collagen-eye-mask",
+ "face-introducer": "lifting-and-tightening-face-introducer",
+};
+
 export function getProductConfig(handle: string): ProductConfig | null {
- return productConfigs[handle] || null;
+ const direct = productConfigs[handle];
+ if (direct) return direct;
+ const aliased = RENAMED_HANDLE_ALIASES[handle];
+ return aliased ? productConfigs[aliased] || null : null;
+}
+
+/** Handles that resolve to a page, including rename aliases. Used by the LIVE_HANDLES invariant. */
+export function hasProductConfig(handle: string): boolean {
+ return getProductConfig(handle) !== null;
 }

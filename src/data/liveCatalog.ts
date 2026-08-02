@@ -24,4 +24,11 @@ export const LIVE_HANDLES: ReadonlySet<string> = new Set([
   // Purchase-path add-ons (conductive gel + PDRN pads)
   'medicube-collagen-elastic-jelly-moisturizing-cream', // Restore Gel — €18
   'collagen-eye-mask', // Restore Pads — €18
+  // Renamed handles, 2026-08-03. BOTH old and new are allowlisted so the storefront
+  // keeps working before, during and after the Shopify rename. The old ones come out
+  // only once the rename is verified live.
+  'restore-gel', // renamed from 'medicube-collagen-elastic-jelly-moisturizing…' 2026-08-03
+  'restore-pads', // renamed from 'collagen-eye-mask…' 2026-08-03
+  'restoration-belt', // renamed from 'red-light-therapy-belt-for-waist-shoulder-66…' 2026-08-03
+  'face-introducer', // renamed from 'lifting-and-tightening-face-introducer…' 2026-08-03
 ]);

@@ -16,9 +16,18 @@
    "tracked": "Tracked shipping"
   },
   "proof": {
-   "modalities": { "value": "3", "label": "Clinical\nmodalities" },
-   "price": { "value": "€88", "label": "about one clinic\nsession, once" },
-   "guarantee": { "value": "30 days", "label": "Money-back\nguarantee" }
+   "modalities": {
+    "value": "3",
+    "label": "Clinical\nmodalities"
+   },
+   "price": {
+    "value": "€88",
+    "label": "about one clinic\nsession, once"
+   },
+   "guarantee": {
+    "value": "30 days",
+    "label": "Money-back\nguarantee"
+   }
   },
   "modalities": {
    "label": "Three protocols. One stack.",
@@ -97,7 +106,9 @@
    "household-full-body-moisture-removing-infrared-sauna-blanket": "Compact packable infrared sauna blanket",
    "null-1777641441133": "Wearable 360-node infrared LED belt",
    "red-light-therapy-belt-infrared-hot-compress-phototherapy": "USB thermal pad for joint recovery",
-   "white-noise-sleep-aid-machine": "Acoustic masking for deeper sleep cycles"
+   "white-noise-sleep-aid-machine": "Acoustic masking for deeper sleep cycles",
+   "restoration-belt": "80W dual-wavelength full-body red light panel",
+   "face-introducer": "Deep infusion for plump, hydrated skin"
   }
  },
  "movement": {
