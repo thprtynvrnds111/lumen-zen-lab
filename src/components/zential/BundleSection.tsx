@@ -218,7 +218,7 @@ export function BundleSection() {
     <span className="hidden md:inline w-1 h-1 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
     <span>30-Day Guarantee</span>
     <span className="hidden md:inline w-1 h-1 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
-    <span>2-Year Warranty</span>
+    <span>1-Year Warranty</span>
    </div>
   </section>
  );

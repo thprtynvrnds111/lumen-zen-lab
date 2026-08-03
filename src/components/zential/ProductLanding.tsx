@@ -617,7 +617,7 @@ export function ProductLanding({ config }: Props) {
       {[
        { eyebrow: "Evidence", title: "Peer-reviewed studies", body: "Every modality on this device, microcurrent, EMS, thermal, is referenced to published clinical research. We link the actual papers below.", cta: "See studies →" },
        { eyebrow: "Guarantee", title: "30 days. No conditions.", body: "Use it nightly for 30 days. If your skin doesn't show change, we refund you in full. No restocking fee, no questionnaire, no friction.", cta: "Read policy →" },
-       { eyebrow: "Manufacturing", title: "Medical-grade build", body: "FDA-cleared modalities, CE-marked construction, 2-year hardware warranty. The device itself is the proof, not borrowed credibility.", cta: "Learn more →" },
+       { eyebrow: "Ownership", title: "Bought once, backed for a year", body: "A 1-year warranty against manufacturing defects and failure in normal use, on top of the 30-day money-back window. We cover shipping both ways.", cta: "Read the terms →" },
       ].map((card, i) => (
        <div key={i} className="rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-500" style={{ backgroundColor: '#111820', border: '1px solid rgba(255,255,255,0.08)' }}>
         <p className="text-[10px] tracking-[0.3em] uppercase mb-5" style={{ color: '#E87040' }}> {card.eyebrow} </p>

@@ -19,8 +19,8 @@
  * hardcoded top-offer block stayed wrong.
  */
 import { describe, expect, it } from "vitest";
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { readFileSync, readdirSync } from "node:fs";
+import { join, resolve } from "node:path";
 
 const SRC = readFileSync(resolve(__dirname, "../pages/OneShelf.tsx"), "utf8");
 
@@ -81,30 +81,84 @@ describe("/one-shelf — price elements omit rather than degrade", () => {
  * surviving "2-year" is worse than none: it is a promise the policy page contradicts.
  */
 describe("warranty — one number, site-wide", () => {
-  const FILES = [
-    "../pages/InstrumentLanding.tsx",
-    "../pages/InstrumentSystem.tsx",
-    "../pages/funnel/config.ts",
-    "../components/zential/TrustBadges.tsx",
-    "../../public/products.md",
-    "../../public/comparisons.md",
-    "../../public/llms.txt",
-    "../../public/llms-full.txt",
+  /**
+   * v2, 2026-08-03. v1 of this guard MISSED FIVE LIVE CLAIMS, in exactly the two ways
+   * a content guard dies — both of which had been written down hours earlier:
+   *
+   *   1. WHOLE-FILE EXCLUSION. v1 checked a hand-listed FILES array. BundleSection.tsx,
+   *      ProductLanding.tsx and public/nuface-alternatief.html were simply not in it, so
+   *      "2-Year Warranty", "2-year hardware warranty" and "2 jaar garantie" sailed through.
+   *   2. PHRASE VARIANT. v1 matched /2-year warranty/. The three PDP spec rows read
+   *      { k: "Warranty", v: "2 years" } — no hyphen, words reversed, no match. Those pages
+   *      rendered a "1-year warranty" trust chip and a "Warranty: 2 years" spec row ON THE
+   *      SAME SCREEN.
+   *
+   * v2 therefore walks the whole tree and matches a duration NEAR a warranty word, in
+   * English and Dutch, rather than one hard-coded phrase.
+   */
+  const ROOT = resolve(__dirname, "../..");
+  const EXTS = [".ts", ".tsx", ".html", ".txt", ".md", ".json"];
+  const SKIP = ["node_modules", "dist", ".ssr", ".git", "src/test", "src/locales"];
+
+  function walk(dir: string, out: string[] = []): string[] {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const full = join(dir, e.name);
+      if (SKIP.some((s) => full.includes(s))) continue;
+      if (e.isDirectory()) walk(full, out);
+      else if (EXTS.some((x) => e.name.endsWith(x))) out.push(full);
+    }
+    return out;
+  }
+
+  /** A duration within ~40 chars of a warranty word, either order, EN + NL. */
+  const BAD = [
+    /(?:2|two|twee)[\s-]*(?:year|yr|jaar)s?[^.\n]{0,40}?(?:warrant|garantie)/i,
+    /(?:warrant\w*|garantie)[^.\n]{0,40}?(?:2|two|twee)[\s-]*(?:year|yr|jaar)/i,
   ];
 
-  it("no file claims a 2-year or two-year warranty", () => {
+  it("no file anywhere claims a two-year warranty", () => {
     const offenders: string[] = [];
-    for (const f of FILES) {
-      const body = readFileSync(resolve(__dirname, f), "utf8");
-      if (/2-year warranty|2-yr warranty|two-year warranty/i.test(body)) offenders.push(f);
+    for (const f of [...walk(join(ROOT, "src")), ...walk(join(ROOT, "public"))]) {
+      const body = readFileSync(f, "utf8");
+      if (BAD.some((re) => re.test(body))) offenders.push(f.replace(ROOT + "/", ""));
     }
-    expect(offenders, `stale 2-year warranty claim in: ${offenders.join(", ")}`).toEqual([]);
+    expect(offenders, `stale 2-year warranty claim in:\n${offenders.join("\n")}`).toEqual([]);
   });
 
-  it("the returns policy actually states the warranty in every locale", () => {
+  it("catches the exact variants v1 missed", () => {
+    const missed = [
+      '{ k: "Warranty", v: "2 years" },',
+      "<span>2-Year Warranty</span>",
+      "2-year hardware warranty",
+      "<td>2 jaar garantie</td>",
+      "warranty of two years",
+    ];
+    for (const s of missed) {
+      expect(BAD.some((re) => re.test(s)), `v2 still misses: ${s}`).toBe(true);
+    }
+  });
+
+  it("does not fire on unrelated two-year prose", () => {
+    expect(BAD.some((re) => re.test("I foam-rolled for two years and got nowhere."))).toBe(false);
+    expect(BAD.some((re) => re.test("Shoulder has been stiff for two years."))).toBe(false);
+  });
+
+  it("the returns policy states the warranty in every locale", () => {
     for (const loc of ["en", "nl", "de", "fr"]) {
       const json = readFileSync(resolve(__dirname, `../locales/${loc}/returns.json`), "utf8");
       expect(json, `${loc}/returns.json has no warranty entry`).toMatch(/1[- ](Year|Jaar|Jahr|An)/i);
     }
+  });
+
+  it("no unsubstantiated FDA clearance claim — negations are fine", () => {
+    const offenders: string[] = [];
+    for (const f of [...walk(join(ROOT, "src")), ...walk(join(ROOT, "public"))]) {
+      for (const para of readFileSync(f, "utf8").split(/\n\s*\n/)) {
+        if (!/FDA[\s-]*(cleared|approved)/i.test(para)) continue;
+        if (/\bnot\b|\bno\b|never|makes no/i.test(para)) continue; // downward disclaimer
+        offenders.push(f.replace(ROOT + "/", ""));
+      }
+    }
+    expect(offenders, `unsubstantiated FDA claim in: ${offenders.join(", ")}`).toEqual([]);
   });
 });

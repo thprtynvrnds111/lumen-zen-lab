@@ -157,7 +157,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
       { k: "Session", v: "12 minutes" },
       { k: "Power", v: "Cordless · USB-C · ~14-day charge" },
       { k: "In the box", v: "Device · Conductive gel · Protocol Card" },
-      { k: "Warranty", v: "2 years" },
+      { k: "Warranty", v: "1 year" },
     ],
     orderNote: "No subscription. No cartridge to refill. The conductive gel refill is €12 when you need it.",
     guarantee:
@@ -273,7 +273,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
       { k: "Wavelengths", v: "660 nm · 850 nm" },
       { k: "Fit", v: "Contoured wrap · 28–48 in waist" },
       { k: "Power", v: "Cordless · USB-C · ~10 sessions / charge" },
-      { k: "Warranty", v: "2 years" },
+      { k: "Warranty", v: "1 year" },
     ],
     orderNote: "No subscription. Cordless, so the only thing it needs from you is fifteen minutes.",
     guarantee:
@@ -385,7 +385,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
       { k: "Wavelength", v: "660 nm red + far-infrared" },
       { k: "Surface", v: "100 × 40 cm or 120 × 40 cm · rolls flat to store" },
       { k: "Power", v: "Mains · remote · auto shut-off" },
-      { k: "Warranty", v: "2 years" },
+      { k: "Warranty", v: "1 year" },
     ],
     orderNote: "No subscription. Rolls flat between sessions and asks for nothing but the twenty minutes.",
     guarantee:
