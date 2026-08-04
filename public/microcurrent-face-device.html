@@ -87,7 +87,9 @@
     @media(max-width:768px){nav{padding:16px 20px}section{padding:70px 20px}.hero{padding:100px 20px 60px}.hero-inner{grid-template-columns:1fr;gap:40px}.hero-visual{display:none}footer{padding:32px 20px}}</style>
 
   <!-- Product Schema -->
-  <!-- Product Schema (fixes Google Search Console: missing price, aggregateRating, review) -->
+  <!-- Product Schema. NO aggregateRating, NO review: fabricated ratings (4.8/124) and a
+       fictional reviewer were removed 2026-08-04. This business has ONE real customer. Do not
+       re-add review markup until real reviews exist. Guarded by src/test/entitySchema.test.ts. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -97,19 +99,6 @@
     "brand": { "@type": "Brand", "name": "Zential Pure" },
     "url": "https://zentialpure.com/product/lifting-and-tightening-face-introducer",
     "category": "Beauty Device",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "124",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": {
-      "@type": "Review",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "author": { "@type": "Person", "name": "Sophie V." },
-      "reviewBody": "I noticed a difference from the first use — my jawline looked more defined and my skin felt firmer. After 4 weeks of daily use the results are genuinely impressive. Worth every cent."
-    },
     "offers": {
       "@type": "Offer",
       "priceCurrency": "EUR",

@@ -162,3 +162,73 @@ describe("warranty — one number, site-wide", () => {
     expect(offenders, `unsubstantiated FDA claim in: ${offenders.join(", ")}`).toEqual([]);
   });
 });
+
+/**
+ * FABRICATED REVIEW MARKUP — the most serious defect found in this codebase.
+ *
+ * Until 2026-08-04, FIVE sitemap-indexed production pages shipped JSON-LD asserting
+ * "ratingValue": "4.8" over "reviewCount": "124", plus a five-star Review authored by
+ * a person named "Sophie V." who does not exist. The business has ONE real customer.
+ *
+ * That is fabricated review data, served as structured data, submitted to Google as
+ * rich-snippet-eligible. It violates the operator's own stated non-negotiable
+ * ("fabricated testimonies/reviews NEVER return"), the doctrine's kill criterion
+ * ("any review written in-house => total failure regardless of revenue"), FTC
+ * 16 CFR Part 465, and EU unfair-commercial-practice rules.
+ *
+ * The guard that should have caught it asserted no-aggregateRating against
+ * public/entity.html ONLY — the same whole-file-scoping failure that let five
+ * two-year warranty claims survive a sweep on the same day. This one walks
+ * everything and is scoped by SUBJECT: any structured data about our own brand.
+ */
+describe("no fabricated review or rating markup, anywhere", () => {
+  const ROOT2 = resolve(__dirname, "../..");
+
+  function walkAll(dir: string, out: string[] = []): string[] {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const full = join(dir, e.name);
+      if (["node_modules", "dist", ".ssr", ".git"].some((s) => full.includes(s))) continue;
+      if (e.isDirectory()) walkAll(full, out);
+      else if (/\.(html|tsx?|json)$/.test(e.name)) out.push(full);
+    }
+    return out;
+  }
+
+  const files = [...walkAll(join(ROOT2, "public")), ...walkAll(join(ROOT2, "src"))]
+    .filter((f) => !f.includes("src/test"));
+
+  it("no aggregateRating is asserted about Zential Pure", () => {
+    const bad = files.filter((f) => {
+      const body = readFileSync(f, "utf8");
+      // Only flag a real assertion — a comment explaining the removal is fine.
+      return /"aggregateRating"\s*:/.test(body) || /"ratingValue"\s*:/.test(body);
+    });
+    expect(bad, `aggregateRating/ratingValue asserted in:\n${bad.join("\n")}`).toEqual([]);
+  });
+
+  it("no Review objects or review bodies are published", () => {
+    const bad = files.filter((f) => {
+      const body = readFileSync(f, "utf8");
+      return /"reviewBody"\s*:/.test(body) || /"@type"\s*:\s*"Review"/.test(body);
+    });
+    expect(bad, `Review markup in:\n${bad.join("\n")}`).toEqual([]);
+  });
+
+  it("the invented reviewer never returns", () => {
+    const bad = files.filter((f) => /Sophie V\./.test(readFileSync(f, "utf8")));
+    expect(bad, `fictional reviewer in:\n${bad.join("\n")}`).toEqual([]);
+  });
+
+  it("catches the exact strings that shipped", () => {
+    const shipped = [
+      '"aggregateRating": {',
+      '"ratingValue": "4.8"',
+      '"reviewBody": "I noticed a difference from the first use"',
+      '"@type": "Review"',
+    ];
+    const re = [/"aggregateRating"\s*:/, /"ratingValue"\s*:/, /"reviewBody"\s*:/, /"@type"\s*:\s*"Review"/];
+    for (const s of shipped) {
+      expect(re.some((r) => r.test(s)), `guard misses: ${s}`).toBe(true);
+    }
+  });
+});
