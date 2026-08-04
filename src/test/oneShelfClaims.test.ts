@@ -98,7 +98,15 @@ describe("warranty — one number, site-wide", () => {
    */
   const ROOT = resolve(__dirname, "../..");
   const EXTS = [".ts", ".tsx", ".html", ".txt", ".md", ".json"];
-  const SKIP = ["node_modules", "dist", ".ssr", ".git", "src/test", "src/locales"];
+  /**
+   * v3, 2026-08-04: `src/locales` came OUT of this list. It was the last whole-directory
+   * exclusion left, and the whole customer-facing site is translated — every warranty
+   * sentence a Dutch buyer reads lives in exactly the directory the guard was not
+   * looking at. That is failure mode #1 above, one directory up.
+   *
+   * src/test stays excluded because this file necessarily contains the strings it hunts.
+   */
+  const SKIP = ["node_modules", "dist", ".ssr", ".git", "src/test"];
 
   function walk(dir: string, out: string[] = []): string[] {
     for (const e of readdirSync(dir, { withFileTypes: true })) {
@@ -116,13 +124,46 @@ describe("warranty — one number, site-wide", () => {
     /(?:warrant\w*|garantie)[^.\n]{0,40}?(?:2|two|twee)[\s-]*(?:year|yr|jaar)/i,
   ];
 
+  /**
+   * The guard is about what WE promise, so it must not fire on what the LAW gives.
+   * EU Directive 2019/771 Art. 17(2) *requires* us to tell the buyer they have a legal
+   * conformity right of at least two years — the statutory clause on /warranty says
+   * exactly that, in the same sentence as the word "garantie", and a naive sweep reads
+   * it as a stale 2-year promise.
+   *
+   * Scoped by SUBJECT, not by file: only sentences that name the statute are exempt, and
+   * the marker list is narrow enough that it cannot be used as a shield. "Our 2-year
+   * warranty" does not become legal by adding the word "wettelijk" to it — it becomes a
+   * different, true statement about the law.
+   */
+  const STATUTORY = /statutor|wettelijk|conformit|by law|the law|de wet|directive|richtlijn|gesetzlich|légal/i;
+  const stripStatutorySentences = (body: string) =>
+    body
+      .split(/(?<=[.!?])\s+|\n/)
+      .filter((sentence) => !STATUTORY.test(sentence))
+      .join("\n");
+
   it("no file anywhere claims a two-year warranty", () => {
     const offenders: string[] = [];
     for (const f of [...walk(join(ROOT, "src")), ...walk(join(ROOT, "public"))]) {
-      const body = readFileSync(f, "utf8");
+      const body = stripStatutorySentences(readFileSync(f, "utf8"));
       if (BAD.some((re) => re.test(body))) offenders.push(f.replace(ROOT + "/", ""));
     }
     expect(offenders, `stale 2-year warranty claim in:\n${offenders.join("\n")}`).toEqual([]);
+  });
+
+  it("the statutory exemption cannot be used as a shield", () => {
+    // A real marketing promise keeps firing even when the statute is named nearby, as
+    // long as the promise sits in its own sentence — which is how copy is written.
+    const shielded =
+      "You have a legal conformity right of at least two years. Our instruments carry a 2-year warranty.";
+    expect(BAD.some((re) => re.test(stripStatutorySentences(shielded)))).toBe(true);
+  });
+
+  it("does not fire on the mandatory statutory-rights clause", () => {
+    const clause =
+      "Consumenten in de EU hebben minstens twee jaar wettelijke conformiteitsgarantie.";
+    expect(BAD.some((re) => re.test(stripStatutorySentences(clause)))).toBe(false);
   });
 
   it("catches the exact variants v1 missed", () => {
