@@ -61,7 +61,12 @@ const ROUTES = [
   '/science',
   // Product pages — SSR renders the static config shell; Shopify data loads
   // client-side as normal. Bots get the correct <title> + meta immediately.
-  '/product/lifting-and-tightening-face-introducer',
+  // Canonical handles after the 2026-08-03 Shopify rename. Without these the URLs
+  // fall through to the SPA rewrite and serve the homepage shell at HTTP 200 —
+  // which is what every renamed handle did until 2026-08-04.
+  '/product/face-introducer',
+  '/product/restore-gel',
+  '/product/restore-pads',
   '/product/facial-beauty-tools-and-ems-beauty-equipment',
   '/product/eye-massage',
   '/product/electric-guasha-massager',

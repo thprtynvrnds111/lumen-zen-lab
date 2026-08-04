@@ -50,72 +50,121 @@
       "status": 301
     },
     {
-      "src": "/product/face-introducer",
+      "src": "/product/red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/instruments/restoration-belt"
+      },
+      "status": 301
+    },
+    {
+      "src": "/product/restoration-belt",
+      "headers": {
+        "Location": "/instruments/restoration-belt"
+      },
+      "status": 301
+    },
+    {
+      "src": "/product/household-red-light-charging-vibrating-red-light-therapy-mat",
+      "headers": {
+        "Location": "/instruments/restoration-mat"
+      },
+      "status": 301
+    },
+    {
+      "src": "/product/the-restoration-mat",
+      "headers": {
+        "Location": "/instruments/restoration-mat"
+      },
+      "status": 301
+    },
+    {
+      "src": "/product/the-system-founding-bundle",
+      "headers": {
+        "Location": "/instruments/the-system"
+      },
+      "status": 301
+    },
+    {
+      "src": "/product/lifting-and-tightening-face-introducer",
+      "headers": {
+        "Location": "/product/face-introducer"
+      },
+      "status": 301
+    },
+    {
+      "src": "/product/medicube-collagen-elastic-jelly-moisturizing-cream",
+      "headers": {
+        "Location": "/product/restore-gel"
+      },
+      "status": 301
+    },
+    {
+      "src": "/product/collagen-eye-mask",
+      "headers": {
+        "Location": "/product/restore-pads"
       },
       "status": 301
     },
     {
       "src": "/product/flux-panel",
       "headers": {
-        "Location": "/product/red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device"
+        "Location": "/instruments/restoration-belt"
       },
       "status": 301
     },
     {
       "src": "/product/eye-activator",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/product/face-introducer"
       },
       "status": 301
     },
     {
       "src": "/product/sculpt-wand",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/product/face-introducer"
       },
       "status": 301
     },
     {
       "src": "/product/skin-pulse",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/product/face-introducer"
       },
       "status": 301
     },
     {
       "src": "/product/gua-sha-frequency",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/product/face-introducer"
       },
       "status": 301
     },
     {
       "src": "/product/frequency-wand",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/product/face-introducer"
       },
       "status": 301
     },
     {
       "src": "/product/frequency-wand-pro",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/product/face-introducer"
       },
       "status": 301
     },
     {
       "src": "/product/frame-pulse",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/product/face-introducer"
       },
       "status": 301
     },
     {
       "src": "/product/frame-pulse-activator",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/product/face-introducer"
       },
       "status": 301
     },
@@ -198,49 +247,49 @@
     {
       "src": "/frequency-wand",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/product/face-introducer"
       },
       "status": 301
     },
     {
       "src": "/gua-sha-frequency",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/product/face-introducer"
       },
       "status": 301
     },
     {
       "src": "/eye-activator",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/product/face-introducer"
       },
       "status": 301
     },
     {
       "src": "/frame-pulse",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/product/face-introducer"
       },
       "status": 301
     },
     {
       "src": "/frequency-wand-pro",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/product/face-introducer"
       },
       "status": 301
     },
     {
       "src": "/sculpt-wand",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/product/face-introducer"
       },
       "status": 301
     },
     {
       "src": "/skin-pulse",
       "headers": {
-        "Location": "/product/lifting-and-tightening-face-introducer"
+        "Location": "/product/face-introducer"
       },
       "status": 301
     },
