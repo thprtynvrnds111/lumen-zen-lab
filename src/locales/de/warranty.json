@@ -1,0 +1,64 @@
+{
+ "term": {
+  "label": "One year",
+  "long": "twelve months",
+  "labelLower": "one year"
+ },
+ "hero": {
+  "badge": "Warranty",
+  "headline": "If it stops working,\nwe replace it.",
+  "sub": "$t(term.label) on the instruments, on top of the 30-day money-back window. You do not send the dead one back."
+ },
+ "covered": {
+  "title": "What is covered",
+  "items": [
+   "Manufacturing defects and failure in normal use, for $t(term.long) from delivery.",
+   "If any individual diode stops emitting light, the instrument is covered. One diode — not “half the panel”, not “materially degraded performance”.",
+   "The controller, the charger and the cable. In this category these fail more often than the diodes do.",
+   "We cover shipping in both directions."
+  ]
+ },
+ "excluded": {
+  "title": "What is not covered",
+  "items": [
+   "Accidental damage and water damage.",
+   "The gels and pads — they are consumables.",
+   "Commercial or clinic use.",
+   "Wear that does not affect function."
+  ]
+ },
+ "claim": {
+  "eyebrow": "How a claim works",
+  "title": "Four steps. No inspection gate.",
+  "items": [
+   {
+    "title": "Send one photo",
+    "desc": "Email info@zentialpure.com with a photo of the instrument switched on in a dark room, and your order number. That is the whole diagnosis."
+   },
+   {
+    "title": "A human replies within one business day",
+    "desc": "A real person, not a form. If we miss that, it is our failure and not a reason to close your claim."
+   },
+   {
+    "title": "We ship a replacement",
+    "desc": "Dispatched within three business days of the decision. You keep the old unit — we do not ask you to return a device that does not work."
+   },
+   {
+    "title": "Or a refund, if you prefer",
+    "desc": "Processed within five business days. No restocking fee, no inspection, no questionnaire."
+   }
+  ]
+ },
+ "statutory": {
+  "title": "Your legal rights come first, and they are larger than this",
+  "body": "This warranty is IN ADDITION to your statutory rights and does not limit them in any way. Consumers in the EU have a legal conformity right of at least two years. In the Netherlands there is no fixed cap at all — the wettelijke garantie runs for as long as the product can reasonably be expected to last, which may be considerably longer than $t(term.labelLower). Nothing on this page shortens that, and if the law gives you more than we do, the law wins."
+ },
+ "cta": {
+  "headline": "Something not working?",
+  "sub": "One email, one photo. We handle the rest.",
+  "button": "Contact Support"
+ },
+ "download": {
+  "label": "Keep a copy:"
+ }
+}

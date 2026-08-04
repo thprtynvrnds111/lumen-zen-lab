@@ -47,6 +47,7 @@ const ROUTES = [
   '/support',
   '/shipping',
   '/returns',
+  '/warranty',
   '/faq',
   '/privacy',
   '/terms',

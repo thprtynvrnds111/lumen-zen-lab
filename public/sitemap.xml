@@ -8,6 +8,7 @@
   <url><loc>https://zentialpure.com/faq</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://zentialpure.com/shipping</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://zentialpure.com/returns</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://zentialpure.com/warranty</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://zentialpure.com/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://zentialpure.com/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 

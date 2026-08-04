@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/build-links.mjs && vite build && vite build --ssr src/entry-server.tsx --outDir .ssr && node scripts/prerender.mjs",
+    "build": "node scripts/build-links.mjs && node scripts/build-warranty-pdf.mjs && vite build && vite build --ssr src/entry-server.tsx --outDir .ssr && node scripts/prerender.mjs",
     "build:links": "node scripts/build-links.mjs",
+    "build:warranty-pdf": "node scripts/build-warranty-pdf.mjs",
     "build:client": "vite build",
     "build:ssr": "vite build --ssr src/entry-server.tsx --outDir .ssr",
     "build:dev": "vite build --mode development",

@@ -1,0 +1,64 @@
+{
+ "term": {
+  "label": "Eén jaar",
+  "long": "twaalf maanden",
+  "labelLower": "één jaar"
+ },
+ "hero": {
+  "badge": "Garantie",
+  "headline": "Gaat hij stuk,\ndan vervangen we hem.",
+  "sub": "$t(term.label) op de instrumenten, bovenop de niet-goed-geld-terugperiode van 30 dagen. Je hoeft het kapotte apparaat niet terug te sturen."
+ },
+ "covered": {
+  "title": "Wat gedekt is",
+  "items": [
+   "Fabricagefouten en defecten bij normaal gebruik, $t(term.long) vanaf levering.",
+   "Stopt één enkele led met branden, dan is het instrument gedekt. Één led — niet “half het paneel”.",
+   "De controller, de lader en de kabel. In deze categorie gaan die vaker stuk dan de leds.",
+   "Verzendkosten zijn in beide richtingen voor ons."
+  ]
+ },
+ "excluded": {
+  "title": "Wat niet gedekt is",
+  "items": [
+   "Schade door ongelukken en waterschade.",
+   "De gels en pads — dat zijn verbruiksartikelen.",
+   "Zakelijk gebruik of gebruik in een salon.",
+   "Slijtage die de werking niet beïnvloedt."
+  ]
+ },
+ "claim": {
+  "eyebrow": "Hoe een claim werkt",
+  "title": "Vier stappen. Geen keuringsdrempel.",
+  "items": [
+   {
+    "title": "Stuur één foto",
+    "desc": "Mail info@zentialpure.com een foto van het ingeschakelde instrument in een donkere kamer, met je bestelnummer. Dat is de hele diagnose."
+   },
+   {
+    "title": "Binnen één werkdag antwoordt een mens",
+    "desc": "Een echt persoon, geen formulier. Halen we dat niet, dan is dat onze fout en geen reden om je claim te sluiten."
+   },
+   {
+    "title": "We sturen een vervanging",
+    "desc": "Verzonden binnen drie werkdagen na de beslissing. Je houdt het oude apparaat — we vragen je niet iets terug te sturen dat niet werkt."
+   },
+   {
+    "title": "Of geld terug, als je dat liever hebt",
+    "desc": "Binnen vijf werkdagen verwerkt. Geen herbevoorradingskosten, geen inspectie, geen vragenlijst."
+   }
+  ]
+ },
+ "statutory": {
+  "title": "Je wettelijke rechten gaan voor, en die zijn ruimer dan dit",
+  "body": "Deze commerciële garantie komt BOVENOP je wettelijke garantie en beperkt die op geen enkele manier. Consumenten in de EU hebben minstens twee jaar wettelijke conformiteitsgarantie. In Nederland geldt géén vaste termijn: de wettelijke garantie loopt zolang je redelijkerwijs mag verwachten dat het product meegaat, en dat kan flink langer zijn dan $t(term.labelLower). Niets op deze pagina verkort dat, en geeft de wet je meer dan wij, dan wint de wet."
+ },
+ "cta": {
+  "headline": "Werkt er iets niet?",
+  "sub": "Eén mail, één foto. Wij regelen de rest.",
+  "button": "Neem contact op"
+ },
+ "download": {
+  "label": "Bewaar een kopie:"
+ }
+}

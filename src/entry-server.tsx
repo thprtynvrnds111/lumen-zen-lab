@@ -25,6 +25,7 @@ const JournalStackAudit  = lazy(() => import("./pages/JournalStackAudit"));
 const Support          = lazy(() => import("./pages/Support"));
 const Shipping         = lazy(() => import("./pages/Shipping"));
 const Returns          = lazy(() => import("./pages/Returns"));
+const Warranty         = lazy(() => import("./pages/Warranty"));
 const FAQ              = lazy(() => import("./pages/FAQ"));
 const Track            = lazy(() => import("./pages/Track"));
 const PrivacyPolicy    = lazy(() => import("./pages/PrivacyPolicy"));
@@ -112,6 +113,7 @@ function ServerApp() {
         <Route path="/support"                                  element={<Support />} />
         <Route path="/shipping"                                 element={<Shipping />} />
         <Route path="/returns"                                  element={<Returns />} />
+        <Route path="/warranty"                                 element={<Warranty />} />
         <Route path="/faq"                                      element={<FAQ />} />
         <Route path="/track"                                    element={<Track />} />
         <Route path="/privacy"                                  element={<PrivacyPolicy />} />

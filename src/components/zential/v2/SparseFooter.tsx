@@ -29,6 +29,7 @@ const sections = [
       { name: "Contact", to: "/support" },
       { name: "Shipping", to: "/shipping" },
       { name: "Returns", to: "/returns" },
+      { name: "Warranty", to: "/warranty" },
       { name: "FAQ", to: "/faq" },
     ],
   },
