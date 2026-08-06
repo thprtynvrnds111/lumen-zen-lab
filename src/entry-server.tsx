@@ -162,14 +162,24 @@ export async function render(url: string): Promise<{ html: string; helmet: any }
   );
 
   const html = await new Promise<string>((resolve, reject) => {
-    let body = "";
+    // Accumulate raw buffers and decode ONCE. Decoding per chunk corrupts any
+    // multi-byte character that straddles a chunk boundary.
+    //
+    // The NUL strip is not defensive paranoia: react-dom 18.3.1's Node stream
+    // renderer fills fixed 2048-byte buffers, and when a multi-byte character
+    // does not fit in the space left it ships the buffer with the unwritten
+    // trailing byte still 0x00. Browsers render that as U+FFFD (�) — this
+    // exact bug put a visible � on /instruments/restoration-belt in prod
+    // (byte offset ≡ 2047 mod 2048, before an em-dash). NUL is never
+    // legitimate HTML output, so stripping is always safe.
+    const chunks: Buffer[] = [];
     const writable = new Writable({
       write(chunk: Buffer, _enc: string, cb: () => void) {
-        body += chunk.toString();
+        chunks.push(chunk);
         cb();
       },
       final(cb: () => void) {
-        resolve(body);
+        resolve(Buffer.concat(chunks).toString("utf8").replace(/\u0000/g, ""));
         cb();
       },
     });
