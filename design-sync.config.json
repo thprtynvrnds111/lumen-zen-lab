@@ -1,0 +1,766 @@
+{
+  "_what": "All project knowledge for /design-sync lives here, not in the skill. projectId null = first run; the skill fills it after get_project verification.",
+  "projectName": "Zential Pure — Site",
+  "projectId": "2c015023-1edd-4fa2-8689-306a2f244238",
+  "prefix": "site",
+  "liveOrigin": "https://zentialpure.com",
+  "fontInlineCapKB": 60,
+  "imgInlineCapKB": 48,
+  "pageMaxKB": 600,
+  "_pageMaxKB": "get_file is capped at 256 KiB; pages over that can only be partially read back. 600 accepted: shared CSS+fonts inline to ~260KB baseline, image-heavy pages reach ~580KB. Verification reads the first bytes (dsCard + title).",
+  "pages": [
+    {
+      "route": "/",
+      "dist": "index.html",
+      "out": "home.html",
+      "card": {
+        "name": "Home",
+        "group": "Core",
+        "subtitle": "/"
+      }
+    },
+    {
+      "route": "/movement",
+      "dist": "movement/index.html",
+      "out": "movement.html",
+      "card": {
+        "name": "Movement",
+        "group": "Core",
+        "subtitle": "/movement"
+      }
+    },
+    {
+      "route": "/origin",
+      "dist": "origin/index.html",
+      "out": "origin.html",
+      "card": {
+        "name": "Origin",
+        "group": "Core",
+        "subtitle": "/origin"
+      }
+    },
+    {
+      "route": "/journal",
+      "dist": "journal/index.html",
+      "out": "journal.html",
+      "card": {
+        "name": "Journal",
+        "group": "Journal",
+        "subtitle": "/journal"
+      }
+    },
+    {
+      "route": "/journal/frequency-shift",
+      "dist": "journal/frequency-shift/index.html",
+      "out": "journal--frequency-shift.html",
+      "card": {
+        "name": "Frequency Shift",
+        "group": "Journal",
+        "subtitle": "/journal/frequency-shift"
+      }
+    },
+    {
+      "route": "/journal/microcurrent-collagen",
+      "dist": "journal/microcurrent-collagen/index.html",
+      "out": "journal--microcurrent-collagen.html",
+      "card": {
+        "name": "Microcurrent Collagen",
+        "group": "Journal",
+        "subtitle": "/journal/microcurrent-collagen"
+      }
+    },
+    {
+      "route": "/journal/evening-protocol",
+      "dist": "journal/evening-protocol/index.html",
+      "out": "journal--evening-protocol.html",
+      "card": {
+        "name": "Evening Protocol",
+        "group": "Journal",
+        "subtitle": "/journal/evening-protocol"
+      }
+    },
+    {
+      "route": "/journal/red-light-clinical",
+      "dist": "journal/red-light-clinical/index.html",
+      "out": "journal--red-light-clinical.html",
+      "card": {
+        "name": "Red Light Clinical",
+        "group": "Journal",
+        "subtitle": "/journal/red-light-clinical"
+      }
+    },
+    {
+      "route": "/journal/lymphatic-drainage",
+      "dist": "journal/lymphatic-drainage/index.html",
+      "out": "journal--lymphatic-drainage.html",
+      "card": {
+        "name": "Lymphatic Drainage",
+        "group": "Journal",
+        "subtitle": "/journal/lymphatic-drainage"
+      }
+    },
+    {
+      "route": "/journal/ems-vs-microcurrent",
+      "dist": "journal/ems-vs-microcurrent/index.html",
+      "out": "journal--ems-vs-microcurrent.html",
+      "card": {
+        "name": "Ems Vs Microcurrent",
+        "group": "Journal",
+        "subtitle": "/journal/ems-vs-microcurrent"
+      }
+    },
+    {
+      "route": "/journal/ritual-that-lasts",
+      "dist": "journal/ritual-that-lasts/index.html",
+      "out": "journal--ritual-that-lasts.html",
+      "card": {
+        "name": "Ritual That Lasts",
+        "group": "Journal",
+        "subtitle": "/journal/ritual-that-lasts"
+      }
+    },
+    {
+      "route": "/journal/the-stack-audit",
+      "dist": "journal/the-stack-audit/index.html",
+      "out": "journal--the-stack-audit.html",
+      "card": {
+        "name": "The Stack Audit",
+        "group": "Journal",
+        "subtitle": "/journal/the-stack-audit"
+      }
+    },
+    {
+      "route": "/journal/kill-list",
+      "dist": "journal/kill-list/index.html",
+      "out": "journal--kill-list.html",
+      "card": {
+        "name": "Kill List",
+        "group": "Journal",
+        "subtitle": "/journal/kill-list"
+      }
+    },
+    {
+      "route": "/journal/grade-our-honesty",
+      "dist": "journal/grade-our-honesty/index.html",
+      "out": "journal--grade-our-honesty.html",
+      "card": {
+        "name": "Grade Our Honesty",
+        "group": "Journal",
+        "subtitle": "/journal/grade-our-honesty"
+      }
+    },
+    {
+      "route": "/support",
+      "dist": "support/index.html",
+      "out": "support.html",
+      "card": {
+        "name": "Support",
+        "group": "Support & Legal",
+        "subtitle": "/support"
+      }
+    },
+    {
+      "route": "/shipping",
+      "dist": "shipping/index.html",
+      "out": "shipping.html",
+      "card": {
+        "name": "Shipping",
+        "group": "Support & Legal",
+        "subtitle": "/shipping"
+      }
+    },
+    {
+      "route": "/returns",
+      "dist": "returns/index.html",
+      "out": "returns.html",
+      "card": {
+        "name": "Returns",
+        "group": "Support & Legal",
+        "subtitle": "/returns"
+      }
+    },
+    {
+      "route": "/warranty",
+      "dist": "warranty/index.html",
+      "out": "warranty.html",
+      "card": {
+        "name": "Warranty",
+        "group": "Support & Legal",
+        "subtitle": "/warranty"
+      }
+    },
+    {
+      "route": "/faq",
+      "dist": "faq/index.html",
+      "out": "faq.html",
+      "card": {
+        "name": "Faq",
+        "group": "Support & Legal",
+        "subtitle": "/faq"
+      }
+    },
+    {
+      "route": "/privacy",
+      "dist": "privacy/index.html",
+      "out": "privacy.html",
+      "card": {
+        "name": "Privacy",
+        "group": "Support & Legal",
+        "subtitle": "/privacy"
+      }
+    },
+    {
+      "route": "/terms",
+      "dist": "terms/index.html",
+      "out": "terms.html",
+      "card": {
+        "name": "Terms",
+        "group": "Support & Legal",
+        "subtitle": "/terms"
+      }
+    },
+    {
+      "route": "/technology/red-light",
+      "dist": "technology/red-light/index.html",
+      "out": "technology--red-light.html",
+      "card": {
+        "name": "Red Light",
+        "group": "Technology",
+        "subtitle": "/technology/red-light"
+      }
+    },
+    {
+      "route": "/technology/microcurrent",
+      "dist": "technology/microcurrent/index.html",
+      "out": "technology--microcurrent.html",
+      "card": {
+        "name": "Microcurrent",
+        "group": "Technology",
+        "subtitle": "/technology/microcurrent"
+      }
+    },
+    {
+      "route": "/technology/ems",
+      "dist": "technology/ems/index.html",
+      "out": "technology--ems.html",
+      "card": {
+        "name": "Ems",
+        "group": "Technology",
+        "subtitle": "/technology/ems"
+      }
+    },
+    {
+      "route": "/technology/thermal",
+      "dist": "technology/thermal/index.html",
+      "out": "technology--thermal.html",
+      "card": {
+        "name": "Thermal",
+        "group": "Technology",
+        "subtitle": "/technology/thermal"
+      }
+    },
+    {
+      "route": "/technology/electroporation",
+      "dist": "technology/electroporation/index.html",
+      "out": "technology--electroporation.html",
+      "card": {
+        "name": "Electroporation",
+        "group": "Technology",
+        "subtitle": "/technology/electroporation"
+      }
+    },
+    {
+      "route": "/technology/iontophoresis",
+      "dist": "technology/iontophoresis/index.html",
+      "out": "technology--iontophoresis.html",
+      "card": {
+        "name": "Iontophoresis",
+        "group": "Technology",
+        "subtitle": "/technology/iontophoresis"
+      }
+    },
+    {
+      "route": "/science",
+      "dist": "science/index.html",
+      "out": "science.html",
+      "card": {
+        "name": "Science",
+        "group": "Core",
+        "subtitle": "/science"
+      }
+    },
+    {
+      "route": "/product/face-introducer",
+      "dist": "product/face-introducer/index.html",
+      "out": "product--face-introducer.html",
+      "card": {
+        "name": "Face Introducer",
+        "group": "Products",
+        "subtitle": "/product/face-introducer"
+      }
+    },
+    {
+      "route": "/product/restore-gel",
+      "dist": "product/restore-gel/index.html",
+      "out": "product--restore-gel.html",
+      "card": {
+        "name": "Restore Gel",
+        "group": "Products",
+        "subtitle": "/product/restore-gel"
+      }
+    },
+    {
+      "route": "/product/restore-pads",
+      "dist": "product/restore-pads/index.html",
+      "out": "product--restore-pads.html",
+      "card": {
+        "name": "Restore Pads",
+        "group": "Products",
+        "subtitle": "/product/restore-pads"
+      }
+    },
+    {
+      "route": "/product/facial-beauty-tools-and-ems-beauty-equipment",
+      "dist": "product/facial-beauty-tools-and-ems-beauty-equipment/index.html",
+      "out": "product--facial-beauty-tools-and-ems-beauty-equipment.html",
+      "card": {
+        "name": "Facial Beauty Tools And Ems Beauty Equipment",
+        "group": "Products",
+        "subtitle": "/product/facial-beauty-tools-and-ems-beauty-equipment"
+      }
+    },
+    {
+      "route": "/product/eye-massage",
+      "dist": "product/eye-massage/index.html",
+      "out": "product--eye-massage.html",
+      "card": {
+        "name": "Eye Massage",
+        "group": "Products",
+        "subtitle": "/product/eye-massage"
+      }
+    },
+    {
+      "route": "/product/electric-guasha-massager",
+      "dist": "product/electric-guasha-massager/index.html",
+      "out": "product--electric-guasha-massager.html",
+      "card": {
+        "name": "Electric Guasha Massager",
+        "group": "Products",
+        "subtitle": "/product/electric-guasha-massager"
+      }
+    },
+    {
+      "route": "/product/electric-micro-current",
+      "dist": "product/electric-micro-current/index.html",
+      "out": "product--electric-micro-current.html",
+      "card": {
+        "name": "Electric Micro Current",
+        "group": "Products",
+        "subtitle": "/product/electric-micro-current"
+      }
+    },
+    {
+      "route": "/product/color-light-import-micro-current-vibration-massager",
+      "dist": "product/color-light-import-micro-current-vibration-massager/index.html",
+      "out": "product--color-light-import-micro-current-vibration-massager.html",
+      "card": {
+        "name": "Color Light Import Micro Current Vibration Massager",
+        "group": "Products",
+        "subtitle": "/product/color-light-import-micro-current-vibration-massager"
+      }
+    },
+    {
+      "route": "/product/red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening",
+      "dist": "product/red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening/index.html",
+      "out": "product--red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening.html",
+      "card": {
+        "name": "Red Light Blu Ray Cosmetic Instrument Face Lifting And Tight",
+        "group": "Products",
+        "subtitle": "/product/red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening"
+      }
+    },
+    {
+      "route": "/product/3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
+      "dist": "product/3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool/index.html",
+      "out": "product--3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool.html",
+      "card": {
+        "name": "3d Eye Beauty Instrument Micro Current Pulse Eye Relax Reduc",
+        "group": "Products",
+        "subtitle": "/product/3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool"
+      }
+    },
+    {
+      "route": "/product/portable-ems-microcurrent-facial-beauty-device",
+      "dist": "product/portable-ems-microcurrent-facial-beauty-device/index.html",
+      "out": "product--portable-ems-microcurrent-facial-beauty-device.html",
+      "card": {
+        "name": "Portable Ems Microcurrent Facial Beauty Device",
+        "group": "Products",
+        "subtitle": "/product/portable-ems-microcurrent-facial-beauty-device"
+      }
+    },
+    {
+      "route": "/product/white-noise-sleep-aid-machine",
+      "dist": "product/white-noise-sleep-aid-machine/index.html",
+      "out": "product--white-noise-sleep-aid-machine.html",
+      "card": {
+        "name": "White Noise Sleep Aid Machine",
+        "group": "Products",
+        "subtitle": "/product/white-noise-sleep-aid-machine"
+      }
+    },
+    {
+      "route": "/compare/nuface-vs-zential-pure",
+      "dist": "compare/nuface-vs-zential-pure/index.html",
+      "out": "compare--nuface-vs-zential-pure.html",
+      "card": {
+        "name": "Nuface Vs Zential Pure",
+        "group": "SEO & Compare",
+        "subtitle": "/compare/nuface-vs-zential-pure"
+      }
+    },
+    {
+      "route": "/compare/foreo-bear-vs-zential-pure",
+      "dist": "compare/foreo-bear-vs-zential-pure/index.html",
+      "out": "compare--foreo-bear-vs-zential-pure.html",
+      "card": {
+        "name": "Foreo Bear Vs Zential Pure",
+        "group": "SEO & Compare",
+        "subtitle": "/compare/foreo-bear-vs-zential-pure"
+      }
+    },
+    {
+      "route": "/clinic-vs-home-facial-device",
+      "dist": "clinic-vs-home-facial-device/index.html",
+      "out": "clinic-vs-home-facial-device.html",
+      "card": {
+        "name": "Clinic Vs Home Facial Device",
+        "group": "SEO & Compare",
+        "subtitle": "/clinic-vs-home-facial-device"
+      }
+    },
+    {
+      "route": "/facial-muscle-training",
+      "dist": "facial-muscle-training/index.html",
+      "out": "facial-muscle-training.html",
+      "card": {
+        "name": "Facial Muscle Training",
+        "group": "SEO & Compare",
+        "subtitle": "/facial-muscle-training"
+      }
+    },
+    {
+      "route": "/reveal",
+      "dist": "reveal/index.html",
+      "out": "reveal.html",
+      "card": {
+        "name": "Reveal",
+        "group": "Funnel",
+        "subtitle": "/reveal"
+      }
+    },
+    {
+      "route": "/pick",
+      "dist": "pick/index.html",
+      "out": "pick.html",
+      "card": {
+        "name": "Pick",
+        "group": "Funnel",
+        "subtitle": "/pick"
+      }
+    },
+    {
+      "route": "/one-shelf",
+      "dist": "one-shelf/index.html",
+      "out": "one-shelf.html",
+      "card": {
+        "name": "One Shelf",
+        "group": "Funnel",
+        "subtitle": "/one-shelf"
+      }
+    },
+    {
+      "route": "/wrap",
+      "dist": "wrap/index.html",
+      "out": "wrap.html",
+      "card": {
+        "name": "Wrap",
+        "group": "Funnel",
+        "subtitle": "/wrap"
+      }
+    },
+    {
+      "route": "/f/face-introducer",
+      "dist": "f/face-introducer/index.html",
+      "out": "f--face-introducer.html",
+      "card": {
+        "name": "Face Introducer",
+        "group": "Funnel",
+        "subtitle": "/f/face-introducer"
+      }
+    },
+    {
+      "route": "/f/restoration-belt",
+      "dist": "f/restoration-belt/index.html",
+      "out": "f--restoration-belt.html",
+      "card": {
+        "name": "Restoration Belt",
+        "group": "Funnel",
+        "subtitle": "/f/restoration-belt"
+      }
+    },
+    {
+      "route": "/f/restoration-mat",
+      "dist": "f/restoration-mat/index.html",
+      "out": "f--restoration-mat.html",
+      "card": {
+        "name": "Restoration Mat",
+        "group": "Funnel",
+        "subtitle": "/f/restoration-mat"
+      }
+    },
+    {
+      "route": "/editorial/the-ritual",
+      "dist": "editorial/the-ritual/index.html",
+      "out": "editorial--the-ritual.html",
+      "card": {
+        "name": "The Ritual",
+        "group": "Editorial",
+        "subtitle": "/editorial/the-ritual"
+      }
+    },
+    {
+      "route": "/editorial/the-science",
+      "dist": "editorial/the-science/index.html",
+      "out": "editorial--the-science.html",
+      "card": {
+        "name": "The Science",
+        "group": "Editorial",
+        "subtitle": "/editorial/the-science"
+      }
+    },
+    {
+      "route": "/editorial/the-diagnosis",
+      "dist": "editorial/the-diagnosis/index.html",
+      "out": "editorial--the-diagnosis.html",
+      "card": {
+        "name": "The Diagnosis",
+        "group": "Editorial",
+        "subtitle": "/editorial/the-diagnosis"
+      }
+    },
+    {
+      "route": "/editorial",
+      "dist": "editorial/index.html",
+      "out": "editorial.html",
+      "card": {
+        "name": "Editorial",
+        "group": "Editorial",
+        "subtitle": "/editorial"
+      }
+    },
+    {
+      "route": "/editorial/clinical-issue",
+      "dist": "editorial/clinical-issue/index.html",
+      "out": "editorial--clinical-issue.html",
+      "card": {
+        "name": "Clinical Issue",
+        "group": "Editorial",
+        "subtitle": "/editorial/clinical-issue"
+      }
+    },
+    {
+      "route": "/breath",
+      "dist": "breath/index.html",
+      "out": "breath.html",
+      "card": {
+        "name": "Breath",
+        "group": "Breath",
+        "subtitle": "/breath"
+      }
+    },
+    {
+      "route": "/breath/techniques",
+      "dist": "breath/techniques/index.html",
+      "out": "breath--techniques.html",
+      "card": {
+        "name": "Techniques",
+        "group": "Breath",
+        "subtitle": "/breath/techniques"
+      }
+    },
+    {
+      "route": "/breath/daily",
+      "dist": "breath/daily/index.html",
+      "out": "breath--daily.html",
+      "card": {
+        "name": "Daily",
+        "group": "Breath",
+        "subtitle": "/breath/daily"
+      }
+    },
+    {
+      "route": "/quiz",
+      "dist": "quiz/index.html",
+      "out": "quiz.html",
+      "card": {
+        "name": "Quiz",
+        "group": "Funnel",
+        "subtitle": "/quiz"
+      }
+    },
+    {
+      "route": "/quiz/result",
+      "dist": "quiz/result/index.html",
+      "out": "quiz--result.html",
+      "card": {
+        "name": "Result",
+        "group": "Funnel",
+        "subtitle": "/quiz/result"
+      }
+    },
+    {
+      "route": "/thank-you",
+      "dist": "thank-you/index.html",
+      "out": "thank-you.html",
+      "card": {
+        "name": "Thank You",
+        "group": "Funnel",
+        "subtitle": "/thank-you"
+      }
+    },
+    {
+      "route": "/founding-terms",
+      "dist": "founding-terms/index.html",
+      "out": "founding-terms.html",
+      "card": {
+        "name": "Founding Terms",
+        "group": "Funnel",
+        "subtitle": "/founding-terms"
+      }
+    },
+    {
+      "route": "/ritual-guide",
+      "dist": "ritual-guide/index.html",
+      "out": "ritual-guide.html",
+      "card": {
+        "name": "Ritual Guide",
+        "group": "Core",
+        "subtitle": "/ritual-guide"
+      }
+    },
+    {
+      "route": "/collection",
+      "dist": "collection/index.html",
+      "out": "collection.html",
+      "card": {
+        "name": "Collection",
+        "group": "Core",
+        "subtitle": "/collection"
+      }
+    },
+    {
+      "route": "/instruments",
+      "dist": "instruments/index.html",
+      "out": "instruments.html",
+      "card": {
+        "name": "Instruments",
+        "group": "Instruments & Protocols",
+        "subtitle": "/instruments"
+      }
+    },
+    {
+      "route": "/instruments/the-system",
+      "dist": "instruments/the-system/index.html",
+      "out": "instruments--the-system.html",
+      "card": {
+        "name": "The System",
+        "group": "Instruments & Protocols",
+        "subtitle": "/instruments/the-system"
+      }
+    },
+    {
+      "route": "/instruments/face-introducer",
+      "dist": "instruments/face-introducer/index.html",
+      "out": "instruments--face-introducer.html",
+      "card": {
+        "name": "Face Introducer",
+        "group": "Instruments & Protocols",
+        "subtitle": "/instruments/face-introducer"
+      }
+    },
+    {
+      "route": "/instruments/restoration-belt",
+      "dist": "instruments/restoration-belt/index.html",
+      "out": "instruments--restoration-belt.html",
+      "card": {
+        "name": "Restoration Belt",
+        "group": "Instruments & Protocols",
+        "subtitle": "/instruments/restoration-belt"
+      }
+    },
+    {
+      "route": "/instruments/restoration-mat",
+      "dist": "instruments/restoration-mat/index.html",
+      "out": "instruments--restoration-mat.html",
+      "card": {
+        "name": "Restoration Mat",
+        "group": "Instruments & Protocols",
+        "subtitle": "/instruments/restoration-mat"
+      }
+    },
+    {
+      "route": "/protocols",
+      "dist": "protocols/index.html",
+      "out": "protocols.html",
+      "card": {
+        "name": "Protocols",
+        "group": "Instruments & Protocols",
+        "subtitle": "/protocols"
+      }
+    },
+    {
+      "route": "/protocols/01-face",
+      "dist": "protocols/01-face/index.html",
+      "out": "protocols--01-face.html",
+      "card": {
+        "name": "01 Face",
+        "group": "Instruments & Protocols",
+        "subtitle": "/protocols/01-face"
+      }
+    },
+    {
+      "route": "/protocols/02-body",
+      "dist": "protocols/02-body/index.html",
+      "out": "protocols--02-body.html",
+      "card": {
+        "name": "02 Body",
+        "group": "Instruments & Protocols",
+        "subtitle": "/protocols/02-body"
+      }
+    },
+    {
+      "route": "/protocols/03-recovery",
+      "dist": "protocols/03-recovery/index.html",
+      "out": "protocols--03-recovery.html",
+      "card": {
+        "name": "03 Recovery",
+        "group": "Instruments & Protocols",
+        "subtitle": "/protocols/03-recovery"
+      }
+    },
+    {
+      "route": "/protocol/face-introducer",
+      "dist": "protocol/face-introducer/index.html",
+      "out": "protocol--face-introducer.html",
+      "card": {
+        "name": "Face Introducer",
+        "group": "Instruments & Protocols",
+        "subtitle": "/protocol/face-introducer"
+      }
+    }
+  ],
+  "minTextChars": 300,
+  "_minTextChars": "PDP shells prerender 340-400 chars (Shopify data is client-side); 300 keeps the gate meaningful without flagging every PDP.",
+  "_bodyLift": "EXCLUDED 2026-08-06: /body-lift prerenders an EMPTY <title data-rh> (page missing SEO title text in src). Real SEO bug on prod — fix the page, then re-add here."
+}

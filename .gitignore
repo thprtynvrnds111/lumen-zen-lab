@@ -35,3 +35,4 @@ dist-ssr
 # Edit scripts/links/tiles.mjs, never these.
 public/ig.html
 public/tt.html
+.design-sync/
