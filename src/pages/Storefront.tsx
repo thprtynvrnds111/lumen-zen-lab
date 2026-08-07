@@ -5,6 +5,7 @@ import { Header } from "@/components/zential/Header";
 import { SparseFooter } from "@/components/zential/v2/SparseFooter";
 import { TrustpilotProof } from "@/components/zential/TrustpilotProof";
 import { TrustpilotStrip } from "@/components/zential/TrustpilotStrip";
+import { TypeSticker } from "@/components/zential/TypeSticker";
 import { SEO } from "@/components/SEO";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { formatMoney } from "@/lib/market";
@@ -113,7 +114,10 @@ export default function Storefront() {
       <main>
         {/* ── HERO — statement + case-study meta row ── */}
         <section className="bg-white">
-          <div className={`${WRAP} pt-[clamp(56px,9vw,120px)] pb-[clamp(40px,6vw,72px)]`}>
+          <div className={`relative ${WRAP} pt-[clamp(56px,9vw,120px)] pb-[clamp(40px,6vw,72px)]`}>
+            <div className="absolute right-8 top-[clamp(64px,10vw,130px)] hidden md:block">
+              <TypeSticker word="RITUAL" width={188} rotate={-8} />
+            </div>
             <p className={LABEL}>Zential Pure · Resonance Restoration</p>
             <h1 className="mt-6 max-w-[15ch] font-sans font-light text-[clamp(44px,6.4vw,92px)] leading-[0.98] tracking-[-0.03em] text-[#141414]">
               The Body Remembers its Frequency
@@ -334,7 +338,10 @@ export default function Storefront() {
         </section>
 
         {/* ── PROTOCOLS — three minimal columns ── */}
-        <section className="bg-[#F4FBF8] py-[clamp(72px,10vw,120px)]">
+        <section className="relative overflow-hidden bg-[#F4FBF8] py-[clamp(72px,10vw,120px)]">
+          <div className="absolute bottom-8 right-10 hidden lg:block">
+            <TypeSticker word="RESET" width={150} rotate={6} />
+          </div>
           <div className={WRAP}>
             <div className="mb-[clamp(36px,4vw,56px)] flex flex-wrap items-end justify-between gap-6">
               <div>

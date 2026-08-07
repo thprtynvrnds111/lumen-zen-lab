@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ZenMascot } from "@/components/zential/ZenMascot";
 import { BrandLockup } from "@/components/zential/BrandLockup";
+import { TypeSticker } from "@/components/zential/TypeSticker";
 import { SOCIALS } from "@/lib/socials";
 
 const sections = [
@@ -118,6 +119,9 @@ export function SparseFooter() {
             <span className="text-[#0E7A54]">daily ritual.</span>
           </h2>
 
+          <div className="absolute right-14 top-24 hidden lg:block">
+            <TypeSticker word="RITUAL" width={140} rotate={9} />
+          </div>
           <div className="mt-10 flex flex-wrap items-baseline gap-x-8 gap-y-3 font-mono text-[10px] tracking-[0.22em] uppercase text-[#141414]/45">
             <span>Edition ( {year} )</span>
             <span>·</span>

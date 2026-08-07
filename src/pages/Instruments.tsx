@@ -4,6 +4,7 @@ import { PageShell } from "@/components/zential/v2/PageShell";
 import { SystemBundle } from "@/components/zential/SystemBundle";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { formatMoney } from "@/lib/market";
+import { TypeSticker } from "@/components/zential/TypeSticker";
 import heroFace from "@/assets/hero-neck-device.webp";
 import heroBelt from "@/assets/storefront-belt-woman.png";
 import heroMat from "@/assets/hero-restore-mat.webp";
@@ -101,6 +102,9 @@ export default function Instruments() {
     >
       <section className="relative overflow-hidden bg-white text-[#141414]">
         <div className="relative mx-auto max-w-[1180px] px-6 md:px-10 pt-[clamp(72px,11vw,128px)] pb-[clamp(40px,6vw,64px)]">
+          <div className="absolute right-10 top-[clamp(88px,13vw,150px)] hidden md:block">
+            <TypeSticker word="12 MIN" width={168} rotate={7} />
+          </div>
           <p className="inline-flex items-center gap-[14px] font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]">
             <span className="tabular-nums opacity-55">( 00 )</span>
             <span className="inline-block h-px w-[26px] bg-current opacity-40" />
