@@ -15,7 +15,7 @@ import { trackAddToCart } from "@/lib/google-tracking";
 import heroFace from "@/assets/hero-neck-device.webp";
 import heroBelt from "@/assets/belt-pdp-hero.png";
 import heroMat from "@/assets/hero-restore-mat.webp";
-import edWakingHand from "@/assets/editorial/waking-hand.webp";
+import fiRitualMirror from "@/assets/problem-face-introducer.webp";
 import edSeatedCalm from "@/assets/editorial/seated-calm.webp";
 import edMatBedGlow from "@/assets/editorial/mat-bed-glow.webp";
 import darkFiMacro from "@/assets/coven/dark-fi-macro.webp";
@@ -139,8 +139,8 @@ const CONFIGS: Record<string, InstrumentConfig> = {
         "The Face Introducer runs three modalities in one device. EMS for the muscle. Microcurrent for tone. Thermal for absorption. Twelve minutes. €88, once.",
       ],
       kicker: "Clinic precision. Daily ritual.",
-      img: edWakingHand,
-      imgAlt: "Morning light on skin",
+      img: fiRitualMirror,
+      imgAlt: "Running the Face Introducer along the neck at the bathroom mirror, evening ritual",
     },
     mech: {
       h2: "Prime. Stimulate. Renew.",
