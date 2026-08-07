@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { SparseFooter } from "@/components/zential/v2/SparseFooter";
+import { TrustpilotProof } from "@/components/zential/TrustpilotProof";
+import { TrustpilotStrip } from "@/components/zential/TrustpilotStrip";
 import { SEO } from "@/components/SEO";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { formatMoney } from "@/lib/market";
@@ -134,6 +136,7 @@ export default function Storefront() {
                   <Link to="/instruments/face-introducer" className={PILL_ACTION}>Order Face Introducer{priceOf(INSTRUMENTS[0]) && <> · {priceOf(INSTRUMENTS[0])}</>}</Link>
                   <Link to="/protocols" className="font-sans text-[12px] tracking-[0.22em] uppercase transition-colors hover:text-[#1BAF86]" style={{ color: EMERALD }}>Find your protocol</Link>
                 </div>
+                <TrustpilotProof className="mt-4" />
               </div>
             </div>
           </div>
@@ -151,6 +154,49 @@ export default function Storefront() {
             >
               Featured · The 12-Minute Window
             </Link>
+          </div>
+        </section>
+
+        {/* ── THE INSTRUMENT — what the Face Introducer is, concretely ── */}
+        <section className="border-t border-[rgba(20,20,20,0.10)] bg-white py-[clamp(64px,9vw,110px)]">
+          <div className={WRAP}>
+            <div className="grid items-center gap-10 md:grid-cols-[1fr_1.1fr] md:gap-16">
+              <figure className="overflow-hidden">
+                <img
+                  src="/face-introducer.webp"
+                  alt="A woman holding the Face Introducer against her cheek, its head resting on the skin"
+                  className="w-full object-cover transition-transform duration-700 hover:scale-[1.02]"
+                  loading="lazy"
+                />
+              </figure>
+              <div>
+                <p className={LABEL}>The Instrument</p>
+                <h2 className="mt-5 max-w-[16ch] font-sans font-light text-[clamp(28px,3.6vw,48px)] leading-[1.06] tracking-[-0.025em] text-[#141414]">
+                  One handheld instrument for face and neck.
+                </h2>
+                <p className="mt-5 max-w-[52ch] text-[15px] leading-[1.65] text-[#5A5A5A]">
+                  EMS, microcurrent and thermal — the three inputs a facialist charges you by the session, calibrated into a twelve-minute ritual you run yourself.
+                </p>
+                <p className="mt-3 max-w-[52ch] text-[15px] leading-[1.65] text-[#5A5A5A]">
+                  You glide it along jaw, cheekbone and neck. Twelve minutes, once a day.
+                </p>
+                <div className="mt-7 flex flex-wrap gap-x-8 gap-y-3">
+                  {[`${FI_MODALITY_COUNT} clinic modalities`, `${FI_SESSION_MINUTES}-minute ritual`, "€88. Once."].map((f) => (
+                    <span key={f} className="inline-flex items-center gap-2.5 font-sans text-[13px] text-[#141414]">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#2ED8A8]" />
+                      {f}
+                    </span>
+                  ))}
+                </div>
+                <Link
+                  to="/instruments/face-introducer"
+                  className="mt-8 inline-flex items-center gap-1.5 font-sans text-[12px] tracking-[0.18em] uppercase transition-colors hover:text-[#1BAF86]"
+                  style={{ color: EMERALD }}
+                >
+                  See the instrument <span>→</span>
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -253,6 +299,9 @@ export default function Storefront() {
             </div>
           </div>
         </section>
+
+        {/* ── REVIEWS — real Trustpilot quotes, verified verbatim ── */}
+        <TrustpilotStrip />
 
         {/* ── TEXTURE INTERLUDE — full-bleed, statement over image ── */}
         <section className="relative flex min-h-[clamp(300px,42vw,520px)] items-center overflow-hidden">

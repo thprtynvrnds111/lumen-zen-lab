@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Search } from "lucide-react";
 import { CartDrawer } from "@/components/CartDrawer";
 import { SearchOverlay } from "@/components/zential/SearchOverlay";
+import { BrandLockup } from "@/components/zential/BrandLockup";
 
 const S = {
  dark: '#141414',
@@ -14,25 +15,12 @@ const S = {
 
 type NavMatch = 'exact' | 'prefix' | 'none';
 const NAV_ITEMS: { label: string; to: string; match: NavMatch }[] = [
- { label: 'Movement', to: '/', match: 'exact' },
+ { label: 'Movement', to: '/movement', match: 'prefix' },
  { label: 'Instruments', to: '/instruments', match: 'prefix' },
  { label: 'Protocols', to: '/protocols', match: 'prefix' },
  { label: 'Method', to: '/clinic-vs-home-facial-device', match: 'prefix' },
  { label: 'Quiz', to: '/quiz', match: 'prefix' },
 ];
-
-function FlowerMark() {
- return (
-  <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden>
-   <g transform="translate(50,50)">
-    <ellipse rx="18" ry="32" fill={S.teal} transform="rotate(0)" />
-    <ellipse rx="18" ry="32" fill={S.teal} transform="rotate(45)" opacity="0.75" />
-    <ellipse rx="18" ry="32" fill={S.teal} transform="rotate(90)" opacity="0.55" />
-    <ellipse rx="18" ry="32" fill={S.teal} transform="rotate(135)" opacity="0.38" />
-   </g>
-  </svg>
- );
-}
 
 export function Header() {
  const [searchOpen, setSearchOpen] = useState(false);
@@ -66,18 +54,8 @@ export function Header() {
     <div className="flex items-center justify-between px-8 md:px-14 lg:px-16 h-16">
 
      {/* Left: flower mark + wordmark */}
-     <Link to="/" className="flex items-center gap-3" aria-label="Zential Pure, Home">
-      <FlowerMark />
-      <span style={{
-       ...S.dm,
-       fontWeight: 300,
-       fontSize: 12,
-       letterSpacing: '0.3em',
-       textTransform: 'uppercase',
-       color: S.dark,
-      }}>
-       Zential Pure
-      </span>
+     <Link to="/" className="flex items-center" aria-label="Zential Pure, Home">
+      <BrandLockup size={18} />
      </Link>
 
      {/* Right: desktop */}

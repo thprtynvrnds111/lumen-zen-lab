@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ZenMascot } from "@/components/zential/ZenMascot";
+import { BrandLockup } from "@/components/zential/BrandLockup";
 import { SOCIALS } from "@/lib/socials";
 
 const sections = [
@@ -198,7 +199,7 @@ export function SparseFooter() {
         {/* Bottom credit row */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pt-10 border-t border-[rgba(20,20,20,0.10)]">
           <div className="flex items-center gap-4">
-            <FlowerMark />
+            <BrandLockup size={16} />
             <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#141414]/45">
               Edition {year}  ·  zentialpure.com
             </p>
