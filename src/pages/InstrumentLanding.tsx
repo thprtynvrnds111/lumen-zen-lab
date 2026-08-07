@@ -147,6 +147,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
       stages: [
         { n: "01", title: "Prime", body: "Gentle thermal warmth raises surface temperature and relaxes the muscle, opening the field before any current is introduced." },
         { n: "02", title: "Stimulate", body: "EMS engages the larger muscle; microcurrent works the fine fibres beneath the skin. Together they support tone and lift with consistent use." },
+        { n: "03", title: "Renew", body: "The close of the pass: the device comes off, the gel is wiped away and the skin is left to settle. Renewal is the body's own process — the ritual simply ends the way it began, calm." },
       ],
       disclaimer:
         "Zential Pure instruments support the skin's own processes. They are not medical devices and do not diagnose, treat or cure any condition. Results build with consistent use and vary between people.",
