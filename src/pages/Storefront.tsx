@@ -21,6 +21,7 @@ import covenPortrait from "@/assets/coven/hero-fi-portrait.webp";
 import covenStill from "@/assets/coven/collection-still.webp";
 import covenTexture from "@/assets/coven/texture-green.webp";
 import covenBelt from "@/assets/coven/belt-bright.webp";
+import monoFiLand from "@/assets/coven/mono-fi-land.webp";
 
 /**
  * / — homepage, Coven restyle (2026-08-07). Case-study grammar borrowed from
@@ -359,6 +360,32 @@ export default function Storefront() {
                   <span className="mt-auto font-sans text-[14px] font-semibold tabular-nums text-[#141414]">{p.note}</span>
                 </Link>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── EMERALD CAMPAIGN BAND — mono-brand still, copy in its empty field ── */}
+        <section className="relative overflow-hidden">
+          <img
+            src={monoFiLand}
+            alt="The Face Introducer standing on an emerald pedestal in a monochrome green studio"
+            className="h-[clamp(320px,44vw,560px)] w-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 flex items-center">
+            <div className={`${WRAP} w-full`}>
+              <div className="ml-auto max-w-[38ch] text-right md:pr-4">
+                <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-white/70">The Instrument</p>
+                <p className="mt-4 font-sans font-light text-[clamp(24px,3vw,40px)] leading-[1.1] tracking-[-0.02em] text-white">
+                  Clinic precision, daily ritual.
+                </p>
+                <Link
+                  to="/instruments/face-introducer"
+                  className="mt-6 inline-flex items-center gap-1.5 font-sans text-[12px] tracking-[0.18em] uppercase text-[#2ED8A8] transition-colors hover:text-white"
+                >
+                  See the instrument <span>→</span>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

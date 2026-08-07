@@ -16,9 +16,10 @@ import heroFace from "@/assets/hero-neck-device.webp";
 import heroBelt from "@/assets/belt-pdp-hero.png";
 import heroMat from "@/assets/hero-restore-mat.webp";
 import edWakingHand from "@/assets/editorial/waking-hand.webp";
-import edThreeVessels from "@/assets/editorial/three-vessels.webp";
 import edSeatedCalm from "@/assets/editorial/seated-calm.webp";
 import edMatBedGlow from "@/assets/editorial/mat-bed-glow.webp";
+import darkFiMacro from "@/assets/coven/dark-fi-macro.webp";
+import darkBelt from "@/assets/coven/dark-belt.webp";
 import edBeltWorn from "@/assets/belt-who.png";
 
 /**
@@ -152,7 +153,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
       disclaimer:
         "Zential Pure instruments support the skin's own processes. They are not medical devices and do not diagnose, treat or cure any condition. Results build with consistent use and vary between people.",
     },
-    divider: { img: edThreeVessels, imgAlt: "Three vessels in warm light", quote: "Bring the appointment home.", src: "Protocol 01 · The Face Introducer" },
+    divider: { img: darkFiMacro, imgAlt: "The Face Introducer head in close-up, teal and red rim light on black", quote: "Bring the appointment home.", src: "Protocol 01 · The Face Introducer" },
     specs: [
       { k: "Modalities", v: "EMS · Microcurrent · Thermal" },
       { k: "Session", v: "12 minutes" },
@@ -267,7 +268,7 @@ const CONFIGS: Record<string, InstrumentConfig> = {
       disclaimer:
         "Zential Pure instruments support the body's own processes. They are not medical devices and do not diagnose, treat or cure any condition, including pain or injury. Our light is LED — it works at the skin and the tissue just beneath it. Claims of red light working at muscle depth come from clinical laser studies, which use a different instrument with a different evidence base. Results build with consistent use and vary between people.",
     },
-    divider: { img: edSeatedCalm, imgAlt: "Seated in calm morning light", quote: "The recovery room, the width of your back.", src: "Protocol 02 · The Restoration Belt" },
+    divider: { img: darkBelt, imgAlt: "The Restoration Belt glowing red on black, traced by a teal rim light", quote: "The recovery room, the width of your back.", src: "Protocol 02 · The Restoration Belt" },
     specs: [
       { k: "Mechanisms", v: "Red LED · Near-IR · Thermal · Wrap" },
       { k: "Session", v: "15 minutes" },
