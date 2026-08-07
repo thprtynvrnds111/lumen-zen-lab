@@ -72,7 +72,7 @@ const JournalStackAudit = () => {
     setVals((p) => ({ ...p, [k]: v.replace(/[^0-9.]/g, "") }));
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <SEO
         title="The Stack Audit: What You Spend on Optimization, Zential Pure Journal"
         description="Add up your yearly spend on subscriptions, supplements, and trackers. Then compare it to a one-time device stack that covers three zones and six inputs."
@@ -100,54 +100,54 @@ const JournalStackAudit = () => {
           <div className="max-w-3xl mx-auto">
             <Link
               to="/journal"
-              className="text-xs tracking-[0.25em] uppercase text-teal hover:text-primary transition-colors mb-8 inline-block"
+              className="text-xs tracking-[0.25em] uppercase text-[#0E7A54] hover:text-[#1BAF86] transition-colors mb-8 inline-block"
             >
               ← Back to Journal
             </Link>
-            <p className="text-xs tracking-[0.25em] uppercase text-teal mb-4 mt-6">
+            <p className="text-xs tracking-[0.25em] uppercase text-[#8E8E8E] mb-4 mt-6">
               The Stack Audit
             </p>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-[-0.03em] text-[#141414] leading-tight mb-6">
               Calculate your annual optimization spend. Then see what one-time
               ownership costs.
             </h1>
-            <p className="text-lg text-foreground/90 leading-relaxed">
+            <p className="text-lg text-[#141414]/90 leading-relaxed">
               Most people spend €1,000 to €3,000 a year on subscriptions,
               supplements, and trackers. Add it up once. Then compare it to a
               one-time device stack that covers three zones and six inputs.
             </p>
-            <div className="w-16 h-px bg-primary/30 mt-8" />
+            <div className="w-16 h-px bg-[#0E7A54] mt-8" />
           </div>
         </section>
 
         {/* Inputs */}
         <section className="px-6 md:px-12 lg:px-20 pb-8">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-foreground mb-2">
+            <h2 className="text-2xl font-light tracking-[-0.025em] text-[#141414] mb-2">
               What do you spend each month on optimization?
             </h2>
-            <p className="text-foreground/70 mb-8">
+            <p className="text-[#5A5A5A] mb-8">
               Be honest. No one sees this but you. The total might surprise you.
             </p>
 
             <div className="space-y-6">
               {FIELDS.map((f) => (
                 <div key={f.key}>
-                  <label className="block text-sm font-medium text-foreground mb-1">
+                  <label className="block text-sm font-medium text-[#141414] mb-1">
                     {f.label}
                   </label>
-                  <p className="text-xs text-muted-foreground mb-2">{f.help}</p>
+                  <p className="text-xs text-[#8E8E8E] mb-2">{f.help}</p>
                   <div className="flex items-center gap-2">
-                    <span className="text-muted-foreground">€</span>
+                    <span className="text-[#8E8E8E]">€</span>
                     <input
                       type="text"
                       inputMode="decimal"
                       value={vals[f.key]}
                       onChange={(e) => set(f.key, e.target.value)}
                       placeholder="0"
-                      className="w-32 bg-card/60 border border-border/40 rounded-lg px-3 py-2 text-foreground focus:outline-none focus:border-primary/60"
+                      className="w-32 bg-white border border-[rgba(20,20,20,0.22)] rounded-lg px-3 py-2 text-[#141414] focus:outline-none focus:border-[#0E7A54]"
                     />
-                    <span className="text-xs text-muted-foreground">/ month</span>
+                    <span className="text-xs text-[#8E8E8E]">/ month</span>
                   </div>
                 </div>
               ))}
@@ -155,7 +155,7 @@ const JournalStackAudit = () => {
 
             <button
               onClick={() => setShown(true)}
-              className="mt-10 px-8 py-4 rounded-full bg-primary text-primary-foreground text-sm tracking-[0.15em] uppercase hover:opacity-90 transition-opacity"
+              className="mt-10 px-8 py-4 rounded-full bg-[#2ED8A8] text-[#141414] text-sm tracking-[0.15em] uppercase hover:bg-[#1BAF86] transition-colors"
             >
               Calculate My Annual Bill
             </button>
@@ -167,8 +167,8 @@ const JournalStackAudit = () => {
           <section className="px-6 md:px-12 lg:px-20 pb-16">
             <div className="max-w-3xl mx-auto space-y-8">
               {allZero ? (
-                <div className="bg-card/60 border border-border/30 rounded-2xl p-8 md:p-10">
-                  <p className="text-foreground/80 leading-relaxed">
+                <div className="bg-white border border-[rgba(20,20,20,0.10)] rounded-none p-8 md:p-10">
+                  <p className="text-[#141414]/80 leading-relaxed">
                     All zeros. Either you are not spending anything on
                     optimization, or you are not ready to look at the number. No
                     judgment. Come back when you are.
@@ -177,14 +177,14 @@ const JournalStackAudit = () => {
               ) : (
                 <>
                   <div>
-                    <p className="text-xs tracking-[0.25em] uppercase text-teal mb-3">
+                    <p className="text-xs tracking-[0.25em] uppercase text-[#8E8E8E] mb-3">
                       Your annual optimization bill
                     </p>
-                    <p className="text-5xl md:text-6xl font-bold text-foreground">
+                    <p className="text-5xl md:text-6xl font-light tracking-[-0.03em] text-[#141414]">
                       {eur(annual)}
-                      <span className="text-2xl text-muted-foreground"> / year</span>
+                      <span className="text-2xl text-[#8E8E8E]"> / year</span>
                     </p>
-                    <p className="text-foreground/70 mt-3">
+                    <p className="text-[#5A5A5A] mt-3">
                       {annual > 500
                         ? "That is real money. Here is what it is actually buying, and what it is not."
                         : "Modest spend. But is it going to the right things?"}
@@ -197,12 +197,12 @@ const JournalStackAudit = () => {
                       (f) => (
                         <div
                           key={f.key}
-                          className="border-l-2 border-primary/30 pl-4"
+                          className="border-l border-[#0E7A54] pl-4"
                         >
-                          <p className="text-sm font-medium text-foreground">
+                          <p className="text-sm font-medium text-[#141414]">
                             {eur((parseFloat(vals[f.key]) || 0) * 12)} / year
                           </p>
-                          <p className="text-sm text-foreground/70 leading-relaxed">
+                          <p className="text-sm text-[#5A5A5A] leading-relaxed">
                             {f.reframe}
                           </p>
                         </div>
@@ -211,26 +211,26 @@ const JournalStackAudit = () => {
                   </div>
 
                   {/* Comparison panel */}
-                  <div className="bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl p-8 md:p-10 my-4">
+                  <div className="bg-white border border-[rgba(20,20,20,0.10)] rounded-none p-8 md:p-10 my-4">
                     <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-6">
                       <div>
-                        <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                        <p className="text-xs uppercase tracking-[0.2em] text-[#8E8E8E]">
                           Your annual spend
                         </p>
-                        <p className="text-3xl font-bold text-foreground">
+                        <p className="text-3xl font-light tracking-[-0.025em] text-[#141414]">
                           {eur(annual)}
                         </p>
                       </div>
                       <div className="sm:text-right">
-                        <p className="text-xs uppercase tracking-[0.2em] text-teal">
+                        <p className="text-xs uppercase tracking-[0.2em] text-[#0E7A54]">
                           The System
                         </p>
-                        <p className="text-3xl font-bold text-foreground">
+                        <p className="text-3xl font-light tracking-[-0.025em] text-[#141414]">
                           €399 once
                         </p>
                       </div>
                     </div>
-                    <ul className="space-y-2 text-sm text-foreground/80">
+                    <ul className="space-y-2 text-sm text-[#141414]/80">
                       <li>
                         Face Introducer. EMS, microcurrent, thermal.
                         12 min.
@@ -243,13 +243,13 @@ const JournalStackAudit = () => {
                         Restoration Mat. 660nm red + far-infrared. 20 min.
                       </li>
                     </ul>
-                    <p className="text-foreground font-medium mt-5">
+                    <p className="text-[#141414] font-medium mt-5">
                       Six inputs across three zones. One price. No subscription.
                     </p>
                   </div>
 
                   {/* Verdict */}
-                  <p className="text-lg text-foreground/90 leading-relaxed">
+                  <p className="text-lg text-[#141414]/90 leading-relaxed">
                     {annual > SYSTEM_PRICE
                       ? `You spend more in ${Math.max(
                           1,
@@ -258,7 +258,7 @@ const JournalStackAudit = () => {
                       : "Your annual spend is below €399. The System is a larger upfront commitment, but it is a one-time cost that covers three zones with six inputs. No monthly renewal. No annual increase."}
                   </p>
 
-                  <p className="text-xl font-bold text-foreground">
+                  <p className="text-xl font-medium tracking-[-0.02em] text-[#141414]">
                     They charge you every month to measure and maintain. We charge
                     you once to intervene.
                   </p>
@@ -266,13 +266,13 @@ const JournalStackAudit = () => {
                   <div className="flex flex-wrap gap-3 pt-2">
                     <Link
                       to="/instruments#system"
-                      className="px-8 py-4 rounded-full bg-primary text-primary-foreground text-sm tracking-[0.15em] uppercase hover:opacity-90 transition-opacity"
+                      className="px-8 py-4 rounded-full bg-[#2ED8A8] text-[#141414] text-sm tracking-[0.15em] uppercase hover:bg-[#1BAF86] transition-colors"
                     >
                       See The System →
                     </Link>
                     <Link
                       to="/instruments#system"
-                      className="px-8 py-4 rounded-full border border-border/50 text-foreground text-sm tracking-[0.15em] uppercase hover:border-primary/60 transition-colors"
+                      className="px-8 py-4 rounded-full border border-[rgba(20,20,20,0.22)] text-[#141414] text-sm tracking-[0.15em] uppercase hover:border-[#0E7A54] transition-colors"
                     >
                       Three Zones. Six Inputs. One Price.
                     </Link>
@@ -286,7 +286,7 @@ const JournalStackAudit = () => {
         {/* Compliance footnote */}
         <section className="px-6 md:px-12 lg:px-20 pb-16">
           <div className="max-w-3xl mx-auto">
-            <p className="text-xs text-muted-foreground/70 leading-relaxed border-t border-border/20 pt-6">
+            <p className="text-xs text-[#8E8E8E] leading-relaxed border-t border-[rgba(20,20,20,0.10)] pt-6">
               All calculations use the figures you enter. Any competitor pricing
               referenced is based on publicly listed EU prices as of July 2026 and
               may change. Verify current pricing before any purchase decision.

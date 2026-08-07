@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
-import { ZentialFooter } from "@/components/zential/ZentialFooter";
+import { SparseFooter } from "@/components/zential/v2/SparseFooter";
 import { SEO } from "@/components/SEO";
 import { Package, Check, Truck, Home, AlertCircle, Loader2 } from "lucide-react";
 
@@ -79,7 +79,7 @@ const Track = () => {
   const activeIndex = result ? STAGES.findIndex((s) => s.key === result.stage) : -1;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white text-[#141414]">
       <SEO
         title="Track your order, Zential Pure"
         description="Follow your Zential Pure order from dispatch to your door."
@@ -92,14 +92,14 @@ const Track = () => {
       <main className="px-6 md:px-12 lg:px-20 py-20 md:py-28">
         <div className="max-w-2xl mx-auto">
           <header className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent rounded-full px-4 py-1.5 text-xs tracking-[0.15em] uppercase mb-6">
-              <Package size={14} />
+            <div className="inline-flex items-center gap-2 border border-[rgba(20,20,20,0.12)] text-[#8E8E8E] rounded-full px-4 py-1.5 text-[11px] font-medium tracking-[0.22em] uppercase mb-6">
+              <Package size={14} className="text-[#0E7A54]" />
               Order status
             </div>
-            <h1 className="text-4xl md:text-5xl font-light tracking-tight mb-4">
+            <h1 className="text-4xl md:text-5xl font-light tracking-[-0.03em] mb-4">
               Track your order
             </h1>
-            <p className="text-muted-foreground text-lg font-light">
+            <p className="text-[#5A5A5A] text-lg font-light">
               Enter your order number and the email you ordered with.
             </p>
           </header>
@@ -107,7 +107,7 @@ const Track = () => {
           <form onSubmit={submit} className="grid gap-4 mb-12">
             <div className="grid md:grid-cols-2 gap-4">
               <label className="grid gap-2">
-                <span className="text-xs tracking-[0.12em] uppercase text-muted-foreground">
+                <span className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]">
                   Order number
                 </span>
                 <input
@@ -115,11 +115,11 @@ const Track = () => {
                   onChange={(e) => setOrder(e.target.value)}
                   placeholder="1005"
                   autoComplete="off"
-                  className="bg-transparent border border-border rounded-md px-4 py-3 focus:outline-none focus:border-accent transition-colors"
+                  className="bg-white border border-[rgba(20,20,20,0.22)] rounded-none px-4 py-3 focus:outline-none focus:border-[#0E7A54] transition-colors"
                 />
               </label>
               <label className="grid gap-2">
-                <span className="text-xs tracking-[0.12em] uppercase text-muted-foreground">
+                <span className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]">
                   Email
                 </span>
                 <input
@@ -128,14 +128,14 @@ const Track = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
                   autoComplete="email"
-                  className="bg-transparent border border-border rounded-md px-4 py-3 focus:outline-none focus:border-accent transition-colors"
+                  className="bg-white border border-[rgba(20,20,20,0.22)] rounded-none px-4 py-3 focus:outline-none focus:border-[#0E7A54] transition-colors"
                 />
               </label>
             </div>
             <button
               type="submit"
               disabled={loading}
-              className="justify-self-start inline-flex items-center gap-2 bg-foreground text-background rounded-md px-8 py-3 text-sm tracking-[0.08em] uppercase disabled:opacity-50 hover:opacity-90 transition-opacity"
+              className="justify-self-start inline-flex items-center gap-2 rounded-full bg-[#2ED8A8] px-8 py-3 font-sans text-[12px] font-semibold tracking-[0.16em] uppercase text-[#141414] transition-colors hover:bg-[#1BAF86] disabled:opacity-50"
             >
               {loading && <Loader2 size={15} className="animate-spin" />}
               {loading ? "Looking" : "Track order"}
@@ -143,13 +143,13 @@ const Track = () => {
           </form>
 
           {error && (
-            <div className="flex items-start gap-3 border border-border rounded-lg p-5 text-muted-foreground">
+            <div className="flex items-start gap-3 border border-[rgba(20,20,20,0.10)] rounded-none p-5 text-[#5A5A5A]">
               <AlertCircle size={18} className="mt-0.5 shrink-0" />
               <div>
                 <p>{error}</p>
                 <p className="text-sm mt-1">
                   Still stuck? Write to{" "}
-                  <a href="mailto:info@zentialpure.com" className="text-accent underline">
+                  <a href="mailto:info@zentialpure.com" className="text-[#0E7A54] underline">
                     info@zentialpure.com
                   </a>{" "}
                   and we'll find it for you.
@@ -160,15 +160,15 @@ const Track = () => {
 
           {result && (
             <div className="animate-fade-in">
-              <div className="border-b border-border pb-6 mb-10">
-                <p className="text-xs tracking-[0.12em] uppercase text-muted-foreground mb-2">
+              <div className="border-b border-[rgba(20,20,20,0.10)] pb-6 mb-10">
+                <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E] mb-2">
                   Order {result.order}
                 </p>
-                <h2 className="text-2xl font-light">
+                <h2 className="text-2xl font-light tracking-[-0.02em]">
                   {result.firstName ? `${result.firstName}, ` : ""}
                   {STAGES[Math.max(activeIndex, 0)].note}
                 </h2>
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className="text-sm text-[#5A5A5A] mt-2">
                   Placed {fmt(result.placedAt)}
                 </p>
               </div>
@@ -179,11 +179,11 @@ const Track = () => {
                 a customer who reads it here does not.
               */}
               {result.splitShipment && (
-                <div className="border border-accent/25 bg-accent/5 rounded-lg p-6 mb-10">
-                  <p className="text-sm tracking-[0.1em] uppercase text-accent mb-2">
+                <div className="border border-[rgba(14,122,84,0.25)] bg-[#F4FBF8] rounded-none p-6 mb-10">
+                  <p className="text-sm tracking-[0.1em] uppercase text-[#0E7A54] mb-2">
                     This order arrives in {result.expectedParcels} parcels
                   </p>
-                  <p className="text-muted-foreground font-light leading-relaxed">
+                  <p className="text-[#5A5A5A] font-light leading-relaxed">
                     Your instruments don't all leave from the same place, so they don't all
                     arrive on the same day. Each parcel is tracked separately below. Nothing is
                     missing, and you are not charged twice — one order, one payment.
@@ -203,8 +203,8 @@ const Track = () => {
                         <div
                           className={`w-9 h-9 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
                             done || current
-                              ? "border-accent bg-accent/10 text-accent"
-                              : "border-border text-muted-foreground/40"
+                              ? "border-[#0E7A54] bg-[#F4FBF8] text-[#0E7A54]"
+                              : "border-[rgba(20,20,20,0.12)] text-[#8E8E8E]"
                           }`}
                         >
                           <Icon size={15} />
@@ -212,17 +212,17 @@ const Track = () => {
                         {i < STAGES.length - 1 && (
                           <div
                             className={`w-px flex-1 min-h-[2.5rem] ${
-                              done ? "bg-accent/40" : "bg-border"
+                              done ? "bg-[#2ED8A8]" : "bg-[rgba(20,20,20,0.10)]"
                             }`}
                           />
                         )}
                       </div>
                       <div className={`pb-8 ${done || current ? "" : "opacity-40"}`}>
-                        <p className={`${current ? "text-accent" : ""} tracking-tight`}>
+                        <p className={`${current ? "text-[#0E7A54]" : ""} tracking-tight`}>
                           {s.label}
                         </p>
                         {current && (
-                          <p className="text-sm text-muted-foreground mt-1 font-light">
+                          <p className="text-sm text-[#5A5A5A] mt-1 font-light">
                             {s.note}
                           </p>
                         )}
@@ -236,27 +236,27 @@ const Track = () => {
               {result.parcels.length > 0 && (
                 <div className="grid gap-4 mb-10">
                   {result.parcels.map((p) => (
-                    <div key={p.label} className="border border-border rounded-lg p-6">
+                    <div key={p.label} className="border border-[rgba(20,20,20,0.10)] rounded-none p-6">
                       <div className="flex items-baseline justify-between gap-4 mb-3">
-                        <p className="text-xs tracking-[0.12em] uppercase text-muted-foreground">
+                        <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]">
                           {p.label}
                         </p>
-                        <p className="text-sm text-accent">{PARCEL_STAGE_LABEL[p.stage]}</p>
+                        <p className="text-sm text-[#0E7A54]">{PARCEL_STAGE_LABEL[p.stage]}</p>
                       </div>
                       {p.items.length > 0 && (
                         <p className="font-light mb-4">{p.items.join(" · ")}</p>
                       )}
                       {p.trackingNumber && (
                         <div className="grid gap-1 text-sm">
-                          <p className="text-muted-foreground">
-                            {p.carrier} · <span className="font-mono">{p.trackingNumber}</span>
+                          <p className="text-[#5A5A5A]">
+                            {p.carrier} · <span className="font-sans tabular-nums">{p.trackingNumber}</span>
                           </p>
                           {p.carrierUrl && (
                             <a
                               href={p.carrierUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-accent underline justify-self-start"
+                              className="text-[#0E7A54] underline justify-self-start"
                             >
                               View carrier detail
                             </a>
@@ -264,7 +264,7 @@ const Track = () => {
                         </div>
                       )}
                       {p.dispatchedAt && (
-                        <p className="text-sm text-muted-foreground mt-3">
+                        <p className="text-sm text-[#5A5A5A] mt-3">
                           Dispatched {fmt(p.dispatchedAt)}
                         </p>
                       )}
@@ -274,20 +274,20 @@ const Track = () => {
               )}
 
               {result.awaiting.length > 0 && (
-                <div className="border border-border rounded-lg p-6 mb-10">
-                  <p className="text-xs tracking-[0.12em] uppercase text-muted-foreground mb-3">
+                <div className="border border-[rgba(20,20,20,0.10)] rounded-none p-6 mb-10">
+                  <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E] mb-3">
                     Still to dispatch
                   </p>
                   <p className="font-light">{result.awaiting.join(" · ")}</p>
-                  <p className="text-sm text-muted-foreground mt-3 font-light">
+                  <p className="text-sm text-[#5A5A5A] mt-3 font-light">
                     You'll get an email with tracking the moment this leaves.
                   </p>
                 </div>
               )}
 
-              <p className="text-sm text-muted-foreground text-center font-light">
+              <p className="text-sm text-[#5A5A5A] text-center font-light">
                 Something not right?{" "}
-                <a href="mailto:info@zentialpure.com" className="text-accent underline">
+                <a href="mailto:info@zentialpure.com" className="text-[#0E7A54] underline">
                   info@zentialpure.com
                 </a>
                 . A person answers.
@@ -297,7 +297,7 @@ const Track = () => {
         </div>
       </main>
 
-      <ZentialFooter />
+      <SparseFooter />
     </div>
   );
 };

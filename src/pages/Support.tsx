@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SEO } from "@/components/SEO";
-import { BubbleBackground } from "@/components/zential/BubbleBackground";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
-import { ZentialFooter } from "@/components/zential/ZentialFooter";
+import { SparseFooter } from "@/components/zential/v2/SparseFooter";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
 import { Package, RotateCcw, ShieldCheck, MessageCircle, Truck, CreditCard, Heart, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
 
@@ -62,28 +60,23 @@ const Support = () => {
  };
 
  return (
-  <div className="min-h-screen bg-background">
+  <div className="min-h-screen bg-white text-[#141414]">
    <SEO title="Support, Zential Pure" description="Track orders, start a return, or get help with your device. Zential Pure support responds within 24–48 hours." canonicalUrl="/support" jsonLd={faqJsonLd} />
    <AnnouncementBar />
    <Header />
    <main>
     {/* Hero */}
-    <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20 text-center overflow-hidden">
-     <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(135deg, hsl(30 27% 95%) 0%, hsl(30 20% 92%) 40%, hsl(340 15% 93%) 70%, hsl(30 27% 95%) 100%)' }} />
-     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[900px] md:h-[900px] rounded-full pointer-events-none"
-      style={{ background: 'radial-gradient(circle, hsl(var(--accent) / 0.06) 0%, transparent 70%)' }}
-     />
-     <BubbleBackground />
-     <div className="relative z-10">
-      <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent rounded-full px-4 py-1.5 text-[10px] tracking-[0.2em] uppercase mb-6">
+    <section className="py-24 md:py-36 px-6 md:px-12 lg:px-20 text-center">
+     <div>
+      <div className="inline-flex items-center gap-2 border border-[rgba(20,20,20,0.12)] text-[#8E8E8E] rounded-full px-4 py-1.5 text-[11px] font-medium tracking-[0.22em] uppercase mb-6">
        {t('hero.badge')}
       </div>
-      <h1 className="text-3xl md:text-5xl font-semibold text-foreground mb-5 tracking-[-0.02em] leading-[1.15]">
+      <h1 className="text-3xl md:text-5xl font-light text-[#141414] mb-5 tracking-[-0.03em] leading-[1.15]">
        {t('hero.headline').split('\n').map((line, i) => (
         <span key={i}>{line}{i === 0 && <br />}</span>
        ))}
       </h1>
-      <p className="text-muted-foreground text-[15px] max-w-md mx-auto leading-relaxed">
+      <p className="text-[#5A5A5A] text-[15px] max-w-md mx-auto leading-relaxed">
        {t('hero.sub')}
       </p>
      </div>
@@ -97,14 +90,13 @@ const Support = () => {
        return (
         <div
          key={i}
-         className="rounded-2xl p-7 text-center transition-all duration-300"
-         style={{ background: '#F8F6F4', border: '1px solid #E8E6E3' }}
+         className="rounded-none border border-[rgba(20,20,20,0.10)] bg-white p-7 text-center transition-all duration-300"
         >
-         <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
-          <Icon size={20} className="text-primary" strokeWidth={1.5} />
+         <div className="w-11 h-11 rounded-none border border-[rgba(20,20,20,0.12)] flex items-center justify-center mx-auto mb-4">
+          <Icon size={20} className="text-[#0E7A54]" strokeWidth={1.5} />
          </div>
-         <h3 className="font-medium text-foreground text-[15px] mb-2">{card.title}</h3>
-         <p className="text-[13px] text-muted-foreground leading-relaxed">{card.desc}</p>
+         <h3 className="font-medium text-[#141414] text-[15px] mb-2">{card.title}</h3>
+         <p className="text-[13px] text-[#5A5A5A] leading-relaxed">{card.desc}</p>
         </div>
        );
       })}
@@ -114,22 +106,22 @@ const Support = () => {
     {/* FAQ Accordion */}
     <section className="px-6 md:px-12 lg:px-20 pb-20">
      <div className="max-w-3xl mx-auto">
-      <h2 className="text-2xl md:text-3xl font-semibold text-foreground text-center mb-12 tracking-[-0.02em]">{t('faqTitle')}</h2>
+      <h2 className="text-2xl md:text-3xl font-light text-[#141414] text-center mb-12 tracking-[-0.025em]">{t('faqTitle')}</h2>
       {categories.map((cat, ci) => {
        const Icon = categoryIcons[ci] ?? ShieldCheck;
        return (
         <div key={ci} className="mb-8">
          <div className="flex items-center gap-2 mb-3">
-          <Icon size={16} className="text-primary" />
-          <span className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground">{cat.label}</span>
+          <Icon size={16} className="text-[#0E7A54]" />
+          <span className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]">{cat.label}</span>
          </div>
-         <Accordion type="single" collapsible className="border border-border/30 rounded-xl overflow-hidden">
+         <Accordion type="single" collapsible className="border border-[rgba(20,20,20,0.10)] rounded-none overflow-hidden">
           {cat.items.map((item, i) => (
-           <AccordionItem key={i} value={`cat-${ci}-${i}`} className="border-border/20">
-            <AccordionTrigger className="px-5 text-left text-sm font-medium hover:no-underline">
+           <AccordionItem key={i} value={`cat-${ci}-${i}`} className="border-[rgba(20,20,20,0.10)]">
+            <AccordionTrigger className="px-5 text-left text-sm font-medium hover:no-underline data-[state=open]:text-[#0E7A54]">
              {item.q}
             </AccordionTrigger>
-            <AccordionContent className="px-5 text-muted-foreground text-sm leading-relaxed">
+            <AccordionContent className="px-5 text-[#5A5A5A] text-sm leading-relaxed">
              {item.a}
             </AccordionContent>
            </AccordionItem>
@@ -144,11 +136,11 @@ const Support = () => {
     {/* 30-Day Guarantee */}
     <section className="px-6 md:px-12 lg:px-20 pb-20">
      <div className="max-w-3xl mx-auto text-center">
-      <p className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-3">{t('guarantee.eyebrow')}</p>
-      <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4 tracking-[-0.02em]">
+      <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E] mb-3">{t('guarantee.eyebrow')}</p>
+      <h2 className="text-2xl md:text-3xl font-light text-[#141414] mb-4 tracking-[-0.025em]">
        {t('guarantee.headline')}
       </h2>
-      <p className="text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed">
+      <p className="text-[#5A5A5A] max-w-xl mx-auto mb-8 leading-relaxed">
        {t('guarantee.sub')}
       </p>
       <div className="flex items-center justify-center gap-8 flex-wrap">
@@ -156,10 +148,10 @@ const Support = () => {
         const Icon = badgeIcons[i] ?? ShieldCheck;
         return (
          <div key={i} className="flex flex-col items-center gap-2">
-          <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
-           <Icon size={18} className="text-primary" strokeWidth={1.5} />
+          <div className="w-10 h-10 rounded-full border border-[rgba(20,20,20,0.12)] flex items-center justify-center">
+           <Icon size={18} className="text-[#0E7A54]" strokeWidth={1.5} />
           </div>
-          <span className="text-xs text-muted-foreground">{label}</span>
+          <span className="text-xs text-[#5A5A5A]">{label}</span>
          </div>
         );
        })}
@@ -170,19 +162,19 @@ const Support = () => {
     {/* Contact Form */}
     <section className="px-6 md:px-12 lg:px-20 pb-20">
      <div className="max-w-xl mx-auto">
-      <h2 className="text-2xl font-semibold text-foreground text-center mb-8 tracking-[-0.02em]">{t('contact.title')}</h2>
-      <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl p-8" style={{ background: '#F8F6F4', border: '1px solid #E8E6E3' }}>
+      <h2 className="text-2xl font-light text-[#141414] text-center mb-8 tracking-[-0.025em]">{t('contact.title')}</h2>
+      <form onSubmit={handleSubmit} className="space-y-5 rounded-none border border-[rgba(20,20,20,0.10)] bg-white p-8">
        <div>
         <Label htmlFor="name">{t('contact.nameLabel')} *</Label>
-        <Input id="name" value={formState.name} onChange={(e) => setFormState(s => ({ ...s, name: e.target.value }))} className="mt-1.5 rounded-xl" />
+        <Input id="name" value={formState.name} onChange={(e) => setFormState(s => ({ ...s, name: e.target.value }))} className="mt-1.5 rounded-none border-[rgba(20,20,20,0.22)] bg-white" />
        </div>
        <div>
         <Label htmlFor="email">{t('contact.emailLabel')} *</Label>
-        <Input id="email" type="email" value={formState.email} onChange={(e) => setFormState(s => ({ ...s, email: e.target.value }))} className="mt-1.5 rounded-xl" />
+        <Input id="email" type="email" value={formState.email} onChange={(e) => setFormState(s => ({ ...s, email: e.target.value }))} className="mt-1.5 rounded-none border-[rgba(20,20,20,0.22)] bg-white" />
        </div>
        <div>
         <Label htmlFor="orderNumber">{t('contact.orderLabel')}</Label>
-        <Input id="orderNumber" value={formState.orderNumber} onChange={(e) => setFormState(s => ({ ...s, orderNumber: e.target.value }))} className="mt-1.5 rounded-xl" />
+        <Input id="orderNumber" value={formState.orderNumber} onChange={(e) => setFormState(s => ({ ...s, orderNumber: e.target.value }))} className="mt-1.5 rounded-none border-[rgba(20,20,20,0.22)] bg-white" />
        </div>
        <div>
         <Label htmlFor="message">{t('contact.messageLabel')} *</Label>
@@ -191,25 +183,25 @@ const Support = () => {
          rows={4}
          value={formState.message}
          onChange={(e) => setFormState(s => ({ ...s, message: e.target.value }))}
-         className="mt-1.5 flex w-full rounded-xl border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+         className="mt-1.5 flex w-full rounded-none border border-[rgba(20,20,20,0.22)] bg-white px-3 py-2 text-sm placeholder:text-[#8E8E8E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0E7A54] focus-visible:ring-offset-2"
         />
        </div>
-       <Button type="submit" variant="ritual" size="lg" className="w-full" disabled={submitting}>
+       <button type="submit" disabled={submitting} className="inline-flex w-full items-center justify-center rounded-full bg-[#2ED8A8] px-7 py-4 font-sans text-[12px] font-semibold tracking-[0.16em] uppercase text-[#141414] transition-colors hover:bg-[#1BAF86] disabled:opacity-50">
         {submitting ? t('contact.submitting') : t('contact.submit')}
-       </Button>
-       <p className="text-xs text-muted-foreground text-center">{t('contact.footnote')}</p>
+       </button>
+       <p className="text-xs text-[#8E8E8E] text-center">{t('contact.footnote')}</p>
       </form>
      </div>
     </section>
 
     {/* Safety Notice */}
     <section className="px-6 md:px-12 lg:px-20 pb-20">
-     <div className="max-w-3xl mx-auto rounded-2xl p-8" style={{ background: '#F8F6F4', border: '1px solid #E8E6E3' }}>
+     <div className="max-w-3xl mx-auto rounded-none border border-[rgba(20,20,20,0.10)] bg-white p-8">
       <div className="flex items-center gap-2 mb-4">
-       <AlertTriangle size={18} className="text-primary" />
-       <h3 className="font-medium text-foreground text-[15px]">{t('safety.title')}</h3>
+       <AlertTriangle size={18} className="text-[#0E7A54]" />
+       <h3 className="font-medium text-[#141414] text-[15px]">{t('safety.title')}</h3>
       </div>
-      <ul className="space-y-2 text-sm text-muted-foreground">
+      <ul className="space-y-2 text-sm text-[#5A5A5A]">
        {safetyItems.map((item, i) => (
         <li key={i}>• {item}</li>
        ))}
@@ -217,7 +209,7 @@ const Support = () => {
      </div>
     </section>
    </main>
-   <ZentialFooter />
+   <SparseFooter />
   </div>
  );
 };

@@ -76,21 +76,21 @@ export function InlinePrimer({ slug }: { slug?: string }) {
   const { email, setEmail, status, submit } = useNewsletter(slug ? `pdp-${slug}` : "pdp-inline");
 
   return (
-    <section className="bg-[#070A0E] py-[clamp(64px,8vw,96px)] text-[#F7F4F0]">
+    <section className="bg-white py-[clamp(64px,8vw,96px)] text-[#141414]">
       <div className="mx-auto w-[min(1180px,92vw)]">
-        <div className="grid items-center gap-8 rounded-[16px] border border-[rgba(247,244,240,0.10)] bg-[#1A1714] p-[clamp(28px,4vw,52px)] md:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid items-center gap-8 rounded-none border border-[rgba(20,20,20,0.10)] bg-[#F4FBF8] p-[clamp(28px,4vw,52px)] md:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <div className="font-sans text-[11px] tracking-[0.3em] uppercase text-[#2ED8A8]">Not ordering today?</div>
-            <h2 className="mt-4 font-serif italic font-normal text-[clamp(26px,3.2vw,38px)] leading-[1.1] text-[#F7F4F0]">
+            <div className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#0E7A54]">Not ordering today?</div>
+            <h2 className="mt-4 font-sans font-light text-[clamp(26px,3.2vw,38px)] leading-[1.1] tracking-[-0.025em] text-[#141414]">
               Take the 10-minute Face Protocol by email.
             </h2>
-            <p className="mt-3 max-w-[44ch] text-[15px] leading-[1.7] text-[#F7F4F0]/[0.62]">
+            <p className="mt-3 max-w-[44ch] text-[15px] leading-[1.7] text-[#5A5A5A]">
               The same sequence the instruments are built around — yours to read first. No spam, leave whenever.
             </p>
           </div>
           <div>
             {status === "done" ? (
-              <p className="font-serif italic text-[20px] text-[#2ED8A8]">Sent. Check your inbox.</p>
+              <p className="font-sans text-[17px] font-medium text-[#0E7A54]">Sent. Check your inbox.</p>
             ) : (
               <form onSubmit={submit} className="flex flex-col gap-3 sm:flex-row">
                 <input
@@ -100,19 +100,19 @@ export function InlinePrimer({ slug }: { slug?: string }) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@email.com"
-                  className="flex-1 rounded-full border border-[rgba(247,244,240,0.16)] bg-[#070A0E] px-5 py-3.5 font-sans text-[14px] text-[#F7F4F0] placeholder:text-[#F7F4F0]/40 focus:border-[#2ED8A8] focus:outline-none"
+                  className="flex-1 rounded-full border border-[rgba(20,20,20,0.16)] bg-white px-5 py-3.5 font-sans text-[14px] text-[#141414] placeholder:text-[#8E8E8E] focus:border-[#0E7A54] focus:outline-none"
                 />
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="rounded-full bg-[#2ED8A8] px-7 py-3.5 font-sans text-[13px] font-medium tracking-[0.04em] text-[#070A0E] transition-opacity hover:opacity-90 disabled:opacity-60"
+                  className="rounded-full bg-[#2ED8A8] px-7 py-3.5 font-sans text-[12px] font-semibold tracking-[0.16em] uppercase text-[#141414] transition-colors hover:bg-[#1BAF86] disabled:opacity-60"
                 >
                   {status === "sending" ? "Sending…" : "Send it to me"}
                 </button>
               </form>
             )}
             {status === "error" && (
-              <p className="mt-2 font-sans text-[12px] text-[#E89B7A]">Something went wrong. Try again.</p>
+              <p className="mt-2 font-sans text-[12px] text-red-600">Something went wrong. Try again.</p>
             )}
           </div>
         </div>
@@ -219,7 +219,7 @@ export function ExitIntentPrimer({
 
   return (
     <div
-      className="fixed inset-0 z-[120] flex items-center justify-center bg-[rgba(7,10,14,0.72)] px-5 backdrop-blur-sm"
+      className="fixed inset-0 z-[120] flex items-center justify-center bg-[rgba(20,20,20,0.45)] px-5 backdrop-blur-sm"
       onClick={dismiss}
       role="dialog"
       aria-modal="true"
@@ -235,26 +235,26 @@ export function ExitIntentPrimer({
         }
       `}</style>
       <div
-        className="zp-primer-card relative w-[min(460px,92vw)] rounded-[16px] border border-[rgba(198,160,124,0.35)] bg-[#1A1714] p-[clamp(28px,5vw,40px)] text-[#F7F4F0]"
+        className="zp-primer-card relative w-[min(460px,92vw)] rounded-none border border-[rgba(20,20,20,0.10)] bg-white p-[clamp(28px,5vw,40px)] text-[#141414]"
         style={{ animation: "zp-primer-in 450ms cubic-bezier(0,0,.2,1) both" }}
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={dismiss}
           aria-label="Close"
-          className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center text-[#F7F4F0]/50 transition-colors hover:text-[#F7F4F0]"
+          className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center text-[#8E8E8E] transition-colors hover:text-[#141414]"
         >
           ✕
         </button>
-        <div className="font-sans text-[11px] tracking-[0.3em] uppercase text-[#2ED8A8]">Before you go</div>
-        <h2 className="mt-4 font-serif italic font-normal text-[clamp(24px,4vw,32px)] leading-[1.1]">
+        <div className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#0E7A54]">Before you go</div>
+        <h2 className="mt-4 font-sans font-light text-[clamp(24px,4vw,32px)] leading-[1.1] tracking-[-0.025em]">
           Keep the 10-minute Face Protocol.
         </h2>
-        <p className="mt-3 text-[14px] leading-[1.7] text-[#F7F4F0]/[0.62]">
+        <p className="mt-3 text-[14px] leading-[1.7] text-[#5A5A5A]">
           The sequence the instruments are built around, by email. Read it first, decide later.
         </p>
         {status === "done" ? (
-          <p className="mt-6 font-serif italic text-[20px] text-[#2ED8A8]">Sent. Check your inbox.</p>
+          <p className="mt-6 font-sans text-[17px] font-medium text-[#0E7A54]">Sent. Check your inbox.</p>
         ) : (
           <form onSubmit={submit} className="mt-6 flex flex-col gap-3">
             <input
@@ -265,22 +265,22 @@ export function ExitIntentPrimer({
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="name@email.com"
-              className="rounded-full border border-[rgba(247,244,240,0.16)] bg-[#070A0E] px-5 py-3.5 font-sans text-[16px] text-[#F7F4F0] placeholder:text-[#F7F4F0]/40 focus:border-[#2ED8A8] focus:outline-none"
+              className="rounded-full border border-[rgba(20,20,20,0.16)] bg-white px-5 py-3.5 font-sans text-[16px] text-[#141414] placeholder:text-[#8E8E8E] focus:border-[#0E7A54] focus:outline-none"
             />
             <button
               type="submit"
               disabled={status === "sending"}
-              className="rounded-full bg-[#2ED8A8] px-7 py-3.5 font-sans text-[13px] font-medium tracking-[0.04em] text-[#070A0E] transition-opacity hover:opacity-90 disabled:opacity-60"
+              className="rounded-full bg-[#2ED8A8] px-7 py-3.5 font-sans text-[12px] font-semibold tracking-[0.16em] uppercase text-[#141414] transition-colors hover:bg-[#1BAF86] disabled:opacity-60"
             >
               {status === "sending" ? "Sending…" : "Send me the protocol"}
             </button>
-            <p className="text-center font-sans text-[11px] leading-[1.6] text-[#F7F4F0]/40">
+            <p className="text-center font-sans text-[11px] leading-[1.6] text-[#8E8E8E]">
               You agree to receive emails from Zential Pure. Unsubscribe anytime.
             </p>
           </form>
         )}
         {status === "error" && (
-          <p className="mt-2 font-sans text-[12px] text-[#E89B7A]">Something went wrong. Try again.</p>
+          <p className="mt-2 font-sans text-[12px] text-red-600">Something went wrong. Try again.</p>
         )}
       </div>
     </div>

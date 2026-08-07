@@ -2,8 +2,36 @@
    REFERENCE ONLY: the Google Fonts import below is for viewing these standalone
    files. In the repo, Lora + DM Sans are already self-hosted — do NOT port it. */
 
+/* ============================================================================
+   COVEN RESTYLE (2026-08-07) — the --ed-* tokens are defined in src/index.css
+   (off-limits for this pass); they are re-pointed here, scoped to the editorial
+   surfaces, to the Coven grammar: white canvas, ink #141414, hairlines, labels
+   #8E8E8E, emerald #0E7A54 text accents, teal #2ED8A8 action pills. The old
+   terra/cream/gold/tangerine values die at this scope.
+   ========================================================================== */
+.ed-page, .jh-root, .hub-root {
+  --ed-dark: #141414;
+  --ed-ink: #141414;
+  --ed-terra: #0E7A54;
+  --ed-cream: #FFFFFF;
+  --ed-bg: #FFFFFF;
+  --ed-muted: #8E8E8E;
+  --ed-gold: #0E7A54;
+  --ed-fog: #FFFFFF;
+  --ed-near-black: #FFFFFF;
+  --ed-grey: #5A5A5A;
+  --ed-grey-warm: #8E8E8E;
+  --ed-tangerine: #2ED8A8;
+  --ed-tangerine-hover: #1BAF86;
+  --ed-line: rgba(20, 20, 20, 0.10);
+  --ed-line-strong: rgba(20, 20, 20, 0.22);
+  --ed-line-dark: rgba(20, 20, 20, 0.10);
+  --ed-font-serif: 'Switzer', 'DM Sans', system-ui, sans-serif;
+  --ed-font-sans: 'Switzer', 'DM Sans', system-ui, sans-serif;
+}
+
 /* Page frame — mobile-first, designed at 390px. */
-.ed-page { max-width: 390px; margin: 0 auto; background: var(--ed-bg); box-shadow: 0 2px 24px rgba(26,23,20,0.12); }
+.ed-page { max-width: 390px; margin: 0 auto; background: var(--ed-bg); border-inline: 1px solid rgba(20, 20, 20, 0.08); }
 
 /* Keyboard focus — teal ring on every editorial interactive element; reads on
    both cream and ink grounds. Mouse/touch stays clean via :focus-visible. */
@@ -28,26 +56,26 @@
 
 /* Type */
 .eyebrow { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ed-grey-warm); }
-.eyebrow--teal { color: var(--ed-teal); }        /* on dark grounds */
+.eyebrow--teal { color: var(--ed-teal-deep); }   /* legacy dark-ground variant, now emerald */
 .eyebrow--teal-light { color: var(--ed-teal-deep); } /* on light grounds */
-.headline { font-family: var(--ed-font-serif); font-style: italic; font-weight: 400; font-size: 44px; line-height: 1.08; letter-spacing: -0.02em; margin: 18px 0 16px; text-wrap: pretty; }
+.headline { font-family: var(--ed-font-sans); font-weight: 300; font-size: 44px; line-height: 1.08; letter-spacing: -0.02em; margin: 18px 0 16px; text-wrap: pretty; }
 .deck { font-size: 15px; line-height: 1.65; color: var(--ed-grey); margin: 0; }
 .body-copy { font-size: 16px; line-height: 1.75; color: var(--ed-dark); margin: 0 0 20px; }
 .body-copy:last-child { margin-bottom: 0; }
-.drop-cap { float: left; font-family: var(--ed-font-serif); font-style: italic; font-size: 58px; line-height: 0.85; padding: 6px 10px 0 0; color: var(--ed-teal-deep); }
+.drop-cap { float: left; font-family: var(--ed-font-sans); font-weight: 300; font-size: 58px; line-height: 0.85; padding: 6px 10px 0 0; color: var(--ed-teal-deep); }
 .meta-label { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ed-grey-warm); }
 
 /* Pull quote — teal, hairline-framed */
 .pull-quote { border-top: 1px solid var(--ed-line); border-bottom: 1px solid var(--ed-line); padding: 28px 0; }
-.pull-quote p { font-family: var(--ed-font-serif); font-style: italic; font-size: 26px; line-height: 1.3; color: var(--ed-teal-deep); margin: 0; text-wrap: pretty; }
+.pull-quote p { font-family: var(--ed-font-sans); font-weight: 300; font-size: 26px; line-height: 1.3; color: var(--ed-teal-deep); margin: 0; text-wrap: pretty; }
 
 /* Modality badge */
 .badge { display: inline-block; padding: 5px 10px; font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ed-teal-deep); border: 1px solid var(--ed-teal-deep); }
 
-/* Buttons — pill. Tangerine = the single "do this now" action per view. */
+/* Buttons — pill. Teal = the single "do this now" action per view. */
 .btn { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 48px; border-radius: 9999px; border: none; font-family: var(--ed-font-sans); font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, opacity 0.2s, transform 0.1s; }
 .btn:active { transform: scale(0.97); }
-.btn--primary { background: var(--ed-tangerine); color: var(--ed-dark); box-shadow: 0 6px 24px rgba(246,146,81,0.35); }
+.btn--primary { background: var(--ed-tangerine); color: var(--ed-dark); }
 .btn--primary:hover { background: var(--ed-tangerine-hover); color: var(--ed-dark); }
 .btn--outline { background: transparent; color: var(--ed-dark); border: 1px solid var(--ed-line-strong); font-weight: 500; height: 44px; }
 .btn--outline:hover { opacity: 0.7; color: var(--ed-dark); }
@@ -63,13 +91,13 @@
 
 /* Citation block — a published paper, on the page, with its limit stated.
    (`.portrait` is retained: other, non-editorial surfaces still use it.) */
-.expert-quote { font-family: var(--ed-font-serif); font-style: italic; font-size: 19px; line-height: 1.45; margin: 0; }
+.expert-quote { font-family: var(--ed-font-sans); font-weight: 300; font-size: 19px; line-height: 1.45; margin: 0; }
 .attribution { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-grey-warm); margin: 0; }
 .portrait { border-radius: 9999px; object-fit: cover; }
 /* Not uppercased — see .jh-cite-design: uppercasing mangles µA into MA. */
 .ed-citation__design { margin: 0 0 16px; font-size: 12px; letter-spacing: 0.04em; color: var(--ed-grey-warm); line-height: 1.6; }
 .ed-citation__limit {
-  margin: 0 0 14px; padding: 14px 16px; border-left: 2px solid var(--ed-teal);
+  margin: 0 0 14px; padding: 14px 16px; border-left: 2px solid var(--ed-teal-deep);
   background: rgba(0, 0, 0, 0.03); font-size: 13.5px; line-height: 1.65;
   color: var(--ed-grey-warm); text-wrap: pretty; max-width: 62ch;
 }
@@ -80,7 +108,7 @@
   color: var(--ed-grey-warm); text-decoration: none; border-bottom: 1px solid var(--ed-line);
   padding-bottom: 3px; transition: color 0.2s ease, border-color 0.2s ease;
 }
-.ed-citation__verify:hover { color: var(--ed-teal); border-color: var(--ed-teal); }
+.ed-citation__verify:hover { color: var(--ed-teal-deep); border-color: var(--ed-teal-deep); }
 
 /* Quote carousel section ground */
 .ed-carousel { background: #FFFFFF; }
@@ -117,14 +145,14 @@ html.js-reveal .reveal.reveal--visible { opacity: 1; transform: none; }
    DESKTOP EDITORIAL LAYER (≥768px, refined ≥1100px)
    The mobile pages are a 390px column; below turns them into a framed magazine
    spread floating on the --ed-fog canvas. Grammar taken from the Zential journal
-   desktop references: oversized Lora-italic heroes, hairline spec sheets,
+   desktop references: oversized Switzer-light heroes, hairline spec sheets,
    full-bleed dark passages, generous folio margins. Mobile (<768px) is untouched.
    !important is used only to defeat the pages' inline mobile styles inside these
    min-width queries — it never leaks below 768px.
    ========================================================================== */
 
 @media (min-width: 768px) {
-  .ed-page { max-width: 720px; box-shadow: 0 10px 48px rgba(26, 23, 20, 0.13); }
+  .ed-page { max-width: 720px; }
   .masthead { padding: 22px 40px; }
   .masthead__logo { height: 22px; }
 
@@ -144,12 +172,12 @@ html.js-reveal .reveal.reveal--visible { opacity: 1; transform: none; }
 }
 
 @media (min-width: 1100px) {
-  .ed-page { max-width: 1080px; margin: 44px auto; box-shadow: 0 18px 64px rgba(26, 23, 20, 0.16); }
+  .ed-page { max-width: 1080px; margin: 44px auto; }
   .masthead { padding: 26px 72px; }
 
   .ed-sec { padding: 62px 96px !important; }
 
-  /* ---- Hero: oversized Lora italic + narrow deck ---- */
+  /* ---- Hero: oversized Switzer light + narrow deck ---- */
   .ed-hero .headline { font-size: 70px !important; line-height: 1.02 !important; }
   .ed-hero .deck { font-size: 17px; max-width: 34ch; }
 
@@ -185,7 +213,7 @@ html.js-reveal .reveal.reveal--visible { opacity: 1; transform: none; }
   .ed-mechlist { gap: 0 !important; }
   .ed-mech-item { grid-template-columns: 100px 1fr !important; gap: 40px !important; padding: 34px 0; border-top: 1px solid var(--ed-line); align-items: start; }
   .ed-mech-item:first-child { padding-top: 0; border-top: none; }
-  .ed-mech-item > span:first-child { font-family: var(--ed-font-serif); font-style: italic; font-size: 34px !important; color: var(--ed-terra) !important; letter-spacing: 0 !important; padding-top: 0 !important; }
+  .ed-mech-item > span:first-child { font-family: var(--ed-font-sans); font-weight: 300; font-size: 34px !important; color: var(--ed-terra) !important; letter-spacing: 0 !important; padding-top: 0 !important; }
 
   /* ---- Product figures: image one side, caption block the other ---- */
   .ed-figure-dark { display: grid !important; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
@@ -201,7 +229,7 @@ html.js-reveal .reveal.reveal--visible { opacity: 1; transform: none; }
   /* ---- Quote carousel: enlarged, capped measure ---- */
   .ed-carousel .expert-quote { font-size: 30px !important; max-width: 30ch; }
 
-  /* ---- CTAs: italic title scales, button caps + left-aligns ---- */
+  /* ---- CTAs: light display title scales, button caps + left-aligns ---- */
   .ed-cta { align-items: flex-start !important; }
   .ed-cta > p:first-child { font-size: 42px !important; }
   .ed-cta .btn { width: 320px !important; align-self: flex-start; }
@@ -216,7 +244,7 @@ html.js-reveal .reveal.reveal--visible { opacity: 1; transform: none; }
 /* ============================================================================
    JOURNAL HUB — "The Pin Board" (/journal index)
    Self-contained masonry surface, grammar from the 1c Pin Board reference:
-   compact masthead, centred Lora-italic intro, single-select filter chips, and a
+   compact masthead, centred Switzer-light intro, single-select filter chips, and a
    CSS-column masonry of four pin types (image / dark-quote / gradient-stat /
    text) plus an inline subscribe pin. Mobile-first: 1 column, 2 at 768px, 3 at
    1100px. Colours/radii are the design tokens; no new fonts.
@@ -249,7 +277,7 @@ html.js-reveal .reveal.reveal--visible { opacity: 1; transform: none; }
   align-items: center; text-align: center; gap: 16px;
 }
 .jh-hero-head {
-  margin: 0; font-family: var(--ed-font-serif); font-style: italic; font-weight: 400;
+  margin: 0; font-family: var(--ed-font-sans); font-weight: 300;
   font-size: 34px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ed-dark);
   max-width: 22ch; text-wrap: pretty;
 }
@@ -262,12 +290,12 @@ html.js-reveal .reveal.reveal--visible { opacity: 1; transform: none; }
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
 }
 .jh-chip:hover { opacity: 0.75; }
-.jh-chip--active { background: var(--ed-dark); color: var(--ed-on-dark); border-color: var(--ed-dark); }
+.jh-chip--active { background: var(--ed-dark); color: #FFFFFF; border-color: var(--ed-dark); }
 
 /* Masonry — CSS columns, pins avoid breaking across columns */
 .jh-masonry { padding: 32px 20px 56px; column-count: 1; column-gap: 20px; }
 .jh-card {
-  position: relative; break-inside: avoid; margin-bottom: 20px; border-radius: 24px;
+  position: relative; break-inside: avoid; margin-bottom: 20px; border-radius: 0;
   overflow: hidden;
 }
 
@@ -278,58 +306,58 @@ html.js-reveal .reveal.reveal--visible { opacity: 1; transform: none; }
   text-transform: uppercase; font-weight: 600; padding: 8px 16px; border-radius: 9999px;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
 }
-.jh-save--image { border: none; background: var(--ed-tangerine); color: var(--ed-dark); box-shadow: 0 6px 16px rgba(246,146,81,0.4); }
+.jh-save--image { border: none; background: var(--ed-tangerine); color: var(--ed-dark); }
 .jh-save--image:hover { background: var(--ed-tangerine-hover); color: var(--ed-dark); }
-.jh-save--quote { border: 1px solid rgba(247,244,240,0.3); background: transparent; color: var(--ed-on-dark); font-weight: 500; }
-.jh-save--quote:hover { border-color: var(--ed-teal); color: var(--ed-teal); }
+.jh-save--quote { border: 1px solid var(--ed-line-strong); background: transparent; color: var(--ed-dark); font-weight: 500; }
+.jh-save--quote:hover { border-color: var(--ed-teal-deep); color: var(--ed-teal-deep); }
 .jh-save--fact { border: 1px solid var(--ed-line-strong); background: transparent; color: var(--ed-dark); font-weight: 500; }
 .jh-save--fact:hover { opacity: 0.7; }
 
 /* Shared body block (image / fact / text pins) */
 .jh-body { display: flex; flex-direction: column; gap: 8px; padding: 20px 22px 24px; }
 .jh-topic { font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-teal-deep); }
-.jh-head { margin: 0; font-family: var(--ed-font-serif); font-style: italic; font-weight: 400; font-size: 20px; line-height: 1.3; color: var(--ed-dark); text-wrap: pretty; }
+.jh-head { margin: 0; font-family: var(--ed-font-sans); font-weight: 300; font-size: 20px; line-height: 1.3; color: var(--ed-dark); text-wrap: pretty; }
 .jh-dek { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--ed-grey); }
 
 /* Image pin */
-.jh-card--image { background: #FFFFFF; border: 1px solid var(--ed-line); box-shadow: 0 6px 18px rgba(26,23,20,0.05); transition: transform 0.3s var(--ease-out-soft, ease), box-shadow 0.3s var(--ease-out-soft, ease); }
-.jh-card--image:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(26,23,20,0.10); }
+.jh-card--image { background: #FFFFFF; border: 1px solid var(--ed-line); box-shadow: 0 6px 18px rgba(20,20,20,0.05); transition: transform 0.3s var(--ease-out-soft, ease), box-shadow 0.3s var(--ease-out-soft, ease); }
+.jh-card--image:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(20,20,20,0.10); }
 .jh-imgwrap { position: relative; }
 .jh-imgwrap img { width: 100%; object-fit: cover; display: block; }
 
 /* Text pin (legacy articles — no image) */
 .jh-card--text { background: var(--ed-cream); border: 1px solid var(--ed-line); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.jh-card--text:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(26,23,20,0.08); }
+.jh-card--text:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(20,20,20,0.08); }
 .jh-card--text .jh-body { padding-top: 26px; }
 .jh-meta { font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-teal-deep); }
 .jh-read { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ed-grey-warm); margin-top: 4px; }
 
 /* Fact / stat pin — teal-washed gradient ground */
-.jh-card--fact { background: linear-gradient(165deg, #F1F5F3, #E9F3EE); border: 1px solid var(--ed-line); transition: transform 0.3s ease; }
+.jh-card--fact { background: #FFFFFF; border: 1px solid var(--ed-line); transition: transform 0.3s ease; }
 .jh-card--fact:hover { transform: translateY(-3px); }
 .jh-card--fact .jh-body { gap: 12px; padding: 30px 26px 28px; }
-.jh-stat { font-family: var(--ed-font-serif); font-style: italic; font-weight: 400; font-size: 52px; line-height: 1; letter-spacing: -0.02em; color: var(--ed-dark); }
+.jh-stat { font-family: var(--ed-font-sans); font-weight: 300; font-size: 52px; line-height: 1; letter-spacing: -0.02em; color: var(--ed-dark); }
 .jh-dek--fact { font-size: 14px; line-height: 1.6; color: var(--ed-grey-warm); }
 
-/* Citation pin — ink ground, teal accents. A published paper, not a persona:
+/* Citation pin — white ground, emerald accents. A published paper, not a persona:
    verbatim line, plain-language takeaway, the study design, the stated limit,
    and a PMID the reader can check. No portrait — we do not put a face next to a
    researcher's name. */
-.jh-card--quote { background: var(--ed-dark); padding: 30px 26px; transition: transform 0.3s ease; }
+.jh-card--quote { background: #FFFFFF; border: 1px solid var(--ed-line); padding: 30px 26px; transition: transform 0.3s ease; }
 .jh-card--quote:hover { transform: translateY(-3px); }
-.jh-quotemark { display: block; font-family: var(--ed-font-serif); font-style: italic; font-size: 44px; line-height: 0.4; color: var(--ed-teal); margin: 6px 0 0; }
+.jh-quotemark { display: block; font-family: var(--ed-font-sans); font-weight: 300; font-size: 44px; line-height: 0.4; color: var(--ed-teal-deep); margin: 6px 0 0; }
 .jh-quote-body { display: flex; flex-direction: column; gap: 14px; margin-top: 14px; }
-.jh-quote { margin: 0; font-family: var(--ed-font-serif); font-style: italic; font-size: 19px; line-height: 1.45; color: var(--ed-on-dark); text-wrap: pretty; }
-.jh-cite-takeaway { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--ed-on-dark); opacity: 0.88; text-wrap: pretty; }
+.jh-quote { margin: 0; font-family: var(--ed-font-sans); font-weight: 300; font-size: 19px; line-height: 1.45; color: var(--ed-dark); text-wrap: pretty; }
+.jh-cite-takeaway { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--ed-grey); text-wrap: pretty; }
 .jh-cite-attr { display: flex; flex-direction: column; gap: 4px; border-top: 1px solid var(--ed-line-dark); padding-top: 14px; }
-.jh-cite-paper { font-size: 12.5px; font-weight: 600; color: var(--ed-teal); line-height: 1.4; }
+.jh-cite-paper { font-size: 12.5px; font-weight: 600; color: var(--ed-teal-deep); line-height: 1.4; }
 /* No text-transform here: the design line carries units (µA), and uppercasing
    renders µA as "MA" — microamps shown as milliamps, off by 1000×. */
-.jh-cite-design { font-size: 11px; letter-spacing: 0.06em; color: var(--ed-on-dark-dim); line-height: 1.55; }
-.jh-cite-limit { margin: 16px 0 0; padding: 14px 16px; border-left: 2px solid var(--ed-teal); background: rgba(255, 255, 255, 0.04); font-size: 12.5px; line-height: 1.65; color: var(--ed-on-dark-dim); text-wrap: pretty; }
-.jh-cite-limit-label { display: block; margin-bottom: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-teal); }
-.jh-cite-verify { display: inline-block; margin-top: 14px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ed-on-dark-dim); text-decoration: none; border-bottom: 1px solid var(--ed-line-dark); padding-bottom: 3px; transition: color 0.2s ease, border-color 0.2s ease; }
-.jh-cite-verify:hover { color: var(--ed-teal); border-color: var(--ed-teal); }
+.jh-cite-design { font-size: 11px; letter-spacing: 0.06em; color: var(--ed-grey); line-height: 1.55; }
+.jh-cite-limit { margin: 16px 0 0; padding: 14px 16px; border-left: 2px solid var(--ed-teal-deep); background: rgba(20, 20, 20, 0.03); font-size: 12.5px; line-height: 1.65; color: var(--ed-grey); text-wrap: pretty; }
+.jh-cite-limit-label { display: block; margin-bottom: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ed-teal-deep); }
+.jh-cite-verify { display: inline-block; margin-top: 14px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ed-grey-warm); text-decoration: none; border-bottom: 1px solid var(--ed-line); padding-bottom: 3px; transition: color 0.2s ease, border-color 0.2s ease; }
+.jh-cite-verify:hover { color: var(--ed-teal-deep); border-color: var(--ed-teal-deep); }
 
 /* Inline subscribe pin — reuse EditorialNewsletter, stripped to sit flush in a card */
 .jh-card--nl { background: #FFFFFF; border: 1px solid var(--ed-line); }

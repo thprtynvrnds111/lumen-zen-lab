@@ -23,9 +23,7 @@ export default function Reveal() {
       <Helmet>
         <title>{COPY.title}</title>
         <meta name="robots" content="noindex, nofollow" />
-        <meta name="theme-color" content="#1A1714" />
-        <link rel="preload" as="font" type="font/woff2" href="/fonts/poppins-400.woff2" crossOrigin="anonymous" />
-        <link rel="preload" as="font" type="font/woff2" href="/fonts/poppins-600.woff2" crossOrigin="anonymous" />
+        <meta name="theme-color" content="#ffffff" />
       </Helmet>
       <RevealRitual placement="page">
         {/* JS-disabled fallback — the prerendered HTML carries this statically */}

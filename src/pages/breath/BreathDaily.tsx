@@ -122,9 +122,10 @@ export default function BreathDaily() {
       </section>
 
       <section
-        className="ed-sec ed-cta ed-cta--dark"
+        className="ed-sec ed-cta"
         style={{
-          background: "var(--ed-dark)",
+          background: "#FFFFFF",
+          borderTop: "1px solid var(--ed-line)",
           padding: "44px 24px",
           display: "flex",
           flexDirection: "column",
@@ -133,17 +134,18 @@ export default function BreathDaily() {
       >
         <p
           style={{
-            fontFamily: "var(--ed-font-serif)",
-            fontStyle: "italic",
+            fontFamily: "var(--ed-font-sans)",
+            fontWeight: 300,
+            letterSpacing: "-0.02em",
             fontSize: "28px",
             lineHeight: 1.25,
-            color: "var(--ed-on-dark)",
+            color: "var(--ed-dark)",
             margin: 0,
           }}
         >
           One moment. Tomorrow.
         </p>
-        <p style={{ fontSize: "14px", lineHeight: 1.6, color: "var(--ed-on-dark-dim)", margin: 0 }}>
+        <p style={{ fontSize: "14px", lineHeight: 1.6, color: "var(--ed-grey)", margin: 0 }}>
           The guided pacer is free in the browser — no account, no download.
         </p>
         <a className="btn btn--primary" href="/breath">

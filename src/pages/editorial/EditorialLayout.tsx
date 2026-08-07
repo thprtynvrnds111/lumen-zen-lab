@@ -83,7 +83,7 @@ export function EditorialLayout({
           mainEntityOfPage: `https://zentialpure.com/editorial/${slug}`,
         }}
       />
-      <div style={{ background: "var(--ed-fog)", minHeight: "100vh" }}>
+      <div style={{ background: "#FFFFFF", minHeight: "100vh" }}>
         <main className={pageVariant === "white" ? "ed-page ed-page--white" : "ed-page"} ref={mainRef}>
           <header className={dark ? "masthead masthead--dark" : "masthead"} style={dark ? { background: "var(--ed-dark)" } : {}}>
             {dark ? (
@@ -101,13 +101,14 @@ export function EditorialLayout({
           <aside
             aria-label="The Breath practice"
             style={{
-              background: "var(--ed-dark)",
+              background: "#FFFFFF",
+              borderTop: "1px solid var(--ed-line)",
               padding: "56px 28px 60px",
               textAlign: "center",
             }}
           >
-            <p className="meta-label" style={{ color: "#C6A07C", letterSpacing: "0.3em" }}>THE PRACTICE</p>
-            <p style={{ fontFamily: "'Lora', serif", fontStyle: "italic", fontSize: "clamp(26px, 4vw, 36px)", lineHeight: 1.25, margin: "14px auto 0", maxWidth: "520px", color: "#F7F4F0" }}>
+            <p className="meta-label" style={{ color: "#8E8E8E", letterSpacing: "0.3em" }}>THE PRACTICE</p>
+            <p style={{ fontFamily: "var(--ed-font-sans)", fontWeight: 300, letterSpacing: "-0.02em", fontSize: "clamp(26px, 4vw, 36px)", lineHeight: 1.25, margin: "14px auto 0", maxWidth: "520px", color: "#141414" }}>
               The instruments return the energy. The breath returns the rhythm.
             </p>
             <a
@@ -115,19 +116,19 @@ export function EditorialLayout({
               style={{
                 display: "inline-block",
                 marginTop: "28px",
-                border: "1px solid rgba(247,244,240,0.25)",
+                border: "1px solid rgba(20,20,20,0.22)",
                 borderRadius: "9999px",
                 padding: "14px 30px",
                 fontSize: "11px",
                 fontWeight: 600,
                 letterSpacing: "0.2em",
-                color: "#F7F4F0",
+                color: "#141414",
                 textDecoration: "none",
               }}
             >
               BEGIN THE BREATH — FREE
             </a>
-            <p style={{ marginTop: "14px", fontSize: "11px", letterSpacing: "0.12em", color: "rgba(247,244,240,0.45)" }}>
+            <p style={{ marginTop: "14px", fontSize: "11px", letterSpacing: "0.12em", color: "#8E8E8E" }}>
               Three practices · in the browser · no signup
             </p>
           </aside>

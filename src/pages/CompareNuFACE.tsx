@@ -51,11 +51,11 @@ const faqJsonLd = {
  ],
 };
 
-const FACE_COLOR = "#1A1714";
-const MUTED = "#6B5B4E";
-const BORDER = "rgba(198,160,124,0.20)";
-const ACCENT = "#C6A07C";
-const BG = "#F7F4F0";
+const FACE_COLOR = "#141414";
+const MUTED = "#5A5A5A";
+const BORDER = "rgba(20,20,20,0.10)";
+const ACCENT = "#0E7A54";
+const BG = "#FFFFFF";
 
 export default function CompareNuFACE() {
  return (
@@ -77,13 +77,13 @@ export default function CompareNuFACE() {
     >
      <div className="max-w-2xl mx-auto">
       <p
-       className="text-[10px] tracking-[0.35em] uppercase mb-6 font-semibold"
-       style={{ color: ACCENT }}
+       className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-6"
+       style={{ color: "#8E8E8E" }}
       >
        Device Comparison
       </p>
       <h1
-       className="font-serif text-3xl md:text-5xl font-medium leading-tight mb-6"
+       className="font-sans font-light tracking-[-0.025em] text-3xl md:text-5xl leading-tight mb-6"
        style={{ color: FACE_COLOR }}
       >
        NuFACE vs Zential Pure
@@ -95,10 +95,10 @@ export default function CompareNuFACE() {
     </section>
 
     {/* Comparison Table */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-24">
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-24">
      <div className="max-w-3xl mx-auto">
       <h2
-       className="font-serif text-2xl md:text-3xl font-medium mb-12 text-center"
+       className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-12 text-center"
        style={{ color: FACE_COLOR }}
       >
        Side-by-side
@@ -110,13 +110,13 @@ export default function CompareNuFACE() {
           <th className="text-left py-3 pr-6 font-medium text-xs tracking-widest uppercase" style={{ color: MUTED }}>
            Feature
           </th>
-          <th className="text-center py-3 px-4 font-medium text-xs tracking-widest uppercase" style={{ color: MUTED }}>
+          <th className="text-center py-3 px-4 font-medium text-xs tracking-widest uppercase" style={{ color: MUTED, backgroundColor: "#F4FBF8" }}>
            Zential Pure<br />
-           <span className="font-serif normal-case text-base font-medium" style={{ color: FACE_COLOR }}>Face Introducer</span>
+           <span className="font-sans normal-case text-base font-medium" style={{ color: FACE_COLOR }}>Face Introducer</span>
           </th>
           <th className="text-center py-3 pl-4 font-medium text-xs tracking-widest uppercase" style={{ color: MUTED }}>
            NuFACE<br />
-           <span className="font-serif normal-case text-base font-medium" style={{ color: FACE_COLOR }}>Trinity</span>
+           <span className="font-sans normal-case text-base font-medium" style={{ color: FACE_COLOR }}>Trinity</span>
           </th>
          </tr>
         </thead>
@@ -136,7 +136,7 @@ export default function CompareNuFACE() {
            <td className="py-4 pr-6 text-sm" style={{ color: MUTED }}>
             {row.feature}
            </td>
-           <td className="py-4 px-4 text-center text-sm font-medium" style={{ color: FACE_COLOR }}>
+           <td className="py-4 px-4 text-center text-sm font-medium" style={{ color: FACE_COLOR, backgroundColor: "#F4FBF8" }}>
             {row.zential}
            </td>
            <td className="py-4 pl-4 text-center text-sm" style={{ color: MUTED }}>
@@ -152,12 +152,11 @@ export default function CompareNuFACE() {
 
     {/* When to choose each */}
     <section
-     className="px-6 md:px-12 lg:px-20 py-16 md:py-24"
-     style={{ backgroundColor: "#EFEBE5" }}
+     className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-24"
     >
      <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-12">
       <div>
-       <p className="text-[10px] tracking-[0.35em] uppercase mb-4 font-semibold" style={{ color: ACCENT }}>
+       <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-4" style={{ color: ACCENT }}>
         Choose the Face Introducer if
        </p>
        <ul className="space-y-3 text-sm leading-relaxed" style={{ color: FACE_COLOR }}>
@@ -176,7 +175,7 @@ export default function CompareNuFACE() {
        </ul>
       </div>
       <div>
-       <p className="text-[10px] tracking-[0.35em] uppercase mb-4 font-semibold" style={{ color: MUTED }}>
+       <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-4" style={{ color: MUTED }}>
         Choose NuFACE Trinity if
        </p>
        <ul className="space-y-3 text-sm leading-relaxed" style={{ color: MUTED }}>
@@ -197,10 +196,10 @@ export default function CompareNuFACE() {
     </section>
 
     {/* Mechanism section */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-24">
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-24">
      <div className="max-w-3xl mx-auto">
       <h2
-       className="font-serif text-2xl md:text-3xl font-medium mb-8"
+       className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-8"
        style={{ color: FACE_COLOR }}
       >
        What microcurrent actually does
@@ -219,14 +218,13 @@ export default function CompareNuFACE() {
 
     {/* The price argument */}
     <section
-     className="px-6 md:px-12 lg:px-20 py-16 md:py-24 text-center"
-     style={{ backgroundColor: "#EFEBE5" }}
+     className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-24 text-center"
     >
      <div className="max-w-xl mx-auto">
-      <p className="font-serif text-2xl md:text-3xl font-medium mb-4" style={{ color: FACE_COLOR }}>
+      <p className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-4" style={{ color: FACE_COLOR }}>
        One clinic microcurrent session costs €80–120.
       </p>
-      <p className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: FACE_COLOR }}>
+      <p className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: FACE_COLOR }}>
        The Face Introducer costs €88. Once.
       </p>
       <p className="text-sm leading-relaxed mb-10" style={{ color: MUTED }}>
@@ -234,8 +232,7 @@ export default function CompareNuFACE() {
       </p>
       <Link
        to="/product/lifting-and-tightening-face-introducer"
-       className="inline-block px-8 py-3.5 text-sm font-medium tracking-wide transition-opacity hover:opacity-80"
-       style={{ backgroundColor: FACE_COLOR, color: "#F7F4F0" }}
+       className="inline-block rounded-full bg-[#2ED8A8] px-8 py-3.5 text-sm font-medium tracking-wide text-[#141414] transition-colors hover:bg-[#1BAF86]"
       >
        Order the Face Introducer, €88
       </Link>
@@ -243,10 +240,10 @@ export default function CompareNuFACE() {
     </section>
 
     {/* FAQ */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-24">
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-24">
      <div className="max-w-3xl mx-auto">
       <h2
-       className="font-serif text-2xl md:text-3xl font-medium mb-12"
+       className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-12"
        style={{ color: FACE_COLOR }}
       >
        Common questions
@@ -306,7 +303,7 @@ export default function CompareNuFACE() {
          key={i}
          to={link.to}
          className="transition-opacity hover:opacity-70"
-         style={{ color: FACE_COLOR, textDecoration: "underline", textUnderlineOffset: "3px" }}
+         style={{ color: "#0E7A54", textDecoration: "underline", textUnderlineOffset: "3px" }}
         >
          {link.label}
         </Link>

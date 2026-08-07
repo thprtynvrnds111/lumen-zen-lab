@@ -3,29 +3,29 @@ import { type Protocol } from "@/data/protocols";
 // Visual mockup of the A6 printed Protocol Card that ships with each bundle.
 // Pure SVG. No images, no fonts external.
 export function ProtocolCardPreview({ protocol }: { protocol: Protocol }) {
-  const isDark = protocol.cardBg === "#1A1714";
-  const bg = "#F7F4F0";
-  const ink = "#1A1714";
+  const bg = "#FFFFFF";
+  const ink = "#141414";
   const teal = "#2ED8A8";
-  const muted = "#6B5A4A";
+  const emerald = "#0E7A54";
+  const muted = "#8E8E8E";
 
   return (
     <div className="relative">
       <div
-        className="aspect-[105/148] w-full max-w-md mx-auto shadow-2xl"
-        style={{ backgroundColor: bg, border: `1px solid ${ink}10` }}
+        className="aspect-[105/148] w-full max-w-md mx-auto shadow-[0_18px_50px_rgba(20,20,20,0.08)]"
+        style={{ backgroundColor: bg, border: "1px solid rgba(20,20,20,0.10)" }}
       >
         <div className="h-full w-full p-8 md:p-10 flex flex-col justify-between">
           {/* Top */}
           <div>
             <p
-              className="font-mono text-[10px] tracking-[0.2em] uppercase mb-1"
+              className="font-sans text-[10px] font-medium tracking-[0.2em] uppercase mb-1"
               style={{ color: muted }}
             >
               Zential Pure  ·  Protocol Card ( {protocol.number} )
             </p>
             <h3
-              className="font-[Lora] italic leading-none mt-6"
+              className="font-sans font-light tracking-[-0.025em] leading-none mt-6"
               style={{ color: ink, fontSize: "clamp(2.5rem, 6vw, 3.5rem)" }}
             >
               {protocol.title}.
@@ -43,8 +43,8 @@ export function ProtocolCardPreview({ protocol }: { protocol: Protocol }) {
             {protocol.devices.map((d, i) => (
               <div key={d.handle} className="flex items-baseline gap-3">
                 <span
-                  className="font-mono text-[10px] tracking-[0.16em]"
-                  style={{ color: teal, minWidth: 30 }}
+                  className="font-sans text-[10px] font-medium tracking-[0.16em]"
+                  style={{ color: emerald, minWidth: 30 }}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -55,7 +55,7 @@ export function ProtocolCardPreview({ protocol }: { protocol: Protocol }) {
                   {d.name}
                 </span>
                 <span
-                  className="font-mono text-[10px] tracking-wide"
+                  className="font-sans text-[10px] tracking-wide"
                   style={{ color: muted }}
                 >
                   {d.minutes} min
@@ -68,13 +68,13 @@ export function ProtocolCardPreview({ protocol }: { protocol: Protocol }) {
           <div className="flex items-end justify-between">
             <div>
               <p
-                className="font-mono text-[10px] tracking-[0.16em] mb-1"
+                className="font-sans text-[10px] font-medium tracking-[0.16em] mb-1"
                 style={{ color: muted }}
               >
                 Total
               </p>
               <p
-                className="font-mono text-sm tracking-wide"
+                className="font-sans tabular-nums text-sm tracking-wide"
                 style={{ color: ink }}
               >
                 {protocol.sessionMinutes} minutes
@@ -85,7 +85,7 @@ export function ProtocolCardPreview({ protocol }: { protocol: Protocol }) {
         </div>
       </div>
       <p
-        className="text-center font-mono text-[10px] tracking-[0.16em] uppercase mt-6"
+        className="text-center font-sans text-[10px] font-medium tracking-[0.16em] uppercase mt-6"
         style={{ color: muted }}
       >
         Printed insert  ·  ships with every Protocol  ·  A6  ·  300gsm

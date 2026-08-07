@@ -1,11 +1,10 @@
 import { useTranslation } from "react-i18next";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
-import { ZentialFooter } from "@/components/zential/ZentialFooter";
+import { SparseFooter } from "@/components/zential/v2/SparseFooter";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { HelpCircle, Truck, RotateCcw, Heart, ShieldCheck, CreditCard, Zap } from "lucide-react";
 import { SEO } from "@/components/SEO";
-import { ZenMascot } from "@/components/zential/ZenMascot";
 
 const categoryIcons = [Truck, RotateCcw, Heart, ShieldCheck, Zap, CreditCard];
 
@@ -29,27 +28,23 @@ const FAQ = () => {
  };
 
  return (
-  <div className="min-h-screen bg-background">
+  <div className="min-h-screen bg-white text-[#141414]">
    <SEO title="FAQ, Zential Pure" description="Answers to common questions about Zential Pure devices, shipping, returns, safety, and how to get the most from your daily ritual." canonicalUrl="/faq" jsonLd={faqJsonLd} />
    <AnnouncementBar />
    <Header />
    <main>
     {/* Hero */}
-    <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20 text-center overflow-hidden">
-     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-accent/6 blur-[100px] pointer-events-none" />
-     <div className="relative z-10 animate-fade-in">
-      <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent rounded-full px-4 py-1.5 text-xs tracking-[0.15em] uppercase mb-6">
-       <HelpCircle size={14} />
+    <section className="py-24 md:py-36 px-6 md:px-12 lg:px-20 text-center">
+     <div className="animate-fade-in">
+      <div className="inline-flex items-center gap-2 border border-[rgba(20,20,20,0.12)] text-[#8E8E8E] rounded-full px-4 py-1.5 text-[11px] font-medium tracking-[0.22em] uppercase mb-6">
+       <HelpCircle size={14} className="text-[#0E7A54]" />
        {t('hero.badge')}
       </div>
-      <div className="flex justify-center mb-6">
-       <ZenMascot expression="thinking" size={100} tilt />
-      </div>
-      <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-5 tracking-tight">
+      <h1 className="font-sans font-light text-4xl md:text-6xl text-[#141414] mb-5 tracking-[-0.03em]">
        {headline[0]}<br />
-       <span className="text-foreground">{headline[1]}</span>
+       <span className="text-[#141414]">{headline[1]}</span>
       </h1>
-      <p className="text-muted-foreground text-lg max-w-lg mx-auto leading-relaxed">
+      <p className="text-[#5A5A5A] text-lg max-w-lg mx-auto leading-relaxed">
        {t('hero.sub')}
       </p>
      </div>
@@ -63,18 +58,18 @@ const FAQ = () => {
        return (
         <div key={ci} className="mb-10 animate-fade-in" style={{ animationDelay: `${ci * 80}ms` }}>
          <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
-           <Icon size={16} className="text-accent" />
+          <div className="w-8 h-8 rounded-none border border-[rgba(20,20,20,0.12)] flex items-center justify-center">
+           <Icon size={16} className="text-[#0E7A54]" />
           </div>
-          <span className="text-xs tracking-[0.2em] uppercase text-muted-foreground font-medium">{cat.label}</span>
+          <span className="font-sans text-[11px] tracking-[0.22em] uppercase text-[#8E8E8E] font-medium">{cat.label}</span>
          </div>
-         <Accordion type="single" collapsible className="glass-card overflow-hidden">
+         <Accordion type="single" collapsible className="border border-[rgba(20,20,20,0.10)] overflow-hidden">
           {cat.items.map((item, i) => (
-           <AccordionItem key={i} value={`cat-${ci}-${i}`} className="border-border/20">
-            <AccordionTrigger className="px-6 text-left text-sm font-medium hover:no-underline">
+           <AccordionItem key={i} value={`cat-${ci}-${i}`} className="border-[rgba(20,20,20,0.10)]">
+            <AccordionTrigger className="px-6 text-left text-sm font-medium hover:no-underline data-[state=open]:text-[#0E7A54]">
              {item.q}
             </AccordionTrigger>
-            <AccordionContent className="px-6 text-muted-foreground text-sm leading-relaxed">
+            <AccordionContent className="px-6 text-[#5A5A5A] text-sm leading-relaxed">
              {item.a}
             </AccordionContent>
            </AccordionItem>
@@ -86,7 +81,7 @@ const FAQ = () => {
      </div>
     </section>
    </main>
-   <ZentialFooter />
+   <SparseFooter />
   </div>
  );
 };

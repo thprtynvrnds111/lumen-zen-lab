@@ -89,38 +89,38 @@ export function SystemBundle() {
   const hasFounding = true;
 
   return (
-    <section className="bg-[#1A1714] py-[clamp(72px,10vw,116px)] text-[#F7F4F0]">
+    <section className="border-t border-[rgba(20,20,20,0.10)] bg-white py-[clamp(72px,10vw,116px)] text-[#141414]">
       <div className={WRAP}>
-        <div className="grid items-center gap-10 rounded-[16px] border border-[rgba(247,244,240,0.10)] bg-[#070A0E] p-[clamp(28px,4vw,56px)] md:grid-cols-[1.05fr_0.95fr]">
+        <div className="grid items-center gap-10 rounded-none border border-[rgba(20,20,20,0.10)] bg-white p-[clamp(28px,4vw,56px)] md:grid-cols-[1.05fr_0.95fr]">
           <div>
-            <div className="font-sans text-[11px] tracking-[0.3em] uppercase text-[#2ED8A8]">The System</div>
-            <h2 className="mt-4 font-serif italic font-normal text-[clamp(28px,3.6vw,44px)] leading-[1.08] text-[#F7F4F0]">
+            <div className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]">The System</div>
+            <h2 className="mt-4 font-sans font-light text-[clamp(28px,3.6vw,44px)] leading-[1.08] tracking-[-0.025em] text-[#141414]">
               All three instruments. The whole day, covered.
             </h2>
-            <p className="mt-4 max-w-[46ch] text-[15px] leading-[1.7] text-[#F7F4F0]/[0.62]">
+            <p className="mt-4 max-w-[46ch] text-[15px] leading-[1.7] text-[#5A5A5A]">
               Face in the morning, body after the work, full rest at night. The complete protocol, in one purchase.
             </p>
             <ul className="mt-6 space-y-2.5">
               {SYSTEM.map((i) => (
-                <li key={i.to} className="flex items-center justify-between border-b border-[rgba(247,244,240,0.08)] pb-2.5 font-sans text-[13px]">
-                  <a href={i.to} className="text-[#F7F4F0]/80 hover:text-[#2ED8A8]">{i.name}</a>
-                  <span className="tabular-nums text-[#F7F4F0]/55">{fmt(prices[i.handle])}</span>
+                <li key={i.to} className="flex items-center justify-between border-b border-[rgba(20,20,20,0.10)] pb-2.5 font-sans text-[13px]">
+                  <a href={i.to} className="text-[#141414] transition-colors hover:text-[#0E7A54]">{i.name}</a>
+                  <span className="tabular-nums text-[#5A5A5A]">{fmt(prices[i.handle])}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="rounded-[14px] border border-[rgba(247,244,240,0.10)] bg-[#1A1714] p-[clamp(26px,3vw,40px)]">
+          <div className="rounded-none border border-[rgba(20,20,20,0.10)] bg-white p-[clamp(26px,3vw,40px)]">
             {hasFounding ? (
               <>
-                {fmt(fullAmount) && <div className="font-sans text-[12px] text-[#F7F4F0]/45 line-through">{fmt(fullAmount)}</div>}
-                {fmt(bundleAmount) && <div className="mt-1 font-serif italic text-[56px] leading-none text-[#F7F4F0]">{fmt(bundleAmount)}</div>}
-                <div className="mt-1 font-serif italic text-[18px] text-[#C6A07C]">Founding bundle{fmt(savingsAmount) && <> · save {fmt(savingsAmount)}</>}</div>
+                {fmt(fullAmount) && <div className="font-sans text-[12px] text-[#8E8E8E] line-through">{fmt(fullAmount)}</div>}
+                {fmt(bundleAmount) && <div className="mt-1 font-sans font-light text-[56px] leading-none tracking-[-0.02em] text-[#141414]">{fmt(bundleAmount)}</div>}
+                <div className="mt-1 font-sans text-[13px] font-medium tracking-[0.02em] text-[#0E7A54]">Founding bundle{fmt(savingsAmount) && <> · save {fmt(savingsAmount)}</>}</div>
               </>
             ) : (
               <>
-                {fmt(fullAmount) && <div className="font-serif italic text-[56px] leading-none text-[#F7F4F0]">{fmt(fullAmount)}</div>}
-                <div className="mt-1 font-serif italic text-[18px] text-[#C6A07C]">All three · once</div>
+                {fmt(fullAmount) && <div className="font-sans font-light text-[56px] leading-none tracking-[-0.02em] text-[#141414]">{fmt(fullAmount)}</div>}
+                <div className="mt-1 font-sans text-[13px] font-medium tracking-[0.02em] text-[#0E7A54]">All three · once</div>
               </>
             )}
             <button
@@ -129,11 +129,11 @@ export function SystemBundle() {
               data-atc-beacon=""
               data-beacon-slug="the-system"
               data-beacon-placement="system-bundle"
-              className="mt-6 w-full rounded-full bg-[#2ED8A8] px-7 py-4 font-sans text-[13px] font-medium tracking-[0.04em] text-[#070A0E] transition-opacity hover:opacity-90 disabled:opacity-60"
+              className="mt-6 w-full rounded-full bg-[#2ED8A8] px-7 py-4 font-sans text-[12px] font-semibold tracking-[0.16em] uppercase text-[#141414] transition-colors hover:bg-[#1BAF86] disabled:opacity-60"
             >
               {busy ? "Adding the System…" : "Claim the System"}
             </button>
-            <p className="mt-3 text-center font-sans text-[11px] text-[#F7F4F0]/45">30-day money-back guarantee on every instrument.</p>
+            <p className="mt-3 text-center font-sans text-[11px] text-[#8E8E8E]">30-day money-back guarantee on every instrument.</p>
           </div>
         </div>
       </div>

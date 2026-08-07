@@ -103,7 +103,7 @@ export default function QuizResult() {
  };
 
  return (
-  <div className="min-h-screen" style={{ backgroundColor: "#FBF8F4" }}>
+  <div className="min-h-screen" style={{ backgroundColor: "#FFFFFF" }}>
    <SEO
     title={`Your Ritual, ${rec.primaryName} | Zential`}
     description={rec.ritualSubcopy}
@@ -118,13 +118,13 @@ export default function QuizResult() {
       <ZenMascot expression="delighted" size={96} tilt />
      </div>
      <div className="inline-flex items-center gap-3 mb-5">
-      <span className="h-px w-8" style={{ backgroundColor: "#9B5A2E", opacity: 0.45 }} />
-      <p className="text-[10px] tracking-[0.32em] uppercase" style={{ color: "#9B5A2E" }}>
+      <span className="h-px w-8" style={{ backgroundColor: "#0E7A54", opacity: 0.45 }} />
+      <p className="text-[10px] tracking-[0.32em] uppercase" style={{ color: "#0E7A54" }}>
       , {rec.ritualHeadline} 
       </p>
-      <span className="h-px w-8" style={{ backgroundColor: "#9B5A2E", opacity: 0.45 }} />
+      <span className="h-px w-8" style={{ backgroundColor: "#0E7A54", opacity: 0.45 }} />
      </div>
-     <h1 className="font-serif italic text-[40px] md:text-6xl leading-[1.02] tracking-[-0.01em] text-foreground mb-5 text-balance">
+     <h1 className="font-sans font-light text-[40px] md:text-6xl leading-[1.02] tracking-[-0.03em] text-foreground mb-5 text-balance">
       Your ritual begins with<br/>the {rec.primaryName}.
      </h1>
      <p className="text-base md:text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
@@ -133,9 +133,9 @@ export default function QuizResult() {
     </div>
 
     {/* Primary device card */}
-    <section className="bg-background rounded-3xl border border-foreground/10 overflow-hidden mb-10 md:mb-14">
+    <section className="bg-white rounded-none border border-[rgba(20,20,20,0.10)] overflow-hidden mb-10 md:mb-14">
      <div className="grid md:grid-cols-2">
-     <div className="aspect-square md:aspect-auto bg-gradient-to-br from-[#F7F4F0] to-[#E8DDD0] flex items-center justify-center overflow-hidden">
+     <div className="aspect-square md:aspect-auto bg-[#F2F4F3] flex items-center justify-center overflow-hidden">
        {primary?.node.images.edges[0]?.node.url ? (
         <img
          src={primary.node.images.edges[0].node.url}
@@ -144,17 +144,17 @@ export default function QuizResult() {
          loading="eager"
         />
        ) : (
-        <div className="w-full h-full animate-pulse bg-gradient-to-br from-[#EFEBE5] to-[#E4DFD8]" />
+        <div className="w-full h-full animate-pulse bg-[#F2F4F3]" />
        )}
       </div>
       <div className="p-8 md:p-12 flex flex-col justify-center">
        <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/50 mb-4"> Recommended for you </p>
-       <h2 className="font-serif italic text-3xl md:text-4xl text-foreground mb-4">{rec.primaryName}</h2>
+       <h2 className="font-sans font-light tracking-[-0.025em] text-3xl md:text-4xl text-foreground mb-4">{rec.primaryName}</h2>
        <p className="text-[15px] text-foreground/65 leading-relaxed mb-6">{rec.primaryReason}</p>
 
        <div className="flex items-center gap-3 mb-6">
         {primaryPrice ? (
-         <span className="font-serif italic text-3xl text-foreground animate-fade-in">{formatMoney(Math.round(primaryPrice), quizCurrency)}</span>
+         <span className="font-sans font-light tracking-[-0.02em] text-3xl text-foreground animate-fade-in">{formatMoney(Math.round(primaryPrice), quizCurrency)}</span>
         ) : (
          <span className="inline-block h-8 w-20 rounded-md animate-pulse bg-foreground/10" />
         )}
@@ -175,27 +175,27 @@ export default function QuizResult() {
     {/* Ritual set, high-conversion bundle */}
     {companions.length > 0 && (
      <section
-      className="rounded-3xl overflow-hidden mb-10 md:mb-14 relative"
-      style={{ backgroundColor: "#2A211A", color: "#FAF7F3" }}
+      className="rounded-none overflow-hidden mb-10 md:mb-14 relative border border-[rgba(20,20,20,0.10)]"
+      style={{ backgroundColor: "#F4FBF8", color: "#141414" }}
      >
-      <div className="absolute top-6 right-6 px-3 py-1.5 rounded-full text-[10px] tracking-[0.2em] uppercase" style={{ backgroundColor: "#C6A07C", color: "#2A211A" }}>
+      <div className="absolute top-6 right-6 px-3 py-1.5 rounded-full text-[10px] tracking-[0.2em] uppercase" style={{ backgroundColor: "#2ED8A8", color: "#141414" }}>
        Most chosen
       </div>
       <div className="p-8 md:p-12">
-       <p className="text-[10px] tracking-[0.3em] uppercase mb-3" style={{ color: "#C6A07C" }}> The complete ritual </p>
-       <h3 className="font-serif italic text-3xl md:text-4xl mb-4">{t('fullProtocolTitle')}</h3>
+       <p className="text-[10px] tracking-[0.3em] uppercase mb-3" style={{ color: "#0E7A54" }}> The complete ritual </p>
+       <h3 className="font-sans font-light tracking-[-0.025em] text-3xl md:text-4xl mb-4">{t('fullProtocolTitle')}</h3>
        <p className="text-[15px] leading-relaxed mb-8 max-w-xl" style={{ opacity: 0.7 }}>
         {rec.bundlePitch}
        </p>
 
        <div className="grid sm:grid-cols-2 gap-3 mb-8">
-        <div className="flex items-center gap-3 p-4 rounded-xl" style={{ backgroundColor: "rgba(250,247,243,0.06)" }}>
-         <Sparkles size={16} style={{ color: "#C6A07C" }} />
+        <div className="flex items-center gap-3 p-4 rounded-none" style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(20,20,20,0.10)" }}>
+         <Sparkles size={16} style={{ color: "#0E7A54" }} />
          <span className="text-sm">{rec.primaryName}</span>
         </div>
         {companions.map((c) => (
-         <div key={c.node.id} className="flex items-center gap-3 p-4 rounded-xl" style={{ backgroundColor: "rgba(250,247,243,0.06)" }}>
-          <Sparkles size={16} style={{ color: "#C6A07C" }} />
+         <div key={c.node.id} className="flex items-center gap-3 p-4 rounded-none" style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(20,20,20,0.10)" }}>
+          <Sparkles size={16} style={{ color: "#0E7A54" }} />
           <span className="text-sm">{c.node.title}</span>
          </div>
         ))}
@@ -205,9 +205,9 @@ export default function QuizResult() {
         <div>
          <p className="text-[10px] tracking-[0.2em] uppercase mb-1.5" style={{ opacity: 0.5 }}>{t('ritualPriceLabel')}</p>
          <div className="flex items-baseline gap-3">
-          <span className="font-serif italic text-4xl">{formatMoney(Math.round(ritualTotal - ritualSave), quizCurrency)}</span>
+          <span className="font-sans font-light tracking-[-0.02em] text-4xl">{formatMoney(Math.round(ritualTotal - ritualSave), quizCurrency)}</span>
           <span className="text-base line-through" style={{ opacity: 0.4 }}>{formatMoney(Math.round(ritualTotal), quizCurrency)}</span>
-          <span className="text-[11px] px-2 py-1 rounded-full" style={{ backgroundColor: "#C6A07C", color: "#2A211A" }}>{t('save', { amount: ritualSave })}</span>
+          <span className="text-[11px] px-2 py-1 rounded-full" style={{ backgroundColor: "#2ED8A8", color: "#141414" }}>{t('save', { amount: ritualSave })}</span>
          </div>
         </div>
        </div>
@@ -216,7 +216,7 @@ export default function QuizResult() {
         onClick={addRitual}
         disabled={adding || !primary}
         className="w-full md:w-auto py-4 px-10 text-[13px] tracking-[0.08em] uppercase font-medium rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl disabled:opacity-50"
-        style={{ backgroundColor: "#FAF7F3", color: "#2A211A" }}
+        style={{ backgroundColor: "#2ED8A8", color: "#141414" }}
        >
         {adding ? t('addingRitual') : t('addRitual')}
         <ArrowRight size={14} className="inline ml-2" />
@@ -226,16 +226,16 @@ export default function QuizResult() {
     )}
 
     {/* Protocol */}
-    <section className="bg-background rounded-3xl border border-foreground/10 p-8 md:p-12 mb-10 md:mb-14">
+    <section className="bg-white rounded-none border border-[rgba(20,20,20,0.10)] p-8 md:p-12 mb-10 md:mb-14">
      <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/50 mb-3"> Your 90-day protocol </p>
-     <h3 className="font-serif italic text-3xl md:text-4xl text-foreground mb-3">{t('howToUse')}</h3>
+     <h3 className="font-sans font-light tracking-[-0.025em] text-3xl md:text-4xl text-foreground mb-3">{t('howToUse')}</h3>
      <p className="text-[15px] text-foreground/60 mb-8 max-w-xl">{rec.expectedTimeline}</p>
 
      <div className="space-y-4">
       {rec.protocol.map((p, i) => (
        <div key={i} className="flex gap-5 pb-5 border-b border-foreground/10 last:border-0 last:pb-0">
-        <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: "#F7F4F0" }}>
-         <Calendar size={14} style={{ color: "#9B5A2E" }} />
+        <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: "#F2F4F3" }}>
+         <Calendar size={14} style={{ color: "#0E7A54" }} />
         </div>
         <div className="flex-1 pt-1.5">
          <p className="text-[10px] tracking-[0.2em] uppercase text-foreground/50 mb-1">{p.day}</p>
@@ -251,8 +251,8 @@ export default function QuizResult() {
      {(t('trustItems', { returnObjects: true }) as string[]).map((label, i) => {
       const Icon = trustIcons[i] ?? ShieldCheck;
       return (
-      <div key={i} className="flex items-center gap-3 p-5 rounded-2xl border border-foreground/10 bg-background">
-       <Icon size={16} style={{ color: "#9B5A2E" }} />
+      <div key={i} className="flex items-center gap-3 p-5 rounded-none border border-[rgba(20,20,20,0.10)] bg-white">
+       <Icon size={16} style={{ color: "#0E7A54" }} />
        <span className="text-[12px] tracking-wide text-foreground/75">{label}</span>
       </div>
      );})}

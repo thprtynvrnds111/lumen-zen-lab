@@ -4,17 +4,17 @@
 
 @layer base {
   :root {
-    /* Surface — Apple fog canvas + white cards */
-    --background: 240 5% 96%;
+    /* Surface — Coven white canvas (2026-08-07 restyle) */
+    --background: 0 0% 100%;
     --foreground: 240 3% 12%;
     --card: 0 0% 100%;
     --card-foreground: 240 3% 12%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 3% 12%;
 
-    /* CTA — Dialog tangerine, sole action color */
-    --primary: 24 90% 64%;
-    --primary-foreground: 0 0% 0%;
+    /* CTA — Coven teal, sole action color (2026-08-07 restyle) */
+    --primary: 160 67% 51%;
+    --primary-foreground: 240 3% 12%;
 
     /* Secondary — recessed fog */
     --secondary: 240 5% 94%;
@@ -34,10 +34,10 @@
     /* Borders — Apple silver mist */
     --border: 240 9% 92%;
     --input: 240 9% 92%;
-    --ring: 24 90% 64%;
+    --ring: 160 67% 51%;
 
     /* Radius — 24px card (Dialog), 28px pill buttons */
-    --radius: 1.5rem;
+    --radius: 0.25rem;
     --tracking-display: -2.11px;
     --tracking-heading-lg: -0.9px;
     --tracking-heading: -0.6px;
@@ -62,12 +62,12 @@
 
     --sidebar-background: 240 5% 96%;
     --sidebar-foreground: 240 3% 12%;
-    --sidebar-primary: 24 90% 64%;
+    --sidebar-primary: 160 67% 51%;
     --sidebar-primary-foreground: 0 0% 0%;
     --sidebar-accent: 240 5% 94%;
     --sidebar-accent-foreground: 240 3% 12%;
     --sidebar-border: 240 9% 92%;
-    --sidebar-ring: 24 90% 64%;
+    --sidebar-ring: 160 67% 51%;
 
   /* ── Editorial / Lookbook tokens ── */
   --ed-dark: #1A1714;
@@ -158,13 +158,13 @@
     border-radius: var(--radius);
   }
 
-  /* CTA pill — Dialog tangerine orange */
+  /* CTA pill — Coven teal (2026-08-07 restyle) */
   .cta-pill {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--brand-orange);
-    color: #000000;
+    background-color: var(--brand-teal);
+    color: #141414;
     border-radius: 1.75rem;
     padding: 12px 24px;
     font-family: var(--font-sans);
@@ -185,7 +185,8 @@
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
-    color: #000000;
+    color: #141414;
+    border: 1px solid rgba(20, 20, 20, 0.22);
     border-radius: 1.75rem;
     padding: 12px 24px;
     font-family: var(--font-sans);

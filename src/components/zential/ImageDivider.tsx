@@ -21,7 +21,7 @@ export function ImageDivider({ src, alt, quote }: ImageDividerProps) {
       />
       {quote && (
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center px-6">
-          <p className="font-serif italic text-xl md:text-3xl text-white text-center max-w-2xl leading-relaxed">
+          <p className="font-sans font-light tracking-[-0.02em] text-xl md:text-3xl text-white text-center max-w-2xl leading-relaxed">
             {quote}
           </p>
         </div>

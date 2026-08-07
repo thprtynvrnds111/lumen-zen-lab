@@ -101,12 +101,12 @@ export default function TheRitual() {
       {/* EVIDENCE — the ritual page's whole argument, measured: adherence is the variable. */}
       <CitationNote citation={C_ADHERENCE} />
 
-      {/* END CTA (dark) */}
-      <section className="ed-sec ed-cta ed-cta--dark" style={{ background: "var(--ed-dark)", padding: "44px 24px", display: "flex", flexDirection: "column", gap: "18px" }}>
-        <p style={{ fontFamily: "var(--ed-font-serif)", fontStyle: "italic", fontSize: "28px", lineHeight: 1.25, color: "var(--ed-on-dark)", margin: 0 }}>
+      {/* END CTA */}
+      <section className="ed-sec ed-cta" style={{ background: "#FFFFFF", borderTop: "1px solid var(--ed-line)", padding: "44px 24px", display: "flex", flexDirection: "column", gap: "18px" }}>
+        <p style={{ fontFamily: "var(--ed-font-sans)", fontWeight: 300, letterSpacing: "-0.02em", fontSize: "28px", lineHeight: 1.25, color: "var(--ed-dark)", margin: 0 }}>
           Begin the ritual.
         </p>
-        <p style={{ fontSize: "14px", lineHeight: 1.6, color: "var(--ed-on-dark-dim)", margin: 0 }}>
+        <p style={{ fontSize: "14px", lineHeight: 1.6, color: "var(--ed-grey)", margin: 0 }}>
           Restoration Belt · €180 · Free EU shipping
         </p>
         <a className="btn btn--primary" href={PDP}>Order the Restoration Belt</a>

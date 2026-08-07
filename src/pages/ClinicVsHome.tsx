@@ -11,12 +11,10 @@ import edWalkStone from "@/assets/editorial/walk-stone.webp";
  */
 
 const WRAP = "mx-auto max-w-[1180px] px-6 md:px-10";
-const GRAIN =
-  "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 const PILL_ACTION =
-  "inline-flex items-center justify-center rounded-full bg-[#F69251] px-[30px] py-4 font-sans text-[12px] font-semibold tracking-[0.18em] uppercase text-[#1A1714] transition-colors hover:bg-[#E87A38]";
+  "inline-flex items-center justify-center rounded-full bg-[#2ED8A8] px-[30px] py-4 font-sans text-[12px] font-semibold tracking-[0.18em] uppercase text-[#141414] transition-colors hover:bg-[#1BAF86]";
 const PILL_GHOST_DARK =
-  "inline-flex items-center justify-center rounded-full border border-[rgba(247,244,240,0.28)] px-[30px] py-4 font-sans text-[12px] font-semibold tracking-[0.18em] uppercase text-[#F7F4F0] transition-colors hover:border-[#2ED8A8] hover:text-[#2ED8A8]";
+  "inline-flex items-center justify-center rounded-full border border-[rgba(20,20,20,0.22)] px-[30px] py-4 font-sans text-[12px] font-semibold tracking-[0.18em] uppercase text-[#141414] transition-colors hover:border-[#0E7A54] hover:text-[#0E7A54]";
 
 const STATS = [
   { v: "€1,440", k: "Clinic facials\nyear one, average", warm: true },
@@ -53,7 +51,7 @@ const MATH = [
 ];
 
 function Eyebrow({ num, children, tone = "meta" }: { num: string; children: string; tone?: "meta" | "dark" }) {
-  const color = tone === "dark" ? "text-[#2ED8A8]" : "text-[#6B5A4A]";
+  const color = tone === "dark" ? "text-[#0E7A54]" : "text-[#8E8E8E]";
   return (
     <p className={`inline-flex items-center gap-3.5 font-sans text-[11px] tracking-[0.28em] uppercase ${color}`}>
       <span className="tabular-nums opacity-55">( {num} )</span>
@@ -72,21 +70,20 @@ export default function ClinicVsHome() {
       hideHero
     >
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-[#1A1714] text-[#F7F4F0]">
-        <div className="pointer-events-none absolute inset-0 z-[1] opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: GRAIN, backgroundSize: "170px 170px" }} aria-hidden />
+      <section className="relative overflow-hidden bg-white text-[#141414]">
         <div className={`relative ${WRAP} pt-[clamp(72px,10vw,118px)] pb-[clamp(54px,7vw,84px)]`}>
           <Eyebrow num="00" tone="dark">The Method · Clinic vs. Home</Eyebrow>
-          <h1 className="my-6 max-w-[15ch] font-serif italic font-normal tracking-[-0.02em] leading-[1.04] text-[#F7F4F0] text-[clamp(44px,6vw,86px)]">
-            You didn't quit the results.<br />You quit the <span className="text-[#2ED8A8]">commute.</span>
+          <h1 className="my-6 max-w-[15ch] font-sans font-light tracking-[-0.03em] leading-[1.04] text-[#141414] text-[clamp(44px,6vw,86px)]">
+            You didn't quit the results.<br />You quit the <span className="text-[#0E7A54]">commute.</span>
           </h1>
-          <p className="mb-[38px] max-w-[560px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">
+          <p className="mb-[38px] max-w-[560px] text-[17px] leading-[1.75] text-[#5A5A5A]">
             The clinic facial works. So does the cost, the booking, the drive across town. The Face Introducer takes the same three modalities and removes everything that wasn't the treatment. Here is the honest comparison — including what the clinic still does better.
           </p>
-          <div className="grid max-w-[640px] grid-cols-1 gap-px border border-[rgba(247,244,240,0.10)] bg-[rgba(247,244,240,0.10)] sm:grid-cols-3">
+          <div className="grid max-w-[640px] grid-cols-1 gap-px border border-[rgba(20,20,20,0.10)] bg-[rgba(20,20,20,0.10)] sm:grid-cols-3">
             {STATS.map((s) => (
-              <div key={s.k} className="bg-[#1A1714] px-7 py-[26px]">
-                <div className={`font-serif italic text-[clamp(30px,3.6vw,42px)] leading-none tracking-[-0.01em] ${s.warm ? "text-[#C6A07C]" : "text-[#2ED8A8]"}`}>{s.v}</div>
-                <div className="mt-3 whitespace-pre-line font-sans text-[10px] leading-[1.5] tracking-[0.2em] uppercase text-[#F7F4F0]/50">{s.k}</div>
+              <div key={s.k} className="bg-white px-7 py-[26px]">
+                <div className={`font-sans font-light text-[clamp(30px,3.6vw,42px)] leading-none tracking-[-0.01em] ${s.warm ? "text-[#5A5A5A]" : "text-[#0E7A54]"}`}>{s.v}</div>
+                <div className="mt-3 whitespace-pre-line font-sans text-[10px] leading-[1.5] tracking-[0.2em] uppercase text-[#8E8E8E]">{s.k}</div>
               </div>
             ))}
           </div>
@@ -94,59 +91,59 @@ export default function ClinicVsHome() {
       </section>
 
       {/* ── COMPARISON TABLE ── */}
-      <section className="bg-[#EDEAE6] py-[clamp(72px,10vw,120px)] text-[#1A1714]">
+      <section className="border-t border-[rgba(20,20,20,0.10)] bg-white py-[clamp(72px,10vw,120px)] text-[#141414]">
         <div className={WRAP}>
           <Eyebrow num="01">Side by side</Eyebrow>
-          <h2 className="mb-8 mt-3.5 max-w-[18ch] font-serif italic font-normal text-[clamp(28px,3.4vw,44px)] text-[#1A1714]">The same treatment, two very different years.</h2>
-          <div className="overflow-hidden rounded-[14px] border border-[rgba(26,23,20,0.12)] bg-white">
-            <div className="hidden grid-cols-[1.1fr_1fr_1fr] border-b border-[rgba(26,23,20,0.12)] bg-[#F7F4F0] md:grid">
+          <h2 className="mb-8 mt-3.5 max-w-[18ch] font-sans font-light tracking-[-0.025em] text-[clamp(28px,3.4vw,44px)] text-[#141414]">The same treatment, two very different years.</h2>
+          <div className="overflow-hidden rounded-none border border-[rgba(20,20,20,0.10)] bg-white">
+            <div className="hidden grid-cols-[1.1fr_1fr_1fr] border-b border-[rgba(20,20,20,0.10)] bg-white md:grid">
               <div className="px-[26px] py-6" />
               <div className="px-[26px] py-6">
-                <div className="font-serif italic text-[24px] text-[#1A1714]">The Clinic</div>
-                <div className="mt-1.5 font-sans text-[10px] tracking-[0.16em] uppercase text-[#6B5A4A]">Per visit, booked</div>
+                <div className="font-sans font-light text-[24px] text-[#141414]">The Clinic</div>
+                <div className="mt-1.5 font-sans text-[10px] tracking-[0.16em] uppercase text-[#8E8E8E]">Per visit, booked</div>
               </div>
-              <div className="border-x border-[#1A1714] bg-[#1A1714] px-[26px] py-6">
-                <div className="font-serif italic text-[24px] text-[#2ED8A8]">The Face Introducer</div>
-                <div className="mt-1.5 font-sans text-[10px] tracking-[0.16em] uppercase text-[#F7F4F0]/55">At your sink, daily</div>
+              <div className="border-x border-[rgba(20,20,20,0.10)] bg-[#F4FBF8] px-[26px] py-6">
+                <div className="font-sans font-medium text-[24px] text-[#0E7A54]">The Face Introducer</div>
+                <div className="mt-1.5 font-sans text-[10px] tracking-[0.16em] uppercase text-[#8E8E8E]">At your sink, daily</div>
               </div>
             </div>
             {ROWS.map((r) => (
-              <div key={r.rl} className="grid grid-cols-1 border-t border-[rgba(26,23,20,0.12)] first:border-t-0 md:grid-cols-[1.1fr_1fr_1fr]">
-                <div className="bg-[#F7F4F0] px-[26px] py-4 font-sans text-[11px] tracking-[0.16em] uppercase text-[#6B5A4A] md:bg-transparent md:py-[22px]">{r.rl}</div>
-                <div className="px-[26px] py-3 text-[15px] leading-[1.4] text-[#888480] md:py-[22px]">
-                  <span className="mb-1 block font-sans text-[9px] tracking-[0.2em] uppercase text-[#6B5A4A] md:hidden">Clinic</span>{r.clinic}
+              <div key={r.rl} className="grid grid-cols-1 border-t border-[rgba(20,20,20,0.10)] first:border-t-0 md:grid-cols-[1.1fr_1fr_1fr]">
+                <div className="bg-white px-[26px] py-4 font-sans text-[11px] tracking-[0.16em] uppercase text-[#8E8E8E] md:bg-transparent md:py-[22px]">{r.rl}</div>
+                <div className="px-[26px] py-3 text-[15px] leading-[1.4] text-[#5A5A5A] md:py-[22px]">
+                  <span className="mb-1 block font-sans text-[9px] tracking-[0.2em] uppercase text-[#8E8E8E] md:hidden">Clinic</span>{r.clinic}
                 </div>
-                <div className="border-[rgba(46,216,168,0.22)] bg-[rgba(46,216,168,0.06)] px-[26px] py-3 text-[15px] leading-[1.4] md:border-x md:py-[22px]">
-                  <span className="mb-1 block font-sans text-[9px] tracking-[0.2em] uppercase text-[#6B5A4A] md:hidden">Face Introducer</span>
-                  <span className={r.win ? "font-medium text-[#157A5C]" : "text-[#1A1714]"}>{r.zp}</span>
+                <div className="border-[rgba(20,20,20,0.10)] bg-[#F4FBF8] px-[26px] py-3 text-[15px] leading-[1.4] md:border-x md:py-[22px]">
+                  <span className="mb-1 block font-sans text-[9px] tracking-[0.2em] uppercase text-[#8E8E8E] md:hidden">Face Introducer</span>
+                  <span className={r.win ? "font-medium text-[#0E7A54]" : "text-[#141414]"}>{r.zp}</span>
                 </div>
               </div>
             ))}
           </div>
-          <p className="mt-[30px] max-w-[640px] text-xs leading-[1.6] text-[#1A1714]/50">
+          <p className="mt-[30px] max-w-[640px] text-xs leading-[1.6] text-[#141414]/50">
             Clinic figure is an average of European microcurrent / LED facial pricing at roughly €120 a session, twelve sessions a year. Your local pricing will vary. The Face Introducer supports the skin's own processes; it is not a medical device and does not replace professional care.
           </p>
         </div>
       </section>
 
       {/* ── FAIR TO THE CLINIC ── */}
-      <section className="bg-[#070A0E] py-[clamp(72px,10vw,120px)] text-[#F7F4F0]">
+      <section className="border-t border-[rgba(20,20,20,0.10)] bg-white py-[clamp(72px,10vw,120px)] text-[#141414]">
         <div className={WRAP}>
           <Eyebrow num="02" tone="dark">The honest part</Eyebrow>
-          <h2 className="mb-5 mt-3.5 max-w-[20ch] font-serif italic font-normal text-[clamp(28px,3.4vw,44px)] text-[#F7F4F0]">We are not telling you to cancel everything.</h2>
-          <p className="mb-[38px] max-w-[600px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">
+          <h2 className="mb-5 mt-3.5 max-w-[20ch] font-sans font-light tracking-[-0.025em] text-[clamp(28px,3.4vw,44px)] text-[#141414]">We are not telling you to cancel everything.</h2>
+          <p className="mb-[38px] max-w-[600px] text-[17px] leading-[1.75] text-[#5A5A5A]">
             A device that replaced expert hands would be lying to you. Here is the real division of labour — what the room still does better, and what daily practice does that no appointment can.
           </p>
-          <div className="grid grid-cols-1 gap-px border border-[rgba(247,244,240,0.10)] bg-[rgba(247,244,240,0.10)] md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-px border border-[rgba(20,20,20,0.10)] bg-[rgba(20,20,20,0.10)] md:grid-cols-2">
             {[
-              { h: "What the clinic still wins", items: CLINIC_WINS, dot: "bg-[#C6A07C]", head: "text-[#C6A07C]" },
-              { h: "What daily practice wins", items: HOME_WINS, dot: "bg-[#2ED8A8]", head: "text-[#2ED8A8]" },
+              { h: "What the clinic still wins", items: CLINIC_WINS, dot: "bg-[#8E8E8E]", head: "text-[#8E8E8E]" },
+              { h: "What daily practice wins", items: HOME_WINS, dot: "bg-[#2ED8A8]", head: "text-[#0E7A54]" },
             ].map((col) => (
-              <div key={col.h} className="bg-[#070A0E] px-9 py-10">
-                <h3 className={`mb-5 font-serif italic font-normal text-[23px] ${col.head}`}>{col.h}</h3>
+              <div key={col.h} className="bg-white px-9 py-10">
+                <h3 className={`mb-5 font-sans font-light tracking-[-0.01em] text-[23px] ${col.head}`}>{col.h}</h3>
                 <ul className="m-0 list-none p-0">
                   {col.items.map((it) => (
-                    <li key={it} className="flex gap-3.5 border-b border-[rgba(247,244,240,0.10)] py-3 text-[14px] leading-[1.6] text-[#F7F4F0]/70 last:border-b-0">
+                    <li key={it} className="flex gap-3.5 border-b border-[rgba(20,20,20,0.10)] py-3 text-[14px] leading-[1.6] text-[#5A5A5A] last:border-b-0">
                       <span className={`mt-2 h-1.5 w-1.5 flex-none rounded-full ${col.dot}`} />{it}
                     </li>
                   ))}
@@ -154,7 +151,7 @@ export default function ClinicVsHome() {
               </div>
             ))}
           </div>
-          <p className="mt-[30px] max-w-[640px] text-xs leading-[1.6] text-[#F7F4F0]/40">
+          <p className="mt-[30px] max-w-[640px] text-xs leading-[1.6] text-[#8E8E8E]">
             Many of our members keep an occasional clinic visit and run the daily ritual between them. The instrument is built to complement professional care, not to argue with it.
           </p>
         </div>
@@ -165,31 +162,31 @@ export default function ClinicVsHome() {
         <img src={edWalkStone} alt="Calm movement in warm light" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,10,14,0.7)_0%,rgba(7,10,14,0.32)_50%,rgba(7,10,14,0.55)_100%)]" />
         <div className={`relative z-[2] ${WRAP}`}>
-          <p className="max-w-[16ch] font-serif italic text-[clamp(26px,3.6vw,46px)] leading-[1.16] text-[#F7F4F0]">Built for the woman who left the clinic but kept the standard.</p>
+          <p className="max-w-[16ch] font-sans font-light tracking-[-0.025em] text-[clamp(26px,3.6vw,46px)] leading-[1.16] text-[#F7F4F0]">Built for the woman who left the clinic but kept the standard.</p>
           <div className="mt-[22px] font-sans text-[10px] tracking-[0.3em] uppercase text-[#F7F4F0]/55">The Method · Clinic precision, daily ritual</div>
         </div>
       </section>
 
       {/* ── THE MATH ── */}
-      <section className="bg-[#F7F4F0] py-[clamp(72px,10vw,120px)] text-[#1A1714]">
+      <section className="border-t border-[rgba(20,20,20,0.10)] bg-white py-[clamp(72px,10vw,120px)] text-[#141414]">
         <div className={WRAP}>
           <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-16">
             <div>
               <Eyebrow num="03">The maths</Eyebrow>
-              <h2 className="my-5 font-serif italic font-normal text-[clamp(28px,3.4vw,44px)] text-[#1A1714]">The instrument pays for itself before the first month is out.</h2>
-              <p className="text-[17px] leading-[1.75] text-[#1A1714]/[0.66]">One clinic session is more than the whole instrument. Run the numbers across a single year and the comparison stops being close.</p>
-              <p className="mt-[18px] text-[17px] leading-[1.75] text-[#1A1714]/[0.66]">After that, the clinic keeps billing. The Face Introducer keeps working, for nothing.</p>
+              <h2 className="my-5 font-sans font-light tracking-[-0.025em] text-[clamp(28px,3.4vw,44px)] text-[#141414]">The instrument pays for itself before the first month is out.</h2>
+              <p className="text-[17px] leading-[1.75] text-[#141414]/[0.66]">One clinic session is more than the whole instrument. Run the numbers across a single year and the comparison stops being close.</p>
+              <p className="mt-[18px] text-[17px] leading-[1.75] text-[#141414]/[0.66]">After that, the clinic keeps billing. The Face Introducer keeps working, for nothing.</p>
             </div>
-            <div className="overflow-hidden rounded-[14px] border border-[rgba(26,23,20,0.12)] bg-white shadow-[0_18px_50px_rgba(26,23,20,0.08)]">
+            <div className="overflow-hidden rounded-none border border-[rgba(20,20,20,0.10)] bg-white shadow-[0_18px_50px_rgba(20,20,20,0.06)]">
               {MATH.map((m) => (
-                <div key={m.l} className="flex items-baseline justify-between border-b border-[rgba(26,23,20,0.12)] px-7 py-5 last:border-b-0">
-                  <span className="text-[14px] text-[#1A1714]">{m.l}<small className="mt-0.5 block font-sans text-[10px] tracking-[0.14em] uppercase text-[#6B5A4A]">{m.sub}</small></span>
-                  <span className={`font-serif italic text-[26px] ${m.clinic ? "text-[#6B5A4A]" : "text-[#1A1714]"}`}>{m.v}</span>
+                <div key={m.l} className="flex items-baseline justify-between border-b border-[rgba(20,20,20,0.10)] px-7 py-5 last:border-b-0">
+                  <span className="text-[14px] text-[#141414]">{m.l}<small className="mt-0.5 block font-sans text-[10px] tracking-[0.14em] uppercase text-[#8E8E8E]">{m.sub}</small></span>
+                  <span className={`font-sans font-light text-[26px] ${m.clinic ? "text-[#5A5A5A]" : "text-[#141414]"}`}>{m.v}</span>
                 </div>
               ))}
-              <div className="flex items-baseline justify-between bg-[#1A1714] px-7 py-5">
-                <span className="text-[14px] text-[#F7F4F0]">Year-one difference<small className="mt-0.5 block font-sans text-[10px] tracking-[0.14em] uppercase text-[#F7F4F0]/50">in your favour</small></span>
-                <span className="font-serif italic text-[34px] text-[#2ED8A8]">~€1,352</span>
+              <div className="flex items-baseline justify-between bg-[#F4FBF8] px-7 py-5">
+                <span className="text-[14px] text-[#141414]">Year-one difference<small className="mt-0.5 block font-sans text-[10px] tracking-[0.14em] uppercase text-[#8E8E8E]">in your favour</small></span>
+                <span className="font-sans font-light text-[34px] text-[#0E7A54]">~€1,352</span>
               </div>
             </div>
           </div>
@@ -197,13 +194,13 @@ export default function ClinicVsHome() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-[#1A1714] py-[clamp(72px,10vw,120px)] text-[#F7F4F0]">
+      <section className="border-t border-[rgba(20,20,20,0.10)] bg-white py-[clamp(72px,10vw,120px)] text-[#141414]">
         <div className={`${WRAP} mx-auto max-w-[760px] text-center`}>
-          <p className="inline-flex items-center justify-center gap-3.5 font-sans text-[11px] tracking-[0.28em] uppercase text-[#2ED8A8]">
+          <p className="inline-flex items-center justify-center gap-3.5 font-sans text-[11px] tracking-[0.28em] uppercase text-[#0E7A54]">
             <span className="tabular-nums opacity-55">( 04 )</span><span className="inline-block h-px w-[26px] bg-current opacity-40" /> Bring it home
           </p>
-          <h2 className="my-5 font-serif italic font-normal text-[clamp(28px,3.4vw,44px)] text-[#F7F4F0]">The mechanism is the same. The maths is yours.</h2>
-          <p className="mx-auto mb-[34px] max-w-[560px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">
+          <h2 className="my-5 font-sans font-light tracking-[-0.025em] text-[clamp(28px,3.4vw,44px)] text-[#141414]">The mechanism is the same. The maths is yours.</h2>
+          <p className="mx-auto mb-[34px] max-w-[560px] text-[17px] leading-[1.75] text-[#5A5A5A]">
             Three clinic modalities, a twelve-minute ritual, and a 30-day money-back guarantee. If it does not earn its place in a month, send it back for a full refund.
           </p>
           <div className="flex flex-wrap justify-center gap-3.5">

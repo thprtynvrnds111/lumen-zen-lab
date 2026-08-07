@@ -114,7 +114,7 @@ export default function Pick() {
       <Helmet>
         <title>{COPY.title}</title>
         <meta name="robots" content="noindex, nofollow" />
-        <meta name="theme-color" content="#1A1714" />
+        <meta name="theme-color" content="#ffffff" />
         <link rel="preload" as="font" type="font/woff2" href="/fonts/poppins-400.woff2" crossOrigin="anonymous" />
         <link rel="preload" as="font" type="font/woff2" href="/fonts/poppins-600.woff2" crossOrigin="anonymous" />
       </Helmet>
@@ -128,7 +128,7 @@ export default function Pick() {
 
         <header className="zk-header">
           <div className="zk-brand">
-            <FlowerMark size={22} stroke="#C6A07C" strokeWidth={2} />
+            <FlowerMark size={22} stroke="#0E7A54" strokeWidth={2} />
             <p className="zk-eyebrow">{COPY.eyebrow}</p>
           </div>
           <div className="zk-headline-wrap">
@@ -179,7 +179,7 @@ export default function Pick() {
                   <span className="zk-card-float">
                     <span className="zk-card-inner">
                       <span className="zk-face zk-face--back">
-                        <FlowerMark size={72} stroke="rgba(198,160,124,0.85)" />
+                        <FlowerMark size={72} stroke="rgba(14,122,84,0.75)" />
                         <span className="zk-face-wordmark">ZP</span>
                       </span>
                       <span className="zk-face zk-face--front">
@@ -261,18 +261,18 @@ const css = `
 
 .zk-page {
   --teal: #2ED8A8;
-  --dark: #1A1714;
-  --gold: #C6A07C;
-  --terra: #9B5A2E;
-  --cream: #F7F4F0;
+  --dark: #141414;
+  --emerald: #0E7A54;
+  --muted: #8E8E8E;
+  --line: rgba(20,20,20,0.12);
   position: relative;
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  background: var(--dark);
-  color: var(--cream);
-  font-family: 'Poppins', sans-serif;
+  background: #ffffff;
+  color: var(--dark);
+  font-family: 'Switzer', 'Poppins', sans-serif;
   overflow-x: clip;
   touch-action: manipulation;
   -webkit-font-smoothing: antialiased;
@@ -282,10 +282,10 @@ const css = `
 .zk-vignette {
   position: fixed; inset: 0; pointer-events: none; z-index: 1;
   background:
-    radial-gradient(120% 90% at 50% 38%, transparent 40%, rgba(0,0,0,0.42) 100%),
-    radial-gradient(80% 50% at 50% 30%, rgba(198,160,124,0.06) 0%, transparent 70%);
+    radial-gradient(80% 50% at 50% 30%, rgba(46,216,168,0.06) 0%, transparent 70%);
 }
 .zk-grain {
+  display: none;
   position: fixed; inset: 0; pointer-events: none; z-index: 2; opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
@@ -318,22 +318,21 @@ const css = `
 }
 .zk-eyebrow {
   margin: 0;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
+  font-family: 'Switzer', 'DM Sans', sans-serif;
+  font-weight: 500;
   font-size: 12px;
   letter-spacing: 0.42em;
-  color: var(--gold);
+  color: var(--muted);
 }
 .zk-headline-wrap { position: relative; }
 .zk-headline {
   margin: 0;
-  font-family: 'Lora', serif;
-  font-style: italic;
-  font-weight: 500;
+  font-family: 'Switzer', 'Poppins', sans-serif;
+  font-weight: 300;
   font-size: clamp(30px, 8.5vw, 40px);
-  line-height: 1.18;
-  letter-spacing: 0.01em;
-  color: var(--cream);
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  color: var(--dark);
   transition: opacity 500ms cubic-bezier(.4,0,.2,1), transform 500ms cubic-bezier(.4,0,.2,1);
 }
 .zk-headline--after {
@@ -347,7 +346,7 @@ const css = `
   font-size: 13px;
   font-weight: 400;
   line-height: 1.6;
-  color: rgba(247,244,240,0.55);
+  color: #5A5A5A;
   transition: opacity 400ms cubic-bezier(.4,0,.2,1);
 }
 .zk-sub.is-out { opacity: 0; pointer-events: none; }
@@ -361,7 +360,7 @@ const css = `
   pointer-events: none;
   transition: opacity 700ms cubic-bezier(.4,0,.2,1);
 }
-.zk-page.is-focus::after { opacity: 0.3; }
+.zk-page.is-focus::after { opacity: 0.12; }
 
 /* ── stage / cards ──────────────────────────────────────────── */
 .zk-stage {
@@ -385,7 +384,7 @@ const css = `
 }
 .zk-card:disabled { cursor: default; }
 .zk-card:focus-visible { outline: none; }
-.zk-card:focus-visible .zk-card-inner { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 12px; }
+.zk-card:focus-visible .zk-card-inner { outline: 2px solid var(--emerald); outline-offset: 4px; border-radius: 12px; }
 
 /* the held hand — tight overlap, center card proud */
 .zk-card--0 { transform: translate(-112%, -44%) rotate(-7deg); z-index: 1; }
@@ -412,7 +411,7 @@ const css = `
 .zk-face--back::after {
   content: '';
   position: absolute; inset: -20%;
-  background: linear-gradient(105deg, transparent 42%, rgba(251,249,246,0.55) 50%, rgba(198,160,124,0.25) 54%, transparent 62%);
+  background: linear-gradient(105deg, transparent 42%, rgba(255,255,255,0.7) 50%, rgba(14,122,84,0.12) 54%, transparent 62%);
   transform: translateX(-130%);
   animation: zk-glint 5200ms cubic-bezier(.4,0,.2,1) 2400ms infinite;
   pointer-events: none;
@@ -471,13 +470,13 @@ const css = `
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   border-radius: 12px;
-  background: linear-gradient(162deg, #FBF9F6 0%, var(--cream) 46%, #EFE8DE 100%);
-  border: 1px solid rgba(198,160,124,0.85);
+  background: #ffffff;
+  border: 1px solid var(--line);
 }
 .zk-face::before {
   content: '';
   position: absolute; inset: 6px;
-  border: 1px solid rgba(198,160,124,0.4);
+  border: 1px solid rgba(20,20,20,0.10);
   border-radius: 7px;
   pointer-events: none;
 }
@@ -487,28 +486,27 @@ const css = `
 .zk-face--front::before { border-color: rgba(46,216,168,0.35); }
 .zk-face-wordmark {
   position: absolute; bottom: 12px;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
+  font-family: 'Switzer', 'DM Sans', sans-serif;
+  font-weight: 500;
   font-size: 10px;
   letter-spacing: 0.3em;
-  color: var(--gold);
+  color: var(--muted);
 }
 /* the rate, face up — the card's whole message */
 .zk-face-percent {
-  font-family: 'Lora', serif;
-  font-style: italic;
-  font-weight: 500;
+  font-family: 'Switzer', 'Poppins', sans-serif;
+  font-weight: 300;
   font-size: clamp(30px, 8vw, 40px);
-  letter-spacing: 0.01em;
+  letter-spacing: -0.02em;
   color: var(--dark);
 }
 .zk-face-tagline {
   position: absolute; bottom: 12px;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
+  font-family: 'Switzer', 'DM Sans', sans-serif;
+  font-weight: 500;
   font-size: 8px;
   letter-spacing: 0.22em;
-  color: var(--terra);
+  color: var(--emerald);
   white-space: nowrap;
 }
 
@@ -537,16 +535,16 @@ const css = `
   text-align: center;
   font-size: 12px;
   letter-spacing: 0.06em;
-  color: rgba(46,216,168,0.75);
+  color: var(--emerald);
   animation: zk-fade-only 500ms cubic-bezier(0,0,.2,1) 100ms both;
 }
 .zk-prize-row {
   display: flex; align-items: center; gap: 16px;
   padding: 16px;
-  border: 1px solid rgba(198,160,124,0.35);
-  border-left: 2px solid var(--terra);
-  border-radius: 4px;
-  background: rgba(247,244,240,0.03);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--emerald);
+  border-radius: 0;
+  background: #ffffff;
   opacity: 0;
   animation: zk-prize-in ${TIMING.prizeDur}ms cubic-bezier(0,0,.2,1) both;
 }
@@ -555,30 +553,29 @@ const css = `
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 .zk-prize-percent {
-  font-family: 'Lora', serif;
-  font-style: italic;
-  font-weight: 500;
+  font-family: 'Switzer', 'Poppins', sans-serif;
+  font-weight: 300;
   font-size: 32px;
-  color: var(--teal);
+  color: var(--emerald);
   animation: zk-ignite 900ms cubic-bezier(.4,0,.2,1) both;
   animation-delay: inherit;
 }
 @keyframes zk-ignite {
-  0%   { color: var(--gold); }
-  55%  { color: var(--gold); }
-  100% { color: var(--teal); }
+  0%   { color: var(--muted); }
+  55%  { color: var(--muted); }
+  100% { color: var(--emerald); }
 }
 .zk-prize-body { display: flex; flex-direction: column; gap: 2px; text-align: left; }
 .zk-prize-title {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 14px;
   line-height: 1.45;
-  color: var(--cream);
+  color: var(--dark);
 }
 .zk-prize-detail {
   font-size: 11px;
   line-height: 1.45;
-  color: rgba(247,244,240,0.5);
+  color: #5A5A5A;
 }
 
 /* ── CTA ────────────────────────────────────────────────────── */
@@ -604,10 +601,10 @@ const css = `
 .zk-cta {
   display: block;
   padding: 16px 24px;
-  border-radius: 4px;
+  border-radius: 999px;
   background: var(--teal);
   color: var(--dark);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Switzer', 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 15px;
   letter-spacing: 0.02em;
@@ -615,19 +612,19 @@ const css = `
   transition: transform 150ms cubic-bezier(.4,0,.2,1), background-color 150ms;
 }
 .zk-cta:active { transform: scale(0.98); }
-.zk-cta:hover { background-color: #29C99B; }
-.zk-cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.zk-cta:hover { background-color: #1BAF86; }
+.zk-cta:focus-visible { outline: 2px solid var(--emerald); outline-offset: 3px; }
 .zk-cta-note {
   margin: 12px 0 0;
   font-size: 11px;
-  color: rgba(247,244,240,0.45);
+  color: var(--muted);
 }
 .zk-cta-tagline {
   margin: 16px 0 0;
-  font-family: 'Lora', serif;
-  font-style: italic;
+  font-family: 'Switzer', 'Poppins', sans-serif;
+  font-weight: 300;
   font-size: 13px;
-  color: rgba(198,160,124,0.8);
+  color: var(--muted);
 }
 
 /* ── no-JS fallback ─────────────────────────────────────────── */
@@ -643,7 +640,7 @@ const css = `
   margin: 0;
   font-size: 13px;
   line-height: 1.6;
-  color: rgba(247,244,240,0.55);
+  color: #5A5A5A;
 }
 
 /* ── footer ─────────────────────────────────────────────────── */
@@ -656,7 +653,7 @@ const css = `
   margin: 0;
   font-size: 12px;
   letter-spacing: 0.1em;
-  color: rgba(198,160,124,0.6);
+  color: var(--muted);
   transition: opacity 400ms;
 }
 .zk-foot-line.is-out { opacity: 0; pointer-events: none; }

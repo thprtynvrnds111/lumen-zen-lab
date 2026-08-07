@@ -27,7 +27,7 @@ function Star() {
     <svg width="14" height="14" viewBox="0 0 20 20" className="block shrink-0" aria-hidden="true">
       <path
         d="M10 1.5l2.6 5.3 5.9.86-4.25 4.14 1 5.86L10 15.9l-5.25 2.76 1-5.86L1.5 7.66l5.9-.86z"
-        fill="#157A5C"
+        fill="#0E7A54"
       />
     </svg>
   );
@@ -50,12 +50,12 @@ export function TrustpilotProof({
       href={TRUSTPILOT.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center gap-2 font-sans ${size} text-[#1A1714] transition-colors hover:text-[#157A5C] ${className}`}
+      className={`inline-flex items-center gap-2 font-sans ${size} text-[#141414] transition-colors hover:text-[#0E7A54] ${className}`}
     >
       <Star />
       <span>
         <b className="font-semibold tabular-nums">{TRUSTPILOT.score}</b> on Trustpilot
-        <span className="text-[#1A1714]/55"> · {TRUSTPILOT.reviewCount} reviews</span>
+        <span className="text-[#5A5A5A]"> · {TRUSTPILOT.reviewCount} reviews</span>
       </span>
     </a>
   );

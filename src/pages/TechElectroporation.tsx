@@ -4,12 +4,12 @@ import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 
-const accent = "#c4714a";
-const bg = "#1a1714";
-const surface = "#242019";
-const textPrimary = "#f0ebe3";
-const textMuted = "#8a7f74";
-const BORDER = "rgba(196,113,74,0.20)";
+const accent = "#0E7A54";
+const bg = "#FFFFFF";
+const surface = "#FFFFFF";
+const textPrimary = "#141414";
+const textMuted = "#5A5A5A";
+const BORDER = "rgba(20,20,20,0.10)";
 
 const faqJsonLd = {
  "@context": "https://schema.org",
@@ -74,10 +74,10 @@ export default function TechElectroporation() {
     {/* Hero */}
     <section className="px-6 md:px-12 lg:px-20 py-24 md:py-40 text-center" style={{ backgroundColor: bg }}>
      <div className="max-w-2xl mx-auto">
-      <p className="text-[10px] tracking-[0.35em] uppercase mb-6 font-semibold" style={{ color: accent }}>
+      <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-6" style={{ color: "#8E8E8E" }}>
        Technology · Mechanism
       </p>
-      <h1 className="font-serif text-3xl md:text-5xl font-medium leading-tight mb-6" style={{ color: textPrimary }}>
+      <h1 className="font-sans font-light tracking-[-0.025em] text-3xl md:text-5xl leading-tight mb-6" style={{ color: textPrimary }}>
        Electroporation
       </h1>
       <p className="text-base md:text-lg leading-relaxed" style={{ color: textMuted }}>
@@ -87,9 +87,9 @@ export default function TechElectroporation() {
     </section>
 
     {/* Mechanism */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28" style={{ backgroundColor: surface }}>
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-28" style={{ backgroundColor: surface }}>
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: textPrimary }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: textPrimary }}>
        The mechanism
       </h2>
       <div className="space-y-6 text-sm leading-relaxed" style={{ color: textMuted }}>
@@ -113,9 +113,9 @@ export default function TechElectroporation() {
     </section>
 
     {/* vs Iontophoresis */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28">
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-28">
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: textPrimary }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: textPrimary }}>
        Electroporation vs iontophoresis
       </h2>
       <div className="overflow-x-auto mb-8">
@@ -123,7 +123,7 @@ export default function TechElectroporation() {
         <thead>
          <tr style={{ borderBottom: `1px solid ${BORDER}` }}>
           <th className="text-left py-3 pr-6 font-medium text-xs tracking-widest uppercase" style={{ color: textMuted }}>Property</th>
-          <th className="text-center py-3 px-4 font-medium text-xs tracking-widest uppercase" style={{ color: accent }}>Electroporation</th>
+          <th className="text-center py-3 px-4 font-medium text-xs tracking-widest uppercase" style={{ color: accent, backgroundColor: "#F4FBF8" }}>Electroporation</th>
           <th className="text-center py-3 pl-4 font-medium text-xs tracking-widest uppercase" style={{ color: textMuted }}>Iontophoresis</th>
          </tr>
         </thead>
@@ -136,9 +136,9 @@ export default function TechElectroporation() {
           ["Serum types", "HA, peptides, vitamin C, niacinamide", "Ionized actives only"],
           ["Sensation", "Brief surface tingle", "Faint tingle from current"],
          ].map(([prop, electro, iono], i) => (
-          <tr key={i} style={{ borderBottom: `1px solid ${BORDER}`, backgroundColor: i % 2 === 0 ? "rgba(196,113,74,0.04)" : "transparent" }}>
+          <tr key={i} style={{ borderBottom: `1px solid ${BORDER}`, backgroundColor: "transparent" }}>
            <td className="py-4 pr-6 text-xs tracking-wide font-medium" style={{ color: textMuted }}>{prop}</td>
-           <td className="py-4 px-4 text-center text-sm" style={{ color: textPrimary }}>{electro}</td>
+           <td className="py-4 px-4 text-center text-sm" style={{ color: textPrimary, backgroundColor: "#F4FBF8" }}>{electro}</td>
            <td className="py-4 pl-4 text-center text-sm" style={{ color: textMuted }}>{iono}</td>
           </tr>
          ))}
@@ -152,9 +152,9 @@ export default function TechElectroporation() {
     </section>
 
     {/* Protocol */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28" style={{ backgroundColor: surface }}>
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-28" style={{ backgroundColor: surface }}>
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: textPrimary }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: textPrimary }}>
        Protocol for home electroporation
       </h2>
       <div className="space-y-6">
@@ -165,7 +165,7 @@ export default function TechElectroporation() {
         { step: "04", title: "Do not rinse", body: "After the session, do not rinse the face. The serums that entered the tissue should remain. A light moisturiser on top is acceptable, it will not displace what has already penetrated." },
        ].map(({ step, title, body }) => (
         <div key={step} className="flex gap-6" style={{ borderBottom: `1px solid ${BORDER}`, paddingBottom: "1.5rem" }}>
-         <span className="font-serif text-2xl font-medium shrink-0 w-8" style={{ color: accent }}>{step}</span>
+         <span className="font-sans font-light text-2xl shrink-0 w-8" style={{ color: accent }}>{step}</span>
          <div>
           <h3 className="font-medium text-sm tracking-wide mb-2" style={{ color: textPrimary }}>{title}</h3>
           <p className="text-sm leading-relaxed" style={{ color: textMuted }}>{body}</p>
@@ -177,9 +177,9 @@ export default function TechElectroporation() {
     </section>
 
     {/* FAQ */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28">
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-28">
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: textPrimary }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: textPrimary }}>
        Common questions
       </h2>
       <div className="space-y-8">
@@ -194,12 +194,12 @@ export default function TechElectroporation() {
     </section>
 
     {/* CTA */}
-    <section className="px-6 md:px-12 lg:px-20 py-20 text-center" style={{ backgroundColor: surface }}>
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-20 text-center" style={{ backgroundColor: surface }}>
      <div className="max-w-xl mx-auto">
-      <p className="text-[10px] tracking-[0.35em] uppercase mb-4 font-semibold" style={{ color: accent }}>
+      <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-4" style={{ color: accent }}>
        Frequency Wand · €147
       </p>
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-4" style={{ color: textPrimary }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-4" style={{ color: textPrimary }}>
        Electroporation in Pore and Acne modes.
       </h2>
       <p className="text-sm leading-relaxed mb-8" style={{ color: textMuted }}>
@@ -208,15 +208,13 @@ export default function TechElectroporation() {
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
        <Link
         to="/product/color-light-import-micro-current-vibration-massager"
-        className="inline-block px-8 py-4 text-sm font-medium tracking-widest uppercase"
-        style={{ backgroundColor: accent, color: bg }}
+        className="inline-block rounded-full bg-[#2ED8A8] px-8 py-4 text-sm font-medium tracking-widest uppercase text-[#141414] transition-colors hover:bg-[#1BAF86]"
        >
         Order the Frequency Wand
        </Link>
        <Link
         to="/technology/iontophoresis"
-        className="inline-block px-8 py-4 text-sm font-medium tracking-widest uppercase border"
-        style={{ borderColor: accent, color: accent }}
+        className="inline-block rounded-full border border-[rgba(20,20,20,0.22)] px-8 py-4 text-sm font-medium tracking-widest uppercase text-[#141414] transition-colors hover:border-[#0E7A54] hover:text-[#0E7A54]"
        >
         Read: Iontophoresis
        </Link>

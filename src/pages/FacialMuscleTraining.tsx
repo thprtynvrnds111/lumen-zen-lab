@@ -4,12 +4,12 @@ import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 
-const accent = "#c4714a";
-const bg = "#1a1714";
-const surface = "#242019";
-const textPrimary = "#f0ebe3";
-const textMuted = "#8a7f74";
-const BORDER = "rgba(196,113,74,0.20)";
+const accent = "#0E7A54";
+const bg = "#FFFFFF";
+const surface = "#FFFFFF";
+const textPrimary = "#141414";
+const textMuted = "#5A5A5A";
+const BORDER = "rgba(20,20,20,0.10)";
 
 const faqJsonLd = {
  "@context": "https://schema.org",
@@ -83,10 +83,10 @@ export default function FacialMuscleTraining() {
     {/* Hero */}
     <section className="px-6 md:px-12 lg:px-20 py-24 md:py-40 text-center" style={{ backgroundColor: bg }}>
      <div className="max-w-2xl mx-auto">
-      <p className="text-[10px] tracking-[0.35em] uppercase mb-6 font-semibold" style={{ color: accent }}>
+      <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-6" style={{ color: "#8E8E8E" }}>
        EMS · Facial Anatomy · Training Protocol
       </p>
-      <h1 className="font-serif text-3xl md:text-5xl font-medium leading-tight mb-6" style={{ color: textPrimary }}>
+      <h1 className="font-sans font-light tracking-[-0.025em] text-3xl md:text-5xl leading-tight mb-6" style={{ color: textPrimary }}>
        Your face has 43 muscles. Most people never train them.
       </h1>
       <p className="text-base md:text-lg leading-relaxed" style={{ color: textMuted }}>
@@ -96,9 +96,9 @@ export default function FacialMuscleTraining() {
     </section>
 
     {/* Anatomy */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28" style={{ backgroundColor: surface }}>
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-28" style={{ backgroundColor: surface }}>
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: textPrimary }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: textPrimary }}>
        The anatomy of facial structure
       </h2>
       <p className="text-sm leading-relaxed mb-8" style={{ color: textMuted }}>
@@ -115,7 +115,7 @@ export default function FacialMuscleTraining() {
         </thead>
         <tbody>
          {muscleGroups.map((m, i) => (
-          <tr key={i} style={{ borderBottom: `1px solid ${BORDER}`, backgroundColor: i % 2 === 0 ? "rgba(196,113,74,0.04)" : "transparent" }}>
+          <tr key={i} style={{ borderBottom: `1px solid ${BORDER}`, backgroundColor: "transparent" }}>
            <td className="py-4 pr-4 font-medium text-sm italic" style={{ color: textPrimary }}>{m.name}</td>
            <td className="py-4 pr-4 text-sm" style={{ color: textMuted }}>{m.location}</td>
            <td className="py-4 pr-4 text-sm" style={{ color: textMuted }}>{m.function}</td>
@@ -129,9 +129,9 @@ export default function FacialMuscleTraining() {
     </section>
 
     {/* EMS mechanism */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28">
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-28">
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: textPrimary }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: textPrimary }}>
        How EMS stimulates facial muscles
       </h2>
       <div className="space-y-6 text-sm leading-relaxed" style={{ color: textMuted }}>
@@ -155,9 +155,9 @@ export default function FacialMuscleTraining() {
     </section>
 
     {/* EMS vs microcurrent */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28" style={{ backgroundColor: surface }}>
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-28" style={{ backgroundColor: surface }}>
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: textPrimary }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: textPrimary }}>
        EMS vs microcurrent, different mechanisms, different results
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -191,9 +191,9 @@ export default function FacialMuscleTraining() {
     </section>
 
     {/* Training protocol */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28">
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-28">
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-4" style={{ color: textPrimary }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-4" style={{ color: textPrimary }}>
        The progressive training protocol
       </h2>
       <p className="text-sm leading-relaxed mb-10" style={{ color: textMuted }}>
@@ -219,9 +219,9 @@ export default function FacialMuscleTraining() {
     </section>
 
     {/* FAQ */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28" style={{ backgroundColor: surface }}>
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-28" style={{ backgroundColor: surface }}>
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: textPrimary }}>Common questions</h2>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: textPrimary }}>Common questions</h2>
       <div className="space-y-8">
        {faqJsonLd.mainEntity.map((item, i) => (
         <div key={i} style={{ borderBottom: `1px solid ${BORDER}`, paddingBottom: "1.5rem" }}>
@@ -234,12 +234,12 @@ export default function FacialMuscleTraining() {
     </section>
 
     {/* CTA */}
-    <section className="px-6 md:px-12 lg:px-20 py-20 text-center" style={{ backgroundColor: bg }}>
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-20 text-center" style={{ backgroundColor: bg }}>
      <div className="max-w-xl mx-auto">
-      <p className="text-[10px] tracking-[0.35em] uppercase mb-4 font-semibold" style={{ color: accent }}>
+      <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-4" style={{ color: accent }}>
        Sculpt Wand · €75
       </p>
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-4" style={{ color: textPrimary }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-4" style={{ color: textPrimary }}>
        EMS at 0.4–5.5W. Variable. Progressive.
       </h2>
       <p className="text-sm leading-relaxed mb-8" style={{ color: textMuted }}>
@@ -248,15 +248,13 @@ export default function FacialMuscleTraining() {
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
        <Link
         to="/product/facial-beauty-tools-and-ems-beauty-equipment"
-        className="inline-block px-8 py-4 text-sm font-medium tracking-widest uppercase"
-        style={{ backgroundColor: accent, color: bg }}
+        className="inline-block rounded-full bg-[#2ED8A8] px-8 py-4 text-sm font-medium tracking-widest uppercase text-[#141414] transition-colors hover:bg-[#1BAF86]"
        >
         Order the Sculpt Wand
        </Link>
        <Link
         to="/product/color-light-import-micro-current-vibration-massager"
-        className="inline-block px-8 py-4 text-sm font-medium tracking-widest uppercase border"
-        style={{ borderColor: accent, color: accent }}
+        className="inline-block rounded-full border border-[rgba(20,20,20,0.22)] px-8 py-4 text-sm font-medium tracking-widest uppercase text-[#141414] transition-colors hover:border-[#0E7A54] hover:text-[#0E7A54]"
        >
         Frequency Wand, EMS + LED
        </Link>

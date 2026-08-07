@@ -70,18 +70,18 @@ export function ReceiptsSection() {
   const r = RECEIPTS[active];
 
   return (
-    <section className="bg-[#F7F4F0] py-[clamp(80px,11vw,128px)] text-[#1A1714]">
+    <section className="bg-white py-[clamp(80px,11vw,128px)] text-[#141414]">
       <div className="mx-auto max-w-[1180px] px-6 md:px-10">
-        <p className="inline-flex items-center gap-3.5 font-sans text-[11px] tracking-[0.28em] uppercase text-[#C6A07C]">
+        <p className="inline-flex items-center gap-3.5 font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]">
           <span className="inline-block h-px w-[26px] bg-current opacity-40" /> Receipts
         </p>
         <div className="mb-[42px] mt-[18px] flex flex-wrap items-end justify-between gap-6">
-          <h2 className="max-w-[16ch] font-serif italic font-normal text-[clamp(30px,4vw,52px)] leading-[1.05] text-[#1A1714]">
+          <h2 className="max-w-[16ch] font-sans font-light tracking-[-0.025em] text-[clamp(30px,4vw,52px)] leading-[1.05] text-[#141414]">
             Proof, not promises.
           </h2>
-          <p className="max-w-[32ch] text-right font-sans text-[12px] leading-[1.6] text-[#1A1714]/55">
+          <p className="max-w-[32ch] text-right font-sans text-[12px] leading-[1.6] text-[#8E8E8E]">
             No before-and-afters. No invented reviews. Specs, price math and cited
-            research — <b className="font-medium text-[#1A1714]">the receipts we can stand behind.</b>
+            research — <b className="font-medium text-[#141414]">the receipts we can stand behind.</b>
           </p>
         </div>
 
@@ -95,8 +95,8 @@ export function ReceiptsSection() {
               onClick={() => setActive(i)}
               className={`rounded-full px-5 py-2.5 font-sans text-[11px] font-semibold tracking-[0.16em] uppercase transition-colors ${
                 i === active
-                  ? "bg-[#1A1714] text-[#F7F4F0]"
-                  : "border border-[rgba(26,23,20,0.2)] text-[#1A1714]/70 hover:border-[#1A1714] hover:text-[#1A1714]"
+                  ? "bg-[#141414] text-white"
+                  : "border border-[rgba(20,20,20,0.22)] text-[#5A5A5A] hover:border-[#141414] hover:text-[#141414]"
               }`}
             >
               {it.tab}
@@ -105,37 +105,37 @@ export function ReceiptsSection() {
         </div>
 
         {/* Panel */}
-        <div className="border border-[rgba(26,23,20,0.12)] bg-white px-7 py-9 md:px-10 md:py-11">
-          <h3 className="max-w-[24ch] font-serif italic font-normal text-[clamp(22px,2.6vw,32px)] leading-[1.2] text-[#1A1714]">
+        <div className="border border-[rgba(20,20,20,0.10)] bg-white px-7 py-9 md:px-10 md:py-11">
+          <h3 className="max-w-[24ch] font-sans font-light tracking-[-0.02em] text-[clamp(22px,2.6vw,32px)] leading-[1.2] text-[#141414]">
             {r.headline}
           </h3>
 
-          <div className="mt-8 flex flex-wrap border-y border-[rgba(26,23,20,0.12)]">
+          <div className="mt-8 flex flex-wrap border-y border-[rgba(20,20,20,0.10)]">
             {r.stats.map((s, i) => (
               <div
                 key={s.l}
-                className={`min-w-[160px] flex-1 py-6 pr-6 ${i > 0 ? "border-l border-[rgba(26,23,20,0.12)] pl-6" : ""}`}
+                className={`min-w-[160px] flex-1 py-6 pr-6 ${i > 0 ? "border-l border-[rgba(20,20,20,0.10)] pl-6" : ""}`}
               >
-                <div className="font-sans text-[clamp(24px,2.4vw,34px)] font-medium leading-none tabular-nums tracking-[-0.01em] text-[#1A1714]">
+                <div className="font-sans text-[clamp(24px,2.4vw,34px)] font-medium leading-none tabular-nums tracking-[-0.01em] text-[#141414]">
                   {s.v}
                 </div>
-                <div className="mt-[9px] font-sans text-[10px] tracking-[0.2em] uppercase text-[#6B5A4A]">{s.l}</div>
+                <div className="mt-[9px] font-sans text-[10px] font-medium tracking-[0.2em] uppercase text-[#8E8E8E]">{s.l}</div>
               </div>
             ))}
           </div>
 
-          <p className="mt-7 max-w-[58ch] text-[14.5px] leading-[1.7] text-[#1A1714]/70">{r.receipt}</p>
+          <p className="mt-7 max-w-[58ch] text-[14.5px] leading-[1.7] text-[#5A5A5A]">{r.receipt}</p>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
             <Link
               to={r.to}
-              className="inline-flex items-center gap-1.5 font-sans text-[11px] tracking-[0.16em] uppercase text-[#157A5C] transition-colors hover:text-[#1BAF86]"
+              className="inline-flex items-center gap-1.5 font-sans text-[11px] tracking-[0.16em] uppercase text-[#0E7A54] transition-colors hover:text-[#1BAF86]"
             >
               See the instrument <span aria-hidden>→</span>
             </Link>
             <Link
               to="/journal"
-              className="inline-flex items-center gap-1.5 font-sans text-[11px] tracking-[0.16em] uppercase text-[#1A1714]/60 transition-colors hover:text-[#1A1714]"
+              className="inline-flex items-center gap-1.5 font-sans text-[11px] tracking-[0.16em] uppercase text-[#8E8E8E] transition-colors hover:text-[#141414]"
             >
               Read the citations — including what they don't show <span aria-hidden>→</span>
             </Link>

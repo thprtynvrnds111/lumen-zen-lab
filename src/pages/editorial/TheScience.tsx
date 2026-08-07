@@ -71,8 +71,8 @@ export default function TheScience() {
         ))}
       </section>
 
-      {/* PRODUCT FIGURE (clinical dark ground) */}
-      <section className="ed-sec ed-figure-dark" style={{ background: "var(--ed-near-black)", padding: "36px 24px" }}>
+      {/* PRODUCT FIGURE */}
+      <section className="ed-sec ed-figure-dark" style={{ background: "#FFFFFF", borderTop: "1px solid var(--ed-line)", padding: "36px 24px" }}>
         {/* IMAGE SLOT science-fig1 · 342×260 · Restoration Belt on dark surface, ONLY edge glow +
             side control unit visible (LED array faces inward — never an outward-facing panel) */}
         <EditorialImageSlot
@@ -83,14 +83,14 @@ export default function TheScience() {
           artDirection="Restoration Belt on dark surface; ONLY edge glow + side control unit visible; LED array faces inward — never an outward-facing panel; clinical-dark, teal edge light"
           className="science-fig"
         />
-        <p style={{ fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--ed-teal)", margin: "20px 0 10px" }}>
+        <p style={{ fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--ed-teal-deep)", margin: "20px 0 10px" }}>
           Fig. 1 · Restoration Belt
         </p>
-        <p style={{ fontSize: "14px", lineHeight: 1.65, color: "var(--ed-on-dark-dim)", margin: "0 0 18px" }}>
+        <p style={{ fontSize: "14px", lineHeight: 1.65, color: "var(--ed-grey)", margin: "0 0 18px" }}>
           The array faces inward. In use, only the edge glow and the side control unit are visible.
           630 to 660nm, calibrated to a twelve-minute session.
         </p>
-        <a className="soft-cta" style={{ color: "var(--ed-teal)" }} href={PDP}>Read about the instrument →</a>
+        <a className="soft-cta" style={{ color: "var(--ed-teal-deep)" }} href={PDP}>Read about the instrument →</a>
       </section>
 
       {/* EVIDENCE — the dose ceiling. More light is not more result. */}
@@ -110,7 +110,7 @@ export default function TheScience() {
 
       {/* END CTA */}
       <section className="ed-sec ed-cta" style={{ padding: "40px 24px", display: "flex", flexDirection: "column", gap: "16px" }}>
-        <p style={{ fontFamily: "var(--ed-font-serif)", fontStyle: "italic", fontSize: "26px", lineHeight: 1.25, margin: 0 }}>
+        <p style={{ fontFamily: "var(--ed-font-sans)", fontWeight: 300, letterSpacing: "-0.02em", fontSize: "26px", lineHeight: 1.25, margin: 0 }}>
           Mechanism, at home.
         </p>
         <p style={{ fontSize: "14px", lineHeight: 1.6, color: "var(--ed-grey)", margin: 0 }}>

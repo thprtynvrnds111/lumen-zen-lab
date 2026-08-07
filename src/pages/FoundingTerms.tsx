@@ -2,7 +2,7 @@ import { PageShell } from "@/components/zential/v2/PageShell";
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="font-mono text-[11px] tracking-[0.22em] uppercase text-[#6B5A4A] mb-4">
+    <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E] mb-4">
       {children}
     </p>
   );
@@ -49,13 +49,13 @@ const FoundingTerms = () => {
       <section className="section-padding">
         <div className="max-w-3xl space-y-8">
           {SECTIONS.map((s) => (
-            <div key={s.k} className="border-l-2 border-[#2ED8A8] pl-6">
+            <div key={s.k} className="border-l-2 border-[#0E7A54] pl-6">
               <Eyebrow>{s.k}</Eyebrow>
-              <p className="text-base md:text-lg text-[#1A1714]/80 leading-relaxed">{s.b}</p>
+              <p className="text-base md:text-lg text-[#5A5A5A] leading-relaxed">{s.b}</p>
             </div>
           ))}
           <div className="pt-4">
-            <a href="/movement#join" className="cta-pill">Back to the movement</a>
+            <a href="/movement#join" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#2ED8A8] px-7 py-4 font-sans text-[12px] font-semibold tracking-[0.16em] uppercase text-[#141414] transition-colors hover:bg-[#1BAF86]">Back to the movement</a>
           </div>
         </div>
       </section>

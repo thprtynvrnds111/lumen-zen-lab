@@ -17,31 +17,30 @@ import { pixelViewContent } from "@/pages/editorial/tracking";
 import { useBreathEngine } from "./useBreathEngine";
 import "./breath.css";
 
-const SANS = "'DM Sans', system-ui, sans-serif";
-const SERIF = "'Lora', serif";
+const SANS = "'Switzer', 'DM Sans', system-ui, sans-serif";
 
 // One color system across the whole app, so each act/mode is recognizable at
-// a glance on every screen: Meditate = gold, Restore = teal, Reset = terra.
+// a glance on every screen: Meditate = emerald, Restore = teal, Reset = ink.
 const MODE_COLOR: Record<string, string> = {
-  meditate: "#C6A07C",
+  meditate: "#0E7A54",
   restore: "#2ED8A8",
-  reset: "#C87B4A",
+  reset: "#141414",
 };
 const MODE_GLOW: Record<string, string> = {
-  meditate: "rgba(198,160,124,0.6)",
+  meditate: "rgba(14,122,84,0.45)",
   restore: "rgba(46,216,168,0.7)",
-  reset: "rgba(200,123,74,0.6)",
+  reset: "rgba(20,20,20,0.3)",
 };
 const MODE_STROKE: Record<string, string> = {
-  meditate: "rgba(198,160,124,0.42)",
-  restore: "rgba(46,216,168,0.32)",
-  reset: "rgba(200,123,74,0.42)",
+  meditate: "rgba(14,122,84,0.42)",
+  restore: "rgba(46,216,168,0.4)",
+  reset: "rgba(20,20,20,0.35)",
 };
-// Protocols carry a time-of-day accent: morning teal, midday gold, evening terra.
+// Protocols carry a time-of-day accent: morning teal, midday emerald, evening ink.
 const ROLE_COLOR: Record<string, string> = {
   MORNING: "#2ED8A8",
-  MIDDAY: "#C6A07C",
-  EVENING: "#C87B4A",
+  MIDDAY: "#0E7A54",
+  EVENING: "#141414",
 };
 
 const FACE_INTRODUCER_LINK =
@@ -56,50 +55,41 @@ const screenPad: CSSProperties = {
   padding: "60px 28px 108px",
   boxSizing: "border-box",
 };
-const topGlow: CSSProperties = {
-  position: "absolute",
-  left: "-30%",
-  right: "-30%",
-  top: "-22%",
-  height: "58%",
-  background: "radial-gradient(ellipse at 50% 0%, rgba(46,216,168,0.09) 0%, rgba(26,23,20,0) 62%)",
-  animation: "zbHomeBreathe 12s ease-in-out infinite",
-  pointerEvents: "none",
-};
 const kicker: CSSProperties = {
   fontFamily: SANS,
   fontWeight: 600,
   fontSize: "10px",
   letterSpacing: "0.32em",
-  color: "var(--ed-gold)",
+  color: "#8E8E8E",
 };
 const roleLabel: CSSProperties = {
   fontFamily: SANS,
   fontWeight: 700,
   fontSize: "9px",
   letterSpacing: "0.3em",
-  color: "var(--ed-gold)",
+  color: "#0E7A54",
 };
 const numLabel: CSSProperties = {
   fontWeight: 300,
   fontSize: "10px",
   letterSpacing: "0.22em",
-  color: "rgba(198,160,124,0.55)",
+  color: "rgba(14,122,84,0.55)",
 };
 const actName: CSSProperties = {
-  fontFamily: SERIF,
-  fontStyle: "italic",
+  fontFamily: SANS,
+  fontWeight: 300,
+  letterSpacing: "-0.025em",
   fontSize: "40px",
   lineHeight: 1.08,
   marginTop: "9px",
-  color: "var(--ed-on-dark)",
+  color: "#141414",
 };
 const actDesc: CSSProperties = {
   marginTop: "10px",
   fontWeight: 300,
   fontSize: "13px",
   lineHeight: 1.55,
-  color: "rgba(247,244,240,0.55)",
+  color: "#5A5A5A",
   maxWidth: "310px",
 };
 const provenance: CSSProperties = {
@@ -108,7 +98,7 @@ const provenance: CSSProperties = {
   fontSize: "9.5px",
   letterSpacing: "0.13em",
   lineHeight: 1.75,
-  color: "rgba(198,160,124,0.7)",
+  color: "#8E8E8E",
   textTransform: "uppercase",
   maxWidth: "320px",
 };
@@ -208,7 +198,7 @@ export default function Breath() {
         canonicalUrl="/breath"
       />
       <Helmet>
-        <meta name="theme-color" content="#1A1714" />
+        <meta name="theme-color" content="#FFFFFF" />
       </Helmet>
       <div
         className="zb-root"
@@ -217,8 +207,8 @@ export default function Breath() {
           position: "relative",
           width: "100%",
           minHeight: "100dvh",
-          background: "radial-gradient(ellipse 120% 90% at 50% 42%, #211D19 0%, var(--ed-dark) 64%)",
-          color: "var(--ed-on-dark)",
+          background: "#FFFFFF",
+          color: "#141414",
           fontFamily: SANS,
           overflow: "hidden",
         }}
@@ -228,21 +218,20 @@ export default function Breath() {
           {/* ─── HOME ─────────────────────────────────────────────────────── */}
           {v.isHome && (
             <div data-screen-label="Home" className="zb-screen" style={screenPad}>
-              <div style={topGlow} />
               <div data-rise style={{ animation: "zbRiseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
                 <Logo />
                 <div style={{ ...kicker, marginTop: "22px" }}>ZENTIAL PURE · BREATH</div>
-                <h1 style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 400, fontSize: "56px", lineHeight: 1.02, margin: "16px 0 0", letterSpacing: "-0.02em", color: "var(--ed-on-dark)" }}>The Breath</h1>
-                <div style={{ marginTop: "14px", fontWeight: 300, fontSize: "13px", lineHeight: 1.6, color: "rgba(247,244,240,0.55)", maxWidth: "290px" }}>The instruments return the energy. The breath returns the rhythm.</div>
+                <h1 style={{ fontFamily: SANS, fontWeight: 300, fontSize: "56px", lineHeight: 1.02, margin: "16px 0 0", letterSpacing: "-0.03em", color: "#141414" }}>The Breath</h1>
+                <div style={{ marginTop: "14px", fontWeight: 300, fontSize: "13px", lineHeight: 1.6, color: "#5A5A5A", maxWidth: "290px" }}>The instruments return the energy. The breath returns the rhythm.</div>
                 <div style={{ marginTop: "28px", display: "flex", alignItems: "center", gap: "12px" }}>
-                  <div style={{ height: "1px", flex: "0 0 28px", background: "rgba(198,160,124,0.5)" }} />
-                  <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: "8.5px", letterSpacing: "0.3em", color: "rgba(198,160,124,0.7)" }}>THE PROGRAM · THREE ACTS</div>
+                  <div style={{ height: "1px", flex: "0 0 28px", background: "rgba(14,122,84,0.5)" }} />
+                  <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: "8.5px", letterSpacing: "0.3em", color: "#8E8E8E" }}>THE PROGRAM · THREE ACTS</div>
                 </div>
               </div>
 
               <div style={{ marginTop: "34px", display: "flex", flexDirection: "column" }}>
                 {/* Act 01 — Meditate */}
-                <div data-rise style={{ borderTop: "1px solid rgba(247,244,240,0.10)", padding: "24px 0 28px", ...riseAt("0.15s ") }}>
+                <div data-rise style={{ borderTop: "1px solid rgba(20,20,20,0.10)", padding: "24px 0 28px", ...riseAt("0.15s ") }}>
                   <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
                     <div style={{ ...roleLabel, color: MODE_COLOR.meditate }}>OBSERVE</div>
                     <div style={numLabel}>( 01 )</div>
@@ -264,7 +253,7 @@ export default function Breath() {
                 </div>
 
                 {/* Act 02 — Restore */}
-                <div data-rise style={{ borderTop: "1px solid rgba(247,244,240,0.10)", padding: "24px 0 28px", ...riseAt("0.3s ") }}>
+                <div data-rise style={{ borderTop: "1px solid rgba(20,20,20,0.10)", padding: "24px 0 28px", ...riseAt("0.3s ") }}>
                   <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
                     <div style={{ ...roleLabel, color: MODE_COLOR.restore }}>SYNCHRONIZE</div>
                     <div style={numLabel}>( 02 )</div>
@@ -286,7 +275,7 @@ export default function Breath() {
                 </div>
 
                 {/* Act 03 — Reset */}
-                <div data-rise style={{ borderTop: "1px solid rgba(247,244,240,0.10)", padding: "24px 0 28px", ...riseAt("0.45s ") }}>
+                <div data-rise style={{ borderTop: "1px solid rgba(20,20,20,0.10)", padding: "24px 0 28px", ...riseAt("0.45s ") }}>
                   <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
                     <div style={{ ...roleLabel, color: MODE_COLOR.reset }}>RELEASE</div>
                     <div style={numLabel}>( 03 )</div>
@@ -308,8 +297,8 @@ export default function Breath() {
                 </div>
               </div>
 
-              <div data-rise style={{ marginTop: "auto", paddingTop: "24px", borderTop: "1px solid rgba(247,244,240,0.10)", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", ...riseAt("0.6s ") }}>
-                <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.28em", color: "rgba(247,244,240,0.35)" }}>CUES</div>
+              <div data-rise style={{ marginTop: "auto", paddingTop: "24px", borderTop: "1px solid rgba(20,20,20,0.10)", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", ...riseAt("0.6s ") }}>
+                <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.28em", color: "#8E8E8E" }}>CUES</div>
                 <div style={{ display: "flex", gap: "10px" }}>
                   <button onClick={v.toggleTone} aria-pressed={v.toneOn} style={{ background: "transparent", border: "none", padding: "12px 6px", cursor: "pointer", fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.24em", color: v.toneColor }}>TONE · {v.toneState}</button>
                   <button onClick={v.togglePulse} aria-pressed={v.pulseOn} style={{ background: "transparent", border: "none", padding: "12px 6px", cursor: "pointer", fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.24em", color: v.pulseColor }}>PULSE · {v.pulseState}</button>
@@ -321,30 +310,29 @@ export default function Breath() {
           {/* ─── PROTOCOLS ────────────────────────────────────────────────── */}
           {v.isProtocols && (
             <div data-screen-label="Protocols" className="zb-screen" style={screenPad}>
-              <div style={{ ...topGlow, background: "radial-gradient(ellipse at 50% 0%, rgba(198,160,124,0.09) 0%, rgba(26,23,20,0) 62%)" }} />
               <div data-rise style={{ animation: "zbRiseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
                 <div style={kicker}>THE SEQUENCES · MORNING TO NIGHT</div>
-                <h1 style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 400, fontSize: "48px", lineHeight: 1.04, margin: "16px 0 0", letterSpacing: "-0.02em", color: "var(--ed-on-dark)" }}>Protocols</h1>
-                <div style={{ marginTop: "14px", fontWeight: 300, fontSize: "13px", lineHeight: 1.6, color: "rgba(247,244,240,0.55)", maxWidth: "300px" }}>One practice prepares the next. A protocol runs the acts in sequence.</div>
+                <h1 style={{ fontFamily: SANS, fontWeight: 300, fontSize: "48px", lineHeight: 1.04, margin: "16px 0 0", letterSpacing: "-0.03em", color: "#141414" }}>Protocols</h1>
+                <div style={{ marginTop: "14px", fontWeight: 300, fontSize: "13px", lineHeight: 1.6, color: "#5A5A5A", maxWidth: "300px" }}>One practice prepares the next. A protocol runs the acts in sequence.</div>
               </div>
               <div style={{ marginTop: "34px", display: "flex", flexDirection: "column" }}>
                 {v.protocols.map((p) => (
-                  <div key={p.name} data-rise style={{ borderTop: "1px solid rgba(247,244,240,0.10)", padding: "24px 0 28px", ...riseAt("0.2s ") }}>
+                  <div key={p.name} data-rise style={{ borderTop: "1px solid rgba(20,20,20,0.10)", padding: "24px 0 28px", ...riseAt("0.2s ") }}>
                     <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
-                      <div style={{ ...roleLabel, color: ROLE_COLOR[p.role] ?? "var(--ed-gold)" }}>{p.role}</div>
+                      <div style={{ ...roleLabel, color: ROLE_COLOR[p.role] ?? "#0E7A54" }}>{p.role}</div>
                       <div style={numLabel}>{p.num}</div>
                     </div>
-                    <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "34px", lineHeight: 1.1, marginTop: "9px", color: "var(--ed-on-dark)" }}>{p.name}</div>
+                    <div style={{ fontFamily: SANS, fontWeight: 300, fontSize: "34px", lineHeight: 1.1, marginTop: "9px", color: "#141414" }}>{p.name}</div>
                     {/* Sequence as a timeline — segment width ∝ minutes, colored by act. */}
                     <div aria-hidden style={{ display: "flex", gap: "4px", marginTop: "14px", maxWidth: "320px", height: "3px" }}>
                       {p.segs.map((seg, i) => (
                         <div key={i} style={{ flex: seg.mins, height: "3px", borderRadius: "2px", background: MODE_COLOR[seg.mode], opacity: 0.75 }} />
                       ))}
                     </div>
-                    <div style={{ marginTop: "10px", fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.22em", color: "rgba(247,244,240,0.5)" }}>
+                    <div style={{ marginTop: "10px", fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.22em", color: "#5A5A5A" }}>
                       {p.segs.map((seg, i) => (
                         <span key={i}>
-                          {i > 0 && <span style={{ color: "rgba(247,244,240,0.3)" }}> · </span>}
+                          {i > 0 && <span style={{ color: "rgba(20,20,20,0.3)" }}> · </span>}
                           <span style={{ color: MODE_COLOR[seg.mode] }}>{seg.mode.toUpperCase()} {seg.mins}</span>
                         </span>
                       ))}
@@ -352,7 +340,7 @@ export default function Breath() {
                     <div style={actDesc}>{p.desc}</div>
                     <div style={{ display: "flex", alignItems: "center", gap: "14px", marginTop: "16px" }}>
                       <button className="zb-pill" onClick={p.begin} style={pillStyle}>BEGIN</button>
-                      <div style={{ fontWeight: 300, fontSize: "10px", letterSpacing: "0.22em", color: "rgba(247,244,240,0.35)" }}>{p.totalText}</div>
+                      <div style={{ fontWeight: 300, fontSize: "10px", letterSpacing: "0.22em", color: "#8E8E8E" }}>{p.totalText}</div>
                     </div>
                   </div>
                 ))}
@@ -363,41 +351,40 @@ export default function Breath() {
           {/* ─── SYSTEM ───────────────────────────────────────────────────── */}
           {v.isSystem && (
             <div data-screen-label="The System" className="zb-screen" style={screenPad}>
-              <div style={topGlow} />
               <div data-rise style={{ animation: "zbRiseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
                 <Logo />
                 <div style={{ ...kicker, marginTop: "22px" }}>RESONANCE RESTORATION</div>
-                <h1 style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 400, fontSize: "48px", lineHeight: 1.04, margin: "16px 0 0", letterSpacing: "-0.02em", color: "var(--ed-on-dark)" }}>The System</h1>
-                <div style={{ marginTop: "14px", fontWeight: 300, fontSize: "13px", lineHeight: 1.6, color: "rgba(247,244,240,0.55)", maxWidth: "300px" }}>Two channels. One return.</div>
+                <h1 style={{ fontFamily: SANS, fontWeight: 300, fontSize: "48px", lineHeight: 1.04, margin: "16px 0 0", letterSpacing: "-0.03em", color: "#141414" }}>The System</h1>
+                <div style={{ marginTop: "14px", fontWeight: 300, fontSize: "13px", lineHeight: 1.6, color: "#5A5A5A", maxWidth: "300px" }}>Two channels. One return.</div>
               </div>
 
               <div data-rise style={{ margin: "40px 0 6px", ...riseAt("0.15s ") }}>
-                <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "24px", lineHeight: 1.4, color: "rgba(247,244,240,0.85)", maxWidth: "300px" }}>The body remembers its frequency.</div>
+                <div style={{ fontFamily: SANS, fontWeight: 300, fontSize: "24px", lineHeight: 1.4, color: "rgba(20,20,20,0.85)", maxWidth: "300px" }}>The body remembers its frequency.</div>
               </div>
 
               {/* The System reads as hardware — carded panels, not editorial rows. */}
               <div style={{ marginTop: "28px", display: "flex", flexDirection: "column", gap: "14px" }}>
-                <div data-rise style={{ border: "1px solid rgba(247,244,240,0.12)", borderRadius: "20px", padding: "22px 20px 26px", background: "rgba(247,244,240,0.03)", ...riseAt("0.3s ") }}>
+                <div data-rise style={{ border: "1px solid rgba(20,20,20,0.12)", borderRadius: "0px", padding: "22px 20px 26px", background: "#FFFFFF", ...riseAt("0.3s ") }}>
                   <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
                     <div style={roleLabel}>FROM THE OUTSIDE</div>
                     <div style={numLabel}>( 01 )</div>
                   </div>
-                  <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "34px", lineHeight: 1.1, marginTop: "9px", color: "var(--ed-on-dark)" }}>The Instruments</div>
+                  <div style={{ fontFamily: SANS, fontWeight: 300, fontSize: "34px", lineHeight: 1.1, marginTop: "9px", color: "#141414" }}>The Instruments</div>
                   <div style={actDesc}>Calibrated electrical pulses and lightwaves, returned to the tissue. The Face Introducer runs a 12 minute daily ritual.</div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "14px" }}>
                     {["EMS", "MICROCURRENT", "THERMAL", "LED 630–660NM"].map((tag) => (
-                      <div key={tag} style={{ border: "1px solid rgba(247,244,240,0.14)", borderRadius: "9999px", padding: "7px 12px", fontFamily: SANS, fontWeight: 600, fontSize: "8px", letterSpacing: "0.2em", color: "rgba(247,244,240,0.55)" }}>{tag}</div>
+                      <div key={tag} style={{ border: "1px solid rgba(20,20,20,0.14)", borderRadius: "9999px", padding: "7px 12px", fontFamily: SANS, fontWeight: 600, fontSize: "8px", letterSpacing: "0.2em", color: "#5A5A5A" }}>{tag}</div>
                     ))}
                   </div>
-                  <a href={FACE_INTRODUCER_LINK} style={{ display: "inline-block", marginTop: "16px", fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.24em", color: "rgba(198,160,124,0.85)" }}>ORDER THE FACE INTRODUCER · €88. ONCE.</a>
+                  <a href={FACE_INTRODUCER_LINK} style={{ display: "inline-block", marginTop: "16px", fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.24em", color: "#0E7A54" }}>ORDER THE FACE INTRODUCER · €88. ONCE.</a>
                 </div>
 
-                <div data-rise style={{ border: "1px solid rgba(46,216,168,0.22)", borderRadius: "20px", padding: "22px 20px 26px", background: "rgba(46,216,168,0.035)", ...riseAt("0.45s ") }}>
+                <div data-rise style={{ border: "1px solid rgba(46,216,168,0.22)", borderRadius: "0px", padding: "22px 20px 26px", background: "rgba(46,216,168,0.035)", ...riseAt("0.45s ") }}>
                   <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
                     <div style={{ ...roleLabel, color: "var(--ed-teal)" }}>FROM WITHIN</div>
                     <div style={numLabel}>( 02 )</div>
                   </div>
-                  <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "34px", lineHeight: 1.1, marginTop: "9px", color: "var(--ed-on-dark)" }}>The Breath</div>
+                  <div style={{ fontFamily: SANS, fontWeight: 300, fontSize: "34px", lineHeight: 1.1, marginTop: "9px", color: "#141414" }}>The Breath</div>
                   <div style={actDesc}>The body's own instrument. Three acts, calibrated to the same return.</div>
                   <button className="zb-pill" onClick={v.goPractice} style={{ ...pillStyle, marginTop: "16px" }}>BEGIN THE PRACTICE</button>
                 </div>
@@ -410,23 +397,23 @@ export default function Breath() {
             <div data-screen-label="The Ledger" className="zb-screen" style={screenPad}>
               <div data-rise style={{ animation: "zbRiseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
                 <div style={kicker}>THE RECORD · EVERY SESSION KEPT</div>
-                <h1 style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 400, fontSize: "48px", lineHeight: 1.04, margin: "16px 0 0", letterSpacing: "-0.02em", color: "var(--ed-on-dark)" }}>The Ledger</h1>
+                <h1 style={{ fontFamily: SANS, fontWeight: 300, fontSize: "48px", lineHeight: 1.04, margin: "16px 0 0", letterSpacing: "-0.03em", color: "#141414" }}>The Ledger</h1>
               </div>
 
               {v.hasLog && (
                 <>
                   <div data-rise style={{ marginTop: "26px", display: "flex", flexDirection: "column", gap: "8px", ...riseAt("0.15s ") }}>
-                    <div style={{ fontWeight: 300, fontSize: "10.5px", letterSpacing: "0.22em", color: "rgba(198,160,124,0.85)" }}>CONTINUITY · {v.continuityText}</div>
-                    <div style={{ fontWeight: 300, fontSize: "10.5px", letterSpacing: "0.22em", color: "rgba(247,244,240,0.5)" }}>THIS WEEK · {v.weekText}</div>
-                    <div style={{ fontWeight: 300, fontSize: "10.5px", letterSpacing: "0.22em", color: "rgba(247,244,240,0.5)" }}>SESSIONS · {v.sessionCount}</div>
+                    <div style={{ fontWeight: 300, fontSize: "10.5px", letterSpacing: "0.22em", color: "#0E7A54" }}>CONTINUITY · {v.continuityText}</div>
+                    <div style={{ fontWeight: 300, fontSize: "10.5px", letterSpacing: "0.22em", color: "#5A5A5A" }}>THIS WEEK · {v.weekText}</div>
+                    <div style={{ fontWeight: 300, fontSize: "10.5px", letterSpacing: "0.22em", color: "#5A5A5A" }}>SESSIONS · {v.sessionCount}</div>
                   </div>
                   <div style={{ marginTop: "30px", display: "flex", flexDirection: "column" }}>
                     {v.ledger.map((e, i) => (
-                      <div key={i} style={{ borderTop: "1px solid rgba(247,244,240,0.10)", padding: "16px 0", display: "flex", alignItems: "baseline", gap: "14px" }}>
-                        <div style={{ flex: "0 0 58px", fontWeight: 300, fontSize: "9.5px", letterSpacing: "0.18em", color: "rgba(198,160,124,0.7)" }}>{e.date}</div>
-                        <span aria-hidden style={{ flex: "0 0 5px", width: "5px", height: "5px", borderRadius: "50%", background: MODE_COLOR[e.mode] ?? "var(--ed-gold)", alignSelf: "center" }} />
-                        <div style={{ flex: 1, fontFamily: SERIF, fontStyle: "italic", fontSize: "17px", color: "rgba(247,244,240,0.85)" }}>{e.name}</div>
-                        <div style={{ fontWeight: 300, fontSize: "9.5px", letterSpacing: "0.18em", color: "rgba(247,244,240,0.4)" }}>{e.spec}</div>
+                      <div key={i} style={{ borderTop: "1px solid rgba(20,20,20,0.10)", padding: "16px 0", display: "flex", alignItems: "baseline", gap: "14px" }}>
+                        <div style={{ flex: "0 0 58px", fontWeight: 300, fontSize: "9.5px", letterSpacing: "0.18em", color: "#8E8E8E" }}>{e.date}</div>
+                        <span aria-hidden style={{ flex: "0 0 5px", width: "5px", height: "5px", borderRadius: "50%", background: MODE_COLOR[e.mode] ?? "#0E7A54", alignSelf: "center" }} />
+                        <div style={{ flex: 1, fontFamily: SANS, fontWeight: 300, fontSize: "17px", color: "rgba(20,20,20,0.85)" }}>{e.name}</div>
+                        <div style={{ fontWeight: 300, fontSize: "9.5px", letterSpacing: "0.18em", color: "#8E8E8E" }}>{e.spec}</div>
                       </div>
                     ))}
                   </div>
@@ -435,7 +422,7 @@ export default function Breath() {
 
               {v.noLog && (
                 <div data-rise style={{ marginTop: "80px", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "24px", ...riseAt("0.15s ") }}>
-                  <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "26px", lineHeight: 1.4, color: "rgba(247,244,240,0.85)", maxWidth: "280px" }}>The record begins with the first breath.</div>
+                  <div style={{ fontFamily: SANS, fontWeight: 300, fontSize: "26px", lineHeight: 1.4, color: "rgba(20,20,20,0.85)", maxWidth: "280px" }}>The record begins with the first breath.</div>
                   <button className="zb-pill" onClick={v.goPractice} style={pillStyle}>BEGIN THE PRACTICE</button>
                 </div>
               )}
@@ -445,14 +432,14 @@ export default function Breath() {
           {/* ─── INTERLUDE ────────────────────────────────────────────────── */}
           {v.isInterlude && (
             <div data-screen-label="Interlude" style={{ position: "relative", height: "100dvh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "0 32px", boxSizing: "border-box" }}>
-              <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.3em", color: "var(--ed-gold)", paddingLeft: "0.3em" }}>PROTOCOL · {v.protoNameCaps}</div>
-              <div style={{ marginTop: "34px", fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.3em", color: "rgba(247,244,240,0.4)", paddingLeft: "0.3em" }}>NEXT</div>
-              <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "44px", marginTop: "12px", color: "var(--ed-on-dark)" }}>{v.nextName}</div>
-              <div style={{ marginTop: "12px", fontWeight: 300, fontSize: "10.5px", letterSpacing: "0.22em", color: "rgba(247,244,240,0.5)" }}>{v.nextSpec}</div>
+              <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.3em", color: "#8E8E8E", paddingLeft: "0.3em" }}>PROTOCOL · {v.protoNameCaps}</div>
+              <div style={{ marginTop: "34px", fontFamily: SANS, fontWeight: 600, fontSize: "9px", letterSpacing: "0.3em", color: "#8E8E8E", paddingLeft: "0.3em" }}>NEXT</div>
+              <div style={{ fontFamily: SANS, fontWeight: 300, fontSize: "44px", marginTop: "12px", color: "#141414" }}>{v.nextName}</div>
+              <div style={{ marginTop: "12px", fontWeight: 300, fontSize: "10.5px", letterSpacing: "0.22em", color: "#5A5A5A" }}>{v.nextSpec}</div>
               <div style={{ width: "44px", height: "1px", background: "var(--ed-teal)", margin: "30px 0 26px" }} />
-              <div style={{ fontWeight: 300, fontSize: "12px", lineHeight: 1.6, color: "rgba(247,244,240,0.45)", maxWidth: "250px" }}>Continues in a moment. Or begin.</div>
+              <div style={{ fontWeight: 300, fontSize: "12px", lineHeight: 1.6, color: "#8E8E8E", maxWidth: "250px" }}>Continues in a moment. Or begin.</div>
               <button className="zb-pill" onClick={v.beginNext} style={{ ...bigPill, marginTop: "34px" }}>BEGIN</button>
-              <button onClick={v.endEarly} style={{ ...endBtn, color: "rgba(247,244,240,0.35)" }}>END</button>
+              <button onClick={v.endEarly} style={{ ...endBtn, color: "#8E8E8E" }}>END</button>
             </div>
           )}
 
@@ -460,10 +447,10 @@ export default function Breath() {
           {v.isSession && (
             <div data-screen-label="Session" style={{ position: "relative", height: "100dvh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
 
-              <div data-ambient style={{ position: "absolute", inset: "-25%", background: `radial-gradient(circle at 50% 50%, ${v.ambientRGBA} 0%, rgba(26,23,20,0) 60%)`, transform: `scale(${v.ambientScale})`, opacity: v.ambientOpacity, transition: `transform ${v.phaseDur}s cubic-bezier(0.45, 0, 0.55, 1), opacity ${v.phaseDur}s cubic-bezier(0.45, 0, 0.55, 1)`, pointerEvents: "none" }} />
+              <div data-ambient style={{ position: "absolute", inset: "-25%", background: `radial-gradient(circle at 50% 50%, ${v.ambientRGBA} 0%, rgba(255,255,255,0) 60%)`, transform: `scale(${v.ambientScale})`, opacity: v.ambientOpacity, transition: `transform ${v.phaseDur}s cubic-bezier(0.45, 0, 0.55, 1), opacity ${v.phaseDur}s cubic-bezier(0.45, 0, 0.55, 1)`, pointerEvents: "none" }} />
 
               {v.terraWash && (
-                <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 100% 70% at 50% 72%, rgba(155,90,46,0.10) 0%, rgba(155,90,46,0) 62%)", pointerEvents: "none" }} />
+                <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 100% 70% at 50% 72%, rgba(14,122,84,0.05) 0%, rgba(14,122,84,0) 62%)", pointerEvents: "none" }} />
               )}
 
               {v.isRestore && (
@@ -479,24 +466,24 @@ export default function Breath() {
               <button className="zb-end" onClick={v.endEarly} style={{ ...endBtn, zIndex: 5 }}>END</button>
 
               {v.inProtocol && (
-                <div style={{ position: "absolute", top: "33px", right: "24px", fontFamily: SANS, fontWeight: 600, fontSize: "8.5px", letterSpacing: "0.24em", color: "rgba(198,160,124,0.6)" }}>{v.protoTag}</div>
+                <div style={{ position: "absolute", top: "33px", right: "24px", fontFamily: SANS, fontWeight: 600, fontSize: "8.5px", letterSpacing: "0.24em", color: "#8E8E8E" }}>{v.protoTag}</div>
               )}
 
-              <div aria-live="polite" style={{ position: "absolute", top: "17%", left: 0, right: 0, textAlign: "center", fontFamily: SANS, fontWeight: 700, fontSize: "11px", letterSpacing: "0.38em", color: "rgba(247,244,240,0.72)", paddingLeft: "0.38em" }}>{v.phaseWord}</div>
+              <div aria-live="polite" style={{ position: "absolute", top: "17%", left: 0, right: 0, textAlign: "center", fontFamily: SANS, fontWeight: 700, fontSize: "11px", letterSpacing: "0.38em", color: "rgba(20,20,20,0.72)", paddingLeft: "0.38em" }}>{v.phaseWord}</div>
 
               <div style={{ position: "relative", width: "264px", height: "264px", display: "flex", alignItems: "center", justifyContent: "center" }}>
 
-                <div data-spin style={{ position: "absolute", inset: 0, borderRadius: "50%", background: "conic-gradient(from 0deg, rgba(46,216,168,0) 0%, rgba(46,216,168,0.55) 28%, rgba(198,160,124,0.35) 48%, rgba(46,216,168,0.10) 62%, rgba(46,216,168,0) 78%)", WebkitMask: "radial-gradient(circle, transparent 55%, black 60%, black 63%, transparent 69%)", mask: "radial-gradient(circle, transparent 55%, black 60%, black 63%, transparent 69%)", animation: "zbSpinSlow 34s linear infinite", opacity: 0.7 }} />
+                <div data-spin style={{ position: "absolute", inset: 0, borderRadius: "50%", background: "conic-gradient(from 0deg, rgba(46,216,168,0) 0%, rgba(46,216,168,0.55) 28%, rgba(14,122,84,0.35) 48%, rgba(46,216,168,0.10) 62%, rgba(46,216,168,0) 78%)", WebkitMask: "radial-gradient(circle, transparent 55%, black 60%, black 63%, transparent 69%)", mask: "radial-gradient(circle, transparent 55%, black 60%, black 63%, transparent 69%)", animation: "zbSpinSlow 34s linear infinite", opacity: 0.7 }} />
 
                 <svg width="264" height="264" viewBox="0 0 264 264" style={{ position: "absolute", inset: 0, transform: "rotate(-90deg)", overflow: "visible" }}>
                   <defs>
                     <linearGradient id="zbBreathGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" style={{ stopColor: "#2ED8A8" }} />
                       <stop offset="70%" style={{ stopColor: "#1BAF86" }} />
-                      <stop offset="100%" style={{ stopColor: "#C6A07C" }} />
+                      <stop offset="100%" style={{ stopColor: "#0E7A54" }} />
                     </linearGradient>
                   </defs>
-                  <circle cx="132" cy="132" r="118" style={{ fill: "none", stroke: "rgba(247,244,240,0.08)", strokeWidth: 1 }} />
+                  <circle cx="132" cy="132" r="118" style={{ fill: "none", stroke: "rgba(20,20,20,0.08)", strokeWidth: 1 }} />
                   <circle cx="132" cy="132" r="118" style={{ fill: "none", stroke: "url(#zbBreathGrad)", strokeWidth: 1.6, strokeLinecap: "round", strokeDasharray: 741.4, strokeDashoffset: v.ringOffset, transition: `stroke-dashoffset ${v.phaseDur}s cubic-bezier(0.45, 0, 0.55, 1)`, filter: "drop-shadow(0 0 5px rgba(46,216,168,0.6))" }} />
                 </svg>
 
@@ -504,32 +491,32 @@ export default function Breath() {
               </div>
 
               {v.showCounter && (
-                <div style={{ position: "absolute", bottom: "24%", left: 0, right: 0, textAlign: "center", fontFamily: SERIF, fontStyle: "italic", fontSize: "28px", color: "rgba(198,160,124,0.85)" }}>{v.countText}</div>
+                <div style={{ position: "absolute", bottom: "24%", left: 0, right: 0, textAlign: "center", fontFamily: SANS, fontWeight: 300, fontSize: "28px", color: "#0E7A54" }}>{v.countText}</div>
               )}
 
               {v.isRestore && (
-                <div style={{ position: "absolute", bottom: "15%", left: 0, right: 0, textAlign: "center", fontWeight: 300, fontSize: "9.5px", letterSpacing: "0.24em", color: "rgba(198,160,124,0.7)", paddingLeft: "0.24em" }}>0.09 HZ · THE RESONANCE RATE</div>
+                <div style={{ position: "absolute", bottom: "15%", left: 0, right: 0, textAlign: "center", fontWeight: 300, fontSize: "9.5px", letterSpacing: "0.24em", color: "#8E8E8E", paddingLeft: "0.24em" }}>0.09 HZ · THE RESONANCE RATE</div>
               )}
 
               {v.droneText && (
-                <div style={{ position: "absolute", bottom: "12.5%", left: 0, right: 0, textAlign: "center", fontWeight: 300, fontSize: "9.5px", letterSpacing: "0.24em", color: "rgba(46,216,168,0.55)", paddingLeft: "0.24em" }}>{v.droneText}</div>
+                <div style={{ position: "absolute", bottom: "12.5%", left: 0, right: 0, textAlign: "center", fontWeight: 300, fontSize: "9.5px", letterSpacing: "0.24em", color: "rgba(14,122,84,0.7)", paddingLeft: "0.24em" }}>{v.droneText}</div>
               )}
 
-              <div style={{ position: "absolute", bottom: "9%", left: 0, right: 0, textAlign: "center", fontWeight: 300, fontSize: "11px", letterSpacing: "0.24em", color: "rgba(247,244,240,0.35)", paddingLeft: "0.24em" }}>{v.remainingText}</div>
+              <div style={{ position: "absolute", bottom: "9%", left: 0, right: 0, textAlign: "center", fontWeight: 300, fontSize: "11px", letterSpacing: "0.24em", color: "#8E8E8E", paddingLeft: "0.24em" }}>{v.remainingText}</div>
             </div>
           )}
 
           {/* ─── CREDITS ──────────────────────────────────────────────────── */}
           {v.isCredits && (
             <div data-screen-label="Post-session" style={{ position: "relative", height: "100dvh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "0 32px", boxSizing: "border-box" }}>
-              <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: "10px", letterSpacing: "0.34em", color: "var(--ed-gold)", paddingLeft: "0.34em" }}>{v.creditsKicker}</div>
-              <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "42px", marginTop: "16px", color: "var(--ed-on-dark)" }}>{v.creditsMode}</div>
+              <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: "10px", letterSpacing: "0.34em", color: "#8E8E8E", paddingLeft: "0.34em" }}>{v.creditsKicker}</div>
+              <div style={{ fontFamily: SANS, fontWeight: 300, fontSize: "42px", marginTop: "16px", color: "#141414" }}>{v.creditsMode}</div>
               <div style={{ width: "44px", height: "1px", background: "var(--ed-teal)", margin: "28px 0 24px" }} />
               {v.specs.map((s, i) => (
-                <div key={i} style={{ fontWeight: 300, fontSize: "10.5px", letterSpacing: "0.22em", color: "rgba(247,244,240,0.6)", margin: "7px 0", textTransform: "uppercase" }}>{s.k} · {s.v}</div>
+                <div key={i} style={{ fontWeight: 300, fontSize: "10.5px", letterSpacing: "0.22em", color: "#5A5A5A", margin: "7px 0", textTransform: "uppercase" }}>{s.k} · {s.v}</div>
               ))}
-              <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "19px", lineHeight: 1.5, color: "rgba(247,244,240,0.85)", marginTop: "42px", maxWidth: "280px" }}>Your skin responds to the same stillness.</div>
-              <a href="/instruments?utm_source=breath&utm_medium=app&utm_campaign=session-complete" style={{ display: "inline-block", fontFamily: SANS, fontWeight: 600, fontSize: "8.5px", letterSpacing: "0.26em", lineHeight: 2, color: "rgba(198,160,124,0.75)", marginTop: "20px", maxWidth: "300px" }}>PAIR WITH THE SYSTEM — THREE INSTRUMENTS, ONE RETURN</a>
+              <div style={{ fontFamily: SANS, fontWeight: 300, fontSize: "19px", lineHeight: 1.5, color: "rgba(20,20,20,0.85)", marginTop: "42px", maxWidth: "280px" }}>Your skin responds to the same stillness.</div>
+              <a href="/instruments?utm_source=breath&utm_medium=app&utm_campaign=session-complete" style={{ display: "inline-block", fontFamily: SANS, fontWeight: 600, fontSize: "8.5px", letterSpacing: "0.26em", lineHeight: 2, color: "#0E7A54", marginTop: "20px", maxWidth: "300px" }}>PAIR WITH THE SYSTEM — THREE INSTRUMENTS, ONE RETURN</a>
               <button className="zb-pill" onClick={v.returnHome} style={{ ...bigPill, marginTop: "44px" }}>RETURN</button>
             </div>
           )}
@@ -538,7 +525,7 @@ export default function Breath() {
 
         {/* ─── FIXED NAV ──────────────────────────────────────────────────── */}
         {v.showNav && (
-          <nav aria-label="Breath" style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, padding: "6px 8px 14px", borderTop: "1px solid rgba(247,244,240,0.10)", background: "var(--ed-dark)" }}>
+          <nav aria-label="Breath" style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, padding: "6px 8px 14px", borderTop: "1px solid rgba(20,20,20,0.10)", background: "#FFFFFF" }}>
             <div className="zb-nav-inner">
               {v.navItems.map((n) => (
                 <button key={n.label} onClick={n.go} aria-current={n.active ? "page" : undefined} style={{ position: "relative", background: "transparent", border: "none", cursor: "pointer", padding: "16px 8px", minHeight: "44px", fontFamily: SANS, fontWeight: 600, fontSize: "8.5px", letterSpacing: "0.22em", color: n.color, transition: "color 0.3s ease" }}>
@@ -550,10 +537,6 @@ export default function Breath() {
           </nav>
         )}
 
-        {/* ─── GRAIN ──────────────────────────────────────────────────────── */}
-        {v.grainOn && (
-          <div style={{ position: "fixed", inset: 0, zIndex: 60, pointerEvents: "none", opacity: 0.035, backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E\")" }} />
-        )}
       </div>
     </>
   );

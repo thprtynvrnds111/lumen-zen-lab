@@ -6,7 +6,6 @@ import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { BubbleBackground } from "@/components/zential/BubbleBackground";
 import { useTranslation } from "react-i18next";
 
 const HIDDEN_HANDLES = ["medicube-collagen-elastic-jelly-moisturizing-cream", "restore-gel", "collagen-eye-mask", "restore-pads"];
@@ -76,19 +75,18 @@ export function DevicesSection() {
   };
 
   return (
-    <section ref={ref} id="devices" className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#070A0E' }}>
-      <BubbleBackground />
-      <div className="text-center mb-14 relative z-10">
-        <p className="text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: '#E87040' }}>{t('devices.eyebrow')}</p>
-        <h2 className="font-serif italic text-3xl md:text-4xl" style={{ color: '#EAE7E0' }}>{t('devices.title')}</h2>
+    <section ref={ref} id="devices" className="relative border-y border-[rgba(20,20,20,0.10)] bg-white px-6 md:px-12 lg:px-20 py-20 md:py-28">
+      <div className="text-center mb-14">
+        <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-3 text-[#8E8E8E]">{t('devices.eyebrow')}</p>
+        <h2 className="font-sans font-light text-[clamp(30px,4vw,54px)] leading-[1.05] tracking-[-0.025em] text-[#141414]">{t('devices.title')}</h2>
       </div>
 
       {loading ? (
-        <div className="flex justify-center py-20"><Loader2 className="animate-spin text-foreground/30" size={28} /></div>
+        <div className="flex justify-center py-20"><Loader2 className="animate-spin text-[#8E8E8E]" size={28} /></div>
       ) : products.length === 0 ? (
-        <p className="text-center text-foreground/50 text-sm">No products found</p>
+        <p className="text-center text-[#5A5A5A] text-sm">No products found</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {products.map(product => {
             const img = product.node.images.edges[0]?.node;
             const price = product.node.priceRange.minVariantPrice;
@@ -98,10 +96,10 @@ export function DevicesSection() {
               <Link
                 key={product.node.id}
                 to={productUrl}
-                className="group flex flex-col rounded-xl overflow-hidden transition-all duration-500 hover:-translate-y-1"
-                style={{ backgroundColor: '#111820', border: '1px solid rgba(255,255,255,0.07)', minHeight: 460, boxShadow: '0 0 0 0 rgba(232,112,64,0)' }}
-                onMouseEnter={e => (e.currentTarget.style.border = '1px solid rgba(232,112,64,0.25)')}
-                onMouseLeave={e => (e.currentTarget.style.border = '1px solid rgba(255,255,255,0.07)')}
+                className="group flex flex-col rounded-none overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(20,20,20,0.06)]"
+                style={{ backgroundColor: '#FFFFFF', border: '1px solid rgba(20,20,20,0.10)', minHeight: 460 }}
+                onMouseEnter={e => (e.currentTarget.style.border = '1px solid rgba(14,122,84,0.35)')}
+                onMouseLeave={e => (e.currentTarget.style.border = '1px solid rgba(20,20,20,0.10)')}
               >
                 <div className="relative flex-[3] overflow-hidden">
                   {img && (
@@ -116,17 +114,16 @@ export function DevicesSection() {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                     />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#111820]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
-                <div className="flex flex-col p-5 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+                <div className="flex flex-col p-5 pt-4" style={{ borderTop: '1px solid rgba(20,20,20,0.10)' }}>
                   {TECH_TAGS[product.node.handle] && (
                     <div className="flex items-center gap-1.5 mb-3 flex-wrap">
                       {TECH_TAGS[product.node.handle].map((tag, i) => (
                         <span
                           key={i}
-                          className="text-[9px] tracking-[0.18em] uppercase font-medium px-2 py-[3px] rounded-sm"
-                          style={{ backgroundColor: 'rgba(232,112,64,0.1)', color: '#E87040', border: '1px solid rgba(232,112,64,0.22)' }}
+                          className="text-[9px] tracking-[0.18em] uppercase font-medium px-2 py-[3px] rounded-none"
+                          style={{ backgroundColor: 'rgba(14,122,84,0.06)', color: '#0E7A54', border: '1px solid rgba(14,122,84,0.22)' }}
                         >
                           {tag}
                         </span>
@@ -135,29 +132,28 @@ export function DevicesSection() {
                   )}
 
                   <h3
-                    className="font-serif italic text-[16px] leading-snug mb-1.5 transition-colors duration-300 group-hover:text-white"
-                    style={{ color: '#EAE7E0' }}
+                    className="font-sans font-medium tracking-[-0.015em] text-[16px] leading-snug mb-1.5 transition-colors duration-300 group-hover:text-[#0E7A54]"
+                    style={{ color: '#141414' }}
                   >
                     {product.node.title}
                   </h3>
 
                   <p
                     className="text-[11.5px] leading-relaxed line-clamp-1 mb-4"
-                    style={{ color: 'rgba(234,231,224,0.75)', letterSpacing: '0.01em' }}
+                    style={{ color: '#5A5A5A', letterSpacing: '0.01em' }}
                   >
                     {subtitles[product.node.handle] || "Recovery protocol device"}
                   </p>
 
-                  <div className="flex items-center justify-between pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                    <span className="text-[16px] font-semibold" style={{ color: '#EAE7E0' }}>
+                  <div className="flex items-center justify-between pt-3" style={{ borderTop: '1px solid rgba(20,20,20,0.10)' }}>
+                    <span className="text-[16px] font-semibold tabular-nums" style={{ color: '#141414' }}>
                       {formatMoney(price.amount, price.currencyCode)}
                     </span>
                     <button
                       onClick={(e) => handleAdd(e, product)}
                       disabled={isCartLoading}
                       aria-label={`Add ${product.node.title} to bag`}
-                      className="text-[10px] tracking-[0.18em] uppercase font-medium px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:scale-105 disabled:opacity-50"
-                      style={{ backgroundColor: '#E87040', boxShadow: '0 0 16px rgba(232,112,64,0.3)' }}
+                      className="text-[10px] tracking-[0.18em] uppercase font-semibold px-5 py-2.5 rounded-full bg-[#2ED8A8] text-[#141414] transition-all duration-300 hover:bg-[#1BAF86] hover:scale-105 disabled:opacity-50"
                     >
                       {t('devices.addToCart')}
                     </button>

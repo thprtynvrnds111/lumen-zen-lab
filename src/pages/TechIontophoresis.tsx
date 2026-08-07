@@ -4,11 +4,11 @@ import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 
-const BG = "#F7F4F0";
-const FACE_COLOR = "#1A1714";
-const MUTED = "#6B5B4E";
-const BORDER = "rgba(198,160,124,0.20)";
-const ACCENT = "#C6A07C";
+const BG = "#FFFFFF";
+const FACE_COLOR = "#141414";
+const MUTED = "#5A5A5A";
+const BORDER = "rgba(20,20,20,0.10)";
+const ACCENT = "#0E7A54";
 
 const faqJsonLd = {
  "@context": "https://schema.org",
@@ -73,10 +73,10 @@ export default function TechIontophoresis() {
     {/* Hero */}
     <section className="px-6 md:px-12 lg:px-20 py-24 md:py-40 text-center" style={{ backgroundColor: BG }}>
      <div className="max-w-2xl mx-auto">
-      <p className="text-[10px] tracking-[0.35em] uppercase mb-6 font-semibold" style={{ color: ACCENT }}>
+      <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-6" style={{ color: "#8E8E8E" }}>
        Technology · Galvanic Current
       </p>
-      <h1 className="font-serif text-3xl md:text-5xl font-medium leading-tight mb-6" style={{ color: FACE_COLOR }}>
+      <h1 className="font-sans font-light tracking-[-0.025em] text-3xl md:text-5xl leading-tight mb-6" style={{ color: FACE_COLOR }}>
        Iontophoresis
       </h1>
       <p className="text-base md:text-lg leading-relaxed" style={{ color: MUTED }}>
@@ -86,9 +86,9 @@ export default function TechIontophoresis() {
     </section>
 
     {/* Mechanism */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28" style={{ backgroundColor: "#F0EBE3" }}>
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-28">
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: FACE_COLOR }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: FACE_COLOR }}>
        The mechanism
       </h2>
       <div className="space-y-6 text-sm leading-relaxed" style={{ color: MUTED }}>
@@ -112,9 +112,9 @@ export default function TechIontophoresis() {
     </section>
 
     {/* What iontophoresis can and cannot move */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28">
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-28">
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: FACE_COLOR }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: FACE_COLOR }}>
        What it moves, and what it doesn't
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -143,9 +143,9 @@ export default function TechIontophoresis() {
     </section>
 
     {/* Galvanic facial = iontophoresis */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28" style={{ backgroundColor: "#F0EBE3" }}>
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-28">
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: FACE_COLOR }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: FACE_COLOR }}>
        Galvanic facial: the professional context
       </h2>
       <div className="space-y-5 text-sm leading-relaxed" style={{ color: MUTED }}>
@@ -158,7 +158,7 @@ export default function TechIontophoresis() {
        <p>
         The clinical advantage of consistent daily home iontophoresis is frequency. A professional galvanic treatment every 3–4 weeks provides 12–17 sessions per year. Daily home protocol provides 300+ sessions. Cumulative exposure to the mechanism, at lower per-session intensity, consistently produces comparable or superior long-term outcomes for skin hydration, texture, and active ingredient bioavailability.
        </p>
-       <p style={{ color: FACE_COLOR, fontStyle: "italic" }}>
+       <p style={{ color: FACE_COLOR }}>
         "Consistent daily iontophoresis of vitamin C at home produces greater dermis-level ascorbate concentrations than monthly high-dose clinic applications.", Consensus position from transdermal delivery research.
        </p>
       </div>
@@ -166,9 +166,9 @@ export default function TechIontophoresis() {
     </section>
 
     {/* Protocol */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28">
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-28">
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: FACE_COLOR }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: FACE_COLOR }}>
        The two-phase home protocol
       </h2>
       <div className="space-y-6">
@@ -190,9 +190,9 @@ export default function TechIontophoresis() {
     </section>
 
     {/* FAQ */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28" style={{ backgroundColor: "#F0EBE3" }}>
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-28">
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: FACE_COLOR }}>Common questions</h2>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: FACE_COLOR }}>Common questions</h2>
       <div className="space-y-8">
        {faqJsonLd.mainEntity.map((item, i) => (
         <div key={i} style={{ borderBottom: `1px solid ${BORDER}`, paddingBottom: "1.5rem" }}>
@@ -205,29 +205,27 @@ export default function TechIontophoresis() {
     </section>
 
     {/* CTA */}
-    <section className="px-6 md:px-12 lg:px-20 py-20 text-center" style={{ backgroundColor: FACE_COLOR }}>
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-20 text-center">
      <div className="max-w-xl mx-auto">
-      <p className="text-[10px] tracking-[0.35em] uppercase mb-4 font-semibold" style={{ color: ACCENT }}>
+      <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-4" style={{ color: ACCENT }}>
        Face Introducer · €88
       </p>
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-4" style={{ color: "#f0ebe3" }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-4" style={{ color: "#141414" }}>
        Negative ion cleansing. Trichromatic light. Positive ion infusion.
       </h2>
-      <p className="text-sm leading-relaxed mb-8" style={{ color: "#8a7f74" }}>
+      <p className="text-sm leading-relaxed mb-8" style={{ color: "#5A5A5A" }}>
        The two-phase galvanic protocol, cleanse, then deliver, in one instrument. Under 10 minutes.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
        <Link
         to="/product/lifting-and-tightening-face-introducer"
-        className="inline-block px-8 py-4 text-sm font-medium tracking-widest uppercase"
-        style={{ backgroundColor: ACCENT, color: FACE_COLOR }}
+        className="inline-block rounded-full bg-[#2ED8A8] px-8 py-4 text-sm font-medium tracking-widest uppercase text-[#141414] transition-colors hover:bg-[#1BAF86]"
        >
         Order the Face Introducer
        </Link>
        <Link
         to="/technology/electroporation"
-        className="inline-block px-8 py-4 text-sm font-medium tracking-widest uppercase border"
-        style={{ borderColor: ACCENT, color: ACCENT }}
+        className="inline-block rounded-full border border-[rgba(20,20,20,0.22)] px-8 py-4 text-sm font-medium tracking-widest uppercase text-[#141414] transition-colors hover:border-[#0E7A54] hover:text-[#0E7A54]"
        >
         Read: Electroporation
        </Link>

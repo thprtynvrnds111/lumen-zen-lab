@@ -162,7 +162,7 @@ export default function OneShelf() {
       <Helmet>
         <title>One Shelf — a whole day of recovery | Zential Pure</title>
         <meta name="robots" content="noindex, nofollow" />
-        <meta name="theme-color" content="#1a1714" />
+        <meta name="theme-color" content="#ffffff" />
         <meta
           name="description"
           content="Watch one ordinary day with The System. Collect the three rituals — morning, evening, night."
@@ -170,45 +170,46 @@ export default function OneShelf() {
       </Helmet>
 
       <style>{`
-        .os-page { min-height: 100vh; background: #1a1714; color: #f7f4f0; font-family: "DM Sans", system-ui, sans-serif; }
+        .os-page { min-height: 100vh; background: #ffffff; color: #141414; font-family: "Switzer", "DM Sans", system-ui, sans-serif; }
         .os-wrap { max-width: 480px; margin: 0 auto; padding: 24px 16px 48px; }
-        .os-kicker { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: ${TEAL}; margin-bottom: 8px; }
-        .os-h1 { font-family: "Lora", serif; font-size: 32px; font-weight: 700; line-height: 1.2; margin: 0 0 8px; }
-        .os-sub { font-size: 14px; color: #8a7f74; margin: 0 0 16px; line-height: 1.5; }
-        .os-video-box { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid #2a211a; }
+        .os-kicker { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #0E7A54; margin-bottom: 8px; }
+        .os-h1 { font-family: inherit; font-size: 32px; font-weight: 300; letter-spacing: -0.025em; line-height: 1.1; margin: 0 0 8px; }
+        .os-sub { font-size: 14px; color: #5A5A5A; margin: 0 0 16px; line-height: 1.5; }
+        .os-video-box { position: relative; border-radius: 0; overflow: hidden; border: 1px solid rgba(20,20,20,0.10); }
         .os-video { display: block; width: 100%; aspect-ratio: 9/16; max-height: 68vh; object-fit: contain; background: #070a0e; }
         .os-unmute { position: absolute; right: 12px; bottom: 12px; z-index: 10; background: rgba(7,10,14,0.72); color: #f7f4f0; border: 1px solid ${TEAL}; border-radius: 9999px; padding: 8px 16px; font-size: 12px; font-weight: 500; cursor: pointer; }
         .os-progress { display: flex; align-items: center; gap: 8px; margin: 16px 0 8px; }
-        .os-progress-label { font-size: 12px; color: #8a7f74; letter-spacing: 0.08em; text-transform: uppercase; }
+        .os-progress-label { font-size: 12px; color: #8E8E8E; letter-spacing: 0.08em; text-transform: uppercase; }
         .os-dots { display: inline-flex; gap: 8px; }
-        .os-dot { width: 12px; height: 12px; border-radius: 9999px; border: 2px solid rgba(247,244,240,0.4); transition: all 0.3s cubic-bezier(.4,0,.2,1); }
+        .os-dot { width: 12px; height: 12px; border-radius: 9999px; border: 2px solid rgba(20,20,20,0.25); transition: all 0.3s cubic-bezier(.4,0,.2,1); }
         .os-dot.on { background: ${TEAL}; border-color: ${TEAL}; }
         .os-cards { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
-        .os-card { text-align: left; background: #2a211a; border: 1px solid #2a211a; border-radius: 10px; padding: 16px; cursor: pointer; transition: border-color 0.3s cubic-bezier(.4,0,.2,1), transform 0.3s cubic-bezier(.4,0,.2,1); color: inherit; font: inherit; width: 100%; }
-        .os-card.locked { color: #8a7f74; }
-        .os-card.open { border-color: ${TEAL}; }
+        .os-card { text-align: left; background: #ffffff; border: 1px solid rgba(20,20,20,0.10); border-radius: 0; padding: 16px; cursor: pointer; transition: border-color 0.3s cubic-bezier(.4,0,.2,1), transform 0.3s cubic-bezier(.4,0,.2,1); color: inherit; font: inherit; width: 100%; }
+        .os-card.locked { color: #8E8E8E; }
+        .os-card.open { border-color: #0E7A54; }
         .os-card.flash { transform: scale(1.02); }
         .os-card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
         .os-card-label { font-weight: 700; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; }
-        .os-card.open .os-card-label { color: ${TEAL}; }
-        .os-card-min { font-size: 12px; color: #8a7f74; }
-        .os-card-device { font-family: "Lora", serif; font-size: 18px; margin: 8px 0 4px; color: #f7f4f0; }
-        .os-card.locked .os-card-device { color: #8a7f74; }
-        .os-card-blurb { font-size: 13px; line-height: 1.5; color: #8a7f74; margin: 0; }
-        .os-card-hint { font-size: 12px; color: rgba(247,244,240,0.5); margin-top: 8px; }
-        .os-card-link { font-size: 13px; color: ${TEAL}; text-decoration: none; display: inline-block; margin-top: 8px; }
-        .os-reveal { margin-top: 24px; background: #2a211a; border: 1px solid ${TEAL}; border-radius: 10px; padding: 24px; text-align: center; animation: os-rise 0.5s cubic-bezier(.4,0,.2,1); }
-        .os-reveal-title { font-family: "Lora", serif; font-size: 24px; font-weight: 700; margin: 0 0 4px; }
+        .os-card.open .os-card-label { color: #0E7A54; }
+        .os-card-min { font-size: 12px; color: #8E8E8E; }
+        .os-card-device { font-family: inherit; font-weight: 500; letter-spacing: -0.015em; font-size: 18px; margin: 8px 0 4px; color: #141414; }
+        .os-card.locked .os-card-device { color: #8E8E8E; }
+        .os-card-blurb { font-size: 13px; line-height: 1.5; color: #5A5A5A; margin: 0; }
+        .os-card-hint { font-size: 12px; color: #8E8E8E; margin-top: 8px; }
+        .os-card-link { font-size: 13px; color: #0E7A54; text-decoration: none; display: inline-block; margin-top: 8px; }
+        .os-reveal { margin-top: 24px; background: #F4FBF8; border: 1px solid ${TEAL}; border-radius: 0; padding: 24px; text-align: center; animation: os-rise 0.5s cubic-bezier(.4,0,.2,1); }
+        .os-reveal-title { font-family: inherit; font-size: 24px; font-weight: 300; letter-spacing: -0.02em; margin: 0 0 4px; }
         .os-reveal-bar { height: 4px; width: 64px; background: ${TEAL}; border-radius: 2px; margin: 8px auto 12px; animation: os-sweep 0.7s cubic-bezier(0,0,.2,1); transform-origin: left center; }
-        .os-price { font-size: 28px; font-weight: 700; }
-        .os-price-was { font-size: 14px; color: #8a7f74; text-decoration: line-through; margin-left: 8px; }
-        .os-save { font-size: 13px; color: ${TEAL}; margin: 4px 0 16px; }
-        .os-cta { display: block; background: ${TEAL}; color: #1a1714; font-weight: 700; font-size: 16px; border-radius: 9999px; padding: 14px 24px; text-decoration: none; }
-        .os-cta-note { font-size: 12px; color: #8a7f74; margin-top: 12px; line-height: 1.5; }
-        .os-locked-note { margin-top: 24px; text-align: center; font-size: 13px; color: #8a7f74; }
-        .os-topoffer { margin-top: 20px; padding: 16px 20px; border: 1px solid rgba(46,216,168,0.35); border-radius: 16px; text-align: center; }
+        .os-price { font-size: 28px; font-weight: 600; }
+        .os-price-was { font-size: 14px; color: #8E8E8E; text-decoration: line-through; margin-left: 8px; }
+        .os-save { font-size: 13px; color: #0E7A54; margin: 4px 0 16px; }
+        .os-cta { display: block; background: ${TEAL}; color: #141414; font-weight: 600; font-size: 16px; border-radius: 9999px; padding: 14px 24px; text-decoration: none; transition: background-color 0.15s ease; }
+        .os-cta:hover { background: #1BAF86; }
+        .os-cta-note { font-size: 12px; color: #8E8E8E; margin-top: 12px; line-height: 1.5; }
+        .os-locked-note { margin-top: 24px; text-align: center; font-size: 13px; color: #8E8E8E; }
+        .os-topoffer { margin-top: 20px; padding: 16px 20px; border: 1px solid rgba(20,20,20,0.10); border-radius: 0; text-align: center; }
         .os-topoffer-line { font-size: 15px; margin: 0 0 12px; }
-        .os-topoffer-price { font-weight: 700; color: ${TEAL}; margin-left: 6px; }
+        .os-topoffer-price { font-weight: 600; color: #0E7A54; margin-left: 6px; }
         .os-topoffer-cta { max-width: 320px; margin: 0 auto; text-align: center; }
         @keyframes os-rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
         @keyframes os-sweep { from { transform: scaleX(0); } to { transform: scaleX(1); } }

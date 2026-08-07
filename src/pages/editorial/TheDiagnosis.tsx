@@ -21,16 +21,15 @@ export default function TheDiagnosis() {
       ogImage="/og/editorial-the-diagnosis.jpg"
       publishedTime="2026-07-08"
       folio="( 02 / 05 )"
-      mastheadVariant="dark"
     >
-      {/* DARK HERO (masthead already dark via layout; hero ground continues it) */}
-      <div style={{ background: "var(--ed-dark)", marginTop: "-1px" }}>
+      {/* HERO (white ground, hairline continuity with the masthead) */}
+      <div style={{ background: "#FFFFFF", marginTop: "-1px" }}>
         <section className="ed-sec ed-hero ed-hero--dark" style={{ padding: "40px 24px 44px" }}>
-          <span className="eyebrow eyebrow--teal">The Diagnosis</span>
-          <h1 className="headline" style={{ fontSize: "42px", lineHeight: 1.1, color: "var(--ed-on-dark)" }}>
+          <span className="eyebrow eyebrow--teal-light">The Diagnosis</span>
+          <h1 className="headline" style={{ fontSize: "42px", lineHeight: 1.1, color: "var(--ed-dark)" }}>
             Why your skin stopped listening.
           </h1>
-          <p className="deck" style={{ color: "var(--ed-on-dark-dim)" }}>
+          <p className="deck" style={{ color: "var(--ed-grey)" }}>
             Twelve products on the shelf and the same face in the mirror. The problem is not the
             ingredients. It is the signal.
           </p>
@@ -93,7 +92,7 @@ export default function TheDiagnosis() {
 
       {/* END CTA */}
       <section className="ed-sec ed-cta" style={{ padding: "40px 24px", display: "flex", flexDirection: "column", gap: "16px" }}>
-        <p style={{ fontFamily: "var(--ed-font-serif)", fontStyle: "italic", fontSize: "26px", lineHeight: 1.25, margin: 0 }}>
+        <p style={{ fontFamily: "var(--ed-font-sans)", fontWeight: 300, letterSpacing: "-0.02em", fontSize: "26px", lineHeight: 1.25, margin: 0 }}>
           Speak the skin's language.
         </p>
         <p style={{ fontSize: "14px", lineHeight: 1.6, color: "var(--ed-grey)", margin: 0 }}>
@@ -110,7 +109,7 @@ export default function TheDiagnosis() {
         </a>
       </section>
 
-      <EditorialNewsletter slug="the-diagnosis" copy="One letter a week. Mechanism before benefit, always." variant="dark" />
+      <EditorialNewsletter slug="the-diagnosis" copy="One letter a week. Mechanism before benefit, always." />
     </EditorialLayout>
   );
 }

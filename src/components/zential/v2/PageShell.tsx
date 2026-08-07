@@ -47,7 +47,7 @@ export function PageShell({
  }, [stickyTag]);
 
  return (
-  <div className="min-h-screen bg-[#F7F4F0] text-[#1A1714]">
+  <div className="min-h-screen bg-white text-[#141414]">
    <SEO title={title} description={description} canonicalUrl={canonical} />
    <AnnouncementBar />
    <Header />
@@ -65,16 +65,16 @@ export function PageShell({
      }}
      aria-hidden
     >
-     <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#6B5A4A]">
+     <div className="font-sans text-[10px] tracking-[0.22em] uppercase text-[#8E8E8E]">
       {stickyTag.split(" ")[0]}
      </div>
      <div
-      className="font-[Lora] italic leading-none text-[#1A1714]"
+      className="font-sans font-light leading-none tracking-[-0.02em] text-[#141414]"
       style={{ fontSize: "3rem" }}
      >
       ( {stickyTag.split(" ").slice(1).join(" ") || stickyTag} )
      </div>
-     <div className="mt-4 w-1 h-32 bg-[#1A1714]/10 overflow-hidden">
+     <div className="mt-4 w-1 h-32 bg-[#141414]/10 overflow-hidden">
       <div
        className="w-full bg-[#2ED8A8]"
        style={{
@@ -91,20 +91,20 @@ export function PageShell({
    {!hideHero && (displayTitle || eyebrow) && (
     <section className="px-6 md:pl-32 pt-20 pb-16 md:pt-32 md:pb-24 max-w-6xl">
      {eyebrow && (
-      <p className="font-mono text-xs tracking-[0.22em] uppercase text-[#6B5A4A] mb-8">
+      <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E] mb-8">
        {eyebrow}
       </p>
      )}
      {displayTitle && (
       <h1
-       className="font-[Lora] italic leading-[0.95] text-[#1A1714] max-w-4xl"
-       style={{ fontSize: "clamp(3rem, 9vw, 8rem)" }}
+       className="font-sans font-light leading-[0.98] tracking-[-0.03em] text-[#141414] max-w-4xl"
+       style={{ fontSize: "clamp(2.6rem, 7vw, 6.5rem)" }}
       >
        {displayTitle}
       </h1>
      )}
      {displaySubtitle && (
-      <p className="mt-8 text-base md:text-xl text-[#1A1714]/70 max-w-2xl leading-relaxed">
+      <p className="mt-8 text-base md:text-xl text-[#141414]/60 max-w-2xl leading-relaxed">
        {displaySubtitle}
       </p>
      )}

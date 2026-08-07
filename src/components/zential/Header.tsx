@@ -5,10 +5,11 @@ import { CartDrawer } from "@/components/CartDrawer";
 import { SearchOverlay } from "@/components/zential/SearchOverlay";
 
 const S = {
- dark: '#1A1714',
+ dark: '#141414',
  teal: '#2ED8A8',
- cream: '#F7F4F0',
- dm: { fontFamily: "'DM Sans', sans-serif" } as React.CSSProperties,
+ emerald: '#0E7A54',
+ cream: '#FFFFFF',
+ dm: { fontFamily: "'Switzer', 'DM Sans', sans-serif" } as React.CSSProperties,
 } as const;
 
 type NavMatch = 'exact' | 'prefix' | 'none';
@@ -60,7 +61,7 @@ export function Header() {
   <>
    <header
     className="sticky top-0 z-50 relative"
-    style={{ backgroundColor: S.dark, borderBottom: '1px solid rgba(247,244,240,0.06)' }}
+    style={{ backgroundColor: '#FFFFFF', borderBottom: '1px solid rgba(20,20,20,0.10)' }}
    >
     <div className="flex items-center justify-between px-8 md:px-14 lg:px-16 h-16">
 
@@ -73,7 +74,7 @@ export function Header() {
        fontSize: 12,
        letterSpacing: '0.3em',
        textTransform: 'uppercase',
-       color: S.cream,
+       color: S.dark,
       }}>
        Zential Pure
       </span>
@@ -88,7 +89,7 @@ export function Header() {
          : item.match === 'prefix'
          ? location.pathname.startsWith(item.to)
          : false;
-       const baseColor = isActive ? S.cream : 'rgba(247,244,240,0.6)';
+       const baseColor = isActive ? S.dark : 'rgba(20,20,20,0.55)';
        return (
         <Link
          key={item.label}
@@ -107,7 +108,7 @@ export function Header() {
           paddingBottom: 6,
           borderBottom: isActive ? `1px solid ${S.teal}` : '1px solid transparent',
          }}
-         onMouseEnter={e => (e.currentTarget.style.color = S.teal)}
+         onMouseEnter={e => (e.currentTarget.style.color = S.emerald)}
          onMouseLeave={e => (e.currentTarget.style.color = baseColor)}
         >
          {item.label}
@@ -117,9 +118,9 @@ export function Header() {
       <button
        onClick={() => setSearchOpen(true)}
        aria-label="Search"
-       style={{ color: 'rgba(247,244,240,0.45)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', transition: 'color 0.2s' }}
-       onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = S.teal)}
-       onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = 'rgba(247,244,240,0.45)')}
+       style={{ color: 'rgba(20,20,20,0.45)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', transition: 'color 0.2s' }}
+       onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = S.emerald)}
+       onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = 'rgba(20,20,20,0.45)')}
       >
        <Search size={17} />
       </button>
@@ -131,7 +132,7 @@ export function Header() {
       <button
        onClick={() => setSearchOpen(true)}
        aria-label="Search"
-       style={{ color: 'rgba(247,244,240,0.45)', background: 'none', border: 'none', cursor: 'pointer' }}
+       style={{ color: 'rgba(20,20,20,0.45)', background: 'none', border: 'none', cursor: 'pointer' }}
       >
        <Search size={17} />
       </button>
@@ -139,7 +140,7 @@ export function Header() {
       <button
        onClick={() => setMobileOpen(v => !v)}
        aria-label={mobileOpen ? "Close menu" : "Open menu"}
-       style={{ ...S.dm, fontWeight: 300, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(247,244,240,0.45)', background: 'none', border: 'none', cursor: 'pointer' }}
+       style={{ ...S.dm, fontWeight: 300, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(20,20,20,0.45)', background: 'none', border: 'none', cursor: 'pointer' }}
       >
        {mobileOpen ? "Close" : "Menu"}
       </button>
@@ -172,7 +173,7 @@ export function Header() {
     {/* Mobile nav */}
     {mobileOpen && (
      <nav
-      style={{ borderTop: '1px solid rgba(247,244,240,0.06)', backgroundColor: S.dark }}
+      style={{ borderTop: '1px solid rgba(20,20,20,0.10)', backgroundColor: '#FFFFFF' }}
       className="md:hidden px-8 py-6 space-y-5"
      >
       {NAV_ITEMS.map(item => (
@@ -183,7 +184,7 @@ export function Header() {
          if (item.label === 'Devices') scrollToDevices(e);
          setMobileOpen(false);
         }}
-        style={{ ...S.dm, fontWeight: 300, fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(247,244,240,0.7)', display: 'block' }}
+        style={{ ...S.dm, fontWeight: 300, fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(20,20,20,0.7)', display: 'block' }}
        >
         {item.label}
        </Link>
@@ -191,7 +192,7 @@ export function Header() {
       <Link
        to="/collection"
        onClick={() => setMobileOpen(false)}
-       style={{ ...S.dm, fontWeight: 300, fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(247,244,240,0.45)', display: 'block' }}
+       style={{ ...S.dm, fontWeight: 300, fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(20,20,20,0.45)', display: 'block' }}
       >
        Collection
       </Link>

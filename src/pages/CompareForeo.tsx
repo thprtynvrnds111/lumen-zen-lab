@@ -4,11 +4,11 @@ import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
 
-const BG = "#F7F4F0";
-const FACE_COLOR = "#1A1714";
-const MUTED = "#6B5B4E";
-const BORDER = "rgba(198,160,124,0.20)";
-const ACCENT = "#C6A07C";
+const BG = "#FFFFFF";
+const FACE_COLOR = "#141414";
+const MUTED = "#5A5A5A";
+const BORDER = "rgba(20,20,20,0.10)";
+const ACCENT = "#0E7A54";
 
 const faqJsonLd = {
  "@context": "https://schema.org",
@@ -86,10 +86,10 @@ export default function CompareForeo() {
     {/* Hero */}
     <section className="px-6 md:px-12 lg:px-20 py-24 md:py-36 text-center" style={{ backgroundColor: BG }}>
      <div className="max-w-2xl mx-auto">
-      <p className="text-[10px] tracking-[0.35em] uppercase mb-6 font-semibold" style={{ color: ACCENT }}>
+      <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-6" style={{ color: "#8E8E8E" }}>
        Device Comparison
       </p>
-      <h1 className="font-serif text-3xl md:text-5xl font-medium leading-tight mb-6" style={{ color: FACE_COLOR }}>
+      <h1 className="font-sans font-light tracking-[-0.025em] text-3xl md:text-5xl leading-tight mb-6" style={{ color: FACE_COLOR }}>
        FOREO BEAR vs Zential Pure
       </h1>
       <p className="text-base md:text-lg leading-relaxed" style={{ color: MUTED }}>
@@ -99,9 +99,9 @@ export default function CompareForeo() {
     </section>
 
     {/* Table */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-24">
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-24">
      <div className="max-w-3xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-12 text-center" style={{ color: FACE_COLOR }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-12 text-center" style={{ color: FACE_COLOR }}>
        Side-by-side
       </h2>
       <div className="overflow-x-auto">
@@ -109,21 +109,21 @@ export default function CompareForeo() {
         <thead>
          <tr style={{ borderBottom: `1px solid ${BORDER}` }}>
           <th className="text-left py-3 pr-6 font-medium text-xs tracking-widest uppercase" style={{ color: MUTED }}>Feature</th>
-          <th className="text-center py-3 px-4 font-medium text-xs tracking-widest uppercase" style={{ color: MUTED }}>
+          <th className="text-center py-3 px-4 font-medium text-xs tracking-widest uppercase" style={{ color: MUTED, backgroundColor: "#F4FBF8" }}>
            Zential Pure<br />
-           <span className="font-serif normal-case text-base font-medium" style={{ color: FACE_COLOR }}>Frequency Wand</span>
+           <span className="font-sans normal-case text-base font-medium" style={{ color: FACE_COLOR }}>Frequency Wand</span>
           </th>
           <th className="text-center py-3 pl-4 font-medium text-xs tracking-widest uppercase" style={{ color: MUTED }}>
            FOREO<br />
-           <span className="font-serif normal-case text-base font-medium" style={{ color: FACE_COLOR }}>BEAR</span>
+           <span className="font-sans normal-case text-base font-medium" style={{ color: FACE_COLOR }}>BEAR</span>
           </th>
          </tr>
         </thead>
         <tbody>
          {rows.map((row, i) => (
-          <tr key={i} style={{ borderBottom: `1px solid ${BORDER}`, backgroundColor: i % 2 === 0 ? "rgba(198,160,124,0.04)" : "transparent" }}>
+          <tr key={i} style={{ borderBottom: `1px solid ${BORDER}`, backgroundColor: "transparent" }}>
            <td className="py-4 pr-6 font-medium text-xs tracking-wide" style={{ color: MUTED }}>{row.feature}</td>
-           <td className="py-4 px-4 text-center text-sm" style={{ color: FACE_COLOR }}>{row.zential}</td>
+           <td className="py-4 px-4 text-center text-sm" style={{ color: FACE_COLOR, backgroundColor: "#F4FBF8" }}>{row.zential}</td>
            <td className="py-4 pl-4 text-center text-sm" style={{ color: MUTED }}>{row.foreo}</td>
           </tr>
          ))}
@@ -134,9 +134,9 @@ export default function CompareForeo() {
     </section>
 
     {/* Honest analysis */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-24" style={{ backgroundColor: "#F0EBE3" }}>
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-24">
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: FACE_COLOR }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: FACE_COLOR }}>
        An honest breakdown
       </h2>
 
@@ -176,9 +176,9 @@ export default function CompareForeo() {
     </section>
 
     {/* FAQ */}
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-24">
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-16 md:py-24">
      <div className="max-w-2xl mx-auto">
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-10" style={{ color: FACE_COLOR }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-10" style={{ color: FACE_COLOR }}>
        Common questions
       </h2>
       <div className="space-y-8">
@@ -193,21 +193,20 @@ export default function CompareForeo() {
     </section>
 
     {/* CTA */}
-    <section className="px-6 md:px-12 lg:px-20 py-20 text-center" style={{ backgroundColor: FACE_COLOR }}>
+    <section className="border-t border-[rgba(20,20,20,0.10)] px-6 md:px-12 lg:px-20 py-20 text-center">
      <div className="max-w-xl mx-auto">
-      <p className="text-[10px] tracking-[0.35em] uppercase mb-4 font-semibold" style={{ color: ACCENT }}>
+      <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-4" style={{ color: ACCENT }}>
        Frequency Wand · €147
       </p>
-      <h2 className="font-serif text-2xl md:text-3xl font-medium mb-4" style={{ color: "#f0ebe3" }}>
+      <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-4" style={{ color: "#141414" }}>
        Five technologies. One instrument.
       </h2>
-      <p className="text-sm leading-relaxed mb-8" style={{ color: "#8a7f74" }}>
+      <p className="text-sm leading-relaxed mb-8" style={{ color: "#5A5A5A" }}>
        EMS microcurrent · 5-spectrum LED · Electroporation · Vibration · IPX3
       </p>
       <Link
        to="/product/color-light-import-micro-current-vibration-massager"
-       className="inline-block px-8 py-4 text-sm font-medium tracking-widest uppercase"
-       style={{ backgroundColor: ACCENT, color: FACE_COLOR }}
+       className="inline-block rounded-full bg-[#2ED8A8] px-8 py-4 text-sm font-medium tracking-widest uppercase text-[#141414] transition-colors hover:bg-[#1BAF86]"
       >
        Order the Frequency Wand
       </Link>

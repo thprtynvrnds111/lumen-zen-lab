@@ -3,11 +3,11 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const accent = "#c4714a";
-const bg = "#1a1714";
-const surface = "#242019";
-const textPrimary = "#f0ebe3";
-const textMuted = "#8a7f74";
+const accent = "#0E7A54";
+const bg = "#FFFFFF";
+const surface = "#FFFFFF";
+const textPrimary = "#141414";
+const textMuted = "#5A5A5A";
 
 interface TechSection {
   name: string;
@@ -92,7 +92,7 @@ function TechBlock({ section }: { section: TechSection }) {
       >
         {/* Label */}
         <p
-          className="text-[10px] tracking-[0.35em] uppercase mb-4 font-semibold"
+          className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-4"
           style={{ color: accent }}
         >
           {section.name}
@@ -100,7 +100,7 @@ function TechBlock({ section }: { section: TechSection }) {
 
         {/* Parameter */}
         <p
-          className="text-xs tracking-wide mb-8 font-mono"
+          className="text-xs tracking-wide mb-8"
           style={{ color: textMuted }}
         >
           {section.param}
@@ -116,15 +116,16 @@ function TechBlock({ section }: { section: TechSection }) {
 
         {/* Quoted finding */}
         <blockquote
-          className="rounded-xl p-6 md:p-8 mb-6"
+          className="rounded-none p-6 md:p-8 mb-6"
           style={{
-            backgroundColor: section.alt ? bg : surface,
+            backgroundColor: "#FFFFFF",
+            border: "1px solid rgba(20,20,20,0.10)",
             borderLeft: `3px solid ${accent}`,
           }}
         >
           <p
-            className="text-sm md:text-base italic leading-relaxed mb-3"
-            style={{ color: textPrimary, fontFamily: "'Lora', Georgia, serif" }}
+            className="text-sm md:text-base leading-relaxed mb-3"
+            style={{ color: textPrimary }}
           >
             &ldquo;{section.quote}&rdquo;
           </p>
@@ -157,7 +158,6 @@ export default function Science() {
       style={{
         backgroundColor: bg,
         color: textPrimary,
-        fontFamily: "'Inter', system-ui, sans-serif",
       }}
     >
       <SEO
@@ -179,14 +179,13 @@ export default function Science() {
       {/* Hero */}
       <Section className="pt-24 pb-16 md:pt-32 md:pb-20 text-center px-6">
         <p
-          className="text-[10px] tracking-[0.35em] uppercase mb-5"
+          className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-5"
           style={{ color: accent }}
         >
           Research
         </p>
         <h1
-          className="font-serif italic text-3xl md:text-5xl lg:text-6xl mb-5 leading-tight"
-          style={{ fontFamily: "'Lora', 'Playfair Display', Georgia, serif" }}
+          className="font-sans font-light tracking-[-0.025em] text-3xl md:text-5xl lg:text-6xl mb-5 leading-tight"
         >
           The Science Behind<br className="hidden md:block" /> Zential Pure
         </h1>
@@ -195,13 +194,13 @@ export default function Science() {
         </p>
         <div
           className="mt-10 mx-auto max-w-xs h-px"
-          style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+          style={{ backgroundColor: "rgba(20,20,20,0.10)" }}
         />
       </Section>
 
       {/* Tech sections */}
       {sections.map((s) => (
-        <div key={s.name} style={{ backgroundColor: s.alt ? surface : bg }}>
+        <div key={s.name} className="border-t border-[rgba(20,20,20,0.10)]" style={{ backgroundColor: s.alt ? surface : bg }}>
           <TechBlock section={s} />
         </div>
       ))}
@@ -210,7 +209,7 @@ export default function Science() {
       <section className="px-6 md:px-12 lg:px-20 py-16 md:py-20 text-center">
         <div
           className="mx-auto max-w-xs h-px mb-10"
-          style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+          style={{ backgroundColor: "rgba(20,20,20,0.10)" }}
         />
         <p
           className="text-xs leading-relaxed max-w-md mx-auto"

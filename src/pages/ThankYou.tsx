@@ -74,18 +74,10 @@ export default function ThankYou() {
     description="Thank you for your order. Your Zential Pure device is being prepared."
    />
 
-   {/* Grain overlay */}
-   <svg className="fixed inset-0 w-full h-full pointer-events-none z-50" aria-hidden="true">
-    <filter id="grain">
-     <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-    </filter>
-    <rect width="100%" height="100%" filter="url(#grain)" opacity="0.035" />
-   </svg>
-
    <div
     style={{
      minHeight: "100vh",
-     backgroundColor: "#F7F4F0",
+     backgroundColor: "#FFFFFF",
      display: "flex",
      flexDirection: "column",
      alignItems: "center",
@@ -94,29 +86,14 @@ export default function ThankYou() {
      position: "relative",
     }}
    >
-    {/* Warm radial glow */}
-    <div
-     style={{
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      width: "700px",
-      height: "700px",
-      borderRadius: "50%",
-      background: "radial-gradient(circle, rgba(198,160,124,0.10) 0%, transparent 70%)",
-      pointerEvents: "none",
-     }}
-    />
-
     {/* Card */}
     <div
      style={{
       maxWidth: "520px",
       width: "100%",
       backgroundColor: "#FFFFFF",
-      border: "1px solid rgba(198,160,124,0.22)",
-      borderRadius: "2px",
+      border: "1px solid rgba(20,20,20,0.10)",
+      borderRadius: "0",
       padding: "56px 48px",
       position: "relative",
       zIndex: 1,
@@ -125,8 +102,8 @@ export default function ThankYou() {
       transition: "opacity 0.7s ease 80ms, transform 0.7s ease 80ms",
      }}
     >
-     {/* Top gold divider */}
-     <GoldDivider />
+     {/* Top divider */}
+     <Divider />
 
      {/* Checkmark icon */}
      <div
@@ -134,7 +111,7 @@ export default function ThankYou() {
        width: "52px",
        height: "52px",
        borderRadius: "50%",
-       border: "1.5px solid #C6A07C",
+       border: "1.5px solid #0E7A54",
        display: "flex",
        alignItems: "center",
        justifyContent: "center",
@@ -144,7 +121,7 @@ export default function ThankYou() {
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
        <polyline
         points="6 12 10 16 18 8"
-        stroke="#C6A07C"
+        stroke="#0E7A54"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -156,11 +133,10 @@ export default function ThankYou() {
      {/* Headline */}
      <h1
       style={{
-       fontFamily: "'Lora', serif",
-       fontStyle: "italic",
-       fontWeight: 400,
+       fontWeight: 300,
+       letterSpacing: "-0.025em",
        fontSize: "28px",
-       color: "#1A1714",
+       color: "#141414",
        textAlign: "center",
        margin: "0 0 12px",
        lineHeight: 1.3,
@@ -172,11 +148,10 @@ export default function ThankYou() {
      {/* Subline */}
      <p
       style={{
-       fontFamily: "'Poppins', sans-serif",
-       fontWeight: 300,
+             fontWeight: 300,
        fontSize: "11px",
        letterSpacing: "0.18em",
-       color: "#C6A07C",
+       color: "#0E7A54",
        textAlign: "center",
        margin: "0 0 32px",
       }}
@@ -188,8 +163,9 @@ export default function ThankYou() {
      {displayOrder && (
       <div
        style={{
-        backgroundColor: "#F7F4F0",
-        borderRadius: "2px",
+        backgroundColor: "#FFFFFF",
+        border: "1px solid rgba(20,20,20,0.10)",
+        borderRadius: "0",
         padding: "14px 20px",
         display: "flex",
         justifyContent: "space-between",
@@ -199,11 +175,10 @@ export default function ThankYou() {
       >
        <span
         style={{
-         fontFamily: "'Poppins', sans-serif",
-         fontWeight: 300,
+                 fontWeight: 300,
          fontSize: "11px",
          letterSpacing: "0.14em",
-         color: "#5C5753",
+         color: "#5A5A5A",
          textTransform: "uppercase",
         }}
        >
@@ -211,10 +186,9 @@ export default function ThankYou() {
        </span>
        <span
         style={{
-         fontFamily: "'Poppins', sans-serif",
-         fontWeight: 400,
+                 fontWeight: 400,
          fontSize: "13px",
-         color: "#1A1714",
+         color: "#141414",
         }}
        >
         {displayOrder}
@@ -225,10 +199,9 @@ export default function ThankYou() {
      {/* Body copy */}
      <p
       style={{
-       fontFamily: "'Poppins', sans-serif",
-       fontWeight: 300,
+             fontWeight: 300,
        fontSize: "13px",
-       color: "#5C5753",
+       color: "#5A5A5A",
        lineHeight: 1.75,
        textAlign: "center",
        margin: "0 0 28px",
@@ -243,11 +216,10 @@ export default function ThankYou() {
      <div style={{ marginBottom: "28px" }}>
       <p
        style={{
-        fontFamily: "'Poppins', sans-serif",
-        fontWeight: 300,
+               fontWeight: 300,
         fontSize: "10px",
         letterSpacing: "0.2em",
-        color: "#C6A07C",
+        color: "#8E8E8E",
         textAlign: "center",
         textTransform: "uppercase",
         marginBottom: "14px",
@@ -263,17 +235,17 @@ export default function ThankYou() {
           display: "flex",
           gap: "14px",
           padding: "12px 16px",
-          backgroundColor: "#F7F4F0",
-          borderRadius: "2px",
+          backgroundColor: "#FFFFFF",
+          border: "1px solid rgba(20,20,20,0.10)",
+          borderRadius: "0",
           alignItems: "flex-start",
          }}
         >
          <span style={{
-          fontFamily: "'Poppins', sans-serif",
-          fontWeight: 500,
+                   fontWeight: 500,
           fontSize: "10px",
           letterSpacing: "0.12em",
-          color: "#C6A07C",
+          color: "#0E7A54",
           textTransform: "uppercase",
           whiteSpace: "nowrap",
           paddingTop: "1px",
@@ -281,7 +253,7 @@ export default function ThankYou() {
          }}>
           {item.day}
          </span>
-         <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300, fontSize: "11px", color: "#5C5753", lineHeight: 1.65 }}>
+         <span style={{ fontWeight: 300, fontSize: "11px", color: "#5A5A5A", lineHeight: 1.65 }}>
           {item.instruction}
          </span>
         </div>
@@ -292,14 +264,15 @@ export default function ThankYou() {
      {/* Trustpilot invite */}
      <div
       style={{
-       backgroundColor: "#F7F4F0",
-       borderRadius: "2px",
+       backgroundColor: "#FFFFFF",
+       border: "1px solid rgba(20,20,20,0.10)",
+       borderRadius: "0",
        padding: "14px 20px",
        marginBottom: "24px",
        textAlign: "center",
       }}
      >
-      <p style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300, fontSize: "11px", color: "#5C5753", margin: "0 0 8px" }}>
+      <p style={{ fontWeight: 300, fontSize: "11px", color: "#5A5A5A", margin: "0 0 8px" }}>
        {t('reviewCopy')}
       </p>
       <a
@@ -307,14 +280,13 @@ export default function ThankYou() {
        target="_blank"
        rel="noopener noreferrer"
        style={{
-        fontFamily: "'Poppins', sans-serif",
-        fontWeight: 400,
+               fontWeight: 400,
         fontSize: "10px",
         letterSpacing: "0.16em",
-        color: "#1A1714",
+        color: "#141414",
         textTransform: "uppercase",
         textDecoration: "none",
-        borderBottom: "1px solid #C6A07C",
+        borderBottom: "1px solid #0E7A54",
         paddingBottom: "1px",
        }}
       >
@@ -322,18 +294,17 @@ export default function ThankYou() {
       </a>
      </div>
 
-     {/* Bottom gold divider */}
-     <GoldDivider />
+     {/* Bottom divider */}
+     <Divider />
 
      {/* Post-purchase links */}
      <div style={{ marginTop: "28px" }}>
       <p
        style={{
-        fontFamily: "'Poppins', sans-serif",
-        fontWeight: 300,
+               fontWeight: 300,
         fontSize: "10px",
         letterSpacing: "0.2em",
-        color: "#C6A07C",
+        color: "#8E8E8E",
         textAlign: "center",
         textTransform: "uppercase",
         marginBottom: "14px",
@@ -351,18 +322,19 @@ export default function ThankYou() {
           justifyContent: "space-between",
           alignItems: "center",
           padding: "12px 16px",
-          backgroundColor: "#F7F4F0",
-          borderRadius: "2px",
+          backgroundColor: "#FFFFFF",
+          border: "1px solid rgba(20,20,20,0.10)",
+          borderRadius: "0",
           textDecoration: "none",
           transition: "background-color 0.2s ease",
          }}
-         onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#EDE9E3")}
-         onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#F7F4F0")}
+         onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#F4FBF8")}
+         onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#FFFFFF")}
         >
-         <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 400, fontSize: "12px", color: "#1A1714" }}>
+         <span style={{ fontWeight: 400, fontSize: "12px", color: "#141414" }}>
           {link.label}
          </span>
-         <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300, fontSize: "11px", color: "#8C8680" }}>
+         <span style={{ fontWeight: 300, fontSize: "11px", color: "#8E8E8E" }}>
           {link.desc} →
          </span>
         </Link>
@@ -374,11 +346,10 @@ export default function ThankYou() {
     {/* Brand below card */}
     <p
      style={{
-      fontFamily: "'Poppins', sans-serif",
-      fontWeight: 300,
+           fontWeight: 300,
       fontSize: "10px",
       letterSpacing: "0.2em",
-      color: "rgba(90,85,80,0.45)",
+      color: "#8E8E8E",
       marginTop: "36px",
       textAlign: "center",
       opacity: mounted ? 1 : 0,
@@ -392,14 +363,14 @@ export default function ThankYou() {
  );
 }
 
-function GoldDivider() {
+function Divider() {
  return (
   <div
    style={{
     width: "32px",
     height: "1px",
     margin: "0 auto",
-    background: "linear-gradient(90deg, transparent, #C6A07C, transparent)",
+    background: "#0E7A54",
    }}
   />
  );

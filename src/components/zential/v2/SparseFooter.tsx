@@ -92,32 +92,32 @@ export function SparseFooter() {
   };
 
   return (
-    <footer className="relative bg-[#1A1714] text-[#F7F4F0] overflow-hidden">
+    <footer className="relative border-t border-[rgba(20,20,20,0.10)] bg-white text-[#141414] overflow-hidden">
       {/* Top hairline accent */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2ED8A8]/50 to-transparent" aria-hidden />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2ED8A8]/60 to-transparent" aria-hidden />
 
       <div className="px-6 md:px-14 pt-24 pb-12 max-w-7xl">
         {/* Big italic wordmark band */}
-        <div className="border-b border-[#F7F4F0]/10 pb-16 mb-16">
+        <div className="border-b border-[rgba(20,20,20,0.10)] pb-16 mb-16">
           <div className="flex items-baseline justify-between mb-8 gap-4">
-            <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#F7F4F0]/40">
+            <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#141414]/45">
               Zential Pure  ·  Rotterdam
             </p>
-            <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#F7F4F0]/40 tabular-nums">
+            <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#141414]/45 tabular-nums">
               {clock}  ·  CET
             </p>
           </div>
 
           <h2
-            className="font-[Lora] italic leading-[0.9] text-[#F7F4F0]"
+            className="font-sans font-light leading-[0.94] tracking-[-0.03em] text-[#141414]"
             style={{ fontSize: "clamp(3.5rem, 11vw, 11rem)" }}
           >
             Clinic precision,
             <br />
-            <span className="text-[#2ED8A8]">daily ritual.</span>
+            <span className="text-[#0E7A54]">daily ritual.</span>
           </h2>
 
-          <div className="mt-10 flex flex-wrap items-baseline gap-x-8 gap-y-3 font-mono text-[10px] tracking-[0.22em] uppercase text-[#F7F4F0]/40">
+          <div className="mt-10 flex flex-wrap items-baseline gap-x-8 gap-y-3 font-mono text-[10px] tracking-[0.22em] uppercase text-[#141414]/45">
             <span>Edition ( {year} )</span>
             <span>·</span>
             <span>EMS  ·  Microcurrent  ·  Thermal</span>
@@ -130,7 +130,7 @@ export function SparseFooter() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
           {sections.map((s) => (
             <div key={s.label}>
-              <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#F7F4F0]/40 mb-5">
+              <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#141414]/45 mb-5">
                 {s.label}
               </p>
               <ul className="space-y-3">
@@ -138,7 +138,7 @@ export function SparseFooter() {
                   <li key={it.to}>
                     <Link
                       to={it.to}
-                      className="text-sm text-[#F7F4F0]/75 hover:text-[#2ED8A8] transition-colors"
+                      className="text-sm text-[#141414]/75 hover:text-[#0E7A54] transition-colors"
                     >
                       {it.name}
                     </Link>
@@ -150,12 +150,12 @@ export function SparseFooter() {
         </div>
 
         {/* Newsletter band */}
-        <div className="border-t border-[#F7F4F0]/10 pt-10 mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div className="border-t border-[rgba(20,20,20,0.10)] pt-10 mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
           <div className="max-w-md">
-            <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#F7F4F0]/40 mb-4">
+            <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#141414]/45 mb-4">
               Primer
             </p>
-            <p className="font-[Lora] italic text-2xl md:text-3xl text-[#F7F4F0] leading-tight">
+            <p className="font-sans font-light text-2xl md:text-3xl tracking-[-0.02em] text-[#141414] leading-tight">
               The ten-minute Face Protocol,
               <br />
               by email.
@@ -171,12 +171,12 @@ export function SparseFooter() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@email.com"
                 disabled={submitting}
-                className="flex-1 bg-transparent border border-[#F7F4F0]/20 px-4 py-3 text-sm text-[#F7F4F0] placeholder:text-[#F7F4F0]/30 focus:border-[#2ED8A8] focus:outline-none transition-colors disabled:opacity-50"
+                className="flex-1 bg-transparent border border-[rgba(20,20,20,0.22)] px-4 py-3 text-sm text-[#141414] placeholder:text-[#141414]/35 focus:border-[#0E7A54] focus:outline-none transition-colors disabled:opacity-50"
               />
               <button
                 type="submit"
                 disabled={submitting}
-                className="px-6 py-3 bg-[#F7F4F0] text-[#1A1714] text-xs tracking-[0.16em] uppercase hover:bg-[#2ED8A8] transition-colors disabled:opacity-50 disabled:hover:bg-[#F7F4F0]"
+                className="px-6 py-3 bg-[#141414] text-white text-xs tracking-[0.16em] uppercase hover:bg-[#0E7A54] transition-colors disabled:opacity-50 disabled:hover:bg-[#141414]"
               >
                 {submitting ? "Sending…" : "Subscribe"}
               </button>
@@ -196,10 +196,10 @@ export function SparseFooter() {
         </div>
 
         {/* Bottom credit row */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pt-10 border-t border-[#F7F4F0]/10">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pt-10 border-t border-[rgba(20,20,20,0.10)]">
           <div className="flex items-center gap-4">
             <FlowerMark />
-            <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#F7F4F0]/40">
+            <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#141414]/45">
               Edition {year}  ·  zentialpure.com
             </p>
           </div>
@@ -215,7 +215,7 @@ export function SparseFooter() {
                   rel="me noopener noreferrer"
                   target="_blank"
                   aria-label={`Zential Pure on ${s.label} — ${s.handle}`}
-                  className="flex h-11 w-11 items-center justify-center rounded-xl text-[#F7F4F0]/40 hover:text-[#2ED8A8] transition-colors"
+                  className="flex h-11 w-11 items-center justify-center rounded-xl text-[#141414]/45 hover:text-[#0E7A54] transition-colors"
                 >
                   <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-current" aria-hidden>
                     <path d={s.path} />
@@ -231,7 +231,7 @@ export function SparseFooter() {
               from China and a US warehouse; nothing is designed, specified or
               calibrated in Rotterdam. Rotterdam belongs only to the registered
               company line below, which is a company fact, not a product one. */}
-          <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#F7F4F0]/30 text-right">
+          <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#141414]/35 text-right">
             Shipped EU-wide.
           </p>
         </div>
@@ -256,9 +256,9 @@ export function SparseFooter() {
             is in a different town and looks private.
 
             Mirrored in public/entity.html's Organization schema — change both. */}
-        <p className="mt-6 font-mono text-[10px] tracking-[0.18em] uppercase text-[#F7F4F0]/30">
+        <p className="mt-6 font-mono text-[10px] tracking-[0.18em] uppercase text-[#141414]/35">
           Zential Pure  ·  M.G. Young-On  ·  3e Westewagenhof 78, 3011 AR Rotterdam, the Netherlands  ·  KvK 96597569  ·  BTW NL004192654B60  ·{" "}
-          <a href="mailto:info@zentialpure.com" className="hover:text-[#2ED8A8] transition-colors normal-case tracking-normal">
+          <a href="mailto:info@zentialpure.com" className="hover:text-[#0E7A54] transition-colors normal-case tracking-normal">
             info@zentialpure.com
           </a>
         </p>

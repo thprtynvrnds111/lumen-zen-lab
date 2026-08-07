@@ -14,10 +14,10 @@ interface Badge {
 }
 
 function Icon({ kind }: { kind: Badge["icon"] }) {
-  const common = { width: 20, height: 20, viewBox: "0 0 24 24", fill: "none", stroke: "#157A5C", strokeWidth: 1.5, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  const common = { width: 20, height: 20, viewBox: "0 0 24 24", fill: "none", stroke: "#0E7A54", strokeWidth: 1.5, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
   if (kind === "ce") {
     return (
-      <span className="grid h-[22px] min-w-[30px] place-items-center rounded-[3px] border border-[#157A5C]/45 px-1 font-serif text-[12px] not-italic tracking-[0.04em] text-[#157A5C]">CE</span>
+      <span className="grid h-[22px] min-w-[30px] place-items-center rounded-[3px] border border-[#0E7A54]/45 px-1 font-sans text-[12px] font-medium tracking-[0.04em] text-[#0E7A54]">CE</span>
     );
   }
   if (kind === "shield") {
@@ -52,13 +52,13 @@ export function TrustBadges({ cordless = false, certifications = [] }: TrustBadg
   ];
 
   return (
-    <ul className="mt-7 grid grid-cols-1 gap-x-6 gap-y-4 border-t border-[rgba(26,23,20,0.12)] pt-7 sm:grid-cols-2">
+    <ul className="mt-7 grid grid-cols-1 gap-x-6 gap-y-4 border-t border-[rgba(20,20,20,0.10)] pt-7 sm:grid-cols-2">
       {badges.map((b) => (
         <li key={b.label} className="flex items-center gap-3">
           <Icon kind={b.icon} />
-          <span className="font-sans text-[12px] leading-[1.4] text-[#1A1714]/75">
-            <b className="font-medium text-[#1A1714]">{b.label}</b>
-            {b.sub && <span className="text-[#1A1714]/55"> · {b.sub}</span>}
+          <span className="font-sans text-[12px] leading-[1.4] text-[#5A5A5A]">
+            <b className="font-medium text-[#141414]">{b.label}</b>
+            {b.sub && <span className="text-[#8E8E8E]"> · {b.sub}</span>}
           </span>
         </li>
       ))}

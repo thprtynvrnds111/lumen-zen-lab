@@ -3,7 +3,11 @@ import { SEO } from "@/components/SEO";
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
 import { ZentialFooter } from "@/components/zential/ZentialFooter";
-import { BubbleBackground } from "@/components/zential/BubbleBackground";
+
+const WRAP = "mx-auto max-w-[1240px] px-6 md:px-10";
+const LABEL = "font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]";
+const PILL_ACTION =
+  "inline-flex items-center justify-center gap-2 rounded-full bg-[#2ED8A8] px-7 py-4 font-sans text-[12px] font-semibold tracking-[0.16em] uppercase text-[#141414] transition-colors hover:bg-[#1BAF86]";
 
 interface Study {
   title: string;
@@ -45,89 +49,93 @@ export function TechnologyPage({
   intro, mechanism, biology, usage, studies, deviceHref, deviceName,
 }: TechnologyPageProps) {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <SEO title={title} description={metaDescription} canonicalUrl={canonicalUrl} />
       <AnnouncementBar />
       <Header />
       <main>
         {/* Hero */}
-        <section className="relative px-6 md:px-12 lg:px-20 py-24 md:py-36 text-center overflow-hidden" style={{ backgroundColor: '#F7F4F0' }}>
-          <BubbleBackground />
-          <div className="relative z-10">
-            <p className="text-[10px] tracking-[0.25em] uppercase mb-4" style={{ color: '#9B5A2E' }}>{tagline}</p>
-            <h1 className="font-serif italic text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 tracking-tight leading-[1.1]">
+        <section className="bg-white">
+          <div className={`${WRAP} pt-[clamp(56px,9vw,120px)] pb-[clamp(48px,7vw,88px)] text-center`}>
+            <p className={LABEL}>{tagline}</p>
+            <h1 className="mx-auto mt-6 max-w-[18ch] font-sans font-light text-[clamp(36px,5.4vw,72px)] leading-[1.04] tracking-[-0.03em] text-[#141414]">
               {headline}
             </h1>
-            <p className="text-sm font-medium mb-2" style={{ color: '#C6A07C' }}>{paramLabel}: {paramValue}</p>
-            <p className="text-sm text-foreground/60 max-w-xl mx-auto leading-relaxed mt-6">{intro}</p>
+            <p className="mt-6 font-sans text-[13px] font-medium tracking-[0.08em] text-[#0E7A54]">{paramLabel}: {paramValue}</p>
+            <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-[#5A5A5A]">{intro}</p>
           </div>
         </section>
 
         {/* Mechanism */}
-        <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#EDE9E3' }}>
-          <div className="max-w-2xl mx-auto">
-            <h2 className="font-serif italic text-2xl md:text-3xl text-foreground mb-6">{mechanism.heading}</h2>
-            <p className="text-sm text-foreground/70 leading-[1.9]">{mechanism.body}</p>
+        <section className="bg-white border-t border-[rgba(20,20,20,0.10)]">
+          <div className={`${WRAP} py-[clamp(56px,8vw,104px)]`}>
+            <div className="mx-auto max-w-2xl">
+              <h2 className="font-sans font-light text-[clamp(26px,3vw,40px)] leading-[1.08] tracking-[-0.025em] text-[#141414] mb-6">{mechanism.heading}</h2>
+              <p className="text-sm text-[#5A5A5A] leading-[1.9]">{mechanism.body}</p>
+            </div>
           </div>
         </section>
 
         {/* Biology */}
-        <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
-          <div className="max-w-2xl mx-auto">
-            <h2 className="font-serif italic text-2xl md:text-3xl text-foreground mb-6">{biology.heading}</h2>
-            <p className="text-sm text-foreground/70 leading-[1.9]">{biology.body}</p>
+        <section className="bg-white border-t border-[rgba(20,20,20,0.10)]">
+          <div className={`${WRAP} py-[clamp(56px,8vw,104px)]`}>
+            <div className="mx-auto max-w-2xl">
+              <h2 className="font-sans font-light text-[clamp(26px,3vw,40px)] leading-[1.08] tracking-[-0.025em] text-[#141414] mb-6">{biology.heading}</h2>
+              <p className="text-sm text-[#5A5A5A] leading-[1.9]">{biology.body}</p>
+            </div>
           </div>
         </section>
 
         {/* Usage */}
-        <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#EDE9E3' }}>
-          <div className="max-w-2xl mx-auto">
-            <h2 className="font-serif italic text-2xl md:text-3xl text-foreground mb-8">{usage.heading}</h2>
-            <ul className="space-y-4">
-              {usage.points.map((point, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-foreground/70 leading-relaxed">
-                  <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: '#C6A07C' }} />
-                  {point}
-                </li>
-              ))}
-            </ul>
+        <section className="bg-white border-t border-[rgba(20,20,20,0.10)]">
+          <div className={`${WRAP} py-[clamp(56px,8vw,104px)]`}>
+            <div className="mx-auto max-w-2xl">
+              <h2 className="font-sans font-light text-[clamp(26px,3vw,40px)] leading-[1.08] tracking-[-0.025em] text-[#141414] mb-8">{usage.heading}</h2>
+              <ul className="space-y-4">
+                {usage.points.map((point, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-[#5A5A5A] leading-relaxed">
+                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#0E7A54]" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
         {/* Studies */}
-        <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28" style={{ backgroundColor: '#F7F4F0' }}>
-          <div className="max-w-2xl mx-auto">
-            <h2 className="font-serif italic text-2xl md:text-3xl text-foreground mb-8">Referenced Studies</h2>
-            <div className="space-y-5">
-              {studies.map((s, i) => (
-                <div
-                  key={i}
-                  className="block rounded-lg p-5 transition-shadow duration-300 hover:shadow-md cursor-default"
-                  style={{ backgroundColor: '#EFEBE5', border: '1px solid #E4DFD8' }}
-                >
-                  <p className="text-sm font-medium text-foreground mb-1">{s.title}</p>
-                  <p className="text-xs text-foreground/50">{s.source} · {s.year}</p>
-                </div>
-              ))}
+        <section className="bg-white border-t border-[rgba(20,20,20,0.10)]">
+          <div className={`${WRAP} py-[clamp(56px,8vw,104px)]`}>
+            <div className="mx-auto max-w-2xl">
+              <h2 className="font-sans font-light text-[clamp(26px,3vw,40px)] leading-[1.08] tracking-[-0.025em] text-[#141414] mb-8">Referenced Studies</h2>
+              <div className="space-y-5">
+                {studies.map((s, i) => (
+                  <div
+                    key={i}
+                    className="block rounded-none border border-[rgba(20,20,20,0.10)] bg-white p-5 transition-shadow duration-300 hover:shadow-sm cursor-default"
+                  >
+                    <p className="text-sm font-medium text-[#141414] mb-1">{s.title}</p>
+                    <p className="text-xs text-[#8E8E8E]">{s.source} · {s.year}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28 text-center" style={{ backgroundColor: '#EDE9E3' }}>
-          <p className="font-serif italic text-2xl md:text-3xl text-foreground mb-4">
-            Experience it yourself.
-          </p>
-          <p className="text-sm text-foreground/60 mb-8 max-w-md mx-auto">
-            30-day return. No questions. The technology works or you get your money back.
-          </p>
-          <Link
-            to={deviceHref}
-            className="inline-block px-8 py-3 text-sm font-medium text-white rounded-md transition-opacity hover:opacity-90"
-            style={{ backgroundColor: '#C6A07C' }}
-          >
-            View {deviceName} →
-          </Link>
+        <section className="bg-white border-t border-[rgba(20,20,20,0.10)]">
+          <div className={`${WRAP} py-[clamp(56px,8vw,104px)] text-center`}>
+            <p className="mx-auto max-w-[20ch] font-sans font-light text-[clamp(26px,3vw,40px)] leading-[1.08] tracking-[-0.025em] text-[#141414] mb-4">
+              Experience it yourself.
+            </p>
+            <p className="mx-auto mb-8 max-w-md text-sm text-[#5A5A5A]">
+              30-day return. No questions. The technology works or you get your money back.
+            </p>
+            <Link to={deviceHref} className={PILL_ACTION}>
+              View {deviceName} →
+            </Link>
+          </div>
         </section>
       </main>
       <ZentialFooter />

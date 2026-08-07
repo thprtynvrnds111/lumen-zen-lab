@@ -4,12 +4,12 @@ import { Header } from "@/components/zential/Header";
 import { SparseFooter } from "@/components/zential/v2/SparseFooter";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-const bg = "#1a1714";
-const surface = "#242019";
-const accent = "#c4714a";
-const textPrimary = "#f0ebe3";
-const textMuted = "#8a7f74";
-const divider = "#2e2a24";
+const bg = "#FFFFFF";
+const surface = "#FFFFFF";
+const accent = "#0E7A54";
+const textPrimary = "#141414";
+const textMuted = "#5A5A5A";
+const divider = "rgba(20,20,20,0.10)";
 
 function Section({
  children,
@@ -77,13 +77,13 @@ const ProtocolFaceIntroducer = () => (
     style={{ borderBottom: `1px solid ${divider}` }}
    >
     <p
-     className="font-mono text-xs tracking-widest uppercase mb-6"
+     className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-6"
      style={{ color: accent }}
     >
      Protocol
     </p>
     <h1
-     className="text-4xl md:text-5xl font-light leading-tight mb-6"
+     className="text-4xl md:text-5xl font-light tracking-[-0.025em] leading-tight mb-6"
      style={{ color: textPrimary }}
     >
      Face Introducer Protocol
@@ -117,21 +117,21 @@ const ProtocolFaceIntroducer = () => (
     >
      <div className="flex items-baseline gap-4 mb-3">
       <span
-       className="font-mono text-xs tracking-widest"
+       className="font-sans text-[11px] font-medium tracking-[0.22em]"
        style={{ color: accent }}
       >
        {m.number}
       </span>
       <h2
-       className="text-2xl md:text-3xl font-light"
+       className="text-2xl md:text-3xl font-light tracking-[-0.02em]"
        style={{ color: textPrimary }}
       >
        {m.name}
       </h2>
      </div>
      <p
-      className="font-mono text-xs tracking-widest uppercase mb-5"
-      style={{ color: textMuted }}
+      className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase mb-5"
+      style={{ color: "#8E8E8E" }}
      >
       {m.param}
      </p>
@@ -149,7 +149,7 @@ const ProtocolFaceIntroducer = () => (
   <Section>
    <div className="max-w-3xl mx-auto px-6 py-16">
     <h2
-     className="text-2xl md:text-3xl font-light mb-6"
+     className="text-2xl md:text-3xl font-light tracking-[-0.02em] mb-6"
      style={{ color: textPrimary }}
     >
      Running the sequence
@@ -180,8 +180,8 @@ const ProtocolFaceIntroducer = () => (
      ].map((item) => (
       <div
        key={item.step}
-       className="flex gap-4 p-4 rounded"
-       style={{ backgroundColor: surface }}
+       className="flex gap-4 p-4 rounded-none border"
+       style={{ borderColor: divider }}
       >
        <div
         className="w-2 flex-shrink-0 rounded-full mt-1"

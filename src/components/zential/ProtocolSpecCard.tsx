@@ -1,25 +1,24 @@
 import { type Protocol } from "@/data/protocols";
 
-// R2 "spec card", a dark boarding-pass / data-card rendition of the printed
+// R2 "spec card", a white boarding-pass / data-card rendition of the printed
 // Protocol Card that ships with each protocol. Pure markup, no external assets.
 export function ProtocolSpecCard({ protocol }: { protocol: Protocol }) {
- const ink = "#1A1714";
- const cream = "#F7F4F0";
- const teal = "#2ED8A8";
- const muted = "rgba(247,244,240,0.45)";
+ const ink = "#141414";
+ const accent = "#0E7A54";
+ const muted = "#8E8E8E";
 
  return (
   <div className="relative w-full max-w-md mx-auto">
    <div
-    className="relative overflow-hidden rounded-2xl shadow-2xl"
-    style={{ backgroundColor: ink, color: cream }}
+    className="relative overflow-hidden rounded-none border border-[rgba(20,20,20,0.10)] shadow-[0_18px_50px_rgba(20,20,20,0.08)]"
+    style={{ backgroundColor: "#FFFFFF", color: ink }}
    >
     {/* perforation stub line */}
     <div
      className="absolute top-0 bottom-0 hidden sm:block"
      style={{
       right: 84,
-      borderLeft: "1px dashed rgba(247,244,240,0.18)",
+      borderLeft: "1px dashed rgba(20,20,20,0.18)",
      }}
      aria-hidden
     />
@@ -28,14 +27,14 @@ export function ProtocolSpecCard({ protocol }: { protocol: Protocol }) {
      {/* header */}
      <div className="flex items-start justify-between">
       <h3
-       className="font-[Lora] italic leading-none"
+       className="font-sans font-light tracking-[-0.025em] leading-none"
        style={{ fontSize: "clamp(2.2rem, 6vw, 3rem)" }}
       >
        {protocol.title}.
       </h3>
       <span
-       className="font-mono text-[10px] tracking-[0.18em] uppercase"
-       style={{ color: teal }}
+       className="font-sans text-[10px] font-medium tracking-[0.18em] uppercase"
+       style={{ color: accent }}
       >
        Protocol {protocol.number}
       </span>
@@ -51,7 +50,7 @@ export function ProtocolSpecCard({ protocol }: { protocol: Protocol }) {
       ].map(([k, v]) => (
        <div key={k}>
         <div
-         className="font-mono text-[9px] tracking-[0.16em] uppercase mb-1"
+         className="font-sans text-[9px] font-medium tracking-[0.16em] uppercase mb-1"
          style={{ color: muted }}
         >
          {k}
@@ -64,11 +63,11 @@ export function ProtocolSpecCard({ protocol }: { protocol: Protocol }) {
      {/* sequence row */}
      <div
       className="mt-8 pt-6 flex items-end justify-between"
-      style={{ borderTop: "1px solid rgba(247,244,240,0.12)" }}
+      style={{ borderTop: "1px solid rgba(20,20,20,0.10)" }}
      >
       <div>
        <div
-        className="font-mono text-[9px] tracking-[0.16em] uppercase mb-1"
+        className="font-sans text-[9px] font-medium tracking-[0.16em] uppercase mb-1"
         style={{ color: muted }}
        >
         Sequence
@@ -78,8 +77,8 @@ export function ProtocolSpecCard({ protocol }: { protocol: Protocol }) {
        </div>
       </div>
       <div
-       className="font-mono leading-none"
-       style={{ color: teal, fontSize: "1.6rem" }}
+       className="font-sans tabular-nums leading-none"
+       style={{ color: accent, fontSize: "1.6rem" }}
       >
        {String(protocol.sessionMinutes).padStart(2, "0")}:00
       </div>
@@ -88,8 +87,8 @@ export function ProtocolSpecCard({ protocol }: { protocol: Protocol }) {
    </div>
 
    <p
-    className="text-center font-mono text-[10px] tracking-[0.16em] uppercase mt-6"
-    style={{ color: "#6B5A4A" }}
+    className="text-center font-sans text-[10px] font-medium tracking-[0.16em] uppercase mt-6"
+    style={{ color: "#8E8E8E" }}
    >
     Printed insert · ships with every Protocol · A6 · 300gsm
    </p>

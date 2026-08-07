@@ -78,7 +78,7 @@ export default function Quiz() {
  const footerProtocolLabel = t('footer.protocolLabel').split('\n');
 
  return (
-  <div className="min-h-screen" style={{ backgroundColor: "#FBF8F4" }}>
+  <div className="min-h-screen" style={{ backgroundColor: "#FFFFFF" }}>
    <SEO
     title="Skin Ritual Quiz, Find Your Zential Device"
     description="A 60-second quiz to map your skin's needs to a clinically-inspired ritual. Personalized device recommendation."
@@ -97,25 +97,25 @@ export default function Quiz() {
     />
     <div
      className="absolute inset-0 pointer-events-none"
-     style={{ background: 'linear-gradient(to bottom, rgba(251,248,244,0.05) 0%, rgba(251,248,244,0.35) 100%)' }}
+     style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.35) 100%)' }}
     />
     <div
      className="absolute inset-0 pointer-events-none"
-     style={{ background: 'linear-gradient(to right, rgba(251,248,244,0.55) 0%, transparent 45%)' }}
+     style={{ background: 'linear-gradient(to right, rgba(255,255,255,0.55) 0%, transparent 45%)' }}
     />
     <div className="absolute inset-0 flex items-center px-6 md:px-14">
      <p
-      className="font-serif italic max-w-md text-balance"
+      className="font-sans font-light tracking-[-0.02em] max-w-md text-balance"
       style={{
        fontSize: 'clamp(18px, 2.4vw, 30px)',
        lineHeight: 1.25,
-       color: '#1A1714',
-       letterSpacing: '-0.005em',
+       color: '#141414',
+       letterSpacing: '-0.02em',
       }}
      >
       The pause before knowing.
       <br />
-      <span style={{ color: 'rgba(26,23,20,0.55)' }}>
+      <span style={{ color: 'rgba(20,20,20,0.55)' }}>
        Sixty seconds to your protocol.
       </span>
      </p>
@@ -123,7 +123,7 @@ export default function Quiz() {
    </section>
 
    {/* Progress */}
-   <div className="sticky top-16 z-40 backdrop-blur-xl" style={{ backgroundColor: "rgba(251,248,244,0.85)" }}>
+   <div className="sticky top-16 z-40 backdrop-blur-xl" style={{ backgroundColor: "rgba(255,255,255,0.85)" }}>
     <div className="max-w-2xl mx-auto px-6 py-4">
      <div className="flex items-center justify-between mb-2.5">
       <button
@@ -140,7 +140,7 @@ export default function Quiz() {
      <div className="h-[2px] bg-foreground/10 rounded-full overflow-hidden">
       <div
        className="h-full transition-all duration-500 ease-out"
-       style={{ width: `${progress}%`, backgroundColor: "#9B5A2E" }}
+       style={{ width: `${progress}%`, backgroundColor: "#0E7A54" }}
       />
      </div>
     </div>
@@ -150,13 +150,13 @@ export default function Quiz() {
     {!showEmailGate ? (
      <>
       <div className="flex items-center gap-3 mb-5">
-       <span className="h-px w-6" style={{ backgroundColor: "#9B5A2E", opacity: 0.45 }} />
-       <p className="text-[10px] tracking-[0.32em] uppercase" style={{ color: "#9B5A2E" }}>
+       <span className="h-px w-6" style={{ backgroundColor: "#0E7A54", opacity: 0.45 }} />
+       <p className="text-[10px] tracking-[0.32em] uppercase" style={{ color: "#0E7A54" }}>
        , {step.label} 
        </p>
       </div>
 
-      <h1 className="font-serif italic text-[34px] md:text-5xl leading-[1.05] tracking-[-0.01em] text-foreground mb-4 text-balance">
+      <h1 className="font-sans font-light text-[34px] md:text-5xl leading-[1.05] tracking-[-0.03em] text-foreground mb-4 text-balance">
        {step.question}
       </h1>
       <p className="text-base text-foreground/60 mb-10 leading-relaxed max-w-lg">
@@ -170,20 +170,20 @@ export default function Quiz() {
          <button
           key={opt.id}
           onClick={() => select(opt.id)}
-          className={`group w-full text-left px-6 py-5 rounded-2xl border transition-all duration-300 hover:-translate-y-0.5 ${
+          className={`group w-full text-left px-6 py-5 rounded-none border transition-all duration-300 hover:-translate-y-0.5 ${
            isSelected
-            ? "border-foreground bg-foreground/[0.04] shadow-md"
-            : "border-foreground/15 bg-background hover:border-foreground/40 hover:shadow-sm"
+            ? "border-[#0E7A54] bg-[#F4FBF8] shadow-sm"
+            : "border-[rgba(20,20,20,0.10)] bg-white hover:border-[rgba(20,20,20,0.35)] hover:shadow-sm"
           }`}
          >
           <div className="flex items-start justify-between gap-4">
            <div className="flex-1">
-            <p className="font-serif italic text-xl text-foreground mb-1">{opt.label}</p>
+            <p className="font-sans text-xl font-medium tracking-[-0.015em] text-foreground mb-1">{opt.label}</p>
             <p className="text-[13px] text-foreground/55 leading-relaxed">{opt.desc}</p>
            </div>
            <div
             className={`mt-1.5 h-6 w-6 rounded-full border flex items-center justify-center transition-all flex-shrink-0 ${
-             isSelected ? "border-foreground bg-foreground text-background" : "border-foreground/25"
+             isSelected ? "border-[#0E7A54] bg-[#0E7A54] text-white" : "border-foreground/25"
             }`}
            >
             {isSelected ? <Check size={12} strokeWidth={2.5} /> : <ArrowRight size={12} className="opacity-0 group-hover:opacity-50 transition-opacity" />}
@@ -197,10 +197,10 @@ export default function Quiz() {
     ) : (
      <>
       <div className="flex items-center gap-3 mb-5">
-       <span className="h-px w-6" style={{ backgroundColor: "#9B5A2E", opacity: 0.45 }} />
-       <p className="text-[10px] tracking-[0.32em] uppercase" style={{ color: "#9B5A2E" }}> {t('emailGate.eyebrow')} </p>
+       <span className="h-px w-6" style={{ backgroundColor: "#0E7A54", opacity: 0.45 }} />
+       <p className="text-[10px] tracking-[0.32em] uppercase" style={{ color: "#0E7A54" }}> {t('emailGate.eyebrow')} </p>
       </div>
-      <h1 className="font-serif italic text-[34px] md:text-5xl leading-[1.05] tracking-[-0.01em] text-foreground mb-4 text-balance">
+      <h1 className="font-sans font-light text-[34px] md:text-5xl leading-[1.05] tracking-[-0.03em] text-foreground mb-4 text-balance">
        {t('emailGate.headline')}
       </h1>
       <p className="text-base text-foreground/60 mb-10 leading-relaxed max-w-lg">
@@ -218,8 +218,8 @@ export default function Quiz() {
        <button
         onClick={() => submit(false)}
         disabled={submitting || !email}
-        className="w-full py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-medium text-white rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0"
-        style={{ backgroundColor: "#2A211A" }}
+        className="w-full py-4 px-7 text-[13px] tracking-[0.08em] uppercase font-semibold text-[#141414] rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0"
+        style={{ backgroundColor: "#2ED8A8" }}
        >
         {submitting ? t('emailGate.submitting') : t('emailGate.submit')}
        </button>
@@ -237,19 +237,19 @@ export default function Quiz() {
     {/* Reassurance footer */}
     <div className="mt-16 pt-8 border-t border-foreground/10 grid grid-cols-3 gap-4 text-center">
      <div>
-      <p className="font-serif italic text-2xl text-foreground">{t('footer.completion')}</p>
+      <p className="font-sans font-light tracking-[-0.02em] text-2xl text-foreground">{t('footer.completion')}</p>
       <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">
        {footerCompletionLabel[0]}<br />{footerCompletionLabel[1]}
       </p>
      </div>
      <div>
-      <p className="font-serif italic text-2xl text-foreground">{t('footer.signals')}</p>
+      <p className="font-sans font-light tracking-[-0.02em] text-2xl text-foreground">{t('footer.signals')}</p>
       <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">
        {footerSignalsLabel[0]}<br />{footerSignalsLabel[1]}
       </p>
      </div>
      <div>
-      <p className="font-serif italic text-2xl text-foreground">{t('footer.protocol')}</p>
+      <p className="font-sans font-light tracking-[-0.02em] text-2xl text-foreground">{t('footer.protocol')}</p>
       <p className="text-[9px] tracking-[0.2em] uppercase text-foreground/55 mt-1.5">
        {footerProtocolLabel[0]}<br />{footerProtocolLabel[1]}
       </p>

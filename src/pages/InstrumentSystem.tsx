@@ -47,9 +47,6 @@ const INSTRUMENTS = [
   },
 ];
 
-const GRAIN =
-  "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
-
 const WRAP = "mx-auto max-w-[1180px] px-6 md:px-10";
 
 /**
@@ -137,52 +134,47 @@ export default function InstrumentSystem() {
       hideHero
     >
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-[#1A1714] text-[#F7F4F0]">
-        <div
-          className="pointer-events-none absolute inset-0 z-[1] opacity-[0.05] mix-blend-overlay"
-          style={{ backgroundImage: GRAIN, backgroundSize: "170px 170px" }}
-          aria-hidden
-        />
+      <section className="relative overflow-hidden bg-white text-[#141414]">
         <div className={`${WRAP} py-[clamp(72px,11vw,128px)]`}>
-          <p className="inline-flex items-center gap-[14px] font-sans text-[11px] tracking-[0.28em] uppercase text-[#2ED8A8]">
+          <p className="inline-flex items-center gap-[14px] font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]">
             <span className="tabular-nums opacity-55">( 00 )</span>
             <span className="inline-block h-px w-[26px] bg-current opacity-40" />
             The System
           </p>
-          <h1 className="my-[22px] max-w-[16ch] font-serif italic font-normal tracking-[-0.02em] leading-[1.02] text-[#F7F4F0] text-[clamp(42px,6vw,84px)]">
+          <h1 className="my-[22px] max-w-[16ch] font-sans font-light tracking-[-0.03em] leading-[1.02] text-[#141414] text-[clamp(42px,6vw,84px)]">
             All three instruments.
             <br />
             The whole day,{" "}
-            <span className="text-[#2ED8A8]">covered.</span>
+            <span className="text-[#0E7A54]">covered.</span>
           </h1>
-          <p className="max-w-[540px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">
+          <p className="max-w-[540px] text-[17px] leading-[1.75] text-[#5A5A5A]">
             Face in the morning, body after the work, full rest at night. The
             complete protocol, in one purchase.
           </p>
 
           {/* ── PRICE CARD ── */}
-          <div className="mt-[42px] max-w-[480px] rounded-[16px] border border-[rgba(247,244,240,0.10)] bg-[#070A0E] p-[clamp(28px,3vw,44px)]">
+          <div className="mt-[42px] max-w-[480px] rounded-none border border-[rgba(20,20,20,0.10)] bg-white p-[clamp(28px,3vw,44px)] shadow-[0_18px_50px_rgba(20,20,20,0.06)]">
             {fmt(componentSum || undefined) && (
-              <div className="font-sans text-[12px] text-[#F7F4F0]/45 line-through">
+              <div className="font-sans text-[12px] text-[#8E8E8E] line-through">
                 {fmt(componentSum || undefined)}
               </div>
             )}
             {fmt(bundlePrice ?? undefined) && (
-              <div className="mt-1 font-serif italic text-[56px] leading-none text-[#F7F4F0]">
+              <div className="mt-1 font-sans font-light tracking-[-0.02em] tabular-nums text-[56px] leading-none text-[#141414]">
                 {fmt(bundlePrice ?? undefined)}
               </div>
             )}
-            <div className="mt-1 font-serif italic text-[18px] text-[#C6A07C]">
+            <div className="mt-1 font-sans text-[15px] font-medium text-[#0E7A54]">
               Founding bundle{fmt(savings ?? undefined) && <> · save {fmt(savings ?? undefined)}</>}
             </div>
             <button
               onClick={claim}
               disabled={busy}
-              className="mt-6 w-full rounded-full bg-[#2ED8A8] px-7 py-4 font-sans text-[13px] font-medium tracking-[0.04em] text-[#070A0E] transition-opacity hover:opacity-90 disabled:opacity-60"
+              className="mt-6 w-full rounded-full bg-[#2ED8A8] px-7 py-4 font-sans text-[13px] font-medium tracking-[0.04em] text-[#141414] transition-colors hover:bg-[#1BAF86] disabled:opacity-60"
             >
               {busy ? "Adding the System…" : "Claim the System"}
             </button>
-            <p className="mt-3 text-center font-sans text-[11px] text-[#F7F4F0]/45">
+            <p className="mt-3 text-center font-sans text-[11px] text-[#8E8E8E]">
               30-day money-back guarantee, then a 1-year warranty, on every instrument.
             </p>
           </div>
@@ -190,17 +182,17 @@ export default function InstrumentSystem() {
       </section>
 
       {/* ── WHAT'S INCLUDED ── */}
-      <section className="bg-[#EDEAE6] py-[clamp(76px,10vw,120px)] text-[#1A1714]">
+      <section className="border-t border-[rgba(20,20,20,0.10)] bg-white py-[clamp(76px,10vw,120px)] text-[#141414]">
         <div className={WRAP}>
-          <p className="inline-flex items-center gap-[14px] font-sans text-[11px] tracking-[0.28em] uppercase text-[#6B5A4A]">
+          <p className="inline-flex items-center gap-[14px] font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]">
             <span className="tabular-nums opacity-55">( 01 )</span>
             <span className="inline-block h-px w-[26px] bg-current opacity-40" />
             What's included
           </p>
-          <h2 className="mt-5 font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] leading-[1.1] text-[#1A1714]">
+          <h2 className="mt-5 font-sans font-light tracking-[-0.025em] text-[clamp(28px,3.4vw,42px)] leading-[1.1] text-[#141414]">
             Three instruments. Six inputs.
           </h2>
-          <p className="mt-4 max-w-[520px] text-[15px] leading-[1.7] text-[#1A1714]/[0.66]">
+          <p className="mt-4 max-w-[520px] text-[15px] leading-[1.7] text-[#5A5A5A]">
             Each instrument works alone — together they cover the whole day. EMS,
             microcurrent, thermal, red light, near-infrared, and
             far-infrared. The complete protocol, in one purchase.
@@ -210,20 +202,20 @@ export default function InstrumentSystem() {
               <a
                 key={inst.href}
                 href={inst.href}
-                className="group flex flex-col gap-2 rounded-[12px] border border-[rgba(26,23,20,0.10)] bg-white p-6 transition-colors hover:border-[#C6A07C]"
+                className="group flex flex-col gap-2 rounded-none border border-[rgba(20,20,20,0.10)] bg-white p-6 transition-colors hover:border-[#0E7A54]"
               >
                 <div className="flex items-baseline justify-between gap-4">
-                  <span className="font-serif italic text-[20px] text-[#1A1714] group-hover:text-[#C6A07C]">
+                  <span className="font-sans font-medium text-[18px] tracking-[-0.01em] text-[#141414] group-hover:text-[#0E7A54]">
                     {inst.name}
                   </span>
-                  <span className="shrink-0 tabular-nums font-serif italic text-[18px] text-[#C6A07C]">
+                  <span className="shrink-0 tabular-nums font-sans font-medium text-[16px] text-[#141414]">
                     {fmt(instrumentPrices[inst.handle])}
                   </span>
                 </div>
-                <span className="font-sans text-[11px] tracking-[0.14em] uppercase text-[#1A1714]/45">
+                <span className="font-sans text-[11px] tracking-[0.14em] uppercase text-[#8E8E8E]">
                   {inst.time}
                 </span>
-                <p className="text-[14px] leading-[1.65] text-[#1A1714]/[0.6]">
+                <p className="text-[14px] leading-[1.65] text-[#5A5A5A]">
                   {inst.desc}
                 </p>
               </a>
@@ -233,14 +225,14 @@ export default function InstrumentSystem() {
       </section>
 
       {/* ── THE RITUAL ── */}
-      <section className="bg-[#1A1714] py-[clamp(72px,10vw,112px)] text-[#F7F4F0]">
+      <section className="border-t border-[rgba(20,20,20,0.10)] bg-white py-[clamp(72px,10vw,112px)] text-[#141414]">
         <div className={WRAP}>
-          <p className="inline-flex items-center gap-[14px] font-sans text-[11px] tracking-[0.28em] uppercase text-[#2ED8A8]">
+          <p className="inline-flex items-center gap-[14px] font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]">
             <span className="tabular-nums opacity-55">( 02 )</span>
             <span className="inline-block h-px w-[26px] bg-current opacity-40" />
             The daily sequence
           </p>
-          <h2 className="mt-5 max-w-[18ch] font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] leading-[1.1] text-[#F7F4F0]">
+          <h2 className="mt-5 max-w-[18ch] font-sans font-light tracking-[-0.025em] text-[clamp(28px,3.4vw,42px)] leading-[1.1] text-[#141414]">
             One ordinary day, covered.
           </h2>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -266,18 +258,18 @@ export default function InstrumentSystem() {
             ].map((step) => (
               <div
                 key={step.n}
-                className="rounded-[12px] border border-[rgba(247,244,240,0.10)] bg-[#070A0E] p-[clamp(24px,3vw,36px)]"
+                className="rounded-none border border-[rgba(20,20,20,0.10)] bg-white p-[clamp(24px,3vw,36px)]"
               >
-                <span className="font-sans text-[10px] tracking-[0.28em] uppercase text-[#2ED8A8]">
+                <span className="font-sans text-[10px] font-medium tracking-[0.22em] uppercase text-[#0E7A54]">
                   {step.n}
                 </span>
-                <div className="mt-3 font-serif italic text-[22px] leading-snug text-[#F7F4F0]">
+                <div className="mt-3 font-sans font-medium text-[19px] tracking-[-0.01em] leading-snug text-[#141414]">
                   {step.with}
                 </div>
-                <span className="mt-1.5 block font-sans text-[11px] text-[#F7F4F0]/45">
+                <span className="mt-1.5 block font-sans text-[11px] text-[#8E8E8E]">
                   {step.time}
                 </span>
-                <p className="mt-4 text-[14px] leading-[1.7] text-[#F7F4F0]/[0.6]">
+                <p className="mt-4 text-[14px] leading-[1.7] text-[#5A5A5A]">
                   {step.body}
                 </p>
               </div>
@@ -287,17 +279,17 @@ export default function InstrumentSystem() {
       </section>
 
       {/* ── GUARANTEE ── */}
-      <section className="bg-[#EDEAE6] py-[clamp(64px,8vw,96px)] text-[#1A1714]">
+      <section className="bg-[#F4FBF8] py-[clamp(64px,8vw,96px)] text-[#141414]">
         <div className={`${WRAP} max-w-[720px] text-center`}>
-          <p className="inline-flex items-center gap-[14px] font-sans text-[11px] tracking-[0.28em] uppercase text-[#6B5A4A]">
+          <p className="inline-flex items-center gap-[14px] font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]">
             <span className="tabular-nums opacity-55">( 03 )</span>
             <span className="inline-block h-px w-[26px] bg-current opacity-40" />
             Guarantee
           </p>
-          <h2 className="mt-5 font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] leading-[1.1]">
+          <h2 className="mt-5 font-sans font-light tracking-[-0.025em] text-[clamp(28px,3.4vw,42px)] leading-[1.1]">
             Thirty days, all three instruments.
           </h2>
-          <p className="mt-5 text-[15px] leading-[1.7] text-[#1A1714]/[0.66]">
+          <p className="mt-5 text-[15px] leading-[1.7] text-[#5A5A5A]">
             Use the full system for thirty days. If it's not for you, send everything
             back for a full refund. No forms, no photos — just email us and we handle
             the rest. Returnable to Rotterdam.
@@ -322,11 +314,11 @@ export default function InstrumentSystem() {
                 body: "Every instrument covered for twelve months from delivery against manufacturing defects and failure in normal use. We cover shipping both ways. No registration required.",
               },
             ].map((item) => (
-              <div key={item.title} className="rounded-[10px] border border-[rgba(26,23,20,0.10)] bg-white p-6">
-                <h3 className="font-sans text-[13px] font-medium tracking-[0.04em] text-[#1A1714]">
+              <div key={item.title} className="rounded-none border border-[rgba(20,20,20,0.10)] bg-white p-6">
+                <h3 className="font-sans text-[13px] font-medium tracking-[0.04em] text-[#141414]">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-[13px] leading-[1.65] text-[#1A1714]/[0.6]">
+                <p className="mt-3 text-[13px] leading-[1.65] text-[#5A5A5A]">
                   {item.body}
                 </p>
               </div>
@@ -336,12 +328,12 @@ export default function InstrumentSystem() {
       </section>
 
       {/* ── CLOSING CTA ── */}
-      <section className="bg-[#070A0E] py-[clamp(72px,10vw,112px)] text-[#F7F4F0]">
+      <section className="border-t border-[rgba(20,20,20,0.10)] bg-white py-[clamp(72px,10vw,112px)] text-[#141414]">
         <div className={`${WRAP} text-center`}>
-          <h2 className="font-serif italic font-normal text-[clamp(28px,4vw,48px)] leading-[1.08]">
+          <h2 className="font-sans font-light tracking-[-0.025em] text-[clamp(28px,4vw,48px)] leading-[1.08]">
             The System
           </h2>
-          <p className="mx-auto mt-4 max-w-[480px] text-[15px] leading-[1.7] text-[#F7F4F0]/[0.6]">
+          <p className="mx-auto mt-4 max-w-[480px] text-[15px] leading-[1.7] text-[#5A5A5A]">
             Three instruments, one purchase. Founding bundle price held for the
             first hundred.
           </p>
@@ -349,14 +341,14 @@ export default function InstrumentSystem() {
             <button
               onClick={claim}
               disabled={busy}
-              className="rounded-full bg-[#2ED8A8] px-10 py-5 font-sans text-[14px] font-medium tracking-[0.04em] text-[#070A0E] transition-opacity hover:opacity-90 disabled:opacity-60"
+              className="rounded-full bg-[#2ED8A8] px-10 py-5 font-sans text-[14px] font-medium tracking-[0.04em] text-[#141414] transition-colors hover:bg-[#1BAF86] disabled:opacity-60"
             >
               {busy
                 ? "Adding the System…"
                 : "Claim the System" + (fmt(bundlePrice ?? undefined) ? ` — ${fmt(bundlePrice ?? undefined)}` : "")}
             </button>
           </div>
-          <p className="mt-4 text-center font-sans text-[11px] text-[#F7F4F0]/40">
+          <p className="mt-4 text-center font-sans text-[11px] text-[#8E8E8E]">
             30-day money-back guarantee, then a 1-year warranty. Ships in 2–3 working days. Tracked to your door.
           </p>
         </div>

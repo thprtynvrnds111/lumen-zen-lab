@@ -14,7 +14,7 @@ interface ZenMascotProps {
   className?: string;
 }
 
-const CHARCOAL = "#2a211a";
+const CHARCOAL = "#141414";
 
 const Eyes = ({ expression }: { expression: ZenExpression }) => {
   if (expression === "delighted") {
@@ -89,13 +89,13 @@ export const ZenMascot = ({
     >
       <defs>
         <radialGradient id={bodyGrad} cx="50%" cy="42%" r="62%">
-          <stop offset="0%" stopColor="#fdf6f0" />
-          <stop offset="58%" stopColor="#fdf6f0" />
-          <stop offset="100%" stopColor="#8b5a3c" />
+          <stop offset="0%" stopColor="#FAFAFA" />
+          <stop offset="58%" stopColor="#FAFAFA" />
+          <stop offset="100%" stopColor="#C9C9C9" />
         </radialGradient>
         <radialGradient id={glowGrad} cx="50%" cy="50%" r="50%">
-          <stop offset="55%" stopColor="#c9a87c" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#c9a87c" stopOpacity="0" />
+          <stop offset="55%" stopColor="#2ED8A8" stopOpacity="0.30" />
+          <stop offset="100%" stopColor="#2ED8A8" stopOpacity="0" />
         </radialGradient>
       </defs>
 
@@ -120,7 +120,7 @@ export const ZenMascot = ({
         rx="48"
         ry="12"
         fill="none"
-        stroke="#c9a87c"
+        stroke="#2ED8A8"
         strokeWidth="5"
         strokeLinecap="round"
         transform="rotate(-12 100 44)"

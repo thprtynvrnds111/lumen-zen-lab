@@ -24,11 +24,11 @@ export function RelatedProducts({ currentHandle }: Props) {
   if (products.length === 0) return null;
 
   return (
-    <section className="section-padding gradient-pearl">
+    <section className="section-padding bg-white">
       <div className="max-w-[1200px] mx-auto">
         <div className="text-center mb-12">
-          <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3">Complete Your Ritual</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">You May Also Need</h2>
+          <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E] mb-3">Complete Your Ritual</p>
+          <h2 className="font-sans font-light tracking-[-0.025em] text-3xl md:text-4xl text-[#141414]">You May Also Need</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {products.map(product => {
@@ -39,9 +39,9 @@ export function RelatedProducts({ currentHandle }: Props) {
               <Link
                 key={p.id}
                 to={`/product/${p.handle}`}
-                className="group flex flex-col rounded-2xl overflow-hidden border border-border/40 bg-card hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="group flex flex-col rounded-none overflow-hidden border border-[rgba(20,20,20,0.10)] bg-white hover:shadow-[0_18px_50px_rgba(20,20,20,0.08)] transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="aspect-square overflow-hidden bg-secondary/20">
+                <div className="aspect-square overflow-hidden bg-[#F2F4F3]">
                   {img ? (
                     <img
                       src={`${img.url}&width=600`}
@@ -50,14 +50,14 @@ export function RelatedProducts({ currentHandle }: Props) {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   ) : (
-                    <div className="w-full h-full bg-secondary/30" />
+                    <div className="w-full h-full bg-[#F2F4F3]" />
                   )}
                 </div>
                 <div className="p-5 flex flex-col gap-3">
-                  <h3 className="text-xs tracking-[0.15em] uppercase font-semibold text-foreground">{p.title}</h3>
+                  <h3 className="font-sans text-xs tracking-[0.15em] uppercase font-semibold text-[#141414]">{p.title}</h3>
                   <div className="flex items-center justify-between mt-auto pt-2">
-                    <span className="text-sm font-medium text-foreground">{formatMoney(price.amount, price.currencyCode)}</span>
-                    <span className="text-xs tracking-[0.12em] uppercase text-accent font-medium group-hover:underline underline-offset-2 transition-all">
+                    <span className="text-sm font-medium tabular-nums text-[#141414]">{formatMoney(price.amount, price.currencyCode)}</span>
+                    <span className="text-xs tracking-[0.12em] uppercase text-[#0E7A54] font-medium group-hover:underline underline-offset-2 transition-all">
                       View Device →
                     </span>
                   </div>

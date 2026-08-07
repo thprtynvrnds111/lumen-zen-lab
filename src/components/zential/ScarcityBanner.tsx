@@ -24,21 +24,20 @@ export function ScarcityBanner({ signal }: Props) {
   return (
     <div
       style={{
-        background:   "rgba(196, 97, 74, 0.08)",
-        border:       "1px solid rgba(196, 97, 74, 0.25)",
-        borderRadius: "2px",
+        background:   "#F4FBF8",
+        border:       "1px solid rgba(20, 20, 20, 0.10)",
+        borderRadius: "0",
         padding:      "10px 16px",
         marginBottom: "12px",
       }}
     >
       <span
         style={{
-          fontFamily:    "Poppins, sans-serif",
           fontSize:      "11px",
           fontWeight:    500,
           letterSpacing: "0.12em",
           textTransform: "uppercase",
-          color:         "#C4614A",
+          color:         "#141414",
         }}
       >
         {parsed.message}

@@ -2,7 +2,8 @@
    Port of design-reference/editorial/zential-breath.dc.html <head> styles.
    Everything else is ported as inline styles on the elements (1:1 with the
    dc.html sc-if blocks); only the keyframes, the reduced-motion block, and the
-   :hover / :active states (which cannot be expressed inline) live here. */
+   :hover / :active states (which cannot be expressed inline) live here.
+   Coven restyle (2026-08-07): white canvas, ink text, emerald/teal accents. */
 
 @keyframes zbWaveScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes zbGlowDrift { 0%, 100% { opacity: 1; } 50% { opacity: 0.96; } }
@@ -11,32 +12,48 @@
 @keyframes zbTravel { from { offset-distance: 0%; } to { offset-distance: 100%; } }
 @keyframes zbHomeBreathe { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
 
-/* Links inside the app inherit the design's teal-link treatment. */
+/* Coven token re-skin, scoped to the app. --ed-* is defined in src/index.css
+   (off-limits); the hook emits var(--ed-teal) / var(--ed-on-dark) in its
+   computed colors, so both are re-pointed here for the white canvas. */
+.zb-root {
+  --ed-teal: #0E7A54;        /* teal TEXT reads emerald on white (AA) */
+  --ed-on-dark: #141414;     /* hook's "active" color → ink on white */
+}
+
+/* Links inside the app inherit the emerald-link treatment. */
 .zb-root a { color: var(--ed-teal); text-decoration: none; }
 .zb-root a:hover { color: var(--ed-teal-hover); }
 .zb-root button { -webkit-tap-highlight-color: transparent; }
 
-/* Pill buttons + duration chips share the outline → teal hover behavior.
+/* Pill buttons + duration chips share the ink-hairline → emerald hover behavior.
    Border/color live here (not inline) so :hover can override them. */
 .zb-pill {
   background: transparent;
-  border: 1px solid rgba(247, 244, 240, 0.22);
-  color: var(--ed-on-dark);
+  border: 1px solid rgba(20, 20, 20, 0.22);
+  color: #141414;
   transition: border-color 0.3s ease, color 0.3s ease;
 }
-.zb-pill:hover { border-color: rgba(46, 216, 168, 0.6); color: var(--ed-teal); }
+.zb-pill:hover { border-color: #0E7A54; color: #0E7A54; }
 .zb-pill:active { transform: scale(0.97); }
 
-/* Act-accented chips — hover picks up the act's color (meditate gold,
-   restore teal, reset terra) so the three blocks read differently. */
-.zb-pill--meditate:hover { border-color: rgba(198, 160, 124, 0.65); color: #c6a07c; }
-.zb-pill--reset:hover { border-color: rgba(200, 123, 74, 0.65); color: #c87b4a; }
+/* Act-accented chips — hover picks up the act's color (meditate emerald,
+   restore teal, reset ink) so the three blocks read differently. */
+.zb-pill--meditate:hover { border-color: rgba(14, 122, 84, 0.65); color: #0E7A54; }
+.zb-pill--reset:hover { border-color: rgba(20, 20, 20, 0.65); color: #141414; }
 
 /* Session / interlude END control. */
-.zb-end { color: rgba(247, 244, 240, 0.35); transition: color 0.3s ease; }
-.zb-end:hover { color: rgba(247, 244, 240, 0.7); }
+.zb-end { color: rgba(20, 20, 20, 0.35); transition: color 0.3s ease; }
+.zb-end:hover { color: rgba(20, 20, 20, 0.7); }
 
-/* Keyboard focus — teal ring, matches the storefront's a11y treatment. */
+/* The hook computes literal on-dark inactive colors (rgba(247,244,240,…)) for
+   the nav tabs and the TONE/PULSE cues; the hook is off-limits, so the white
+   canvas overrides them here. Active states resolve via the tokens above. */
+.zb-nav-inner button { color: rgba(20, 20, 20, 0.38) !important; }
+.zb-nav-inner button[aria-current="page"] { color: #141414 !important; }
+.zb-root button[aria-pressed="false"] { color: rgba(20, 20, 20, 0.38) !important; }
+.zb-root button[aria-pressed="true"] { color: #0E7A54 !important; }
+
+/* Keyboard focus — emerald ring, matches the storefront's a11y treatment. */
 .zb-root button:focus-visible,
 .zb-root a:focus-visible {
   outline: 2px solid var(--ed-teal);

@@ -77,14 +77,14 @@ export function CategoryGrid({ handles }: { handles: string[] }) {
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="animate-spin text-[#1A1714]/30" size={26} />
+        <Loader2 className="animate-spin text-[#141414]/30" size={26} />
       </div>
     );
   }
 
   if (products.length === 0) {
     return (
-      <p className="text-center text-[#1A1714]/50 text-sm py-10">
+      <p className="text-center text-[#5A5A5A] text-sm py-10">
         Devices load from the live catalog.
       </p>
     );
@@ -100,9 +100,9 @@ export function CategoryGrid({ handles }: { handles: string[] }) {
           <Link
             key={product.node.id}
             to={`/product/${product.node.handle}`}
-            className="group flex flex-col bg-white rounded-2xl overflow-hidden border border-[#1A1714]/8 transition-all duration-500 hover:-translate-y-1 hover:border-[#1A1714]/20"
+            className="group flex flex-col bg-white rounded-none overflow-hidden border border-[rgba(20,20,20,0.10)] transition-all duration-500 hover:-translate-y-1 hover:border-[rgba(20,20,20,0.22)]"
           >
-            <div className="relative aspect-square bg-[#F3F0EC] overflow-hidden">
+            <div className="relative aspect-square bg-[#F2F4F3] overflow-hidden">
               {img && (
                 <img
                   src={`${img.url}&width=600`}
@@ -116,22 +116,22 @@ export function CategoryGrid({ handles }: { handles: string[] }) {
             </div>
             <div className="flex flex-col flex-1 p-4 pt-3.5">
               {modality && (
-                <p className="font-mono text-[9px] tracking-[0.12em] uppercase text-[#9A958F] mb-1.5 leading-tight">
+                <p className="font-sans text-[10px] font-medium tracking-[0.18em] uppercase text-[#8E8E8E] mb-1.5 leading-tight">
                   {modality}
                 </p>
               )}
-              <h3 className="font-[Lora] italic text-[17px] leading-tight text-[#1A1714] mb-3">
+              <h3 className="font-sans font-medium tracking-[-0.015em] text-[17px] leading-tight text-[#141414] mb-3">
                 {product.node.title}
               </h3>
               <div className="mt-auto flex items-center justify-between pt-2">
-                <span className="text-[15px] font-semibold text-[#1A1714]">
+                <span className="text-[15px] font-semibold text-[#141414]">
                   {formatMoney(price.amount, price.currencyCode)}
                 </span>
                 <button
                   onClick={(e) => handleAdd(e, product)}
                   disabled={isCartLoading}
                   aria-label={`Add ${product.node.title} to bag`}
-                  className="w-9 h-9 rounded-full bg-[#1A1714] text-[#F7F4F0] grid place-items-center text-lg leading-none transition-colors duration-300 hover:bg-[#2ED8A8] hover:text-[#1A1714] disabled:opacity-50"
+                  className="w-9 h-9 rounded-full bg-[#141414] text-white grid place-items-center text-lg leading-none transition-colors duration-300 hover:bg-[#2ED8A8] hover:text-[#141414] disabled:opacity-50"
                 >
                   +
                 </button>

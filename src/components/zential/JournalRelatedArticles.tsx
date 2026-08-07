@@ -46,10 +46,10 @@ const ALL_ARTICLES = [
 ];
 
 const categoryColor: Record<string, string> = {
-  Science: "text-teal-600",
-  Research: "text-teal-600",
-  Ritual: "text-primary",
-  Wellness: "text-primary",
+  Science: "text-[#0E7A54]",
+  Research: "text-[#0E7A54]",
+  Ritual: "text-[#0E7A54]",
+  Wellness: "text-[#0E7A54]",
 };
 
 interface Props {
@@ -60,23 +60,23 @@ export function JournalRelatedArticles({ currentSlug }: Props) {
   const related = ALL_ARTICLES.filter(a => a.slug !== currentSlug).slice(0, 3);
 
   return (
-    <section className="px-6 md:px-12 lg:px-20 py-16 border-t border-border/20">
+    <section className="bg-white px-6 md:px-12 lg:px-20 py-16 border-t border-[rgba(20,20,20,0.10)]">
       <div className="max-w-3xl mx-auto">
-        <p className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-8">Continue Reading</p>
+        <p className="text-[10px] tracking-[0.25em] uppercase text-[#8E8E8E] mb-8">Continue Reading</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {related.map(article => (
             <Link
               key={article.slug}
               to={article.slug}
-              className="group block rounded-xl border border-border/30 bg-card/60 p-5 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
+              className="group block rounded-none border border-[rgba(20,20,20,0.10)] bg-white p-5 hover:shadow-sm transition-all duration-300 hover:-translate-y-0.5"
             >
-              <span className={`text-[10px] tracking-[0.2em] uppercase font-medium ${categoryColor[article.category] || "text-muted-foreground"}`}>
+              <span className={`text-[10px] tracking-[0.2em] uppercase font-medium ${categoryColor[article.category] || "text-[#8E8E8E]"}`}>
                 {article.category}
               </span>
-              <h3 className="text-sm font-semibold text-foreground mt-2 mb-3 leading-snug group-hover:text-primary transition-colors">
+              <h3 className="text-sm font-medium text-[#141414] mt-2 mb-3 leading-snug group-hover:text-[#0E7A54] transition-colors">
                 {article.title}
               </h3>
-              <span className="text-[10px] text-muted-foreground">{article.readTime} →</span>
+              <span className="text-[10px] text-[#8E8E8E]">{article.readTime} →</span>
             </Link>
           ))}
         </div>

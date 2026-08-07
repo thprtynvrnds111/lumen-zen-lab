@@ -1,7 +1,6 @@
 import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
 import { Header } from "@/components/zential/Header";
-import { ZentialFooter } from "@/components/zential/ZentialFooter";
-import { FileText } from "lucide-react";
+import { SparseFooter } from "@/components/zential/v2/SparseFooter";
 import { SEO } from "@/components/SEO";
 
 const sections = [
@@ -44,38 +43,36 @@ const sections = [
 ];
 
 const TermsOfService = () => (
- <div className="min-h-screen bg-background">
+ <div className="min-h-screen bg-white text-[#141414]">
   <SEO title="Terms of Service, Zential Pure" description="Zential Pure terms and conditions covering purchases, use of our devices, intellectual property, and customer rights." canonicalUrl="/terms" />
   <AnnouncementBar />
   <Header />
   <main>
-   <section className="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 text-center overflow-hidden">
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
-    <div className="relative z-10 animate-fade-in">
-     <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary rounded-full px-4 py-1.5 text-xs tracking-[0.15em] uppercase mb-6">
-      <FileText size={14} />
-      Legal
-     </div>
-     <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Terms of Service</h1>
-     <p className="text-muted-foreground max-w-md mx-auto">Last updated: February 2026</p>
+   <section className="px-6 md:px-12 lg:px-20 pt-20 md:pt-28 pb-12">
+    <div className="mx-auto max-w-[720px]">
+     <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]">Legal</p>
+     <h1 className="mt-5 font-sans font-light text-[clamp(34px,4.6vw,56px)] leading-[1.04] tracking-[-0.03em] text-[#141414]">Terms of Service</h1>
+     <p className="mt-4 text-[14px] text-[#8E8E8E]">Last updated: February 2026</p>
     </div>
    </section>
 
    <section className="px-6 md:px-12 lg:px-20 pb-24">
-    <div className="max-w-3xl mx-auto space-y-8">
-     <div className="glass-card p-7 text-sm text-muted-foreground leading-relaxed">
+    <div className="mx-auto max-w-[720px]">
+     <p className="max-w-[65ch] border-t border-[rgba(20,20,20,0.10)] pt-8 text-[16px] leading-[1.75] text-[#5A5A5A]">
       Please read these Terms of Service carefully before using our website or purchasing our products. By accessing or using Zential Pure, you agree to be bound by these terms.
+     </p>
+     <div className="mt-10 border-t border-[rgba(20,20,20,0.10)]">
+      {sections.map((s) => (
+       <div key={s.title} className="border-b border-[rgba(20,20,20,0.10)] py-8">
+        <h2 className="font-sans font-light text-[22px] tracking-[-0.02em] text-[#141414]">{s.title}</h2>
+        <p className="mt-3 max-w-[65ch] text-[16px] leading-[1.75] text-[#5A5A5A]">{s.content}</p>
+       </div>
+      ))}
      </div>
-     {sections.map((s, i) => (
-      <div key={s.title} className="animate-fade-in" style={{ animationDelay: `${i * 60}ms` }}>
-       <h2 className="text-lg font-semibold text-foreground mb-3">{s.title}</h2>
-       <p className="text-sm text-muted-foreground leading-relaxed">{s.content}</p>
-      </div>
-     ))}
     </div>
    </section>
   </main>
-  <ZentialFooter />
+  <SparseFooter />
  </div>
 );
 

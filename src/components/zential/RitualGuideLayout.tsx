@@ -2,12 +2,12 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { SEO } from "@/components/SEO";
 import { ArrowLeft } from "lucide-react";
 
-const accent = "#c4714a";
-const bg = "#1a1714";
-const surface = "#242019";
-const textPrimary = "#f0ebe3";
-const textMuted = "#8a7f74";
-const divider = "rgba(255,255,255,0.08)";
+const accent = "#0E7A54";
+const bg = "#FFFFFF";
+const surface = "#FFFFFF";
+const textPrimary = "#141414";
+const textMuted = "#5A5A5A";
+const divider = "rgba(20,20,20,0.10)";
 
 function Section({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useScrollReveal<HTMLElement>();
@@ -44,7 +44,7 @@ export interface RitualGuideConfig {
 
 export default function RitualGuideLayout({ config }: { config: RitualGuideConfig }) {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: bg, color: textPrimary, fontFamily: "'Inter', system-ui, sans-serif" }}>
+    <div className="min-h-screen font-sans" style={{ backgroundColor: bg, color: textPrimary }}>
       <SEO title={config.seoTitle} description={config.seoDescription} canonicalUrl={config.canonicalUrl} />
 
       <a
@@ -61,7 +61,7 @@ export default function RitualGuideLayout({ config }: { config: RitualGuideConfi
         <p className="text-[10px] tracking-[0.35em] uppercase mb-5" style={{ color: accent }}>
           The Ritual Guide
         </p>
-        <h1 className="font-serif italic text-3xl md:text-5xl lg:text-6xl mb-5 leading-tight" style={{ fontFamily: "'Lora', 'Playfair Display', Georgia, serif" }}>
+        <h1 className="font-sans font-light tracking-[-0.03em] text-3xl md:text-5xl lg:text-6xl mb-5 leading-tight">
           {config.heroHeading}
         </h1>
         <p className="text-sm md:text-base max-w-md mx-auto" style={{ color: textMuted }}>
@@ -95,7 +95,7 @@ export default function RitualGuideLayout({ config }: { config: RitualGuideConfi
       {/* BEFORE YOU BEGIN */}
       <Section className="py-16 md:py-24">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-serif italic text-2xl md:text-3xl mb-12 text-center" style={{ fontFamily: "'Lora', Georgia, serif" }}>
+          <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-12 text-center">
             Before You Begin
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -117,7 +117,7 @@ export default function RitualGuideLayout({ config }: { config: RitualGuideConfi
       <Section className="py-16 md:py-24">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-14">
-            <h2 className="font-serif italic text-2xl md:text-3xl mb-3" style={{ fontFamily: "'Lora', Georgia, serif" }}>
+            <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-3">
               The Sequence
             </h2>
             <p className="text-sm" style={{ color: textMuted }}>
@@ -128,11 +128,11 @@ export default function RitualGuideLayout({ config }: { config: RitualGuideConfi
             {config.steps.map((step) => (
               <div
                 key={step.num}
-                className="rounded-xl p-6 md:p-8"
-                style={{ backgroundColor: surface, borderLeft: `3px solid ${accent}` }}
+                className="rounded-none p-6 md:p-8"
+                style={{ backgroundColor: surface, border: "1px solid rgba(20,20,20,0.10)", borderLeft: `3px solid ${accent}` }}
               >
                 <div className="flex items-baseline gap-4 mb-4">
-                  <span className="text-2xl md:text-3xl font-serif italic" style={{ color: accent, fontFamily: "'Lora', Georgia, serif" }}>
+                  <span className="text-2xl md:text-3xl font-sans font-light tracking-[-0.02em] tabular-nums" style={{ color: accent }}>
                     {step.num}
                   </span>
                   <div>
@@ -157,10 +157,10 @@ export default function RitualGuideLayout({ config }: { config: RitualGuideConfi
       <Section className="py-16 md:py-24">
         <div className="max-w-2xl mx-auto">
           <div
-            className="rounded-xl p-8 md:p-10"
+            className="rounded-none p-8 md:p-10"
             style={{ border: `1px solid ${accent}40`, backgroundColor: `${accent}08` }}
           >
-            <h2 className="font-serif italic text-xl md:text-2xl mb-4" style={{ fontFamily: "'Lora', Georgia, serif" }}>
+            <h2 className="font-sans font-light tracking-[-0.025em] text-xl md:text-2xl mb-4">
               How often?
             </h2>
             <p className="text-sm leading-relaxed" style={{ color: textMuted }}>
@@ -173,7 +173,7 @@ export default function RitualGuideLayout({ config }: { config: RitualGuideConfi
       {/* AFTER YOUR SESSION */}
       <Section className="py-16 md:py-24">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-serif italic text-2xl md:text-3xl mb-12 text-center" style={{ fontFamily: "'Lora', Georgia, serif" }}>
+          <h2 className="font-sans font-light tracking-[-0.025em] text-2xl md:text-3xl mb-12 text-center">
             After Your Session
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -194,7 +194,7 @@ export default function RitualGuideLayout({ config }: { config: RitualGuideConfi
       {/* CONTRAINDICATIONS */}
       <Section className="py-16 md:py-24">
         <div className="max-w-2xl mx-auto">
-          <h2 className="font-serif italic text-xl md:text-2xl mb-6" style={{ fontFamily: "'Lora', Georgia, serif", color: textMuted }}>
+          <h2 className="font-sans font-light tracking-[-0.025em] text-xl md:text-2xl mb-6" style={{ color: textMuted }}>
             When not to use it
           </h2>
           <ul className="space-y-3 text-sm" style={{ color: textMuted }}>

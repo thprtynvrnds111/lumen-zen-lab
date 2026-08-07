@@ -226,12 +226,12 @@ export default function ProductDetail() {
  }
 
  return (
-  <div className="min-h-screen bg-background">
+  <div className="min-h-screen bg-white text-[#141414]">
    <SEO title="Product Not Found, Zential Pure" description="The requested product could not be found." />
    <AnnouncementBar />
    <Header />
    <div className="section-padding text-center">
-    <p className="text-muted-foreground">Product not found</p>
+    <p className="text-[#5A5A5A]">Product not found</p>
    </div>
    <ZentialFooter />
   </div>

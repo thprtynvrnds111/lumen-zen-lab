@@ -446,21 +446,18 @@ const CONFIGS: Record<string, InstrumentConfig> = {
   },
 };
 
-const GRAIN =
-  "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
-
 const PILL =
   "inline-flex items-center justify-center gap-[9px] font-sans font-semibold text-[12px] tracking-[0.18em] uppercase rounded-full px-[30px] py-4 leading-none whitespace-nowrap transition-colors duration-200 cursor-pointer disabled:opacity-60";
-const PILL_ACTION = `${PILL} bg-[#F69251] text-[#1A1714] hover:bg-[#E87A38]`;
-const PILL_GHOST_DARK = `${PILL} bg-transparent text-[#F7F4F0] border border-[rgba(247,244,240,0.28)] hover:border-[#2ED8A8] hover:text-[#2ED8A8]`;
-const PILL_BRAND = `${PILL} bg-[#2ED8A8] text-[#1A1714] hover:bg-[#1BAF86]`;
-const PILL_GHOST_LIGHT = `${PILL} bg-transparent text-[#1A1714] border border-[rgba(26,23,20,0.28)] hover:border-[#157A5C] hover:text-[#157A5C]`;
+const PILL_ACTION = `${PILL} bg-[#2ED8A8] text-[#141414] hover:bg-[#1BAF86]`;
+const PILL_GHOST_DARK = `${PILL} bg-transparent text-[#141414] border border-[rgba(20,20,20,0.22)] hover:border-[#0E7A54] hover:text-[#0E7A54]`;
+const PILL_BRAND = `${PILL} bg-[#2ED8A8] text-[#141414] hover:bg-[#1BAF86]`;
+const PILL_GHOST_LIGHT = `${PILL} bg-transparent text-[#141414] border border-[rgba(20,20,20,0.22)] hover:border-[#0E7A54] hover:text-[#0E7A54]`;
 const WRAP = "mx-auto max-w-[1180px] px-6 md:px-10";
 
 function Eyebrow({ num, children, tone = "dark" }: { num: string; children: string; tone?: "dark" | "meta" }) {
-  const color = tone === "dark" ? "text-[#2ED8A8]" : "text-[#6B5A4A]";
+  const color = tone === "dark" ? "text-[#8E8E8E]" : "text-[#8E8E8E]";
   return (
-    <p className={`inline-flex items-center gap-[14px] font-sans text-[11px] tracking-[0.28em] uppercase ${color}`}>
+    <p className={`inline-flex items-center gap-[14px] font-sans text-[11px] font-medium tracking-[0.22em] uppercase ${color}`}>
       <span className="tabular-nums opacity-55">( {num} )</span>
       <span className="inline-block h-px w-[26px] bg-current opacity-40" />
       {children}
@@ -622,27 +619,25 @@ export default function InstrumentLanding() {
       {knownArrival && (
         <div
           style={{
-            background: "#F7F4F0",
-            borderBottom: "1px solid #eae7e0",
+            background: "#FFFFFF",
+            borderBottom: "1px solid rgba(20,20,20,0.10)",
             padding: "10px 16px",
             textAlign: "center",
-            fontFamily: "'DM Sans', sans-serif",
             fontSize: 13,
-            color: "#1A1714",
+            color: "#141414",
           }}
         >
-          <span style={{ color: "#2ED8A8", marginRight: 8 }}>✓</span>
+          <span style={{ color: "#0E7A54", marginRight: 8 }}>✓</span>
           Founding code {knownArrival} active — applied automatically at checkout. 30-day full refund, free EU shipping.
         </div>
       )}
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-[#1A1714] text-[#F7F4F0]">
-        <div className="pointer-events-none absolute inset-0 z-[1] opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: GRAIN, backgroundSize: "170px 170px" }} aria-hidden />
+      <section className="relative overflow-hidden bg-white text-[#141414]">
         <div className={WRAP}>
           <div className="grid items-stretch md:grid-cols-[1.04fr_0.96fr] md:min-h-[640px]">
             <div className="relative z-[3] flex flex-col justify-center py-12 md:py-[74px] md:pr-14">
               <Eyebrow num={cfg.num}>{cfg.name}</Eyebrow>
-              <h1 className="my-6 font-serif italic font-normal tracking-[-0.02em] leading-[1.02] text-[#F7F4F0] text-[clamp(44px,5.6vw,86px)]">
+              <h1 className="my-6 font-sans font-light tracking-[-0.03em] leading-[1.02] text-[#141414] text-[clamp(44px,5.6vw,86px)]">
                 {heroVariant === "concrete" && cfg.heroConcrete ? (
                   cfg.heroConcrete
                 ) : (
@@ -650,11 +645,11 @@ export default function InstrumentLanding() {
                     {cfg.hero.l1}
                     <br />
                     {cfg.hero.l2pre}
-                    <span className="text-[#2ED8A8]">{cfg.hero.accent}</span>
+                    <span className="text-[#0E7A54]">{cfg.hero.accent}</span>
                   </>
                 )}
               </h1>
-              <p className="mb-8 max-w-[500px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">{cfg.lede}</p>
+              <p className="mb-8 max-w-[500px] text-[17px] leading-[1.75] text-[#5A5A5A]">{cfg.lede}</p>
               <div className="mb-[30px] flex flex-wrap gap-[14px]">
                 <OrderCta className={PILL_ACTION}>
                   {orderLabel}{priceLabel && <span className="font-medium tabular-nums opacity-70"> · {priceLabel}</span>}
@@ -663,7 +658,7 @@ export default function InstrumentLanding() {
               </div>
               <div className="mb-7 flex flex-wrap gap-x-[26px] gap-y-[10px]">
                 {cfg.trust.map((t) => (
-                  <span key={t} className="inline-flex items-center gap-[9px] font-sans text-[11px] text-[#F7F4F0]/60 before:block before:h-[5px] before:w-[5px] before:rounded-full before:bg-[#2ED8A8]">{t}</span>
+                  <span key={t} className="inline-flex items-center gap-[9px] font-sans text-[11px] text-[#5A5A5A] before:block before:h-[5px] before:w-[5px] before:rounded-full before:bg-[#2ED8A8]">{t}</span>
                 ))}
               </div>
               <div className="flex flex-wrap items-center gap-3">
@@ -671,22 +666,22 @@ export default function InstrumentLanding() {
               </div>
             </div>
             <div className="relative order-first min-h-[46vh] overflow-hidden md:order-none md:min-h-[640px]">
-              <img src={cfg.heroImg} alt={cfg.heroAlt} className="absolute inset-0 h-full w-full object-cover [filter:saturate(0.94)_brightness(0.94)]" />
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,#1A1714_0%,transparent_24%),linear-gradient(180deg,transparent_52%,rgba(26,23,20,0.5)_100%)]" />
-              <div className="absolute bottom-[26px] right-7 z-[2] font-sans text-[9px] tracking-[0.25em] uppercase text-[#F7F4F0]/70">Campaign I · Resonance Series</div>
+              <img src={cfg.heroImg} alt={cfg.heroAlt} className="absolute inset-0 h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,#FFFFFF_0%,transparent_24%),linear-gradient(180deg,transparent_52%,rgba(20,20,20,0.45)_100%)]" />
+              <div className="absolute bottom-[26px] right-7 z-[2] font-sans text-[9px] tracking-[0.25em] uppercase text-white/80">Campaign I · Resonance Series</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── MODALITY BAR ── */}
-      <section className="border-y border-[rgba(247,244,240,0.10)] bg-[#070A0E]">
+      <section className="border-y border-[rgba(20,20,20,0.10)] bg-white">
         <div className={WRAP}>
           <div className="flex flex-wrap items-center gap-x-[26px] gap-y-[14px] py-[22px]">
-            <span className="mr-1.5 font-sans text-[10px] tracking-[0.3em] uppercase text-[#F7F4F0]/40">{cfg.modLabel}</span>
+            <span className="mr-1.5 font-sans text-[10px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]">{cfg.modLabel}</span>
             {cfg.badges.map((b) => (
-              <span key={b.label} className="inline-flex items-center gap-2 rounded-full border border-[#2ED8A8]/[0.34] px-4 py-2 font-sans text-[11px] tracking-[0.14em] uppercase text-[#2ED8A8]">
-                {b.label}{b.sub && <span className="tabular-nums tracking-[0.04em] text-[#F7F4F0]/55">{b.sub}</span>}
+              <span key={b.label} className="inline-flex items-center gap-2 rounded-full border border-[rgba(20,20,20,0.16)] px-4 py-2 font-sans text-[11px] tracking-[0.14em] uppercase text-[#0E7A54]">
+                {b.label}{b.sub && <span className="tabular-nums tracking-[0.04em] text-[#8E8E8E]">{b.sub}</span>}
               </span>
             ))}
           </div>
@@ -694,9 +689,9 @@ export default function InstrumentLanding() {
       </section>
 
       {/* ── TRUST BAND ── */}
-      <section className="border-b border-[rgba(26,23,20,0.10)] bg-[#F7F4F0] text-[#1A1714]">
+      <section className="border-b border-[rgba(20,20,20,0.10)] bg-white text-[#141414]">
         <div className={WRAP}>
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-3 py-[18px] font-sans text-[12px] text-[#1A1714]/70">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-3 py-[18px] font-sans text-[12px] text-[#5A5A5A]">
             {[
               "CE marked · Declaration of Conformity on file",
               "1-year warranty",
@@ -707,25 +702,25 @@ export default function InstrumentLanding() {
               // Rechtsvorm is an eenmanszaak (KvK 96597569, Handelsregister-verified).
               "Registered Dutch business · Zential Pure, KvK 96597569",
             ].map((t) => (
-              <span key={t} className="inline-flex items-center gap-2 before:block before:h-[5px] before:w-[5px] before:rounded-full before:bg-[#157A5C]">{t}</span>
+              <span key={t} className="inline-flex items-center gap-2 before:block before:h-[5px] before:w-[5px] before:rounded-full before:bg-[#2ED8A8]">{t}</span>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── WHO IT IS FOR ── */}
-      <section className="bg-[#F7F4F0] py-[clamp(76px,10vw,120px)] text-[#1A1714]">
+      <section className="bg-white py-[clamp(76px,10vw,120px)] text-[#141414]">
         <div className={WRAP}>
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
             <div>
               <Eyebrow num="02" tone="meta">Who it is for</Eyebrow>
-              <h2 className="my-5 font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] leading-[1.1] text-[#1A1714]">{cfg.who.h2}</h2>
+              <h2 className="my-5 font-sans font-light tracking-[-0.025em] text-[clamp(28px,3.4vw,42px)] leading-[1.1] text-[#141414]">{cfg.who.h2}</h2>
               {cfg.who.paras.map((p, i) => (
-                <p key={i} className={`text-[17px] leading-[1.75] text-[#1A1714]/[0.66] ${i > 0 ? "mt-[18px]" : ""}`}>{p}</p>
+                <p key={i} className={`text-[17px] leading-[1.75] text-[#5A5A5A] ${i > 0 ? "mt-[18px]" : ""}`}>{p}</p>
               ))}
-              <p className="mt-[26px] font-serif italic text-[21px] text-[#1A1714]">{cfg.who.kicker}</p>
+              <p className="mt-[26px] font-sans font-light text-[21px] tracking-[-0.01em] text-[#141414]">{cfg.who.kicker}</p>
             </div>
-            <div className="order-first overflow-hidden rounded-[14px] md:order-none aspect-[16/11] md:aspect-[4/5]">
+            <div className="order-first overflow-hidden rounded-none md:order-none aspect-[16/11] md:aspect-[4/5]">
               <img src={cfg.who.img} alt={cfg.who.imgAlt} className="h-full w-full object-cover" />
             </div>
           </div>
@@ -733,21 +728,21 @@ export default function InstrumentLanding() {
       </section>
 
       {/* ── MECHANISM ── */}
-      <section id="science" className="bg-[#070A0E] py-[clamp(76px,10vw,120px)] text-[#F7F4F0]">
+      <section id="science" className="border-y border-[rgba(20,20,20,0.10)] bg-white py-[clamp(76px,10vw,120px)] text-[#141414]">
         <div className={WRAP}>
           <Eyebrow num="03">Mechanism</Eyebrow>
-          <h2 className="my-5 font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] leading-[1.1] text-[#F7F4F0]">{cfg.mech.h2}</h2>
-          <p className="max-w-[560px] text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">{cfg.mech.lede}</p>
-          <div className="mt-[52px] grid gap-px border border-[rgba(247,244,240,0.10)] bg-[rgba(247,244,240,0.10)] md:grid-cols-3">
+          <h2 className="my-5 font-sans font-light tracking-[-0.025em] text-[clamp(28px,3.4vw,42px)] leading-[1.1] text-[#141414]">{cfg.mech.h2}</h2>
+          <p className="max-w-[560px] text-[17px] leading-[1.75] text-[#5A5A5A]">{cfg.mech.lede}</p>
+          <div className="mt-[52px] grid gap-px border border-[rgba(20,20,20,0.10)] bg-[rgba(20,20,20,0.10)] md:grid-cols-3">
             {cfg.mech.stages.map((s) => (
-              <div key={s.n} className="bg-[#070A0E] px-[34px] py-10">
-                <div className="mb-[22px] font-sans text-[11px] tracking-[0.2em] text-[#F7F4F0]/40">STAGE ( {s.n} )</div>
-                <h3 className="mb-[14px] font-serif italic font-normal text-[24px] text-[#2ED8A8]">{s.title}</h3>
-                <p className="text-sm leading-[1.7] text-[#F7F4F0]/[0.66]">{s.body}</p>
+              <div key={s.n} className="bg-white px-[34px] py-10">
+                <div className="mb-[22px] font-sans text-[11px] font-medium tracking-[0.2em] text-[#8E8E8E]">STAGE ( {s.n} )</div>
+                <h3 className="mb-[14px] font-sans font-normal tracking-[-0.02em] text-[24px] text-[#0E7A54]">{s.title}</h3>
+                <p className="text-sm leading-[1.7] text-[#5A5A5A]">{s.body}</p>
               </div>
             ))}
           </div>
-          <p className="mt-[30px] max-w-[640px] text-xs leading-[1.6] text-[#F7F4F0]/40">{cfg.mech.disclaimer}</p>
+          <p className="mt-[30px] max-w-[640px] text-xs leading-[1.6] text-[#8E8E8E]">{cfg.mech.disclaimer}</p>
         </div>
       </section>
 
@@ -755,30 +750,30 @@ export default function InstrumentLanding() {
           Sits between the mechanism (which makes the claim) and the order block
           (which asks for the money): anyone scrolling to buy passes the grades
           on the way. Copy is compliance-gated verbatim; see EvidenceRow docs. */}
-      <section id="evidence" className="bg-[#F7F4F0] py-[clamp(76px,10vw,120px)] text-[#1A1714]">
+      <section id="evidence" className="bg-white py-[clamp(76px,10vw,120px)] text-[#141414]">
         <div className={WRAP}>
           <Eyebrow num="04" tone="meta">What the evidence says</Eyebrow>
-          <p className="my-6 max-w-[640px] font-serif italic text-[clamp(20px,2.4vw,28px)] leading-[1.35] text-[#1A1714]">
+          <p className="my-6 max-w-[640px] font-sans font-light tracking-[-0.02em] text-[clamp(20px,2.4vw,28px)] leading-[1.35] text-[#141414]">
             {cfg.evidence.standfirst}
           </p>
           {/* The grade key — rendered identically on all three instruments. */}
-          <div className="mb-10 max-w-[720px] border-l-2 border-[#1A1714]/20 pl-6">
-            <p className="text-[14px] leading-[1.7] text-[#1A1714]/[0.66]">
-              <b className="font-medium text-[#1A1714]">{EVIDENCE_KEY.title}</b> {EVIDENCE_KEY.body}
+          <div className="mb-10 max-w-[720px] border-l-2 border-[rgba(20,20,20,0.20)] pl-6">
+            <p className="text-[14px] leading-[1.7] text-[#5A5A5A]">
+              <b className="font-medium text-[#141414]">{EVIDENCE_KEY.title}</b> {EVIDENCE_KEY.body}
             </p>
-            <p className="mt-3 text-[14px] leading-[1.7] text-[#1A1714]">{EVIDENCE_KEY.coda}</p>
+            <p className="mt-3 text-[14px] leading-[1.7] text-[#141414]">{EVIDENCE_KEY.coda}</p>
           </div>
           <div className="max-w-[820px]">
             {cfg.evidence.rows.map((r, i) => (
-              <div key={i} className={`border-b border-[rgba(26,23,20,0.12)] py-7 ${i === 0 ? "border-t" : ""}`}>
+              <div key={i} className={`border-b border-[rgba(20,20,20,0.10)] py-7 ${i === 0 ? "border-t" : ""}`}>
                 {/* Rule 2: the grade sits in the same size as the claim, on the
                     same line, never in fine print. */}
-                <p className="text-[18px] leading-[1.5] text-[#1A1714]">
-                  <span className="font-serif italic">{r.claim}</span>
-                  <span className="text-[#1A1714]/40"> — </span>
-                  <span className="font-sans font-semibold tracking-[0.04em] text-[#157A5C]">{r.grade}</span>
+                <p className="text-[18px] leading-[1.5] text-[#141414]">
+                  <span className="font-sans">{r.claim}</span>
+                  <span className="text-[#8E8E8E]"> — </span>
+                  <span className="font-sans font-semibold tracking-[0.04em] text-[#0E7A54]">{r.grade}</span>
                 </p>
-                <p className="mt-3 text-[15px] leading-[1.75] text-[#1A1714]/[0.78]">
+                <p className="mt-3 text-[15px] leading-[1.75] text-[#5A5A5A]">
                   {r.body}
                   {r.citation && (
                     <>
@@ -787,7 +782,7 @@ export default function InstrumentLanding() {
                         href={r.citation.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="whitespace-nowrap font-sans text-[13px] tracking-[0.04em] text-[#157A5C] underline underline-offset-4 hover:text-[#1A1714]"
+                        className="whitespace-nowrap font-sans text-[13px] tracking-[0.04em] text-[#0E7A54] underline underline-offset-4 hover:text-[#141414]"
                       >
                         Read the paper · {r.citation.label} ↗
                       </a>
@@ -795,54 +790,54 @@ export default function InstrumentLanding() {
                   )}
                 </p>
                 {r.limits && (
-                  <p className="mt-3 text-[14px] leading-[1.7] text-[#1A1714]/[0.6]">{r.limits}</p>
+                  <p className="mt-3 text-[14px] leading-[1.7] text-[#8E8E8E]">{r.limits}</p>
                 )}
               </div>
             ))}
           </div>
-          <p className="mt-9 max-w-[640px] font-serif italic text-[17px] leading-[1.6] text-[#1A1714]/[0.78]">
+          <p className="mt-9 max-w-[640px] font-sans text-[17px] leading-[1.6] text-[#5A5A5A]">
             {cfg.evidence.closing}
           </p>
         </div>
       </section>
 
       {/* ── DIVIDER ── */}
-      <section className="relative flex min-h-[clamp(360px,46vw,520px)] items-center overflow-hidden bg-[#1A1714]">
+      <section className="relative flex min-h-[clamp(360px,46vw,520px)] items-center overflow-hidden bg-[#141414]">
         <img src={cfg.divider.img} alt={cfg.divider.imgAlt} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,10,14,0.7)_0%,rgba(7,10,14,0.32)_50%,rgba(7,10,14,0.55)_100%)]" />
         <div className={`relative z-[2] ${WRAP}`}>
-          <p className="max-w-[16ch] font-serif italic text-[clamp(26px,3.6vw,46px)] leading-[1.16] text-[#F7F4F0]">{cfg.divider.quote}</p>
-          <div className="mt-[22px] font-sans text-[10px] tracking-[0.3em] uppercase text-[#F7F4F0]/55">{cfg.divider.src}</div>
+          <p className="max-w-[16ch] font-sans font-light tracking-[-0.025em] text-[clamp(26px,3.6vw,46px)] leading-[1.16] text-white">{cfg.divider.quote}</p>
+          <div className="mt-[22px] font-sans text-[10px] tracking-[0.3em] uppercase text-white/70">{cfg.divider.src}</div>
         </div>
       </section>
 
       {/* ── SPECS + ORDER ── */}
-      <section id="order" className="bg-[#EDEAE6] py-[clamp(76px,10vw,120px)] text-[#1A1714]">
+      <section id="order" className="bg-[#F4FBF8] py-[clamp(76px,10vw,120px)] text-[#141414]">
         <div className={WRAP}>
           <Eyebrow num="05" tone="meta">The instrument</Eyebrow>
           <div className="mt-[34px] grid items-start gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-14">
             <ul className="list-none">
               {cfg.specs.map((s, i) => (
-                <li key={s.k} className={`flex justify-between gap-6 border-b border-[rgba(26,23,20,0.12)] py-[18px] ${i === 0 ? "border-t" : ""}`}>
-                  <span className="pt-0.5 font-sans text-[11px] tracking-[0.16em] uppercase text-[#6B5A4A]">{s.k}</span>
-                  <span className="max-w-[60%] text-right text-[15px] text-[#1A1714]">{s.v}</span>
+                <li key={s.k} className={`flex justify-between gap-6 border-b border-[rgba(20,20,20,0.10)] py-[18px] ${i === 0 ? "border-t" : ""}`}>
+                  <span className="pt-0.5 font-sans text-[11px] font-medium tracking-[0.16em] uppercase text-[#8E8E8E]">{s.k}</span>
+                  <span className="max-w-[60%] text-right text-[15px] text-[#141414]">{s.v}</span>
                 </li>
               ))}
             </ul>
-            <div className="rounded-[14px] border border-[rgba(26,23,20,0.12)] bg-white p-[38px] shadow-[0_18px_50px_rgba(26,23,20,0.08)] md:sticky md:top-[88px]">
-              <div className="font-sans text-[11px] tracking-[0.16em] uppercase text-[#6B5A4A]">{cfg.name}</div>
+            <div className="rounded-none border border-[rgba(20,20,20,0.10)] bg-white p-[38px] shadow-[0_18px_50px_rgba(20,20,20,0.06)] md:sticky md:top-[88px]">
+              <div className="font-sans text-[11px] font-medium tracking-[0.16em] uppercase text-[#8E8E8E]">{cfg.name}</div>
               {priceLabel && (
                 <>
-                  <div className="mb-0.5 mt-2 font-serif italic text-[60px] leading-none text-[#1A1714]">{priceLabel}</div>
-                  <div className="font-serif italic text-[20px] text-[#C6A07C]">Once.</div>
+                  <div className="mb-0.5 mt-2 font-sans font-light tracking-[-0.02em] tabular-nums text-[60px] leading-none text-[#141414]">{priceLabel}</div>
+                  <div className="font-sans text-[15px] font-medium text-[#0E7A54]">Once.</div>
                 </>
               )}
-              {cfg.priceAnchor && <p className="mt-3 text-[13px] leading-[1.55] text-[#157A5C]">{cfg.priceAnchor}</p>}
-              <p className="my-[22px] text-[13px] leading-[1.6] text-[#1A1714]/60">{cfg.orderNote}</p>
+              {cfg.priceAnchor && <p className="mt-3 text-[13px] leading-[1.55] text-[#0E7A54]">{cfg.priceAnchor}</p>}
+              <p className="my-[22px] text-[13px] leading-[1.6] text-[#5A5A5A]">{cfg.orderNote}</p>
               <OrderCta className={`${PILL_ACTION} mb-3 w-full`}>{orderLabel}</OrderCta>
               <a href="#science" className={`${PILL_GHOST_LIGHT} w-full`}>Read the mechanism</a>
               <div className="mt-[18px] flex justify-center"><TrustpilotProof variant="pdp" /></div>
-              <p className="mt-[18px] border-t border-[rgba(26,23,20,0.12)] pt-[18px] text-xs leading-[1.6] text-[#1A1714]/60"><b className="font-medium text-[#1A1714]">30-day money-back guarantee.</b> {cfg.guarantee} <b className="font-medium text-[#1A1714]">Then a 1-year warranty</b> against manufacturing defects and failure in normal use — we cover shipping both ways. <a href="/returns" className="underline">Full terms</a>.</p>
+              <p className="mt-[18px] border-t border-[rgba(20,20,20,0.10)] pt-[18px] text-xs leading-[1.6] text-[#5A5A5A]"><b className="font-medium text-[#141414]">30-day money-back guarantee.</b> {cfg.guarantee} <b className="font-medium text-[#141414]">Then a 1-year warranty</b> against manufacturing defects and failure in normal use — we cover shipping both ways. <a href="/returns" className="underline">Full terms</a>.</p>
             </div>
           </div>
           <TrustBadges cordless={cfg.slug !== "restoration-mat"} />
@@ -850,21 +845,21 @@ export default function InstrumentLanding() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="bg-[#F7F4F0] py-[clamp(76px,10vw,120px)] text-[#1A1714]">
+      <section className="bg-white py-[clamp(76px,10vw,120px)] text-[#141414]">
         <div className={WRAP}>
           <Eyebrow num="06" tone="meta">Before you order</Eyebrow>
-          <h2 className="mb-[34px] mt-5 font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] text-[#1A1714]">Questions, answered plainly.</h2>
+          <h2 className="mb-[34px] mt-5 font-sans font-light tracking-[-0.025em] text-[clamp(28px,3.4vw,42px)] text-[#141414]">Questions, answered plainly.</h2>
           <div className="max-w-[780px]">
             {cfg.faq.map((f, i) => (
-              <details key={i} className="group border-b border-[rgba(26,23,20,0.12)] first:border-t">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-[18px] text-[#1A1714] transition-colors hover:text-[#157A5C] [&::-webkit-details-marker]:hidden">
+              <details key={i} className="group border-b border-[rgba(20,20,20,0.10)] first:border-t">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-[18px] text-[#141414] transition-colors hover:text-[#0E7A54] [&::-webkit-details-marker]:hidden">
                   {f.q}
                   <svg className="shrink-0 transition-transform duration-300 group-open:rotate-45" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
-                    <line x1="2" y1="11" x2="20" y2="11" stroke="#6B5A4A" strokeWidth="1.5" />
-                    <line x1="11" y1="2" x2="11" y2="20" stroke="#6B5A4A" strokeWidth="1.5" />
+                    <line x1="2" y1="11" x2="20" y2="11" stroke="#8E8E8E" strokeWidth="1.5" />
+                    <line x1="11" y1="2" x2="11" y2="20" stroke="#8E8E8E" strokeWidth="1.5" />
                   </svg>
                 </summary>
-                <div className="max-w-[62ch] pb-[26px] text-[15px] leading-[1.75] text-[#1A1714]/[0.66]">{f.a}</div>
+                <div className="max-w-[62ch] pb-[26px] text-[15px] leading-[1.75] text-[#5A5A5A]">{f.a}</div>
               </details>
             ))}
           </div>
@@ -878,20 +873,19 @@ export default function InstrumentLanding() {
       <InlinePrimer slug={cfg.slug} />
 
       {/* ── FOUNDING 100 ── */}
-      <section className="bg-[#1A1714] py-[clamp(76px,10vw,120px)] text-[#F7F4F0]">
+      <section className="border-y border-[rgba(20,20,20,0.10)] bg-white py-[clamp(76px,10vw,120px)] text-[#141414]">
         <div className={WRAP}>
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-14">
             <div>
               <Eyebrow num="08">Founding cohort</Eyebrow>
-              <h2 className="my-5 font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] text-[#F7F4F0]">The first buyers set the protocol.</h2>
-              <p className="text-[17px] leading-[1.75] text-[#F7F4F0]/[0.66]">Founding members buy at the launch price, get first access to new instruments, and a direct line to the people calibrating the protocols.</p>
+              <h2 className="my-5 font-sans font-light tracking-[-0.025em] text-[clamp(28px,3.4vw,42px)] text-[#141414]">The first buyers set the protocol.</h2>
+              <p className="text-[17px] leading-[1.75] text-[#5A5A5A]">Founding members buy at the launch price, get first access to new instruments, and a direct line to the people calibrating the protocols.</p>
             </div>
-            <div className="relative overflow-hidden rounded-[14px] border border-[rgba(247,244,240,0.10)] bg-[#070A0E] p-10">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(420px_circle_at_80%_0%,rgba(46,216,168,0.12),transparent_65%)]" />
+            <div className="relative overflow-hidden rounded-none border border-[rgba(20,20,20,0.10)] bg-white p-10">
               <div className="relative z-[2] flex flex-col gap-2.5">
-                <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-[#F7F4F0]/50">What founding means</span>
+                <span className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-[#8E8E8E]">What founding means</span>
                 {["Launch price, no subscription", "30-day full refund, any reason", "1-year warranty", "Direct line to the protocol team"].map((t) => (
-                  <span key={t} className="inline-flex items-center gap-2 font-sans text-[13px] text-[#F7F4F0]/[0.78] before:block before:h-[5px] before:w-[5px] before:rounded-full before:bg-[#2ED8A8]">{t}</span>
+                  <span key={t} className="inline-flex items-center gap-2 font-sans text-[13px] text-[#5A5A5A] before:block before:h-[5px] before:w-[5px] before:rounded-full before:bg-[#2ED8A8]">{t}</span>
                 ))}
               </div>
               <OrderCta className={`${PILL_BRAND} relative z-[2] mt-7`}>{orderLabel}</OrderCta>
@@ -901,25 +895,25 @@ export default function InstrumentLanding() {
       </section>
 
       {/* ── COMPLETE THE SYSTEM ── */}
-      <section className="bg-[#EDEAE6] py-[clamp(76px,10vw,120px)] text-[#1A1714]">
+      <section className="border-t border-[rgba(20,20,20,0.10)] bg-white py-[clamp(76px,10vw,120px)] text-[#141414]">
         <div className={WRAP}>
           <Eyebrow num="09" tone="meta">Complete the system</Eyebrow>
           <div className="mt-5 flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
-            <h2 className="max-w-[18ch] font-serif italic font-normal text-[clamp(28px,3.4vw,42px)] leading-[1.1] text-[#1A1714]">Three instruments, one protocol.</h2>
-            <p className="max-w-[44ch] text-[15px] leading-[1.7] text-[#1A1714]/[0.66]">Face, body, full rest. Each instrument works alone — together they cover the whole day. The complete System runs €399.</p>
+            <h2 className="max-w-[18ch] font-sans font-light tracking-[-0.025em] text-[clamp(28px,3.4vw,42px)] leading-[1.1] text-[#141414]">Three instruments, one protocol.</h2>
+            <p className="max-w-[44ch] text-[15px] leading-[1.7] text-[#5A5A5A]">Face, body, full rest. Each instrument works alone — together they cover the whole day. The complete System runs €399.</p>
           </div>
-          <div className="mt-[44px] grid gap-px border border-[rgba(26,23,20,0.12)] bg-[rgba(26,23,20,0.12)] md:grid-cols-2">
+          <div className="mt-[44px] grid gap-px border border-[rgba(20,20,20,0.10)] bg-[rgba(20,20,20,0.10)] md:grid-cols-2">
             {others.map((o) => (
-              <a key={o.slug} href={`/instruments/${o.slug}`} className="group flex flex-col bg-[#EDEAE6] transition-colors hover:bg-white">
+              <a key={o.slug} href={`/instruments/${o.slug}`} className="group flex flex-col bg-white transition-colors hover:bg-[#FCFEFD]">
                 <div className="aspect-[16/10] overflow-hidden">
                   <img src={o.heroImg} alt={o.heroAlt} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                 </div>
                 <div className="flex flex-1 flex-col px-7 py-[26px]">
-                  <div className="font-serif italic text-[24px] text-[#1A1714]">{o.name}</div>
-                  <p className="mt-2.5 flex-1 text-[14px] leading-[1.65] text-[#1A1714]/[0.6]">{o.lede}</p>
+                  <div className="font-sans font-medium text-[19px] tracking-[-0.015em] text-[#141414]">{o.name}</div>
+                  <p className="mt-2.5 flex-1 text-[14px] leading-[1.65] text-[#5A5A5A]">{o.lede}</p>
                   <div className="mt-5 flex items-center justify-between">
-                    <span className="font-serif italic text-[20px] text-[#C6A07C]">{o.price}</span>
-                    <span className="font-sans text-[11px] tracking-[0.16em] uppercase text-[#157A5C]">View instrument →</span>
+                    <span className="font-sans font-semibold tabular-nums text-[16px] text-[#141414]">{o.price}</span>
+                    <span className="font-sans text-[11px] tracking-[0.16em] uppercase text-[#0E7A54]">View instrument →</span>
                   </div>
                 </div>
               </a>
@@ -927,16 +921,16 @@ export default function InstrumentLanding() {
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
             <a href="/instruments" className={PILL_BRAND}>See the full System</a>
-            <span className="font-sans text-[12px] text-[#1A1714]/55">Founding bundle pricing held for the first hundred.</span>
+            <span className="font-sans text-[12px] text-[#5A5A5A]">Founding bundle pricing held for the first hundred.</span>
           </div>
         </div>
       </section>
 
       {/* ── MOBILE STICKY ORDER BAR ── */}
-      <div className={`fixed inset-x-0 bottom-0 z-[90] flex items-center justify-between gap-4 border-t border-[rgba(247,244,240,0.10)] bg-[rgba(7,10,14,0.92)] px-5 py-3 backdrop-blur-md transition-transform duration-300 md:hidden ${showSticky ? "translate-y-0" : "translate-y-full"} [padding-bottom:max(0.75rem,env(safe-area-inset-bottom))]`}>
+      <div className={`fixed inset-x-0 bottom-0 z-[90] flex items-center justify-between gap-4 border-t border-[rgba(20,20,20,0.10)] bg-[rgba(255,255,255,0.94)] px-5 py-3 backdrop-blur-md transition-transform duration-300 md:hidden ${showSticky ? "translate-y-0" : "translate-y-full"} [padding-bottom:max(0.75rem,env(safe-area-inset-bottom))]`}>
         <div>
-          <div className="font-sans text-[11px] tracking-[0.18em] uppercase text-[#F7F4F0]/70">{cfg.name.replace("The ", "")}</div>
-          {priceLabel && <div className="font-serif italic text-[22px] leading-none text-[#F7F4F0]">{priceLabel}</div>}
+          <div className="font-sans text-[11px] font-medium tracking-[0.18em] uppercase text-[#8E8E8E]">{cfg.name.replace("The ", "")}</div>
+          {priceLabel && <div className="font-sans font-medium tabular-nums text-[22px] leading-none text-[#141414]">{priceLabel}</div>}
         </div>
         <OrderCta className={`${PILL_ACTION} px-6 py-3.5`}>{ordering ? "Adding…" : "Claim place"}</OrderCta>
       </div>
