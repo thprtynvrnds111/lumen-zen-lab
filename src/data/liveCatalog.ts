@@ -24,9 +24,10 @@ export const LIVE_HANDLES: ReadonlySet<string> = new Set([
   // Purchase-path add-ons (conductive gel + PDRN pads)
   'medicube-collagen-elastic-jelly-moisturizing-cream', // Restore Gel — €18
   'collagen-eye-mask', // Restore Pads — €18
-  // Renamed handles, 2026-08-03. BOTH old and new are allowlisted so the storefront
-  // keeps working before, during and after the Shopify rename. The old ones come out
-  // only once the rename is verified live.
+  // Renamed handles, 2026-08-03 — rename VERIFIED LIVE 2026-08-07 (Storefront API:
+  // new handles return products, old handles return null). BOTH spellings stay
+  // allowlisted: the new ones are what Shopify serves, the old ones remain so any
+  // cached page or stale link still passes the allowlist and hits the redirect layer.
   'restore-gel', // renamed from 'medicube-collagen-elastic-jelly-moisturizing…' 2026-08-03
   'restore-pads', // renamed from 'collagen-eye-mask…' 2026-08-03
   'restoration-belt', // renamed from 'red-light-therapy-belt-for-waist-shoulder-66…' 2026-08-03

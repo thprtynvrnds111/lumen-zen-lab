@@ -97,10 +97,9 @@ describe("formatMoney", () => {
 
 describe("LIVE_HANDLES allowlist", () => {
   it("includes the four core catalog products", () => {
-    expect(LIVE_HANDLES.has("lifting-and-tightening-face-introducer")).toBe(true);
-    expect(
-      LIVE_HANDLES.has("red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device"),
-    ).toBe(true);
+    // Post-rename handles, verified against the live Storefront API 2026-08-07.
+    expect(LIVE_HANDLES.has("face-introducer")).toBe(true);
+    expect(LIVE_HANDLES.has("restoration-belt")).toBe(true);
     expect(
       LIVE_HANDLES.has("the-restoration-mat"),
     ).toBe(true);
@@ -108,8 +107,22 @@ describe("LIVE_HANDLES allowlist", () => {
   });
 
   it("includes the conductive-gel and PDRN-pad purchase-path add-ons", () => {
-    expect(LIVE_HANDLES.has("medicube-collagen-elastic-jelly-moisturizing-cream")).toBe(true);
-    expect(LIVE_HANDLES.has("collagen-eye-mask")).toBe(true);
+    expect(LIVE_HANDLES.has("restore-gel")).toBe(true);
+    expect(LIVE_HANDLES.has("restore-pads")).toBe(true);
+  });
+
+  it("keeps the retired 2026-08-03 spellings allowlisted for legacy traffic", () => {
+    // Old handles return null from Shopify (verified 2026-08-07) but stay in the
+    // allowlist so cached pages and stale links pass the fetch filter and reach
+    // the redirect layer instead of vanishing.
+    for (const retired of [
+      "lifting-and-tightening-face-introducer",
+      "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
+      "medicube-collagen-elastic-jelly-moisturizing-cream",
+      "collagen-eye-mask",
+    ]) {
+      expect(LIVE_HANDLES.has(retired)).toBe(true);
+    }
   });
 
   it("excludes known ghost SKUs", () => {

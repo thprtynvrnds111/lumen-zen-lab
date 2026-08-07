@@ -83,7 +83,7 @@ export const protocols: Protocol[] = [
     name: "The Face Introducer",
     role: "Face · 12 min",
     minutes: 12,
-    handle: "lifting-and-tightening-face-introducer",
+    handle: "face-introducer",
     href: "/instruments/face-introducer",
     price: 88,
     imageUrl: FACE_INTRODUCER_IMG,
@@ -97,7 +97,7 @@ export const protocols: Protocol[] = [
   squareImageUrl: FACE_INTRODUCER_IMG,
   fromPrice: 88,
   bundlePrice: SYSTEM.price,
-  categoryHandles: ["lifting-and-tightening-face-introducer"],
+  categoryHandles: ["face-introducer"],
  },
  {
   slug: "02-body",
@@ -113,7 +113,7 @@ export const protocols: Protocol[] = [
     role: "Body · 15 min",
     minutes: 15,
     handle:
-     "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
+     "restoration-belt",
     href: "/instruments/restoration-belt",
     price: 180,
     imageUrl: beltHero,
@@ -128,7 +128,7 @@ export const protocols: Protocol[] = [
   fromPrice: 180,
   bundlePrice: SYSTEM.price,
   categoryHandles: [
-   "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
+   "restoration-belt",
   ],
  },
  {

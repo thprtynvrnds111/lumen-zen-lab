@@ -10,7 +10,6 @@ import { Loader2 } from "lucide-react";
 // Red Light Therapy only for the Belt/Mat. The Face Introducer is NOT a light-therapy
 // device — its LED is a mode indicator, not a modality (operator-verified 2026-07-27).
 const MODALITY_BY_HANDLE: Record<string, string> = {
-  "lifting-and-tightening-face-introducer": "EMS · Microcurrent · Thermal",
   "face-introducer": "EMS · Microcurrent · Thermal",
   "electric-guasha-massager": "Microcurrent · Gua Sha",
   "electric-micro-current": "Daily Microcurrent",
@@ -18,11 +17,8 @@ const MODALITY_BY_HANDLE: Record<string, string> = {
   "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool":
     "Red Light Therapy · Microcurrent",
   "portable-ems-microcurrent-facial-beauty-device": "EMS · Microcurrent",
-  "medicube-collagen-elastic-jelly-moisturizing-cream": "Conductive Gel",
   "restore-gel": "Conductive Gel",
-  "collagen-eye-mask": "Under-Eye Collagen",
   "restore-pads": "Under-Eye Collagen",
-  "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": "Red Light Therapy · NIR",
   "restoration-belt": "Red Light Therapy · NIR",
   "pneumatic-air-wave-massager-pneumatic-circulation-leg-massager-pneumatic-massager": "Sequential Compression",
   "household-red-light-charging-vibrating-red-light-therapy-mat": "Red Light Therapy · Vibration",

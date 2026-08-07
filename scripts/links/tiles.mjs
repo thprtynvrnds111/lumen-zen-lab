@@ -21,7 +21,7 @@
 
 export const SITE = "https://zentialpure.com";
 
-/** Verified live 2026-07-26, Storefront API, handle lifting-and-tightening-face-introducer. */
+/** Verified live 2026-08-07, Storefront API, handle face-introducer (renamed 2026-08-03). */
 export const ENTRY_PRICE_EUR = 88;
 
 /** Verified live 2026-07-26, 0d1m9a-w7.myshopify.com/products/the-system-founding-bundle.json → 399.00 (compare-at 468.00). */

@@ -10,7 +10,7 @@ import { ZentialFooter } from "@/components/zential/ZentialFooter";
 import { SEO } from "@/components/SEO";
 
 const PRODUCT_SEO: Record<string, { title: string; description: string }> = {
- "lifting-and-tightening-face-introducer": {
+ "face-introducer": {
   title: "Microcurrent Face Device, Face Introducer | Zential Pure",
   description: "EMS, microcurrent and 45°C thermal. Three modalities in one daily ritual at clinic precision. €88.",
  },
@@ -50,11 +50,11 @@ const PRODUCT_SEO: Record<string, { title: string; description: string }> = {
   title: "Frequency Wand Pro, Clinic-Precision EMS | Zential Pure",
   description: "Advanced EMS and microcurrent for deep facial muscle toning. Clinic-precision output at home. The replacement for repeated clinic sessions. €147.",
  },
- "medicube-collagen-elastic-jelly-moisturizing-cream": {
+ "restore-gel": {
   title: "Restore Gel, Daily Collagen Support Gel | Zential Pure",
   description: "Collagen peptides and hyaluronic acid matrix for daily dermal support. Fast-absorbing topical for morning or evening protocol. €18.",
  },
- "collagen-eye-mask": {
+ "restore-pads": {
   title: "Restore Pads, Collagen Under-Eye Protocol | Zential Pure",
   description: "Under-eye collagen pads with PDRN technology for concentrated periorbital renewal. 15–20 minutes, 3–4 times per week. €18.",
  },
@@ -67,7 +67,7 @@ const PRODUCT_SEO: Record<string, { title: string; description: string }> = {
   title: "Depth Mask, 3D Blackout Sleep Mask | Zential Pure",
   description: "Contoured 3D shell creates total light seal without pressing on eyes or lashes. Side-sleeper compatible. Melatonin protection all night. €29.",
  },
- "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": {
+ "restoration-belt": {
   title: "Flux Panel, 80W Full-Body Red Light Panel | Zential Pure",
   description: "660nm + 850nm dual-wavelength red light at 80W. Full-body photobiomodulation for skin, muscle recovery, and mitochondrial activation. €199.",
  },
@@ -123,7 +123,7 @@ const PRODUCT_SEO: Record<string, { title: string; description: string }> = {
 
 // Static prices for JSON-LD prerendering, async Shopify price overrides these client-side
 const PRODUCT_PRICES: Record<string, string> = {
- "lifting-and-tightening-face-introducer": "88.00",
+ "face-introducer": "88.00",
  "body-lift": "88.00",
  "eye-massage": "88.00",
  "color-light-import-micro-current-vibration-massager": "147.00",
@@ -133,11 +133,11 @@ const PRODUCT_PRICES: Record<string, string> = {
  "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": "149.00",
  "red-light-blu-ray-cosmetic-instrument-face-lifting-and-tightening": "88.00",
  "portable-ems-microcurrent-facial-beauty-device": "147.00",
- "medicube-collagen-elastic-jelly-moisturizing-cream": "18.00",
- "collagen-eye-mask": "18.00",
+ "restore-gel": "18.00",
+ "restore-pads": "18.00",
  "breath-seal": "14.00",
  "blackout-eye-mask-3d-deep-contoured-sleep-mask-lash-extensions-no-pressure-blindfold-sleeping-eye-mask-women-men-side-sleepers": "29.00",
- "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": "180.00",
+ "restoration-belt": "180.00",
  "household-red-light-charging-vibrating-red-light-therapy-mat": "139.00",
  "pneumatic-air-wave-massager-pneumatic-circulation-leg-massager-pneumatic-massager": "159.00",
  "electric-foam-roller-muscle-relaxation-fitness-yoga-column": "109.00",

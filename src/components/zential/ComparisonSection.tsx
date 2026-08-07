@@ -94,18 +94,18 @@ const alternativeTiers = [
 ];
 
 const FEATURED_HANDLES = [
- "lifting-and-tightening-face-introducer",
+ "face-introducer",
  "portable-ems-microcurrent-facial-beauty-device",
- "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
+ "restoration-belt",
  "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow",
  "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
  "body-lift",
 ];
 
 const DEVICE_NAMES: Record<string, string> = {
- "lifting-and-tightening-face-introducer": "Face Introducer",
+ "face-introducer": "Face Introducer",
  "portable-ems-microcurrent-facial-beauty-device": "Freq. Wand Pro",
- "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device": "Red Light Belt",
+ "restoration-belt": "Red Light Belt",
  "acupressure-massage-mat-with-needles-set-back-massager-for-neck-foot-kuznetsovs-applicator-massage-pad-yoga-mat-with-pillow": "Acupressure Mat",
  "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool": "Frame Pulse",
  "body-lift": "Body Lift",

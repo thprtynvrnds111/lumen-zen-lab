@@ -38,7 +38,7 @@ const profiles = [
   sub: "Microcurrent · EMS · Thermal",
   tags: ["Microcurrent", "EMS", "Thermal"],
   desc: "Clinical-grade facial remodelling. Stimulates collagen synthesis and lifts muscle tone at tissue depth.",
-  href: "/product/lifting-and-tightening-face-introducer",
+  href: "/product/face-introducer",
  },
 ];
 
@@ -55,7 +55,7 @@ export function SkinFitSection() {
    <div className="max-w-5xl mx-auto">
     <div className="text-center mb-14">
      <p className="text-[11px] font-medium tracking-[0.22em] uppercase mb-3" style={{ color: '#8E8E8E' }}>
-     , Find Your Protocol 
+     Find Your Protocol
      </p>
      <h2 className="font-sans font-light tracking-[-0.025em] text-3xl md:text-4xl" style={{ color: '#141414' }}>
       What are you optimising for?

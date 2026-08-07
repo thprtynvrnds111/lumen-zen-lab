@@ -39,8 +39,8 @@ const PILL_GHOST =
 
 interface Instrument { slug: string; title: string; desc: string; price: number; handle: string; img: string; }
 const INSTRUMENTS: Instrument[] = [
-  { slug: "face-introducer", title: "The Face Introducer", desc: "Three modalities for face and neck, in a twelve-minute ritual.", price: 88, handle: "lifting-and-tightening-face-introducer", img: heroFace },
-  { slug: "restoration-belt", title: "The Restoration Belt", desc: "660nm and 850nm light, pressed to the muscle by a thermal wrap.", price: 180, handle: "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device", img: heroBelt },
+  { slug: "face-introducer", title: "The Face Introducer", desc: "Three modalities for face and neck, in a twelve-minute ritual.", price: 88, handle: "face-introducer", img: heroFace },
+  { slug: "restoration-belt", title: "The Restoration Belt", desc: "660nm and 850nm light, pressed to the muscle by a thermal wrap.", price: 180, handle: "restoration-belt", img: heroBelt },
   { slug: "restoration-mat", title: "The Restoration Mat", desc: "A 100 × 40 cm bed of 660nm red light and far-infrared heat — 120 × 40 cm in the longer size. You lie down; the array works.", price: 200, handle: "the-restoration-mat", img: heroMat },
 ];
 

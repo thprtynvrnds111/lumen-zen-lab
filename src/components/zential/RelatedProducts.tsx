@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { fetchProducts, type ShopifyProduct } from "@/lib/shopify";
 import { formatMoney } from "@/lib/market";
 
-const ACCESSORY_HANDLES = ["medicube-collagen-elastic-jelly-moisturizing-cream", "collagen-eye-mask"];
+const ACCESSORY_HANDLES = ["restore-gel", "restore-pads"];
 
 interface Props {
   currentHandle: string;

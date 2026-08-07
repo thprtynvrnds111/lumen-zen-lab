@@ -14,11 +14,10 @@ import { TrustpilotProof } from "@/components/zential/TrustpilotProof";
 // Per-market free-shipping thresholds (operator decision 2026-07-12): EUR 75 / USD 85.
 // Keyed by the cart's own currency so the bar always compares like-for-like.
 const FREE_SHIPPING_THRESHOLDS: Record<string, number> = { EUR: 75, USD: 85 };
-// Both spellings during the 2026-08-03 handle rename. GEL_HANDLE is the one we
-// ADD to cart, so it must be the handle Shopify actually serves — flipped to the
-// new value once the rename lands.
+// Post-rename handles (Shopify rename 2026-08-03, verified live 2026-08-07).
+// GEL_HANDLE is the one we ADD to cart, so it must be the handle Shopify serves.
 const GEL_HANDLE = "restore-gel";
-const ACCESSORY_HANDLES = [GEL_HANDLE, "restore-gel", "collagen-eye-mask", "restore-pads"];
+const ACCESSORY_HANDLES = [GEL_HANDLE, "restore-pads"];
 
 export function CartDrawer() {
  const { items, isLoading, isSyncing, isOpen, openCart, closeCart, updateQuantity, removeItem, syncCart, addItem } = useCartStore();

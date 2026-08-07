@@ -26,14 +26,14 @@ const CHECKOUT_PERMALINK = `https://checkout.zentialpure.com/cart/${BUNDLE_VARIA
 const INSTRUMENTS = [
   {
     name: "The Face Introducer",
-    handle: "lifting-and-tightening-face-introducer",
+    handle: "face-introducer",
     href: "/instruments/face-introducer",
     time: "12 min · morning",
     desc: "EMS, microcurrent and thermal. Face and neck.",
   },
   {
     name: "The Restoration Belt",
-    handle: "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
+    handle: "restoration-belt",
     href: "/instruments/restoration-belt",
     time: "15 min · after the work",
     desc: "660nm red + 850nm near-infrared under a thermal wrap. Waist, shoulders, wherever the day settled.",

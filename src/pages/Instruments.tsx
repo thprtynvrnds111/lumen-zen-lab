@@ -33,7 +33,7 @@ const INSTRUMENTS: Instrument[] = [
     name: "The Face Introducer",
     blurb:
       "Three clinic modalities — EMS, microcurrent and thermal — in a twelve-minute ritual for face and neck.",
-    handle: "lifting-and-tightening-face-introducer",
+    handle: "face-introducer",
     to: "/instruments/face-introducer",
     img: heroFace,
     alt: "The Face Introducer",
@@ -43,7 +43,7 @@ const INSTRUMENTS: Instrument[] = [
     name: "The Restoration Belt",
     blurb:
       "660nm red and 850nm near-infrared light, pressed to the muscle by a thermal wrap. Recovery, worn close. Fifteen minutes.",
-    handle: "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
+    handle: "restoration-belt",
     to: "/instruments/restoration-belt",
     img: heroBelt,
     alt: "The Restoration Belt worn across the lower back, red light through the array",

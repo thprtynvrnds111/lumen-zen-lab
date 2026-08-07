@@ -17,7 +17,7 @@ const DEVICE_NAMES: Record<string, string> = {
   "body-lift": "Body Lift",
   "eye-massage": "Eye Activator",
   "electric-micro-current": "Skin Pulse",
-  "lifting-and-tightening-face-introducer": "Face Introducer",
+  "face-introducer": "Face Introducer",
   "color-light-import-micro-current-vibration-massager": "Frequency Wand",
   "electric-guasha-massager": "Gua Sha Frequency",
   "facial-beauty-tools-and-ems-beauty-equipment": "Sculpt Wand",
@@ -28,27 +28,27 @@ const DEVICE_NAMES: Record<string, string> = {
 const TECH_DEVICES: Record<string, string[]> = {
   redlight: [
     "body-lift",
-    "lifting-and-tightening-face-introducer",
+    "face-introducer",
     "eye-massage",
     "electric-micro-current",
     "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
   ],
   microcurrent: [
     "body-lift",
-    "lifting-and-tightening-face-introducer",
+    "face-introducer",
     "electric-guasha-massager",
     "electric-micro-current",
     "facial-beauty-tools-and-ems-beauty-equipment",
   ],
   ems: [
-    "lifting-and-tightening-face-introducer",
+    "face-introducer",
     "body-lift",
     "color-light-import-micro-current-vibration-massager",
     "3d-eye-beauty-instrument-micro-current-pulse-eye-relax-reduce-wrinkles-and-dark-circle-remove-eye-bags-massager-beauty-tool",
   ],
   bluelight: [
     "color-light-import-micro-current-vibration-massager",
-    "lifting-and-tightening-face-introducer",
+    "face-introducer",
   ],
 };
 

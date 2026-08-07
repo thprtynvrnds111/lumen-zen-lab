@@ -120,12 +120,12 @@ export default function QuizResult() {
      <div className="inline-flex items-center gap-3 mb-5">
       <span className="h-px w-8" style={{ backgroundColor: "#0E7A54", opacity: 0.45 }} />
       <p className="text-[10px] tracking-[0.32em] uppercase" style={{ color: "#0E7A54" }}>
-      , {rec.ritualHeadline} 
+      {rec.ritualHeadline}
       </p>
       <span className="h-px w-8" style={{ backgroundColor: "#0E7A54", opacity: 0.45 }} />
      </div>
      <h1 className="font-sans font-light text-[40px] md:text-6xl leading-[1.02] tracking-[-0.03em] text-foreground mb-5 text-balance">
-      Your ritual begins with<br/>the {rec.primaryName}.
+      Your ritual begins with<br/>{rec.primaryName}.
      </h1>
      <p className="text-base md:text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
       {rec.ritualSubcopy}

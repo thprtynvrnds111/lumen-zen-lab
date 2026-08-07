@@ -18,7 +18,7 @@ const concerns = [
   label: "Red Light Therapy",
   sub: "660–850nm wide-field photobiomodulation",
   devices: "Red Light Belt · Red Light Mat",
-  handle: "red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device",
+  handle: "restoration-belt",
   accent: "#E83828",
   glow: "rgba(232,56,40,0.1)",
   border: "rgba(232,56,40,0.28)",

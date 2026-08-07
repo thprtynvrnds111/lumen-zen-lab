@@ -2180,9 +2180,9 @@ Object.assign(productConfigs, {
 /**
  * Handle rename, 2026-08-03. Shopify handles carrying dropship residue — above all
  * `medicube-…`, which is a COMPETITOR TRADEMARK sitting in a live product URL — are
- * being renamed. Both spellings resolve to the same config for the duration, so the
- * storefront works before, during and after the Shopify flip. Old keys are removed
- * only once the rename is verified live.
+ * being renamed. Rename VERIFIED LIVE 2026-08-07 (old handles return null from the
+ * Storefront API). Both spellings keep resolving to the same config so any cached
+ * page, bookmarked link or stale ad lander still resolves.
  */
 const RENAMED_HANDLE_ALIASES: Record<string, string> = {
  // Shopify renamed 2026-08-03; these are the retired spellings, kept so any cached

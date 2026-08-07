@@ -31,7 +31,7 @@ export const GIFTS: Gift[] = [
 ];
 
 /** Shopify product path the discount URL redirects to — live handle verified. */
-export const PDP_URL = "/products/lifting-and-tightening-face-introducer";
+export const PDP_URL = "/products/face-introducer";
 /** NOTE: create/verify this code in Shopify admin before production —
  *  referenced by winback flow spec but marked unverified there. */
 export const DISCOUNT_CODE = "PROTOCOL10";

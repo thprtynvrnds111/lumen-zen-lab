@@ -40,7 +40,7 @@ import realIssueThermalPad from "@/assets/editorial/problem-thermal-pad.webp";
 type BundleKey = "single" | "ritual-set" | "pro-set";
 
 const REAL_ISSUE_IMAGE_OVERRIDES: Record<string, string> = {
- "lifting-and-tightening-face-introducer": realIssueFaceIntroducer,
+ "face-introducer": realIssueFaceIntroducer,
  "color-light-import-micro-current-vibration-massager": realIssueFrequencyWand,
  "electric-guasha-massager": realIssueGuasha,
  "electric-micro-current": realIssueSkinPulse,
@@ -114,11 +114,11 @@ export function ProductLanding({ config }: Props) {
  }, [config.handle, config.purchaseHandle]);
 
  useEffect(() => {
-  fetchProductByHandle("medicube-collagen-elastic-jelly-moisturizing-cream").then(p => {
+  fetchProductByHandle("restore-gel").then(p => {
    const price = parseFloat(p?.variants?.edges?.[0]?.node?.price?.amount ?? "");
    if (!isNaN(price)) setGelPrice(price);
   }).catch(() => {});
-  fetchProductByHandle("collagen-eye-mask").then(p => {
+  fetchProductByHandle("restore-pads").then(p => {
    const price = parseFloat(p?.variants?.edges?.[0]?.node?.price?.amount ?? "");
    if (!isNaN(price)) setMaskPrice(price);
   }).catch(() => {});
@@ -252,7 +252,7 @@ export function ProductLanding({ config }: Props) {
   // Auto-add Collagen Face Gel for Ritual Set and Pro Set
   if (selectedBundle === "ritual-set" || selectedBundle === "pro-set") {
    try {
-    const gelFetched = await fetchProductByHandle("medicube-collagen-elastic-jelly-moisturizing-cream");
+    const gelFetched = await fetchProductByHandle("restore-gel");
     const gelVariant = gelFetched?.variants?.edges?.[0]?.node;
     if (gelVariant) {
      await addItem({
@@ -275,7 +275,7 @@ export function ProductLanding({ config }: Props) {
   // Auto-add PDRN Mask for Pro Set
   if (selectedBundle === "pro-set") {
    try {
-    const maskFetched = await fetchProductByHandle("collagen-eye-mask");
+    const maskFetched = await fetchProductByHandle("restore-pads");
     const maskVariant = maskFetched?.variants?.edges?.[0]?.node;
     if (maskVariant) {
      await addItem({

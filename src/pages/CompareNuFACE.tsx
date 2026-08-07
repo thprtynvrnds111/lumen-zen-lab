@@ -231,7 +231,7 @@ export default function CompareNuFACE() {
        The NuFACE Trinity costs €339, a reasonable investment if brand authority is your primary criterion. If you're evaluating the category on technology and cost per year of use, the Face Introducer is the stronger argument.
       </p>
       <Link
-       to="/product/lifting-and-tightening-face-introducer"
+       to="/product/face-introducer"
        className="inline-block rounded-full bg-[#2ED8A8] px-8 py-3.5 text-sm font-medium tracking-wide text-[#141414] transition-colors hover:bg-[#1BAF86]"
       >
        Order the Face Introducer, €88
@@ -295,7 +295,7 @@ export default function CompareNuFACE() {
       </p>
       <div className="grid md:grid-cols-3 gap-4 text-sm">
        {[
-        { label: "Face Introducer, full product page", to: "/product/lifting-and-tightening-face-introducer" },
+        { label: "Face Introducer, full product page", to: "/product/face-introducer" },
         { label: "How microcurrent works", to: "/technology/microcurrent" },
         { label: "How EMS works", to: "/technology/ems" },
        ].map((link, i) => (

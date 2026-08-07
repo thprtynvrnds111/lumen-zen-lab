@@ -93,8 +93,8 @@ describe("tile data", () => {
   });
 
   it("keeps both prices in step with the live catalog", () => {
-    // Verified 2026-07-26. Entry: Storefront API, handle
-    // lifting-and-tightening-face-introducer. System: products/the-system-founding-bundle.json
+    // Verified 2026-08-07. Entry: Storefront API, handle
+    // face-introducer (renamed 2026-08-03). System: products/the-system-founding-bundle.json
     // → 399.00 (compare-at 468.00). Bump each with its live source, never guess.
     expect(ENTRY_PRICE_EUR).toBe(88);
     expect(SYSTEM_PRICE_EUR).toBe(399);

@@ -24,7 +24,7 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
     }
   }, [open]);
 
-  const HIDDEN_HANDLES = ["medicube-collagen-elastic-jelly-moisturizing-cream", "collagen-eye-mask"];
+  const HIDDEN_HANDLES = ["restore-gel", "restore-pads"];
 
   const searchProducts = useCallback(async (q: string) => {
     if (q.length < 2) { setResults([]); return; }

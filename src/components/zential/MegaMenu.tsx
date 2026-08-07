@@ -10,18 +10,18 @@ const concerns = [
  { label: "Lift & Contour", href: "/product/portable-ems-microcurrent-facial-beauty-device", desc: "Sculpt & jawline definition" },
  { label: "Tone & Glow", href: "/product/facial-beauty-tools-and-ems-beauty-equipment", desc: "Even skin & radiance" },
  { label: "Eyes & Fine Lines", href: "/product/eye-massage", desc: "Periorbital renewal" },
- { label: "Red Light Therapy", href: "/product/red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device", desc: "630–850nm · Face & body" },
+ { label: "Red Light Therapy", href: "/product/restoration-belt", desc: "630–850nm · Face & body" },
  { label: "Sleep", href: "/product/blackout-eye-mask-3d-deep-contoured-sleep-mask-lash-extensions-no-pressure-blindfold-sleeping-eye-mask-women-men-side-sleepers", desc: "Deep rest & recovery", isNew: true },
  { label: "Recovery & Body", href: "/instruments", desc: "Thermal · pressure · infrared", isNew: true },
 ];
 
 const byArea = [
- { label: "Face", href: "/product/lifting-and-tightening-face-introducer" },
+ { label: "Face", href: "/product/face-introducer" },
  { label: "Eye Contour", href: "/product/eye-massage" },
  { label: "Jawline", href: "/product/facial-beauty-tools-and-ems-beauty-equipment" },
  { label: "Neck & Décolleté", href: "/product/color-light-import-micro-current-vibration-massager" },
  { label: "Body", href: "/instruments", isNew: true },
- { label: "Restoration Belt", href: "/product/red-light-therapy-belt-for-waist-shoulder-660-850nm-light-therapy-device", isNew: true },
+ { label: "Restoration Belt", href: "/product/restoration-belt", isNew: true },
 ];
 
 const byTech = [
@@ -38,7 +38,7 @@ export function MegaMenu({ onNavigate }: MegaMenuProps) {
 
  useEffect(() => {
   let cancelled = false;
-  fetchProductByHandle("lifting-and-tightening-face-introducer")
+  fetchProductByHandle("face-introducer")
    .then((p) => {
     if (cancelled || !p) return;
     const img = p.images?.edges?.[0]?.node?.url;
@@ -112,7 +112,7 @@ export function MegaMenu({ onNavigate }: MegaMenuProps) {
     {/* Featured */}
     <div className="col-span-2">
      <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/50 mb-6"> Featured </p>
-     <Link to="/product/lifting-and-tightening-face-introducer" onClick={onNavigate}
+     <Link to="/product/face-introducer" onClick={onNavigate}
       className="block group">
       <div className="aspect-[3/4] rounded-xl bg-gradient-to-br from-[#F7F4F0] to-[#E8DDD0] mb-3 overflow-hidden">
        {featuredImg ? (

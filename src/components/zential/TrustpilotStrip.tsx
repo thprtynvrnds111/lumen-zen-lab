@@ -82,7 +82,7 @@ export function TrustpilotStrip({ className = "" }: Props) {
        marginBottom: "14px",
       }}
      >
-     , Verified Reviews 
+     Verified Reviews
      </p>
      <a
       href="https://nl.trustpilot.com/review/zentialpure.com"

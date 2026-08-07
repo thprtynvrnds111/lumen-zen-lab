@@ -218,7 +218,7 @@ export default function TechIontophoresis() {
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
        <Link
-        to="/product/lifting-and-tightening-face-introducer"
+        to="/product/face-introducer"
         className="inline-block rounded-full bg-[#2ED8A8] px-8 py-4 text-sm font-medium tracking-widest uppercase text-[#141414] transition-colors hover:bg-[#1BAF86]"
        >
         Order the Face Introducer
