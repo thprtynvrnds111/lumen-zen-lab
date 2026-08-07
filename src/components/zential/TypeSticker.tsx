@@ -61,10 +61,16 @@ export function TypeSticker({
           fontWeight={600}
           fontSize={72}
           textAnchor="middle"
+          strokeLinejoin="round"
+          strokeLinecap="round"
         >
+          {/* die-cut contour wraps the WHOLE sticker shape, extrusion included —
+              without these the offset extrusion pokes past the face outline as
+              black nubs at glyph corners (operator screenshot 2026-08-07) */}
+          <text x={vw / 2 + 7} y={92} stroke="#F5EFE0" strokeWidth={13} fill="none">{word}</text>
+          <text x={vw / 2} y={86} stroke="#F5EFE0" strokeWidth={13} fill="none">{word}</text>
           <text x={vw / 2 + 7} y={92} fill="#05231A">{word}</text>
           <text x={vw / 2 + 4} y={89} fill="#0A4A34">{word}</text>
-          <text x={vw / 2} y={86} stroke="#141414" strokeWidth={11} fill="none">{word}</text>
           <text x={vw / 2} y={86} stroke="#F5EFE0" strokeWidth={7} fill="none">{word}</text>
           <text x={vw / 2} y={86}>
             {letters.map((ch, i) => (
