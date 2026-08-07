@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["'DM Sans'", "'Inter'", "system-ui", "-apple-system", "sans-serif"],
+        sans: ["'Switzer'", "'DM Sans'", "system-ui", "-apple-system", "sans-serif"],
         serif: ["'Lora'", "Georgia", "serif"],
       },
       colors: {

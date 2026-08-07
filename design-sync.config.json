@@ -6,8 +6,8 @@
   "liveOrigin": "https://zentialpure.com",
   "fontInlineCapKB": 60,
   "imgInlineCapKB": 48,
-  "pageMaxKB": 600,
-  "_pageMaxKB": "get_file is capped at 256 KiB; pages over that can only be partially read back. 600 accepted: shared CSS+fonts inline to ~260KB baseline, image-heavy pages reach ~580KB. Verification reads the first bytes (dsCard + title).",
+  "pageMaxKB": 780,
+  "_pageMaxKB": "get_file is capped at 256 KiB; pages over that can only be partially read back. 780 accepted 2026-08-07: Switzer (4 faces, Coven restyle) raises the inline font+CSS baseline by ~100KB b64 on every page; image-heavy pages (home, editorial) now reach ~740KB. Verification reads the first bytes (dsCard + title), so the cap is a budget, not a correctness limit.",
   "pages": [
     {
       "route": "/",

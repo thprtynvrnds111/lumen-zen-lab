@@ -109,10 +109,39 @@
     <link rel="preconnect" href="https://checkout.zentialpure.com" crossorigin />
     <link rel="dns-prefetch" href="https://checkout.zentialpure.com" />
 
-    <!-- Self-hosted variable fonts (DM Sans + Lora) -->
-    <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-wght.woff2" crossorigin />
+    <!-- Self-hosted fonts (Switzer + DM Sans + Lora) -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/Switzer-Regular.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/Switzer-Medium.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/lora-wght.woff2" crossorigin />
     <style>
+      @font-face {
+        font-family: 'Switzer';
+        src: url('/fonts/Switzer-Light.woff2') format('woff2');
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Switzer';
+        src: url('/fonts/Switzer-Regular.woff2') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Switzer';
+        src: url('/fonts/Switzer-Medium.woff2') format('woff2');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Switzer';
+        src: url('/fonts/Switzer-Semibold.woff2') format('woff2');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
       @font-face {
         font-family: 'DM Sans';
         src: url('/fonts/dm-sans-wght.woff2') format('woff2-variations');
@@ -146,7 +175,7 @@
     <!-- Critical above-the-fold CSS (inlined) -->
     <style>
       *, *::before, *::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: hsl(240 9% 92%); }
-      body { margin: 0; font-family: 'DM Sans', 'Inter', system-ui, -apple-system, sans-serif; background-color: #f5f5f7; color: #1d1d1f; -webkit-font-smoothing: antialiased; }
+      body { margin: 0; font-family: 'Switzer', 'DM Sans', system-ui, -apple-system, sans-serif; background-color: #f5f5f7; color: #1d1d1f; -webkit-font-smoothing: antialiased; }
       .min-h-screen { min-height: 100vh; }
       img { display: block; max-width: 100%; height: auto; }
     </style>

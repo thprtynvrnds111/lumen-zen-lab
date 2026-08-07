@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { PageShell } from "@/components/zential/v2/PageShell";
-import { ReceiptsSection } from "@/components/zential/ReceiptsSection";
+import { AnnouncementBar } from "@/components/zential/AnnouncementBar";
+import { Header } from "@/components/zential/Header";
+import { SparseFooter } from "@/components/zential/v2/SparseFooter";
+import { SEO } from "@/components/SEO";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { formatMoney } from "@/lib/market";
 import { FI_MODALITY_COUNT, FI_SESSION_MINUTES } from "@/data/instrumentFacts";
@@ -9,28 +11,31 @@ import { FI_MODALITY_COUNT, FI_SESSION_MINUTES } from "@/data/instrumentFacts";
 import heroFace from "@/assets/hero-neck-device.webp";
 import heroBelt from "@/assets/storefront-belt-woman.png";
 import heroMat from "@/assets/hero-restore-mat.webp";
-import edThreshold from "@/assets/editorial/threshold.webp";
 import edBrandStory from "@/assets/editorial/morning-mug.webp";
 
+import covenHero from "@/assets/coven/hero-fi-landscape.webp";
+import covenPortrait from "@/assets/coven/hero-fi-portrait.webp";
+import covenStill from "@/assets/coven/collection-still.webp";
+import covenTexture from "@/assets/coven/texture-green.webp";
+import covenBelt from "@/assets/coven/belt-bright.webp";
+
 /**
- * / — homepage. Ported from the Claude Design landing/home.html (proof-forward:
- * hero stat row, four-technologies resonance section, instruments grid,
- * protocols, founder note, live clock).
- *
- * Stripped per founder decision: fabricated Trustpilot rating + per-product
- * star ratings + named "verified" testimonials + unverified journal citations +
- * invented bundle prices removed (pre-launch, FTC). Founder note kept but
- * rewritten as an unsigned brand statement (de-identified 2026-07-09),
- * not the design's invented clinician backstory. Real prices via Shopify.
+ * / — homepage, Coven restyle (2026-08-07). Case-study grammar borrowed from
+ * alexcoven.com/work/spritzi: white canvas, single grotesque family (Switzer),
+ * small uppercase meta labels, colour delivered by bright high-key imagery on
+ * green gradients, generous stacked media. All customer-facing copy carried
+ * over VERBATIM from the previous Storefront (compliance-cleared set); only
+ * presentation changed. Prices stay live via Shopify @inContext — same
+ * fetch-and-hold-empty rule as before (no seeded EUR for US visitors).
  */
 
-const WRAP = "mx-auto max-w-[1180px] px-6 md:px-10";
-const GRAIN =
-  "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
+const WRAP = "mx-auto max-w-[1240px] px-6 md:px-10";
+const LABEL = "font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]";
+const EMERALD = "#0E7A54";
 const PILL_ACTION =
-  "inline-flex items-center justify-center gap-2 rounded-full bg-[#2ED8A8] px-7 py-4 font-sans text-[12px] font-semibold tracking-[0.16em] uppercase text-[#1A1714] transition-colors hover:bg-[#1BAF86]";
-const PILL_GHOST_DARK =
-  "inline-flex items-center justify-center rounded-full border border-[rgba(247,244,240,0.28)] px-7 py-4 font-sans text-[12px] font-semibold tracking-[0.16em] uppercase text-[#F7F4F0] transition-colors hover:border-[#2ED8A8] hover:text-[#2ED8A8]";
+  "inline-flex items-center justify-center gap-2 rounded-full bg-[#2ED8A8] px-7 py-4 font-sans text-[12px] font-semibold tracking-[0.16em] uppercase text-[#141414] transition-colors hover:bg-[#1BAF86]";
+const PILL_GHOST =
+  "inline-flex items-center justify-center rounded-full border border-[rgba(20,20,20,0.22)] px-7 py-4 font-sans text-[12px] font-semibold tracking-[0.16em] uppercase text-[#141414] transition-colors hover:border-[#0E7A54] hover:text-[#0E7A54]";
 
 interface Instrument { slug: string; title: string; desc: string; price: number; handle: string; img: string; }
 const INSTRUMENTS: Instrument[] = [
@@ -95,222 +100,258 @@ export default function Storefront() {
   const priceOf = (it: Instrument): string | null => prices[it.slug] ?? null;
 
   return (
-    <PageShell
-      title="Zential Pure — Clinic precision, daily ritual"
-      description="Three clinic modalities — EMS, microcurrent and thermal — in one 12-minute instrument. Clinic precision, calibrated to a daily ritual. €88."
-      canonical="https://zentialpure.com/"
-      hideHero
-    >
-      {/* ── HERO — editorial grammar (journal hub 1a): fog wash, ink Lora, hairline stats ── */}
-      <section className="relative overflow-hidden border-b border-[rgba(26,23,20,0.12)] bg-[linear-gradient(165deg,#F1F5F3,#F7F4F0,#E9F3EE)] text-[#1A1714]">
-        <div className="grid items-stretch md:min-h-[640px] md:grid-cols-[1.1fr_1fr]">
-          <div className="flex flex-col justify-center px-6 py-14 md:py-[84px] md:pl-14 md:pr-14 lg:pl-[56px]">
-            <p className="font-sans text-[11px] tracking-[0.28em] uppercase text-[#6B5A4A]">
-              ( 01 ) · Resonance Restoration
-            </p>
-            <h1 className="my-[18px] mt-[22px] max-w-[13ch] font-serif italic font-normal tracking-[-0.02em] leading-[1.08] text-[#1A1714] text-[clamp(40px,4.6vw,64px)] [text-wrap:pretty]">
-              The Body Remembers its&nbsp;Frequency
+    <div className="min-h-screen bg-white text-[#141414]">
+      <SEO
+        title="Zential Pure — Clinic precision, daily ritual"
+        description="Three clinic modalities — EMS, microcurrent and thermal — in one 12-minute instrument. Clinic precision, calibrated to a daily ritual. €88."
+        canonicalUrl="https://zentialpure.com/"
+      />
+      <AnnouncementBar />
+      <Header />
+      <main>
+        {/* ── HERO — statement + case-study meta row ── */}
+        <section className="bg-white">
+          <div className={`${WRAP} pt-[clamp(56px,9vw,120px)] pb-[clamp(40px,6vw,72px)]`}>
+            <p className={LABEL}>Zential Pure · Resonance Restoration</p>
+            <h1 className="mt-6 max-w-[15ch] font-sans font-light text-[clamp(44px,6.4vw,92px)] leading-[0.98] tracking-[-0.03em] text-[#141414]">
+              The Body Remembers its Frequency
             </h1>
-            <p className="mb-[34px] max-w-[46ch] text-[clamp(16px,1.3vw,17px)] leading-[1.65] text-[#888480]">
-              Three clinic modalities <b className="font-medium text-[#1A1714]">EMS, microcurrent and thermal</b> in a twelve-minute ritual. <span className="font-sans font-semibold text-[#157A5C]">€88. Once.</span>
-            </p>
-            <div className="mb-[30px] flex flex-wrap border-y border-[rgba(26,23,20,0.12)]">
-              {[
-                { v: <>{FI_MODALITY_COUNT}</>, l: "Clinic modalities" },
-                { v: <>€88</>, l: "About one clinic session, once" },
-                { v: <>{FI_SESSION_MINUTES} min</>, l: "Daily ritual" },
-              ].map((s, i) => (
-                <div key={s.l} className={`min-w-[120px] flex-1 py-5 pr-6 ${i > 0 ? "border-l border-[rgba(26,23,20,0.12)] pl-6" : ""}`}>
-                  <div className="font-sans text-[clamp(22px,2vw,28px)] font-medium leading-none tabular-nums tracking-[-0.01em] text-[#1A1714]">{s.v}</div>
-                  <div className="mt-[9px] font-sans text-[10px] tracking-[0.2em] uppercase text-[#6B5A4A]">{s.l}</div>
+            <div className="mt-[clamp(36px,5vw,64px)] grid gap-8 border-t border-[rgba(20,20,20,0.10)] pt-8 md:grid-cols-[1fr_1fr_1.6fr]">
+              <div>
+                <p className={LABEL}>Brand</p>
+                <p className="mt-2.5 text-[15px] leading-[1.6] text-[#141414]">Zential Pure · Rotterdam</p>
+              </div>
+              <div>
+                <p className={LABEL}>System</p>
+                <p className="mt-2.5 text-[15px] leading-[1.6] text-[#141414]">{FI_MODALITY_COUNT} clinic modalities · {FI_SESSION_MINUTES}-minute ritual</p>
+              </div>
+              <div>
+                <p className={LABEL}>Description</p>
+                <p className="mt-2.5 max-w-[52ch] text-[15px] leading-[1.6] text-[#5A5A5A]">
+                  Three clinic modalities <b className="font-medium text-[#141414]">EMS, microcurrent and thermal</b> in a twelve-minute ritual. <span className="font-semibold" style={{ color: EMERALD }}>€88. Once.</span>
+                </p>
+                <div className="mt-5 flex flex-wrap items-center gap-5">
+                  <Link to="/instruments/face-introducer" className={PILL_ACTION}>Order Face Introducer{priceOf(INSTRUMENTS[0]) && <> · {priceOf(INSTRUMENTS[0])}</>}</Link>
+                  <Link to="/protocols" className="font-sans text-[12px] tracking-[0.22em] uppercase transition-colors hover:text-[#1BAF86]" style={{ color: EMERALD }}>Find your protocol</Link>
                 </div>
-              ))}
-            </div>
-            <div className="flex flex-wrap items-center gap-5">
-              <Link to="/instruments/face-introducer" className={PILL_ACTION}>Order Face Introducer{priceOf(INSTRUMENTS[0]) && <> · {priceOf(INSTRUMENTS[0])}</>}</Link>
-              <Link to="/protocols" className="font-sans text-[12px] tracking-[0.22em] uppercase text-[#157A5C] transition-colors hover:text-[#1BAF86]">Find your protocol</Link>
+              </div>
             </div>
           </div>
-          <div className="relative order-first min-h-[54vh] overflow-hidden md:order-none md:min-h-[640px]">
-            <img src="/editorial/hero-jawline-aged.webp" alt="Jawline and neck profile in morning light" className="absolute inset-0 h-full w-full object-cover" />
-            <Link to="/editorial/the-ritual" className="absolute bottom-6 left-6 z-[2] rounded-xl bg-[rgba(26,23,20,0.72)] px-5 py-3.5 font-sans text-[12px] tracking-[0.22em] uppercase text-[#F7F4F0] backdrop-blur-[4px] transition-colors hover:bg-[rgba(26,23,20,0.9)] hover:text-[#F7F4F0]">
+          {/* Full-bleed hero still */}
+          <div className="relative overflow-hidden">
+            <img
+              src={covenHero}
+              alt="The Face Introducer standing on a reflective table against a green studio gradient"
+              className="h-[clamp(340px,58vw,720px)] w-full object-cover"
+              fetchPriority="high"
+            />
+            <Link
+              to="/editorial/the-ritual"
+              className="absolute bottom-6 left-6 rounded-full bg-white/90 px-5 py-3 font-sans text-[11px] tracking-[0.22em] uppercase text-[#141414] backdrop-blur transition-colors hover:bg-white"
+            >
               Featured · The 12-Minute Window
             </Link>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── TRUST BAND ── */}
-      <section className="border-b border-[rgba(247,244,240,0.10)] bg-[#070A0E] text-[#F7F4F0]">
-        <div className={WRAP}>
-          <div className="flex flex-wrap items-stretch">
-            {[["30-Day", " Money-Back Guarantee"], ["Free", " EU Shipping"], ["Tracked", " shipping"], ["Secure", " checkout"]].map(([b, t], i) => (
-              <div key={i} className={`flex min-w-[200px] flex-1 items-center gap-3 py-[22px] ${i > 0 ? "border-l border-[rgba(247,244,240,0.10)] pl-[34px]" : ""}`}>
-                <span className="h-1.5 w-1.5 flex-none rounded-full bg-[#2ED8A8]" />
-                <span className="font-sans text-[12px] text-[#F7F4F0]/[0.74]">
-                  <b className="font-medium text-[#F7F4F0]">{b}</b>{t}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── THREE TECHNOLOGIES ── */}
-      <section className="relative overflow-hidden bg-[#070A0E] py-[clamp(80px,11vw,128px)] text-[#F7F4F0]">
-        <div className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: GRAIN, backgroundSize: "170px 170px" }} aria-hidden />
-        <div className={`relative ${WRAP}`}>
-          <p className="inline-flex items-center gap-3.5 font-sans text-[11px] tracking-[0.28em] uppercase text-[#C6A07C]"><span className="inline-block h-px w-[26px] bg-current opacity-40" /> Three Technologies</p>
-          <div className="mb-3.5 mt-5 flex flex-wrap items-end justify-between gap-6">
-            <h2 className="max-w-[16ch] font-serif italic font-normal text-[clamp(30px,4vw,52px)] leading-[1.04] text-[#F7F4F0]">One instrument.<br />Three clinic technologies.</h2>
-            <p className="max-w-[30ch] text-right font-sans text-[12px] leading-[1.6] text-[#F7F4F0]/50">Each modality resolves into a single twelve-minute arc <b className="font-medium text-[#2ED8A8]">Lift, Contour, Prime</b> in sequence.</p>
-          </div>
-          <svg className="mt-12 block h-10 w-full overflow-visible" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden>
-            <line x1="0" y1="20" x2="1000" y2="20" stroke="rgba(247,244,240,0.12)" strokeWidth="1" />
-            <path d="M0,20 L152,20 Q167,20 167,8 Q167,20 182,20 L485,20 Q500,20 500,32 Q500,20 515,20 L818,20 Q833,20 833,8 Q833,20 848,20 L1000,20" stroke="#2ED8A8" strokeWidth="1.5" fill="none" style={{ filter: "drop-shadow(0 0 5px rgba(46,216,168,.55))" }} />
-            {[167, 500, 833].map((cx) => <circle key={cx} cx={cx} cy="20" r="5" fill="#2ED8A8" stroke="#2ED8A8" />)}
-          </svg>
-          <div className="grid gap-px border border-t-0 border-[rgba(247,244,240,0.10)] bg-[rgba(247,244,240,0.10)] sm:grid-cols-2 lg:grid-cols-3">
-            {MODALITIES.map((m) => (
-              <div key={m.title} className="flex flex-col bg-[#070A0E] px-7 pb-[30px] pt-[34px]">
-                <div className="mb-6 flex items-center gap-3">
-                  <span className="font-sans text-[11px] font-semibold tracking-[0.12em] tabular-nums text-[#2ED8A8]">{m.n}</span>
-                  <span className="font-serif italic text-[13px] tracking-[0.02em] text-[#F7F4F0]/55">{m.verb}</span>
+        {/* ── TRUST LINE — single hairline row ── */}
+        <section className="border-b border-[rgba(20,20,20,0.10)] bg-white">
+          <div className={WRAP}>
+            <div className="flex flex-wrap items-stretch">
+              {[["30-Day", " Money-Back Guarantee"], ["Free", " EU Shipping"], ["Tracked", " shipping"], ["Secure", " checkout"]].map(([b, t], i) => (
+                <div key={i} className={`flex min-w-[180px] flex-1 items-center gap-3 py-5 ${i > 0 ? "border-l border-[rgba(20,20,20,0.10)] pl-8" : ""}`}>
+                  <span className="h-1.5 w-1.5 flex-none rounded-full bg-[#2ED8A8]" />
+                  <span className="font-sans text-[12px] text-[#5A5A5A]">
+                    <b className="font-medium text-[#141414]">{b}</b>{t}
+                  </span>
                 </div>
-                <h3 className="mb-3 font-serif italic font-normal text-[23px] tracking-[-0.01em] text-[#F7F4F0]">{m.title}</h3>
-                <p className="mb-5 text-[13.5px] leading-[1.66] text-[#F7F4F0]/[0.62]">{m.body}</p>
-                {m.to ? (
-                  <Link to={m.to} className="group mt-auto block border-t border-[rgba(247,244,240,0.10)] pt-[18px]">
-                    <span className="mb-1.5 block font-sans text-[9px] tracking-[0.26em] uppercase text-[#F7F4F0]/40">Mechanism</span>
-                    <span className="flex items-baseline gap-1.5 text-[12px] text-[#F7F4F0]/70 transition-colors group-hover:text-[#2ED8A8]">Read the mechanism <span className="text-[#2ED8A8] transition-transform group-hover:translate-x-[3px]">→</span></span>
-                  </Link>
-                ) : (
-                  <div className="mt-auto border-t border-[rgba(247,244,240,0.10)] pt-[18px]">
-                    <span className="mb-1.5 block font-sans text-[9px] tracking-[0.26em] uppercase text-[#F7F4F0]/40">About</span>
-                    <span className="text-[12px] text-[#F7F4F0]/55">No clinical claim · part of the ritual</span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── THREE TECHNOLOGIES — numbered hairline rows ── */}
+        <section className="bg-white py-[clamp(72px,10vw,120px)]">
+          <div className={WRAP}>
+            <div className="mb-[clamp(40px,5vw,64px)] flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className={LABEL}>Three Technologies</p>
+                <h2 className="mt-5 max-w-[18ch] font-sans font-light text-[clamp(30px,4vw,54px)] leading-[1.04] tracking-[-0.025em] text-[#141414]">One instrument. Three clinic technologies.</h2>
+              </div>
+              <p className="max-w-[30ch] text-right font-sans text-[13px] leading-[1.6] text-[#8E8E8E]">Each modality resolves into a single twelve-minute arc <b className="font-medium" style={{ color: EMERALD }}>Lift, Contour, Prime</b> in sequence.</p>
+            </div>
+            <div className="border-t border-[rgba(20,20,20,0.10)]">
+              {MODALITIES.map((m) => (
+                <Link
+                  key={m.title}
+                  to={m.to ?? "/science"}
+                  className="group grid items-baseline gap-3 border-b border-[rgba(20,20,20,0.10)] py-7 transition-colors hover:bg-[#F4FBF8] md:grid-cols-[72px_120px_1fr_auto] md:gap-8 md:px-4"
+                >
+                  <span className="font-sans text-[13px] font-semibold tabular-nums" style={{ color: EMERALD }}>{m.n}</span>
+                  <span className="font-sans text-[13px] tracking-[0.12em] uppercase text-[#8E8E8E]">{m.verb}</span>
+                  <div>
+                    <h3 className="font-sans text-[clamp(20px,2.2vw,28px)] font-normal tracking-[-0.02em] text-[#141414]">{m.title}</h3>
+                    <p className="mt-2 max-w-[62ch] text-[14px] leading-[1.66] text-[#5A5A5A]">{m.body}</p>
                   </div>
-                )}
-              </div>
-            ))}
+                  <span className="hidden font-sans text-[12px] tracking-[0.16em] uppercase text-[#8E8E8E] transition-colors group-hover:text-[#0E7A54] md:block">
+                    Read the mechanism <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── INTERLUDE ── */}
-      <section className="bg-[#F7F4F0] py-[clamp(64px,9vw,108px)] text-[#1A1714]">
-        <div className={`${WRAP} mx-auto max-w-[900px] text-center`}>
-          <div className="mx-auto mb-[30px] h-px w-10 bg-[#C6A07C] opacity-70" />
-          <p className="font-serif italic text-[clamp(26px,3.4vw,44px)] leading-[1.2] tracking-[-0.01em] text-[#1A1714]">Daily ritual is not aspirational.<br />It is <span className="text-[#157A5C]">operational.</span></p>
-        </div>
-      </section>
-
-      {/* ── INSTRUMENTS ── */}
-      <section className="bg-[#EDEAE6] py-[clamp(80px,11vw,128px)] text-[#1A1714]">
-        <div className={WRAP}>
-          <div className="mb-[50px] max-w-[30ch]">
-            <p className="inline-flex items-center gap-3.5 font-sans text-[11px] tracking-[0.28em] uppercase text-[#C6A07C]"><span className="inline-block h-px w-[26px] bg-current opacity-40" /> The Instruments</p>
-            <h2 className="mt-[18px] font-serif italic font-normal text-[clamp(30px,4vw,52px)] leading-[1.05] text-[#1A1714]">Instruments, not devices.</h2>
-          </div>
-          <div className="grid gap-px border border-[rgba(26,23,20,0.12)] bg-[rgba(26,23,20,0.12)] md:grid-cols-3">
-            {INSTRUMENTS.map((p) => (
-              <Link key={p.slug} to={`/instruments/${p.slug}`} className="group flex flex-col bg-white transition-[transform,box-shadow] duration-300 hover:-translate-y-[3px] hover:shadow-[0_24px_60px_rgba(26,23,20,0.12)]">
-                <div className="relative aspect-[5/4] overflow-hidden bg-[#EDEAE6]">
-                  <img src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-[600ms] group-hover:scale-[1.04]" />
+        {/* ── STACKED MEDIA — case-study pair ── */}
+        <section className="bg-white pb-[clamp(72px,10vw,120px)]">
+          <div className={WRAP}>
+            <div className="grid gap-5 md:grid-cols-[1fr_1.1fr] md:gap-6">
+              <figure>
+                <div className="overflow-hidden">
+                  <img src={covenPortrait} alt="The Face Introducer floating between eucalyptus sprigs and suspended water droplets" className="w-full object-cover transition-transform duration-700 hover:scale-[1.02]" />
                 </div>
-                <div className="flex flex-1 flex-col border-t-2 border-transparent px-[26px] pb-7 pt-[26px] transition-colors group-hover:border-[#2ED8A8]">
-                  <h3 className="mb-2.5 font-serif italic font-normal text-[25px] tracking-[-0.01em] text-[#1A1714]">{p.title}</h3>
-                  <p className="mb-[18px] text-[13.5px] leading-[1.6] text-[#1A1714]/60">{p.desc}</p>
-                  <div className="mt-auto flex items-center justify-between gap-4 border-t border-[rgba(26,23,20,0.12)] pt-[18px]">
-                    <span className="font-sans text-[18px] font-semibold tabular-nums text-[#1A1714]">{priceOf(p) && <>{priceOf(p)} <small className="ml-1.5 font-sans text-[11px] font-normal tracking-[0.16em] uppercase text-[#C6A07C]">once</small></>}</span>
-                    <span className="inline-flex items-center gap-1.5 font-sans text-[11px] tracking-[0.16em] uppercase text-[#157A5C]">View <span className="transition-transform group-hover:translate-x-1">→</span></span>
+                <figcaption className={`mt-3.5 ${LABEL}`}>The Face Introducer · Studio still</figcaption>
+              </figure>
+              <figure className="md:mt-[clamp(48px,7vw,110px)]">
+                <div className="overflow-hidden">
+                  <img src={covenStill} alt="The Face Introducer beside a sparkling glass of iced water with a green leaf" className="w-full object-cover transition-transform duration-700 hover:scale-[1.02]" />
+                </div>
+                <figcaption className={`mt-3.5 ${LABEL}`}>Twelve minutes · Once a day</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        {/* ── INSTRUMENTS ── */}
+        <section className="bg-white pb-[clamp(72px,10vw,120px)]">
+          <div className={WRAP}>
+            <div className="mb-[clamp(36px,4vw,56px)] flex flex-wrap items-end justify-between gap-6 border-t border-[rgba(20,20,20,0.10)] pt-10">
+              <div>
+                <p className={LABEL}>The Instruments</p>
+                <h2 className="mt-5 font-sans font-light text-[clamp(30px,4vw,54px)] leading-[1.05] tracking-[-0.025em] text-[#141414]">Instruments, not devices.</h2>
+              </div>
+              <Link to="/instruments" className="font-sans text-[12px] tracking-[0.2em] uppercase transition-colors hover:text-[#1BAF86]" style={{ color: EMERALD }}>All instruments →</Link>
+            </div>
+            <div className="grid gap-x-6 gap-y-12 md:grid-cols-3">
+              {INSTRUMENTS.map((p) => (
+                <Link key={p.slug} to={`/instruments/${p.slug}`} className="group flex flex-col">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-[#F2F4F3]">
+                    <img src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                   </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── EDITORIAL DIVIDER ── */}
-      <section className="relative flex min-h-[clamp(300px,37vw,420px)] items-center overflow-hidden bg-[#1A1714]">
-        <img src={edThreshold} alt="" className="absolute inset-0 h-full w-full object-cover object-[50%_38%]" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,10,14,0.7)_0%,rgba(7,10,14,0.32)_50%,rgba(7,10,14,0.55)_100%)]" />
-        <div className={`relative z-[2] ${WRAP}`}>
-          <p className="max-w-[16ch] font-serif italic text-[clamp(26px,3.6vw,46px)] leading-[1.16] text-[#F7F4F0]">Built for the woman who left the clinic but kept the standard.</p>
-          <div className="mt-[22px] font-sans text-[10px] tracking-[0.3em] uppercase text-[#F7F4F0]/55">The Clinic Dropout</div>
-        </div>
-      </section>
-
-      {/* ── RECEIPTS — tabbed per-instrument proof (tano-pattern, authenticity-floor content) ── */}
-      <ReceiptsSection />
-
-      {/* ── PROTOCOLS ── */}
-      <section className="bg-[#1A1714] py-[clamp(80px,11vw,128px)] text-[#F7F4F0]">
-        <div className={WRAP}>
-          <div className="mb-[46px] flex flex-wrap items-end justify-between gap-5">
-            <div>
-              <p className="inline-flex items-center gap-3.5 font-sans text-[11px] tracking-[0.28em] uppercase text-[#C6A07C]"><span className="inline-block h-px w-[26px] bg-current opacity-40" /> Protocols</p>
-              <h2 className="mt-[18px] max-w-[14ch] font-serif italic font-normal text-[clamp(30px,4vw,52px)] leading-[1.05] text-[#F7F4F0]">Three protocols. One system.</h2>
+                  <div className="flex flex-1 flex-col pt-5">
+                    <div className="flex items-baseline justify-between gap-4">
+                      <h3 className="font-sans text-[19px] font-medium tracking-[-0.015em] text-[#141414]">{p.title}</h3>
+                      <span className="font-sans text-[15px] font-semibold tabular-nums text-[#141414]">{priceOf(p)}</span>
+                    </div>
+                    <p className="mt-2.5 text-[13.5px] leading-[1.6] text-[#5A5A5A]">{p.desc}</p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 font-sans text-[11px] tracking-[0.18em] uppercase transition-colors group-hover:text-[#1BAF86]" style={{ color: EMERALD }}>
+                      View <span className="transition-transform group-hover:translate-x-1">→</span>
+                    </span>
+                  </div>
+                </Link>
+              ))}
             </div>
-            <p className="max-w-[22ch] text-right font-serif italic text-[clamp(18px,2vw,24px)] leading-[1.3] text-[#C6A07C]">Bundles are not discounts. They are sequences.</p>
           </div>
-          <div className="grid gap-px border border-[rgba(247,244,240,0.10)] bg-[rgba(247,244,240,0.10)] md:grid-cols-3">
-            {PROTOCOLS.map((p) => (
-              <Link key={p.n} to="/protocols" className="flex min-h-[300px] flex-col bg-[#1A1714] px-8 pb-[34px] pt-[38px] transition-colors hover:bg-[#211c18]">
-                <div className="mb-auto font-serif italic text-[40px] leading-none text-[#2ED8A8]">{p.n}</div>
-                <h3 className="mb-3 mt-[30px] font-sans text-[13px] font-medium tracking-[0.16em] uppercase text-[#F7F4F0]">{p.title}</h3>
-                <p className="mb-[18px] text-[13.5px] leading-[1.65] text-[#F7F4F0]/60">{p.body}</p>
-                <span className="font-sans text-[15px] font-semibold tabular-nums text-[#F7F4F0]">{p.note}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── FOUNDER (real) ── */}
-      <section className="bg-[#F7F4F0] py-[clamp(80px,11vw,128px)] text-[#1A1714]">
-        <div className={WRAP}>
-          <p className="inline-flex items-center gap-3.5 font-sans text-[11px] tracking-[0.28em] uppercase text-[#C6A07C]"><span className="inline-block h-px w-[26px] bg-current opacity-40" /> The Standard, Made Human</p>
-          <div className="mt-9 grid items-start gap-7 sm:grid-cols-[130px_1fr] md:max-w-[680px]">
-            <div className="aspect-[3/4] w-[130px] overflow-hidden rounded-[14px] bg-[#EDEAE6]">
-              <img src={edBrandStory} alt="Zential Pure, Rotterdam" className="h-full w-full object-cover" />
-            </div>
-            <div>
-              <p className="mb-4 font-sans text-[10px] tracking-[0.26em] uppercase text-[#6B5A4A]">Why we exist</p>
-              <p className="font-serif italic text-[19px] leading-[1.5] tracking-[-0.01em] text-[#1A1714]">Zential Pure started with one question: why does clinic-grade skin technology stay locked behind standing appointments and €120 sessions?</p>
-              {/* No "designed/specified/calibrated in Rotterdam" — see
-                  LIVE-CATALOG-TRUTH.md:146-148. We select and standardise
-                  instruments; we do not engineer or manufacture them. */}
-              <p className="mt-3.5 font-serif italic text-[17px] leading-[1.5] text-[#1A1714]">So we put the instrument we wanted on our own counter — chosen against a clinic standard, tuned to a daily ritual you actually keep.</p>
-              {/* Signed by name from 2026-08-01 on the operator's instruction, reversing the
-                  2026-07-11 brand-only signature decision. "Miguel" is a signature; the legal
-                  identity (M.G. Young-On, KvK, BTW) lives in the footer and entity.html and
-                  the two are not interchangeable. */}
-              <div className="mt-5 flex items-baseline gap-2.5">
-                <span className="font-serif italic text-[18px] text-[#1A1714]">Miguel</span>
-                <span className="font-sans text-[10px] tracking-[0.16em] uppercase text-[#6B5A4A]">Founder, Zential Pure · Rotterdam</span>
+        {/* ── TEXTURE INTERLUDE — full-bleed, statement over image ── */}
+        <section className="relative flex min-h-[clamp(300px,42vw,520px)] items-center overflow-hidden">
+          <img src={covenTexture} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,40,28,0.45),rgba(6,40,28,0.05))]" />
+          <div className={`relative z-[2] ${WRAP}`}>
+            <p className="max-w-[18ch] font-sans font-light text-[clamp(28px,4.2vw,56px)] leading-[1.08] tracking-[-0.025em] text-white">
+              Daily ritual is not aspirational. It is operational.
+            </p>
+          </div>
+        </section>
+
+        {/* ── RESTORATION — belt still + copy ── */}
+        <section className="bg-white py-[clamp(72px,10vw,120px)]">
+          <div className={WRAP}>
+            <div className="grid items-end gap-10 md:grid-cols-[1fr_320px]">
+              <figure className="overflow-hidden">
+                <img src={covenBelt} alt="The Restoration Belt glowing red on a pale-green reflective studio surface" className="w-full object-cover transition-transform duration-700 hover:scale-[1.02]" />
+              </figure>
+              <div className="pb-2">
+                <p className={LABEL}>Restoration</p>
+                <h2 className="mt-4 font-sans font-light text-[clamp(26px,3vw,40px)] leading-[1.08] tracking-[-0.02em] text-[#141414]">Skin and body, the same standard.</h2>
+                <p className="mt-4 text-[14px] leading-[1.66] text-[#5A5A5A]">660nm and 850nm light, pressed to the muscle by a thermal wrap.</p>
+                <Link to="/instruments/restoration-belt" className="mt-6 inline-flex items-center gap-1.5 font-sans text-[12px] tracking-[0.18em] uppercase transition-colors hover:text-[#1BAF86]" style={{ color: EMERALD }}>
+                  The Restoration Belt <span>→</span>
+                </Link>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── CLOSING + LIVE CLOCK ── */}
-      <section className="relative overflow-hidden bg-[#070A0E] py-[clamp(80px,11vw,140px)] text-center text-[#F7F4F0]">
-        <div className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: GRAIN, backgroundSize: "170px 170px" }} aria-hidden />
-        <div className={`relative ${WRAP}`}>
-          <div className="mb-[34px] inline-flex items-center gap-3 rounded-full border border-[rgba(247,244,240,0.10)] bg-[#2ED8A8]/5 px-5 py-[11px]">
-            <span className="h-[7px] w-[7px] rounded-full bg-[#2ED8A8]" />
-            <span className="font-sans text-[13px] font-medium tracking-[0.14em] tabular-nums text-[#2ED8A8]">{clock}</span>
-            <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-[#F7F4F0]/50">· CET · live</span>
+        {/* ── PROTOCOLS — three minimal columns ── */}
+        <section className="bg-[#F4FBF8] py-[clamp(72px,10vw,120px)]">
+          <div className={WRAP}>
+            <div className="mb-[clamp(36px,4vw,56px)] flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className={LABEL}>Protocols</p>
+                <h2 className="mt-5 max-w-[16ch] font-sans font-light text-[clamp(30px,4vw,54px)] leading-[1.05] tracking-[-0.025em] text-[#141414]">Three protocols. One system.</h2>
+              </div>
+              <p className="max-w-[24ch] text-right font-sans text-[14px] leading-[1.5] text-[#8E8E8E]">Bundles are not discounts. They are sequences.</p>
+            </div>
+            <div className="grid gap-px border border-[rgba(20,20,20,0.10)] bg-[rgba(20,20,20,0.10)] md:grid-cols-3">
+              {PROTOCOLS.map((p) => (
+                <Link key={p.n} to="/protocols" className="flex min-h-[240px] flex-col bg-white px-8 pb-8 pt-9 transition-colors hover:bg-[#FCFEFD]">
+                  <div className="font-sans text-[15px] font-semibold tabular-nums" style={{ color: EMERALD }}>{p.n}</div>
+                  <h3 className="mb-3 mt-8 font-sans text-[17px] font-medium tracking-[-0.01em] text-[#141414]">{p.title}</h3>
+                  <p className="mb-5 text-[13.5px] leading-[1.65] text-[#5A5A5A]">{p.body}</p>
+                  <span className="mt-auto font-sans text-[14px] font-semibold tabular-nums text-[#141414]">{p.note}</span>
+                </Link>
+              ))}
+            </div>
           </div>
-          <h2 className="mx-auto mb-[34px] max-w-[18ch] font-serif italic font-normal text-[clamp(34px,5vw,68px)] leading-[1.08] tracking-[-0.015em] text-[#F7F4F0]">Clinic precision,<br />daily ritual.</h2>
-          <div className="flex flex-wrap justify-center gap-3.5">
-            <Link to="/instruments/face-introducer" className={PILL_ACTION}>Order Face Introducer{priceOf(INSTRUMENTS[0]) && <> · {priceOf(INSTRUMENTS[0])}</>}</Link>
-            <Link to="/protocols" className={PILL_GHOST_DARK}>Find your protocol</Link>
+        </section>
+
+        {/* ── FOUNDER (real) ── */}
+        <section className="bg-white py-[clamp(72px,10vw,120px)]">
+          <div className={WRAP}>
+            <p className={LABEL}>The Standard, Made Human</p>
+            <div className="mt-9 grid items-start gap-7 sm:grid-cols-[130px_1fr] md:max-w-[680px]">
+              <div className="aspect-[3/4] w-[130px] overflow-hidden bg-[#F2F4F3]">
+                <img src={edBrandStory} alt="Zential Pure, Rotterdam" className="h-full w-full object-cover" />
+              </div>
+              <div>
+                <p className={`mb-4 ${LABEL}`}>Why we exist</p>
+                <p className="text-[17px] leading-[1.6] tracking-[-0.01em] text-[#141414]">Zential Pure started with one question: why does clinic-grade skin technology stay locked behind standing appointments and €120 sessions?</p>
+                {/* No "designed/specified/calibrated in Rotterdam" — see
+                    LIVE-CATALOG-TRUTH.md:146-148. We select and standardise
+                    instruments; we do not engineer or manufacture them. */}
+                <p className="mt-3.5 text-[15px] leading-[1.6] text-[#5A5A5A]">So we put the instrument we wanted on our own counter — chosen against a clinic standard, tuned to a daily ritual you actually keep.</p>
+                {/* Signed by name from 2026-08-01 on the operator's instruction, reversing the
+                    2026-07-11 brand-only signature decision. "Miguel" is a signature; the legal
+                    identity (M.G. Young-On, KvK, BTW) lives in the footer and entity.html and
+                    the two are not interchangeable. */}
+                <div className="mt-5 flex items-baseline gap-2.5">
+                  <span className="font-sans text-[16px] font-medium text-[#141414]">Miguel</span>
+                  <span className={LABEL}>Founder, Zential Pure · Rotterdam</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
-    </PageShell>
+        </section>
+
+        {/* ── CLOSING + LIVE CLOCK ── */}
+        <section className="border-t border-[rgba(20,20,20,0.10)] bg-white py-[clamp(80px,11vw,140px)] text-center">
+          <div className={WRAP}>
+            <div className="mb-[34px] inline-flex items-center gap-3 rounded-full border border-[rgba(20,20,20,0.12)] px-5 py-[11px]">
+              <span className="h-[7px] w-[7px] rounded-full bg-[#2ED8A8]" />
+              <span className="font-sans text-[13px] font-medium tracking-[0.14em] tabular-nums" style={{ color: EMERALD }}>{clock}</span>
+              <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-[#8E8E8E]">· CET · live</span>
+            </div>
+            <h2 className="mx-auto mb-[34px] max-w-[16ch] font-sans font-light text-[clamp(36px,5.4vw,76px)] leading-[1.02] tracking-[-0.03em] text-[#141414]">Clinic precision, daily ritual.</h2>
+            <div className="flex flex-wrap justify-center gap-3.5">
+              <Link to="/instruments/face-introducer" className={PILL_ACTION}>Order Face Introducer{priceOf(INSTRUMENTS[0]) && <> · {priceOf(INSTRUMENTS[0])}</>}</Link>
+              <Link to="/protocols" className={PILL_GHOST}>Find your protocol</Link>
+            </div>
+          </div>
+        </section>
+      </main>
+      <SparseFooter />
+    </div>
   );
 }
