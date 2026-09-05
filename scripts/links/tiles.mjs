@@ -54,6 +54,15 @@ export const TILES = [
     alt: "The Face Introducer on marble, lit blue.",
   },
   {
+    id: "breath",
+    title: "Breath",
+    sub: "Free ritual app",
+    href: "/breath",
+    img: "/link/t-breath.webp",
+    alt: "The Breath app's resonance visualisation — a glowing teal orb inside an expanding ring.",
+    accent: true,
+  },
+  {
     id: "quiz",
     title: "Find your protocol",
     sub: "60-second quiz",
@@ -97,15 +106,6 @@ export const TILES = [
     href: "/wrap",
     img: "/link/t-wrap.webp",
     alt: "Typographic card reading Wrap? — proposed, you decide.",
-  },
-  {
-    id: "breath",
-    title: "Breath",
-    sub: "Free ritual app",
-    href: "/breath",
-    img: "/link/t-breath.webp",
-    alt: "The Breath app's resonance visualisation — a glowing teal orb inside an expanding ring.",
-    accent: true,
   },
 ];
 

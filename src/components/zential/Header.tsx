@@ -18,6 +18,7 @@ const NAV_ITEMS: { label: string; to: string; match: NavMatch }[] = [
  { label: 'Movement', to: '/movement', match: 'prefix' },
  { label: 'Instruments', to: '/instruments', match: 'prefix' },
  { label: 'Protocols', to: '/protocols', match: 'prefix' },
+ { label: 'Breath', to: '/breath', match: 'prefix' },
  { label: 'Method', to: '/clinic-vs-home-facial-device', match: 'prefix' },
  { label: 'Quiz', to: '/quiz', match: 'prefix' },
 ];

@@ -33,6 +33,13 @@ import monoFiLand from "@/assets/coven/mono-fi-land.webp";
  * fetch-and-hold-empty rule as before (no seeded EUR for US visitors).
  */
 
+// The Breath app's mode colors (see src/pages/breath/breathData.ts).
+const BREATH_MODES = [
+  { name: "Meditate", hz: "528 Hz", color: "#C6A07C" },
+  { name: "Restore", hz: "432 Hz", color: "#2ED8A8" },
+  { name: "Reset", hz: "396 Hz", color: "#C87B4A" },
+];
+
 const WRAP = "mx-auto max-w-[1240px] px-6 md:px-10";
 const LABEL = "font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-[#8E8E8E]";
 const EMERALD = "#0E7A54";
@@ -360,6 +367,35 @@ export default function Storefront() {
                   <span className="mt-auto font-sans text-[14px] font-semibold tabular-nums text-[#141414]">{p.note}</span>
                 </Link>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── THE BREATH — free breathwork app, built in-house ── */}
+        <section className="relative overflow-hidden bg-[#141414] py-[clamp(72px,10vw,120px)]">
+          <div className={WRAP}>
+            <div className="grid gap-12 md:grid-cols-[1.2fr_1fr] md:items-end">
+              <div>
+                <p className="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-white/55">The Breath · Free · No account</p>
+                <h2 className="mt-5 max-w-[18ch] font-sans font-light text-[clamp(30px,4vw,54px)] leading-[1.05] tracking-[-0.025em] text-white">
+                  The instruments return the energy. The breath returns the rhythm.
+                </h2>
+                <Link
+                  to="/breath"
+                  className="mt-8 inline-flex items-center gap-1.5 font-sans text-[12px] tracking-[0.18em] uppercase text-[#2ED8A8] transition-colors hover:text-white"
+                >
+                  Open The Breath <span>→</span>
+                </Link>
+              </div>
+              <ul className="grid gap-px border border-white/15 bg-white/15 sm:grid-cols-3" aria-label="Three breathing practices">
+                {BREATH_MODES.map((m) => (
+                  <li key={m.name} className="bg-[#141414] px-6 py-7">
+                    <span className="block h-2.5 w-2.5 rounded-full" style={{ background: m.color, boxShadow: `0 0 16px ${m.color}80` }} aria-hidden />
+                    <span className="mt-6 block font-sans text-[15px] font-medium tracking-[-0.01em] text-white">{m.name}</span>
+                    <span className="mt-1 block font-sans text-[12px] tabular-nums text-white/45">{m.hz}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
