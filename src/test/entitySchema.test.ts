@@ -61,7 +61,7 @@ const byType = (t: string) => entityNodes.filter((n) => n["@type"] === t);
  *   KVK-nummer         96597569
  *   rechtsvorm         EENMANSZAAK        <- not a B.V.
  *   vestigingsnummer   000061913421 (hoofdvestiging)
- *   adres              3e Westewagenhof 78, 3011 AR Rotterdam
+ *   adres              Rotterdam (street + postcode are a home address; never shipped, 2026-09-25)
  *
  * The "B.V." suffix shipped on five surfaces until that record was read — it had
  * been copied out of the engine repo's docs, which nobody had checked against the
@@ -71,8 +71,6 @@ const byType = (t: string) => entityNodes.filter((n) => n["@type"] === t);
  * form, so the suffix is banned repo-wide below, not merely corrected.
  */
 const KVK = "96597569";
-const STREET = "3e Westewagenhof 78";
-const POSTCODE = "3011 AR";
 const VESTIGING = "000061913421";
 
 /**
@@ -95,6 +93,7 @@ const TRADER = "M.G. Young-On";
 const FORBIDDEN_IDENTITY = [
   { label: "a second, non-btw-id NL VAT number", re: /\bNL\d{9}B\d{2}\b/g, allow: VAT },
   { label: "the VIES tax address (Zwijndrecht)", re: /Zwijndrecht|Rotterdamseweg/gi },
+  { label: "the home street address (operator instruction 2026-09-25)", re: /Westewagenhof|3011\s?AR/gi },
 ];
 
 /** The six live products, LIVE-CATALOG-TRUTH.md (verified 2026-07-29). */
@@ -208,8 +207,8 @@ describe("entity.html — entity anchor page", () => {
     expect(byProp("BTW-identificatienummer")?.value).toBe(VAT);
 
     const addr = org.address as Record<string, unknown>;
-    expect(addr.streetAddress).toBe(STREET);
-    expect(addr.postalCode).toBe(POSTCODE);
+    expect(addr.streetAddress).toBeUndefined();
+    expect(addr.postalCode).toBeUndefined();
     expect(addr.addressLocality).toBe("Rotterdam");
     expect(addr.addressCountry).toBe("NL");
 
@@ -219,8 +218,6 @@ describe("entity.html — entity anchor page", () => {
     expect(footer).toContain(`KvK ${KVK}`);
     expect(footer).toContain(`BTW ${VAT}`);
     expect(footer).toContain(TRADER);
-    expect(footer).toContain(STREET);
-    expect(footer).toContain(POSTCODE);
     expect(footer, "the true registered-company line must keep shipping").toMatch(
       /Rotterdam,\s*the\s+Netherlands/i,
     );

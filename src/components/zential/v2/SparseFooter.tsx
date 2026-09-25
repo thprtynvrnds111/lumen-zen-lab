@@ -243,7 +243,9 @@ export function SparseFooter() {
 
         {/* Legal identity, read live from the Handelsregister 2026-08-01:
             handelsnaam Zential Pure, KvK 96597569, vestigingsnummer 000061913421,
-            3e Westewagenhof 78, 3011 AR Rotterdam.
+            Rotterdam. Street and postcode removed on the operator's instruction
+            2026-09-25 (it is a home address); city only until there is a business
+            address. Deliberate Art. 3:15d BW risk.
 
             NO "B.V." — the rechtsvorm is an EENMANSZAAK. This line said
             "Zential Pure B.V." from 2026-08-01 until the register was actually
@@ -262,7 +264,7 @@ export function SparseFooter() {
 
             Mirrored in public/entity.html's Organization schema — change both. */}
         <p className="mt-6 font-mono text-[10px] tracking-[0.18em] uppercase text-[#141414]/35">
-          Zential Pure  ·  M.G. Young-On  ·  3e Westewagenhof 78, 3011 AR Rotterdam, the Netherlands  ·  KvK 96597569  ·  BTW NL004192654B60  ·{" "}
+          Zential Pure  ·  M.G. Young-On  ·  Rotterdam, the Netherlands  ·  KvK 96597569  ·  BTW NL004192654B60  ·{" "}
           <a href="mailto:info@zentialpure.com" className="hover:text-[#0E7A54] transition-colors normal-case tracking-normal">
             info@zentialpure.com
           </a>
